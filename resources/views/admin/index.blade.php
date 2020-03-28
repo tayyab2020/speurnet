@@ -29,7 +29,6 @@
         <div class="login">
 
             <div class="logo" href="#" align="">
-                Hi
 
             <a href="{{ URL::to('/') }}"><img src="{{ URL::asset('upload/'.getcong('site_logo')) }}" alt="logo"></a>
             </div>
