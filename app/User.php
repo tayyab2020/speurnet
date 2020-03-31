@@ -18,7 +18,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = ['name', 'email', 'password','phone','fax','about','facebook','twitter','gplus','linkedin','image_icon'];
+    protected $fillable = ['provider','provider_id','status','name', 'email', 'password','phone','fax','about','facebook','twitter','gplus','linkedin','image_icon'];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -38,8 +38,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public static function getUserInfo($id) 
-    { 
+    public static function getUserInfo($id)
+    {
         return User::find($id);
     }
 
@@ -52,7 +52,7 @@ class User extends Authenticatable
 class CustomPassword extends ResetPassword
 {
     public function toMail($notifiable)
-    {   
+    {
         $url=url('admin/password/reset/'.$this->token);
 
         return (new MailMessage)
