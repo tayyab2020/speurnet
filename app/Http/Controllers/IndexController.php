@@ -52,7 +52,7 @@ class IndexController extends Controller
     public  function createUser($getInfo,$provider){
 
 
-        $user = User::where('provider_id', $getInfo->id)->first();
+        $user = User::where('provider_id', $getInfo->id)->orWhere('email',$getInfo->email)->first();
         if (!$user) {
             $user = User::create([
                 'name'     => $getInfo->name,
