@@ -14,7 +14,7 @@
               <h2>All Properties</h2>
             </div>
             <ol class="breadcrumb">
-              <li><a href="{{ URL::to('/') }}">Home</a></li> 
+              <li><a href="{{ URL::to('/') }}">Home</a></li>
               <li class="active">All Properties</li>
             </ol>
           </div>
@@ -29,14 +29,14 @@
         <div class="row">
           <!-- begin:article -->
           <div class="col-md-9 col-md-push-3">
-           
+
             <!-- begin:product -->
             <div class="row container-realestate">
-           	  @foreach($properties as $i => $property) 	
+           	  @foreach($properties as $i => $property)
              	 <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="property-container">
               <div class="property-image">
-                 
+
                 <img src="{{ URL::asset('upload/properties/'.$property->featured_image.'-s.jpg') }}" alt="{{ $property->property_name }}">
                 <div class="property-price">
                   <h4>{{ getPropertyTypeName($property->property_type)->types }}</h4>
@@ -58,13 +58,13 @@
           </div>
               <!-- break -->
            	  @endforeach
-           	  
-              
+
+
             </div>
             <!-- end:product -->
 
             <!-- begin:pagination -->
-            @include('_particles.pagination', ['paginator' => $properties])             
+            @include('_particles.pagination', ['paginator' => $properties])
             <!-- end:pagination -->
           </div>
           <!-- end:article -->
@@ -72,10 +72,10 @@
           <!-- begin:sidebar -->
           @include('_particles.sidebar')
           <!-- end:sidebar -->
-          
+
         </div>
       </div>
     </div>
     <!-- end:content -->
- 
+
 @endsection
