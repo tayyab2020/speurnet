@@ -66,6 +66,11 @@
                             <span class="round-tab">3</span>
                         </a>
                     </li>
+                    <li role="presentation" class="disabled">
+                        <a class="persistant-disabled" data-content="stepper-step-4"  data-toggle="tab" aria-controls="stepper-step-4" role="tab" title="Step 4">
+                            <span class="round-tab">4</span>
+                        </a>
+                    </li>
 
                 </ul>
 
@@ -164,6 +169,20 @@
                                     <input type="text" name="area" value="{{ isset($property->area) ? $property->area : null }}" class="form-control" placeholder="800m2">
                                 </div>
                             </div>
+
+
+
+                            <ul class="list-inline pull-right">
+                                <li>
+                                    <a class="btn btn-default prev-step">Back</a>
+                                </li>
+                                <li>
+                                    <a class="btn btn-primary next-step">Next</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="tab-pane fade" role="tabpanel" id="stepper-step-3">
+
                             <div class="form-group">
                                 <label for="" class="col-sm-3 control-label">Sale Price</label>
                                 <div class="col-sm-9">
@@ -189,18 +208,6 @@
                                     <textarea name="description" rows="10" class="form-control summernote">{{ isset($property->description) ? $property->description : null }}</textarea>
                                 </div>
                             </div>
-
-
-                            <ul class="list-inline pull-right">
-                                <li>
-                                    <a class="btn btn-default prev-step">Back</a>
-                                </li>
-                                <li>
-                                    <a class="btn btn-primary next-step">Next</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="tab-pane fade" role="tabpanel" id="stepper-step-3">
 
                             <div class="form-group">
                                 <label for="" class="col-sm-3 control-label">Address</label>
@@ -233,6 +240,21 @@
                                 </div>
 
                             </div>
+
+
+
+                            <ul class="list-inline pull-right">
+                                <li>
+                                    <a class="btn btn-default prev-step">Back</a>
+                                </li>
+                                <li>
+                                    <a class="btn btn-primary next-step">Next</a>
+                                </li>
+                            </ul>
+
+                        </div>
+
+                        <div class="tab-pane fade" role="tabpanel" id="stepper-step-4">
 
                             <div class="form-group">
                                 <label for="avatar" class="col-sm-3 control-label">Featured Image</label>
@@ -358,11 +380,8 @@
                                 </div>
                             </div>
 
-
-
-
                             <hr>
-
+                            
 
                             <ul class="list-inline pull-right">
                                 <li>
