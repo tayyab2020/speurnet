@@ -5,6 +5,8 @@
 
 @section("content")
 
+    <script src="https://kit.fontawesome.com/29532268c4.js" crossorigin="anonymous"></script>
+
     <!-- begin:header -->
     <div id="header" class="heading" style="background-image: url({{ URL::asset('assets/img/img01.jpg') }});">
         <div class="container">
@@ -82,7 +84,234 @@
 
                         <div class="tab-pane fade in active" role="tabpanel" id="stepper-step-1">
 
-                            <div class="form-group">
+                            <div class="form-group" style="width: 80%;margin: auto;text-align: center;">
+
+                                <h2>Step 1: What do you want to do with your property?</h2>
+
+                                <ul class="property-radios" style="padding: 0;margin-top: 30px;">
+
+                                @if(isset($property->property_purpose))
+
+
+
+                                        <li @if($property->property_purpose=='Sale') class="active1 pp" @else class="pp" @endif >
+
+                                            <div class="type-holder-main">
+
+                                                <label>
+
+                                                    <input type="radio" name="property_purpose"  @if($property->property_purpose=='Sale') checked="checked" @endif  value="Sale">
+
+                                                    <img src="{{ URL::asset('assets/img/sale.png') }}" style="width: 65%;">
+
+                                                    <span>For Sale</span>
+
+                                                </label>
+
+                                            </div>
+                                        </li>
+
+                                        <li @if($property->property_purpose=='Rent') class="active1 pp" @else class="pp" @endif>
+
+                                            <div class="type-holder-main">
+
+                                                <label>
+
+                                                    <img src="{{ URL::asset('assets/img/rent.png') }}"  style="width: 65%;">
+
+                                                    <input type="radio" name="property_purpose" @if($property->property_purpose=='Rent') checked="checked" @endif value="Rent">
+
+                                                    <span>For Rent</span>
+
+                                                </label>
+
+                                            </div>
+                                        </li>
+
+
+
+                                @else
+
+
+                                        <li class="active1 pp">
+
+                                            <div class="type-holder-main">
+
+                                                <label>
+
+                                                    <input type="radio" name="property_purpose"  checked="checked"  value="Sale">
+
+                                                    <img src="{{ URL::asset('assets/img/sale.png') }}" style="width: 65%;">
+
+                                                    <span>For Sale</span>
+
+                                                </label>
+
+                                            </div>
+                                        </li>
+
+                                        <li class="pp">
+
+                                            <div class="type-holder-main">
+
+                                                <label>
+
+                                                    <img src="{{ URL::asset('assets/img/rent.png') }}"  style="width: 65%;">
+
+                                                    <input type="radio" name="property_purpose" value="Rent">
+
+                                                    <span>For Rent</span>
+
+                                                </label>
+
+                                            </div>
+                                        </li>
+
+
+                                @endif
+
+                                </ul>
+
+                            </div>
+
+
+
+                            <ul class="list-inline pull-right">
+                                <li>
+                                    <a class="btn btn-default prev-step">Back</a>
+                                </li>
+                                <li>
+                                    <a class="btn btn-primary next-step">Next</a>
+                                </li>
+                            </ul>
+
+                        </div>
+
+
+                        <div class="tab-pane fade" role="tabpanel" id="stepper-step-2">
+
+                            <h2 style="text-align: center;">Step 2: What type of property are you marketing?</h2>
+
+                            <div class="form-group" style="width: 80%;margin: auto;">
+
+                                <ul class="property-radios" style="padding: 0;margin-top: 30px;">
+
+                                @if(isset($property->property_type))
+
+                                    @foreach($types as $type)
+
+
+                                            <li @if($property->property_type==$type->id) class="active1 pt" @else class="pt" @endif style="width: auto;">
+
+                                                <div class="type-holder-main">
+
+                                                    <label style="padding: 13px;">
+
+                                                        <input type="radio" name="property_type" @if($property->property_type==$type->id) checked="checked" @endif  value="{{$type->id}}">
+
+                                                        <span style="padding-top: 0;">{{$type->types}}</span>
+
+                                                    </label>
+
+                                                </div>
+                                            </li>
+
+                                    @endforeach
+
+                                @else
+
+                                    <?php $x = 0; ?>
+
+                                    @foreach($types as $type)
+
+                                        @if($x == 0)
+
+
+                                            <li class="active1 pt" style="width: auto;">
+
+                                                <div class="type-holder-main">
+
+                                                    <label style="padding: 13px;">
+
+                                                        <input type="radio" name="property_type"  checked="checked"  value="{{$type->id}}">
+
+                                                        <span style="padding-top: 0;">{{$type->types}}</span>
+
+                                                    </label>
+
+                                                </div>
+                                            </li>
+
+                                            <?php $x = $x + 1; ?>
+
+                                            @else
+
+                                                <li class="pt" style="width: auto;">
+
+                                                    <div class="type-holder-main">
+
+                                                        <label style="padding: 13px;">
+
+                                                            <input type="radio" name="property_type"  value="{{$type->id}}">
+
+                                                            <span style="padding-top: 0;">{{$type->types}}</span>
+
+                                                        </label>
+
+                                                    </div>
+                                                </li>
+
+                                            @endif
+
+                                    @endforeach
+
+                                @endif
+
+
+
+                                </ul>
+
+
+                                <div style="width: 100%;display: flex">
+
+                                <div class="input-group" style="width: 50%;float: left;">
+
+                                    <label style="width: 70%;float: left;">BEDROOMS</label>
+
+                                    <div style="width: 70%;display: inherit;border: 1px solid #d7d7d7;float: left;">
+
+                                        <span style="float: left;margin-top: 7px;margin-left: 10px;"><i class="fas fa-bed"></i></span>
+
+                                        <input type="number" step="1" max="" value="1" name="quantity" class="quantity-field" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+                                        <input type="button" value="-" class="button-minus" data-field="quantity" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;">
+                                        <input type="button" value="+" class="button-plus" data-field="quantity" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;">
+
+                                    </div>
+
+                                </div>
+
+                                    <div class="input-group" style="width: 50%;float: left;">
+
+                                        <label style="width: 70%;float: right;">BATHROOMS</label>
+
+                                        <div style="width: 70%;display: inherit;border: 1px solid #d7d7d7;float: right;">
+
+                                            <span style="float: left;margin-top: 7px;margin-left: 10px;"><i class="fas fa-bed"></i></span>
+
+                                            <input type="number" step="1" max="" value="1" name="quantity" class="quantity-field" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+                                            <input type="button" value="-" class="button-minus" data-field="quantity" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;">
+                                            <input type="button" value="+" class="button-plus" data-field="quantity" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;">
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+
+                            <div class="form-group" style="margin-top: 30px;">
                                 <label for="" class="col-sm-3 control-label">Property Name</label>
                                 <div class="col-sm-9">
                                     <input type="text" name="property_name" value="{{ isset($property->property_name) ? $property->property_name : null }}" class="form-control">
@@ -94,7 +323,8 @@
                                     <input type="text" name="property_slug" value="{{ isset($property->property_slug) ? $property->property_slug : null }}" class="form-control">
                                 </div>
                             </div>
-                            <div class="form-group">
+
+                            {{--<div class="form-group">
                                 <label for="" class="col-sm-3 control-label">Property Type</label>
                                 <div class="col-sm-4">
                                     <select name="property_type" id="basic" class="selectpicker show-tick form-control" data-live-search="true">
@@ -117,22 +347,10 @@
 
                                     </select>
                                 </div>
-                            </div>
-
-                            <ul class="list-inline pull-right">
-                                <li>
-                                    <a class="btn btn-default prev-step">Back</a>
-                                </li>
-                                <li>
-                                    <a class="btn btn-primary next-step">Next</a>
-                                </li>
-                            </ul>
-
-                        </div>
-                        <div class="tab-pane fade" role="tabpanel" id="stepper-step-2">
+                            </div>--}}
 
 
-                            <div class="form-group">
+                            {{--<div class="form-group">
                                 <label for="" class="col-sm-3 control-label">Purpose</label>
                                 <div class="col-sm-4">
                                     <select name="property_purpose" id="basic" class="selectpicker show-tick form-control" data-live-search="true" >
@@ -150,7 +368,8 @@
 
                                     </select>
                                 </div>
-                            </div>
+                            </div>--}}
+
                             <div class="form-group">
                                 <label for="" class="col-sm-3 control-label">Bedrooms</label>
                                 <div class="col-sm-9">
@@ -381,7 +600,7 @@
                             </div>
 
                             <hr>
-                            
+
 
                             <ul class="list-inline pull-right">
                                 <li>
@@ -422,6 +641,65 @@
 
 
     <style>
+
+        input,
+        textarea {
+            border: 1px solid #eeeeee;
+            box-sizing: border-box;
+            margin: 0;
+            outline: none;
+            padding: 10px;
+        }
+
+        input[type="button"] {
+            -webkit-appearance: button;
+            cursor: pointer;
+        }
+
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+        }
+
+        .input-group {
+            clear: both;
+            margin: 15px 0;
+            position: relative;
+        }
+
+        .input-group input[type='button'] {
+            background-color: #eeeeee;
+            min-width: 38px;
+            width: auto;
+            transition: all 300ms ease;
+        }
+
+        .input-group .button-minus,
+        .input-group .button-plus {
+            font-weight: bold;
+            height: 38px;
+            padding: 0;
+            width: 38px;
+            position: relative;
+        }
+
+        .input-group .quantity-field {
+            position: relative;
+            height: 38px;
+            left: -6px;
+            text-align: center;
+            width: 62px;
+            display: inline-block;
+            font-size: 13px;
+            margin: 0 0 5px;
+            resize: vertical;
+        }
+
+
+        input[type="number"] {
+            -moz-appearance: textfield;
+            -webkit-appearance: none;
+        }
 
         .stepper .nav-tabs {
             position: relative;
@@ -534,6 +812,30 @@
             display: none;
         }
 
+        ul.property-radios li{
+            display: inline-block; width: 20%; margin: 0 15px 10px 0; padding: 0; vertical-align: top;
+        }
+
+        li{ list-style: none; }
+
+        .type-holder-main{ position: relative; }
+
+        ul.property-radios li input{ display: none; }
+
+        ul.property-radios li label {  -webkit-transition: all .5s ease-in-out; transition: all .5s ease-in-out ;overflow: hidden; padding: 20px; cursor: pointer; border: solid 1px #dddddd; -webkit-border-radius: 2px; -moz-border-radius: 2px; border-radius: 2px; background-color: #fff;text-align: center; }
+
+        .user-holder.create-property-holder ul.property-radios li label { display: block; min-height: 55px; }
+
+
+        ul.property-radios li label span { padding-top: 15px;font-size: 13px; font-weight: 700; line-height: 19px; display: block; width: 100%; text-align: center; color: #5a2e8a !important; }
+
+
+        li.active1 > div > label, label:hover{
+
+            border-color: #5a2e8a !important;
+
+        }
+
     </style>
 
 
@@ -543,6 +845,58 @@
 
 
         $(document).ready(function() {
+
+            function incrementValue(e) {
+                e.preventDefault();
+                var fieldName = $(e.target).data('field');
+                var parent = $(e.target).closest('div');
+                var currentVal = parseInt(parent.find('input[name=' + fieldName + ']').val(), 10);
+
+                if (!isNaN(currentVal)) {
+                    parent.find('input[name=' + fieldName + ']').val(currentVal + 1);
+                } else {
+                    parent.find('input[name=' + fieldName + ']').val(0);
+                }
+            }
+
+            function decrementValue(e) {
+                e.preventDefault();
+                var fieldName = $(e.target).data('field');
+                var parent = $(e.target).closest('div');
+                var currentVal = parseInt(parent.find('input[name=' + fieldName + ']').val(), 10);
+
+                if (!isNaN(currentVal) && currentVal > 0) {
+                    parent.find('input[name=' + fieldName + ']').val(currentVal - 1);
+                } else {
+                    parent.find('input[name=' + fieldName + ']').val(0);
+                }
+            }
+
+            $('.input-group').on('click', '.button-plus', function(e) {
+                incrementValue(e);
+            });
+
+            $('.input-group').on('click', '.button-minus', function(e) {
+                decrementValue(e);
+            });
+
+
+            $('input[name=property_purpose]').change(function(){
+
+                $('.pp').removeClass('active1');
+
+                $(this).parent().closest('li').addClass('active1');
+
+            });
+
+
+            $('input[name=property_type]').change(function(){
+
+                $('.pt').removeClass('active1');
+
+                $(this).parent().closest('li').addClass('active1');
+
+            });
 
             var $global = 0;
 
