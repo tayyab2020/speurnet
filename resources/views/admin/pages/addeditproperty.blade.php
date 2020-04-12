@@ -669,7 +669,7 @@
 
         .input-group input[type='button'] {
             background-color: #eeeeee;
-            min-width: 38px;
+            min-width: 38.5px;
             width: auto;
             transition: all 300ms ease;
         }
@@ -677,7 +677,7 @@
         .input-group .button-minus,
         .input-group .button-plus {
             font-weight: bold;
-            height: 38px;
+            height: 38.5px;
             padding: 0;
             width: 38px;
             position: relative;
