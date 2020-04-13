@@ -84,17 +84,17 @@
 
                         <div class="tab-pane fade in active" role="tabpanel" id="stepper-step-1">
 
-                            <div class="form-group" style="width: 80%;margin: auto;text-align: center;">
+                            <div class="form-group" style="width: 80%;margin: auto;text-align: left;">
 
                                 <h2>Step 1: What do you want to do with your property?</h2>
 
-                                <ul class="property-radios" style="padding: 0;margin-top: 30px;">
+                                <ul class="property-radios" style="padding: 0;margin-top: 40px;display: inline-block;">
 
                                 @if(isset($property->property_purpose))
 
 
 
-                                        <li @if($property->property_purpose=='Sale') class="active1 pp" @else class="pp" @endif >
+                                        <li @if($property->property_purpose=='Sale') class="active1 pp col-md-3 col-sm-4 col-xs-12" @else class="pp col-md-3 col-sm-4 col-xs-12" @endif >
 
                                             <div class="type-holder-main">
 
@@ -111,7 +111,7 @@
                                             </div>
                                         </li>
 
-                                        <li @if($property->property_purpose=='Rent') class="active1 pp" @else class="pp" @endif>
+                                        <li @if($property->property_purpose=='Rent') class="active1 pp col-md-3 col-sm-4 col-xs-12" @else class="pp col-md-3 col-sm-4 col-xs-12" @endif style="margin-left: 10px;">
 
                                             <div class="type-holder-main">
 
@@ -133,7 +133,7 @@
                                 @else
 
 
-                                        <li class="active1 pp">
+                                        <li class="active1 pp col-md-3 col-sm-4 col-xs-12">
 
                                             <div class="type-holder-main">
 
@@ -150,7 +150,7 @@
                                             </div>
                                         </li>
 
-                                        <li class="pp">
+                                        <li class="pp col-md-3 col-sm-4 col-xs-12" style="margin-left: 10px;">
 
                                             <div class="type-holder-main">
 
@@ -190,11 +190,12 @@
 
                         <div class="tab-pane fade" role="tabpanel" id="stepper-step-2">
 
-                            <h2 style="text-align: center;">Step 2: What type of property are you marketing?</h2>
 
-                            <div class="form-group" style="width: 80%;margin: auto;">
+                            <div class="form-group main-div" style="width: 80%;margin: auto;">
 
-                                <ul class="property-radios" style="padding: 0;margin-top: 30px;">
+                                <h2>Step 2: What type of property are you marketing?</h2>
+
+                                <ul class="property-radios" style="padding: 0;margin-top: 40px;">
 
                                 @if(isset($property->property_type))
 
@@ -272,41 +273,79 @@
                                 </ul>
 
 
-                                <div style="width: 100%;display: flex">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;">
 
-                                <div class="input-group" style="width: 50%;float: left;">
+                                <div class="input-group col-lg-6 col-md-6 col-sm-12 col-xs-12 left-div" style="display: inline-block;float: left;">
 
-                                    <label style="width: 70%;float: left;">BEDROOMS</label>
+                                    <label class="left-label" style="width: 70%;float: left;">BEDROOMS</label>
 
-                                    <div style="width: 70%;display: inherit;border: 1px solid #d7d7d7;float: left;">
+                                    <div style="width: 70%;display: inline-block;border: 1px solid #d7d7d7;border-right: 0;margin: auto">
 
-                                        <span style="float: left;margin-top: 7px;margin-left: 10px;"><i class="fas fa-bed"></i></span>
+                                        <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-bed"></i></div>
 
                                         <input type="number" step="1" max="" value="1" name="quantity" class="quantity-field" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
-                                        <input type="button" value="-" class="button-minus" data-field="quantity" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;">
-                                        <input type="button" value="+" class="button-plus" data-field="quantity" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;">
+                                        <input type="button" value="+" class="button-plus" data-field="quantity" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d7d7d7;margin-top: -0.1px;">
+                                        <input type="button" value="-" class="button-minus" data-field="quantity" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;margin-top: -0.1px;">
 
                                     </div>
 
                                 </div>
 
-                                    <div class="input-group" style="width: 50%;float: left;">
+                                    <div class="input-group col-lg-6 col-md-6 col-sm-12 col-xs-12 right-div" style="display: inline-block;">
 
-                                        <label style="width: 70%;float: right;">BATHROOMS</label>
+                                        <label class="right-label" style="width: 70%;float: right;">BATHROOMS</label>
 
-                                        <div style="width: 70%;display: inherit;border: 1px solid #d7d7d7;float: right;">
+                                        <div class="right-content" style="width: 70%;display: inline-block;border: 1px solid #d7d7d7;border-right: 0;margin: auto;float: right">
 
-                                            <span style="float: left;margin-top: 7px;margin-left: 10px;"><i class="fas fa-bed"></i></span>
+                                            <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-restroom"></i></div>
 
                                             <input type="number" step="1" max="" value="1" name="quantity" class="quantity-field" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
-                                            <input type="button" value="-" class="button-minus" data-field="quantity" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;">
-                                            <input type="button" value="+" class="button-plus" data-field="quantity" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;">
+                                            <input type="button" value="+" class="button-plus" data-field="quantity" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d7d7d7;margin-top: -0.1px;">
+                                            <input type="button" value="-" class="button-minus" data-field="quantity" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;margin-top: -0.1px;">
+
+                                        </div>
+
+                                    </div>
+
+
+                                </div>
+
+
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;">
+
+                                    <div class="input-group col-lg-6 col-md-6 col-sm-12 col-xs-12 left-div" style="display: inline-block;float: left;">
+
+                                        <label class="left-label" style="width: 70%;float: left;">GARAGE</label>
+
+                                        <div style="width: 70%;display: inline-block;border: 1px solid #d7d7d7;border-right:0;margin: auto">
+
+                                            <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-warehouse"></i></div>
+
+                                            <input type="number" step="1" max="" value="1" name="quantity" class="quantity-field" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+                                            <input type="button" value="+" class="button-plus" data-field="quantity" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d7d7d7;">
+                                            <input type="button" value="-" class="button-minus" data-field="quantity" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;">
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="input-group col-lg-6 col-md-6 col-sm-12 col-xs-12 right-div" style="display: inline-block;">
+
+                                        <label class="right-label" style="width: 70%;float: right;">SQFT</label>
+
+                                        <div class="right-content" style="width: 70%;display: inline-block;border: 1px solid #d7d7d7;margin: auto;float: right">
+
+                                            <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-restroom"></i></div>
+
+                                            <input type="number" step="1" max="" value="1" name="quantity" class="quantity-field" style="border: 0;margin: 0;float: left;width: 80%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+
 
                                         </div>
 
                                     </div>
 
                                 </div>
+
 
 
                             </div>
@@ -642,6 +681,21 @@
 
     <style>
 
+        .form-group{ width: 80%;}
+
+        @media (max-width: 991px)
+        {
+            .right-label, .left-label, .right-content{
+                float: none !important;
+            }
+
+            .left-div, .right-div, .main-div{
+
+                text-align: center;
+
+            }
+        }
+
         input,
         textarea {
             border: 1px solid #eeeeee;
@@ -813,7 +867,7 @@
         }
 
         ul.property-radios li{
-            display: inline-block; width: 20%; margin: 0 15px 10px 0; padding: 0; vertical-align: top;
+            display: inline-block; margin: 0; padding: 0; vertical-align: top;
         }
 
         li{ list-style: none; }
