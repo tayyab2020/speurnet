@@ -172,6 +172,8 @@
 
                                 </ul>
 
+
+
                             </div>
 
 
@@ -335,7 +337,7 @@
 
                                         <div class="right-content" style="width: 70%;display: inline-block;border: 1px solid #d7d7d7;margin: auto;float: right">
 
-                                            <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-restroom"></i></div>
+                                            <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-crop-alt"></i></div>
 
                                             <input type="number" step="1" max="" value="1" name="quantity" class="quantity-field" style="border: 0;margin: 0;float: left;width: 80%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
 
@@ -347,6 +349,70 @@
                                 </div>
 
 
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;margin-top: 25px;">
+
+                                    <label class="left-label" style="width: 100%;float: left;">OPEN HOUSE</label>
+
+                                    <small>Scheduled period of time in which Property is designated to be open for viewing by potential buyers.</small>
+
+                                    <div class="input-group col-lg-6 col-md-6 col-sm-12 col-xs-12 left-div" style="display: inline-block;text-align: left;margin-top: 0;margin-bottom: 0;">
+
+                                    <div class="input-group col-lg-12 col-md-6 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
+
+
+                                        <div style="width: 70%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
+
+                                            <div style="width:16%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-calendar-alt"></i></div>
+
+
+                                        <input type='text' placeholder="Select Date" name="date" style="box-shadow: none;border: 0;margin: 0;float: left;width: 84%;left: 0;height: 37.5px;text-align: left;padding-left: 0px;" class="form-control" id='datetimepicker4' />
+
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                    <div class="input-group col-lg-6 col-md-6 col-sm-12 col-xs-12 left-div" style="display: inline-block;float: right;text-align: right;margin-top: 0;">
+
+
+                                    <div class="input-group col-lg-6 col-md-6 col-sm-12 col-xs-12 left-div" style="display: inline-block;float: left;text-align: center;">
+
+                                        {{--<label class="left-label" style="width: 70%;float: left;">OPEN HOUSE</label>--}}
+
+                                        <div style="width: 70%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
+
+                                            <div style="width:16%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-calendar-alt"></i></div>
+
+
+                                            <input type='text' placeholder="Time From" name="date" style="box-shadow: none;border: 0;margin: 0;float: left;width: 84%;left: 0;height: 37.5px;text-align: left;padding-left: 8px;padding-bottom: 5px;" class="form-control" id='datetimepicker3' />
+
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="input-group col-lg-6 col-md-6 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
+
+                                        {{--<label class="left-label" style="width: 70%;float: left;">OPEN HOUSE</label>--}}
+
+                                        <div style="width: 70%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
+
+                                            <div style="width:16%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-calendar-alt"></i></div>
+
+
+                                            <input type='text' placeholder="Time To" name="date" style="box-shadow: none;border: 0;margin: 0;float: left;width: 84%;left: 0;height: 37.5px;text-align: left;padding-left: 8px;padding-bottom: 5px;" class="form-control" id='datetimepicker2' />
+
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                </div>
 
                             </div>
 
@@ -603,6 +669,7 @@
                                 <div class="col-sm-9">
                                     <div class="media">
                                         <div class="media-left">
+
                                             @if(isset($property->property_images4) and $property->property_images4!='')
 
                                                 <img src="{{ URL::asset('upload/properties/'.$property->property_images4.'-b.jpg') }}" width="150" alt="person">
@@ -623,6 +690,7 @@
                                 <div class="col-sm-9">
                                     <div class="media">
                                         <div class="media-left">
+
                                             @if(isset($property->property_images5) and $property->property_images5!='')
 
                                                 <img src="{{ URL::asset('upload/properties/'.$property->property_images5.'-b.jpg') }}" width="150" alt="person">
@@ -890,6 +958,13 @@
 
         }
 
+        .dropdown-menu{ position:absolute;top:100%;left:0;z-index:1000;display:none;
+            float:left;min-width:160px;padding:5px 0;margin:2px 0 0;font-size:14px;
+            text-align:left;list-style:none;background-color:#fff;-webkit-background-clip:padding-box;
+            background-clip:padding-box;border:1px solid #ccc;border:1px solid rgba(0,0,0,.15);
+            border-radius:4px;-webkit-box-shadow:0 6px 12px rgba(0,0,0,.175);
+            box-shadow:0 6px 12px rgba(0,0,0,.175) }
+
     </style>
 
 
@@ -899,6 +974,16 @@
 
 
         $(document).ready(function() {
+
+            $('#datetimepicker4').datetimepicker({format: 'DD/MM/YYYY'});
+
+            $('#datetimepicker3').datetimepicker({
+                format: 'LT'
+            });
+
+            $('#datetimepicker2').datetimepicker({
+                format: 'LT'
+            });
 
             function incrementValue(e) {
                 e.preventDefault();
