@@ -90,6 +90,7 @@
 
                                 <h2>Step 1: What do you want to do with your property?</h2>
 
+
                                 <ul class="property-radios" style="padding: 0;margin-top: 40px;display: inline-block;">
 
                                 @if(isset($property->property_purpose))
@@ -287,7 +288,7 @@
 
                                         <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-bed"></i></div>
 
-                                        <input type="number" step="1" max="" name="bathrooms" value="{{ isset($property->bathrooms) ? $property->bathrooms : 1 }}" class="quantity-field" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+                                        <input type="number" step="1" max="" name="bedrooms" value="{{ isset($property->bathrooms) ? $property->bathrooms : 1 }}" class="quantity-field" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
                                         <input type="button" value="+" class="button-plus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d7d7d7;margin-top: -0.1px;">
                                         <input type="button" value="-" class="button-minus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;margin-top: -0.1px;">
 
@@ -325,7 +326,7 @@
 
                                             <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-warehouse"></i></div>
 
-                                            <input type="number" step="1" max="" value="1" name="quantity" class="quantity-field" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+                                            <input type="number" step="1" max="" value="1" name="garage" class="quantity-field" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
                                             <input type="button" value="+" class="button-plus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d7d7d7;">
                                             <input type="button" value="-" class="button-minus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;">
 
@@ -388,7 +389,7 @@
                                             <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-calendar-alt"></i></div>
 
 
-                                            <input type='text' placeholder="Time From" name="date" style="box-shadow: none;border: 0;margin: 0;float: left;width: 80%;left: 0;height: 37.5px;text-align: left;padding-left: 8px;padding-bottom: 5px;" class="form-control" id='datetimepicker3' />
+                                            <input type='text' placeholder="Time From" name="time_from" style="box-shadow: none;border: 0;margin: 0;float: left;width: 80%;left: 0;height: 37.5px;text-align: left;padding-left: 8px;padding-bottom: 5px;" class="form-control" id='datetimepicker3' />
 
 
                                         </div>
@@ -405,7 +406,7 @@
                                             <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-calendar-alt"></i></div>
 
 
-                                            <input type='text' placeholder="Time To" name="date" style="box-shadow: none;border: 0;margin: 0;float: left;width: 80%;left: 0;height: 37.5px;text-align: left;padding-left: 8px;padding-bottom: 5px;" class="form-control" id='datetimepicker2' />
+                                            <input type='text' placeholder="Time To" name=time_to" style="box-shadow: none;border: 0;margin: 0;float: left;width: 80%;left: 0;height: 37.5px;text-align: left;padding-left: 8px;padding-bottom: 5px;" class="form-control" id='datetimepicker2' />
 
 
                                         </div>
@@ -651,20 +652,260 @@
 
                             <div class="form-group main-div" style="width: 90%;margin: auto;">
 
-                                <h2>Step 4: Address/Location</h2>
+                                <h2>Step 4: Address/Location & Photos</h2>
+
 
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;margin-top: 40px;">
 
                                     <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
 
 
-                                        <label class="left-label" style="float: left;">Property Name</label>
+                                        <label class="left-label" style="float: left;">Address</label>
+
+                                        <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
+
+                                            <input type="text" id="address-input" placeholder="Enter Address" name="address" value="{{ isset($property->address) ? $property->address : null }}" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control map-input">
+                                            <input type="hidden" name="address_latitude" id="address-latitude" value="0" />
+                                            <input type="hidden" name="address_longitude" id="address-longitude" value="0" />
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
+
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;">
+
+                                    <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
+
+
+                                        <div id="address-map-container" style="width:100%;height:400px; ">
+                                            <div style="width: 100%; height: 100%" id="address-map"></div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;">
+
+                                    <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
+
+
+                                        <label class="left-label" style="float: left;">City</label>
 
                                         <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
 
 
-                                            <input type="text" placeholder="Property Title" name="property_name" value="{{ isset($property->property_name) ? $property->property_name : null }}" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control"  >
+                                            @if(isset($property->city_id))
 
+
+                                                @foreach($city_list as $city)
+
+                                                    @if($property->city_id==$city->id)
+
+                                                        <input type="text" value="{{$city->city_name}}" id="city_name" name="city_name" class="form-control" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;">
+
+                                                        @endif
+
+
+                                                @endforeach
+
+                                            @else
+
+                                                <input type="text" id="city_name" name="city_name" class="form-control" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;">
+
+
+                                            @endif
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;">
+
+                                    <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
+
+
+                                        <label class="left-label" style="float: left;">Featured Image</label>
+
+                                        <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
+
+                                            <div class="media">
+                                                <div class="media-left">
+                                                    @if(isset($property->featured_image))
+
+                                                        <img src="{{ URL::asset('upload/properties/'.$property->featured_image.'-s.jpg') }}" width="150" alt="person">
+
+                                                    @endif
+
+                                                </div>
+                                                <div class="media-body media-middle">
+                                                    <input type="file" name="featured_image" class="filestyle">
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
+
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;">
+
+                                    <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
+
+
+                                        <label class="left-label" style="float: left;">Property Image 1</label>
+
+                                        <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
+
+                                            <div class="media">
+                                                <div class="media-left">
+                                                    @if(isset($property->property_images1) and $property->property_images1!='')
+
+                                                        <img src="{{ URL::asset('upload/properties/'.$property->property_images1.'-b.jpg') }}" width="150" alt="person">
+
+                                                    @endif
+
+                                                </div>
+                                                <div class="media-body media-middle">
+                                                    @if(isset($property->property_images1) and $property->property_images1!='')
+                                                        <div class="media-left"><a href="#" class="btn btn-default btn-rounded"><i class="md md-delete"></i></a></div><br />
+                                                    @endif
+
+                                                    <input type="file" name="property_images1" class="filestyle">
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;">
+
+                                    <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
+
+
+                                        <label class="left-label" style="float: left;">Property Image 2</label>
+
+                                        <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
+
+                                            <div class="media">
+                                                <div class="media-left">
+                                                    @if(isset($property->property_images2) and $property->property_images2!='')
+
+                                                        <img src="{{ URL::asset('upload/properties/'.$property->property_images2.'-b.jpg') }}" width="150" alt="person">
+
+                                                    @endif
+
+                                                </div>
+                                                <div class="media-body media-middle">
+                                                    <input type="file" name="property_images2" class="filestyle">
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;">
+
+                                    <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
+
+
+                                        <label class="left-label" style="float: left;">Property Image 3</label>
+
+                                        <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
+
+                                            <div class="media">
+                                                <div class="media-left">
+                                                    @if(isset($property->property_images3) and $property->property_images3!='')
+
+                                                        <img src="{{ URL::asset('upload/properties/'.$property->property_images3.'-b.jpg') }}" width="150" alt="person">
+
+                                                    @endif
+
+                                                </div>
+                                                <div class="media-body media-middle">
+                                                    <input type="file" name="property_images3" class="filestyle">
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;">
+
+                                    <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
+
+
+                                        <label class="left-label" style="float: left;">Property Image 4</label>
+
+                                        <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
+
+                                            <div class="media">
+                                                <div class="media-left">
+                                                    @if(isset($property->property_images4) and $property->property_images4!='')
+
+                                                        <img src="{{ URL::asset('upload/properties/'.$property->property_images4.'-b.jpg') }}" width="150" alt="person">
+
+                                                    @endif
+
+                                                </div>
+                                                <div class="media-body media-middle">
+                                                    <input type="file" name="property_images4" class="filestyle">
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
+
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;">
+
+                                    <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
+
+
+                                        <label class="left-label" style="float: left;">Property Image 5</label>
+
+                                        <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
+
+                                            <div class="media">
+                                                <div class="media-left">
+                                                    @if(isset($property->property_images5) and $property->property_images5!='')
+
+                                                        <img src="{{ URL::asset('upload/properties/'.$property->property_images5.'-b.jpg') }}" width="150" alt="person">
+
+                                                    @endif
+
+                                                </div>
+                                                <div class="media-body media-middle">
+                                                    <input type="file" name="property_images5" class="filestyle">
+                                                </div>
+                                            </div>
 
                                         </div>
 
@@ -674,164 +915,6 @@
 
                             </div>
 
-
-                                <div class="form-group">
-                                <label for="" class="col-sm-3 control-label">Address</label>
-                                <div class="col-sm-9">
-
-                                    <textarea name="address" rows="3" class="form-control">{{ isset($property->address) ? $property->address : null }}</textarea>
-                                </div>
-                            </div>
-                            <div class="form-group">
-
-                                <label for="usertype" class="col-sm-3 control-label">City</label>
-                                <div class="col-sm-4">
-                                    <select name="city_id" id="basic" class="selectpicker show-tick form-control" data-live-search="true">
-                                        @if(isset($property->city_id))
-
-                                            @foreach($city_list as $city)
-                                                <option value="{{$city->id}}" @if($property->city_id==$city->id) selected @endif>{{$city->city_name}}</option>
-
-                                            @endforeach
-
-                                        @else
-
-                                            @foreach($city_list as $city)
-                                                <option value="{{$city->id}}">{{$city->city_name}}</option>
-
-                                            @endforeach
-
-                                        @endif
-                                    </select>
-                                </div>
-
-                            </div>
-
-                            <div class="form-group">
-                                <label for="avatar" class="col-sm-3 control-label">Featured Image</label>
-                                <div class="col-sm-9">
-                                    <div class="media">
-                                        <div class="media-left">
-                                            @if(isset($property->featured_image))
-
-                                                <img src="{{ URL::asset('upload/properties/'.$property->featured_image.'-s.jpg') }}" width="150" alt="person">
-
-                                            @endif
-
-                                        </div>
-                                        <div class="media-body media-middle">
-                                            <input type="file" name="featured_image" class="filestyle">
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="avatar" class="col-sm-3 control-label">Property Image 1</label>
-                                <div class="col-sm-9">
-                                    <div class="media">
-                                        <div class="media-left">
-                                            @if(isset($property->property_images1) and $property->property_images1!='')
-
-                                                <img src="{{ URL::asset('upload/properties/'.$property->property_images1.'-b.jpg') }}" width="150" alt="person">
-
-                                            @endif
-
-                                        </div>
-                                        <div class="media-body media-middle">
-                                            @if(isset($property->property_images1) and $property->property_images1!='')
-                                                <div class="media-left"><a href="#" class="btn btn-default btn-rounded"><i class="md md-delete"></i></a></div><br />
-                                            @endif
-
-                                            <input type="file" name="property_images1" class="filestyle">
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="avatar" class="col-sm-3 control-label">Property Image 2</label>
-                                <div class="col-sm-9">
-                                    <div class="media">
-                                        <div class="media-left">
-                                            @if(isset($property->property_images2) and $property->property_images2!='')
-
-                                                <img src="{{ URL::asset('upload/properties/'.$property->property_images2.'-b.jpg') }}" width="150" alt="person">
-
-                                            @endif
-
-                                        </div>
-                                        <div class="media-body media-middle">
-                                            <input type="file" name="property_images2" class="filestyle">
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="avatar" class="col-sm-3 control-label">Property Image 3</label>
-                                <div class="col-sm-9">
-                                    <div class="media">
-                                        <div class="media-left">
-                                            @if(isset($property->property_images3) and $property->property_images3!='')
-
-                                                <img src="{{ URL::asset('upload/properties/'.$property->property_images3.'-b.jpg') }}" width="150" alt="person">
-
-                                            @endif
-
-                                        </div>
-                                        <div class="media-body media-middle">
-                                            <input type="file" name="property_images3" class="filestyle">
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="avatar" class="col-sm-3 control-label">Property Image 4</label>
-                                <div class="col-sm-9">
-                                    <div class="media">
-                                        <div class="media-left">
-
-                                            @if(isset($property->property_images4) and $property->property_images4!='')
-
-                                                <img src="{{ URL::asset('upload/properties/'.$property->property_images4.'-b.jpg') }}" width="150" alt="person">
-
-                                            @endif
-
-                                        </div>
-                                        <div class="media-body media-middle">
-                                            <input type="file" name="property_images4" class="filestyle">
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="avatar" class="col-sm-3 control-label">Property Image 5</label>
-                                <div class="col-sm-9">
-                                    <div class="media">
-                                        <div class="media-left">
-
-                                            @if(isset($property->property_images5) and $property->property_images5!='')
-
-                                                <img src="{{ URL::asset('upload/properties/'.$property->property_images5.'-b.jpg') }}" width="150" alt="person">
-
-                                            @endif
-
-                                        </div>
-                                        <div class="media-body media-middle">
-                                            <input type="file" name="property_images5" class="filestyle">
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
 
                             <hr>
 
@@ -1159,10 +1242,163 @@
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
 
+
     <script>
 
 
         $(document).ready(function() {
+
+            initialize();
+
+            function initialize() {
+
+                $('form').on('keyup keypress', function(e) {
+                    var keyCode = e.keyCode || e.which;
+                    if (keyCode === 13) {
+                        e.preventDefault();
+                        return false;
+                    }
+                });
+                const locationInputs = document.getElementsByClassName("map-input");
+
+                var options = {
+                    componentRestrictions: {country: "nl"}
+                };
+
+                const autocompletes = [];
+                const geocoder = new google.maps.Geocoder;
+                for (let i = 0; i < locationInputs.length; i++) {
+
+                    const input = locationInputs[i];
+                    const fieldKey = input.id.replace("-input", "");
+                    const isEdit = document.getElementById(fieldKey + "-latitude").value != '' && document.getElementById(fieldKey + "-longitude").value != '';
+
+                    const latitude = parseFloat(document.getElementById(fieldKey + "-latitude").value) || 52.3666969;
+                    const longitude = parseFloat(document.getElementById(fieldKey + "-longitude").value) || 4.8945398;
+
+                    const map = new google.maps.Map(document.getElementById(fieldKey + '-map'), {
+                        center: {lat: latitude, lng: longitude},
+                        zoom: 13
+                    });
+                    const marker = new google.maps.Marker({
+                        map: map,
+                        position: {lat: latitude, lng: longitude},
+                        draggable: true
+                    });
+
+                    google.maps.event.addListener(marker, 'dragend', function(marker) {
+                        var latLng = marker.latLng;
+                        document.getElementById('address-latitude').innerHTML = latLng.lat();
+                        document.getElementById('address-longitude').innerHTML = latLng.lng();
+
+                        geocoder.geocode({'latLng': this.getPosition()}, function(results, status) {
+                            if (status == google.maps.GeocoderStatus.OK) {
+                                if (results[0]) {
+
+                                   $('#address-input').val(results[0].formatted_address);
+
+                                    for(var a=0; a < results[0]['address_components'].length; a++)
+                                    {
+
+                                        if(results[0]['address_components'][a]['types'][0] == 'locality')
+                                        {
+
+                                            $('#city_name').val(results[0]['address_components'][a]['long_name']);
+
+                                        }
+
+                                    }
+
+                                }
+
+                                else
+                                {
+                                    $('#address-input').val();
+                                    $('#city_name').val();
+
+                                }
+                            }
+                        });
+
+                    });
+
+                    marker.setVisible(isEdit);
+
+                    const autocomplete = new google.maps.places.Autocomplete(input,options);
+                    autocomplete.key = fieldKey;
+                    autocompletes.push({input: input, map: map, marker: marker, autocomplete: autocomplete});
+                }
+
+                for (let i = 0; i < autocompletes.length; i++) {
+                    const input = autocompletes[i].input;
+                    const autocomplete = autocompletes[i].autocomplete;
+                    const map = autocompletes[i].map;
+                    const marker = autocompletes[i].marker;
+
+                    google.maps.event.addListener(autocomplete, 'place_changed', function () {
+                        marker.setVisible(false);
+                        const place = autocomplete.getPlace();
+
+                        geocoder.geocode({'placeId': place.place_id}, function (results, status) {
+
+
+
+                            if (status === google.maps.GeocoderStatus.OK) {
+
+                                if (results[0]) {
+
+                                    const lat = results[0].geometry.location.lat();
+                                    const lng = results[0].geometry.location.lng();
+                                    setLocationCoordinates(autocomplete.key, lat, lng);
+
+
+                                    for(var x=0; x < results[0]['address_components'].length; x++)
+                                    {
+
+                                        if(results[0]['address_components'][x]['types'][0] == 'locality')
+                                        {
+
+                                            $('#city_name').val(results[0]['address_components'][x]['long_name']);
+
+                                        }
+
+                                    }
+                                }
+                                else
+                                {
+
+                                    $('#city_name').val();
+
+                                }
+
+                            }
+                        });
+
+                        if (!place.geometry) {
+                            window.alert("No details available for input: '" + place.name + "'");
+                            input.value = "";
+                            return;
+                        }
+
+                        if (place.geometry.viewport) {
+                            map.fitBounds(place.geometry.viewport);
+                        } else {
+                            map.setCenter(place.geometry.location);
+                            map.setZoom(17);
+                        }
+                        marker.setPosition(place.geometry.location);
+                        marker.setVisible(true);
+
+                    });
+                }
+            }
+
+            function setLocationCoordinates(key, lat, lng) {
+                const latitudeField = document.getElementById(key + "-" + "latitude");
+                const longitudeField = document.getElementById(key + "-" + "longitude");
+                latitudeField.value = lat;
+                longitudeField.value = lng;
+            }
 
             $('.summernote').summernote({
                 height: 250,   //set editable area's height

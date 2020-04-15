@@ -60,7 +60,7 @@
     <script src="{{ URL::asset('assets/js/bootstrap.js') }}"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
     <script src="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/src/js/bootstrap-datetimepicker.js"></script>
-    <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false&amp;language=en"></script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFPa3LVeBRpaGafuUtk4znrty6IIqtMUw&libraries=places&region=nl" async defer></script>
     <script src="{{ URL::asset('assets/js/gmap3.min.js') }}"></script>
     <script src="{{ URL::asset('assets/js/jquery.easing.js') }}"></script>
     <script src="{{ URL::asset('assets/js/jquery.jcarousel.min.js') }}"></script>
