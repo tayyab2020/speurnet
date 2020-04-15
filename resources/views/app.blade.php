@@ -60,7 +60,7 @@
     <script src="{{ URL::asset('assets/js/bootstrap.js') }}"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
     <script src="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/src/js/bootstrap-datetimepicker.js"></script>
-    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&amp;language=en"></script>
+    <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false&amp;language=en"></script>
     <script src="{{ URL::asset('assets/js/gmap3.min.js') }}"></script>
     <script src="{{ URL::asset('assets/js/jquery.easing.js') }}"></script>
     <script src="{{ URL::asset('assets/js/jquery.jcarousel.min.js') }}"></script>
@@ -69,6 +69,7 @@
     <script src="{{ URL::asset('assets/js/jquery.backstretch.js') }}"></script>
     <script src="{{ URL::asset('assets/js/jquery.nicescroll.min.js') }}"></script>
     <script src="{{ URL::asset('assets/js/script.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.js"></script>
 
     <script type="text/javascript">
 

@@ -33,14 +33,14 @@ $(document).ready(function(){
 
 
     /* nice scroll */
-    $( 'html' ).niceScroll({
+    /*$( 'html' ).niceScroll({
         cursorcolor: '#434a54',
         cursorwidth: '10px',
         cursorborder: '1px solid #434a54',
-        cursoropacitymax: 0.9,                
+        cursoropacitymax: 0.9,
         scrollspeed: 200,
         zindex: 1060
-    });
+    });*/
 
 
     /* carousel testimony */
@@ -138,7 +138,7 @@ $(document).ready(function(){
               center: [-7.866315,110.389574],
               zoom: 12,
               scrollwheel: false
-            }  
+            }
          },
         marker:{
             latLng: [-7.866315,110.389574],
@@ -166,7 +166,7 @@ $(document).ready(function(){
                   center: [-7.866315,110.389574],
                   zoom: 13,
                   scrollwheel: false
-                }  
+                }
              },
             marker:{
                 latLng: [-7.866315,110.389574],

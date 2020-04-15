@@ -3,9 +3,11 @@
 @section('head_title', 'Add New Property | '.getcong('site_name') )
 @section('head_url', Request::url())
 
+
 @section("content")
 
     <script src="https://kit.fontawesome.com/29532268c4.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.css" rel="stylesheet">
 
     <!-- begin:header -->
     <div id="header" class="heading" style="background-image: url({{ URL::asset('assets/img/img01.jpg') }});">
@@ -25,7 +27,7 @@
     </div>
     <!-- end:header -->
 
-<div id="main" style="width: 70%;margin: auto;margin-top: 25px;">
+<div id="main" style="width: 60%;margin: auto;margin-top: 25px;">
 
 
     @if (count($errors) > 0)
@@ -84,7 +86,7 @@
 
                         <div class="tab-pane fade in active" role="tabpanel" id="stepper-step-1">
 
-                            <div class="form-group" style="width: 80%;margin: auto;text-align: left;">
+                            <div class="form-group" style="width: 90%;margin: auto;text-align: left;">
 
                                 <h2>Step 1: What do you want to do with your property?</h2>
 
@@ -193,7 +195,7 @@
                         <div class="tab-pane fade" role="tabpanel" id="stepper-step-2">
 
 
-                            <div class="form-group main-div" style="width: 80%;margin: auto;">
+                            <div class="form-group main-div" style="width: 90%;margin: auto;">
 
                                 <h2>Step 2: What type of property are you marketing?</h2>
 
@@ -277,33 +279,33 @@
 
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;">
 
-                                <div class="input-group col-lg-6 col-md-6 col-sm-12 col-xs-12 left-div" style="display: inline-block;float: left;">
+                                <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
 
-                                    <label class="left-label" style="width: 70%;float: left;">BEDROOMS</label>
+                                    <label class="left-label" style="float: left;">BEDROOMS</label>
 
-                                    <div style="width: 70%;display: inline-block;border: 1px solid #d7d7d7;border-right: 0;margin: auto">
+                                    <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;border-right: 0;margin: auto">
 
                                         <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-bed"></i></div>
 
-                                        <input type="number" step="1" max="" value="1" name="quantity" class="quantity-field" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
-                                        <input type="button" value="+" class="button-plus" data-field="quantity" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d7d7d7;margin-top: -0.1px;">
-                                        <input type="button" value="-" class="button-minus" data-field="quantity" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;margin-top: -0.1px;">
+                                        <input type="number" step="1" max="" name="bathrooms" value="{{ isset($property->bathrooms) ? $property->bathrooms : 1 }}" class="quantity-field" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+                                        <input type="button" value="+" class="button-plus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d7d7d7;margin-top: -0.1px;">
+                                        <input type="button" value="-" class="button-minus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;margin-top: -0.1px;">
 
                                     </div>
 
                                 </div>
 
-                                    <div class="input-group col-lg-6 col-md-6 col-sm-12 col-xs-12 right-div" style="display: inline-block;">
+                                    <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 right-div" style="display: inline-block;float: right">
 
-                                        <label class="right-label" style="width: 70%;float: right;">BATHROOMS</label>
+                                        <label class="right-label" style="float: left;">BATHROOMS</label>
 
-                                        <div class="right-content" style="width: 70%;display: inline-block;border: 1px solid #d7d7d7;border-right: 0;margin: auto;float: right">
+                                        <div class="right-content" style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;border-right: 0;margin: auto;">
 
                                             <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-restroom"></i></div>
 
-                                            <input type="number" step="1" max="" value="1" name="quantity" class="quantity-field" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
-                                            <input type="button" value="+" class="button-plus" data-field="quantity" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d7d7d7;margin-top: -0.1px;">
-                                            <input type="button" value="-" class="button-minus" data-field="quantity" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;margin-top: -0.1px;">
+                                            <input type="number" step="1" max="" name="bathrooms" value="{{ isset($property->bathrooms) ? $property->bathrooms : 1 }}" class="quantity-field" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+                                            <input type="button" value="+" class="button-plus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d7d7d7;margin-top: -0.1px;">
+                                            <input type="button" value="-" class="button-minus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;margin-top: -0.1px;">
 
                                         </div>
 
@@ -315,31 +317,31 @@
 
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;">
 
-                                    <div class="input-group col-lg-6 col-md-6 col-sm-12 col-xs-12 left-div" style="display: inline-block;float: left;">
+                                    <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
 
-                                        <label class="left-label" style="width: 70%;float: left;">GARAGE</label>
+                                        <label class="left-label" style="float: left;">GARAGE</label>
 
-                                        <div style="width: 70%;display: inline-block;border: 1px solid #d7d7d7;border-right:0;margin: auto">
+                                        <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;border-right:0;margin: auto">
 
                                             <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-warehouse"></i></div>
 
                                             <input type="number" step="1" max="" value="1" name="quantity" class="quantity-field" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
-                                            <input type="button" value="+" class="button-plus" data-field="quantity" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d7d7d7;">
-                                            <input type="button" value="-" class="button-minus" data-field="quantity" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;">
+                                            <input type="button" value="+" class="button-plus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d7d7d7;">
+                                            <input type="button" value="-" class="button-minus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;">
 
                                         </div>
 
                                     </div>
 
-                                    <div class="input-group col-lg-6 col-md-6 col-sm-12 col-xs-12 right-div" style="display: inline-block;">
+                                    <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 right-div" style="display: inline-block;float: right;">
 
-                                        <label class="right-label" style="width: 70%;float: right;">SQFT</label>
+                                        <label class="right-label" style="float: left;">SQFT</label>
 
-                                        <div class="right-content" style="width: 70%;display: inline-block;border: 1px solid #d7d7d7;margin: auto;float: right">
+                                        <div class="right-content" style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto;">
 
                                             <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-crop-alt"></i></div>
 
-                                            <input type="number" step="1" max="" value="1" name="quantity" class="quantity-field" style="border: 0;margin: 0;float: left;width: 80%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+                                            <input type="text"  name="area" value="{{ isset($property->area) ? $property->area : null }}"  placeholder="800m2" class="quantity-field" style="border: 0;margin: 0;float: left;width: 80%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
 
 
                                         </div>
@@ -353,19 +355,19 @@
 
                                     <label class="left-label" style="width: 100%;float: left;">OPEN HOUSE</label>
 
-                                    <small>Scheduled period of time in which Property is designated to be open for viewing by potential buyers.</small>
+                                    <small style="display: block;">Scheduled period of time in which Property is designated to be open for viewing by potential buyers.</small>
 
-                                    <div class="input-group col-lg-6 col-md-6 col-sm-12 col-xs-12 left-div" style="display: inline-block;text-align: left;margin-top: 0;margin-bottom: 0;">
+                                    <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 left-div" style="display: inline-block;text-align: left;margin-top: 0;margin-bottom: 0;">
 
-                                    <div class="input-group col-lg-12 col-md-6 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
-
-
-                                        <div style="width: 70%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
-
-                                            <div style="width:16%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-calendar-alt"></i></div>
+                                    <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
 
 
-                                        <input type='text' placeholder="Select Date" name="date" style="box-shadow: none;border: 0;margin: 0;float: left;width: 84%;left: 0;height: 37.5px;text-align: left;padding-left: 0px;" class="form-control" id='datetimepicker4' />
+                                        <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
+
+                                            <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-calendar-alt"></i></div>
+
+
+                                        <input type='text' placeholder="Select Date" name="date" style="box-shadow: none;border: 0;margin: 0;float: left;width: 80%;left: 0;height: 37.5px;text-align: left;padding-left: 0px;" class="form-control" id='datetimepicker4' />
 
 
                                         </div>
@@ -374,19 +376,19 @@
 
                                 </div>
 
-                                    <div class="input-group col-lg-6 col-md-6 col-sm-12 col-xs-12 left-div" style="display: inline-block;float: right;text-align: right;margin-top: 0;">
+                                    <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 left-div" style="display: inline-block;float: right;text-align: right;margin-top: 0;">
 
 
-                                    <div class="input-group col-lg-6 col-md-6 col-sm-12 col-xs-12 left-div" style="display: inline-block;float: left;text-align: center;">
+                                    <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 left-div" style="display: inline-block;float: left;text-align: center;">
 
                                         {{--<label class="left-label" style="width: 70%;float: left;">OPEN HOUSE</label>--}}
 
-                                        <div style="width: 70%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
+                                        <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
 
-                                            <div style="width:16%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-calendar-alt"></i></div>
+                                            <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-calendar-alt"></i></div>
 
 
-                                            <input type='text' placeholder="Time From" name="date" style="box-shadow: none;border: 0;margin: 0;float: left;width: 84%;left: 0;height: 37.5px;text-align: left;padding-left: 8px;padding-bottom: 5px;" class="form-control" id='datetimepicker3' />
+                                            <input type='text' placeholder="Time From" name="date" style="box-shadow: none;border: 0;margin: 0;float: left;width: 80%;left: 0;height: 37.5px;text-align: left;padding-left: 8px;padding-bottom: 5px;" class="form-control" id='datetimepicker3' />
 
 
                                         </div>
@@ -394,16 +396,16 @@
                                     </div>
 
 
-                                    <div class="input-group col-lg-6 col-md-6 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
+                                    <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
 
                                         {{--<label class="left-label" style="width: 70%;float: left;">OPEN HOUSE</label>--}}
 
-                                        <div style="width: 70%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
+                                        <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
 
-                                            <div style="width:16%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-calendar-alt"></i></div>
+                                            <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-calendar-alt"></i></div>
 
 
-                                            <input type='text' placeholder="Time To" name="date" style="box-shadow: none;border: 0;margin: 0;float: left;width: 84%;left: 0;height: 37.5px;text-align: left;padding-left: 8px;padding-bottom: 5px;" class="form-control" id='datetimepicker2' />
+                                            <input type='text' placeholder="Time To" name="date" style="box-shadow: none;border: 0;margin: 0;float: left;width: 80%;left: 0;height: 37.5px;text-align: left;padding-left: 8px;padding-bottom: 5px;" class="form-control" id='datetimepicker2' />
 
 
                                         </div>
@@ -414,20 +416,31 @@
 
                                 </div>
 
+
+
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;">
+
+                                    <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
+
+
+                                        <label class="left-label" style="float: left;">Property Features</label>
+
+                                        <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
+
+
+                                            <input type="text" name="property_features" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;" value="{{ isset($property->property_features) ? $property->property_features : null }}" data-role="tagsinput tag-primary" class="form-control" placeholder="{{ isset($property->property_features) ? null : 'Balcony,Internet' }}" >
+
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
                             </div>
 
-                            <div class="form-group" style="margin-top: 30px;">
-                                <label for="" class="col-sm-3 control-label">Property Name</label>
-                                <div class="col-sm-9">
-                                    <input type="text" name="property_name" value="{{ isset($property->property_name) ? $property->property_name : null }}" class="form-control">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="" class="col-sm-3 control-label">Property Slug</label>
-                                <div class="col-sm-9">
-                                    <input type="text" name="property_slug" value="{{ isset($property->property_slug) ? $property->property_slug : null }}" class="form-control">
-                                </div>
-                            </div>
+
 
                             {{--<div class="form-group">
                                 <label for="" class="col-sm-3 control-label">Property Type</label>
@@ -475,25 +488,6 @@
                                 </div>
                             </div>--}}
 
-                            <div class="form-group">
-                                <label for="" class="col-sm-3 control-label">Bedrooms</label>
-                                <div class="col-sm-9">
-                                    <input type="text" name="bedrooms" value="{{ isset($property->bedrooms) ? $property->bedrooms : null }}" class="form-control" placeholder="4">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="" class="col-sm-3 control-label">Bathrooms</label>
-                                <div class="col-sm-9">
-                                    <input type="text" name="bathrooms" value="{{ isset($property->bathrooms) ? $property->bathrooms : null }}" class="form-control" placeholder="3">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="" class="col-sm-3 control-label">Area</label>
-                                <div class="col-sm-9">
-                                    <input type="text" name="area" value="{{ isset($property->area) ? $property->area : null }}" class="form-control" placeholder="800m2">
-                                </div>
-                            </div>
-
 
 
                             <ul class="list-inline pull-right">
@@ -505,35 +499,183 @@
                                 </li>
                             </ul>
                         </div>
+
+
                         <div class="tab-pane fade" role="tabpanel" id="stepper-step-3">
 
-                            <div class="form-group">
-                                <label for="" class="col-sm-3 control-label">Sale Price</label>
-                                <div class="col-sm-9">
-                                    <input type="text" name="sale_price" value="{{ isset($property->sale_price) ? $property->sale_price : null }}" class="form-control" placeholder="800000">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="" class="col-sm-3 control-label">Rent Price</label>
-                                <div class="col-sm-9">
-                                    <input type="text" name="rent_price" value="{{ isset($property->rent_price) ? $property->rent_price : null }}" class="form-control" placeholder="10000">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="" class="col-sm-3 control-label">Property Features</label>
-                                <div class="col-sm-9">
-                                    <input type="text" name="property_features" value="{{ isset($property->property_features) ? $property->property_features : null }}" data-role="tagsinput tag-primary" class="form-control" placeholder="{{ isset($property->property_features) ? null : 'Balcony,Internet' }}">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="" class="col-sm-3 control-label">Description</label>
-                                <div class="col-sm-9">
+                            <div class="form-group main-div" style="width: 90%;margin: auto;">
 
-                                    <textarea name="description" rows="10" class="form-control summernote">{{ isset($property->description) ? $property->description : null }}</textarea>
+                                <h2>Step 3: Property Description & Price</h2>
+
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;margin-top: 40px;">
+
+                                    <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
+
+
+                                        <label class="left-label" style="float: left;">Property Name</label>
+
+                                        <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
+
+
+                                            <input type="text" placeholder="Property Title" name="property_name" value="{{ isset($property->property_name) ? $property->property_name : null }}" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control"  >
+
+
+                                        </div>
+
+                                    </div>
+
                                 </div>
+
+
+
+
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;">
+
+                                    <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
+
+
+                                        <label class="left-label" style="float: left;">Property Slug</label>
+
+                                        <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
+
+
+                                            <input type="text" placeholder="Property Slug" name="property_slug" value="{{ isset($property->property_slug) ? $property->property_slug : null }}" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control"  >
+
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;">
+
+                                    <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
+
+
+                                        <label class="left-label" style="float: left;">Sale Price</label>
+
+                                        <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
+
+
+                                            <input type="text" name="sale_price" value="{{ isset($property->sale_price) ? $property->sale_price : null }}"  placeholder="800000" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control"  >
+
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;">
+
+                                    <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
+
+
+                                        <label class="left-label" style="float: left;">Rent Price</label>
+
+                                        <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
+
+
+                                            <input type="text" name="rent_price" value="{{ isset($property->rent_price) ? $property->rent_price : null }}"  placeholder="10000" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control"  >
+
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;">
+
+                                    <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
+
+
+                                        <label class="left-label" style="float: left;">Description</label>
+
+                                        <div style="width: 100%;display: inline-block;margin: auto">
+
+                                            <textarea name="description" rows="10" class="form-control summernote">{{ isset($property->description) ? $property->description : null }}</textarea>
+
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;">
+
+                                    <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
+
+
+                                        <label class="left-label" style="float: left;">KEYWORDS/TAGS</label>
+
+                                        <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
+
+
+                                            <input type="text" name="property_keywords" placeholder="Keywords" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;" data-role="tagsinput tag-primary" class="form-control">
+
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
                             </div>
 
-                            <div class="form-group">
+
+
+
+
+
+
+                            <ul class="list-inline pull-right">
+                                <li>
+                                    <a class="btn btn-default prev-step">Back</a>
+                                </li>
+                                <li>
+                                    <a class="btn btn-primary next-step">Next</a>
+                                </li>
+                            </ul>
+
+                        </div>
+
+                        <div class="tab-pane fade" role="tabpanel" id="stepper-step-4">
+
+                            <div class="form-group main-div" style="width: 90%;margin: auto;">
+
+                                <h2>Step 4: Address/Location</h2>
+
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;margin-top: 40px;">
+
+                                    <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
+
+
+                                        <label class="left-label" style="float: left;">Property Name</label>
+
+                                        <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
+
+
+                                            <input type="text" placeholder="Property Title" name="property_name" value="{{ isset($property->property_name) ? $property->property_name : null }}" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control"  >
+
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                                <div class="form-group">
                                 <label for="" class="col-sm-3 control-label">Address</label>
                                 <div class="col-sm-9">
 
@@ -564,21 +706,6 @@
                                 </div>
 
                             </div>
-
-
-
-                            <ul class="list-inline pull-right">
-                                <li>
-                                    <a class="btn btn-default prev-step">Back</a>
-                                </li>
-                                <li>
-                                    <a class="btn btn-primary next-step">Next</a>
-                                </li>
-                            </ul>
-
-                        </div>
-
-                        <div class="tab-pane fade" role="tabpanel" id="stepper-step-4">
 
                             <div class="form-group">
                                 <label for="avatar" class="col-sm-3 control-label">Featured Image</label>
@@ -749,10 +876,29 @@
 
     <style>
 
-        .form-group{ width: 80%;}
+        .form-group{ width: 90%;margin: auto;}
+
+        @media (max-width: 735px) {
+
+            #main {
+                width: 75% !important;
+            }
+        }
+
+
+        @media (max-width: 767px) {
+
+            .pp {
+
+                margin-left: 0 !important;
+            }
+        }
 
         @media (max-width: 991px)
         {
+
+
+
             .right-label, .left-label, .right-content{
                 float: none !important;
             }
@@ -965,15 +1111,66 @@
             border-radius:4px;-webkit-box-shadow:0 6px 12px rgba(0,0,0,.175);
             box-shadow:0 6px 12px rgba(0,0,0,.175) }
 
+        .bootstrap-tagsinput {
+            display: inline-block;
+            padding: 4px 6px;
+            color: #555;
+            vertical-align: middle;
+            border-radius: 4px;
+            max-width: 100%;
+            line-height: 22px;
+            cursor: text;
+        }
+        .bootstrap-tagsinput input {
+            border: none;
+            box-shadow: none;
+            outline: none;
+            background-color: transparent;
+            padding: 0;
+            margin: 0;
+            width: auto !important;
+            max-width: inherit;
+            vertical-align: middle;
+        }
+        .bootstrap-tagsinput input:focus {
+            border: none;
+            box-shadow: none;
+        }
+        .bootstrap-tagsinput .tag {
+            margin-right: 2px;
+            color: #fff;
+        }
+        .bootstrap-tagsinput .tag [data-role="remove"] {
+            margin-left: 8px;
+            cursor: pointer;
+        }
+        .bootstrap-tagsinput .tag [data-role="remove"]:after {
+            content: "x";
+        }
+        .bootstrap-tagsinput .tag [data-role="remove"]:hover {
+            box-shadow: none;
+        }
+        .bootstrap-tagsinput .tag [data-role="remove"]:hover:active {
+            box-shadow: none;
+        }
+
     </style>
 
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
 
     <script>
 
 
         $(document).ready(function() {
+
+            $('.summernote').summernote({
+                height: 250,   //set editable area's height
+                codemirror: { // codemirror options
+                    theme: 'monokai'
+                }
+            });
+
 
             $('#datetimepicker4').datetimepicker({format: 'DD/MM/YYYY'});
 
@@ -989,12 +1186,13 @@
                 e.preventDefault();
                 var fieldName = $(e.target).data('field');
                 var parent = $(e.target).closest('div');
-                var currentVal = parseInt(parent.find('input[name=' + fieldName + ']').val(), 10);
+                var currentVal = parseInt(parent.find('input[class=' + fieldName + ']').val(), 10);
+
 
                 if (!isNaN(currentVal)) {
-                    parent.find('input[name=' + fieldName + ']').val(currentVal + 1);
+                    parent.find('input[class=' + fieldName + ']').val(currentVal + 1);
                 } else {
-                    parent.find('input[name=' + fieldName + ']').val(0);
+                    parent.find('input[class=' + fieldName + ']').val(0);
                 }
             }
 
@@ -1002,12 +1200,12 @@
                 e.preventDefault();
                 var fieldName = $(e.target).data('field');
                 var parent = $(e.target).closest('div');
-                var currentVal = parseInt(parent.find('input[name=' + fieldName + ']').val(), 10);
+                var currentVal = parseInt(parent.find('input[class=' + fieldName + ']').val(), 10);
 
                 if (!isNaN(currentVal) && currentVal > 0) {
-                    parent.find('input[name=' + fieldName + ']').val(currentVal - 1);
+                    parent.find('input[class=' + fieldName + ']').val(currentVal - 1);
                 } else {
-                    parent.find('input[name=' + fieldName + ']').val(0);
+                    parent.find('input[class=' + fieldName + ']').val(0);
                 }
             }
 
