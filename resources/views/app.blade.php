@@ -22,7 +22,7 @@
     <link href="{{ URL::asset('assets/css/bootstrap.css') }}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href='http://fonts.googleapis.com/css?family=Raleway:400,600,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,600,800' rel='stylesheet' type='text/css'>
     <link href="{{ URL::asset('assets/css/font-awesome.min.css') }}" rel="stylesheet">
 
 
