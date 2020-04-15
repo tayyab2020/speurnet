@@ -8,6 +8,7 @@
 
     <script src="https://kit.fontawesome.com/29532268c4.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.css" rel="stylesheet">
+    
 
     <!-- begin:header -->
     <div id="header" class="heading" style="background-image: url({{ URL::asset('assets/img/img01.jpg') }});">
@@ -1247,6 +1248,21 @@
 
 
         $(document).ready(function() {
+
+            var eltPrimary = $('[data-role="tagsinput tag-primary"]');
+            eltPrimary.tagsinput({
+                tagClass: 'label label-primary'
+            });
+
+            var eltDefault = $('[data-role="tagsinput tag-default"]');
+            eltDefault.tagsinput({
+                tagClass: 'label label-default'
+            });
+
+            var eltDanger = $('[data-role="tagsinput tag-danger"]');
+            eltDanger.tagsinput({
+                tagClass: 'label label-danger'
+            });
 
             initialize();
 
