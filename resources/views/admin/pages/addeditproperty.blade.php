@@ -183,9 +183,7 @@
 
 
                             <ul class="list-inline pull-right">
-                                <li>
-                                    <a class="btn btn-default prev-step">Back</a>
-                                </li>
+                                
                                 <li>
                                     <a class="btn btn-primary next-step" data-id="stepper-step-1">Next</a>
                                 </li>
@@ -1337,10 +1335,18 @@
                         center: {lat: latitude, lng: longitude},
                         zoom: 13
                     });
+
+                    var base_url = window.location.origin;
+
+                    var home_icon = base_url + '/assets/img/home_pin.png';
+
+
                     const marker = new google.maps.Marker({
                         map: map,
                         position: {lat: latitude, lng: longitude},
-                        draggable: true
+                        draggable: true,
+                        animation: google.maps.Animation.DROP,
+                        icon: {url:home_icon, scaledSize: new google.maps.Size(45, 50)}
                     });
 
                     google.maps.event.addListener(marker, 'dragend', function(marker) {

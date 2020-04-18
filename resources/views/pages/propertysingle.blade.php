@@ -397,7 +397,6 @@
 
                                       var base_url = window.location.origin;
 
-
                                       var home_icon = base_url + '/assets/img/home_pin.png';
 
                                       const marker = new google.maps.Marker({
@@ -405,7 +404,7 @@
                                           position: {lat: lat, lng: lng},
                                           draggable: false,
                                           animation: google.maps.Animation.DROP,
-                                          icon: home_icon
+                                          icon: {url:home_icon, scaledSize: new google.maps.Size(40, 45)}
                                       });
 
 
