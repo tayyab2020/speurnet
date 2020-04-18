@@ -154,7 +154,7 @@
                           <input type="hidden" name="map_latitude" id="map_latitude" value="{{$property->map_latitude}}">
                           <input type="hidden" name="map_longitude" id="map_longitude" value="{{$property->map_longitude}}">
                           <input type="hidden" name="city" id="city" value="{{$property->address}}">
-                          <input type="hidden" name="type" id="type" value="mall">
+                          <input type="hidden" name="type" id="type" value="shopping_mall">
 
 
                           <div class="row" style="border-top:1px solid rgba(190, 190, 190, 0.6); margin-top: 40px;">
@@ -167,7 +167,7 @@
                                           <div class="row">
                                               <div class="col-sm-12">
                                                   <div class="carousel box-carousel d-none d-sm-block" style="display: flex;">
-                                                      <div class="box background-active" data-type="mall">
+                                                      <div class="box background-active" data-type="shopping_mall">
                                                           <a><i class="fas fa-shopping-cart" aria-hidden="true" style="font-size: 22px;margin-bottom: 10px;"></i><br>Malls</a>
                                                       </div>
                                                       <div class="box" data-type="school">
@@ -427,6 +427,7 @@
 
                                   // Perform a Places Nearby Search Request
                                   function getNearbyPlaces(position,type) {
+                                      alert(type);
                                       let request = {
                                           location: position,
                                           radius: '1000',
@@ -442,15 +443,23 @@
                                       if(new_type != 'Bakery')
                                       {
 
-                                          new_type = new_type + 's';
+                                          if(new_type != 'Shopping_mall')
+                                          {
+                                              new_type = new_type + 's';
+                                          }
+                                          else{
+
+                                              new_type = 'Shopping Malls';
+
+                                          }
+
 
                                       }
                                       else
                                       {
 
-                                          new_type = new_type.slice(0,-1);
+                                          new_type = 'Bakeries';
 
-                                          new_type = new_type + 'ies';
 
                                       }
 
