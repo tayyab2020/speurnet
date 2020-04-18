@@ -1477,13 +1477,13 @@
                 e.preventDefault();
                 var fieldName = $(e.target).data('field');
                 var parent = $(e.target).closest('div');
-                var currentVal = parseInt(parent.find('input[class=' + fieldName + ']').val(), 10);
+                var currentVal = parseInt(parent.find('input[type=number]').val(), 10);
 
 
                 if (!isNaN(currentVal)) {
-                    parent.find('input[class=' + fieldName + ']').val(currentVal + 1);
+                    parent.find('input[type=number]').val(currentVal + 1);
                 } else {
-                    parent.find('input[class=' + fieldName + ']').val(0);
+                    parent.find('input[type=number]').val(0);
                 }
             }
 
@@ -1491,12 +1491,12 @@
                 e.preventDefault();
                 var fieldName = $(e.target).data('field');
                 var parent = $(e.target).closest('div');
-                var currentVal = parseInt(parent.find('input[class=' + fieldName + ']').val(), 10);
+                var currentVal = parseInt(parent.find('input[type=number]').val(), 10);
 
                 if (!isNaN(currentVal) && currentVal > 0) {
-                    parent.find('input[class=' + fieldName + ']').val(currentVal - 1);
+                    parent.find('input[type=number]').val(currentVal - 1);
                 } else {
-                    parent.find('input[class=' + fieldName + ']').val(0);
+                    parent.find('input[type=number]').val(0);
                 }
             }
 

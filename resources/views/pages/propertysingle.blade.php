@@ -542,6 +542,7 @@
 
                                   function createMarkersDetails(places,position) {
 
+                                      console.log(places);
 
                                       var i = 0;
 
