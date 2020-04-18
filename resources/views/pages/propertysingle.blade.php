@@ -465,6 +465,9 @@
                                   function nearbyCallback(results, status) {
 
                                       if (status == google.maps.places.PlacesServiceStatus.OK) {
+
+                                          $("#panel div:eq(0)").children().eq(1).text(results.length + ' results found');
+
                                           createMarkers(results);
                                           createDetails(results,pos);
                                       }
