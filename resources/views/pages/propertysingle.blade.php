@@ -395,10 +395,17 @@
                                           zoom: 15
                                       });
 
+                                      var base_url = window.location.origin;
+
+
+                                      var home_icon = base_url + '/assets/img/home_pin.png';
+
                                       const marker = new google.maps.Marker({
                                           map: map,
                                           position: {lat: lat, lng: lng},
-                                          draggable: false
+                                          draggable: false,
+                                          animation: google.maps.Animation.DROP,
+                                          icon: home_icon
                                       });
 
 
@@ -588,7 +595,8 @@
                                               let marker = new google.maps.Marker({
                                                   position: place.geometry.location,
                                                   map: map,
-                                                  icon: image,
+                                                  animation: google.maps.Animation.DROP,
+                                                  icon: {url:place.icon, scaledSize: new google.maps.Size(30, 30)},
                                                   title: place.name
                                               });
 
