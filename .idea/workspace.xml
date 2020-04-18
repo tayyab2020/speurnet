@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7fe7f36f-c82f-4504-8c0a-7874522d22c9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/assets/img/bakery-nearby-marker.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/img/bank-nearby-marker.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/img/hospital-nearby-marker.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/img/pharmacy-nearby-marker.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/img/school-nearby-marker.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/img/shopping_mall-nearby-marker.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/pages/addeditproperty.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/pages/addeditproperty.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/pages/propertysingle.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/propertysingle.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -204,7 +197,7 @@
       <workItem from="1587054696867" duration="9978000" />
       <workItem from="1587136667118" duration="22139000" />
       <workItem from="1587201661681" duration="9905000" />
-      <workItem from="1587231303058" duration="11731000" />
+      <workItem from="1587231303058" duration="12623000" />
     </task>
     <servers />
   </component>
