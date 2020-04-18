@@ -1317,7 +1317,9 @@
                 const locationInputs = document.getElementsByClassName("map-input");
 
                 var options = {
+
                     componentRestrictions: {country: "nl"}
+
                 };
 
                 const autocompletes = [];
@@ -1350,6 +1352,8 @@
                             if (status == google.maps.GeocoderStatus.OK) {
                                 if (results[0]) {
 
+                                    var city_check = 0;
+
                                    $('#address-input').val(results[0].formatted_address);
 
                                     for(var a=0; a < results[0]['address_components'].length; a++)
@@ -1360,8 +1364,55 @@
 
                                             $('#city_name').val(results[0]['address_components'][a]['long_name']);
 
+                                            city_check = 1;
+
                                         }
 
+                                    }
+
+                                    if(city_check == 0)
+                                    {
+
+                                        for(var b=0; b < results[0]['address_components'].length; b++)
+                                        {
+
+                                            if(results[0]['address_components'][b]['types'][0] == 'administrative_area_level_2')
+                                            {
+
+
+                                                $('#city_name').val(results[0]['address_components'][b]['long_name']);
+
+                                                city_check = 1;
+
+                                            }
+
+                                        }
+
+                                    }
+
+                                    if(city_check == 0)
+                                    {
+
+                                        for(var c=0; c < results[0]['address_components'].length; c++)
+                                        {
+
+                                            if(results[0]['address_components'][c]['types'][0] == 'postal_town')
+                                            {
+
+
+                                                $('#city_name').val(results[0]['address_components'][c]['long_name']);
+
+                                                city_check = 1;
+
+                                            }
+
+                                        }
+
+                                    }
+
+                                    if(city_check == 0)
+                                    {
+                                        $('#city_name').val();
                                     }
 
                                 }
@@ -1402,21 +1453,69 @@
 
                                 if (results[0]) {
 
+
                                     const lat = results[0].geometry.location.lat();
                                     const lng = results[0].geometry.location.lng();
                                     setLocationCoordinates(autocomplete.key, lat, lng);
 
+                                    var city_check1 = 0;
 
-                                    for(var x=0; x < results[0]['address_components'].length; x++)
+                                    for(var e=0; e < results[0]['address_components'].length; e++)
                                     {
 
-                                        if(results[0]['address_components'][x]['types'][0] == 'locality')
+                                        if(results[0]['address_components'][e]['types'][0] == 'locality')
                                         {
 
-                                            $('#city_name').val(results[0]['address_components'][x]['long_name']);
+                                            $('#city_name').val(results[0]['address_components'][e]['long_name']);
+
+                                            city_check1 = 1;
 
                                         }
 
+                                    }
+
+                                    if(city_check1 == 0)
+                                    {
+                                        for(var x=0; x < results[0]['address_components'].length; x++)
+                                        {
+
+                                            if(results[0]['address_components'][x]['types'][0] == 'administrative_area_level_2')
+                                            {
+
+                                                $('#city_name').val(results[0]['address_components'][x]['long_name']);
+
+                                                city_check1 = 1;
+
+                                            }
+
+                                        }
+                                    }
+
+
+
+                                    if(city_check1 == 0)
+                                    {
+
+                                        for(var y=0; y < results[0]['address_components'].length; y++)
+                                        {
+
+                                            if(results[0]['address_components'][y]['types'][0] == 'postal_town')
+                                            {
+
+
+                                                $('#city_name').val(results[0]['address_components'][y]['long_name']);
+
+                                                city_check1 = 1;
+
+                                            }
+
+                                        }
+
+                                    }
+
+                                    if(city_check1 == 0)
+                                    {
+                                        $('#city_name').val();
                                     }
                                 }
                                 else

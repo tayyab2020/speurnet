@@ -430,7 +430,7 @@
 
                                       let request = {
                                           location: position,
-                                          radius: '1000',
+                                          radius: '2000',
                                           type: [type]
                                       };
 
@@ -480,6 +480,14 @@
                                           /*createMarkers(results);*/
 
                                           createMarkersDetails(results,pos);
+                                      }
+                                      else
+                                      {
+
+                                          $("#panel div:eq(0)").children().eq(1).text('0 results found');
+
+                                          $("#panel div").not(':first').remove();
+
                                       }
                                   }
 
@@ -542,7 +550,6 @@
 
                                   function createMarkersDetails(places,position) {
 
-                                      console.log(places);
 
                                       var i = 0;
 
