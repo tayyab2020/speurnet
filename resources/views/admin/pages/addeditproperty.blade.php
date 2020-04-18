@@ -1343,8 +1343,8 @@
 
                     google.maps.event.addListener(marker, 'dragend', function(marker) {
                         var latLng = marker.latLng;
-                        document.getElementById('address-latitude').innerHTML = latLng.lat();
-                        document.getElementById('address-longitude').innerHTML = latLng.lng();
+                        document.getElementById('address-latitude').value = latLng.lat();
+                        document.getElementById('address-longitude').value = latLng.lng();
 
                         geocoder.geocode({'latLng': this.getPosition()}, function(results, status) {
                             if (status == google.maps.GeocoderStatus.OK) {
