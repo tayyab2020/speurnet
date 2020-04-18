@@ -468,17 +468,23 @@
 
                                           $("#panel div:eq(0)").children().eq(1).text(results.length + ' results found');
 
-                                          createMarkers(results);
-                                          createDetails(results,pos);
+                                          /*createMarkers(results);*/
+
+                                          createMarkersDetails(results,pos);
                                       }
                                   }
 
                                   // Set markers at the location of each place result
-                                  function createMarkers(places) {
+
+                                  /*function createMarkers(places) {
+
+
 
                                       markers = new Array();
 
                                       var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
+
+
 
                                       places.forEach(place => {
 
@@ -490,9 +496,11 @@
                                               title: place.name
                                           });
 
+
+
                                           markers.push(marker);
 
-                                          /* TODO: Step 4B: Add click listeners to the markers */
+                                          /!* TODO: Step 4B: Add click listeners to the markers *!/
                                           // Add click listener to each marker
                                           google.maps.event.addListener(marker, 'click', () => {
                                               let request = {
@@ -501,28 +509,41 @@
                                                       'website', 'photos']
                                               };
 
-                                              /* Only fetch the details of a place when the user clicks on a marker.
+                                              /!* Only fetch the details of a place when the user clicks on a marker.
                                                * If we fetch the details for all place results as soon as we get
-                                               * the search response, we will hit API rate limits. */
-                                              service.getDetails(request, (placeResult, status) => {
+                                               * the search response, we will hit API rate limits. *!/
+
+
+                                              /!*service.getDetails(request, (placeResult, status) => {
                                                   showDetails(placeResult, marker, status)
-                                              });
+                                              });*!/
+
+                                              showDetails(place.name, marker);
+
                                           });
 
                                           // Adjust the map bounds to include the location of this marker
                                           bounds.extend(place.geometry.location);
                                       });
-                                      /* Once all the markers have been placed, adjust the bounds of the map to
-                                       * show all the markers within the visible area. */
+                                      /!* Once all the markers have been placed, adjust the bounds of the map to
+                                       * show all the markers within the visible area. *!/
                                       map.fitBounds(bounds);
-                                  }
+                                  }*/
 
 
-                                  function createDetails(places,position) {
+                                  function createMarkersDetails(places,position) {
+
 
                                       var i = 0;
 
                                       var length = places.length;
+
+                                      markers = new Array();
+
+                                      var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
+
+
+                                      $("#panel div").not(':first').remove();
 
                                       places.forEach(place => {
 
@@ -533,6 +554,7 @@
 
 
                                           var service = new google.maps.DistanceMatrixService();
+
                                           service.getDistanceMatrix(
                                               {
                                                   origins: [origin1],
@@ -543,8 +565,45 @@
                                               }, callback);
 
 
-
                                           function callback(response, status) {
+
+
+                                              let marker = new google.maps.Marker({
+                                                  position: place.geometry.location,
+                                                  map: map,
+                                                  icon: image,
+                                                  title: place.name
+                                              });
+
+
+
+                                              markers.push(marker);
+
+                                              /* TODO: Step 4B: Add click listeners to the markers */
+                                              // Add click listener to each marker
+                                              google.maps.event.addListener(marker, 'click', () => {
+                                                  let request = {
+                                                      placeId: place.place_id,
+                                                      fields: ['name', 'formatted_address', 'geometry', 'rating',
+                                                          'website', 'photos']
+                                                  };
+
+                                                  /* Only fetch the details of a place when the user clicks on a marker.
+                                                   * If we fetch the details for all place results as soon as we get
+                                                   * the search response, we will hit API rate limits. */
+
+
+                                                  /*service.getDetails(request, (placeResult, status) => {
+                                                      showDetails(placeResult, marker, status)
+                                                  });*/
+
+                                                  showDetails(place.name, marker);
+
+                                              });
+
+                                              // Adjust the map bounds to include the location of this marker
+                                              bounds.extend(place.geometry.location);
+
 
 
                                               $("#panel div:eq(0)").after('<a data-id="'+i+'" href="javascript:void(0);" class="trigger"><div style="padding: 10px 0px 0px 10px;border-bottom: 1px solid rgba(190, 190, 190, 0.6);">\n' +
@@ -574,7 +633,9 @@
 
                                   /* TODO: Step 4C: Show place details in an info window */
                                   // Builds an InfoWindow to display details above the marker
-                                  function showDetails(placeResult, marker, status) {
+
+
+                                  /*function showDetails(placeResult, marker, status) {
                                       if (status == google.maps.places.PlacesServiceStatus.OK) {
                                           let placeInfowindow = new google.maps.InfoWindow();
                                           let rating = "None";
@@ -584,10 +645,22 @@
                                           placeInfowindow.open(marker.map, marker);
                                           currentInfoWindow.close();
                                           currentInfoWindow = placeInfowindow;
-                                         /* showPanel(placeResult);*/
+                                         /!* showPanel(placeResult);*!/
                                       } else {
                                           console.log('showDetails failed: ' + status);
                                       }
+                                  }*/
+
+                                  function showDetails(placeName,marker) {
+
+                                      let placeInfowindow = new google.maps.InfoWindow();
+
+                                      placeInfowindow.setContent('<div><strong>' + placeName + '</strong></div>');
+                                      placeInfowindow.open(marker.map, marker);
+                                      currentInfoWindow.close();
+                                      currentInfoWindow = placeInfowindow;
+
+
                                   }
 
                                   /* TODO: Step 4D: Load place details in a sidebar */

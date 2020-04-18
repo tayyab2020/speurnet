@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7fe7f36f-c82f-4504-8c0a-7874522d22c9" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/pages/propertysingle.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/propertysingle.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -190,7 +191,8 @@
       <workItem from="1586360659097" duration="2621000" />
       <workItem from="1586442007128" duration="80376000" />
       <workItem from="1587054696867" duration="9978000" />
-      <workItem from="1587136667118" duration="21778000" />
+      <workItem from="1587136667118" duration="22139000" />
+      <workItem from="1587201661681" duration="4276000" />
     </task>
     <servers />
   </component>
@@ -205,10 +207,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1587137336012" />
-    <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1587136886869">
+    <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1587201662197">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1587136886869" />
+    <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1587201662197" />
     <state x="492" y="286" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1585578486261">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
