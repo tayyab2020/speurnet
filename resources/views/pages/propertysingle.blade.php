@@ -182,6 +182,10 @@
                                                       <div class="box" data-type="bakery">
                                                           <a><i class="fas fa-birthday-cake" aria-hidden="true" style="font-size: 22px;margin-bottom: 10px;"></i><br>Bakery</a>
                                                       </div>
+                                                      <div class="box" data-type="pharmacy">
+                                                          <a><i class="fas fa-birthday-cake" aria-hidden="true" style="font-size: 22px;margin-bottom: 10px;"></i><br>Pharmacy</a>
+                                                      </div>
+
 
                                                   </div><!-- carousel-->
                                               </div><!--col-->
@@ -316,7 +320,7 @@
 
                                       $(this).addClass('background-active');
 
-                                      var type = $(this).data('type');
+                                      type = $(this).data('type');
 
                                       infoWindow = new google.maps.InfoWindow;
 
@@ -434,9 +438,10 @@
                                   // Perform a Places Nearby Search Request
                                   function getNearbyPlaces(position,type) {
 
+
                                       let request = {
                                           location: position,
-                                          radius: '2000',
+                                          radius: '1000',
                                           type: [type]
                                       };
 
@@ -446,28 +451,13 @@
                                           return string.charAt(0).toUpperCase() + string.slice(1);
                                       }
 
-                                      if(new_type != 'Bakery')
-                                      {
 
-                                          if(new_type != 'Shopping_mall')
+                                          if(new_type == 'Shopping_mall')
                                           {
-                                              new_type = new_type + 's';
-                                          }
-                                          else{
 
                                               new_type = 'Shopping Malls';
 
                                           }
-
-
-                                      }
-                                      else
-                                      {
-
-                                          new_type = 'Bakeries';
-
-
-                                      }
 
                                       $("#panel div:eq(0)").children().first().text(new_type);
 
@@ -563,7 +553,34 @@
 
                                       markers = new Array();
 
-                                      var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
+                                      var base_url = window.location.origin;
+
+                                     
+
+                                      if(type == 'shopping_mall')
+                                      {
+                                          var icon = base_url + '/assets/img/shopping_mall-nearby-marker.png';
+                                      }
+                                      else if(type == 'school')
+                                      {
+                                          var icon = base_url + '/assets/img/school-nearby-marker.png';
+                                      }
+                                      else if(type == 'bank')
+                                      {
+                                          var icon = base_url + '/assets/img/bank-nearby-marker.png';
+                                      }
+                                      else if(type == 'hospital')
+                                      {
+                                          var icon = base_url + '/assets/img/hospital-nearby-marker.png';
+                                      }
+                                      else if(type == 'bakery')
+                                      {
+                                          var icon = base_url + '/assets/img/bakery-nearby-marker.png';
+                                      }
+                                      else if(type == 'pharmacy')
+                                      {
+                                          var icon = base_url + '/assets/img/pharmacy-nearby-marker.png';
+                                      }
 
 
                                       $("#panel div").not(':first').remove();
@@ -595,7 +612,7 @@
                                                   position: place.geometry.location,
                                                   map: map,
                                                   animation: google.maps.Animation.DROP,
-                                                  icon: {url:place.icon, scaledSize: new google.maps.Size(30, 30)},
+                                                  icon: {url:icon, scaledSize: new google.maps.Size(35, 40)},
                                                   title: place.name
                                               });
 
