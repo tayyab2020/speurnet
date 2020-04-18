@@ -8,7 +8,7 @@
 
     <script src="https://kit.fontawesome.com/29532268c4.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.css" rel="stylesheet">
-    
+
 
     <!-- begin:header -->
     <div id="header" class="heading" style="background-image: url({{ URL::asset('assets/img/img01.jpg') }});">
@@ -187,7 +187,7 @@
                                     <a class="btn btn-default prev-step">Back</a>
                                 </li>
                                 <li>
-                                    <a class="btn btn-primary next-step">Next</a>
+                                    <a class="btn btn-primary next-step" data-id="stepper-step-1">Next</a>
                                 </li>
                             </ul>
 
@@ -285,11 +285,11 @@
 
                                     <label class="left-label" style="float: left;">BEDROOMS</label>
 
-                                    <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;border-right: 0;margin: auto">
+                                    <div  style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;border-right: 0;margin: auto">
 
                                         <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-bed"></i></div>
 
-                                        <input type="number" step="1" max="" name="bedrooms" value="{{ isset($property->bathrooms) ? $property->bathrooms : 1 }}" class="quantity-field" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+                                        <input type="number" step="1" max="" name="bedrooms" value="{{ isset($property->bathrooms) ? $property->bathrooms : 1 }}" class="quantity-field stepper-step-2-validate" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
                                         <input type="button" value="+" class="button-plus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d7d7d7;margin-top: -0.1px;">
                                         <input type="button" value="-" class="button-minus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;margin-top: -0.1px;">
 
@@ -305,7 +305,7 @@
 
                                             <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-restroom"></i></div>
 
-                                            <input type="number" step="1" max="" name="bathrooms" value="{{ isset($property->bathrooms) ? $property->bathrooms : 1 }}" class="quantity-field" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+                                            <input type="number" step="1" max="" name="bathrooms" value="{{ isset($property->bathrooms) ? $property->bathrooms : 1 }}" class="quantity-field stepper-step-2-validate" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
                                             <input type="button" value="+" class="button-plus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d7d7d7;margin-top: -0.1px;">
                                             <input type="button" value="-" class="button-minus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;margin-top: -0.1px;">
 
@@ -327,7 +327,7 @@
 
                                             <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-warehouse"></i></div>
 
-                                            <input type="number" step="1" max="" value="1" name="garage" class="quantity-field" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+                                            <input type="number" step="1" max="" value="1" name="garage" class="quantity-field stepper-step-2-validate" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
                                             <input type="button" value="+" class="button-plus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d7d7d7;">
                                             <input type="button" value="-" class="button-minus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;">
 
@@ -343,7 +343,7 @@
 
                                             <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-crop-alt"></i></div>
 
-                                            <input type="text"  name="area" value="{{ isset($property->area) ? $property->area : null }}"  placeholder="800m2" class="quantity-field" style="border: 0;margin: 0;float: left;width: 80%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+                                            <input type="text"  name="area" value="{{ isset($property->area) ? $property->area : null }}"  placeholder="800m2" class="quantity-field stepper-step-2-validate" style="border: 0;margin: 0;float: left;width: 80%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
 
 
                                         </div>
@@ -369,7 +369,7 @@
                                             <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-calendar-alt"></i></div>
 
 
-                                        <input type='text' placeholder="Select Date" name="date" style="box-shadow: none;border: 0;margin: 0;float: left;width: 80%;left: 0;height: 37.5px;text-align: left;padding-left: 0px;" class="form-control" id='datetimepicker4' />
+                                        <input type='text' placeholder="Select Date" name="date" style="box-shadow: none;border: 0;margin: 0;float: left;width: 80%;left: 0;height: 37.5px;text-align: left;padding-left: 0px;" class="form-control stepper-step-2-validate" id='datetimepicker4' />
 
 
                                         </div>
@@ -390,7 +390,7 @@
                                             <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-calendar-alt"></i></div>
 
 
-                                            <input type='text' placeholder="Time From" name="time_from" style="box-shadow: none;border: 0;margin: 0;float: left;width: 80%;left: 0;height: 37.5px;text-align: left;padding-left: 8px;padding-bottom: 5px;" class="form-control" id='datetimepicker3' />
+                                            <input type='text' placeholder="Time From" name="time_from" style="box-shadow: none;border: 0;margin: 0;float: left;width: 80%;left: 0;height: 37.5px;text-align: left;padding-left: 8px;padding-bottom: 5px;" class="form-control stepper-step-2-validate" id='datetimepicker3' />
 
 
                                         </div>
@@ -407,7 +407,7 @@
                                             <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-calendar-alt"></i></div>
 
 
-                                            <input type='text' placeholder="Time To" name=time_to" style="box-shadow: none;border: 0;margin: 0;float: left;width: 80%;left: 0;height: 37.5px;text-align: left;padding-left: 8px;padding-bottom: 5px;" class="form-control" id='datetimepicker2' />
+                                            <input type='text' placeholder="Time To" name="time_to" style="box-shadow: none;border: 0;margin: 0;float: left;width: 80%;left: 0;height: 37.5px;text-align: left;padding-left: 8px;padding-bottom: 5px;" class="form-control stepper-step-2-validate" id='datetimepicker2' />
 
 
                                         </div>
@@ -497,7 +497,7 @@
                                     <a class="btn btn-default prev-step">Back</a>
                                 </li>
                                 <li>
-                                    <a class="btn btn-primary next-step">Next</a>
+                                    <a class="btn btn-primary next-step" data-id="stepper-step-2">Next</a>
                                 </li>
                             </ul>
                         </div>
@@ -519,7 +519,7 @@
                                         <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
 
 
-                                            <input type="text" placeholder="Property Title" name="property_name" value="{{ isset($property->property_name) ? $property->property_name : null }}" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control"  >
+                                            <input type="text" placeholder="Property Title" name="property_name" value="{{ isset($property->property_name) ? $property->property_name : null }}" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control stepper-step-3-validate"  >
 
 
                                         </div>
@@ -600,7 +600,7 @@
 
                                         <div style="width: 100%;display: inline-block;margin: auto">
 
-                                            <textarea name="description" rows="10" class="form-control summernote">{{ isset($property->description) ? $property->description : null }}</textarea>
+                                            <textarea name="description" rows="10" class="form-control stepper-step-3-validate summernote">{{ isset($property->description) ? $property->description : null }}</textarea>
 
 
                                         </div>
@@ -643,7 +643,7 @@
                                     <a class="btn btn-default prev-step">Back</a>
                                 </li>
                                 <li>
-                                    <a class="btn btn-primary next-step">Next</a>
+                                    <a class="btn btn-primary next-step" data-id="stepper-step-3">Next</a>
                                 </li>
                             </ul>
 
@@ -665,9 +665,9 @@
 
                                         <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
 
-                                            <input type="text" id="address-input" placeholder="Enter Address" name="address" value="{{ isset($property->address) ? $property->address : null }}" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control map-input">
-                                            <input type="hidden" name="address_latitude" id="address-latitude" value="0" />
-                                            <input type="hidden" name="address_longitude" id="address-longitude" value="0" />
+                                            <input type="text" id="address-input" placeholder="Enter Address" name="address" value="{{ isset($property->address) ? $property->address : null }}" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control map-input stepper-step-4-validate">
+                                            <input type="hidden" name="address_latitude" id="address-latitude" value="52.3666969" />
+                                            <input type="hidden" name="address_longitude" id="address-longitude" value="4.8945398" />
 
                                         </div>
 
@@ -708,7 +708,7 @@
 
                                                     @if($property->city_id==$city->id)
 
-                                                        <input type="text" value="{{$city->city_name}}" id="city_name" name="city_name" class="form-control" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;">
+                                                        <input type="text" value="{{$city->city_name}}" readonly id="city_name" name="city_name" class="form-control stepper-step-4-validate" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;">
 
                                                         @endif
 
@@ -717,7 +717,7 @@
 
                                             @else
 
-                                                <input type="text" id="city_name" name="city_name" class="form-control" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;">
+                                                <input type="text" id="city_name" name="city_name" readonly class="form-control stepper-step-4-validate" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;">
 
 
                                             @endif
@@ -748,7 +748,7 @@
 
                                                 </div>
                                                 <div class="media-body media-middle">
-                                                    <input type="file" name="featured_image" class="filestyle">
+                                                    <input type="file" name="featured_image" class="filestyle stepper-step-4-validate">
                                                 </div>
                                             </div>
 
@@ -925,7 +925,7 @@
                                     <a class="btn btn-default prev-step">Back</a>
                                 </li>
                                 <li>
-                                    <button type="submit" class="btn btn-primary">{{ isset($property->property_name) ? 'Edit Property' : 'Add Property' }}</button>
+                                    <button type="button" data-id="stepper-step-4" class="btn btn-primary submit-form">{{ isset($property->property_name) ? 'Edit Property' : 'Add Property' }}</button>
                                 </li>
                             </ul>
 
@@ -959,6 +959,12 @@
 
 
     <style>
+
+        .validate-error
+        {
+            border: 1px solid #e02727 !important;
+            border-right: 1px solid #e02727 !important;
+        }
 
         .form-group{ width: 90%;margin: auto;}
 
@@ -1249,6 +1255,39 @@
 
         $(document).ready(function() {
 
+            $(".submit-form").on('click', function() {
+
+
+                var step = $(this).data('id');
+
+                var check = 0;
+
+
+                $('#' + step + ' .' + step + '-validate').map(function() {
+
+                    if(!$(this).val())
+                    {
+                        $(this).parent().addClass('validate-error');
+                        check = 1;
+                    }
+                    else
+                    {
+                        $(this).parent().removeClass('validate-error');
+                    }
+
+                });
+
+                if(!check)
+                {
+                    $("#property_form").submit();
+                }
+                else{
+
+                    document.body.scrollTop = document.documentElement.scrollTop = 100;
+                }
+
+            });
+
             var eltPrimary = $('[data-role="tagsinput tag-primary"]');
             eltPrimary.tagsinput({
                 tagClass: 'label label-primary'
@@ -1525,34 +1564,62 @@
 
             $btn_next.on('click', function() {
 
-                $tab_active = $progressWizard.find('.active');
+                document.body.scrollTop = document.documentElement.scrollTop = 100;
 
-                $tab = $tab_active.next().find('[data-content]').attr("data-content");
+                var step = $(this).data('id');
 
-                $section = $('.tab-content').find('#'+$tab);
-
-                $('.tab-content').find('.active').removeClass('in').removeClass('active');
-
-                $section.addClass('active');
-
-                window.setTimeout(function(){$section.addClass('in');}, 80);
-
-                $tab_active.next().removeClass('disabled');
-                $tab_active.next().addClass('active');
-
-                $tab_next = $tab_active.next().find('a[data-toggle="tab"]');
-
-                var $target = $tab_next;
+                var check = 0;
 
 
-                if (!$target.parent().hasClass('active, disabled')) {
-                    $target.parent().prev().removeClass('active');
-                    $target.parent().prev().addClass('completed');
+                $('#' + step + ' .' + step + '-validate').map(function() {
+
+                    if(!$(this).val())
+                    {
+                        $(this).parent().addClass('validate-error');
+                        check = 1;
+                    }
+                    else
+                    {
+                        $(this).parent().removeClass('validate-error');
+                    }
+
+                });
+
+                if(!check)
+                {
+
+
+                    $tab_active = $progressWizard.find('.active');
+
+                    $tab = $tab_active.next().find('[data-content]').attr("data-content");
+
+                    $section = $('.tab-content').find('#'+$tab);
+
+                    $('.tab-content').find('.active').removeClass('in').removeClass('active');
+
+                    $section.addClass('active');
+
+                    window.setTimeout(function(){$section.addClass('in');}, 80);
+
+                    $tab_active.next().removeClass('disabled');
+                    $tab_active.next().addClass('active');
+
+                    $tab_next = $tab_active.next().find('a[data-toggle="tab"]');
+
+                    var $target = $tab_next;
+
+
+                    if (!$target.parent().hasClass('active, disabled')) {
+                        $target.parent().prev().removeClass('active');
+                        $target.parent().prev().addClass('completed');
+                    }
+                    if ($target.parent().hasClass('disabled')) {
+                        return false;
+                    }
+
+
+
                 }
-                if ($target.parent().hasClass('disabled')) {
-                    return false;
-                }
-
 
 
             });

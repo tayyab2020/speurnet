@@ -57,6 +57,7 @@ class IndexController extends Controller
             $user = User::create([
                 'name'     => $getInfo->name,
                 'email'    => $getInfo->email,
+                'usertype' => 'Agents',
                 'password' => bcrypt(Str::random(10)),
                 'provider' => $provider,
                 'provider_id' => $getInfo->id,

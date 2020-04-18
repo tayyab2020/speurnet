@@ -58,9 +58,12 @@ class PropertiesController extends MainAdminController
     public function addnew(Request $request)
     {
 
+
     	$data =  \Request::except(array('_token')) ;
 
 	    $inputs = $request->all();
+
+
 
 	    $rule=array(
 		        'property_name' => 'required',
@@ -222,24 +225,45 @@ class PropertiesController extends MainAdminController
 			$property_slug =Str::slug($inputs['property_slug'], "-");
 		}
 
+		$city = City::where('city_name', 'like', '%' . $request->city_name)->first();
+
+		if($city)
+        {
+            $city_id = $city->id;
+        }
+		else
+        {
+            $city = new City;
+            $city->city_name = $request->city_name;
+            $city->status = 1;
+            $city->save();
+
+            $city_id = $city->id;
+        }
 
 		$user_id=Auth::user()->id;
 
 		$property->user_id = $user_id;
 		$property->property_name = $request->property_name;
 		$property->property_slug = $property_slug;
-		$property->city_id = 1;
+		$property->city_id = $city_id;
 		$property->property_type = $request->property_type;
 		$property->property_purpose = $request->property_purpose;
 		$property->sale_price = $request->sale_price;
 		$property->rent_price = $request->rent_price;
 		$property->address = $request->address;
+        $property->map_latitude = $request->address_latitude;
+        $property->map_longitude = $request->address_longitude;
 		$property->bathrooms = $request->bathrooms;
 		$property->bedrooms = $request->bedrooms;
+        $property->garage = $request->garage;
 		$property->area = $request->area;
 		$property->property_features = $request->property_features;
+        $property->keywords = $request->property_keywords;
 		$property->description = $request->description;
-
+        $property->open_date = $request->date;
+        $property->open_timeFrom = $request->time_from;
+        $property->open_timeTo = $request->time_to;
 
 
 	    $property->save();
