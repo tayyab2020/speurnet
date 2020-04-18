@@ -429,7 +429,7 @@
                                   function getNearbyPlaces(position,type) {
                                       let request = {
                                           location: position,
-                                          radius: '500',
+                                          radius: '1000',
                                           type: [type]
                                       };
 
