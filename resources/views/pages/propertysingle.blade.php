@@ -427,7 +427,7 @@
 
                                   // Perform a Places Nearby Search Request
                                   function getNearbyPlaces(position,type) {
-                                      alert(type);
+                                      
                                       let request = {
                                           location: position,
                                           radius: '1000',
