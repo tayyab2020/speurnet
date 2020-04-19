@@ -6,7 +6,7 @@
 	<div class="page-header">
 		<h2> {{ Auth::user()->name }}</h2>
 		<a href="{{ URL::to('admin/dashboard') }}" class="btn btn-default-light btn-xs"><i class="md md-backspace"></i> Back</a>
-	  
+
 	</div>
 	@if (count($errors) > 0)
     <div class="alert alert-danger">
@@ -32,32 +32,32 @@
         </li>
         <li role="presentation">
             <a href="#ac_password" aria-controls="ac_password" role="tab" data-toggle="tab">Password</a>
-        </li>        
+        </li>
         </li>
     </ul>
 
     <!-- Tab panes -->
     <div class="tab-content tab-content-default">
-        <div role="tabpanel" class="tab-pane active" id="account">             
+        <div role="tabpanel" class="tab-pane active" id="account">
             {!! Form::open(array('url' => 'admin/profile','class'=>'form-horizontal padding-15','name'=>'account_form','id'=>'account_form','role'=>'form','enctype' => 'multipart/form-data')) !!}
-                
+
                 <div class="form-group">
                     <label for="avatar" class="col-sm-3 control-label">Profile Picture</label>
                     <div class="col-sm-9">
                         <div class="media">
                             <div class="media-left">
                                 @if(Auth::user()->image_icon)
-                                 
+
 									<img src="{{ URL::asset('upload/members/'.Auth::user()->image_icon.'-s.jpg') }}" width="80" alt="person">
 								@endif
-								                                
+
                             </div>
                             <div class="media-body media-middle">
                                 <input type="file" name="user_icon" class="filestyle">
-                                <small class="text-muted bold">Size 80x80px</small>
+                                {{--<small class="text-muted bold">Size 80x80px</small>--}}
                             </div>
                         </div>
-	
+
                     </div>
                 </div>
                 <div class="form-group">
@@ -88,19 +88,19 @@
                     <label for="" class="col-sm-3 control-label">City</label>
                     <div class="col-sm-4">
                         <select name="city" id="basic" class="selectpicker show-tick form-control" data-live-search="true">
-										 
-										@foreach($city_list as $city)  
+
+										@foreach($city_list as $city)
 										<option value="{{$city->city_name}}" @if($city->city_name==Auth::user()->city) selected @endif>{{$city->city_name}}</option>										    @endforeach
-										
-										 
-											  
+
+
+
 								</select>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="" class="col-sm-3 control-label">About</label>
                     <div class="col-sm-9">
-                         
+
 						<textarea name="about" cols="50" rows="5" class="form-control">{{ Auth::user()->about }}</textarea>
                     </div>
                 </div>
@@ -132,16 +132,16 @@
                 <div class="form-group">
                     <div class="col-md-offset-3 col-sm-9 ">
                     	<button type="submit" class="btn btn-primary">Save Changes <i class="md md-lock-open"></i></button>
-                         
+
                     </div>
                 </div>
 
-            {!! Form::close() !!} 
+            {!! Form::close() !!}
         </div>
         <div role="tabpanel" class="tab-pane" id="ac_password">
-            
+
             {!! Form::open(array('url' => 'admin/profile_pass','class'=>'form-horizontal padding-15','name'=>'pass_form','id'=>'pass_form','role'=>'form')) !!}
-                
+
                 <div class="form-group">
                     <label for="" class="col-sm-3 control-label">New Password</label>
                     <div class="col-sm-9">
@@ -154,7 +154,7 @@
                         <input type="password" name="password_confirmation" value="" class="form-control" value="">
                     </div>
                 </div>
-                 
+
                 <hr>
                 <div class="form-group">
                     <div class="col-md-offset-3 col-sm-9 ">
@@ -162,9 +162,9 @@
                     </div>
                 </div>
 
-            {!! Form::close() !!} 
+            {!! Form::close() !!}
         </div>
-         
+
     </div>
 </div>
 </div>
