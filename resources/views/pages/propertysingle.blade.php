@@ -383,6 +383,38 @@
 
                                   initMap();
 
+                                  function CenterControl(controlDiv, map) {
+
+                                      // Set CSS for the control border.
+                                      var controlUI = document.createElement('div');
+                                      controlUI.style.backgroundColor = '#fff';
+                                      controlUI.style.border = '2px solid #fff';
+                                      controlUI.style.borderRadius = '3px';
+                                      controlUI.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
+                                      controlUI.style.cursor = 'pointer';
+                                      controlUI.style.marginTop = '10px';
+                                      controlUI.style.textAlign = 'center';
+                                      controlUI.title = 'Street View';
+                                      controlDiv.appendChild(controlUI);
+
+                                      // Set CSS for the control interior.
+                                      var controlText = document.createElement('div');
+                                      controlText.style.color = 'rgb(25,25,25)';
+                                      controlText.style.fontFamily = 'Roboto,Arial,sans-serif';
+                                      controlText.style.fontSize = '16px';
+                                      controlText.style.lineHeight = '38px';
+                                      controlText.style.paddingLeft = '5px';
+                                      controlText.style.paddingRight = '5px';
+                                      controlText.innerHTML = 'Street View';
+                                      controlUI.appendChild(controlText);
+
+                                      // Setup the click event listeners: simply set the map to Chicago.
+                                      controlUI.addEventListener('click', function() {
+                                          toggleStreetView();
+                                      });
+
+                                  }
+
 
 
                                   // Handle a geolocation error
@@ -398,6 +430,23 @@
                                           center: pos,
                                           zoom: 15
                                       });
+
+                                      var centerControlDiv = document.createElement('div');
+                                      var centerControl = new CenterControl(centerControlDiv, map);
+
+                                      centerControlDiv.index = 1;
+                                      map.controls[google.maps.ControlPosition.TOP_CENTER].push(centerControlDiv);
+
+
+                                      panorama = map.getStreetView();
+                                      panorama.setPosition(pos);
+                                      panorama.setPov(/** @type {google.maps.StreetViewPov} */({
+                                          heading: 265,
+                                          pitch: 0
+                                      }));
+
+
+
 
                                       var base_url = window.location.origin;
 
@@ -433,6 +482,15 @@
 
                                       // Call Places Nearby Search on the default location
                                       getNearbyPlaces(pos,type);
+                                  }
+
+                                  function toggleStreetView() {
+                                      var toggle = panorama.getVisible();
+                                      if (toggle == false) {
+                                          panorama.setVisible(true);
+                                      } else {
+                                          panorama.setVisible(false);
+                                      }
                                   }
 
                                   // Perform a Places Nearby Search Request
@@ -555,7 +613,7 @@
 
                                       var base_url = window.location.origin;
 
-                                     
+
 
                                       if(type == 'shopping_mall')
                                       {
