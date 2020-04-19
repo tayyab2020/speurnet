@@ -67,7 +67,7 @@ class AdminController extends MainAdminController
 
             $img = Image::make($icon);
 
-            $img->fit(376, 250)->save($tmpFilePath.$hardPath.'-b.jpg');
+            $img->save($tmpFilePath.$hardPath.'-b.jpg');
             $img->fit(80, 80)->save($tmpFilePath.$hardPath. '-s.jpg');
 
             $user->image_icon = $hardPath;
