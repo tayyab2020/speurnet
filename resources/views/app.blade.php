@@ -36,6 +36,7 @@
     <!--[if lt IE 9]>
       <script src="{{ URL::asset('assets/js/html5shiv.js') }}"></script>
       <script src="{{ URL::asset('assets/js/respond.min.js') }}"></script>
+
     <![endif]-->
  	{!!getcong('site_header_code')!!}
 
@@ -57,6 +58,7 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="{{ URL::asset('assets/js/jquery.js') }}"></script>
+    <script src="https://kit.fontawesome.com/29532268c4.js" crossorigin="anonymous"></script>
     <script src="{{ URL::asset('assets/js/bootstrap.js') }}"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
     <script src="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/src/js/bootstrap-datetimepicker.js"></script>

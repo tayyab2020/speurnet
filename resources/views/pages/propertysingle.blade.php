@@ -7,7 +7,7 @@
 
 @section("content")
 
-    <script src="https://kit.fontawesome.com/29532268c4.js" crossorigin="anonymous"></script>
+
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
 
 <!-- begin:header -->
@@ -223,612 +223,6 @@
 
                           </div>
 
-                          <style>
-
-                              #map {
-                                  height: 100%;
-                                  background-color: grey;
-                              }
-
-                              .box {
-                                  width: 150px;
-                                  height: 90px;
-                                  background-color: transparent;
-                              }
-                              .box a {
-                                  color: #461e52;
-                                  display: block;
-                                  width: 100%;
-                                  height: 100%;
-                                  font-size: 16px;
-                                  font-weight: 700;
-                                  padding: 10% 30px 0 30px;
-                                  text-align: center;
-                                  transition: none;
-                                  line-height: 1;
-                                  font-family: 'Open Sans Condensed', Arial, Verdana, sans-serif;
-                                  outline: none;
-                              }
-                              .box:hover{
-                                  background-color: #461e52;
-                                  cursor: pointer;
-                              }
-
-                              .background-active{
-                                  background-color: #461e52;
-                              }
-
-                              .background-active a{
-                                  color:#fff;
-                                  text-decoration:none;
-                              }
-
-
-                              .box:hover a{
-                                  color:#fff;
-                                  text-decoration:none;
-                              }
-                              .mission-next-arrow {
-                                  position: absolute;
-                                  background: url(https://raw.githubusercontent.com/solodev/icon-box-slider/master/nextarrow2.png) no-repeat center;
-                                  background-size: contain;
-                                  top: 50%;
-                                  transform: translateY(-50%);
-                                  right: -36px;
-                                  height: 17px;
-                                  width: 10px;
-                                  border:none;
-                                  outline: none;
-                              }
-                              .mission-next-arrow:hover {
-                                  cursor: pointer;
-                              }
-                              .mission-prev-arrow {
-                                  background: url(https://raw.githubusercontent.com/solodev/icon-box-slider/master/prevarrow2.png) no-repeat center;
-                                  background-size: contain;
-                                  position: absolute;
-                                  top: 50%;
-                                  transform: translateY(-50%);
-                                  left: -36px;
-                                  height: 17px;
-                                  width: 10px;
-                                  border:none;
-                                  outline: none;
-                              }
-                              .mission-prev-arrow:hover {
-                                  cursor: pointer;
-                              }
-                              .box a.more-links {
-                                  color: #fff;
-                                  padding: 70px 110px 0 20px;
-                                  background: #a89269 url(https://raw.githubusercontent.com/solodev/icon-box-slider/master/rightarrow.png) no-repeat 155px 170px;
-                              }
-
-
-
-                          </style>
-
-                          <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
-
-                          <script>
-
-                              $( document ).ready(function() {
-
-                                  $(".box").on('click', function() {
-
-                                      $(this).parent().find('.box').removeClass('background-active');
-
-                                      $(this).addClass('background-active');
-
-                                      type = $(this).data('type');
-
-                                      infoWindow = new google.maps.InfoWindow;
-
-                                      handleLocationError(false, infoWindow,type);
-
-                                  });
-
-
-
-                                  let pos;
-                                  let map;
-                                  let bounds;
-                                  let infoWindow;
-                                  let currentInfoWindow;
-                                  let service;
-                                  let infoPane;
-                                  var markers = new Array();
-                                  var type = $('#type').val();
-
-
-                                  function initMap() {
-                                      // Initialize variables
-                                      bounds = new google.maps.LatLngBounds();
-                                      infoWindow = new google.maps.InfoWindow;
-                                      currentInfoWindow = infoWindow;
-                                      /* TODO: Step 4A3: Add a generic sidebar */
-                                      infoPane = document.getElementById('panel');
-
-                                      handleLocationError(false, infoWindow,type);
-
-                                      // Try HTML5 geolocation
-                                      /*if (navigator.geolocation) {
-                                          navigator.geolocation.getCurrentPosition(position => {
-                                              pos = {
-                                                  lat: position.coords.latitude,
-                                                  lng: position.coords.longitude
-                                              };
-                                              map = new google.maps.Map(document.getElementById('map'), {
-                                                  center: pos,
-                                                  zoom: 15
-                                              });
-                                              bounds.extend(pos);
-
-                                              infoWindow.setPosition(pos);
-                                              infoWindow.setContent('Location found.');
-                                              infoWindow.open(map);
-                                              map.setCenter(pos);
-
-                                              // Call Places Nearby Search on user's location
-                                              getNearbyPlaces(pos);
-                                          }, () => {
-                                              // Browser supports geolocation, but user has denied permission
-                                              handleLocationError(true, infoWindow);
-                                          });
-                                      } else {
-                                          // Browser doesn't support geolocation
-                                          handleLocationError(false, infoWindow);
-                                      }*/
-                                  }
-
-                                  initMap();
-
-                                  function CenterControl(controlDiv, map) {
-
-                                      // Set CSS for the control border.
-                                      var controlUI = document.createElement('div');
-                                      controlUI.style.backgroundColor = '#fff';
-                                      controlUI.style.border = '2px solid #fff';
-                                      controlUI.style.borderRadius = '3px';
-                                      controlUI.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
-                                      controlUI.style.cursor = 'pointer';
-                                      controlUI.style.marginTop = '10px';
-                                      controlUI.style.textAlign = 'center';
-                                      controlUI.title = 'Street View';
-                                      controlDiv.appendChild(controlUI);
-
-                                      // Set CSS for the control interior.
-                                      var controlText = document.createElement('div');
-                                      controlText.style.color = 'rgb(25,25,25)';
-                                      controlText.style.fontFamily = 'Roboto,Arial,sans-serif';
-                                      controlText.style.fontSize = '16px';
-                                      controlText.style.lineHeight = '38px';
-                                      controlText.style.paddingLeft = '5px';
-                                      controlText.style.paddingRight = '5px';
-                                      controlText.innerHTML = 'Street View';
-                                      controlUI.appendChild(controlText);
-
-                                      // Setup the click event listeners: simply set the map to Chicago.
-                                      controlUI.addEventListener('click', function() {
-                                          toggleStreetView();
-                                      });
-
-                                  }
-
-
-
-                                  // Handle a geolocation error
-                                  function handleLocationError(browserHasGeolocation, infoWindow, type) {
-
-
-                                      var lat = parseFloat(document.getElementById('map_latitude').value);
-                                      var lng = parseFloat(document.getElementById('map_longitude').value);
-
-                                      pos = { lat: lat, lng: lng };
-
-                                      map = new google.maps.Map(document.getElementById('map'), {
-                                          center: pos,
-                                          zoom: 15
-                                      });
-
-                                      var centerControlDiv = document.createElement('div');
-                                      var centerControl = new CenterControl(centerControlDiv, map);
-
-                                      centerControlDiv.index = 1;
-                                      map.controls[google.maps.ControlPosition.TOP_CENTER].push(centerControlDiv);
-
-
-                                      panorama = map.getStreetView();
-                                      panorama.setPosition(pos);
-                                      panorama.setPov(/** @type {google.maps.StreetViewPov} */({
-                                          heading: 265,
-                                          pitch: 0
-                                      }));
-
-
-
-
-                                      var base_url = window.location.origin;
-
-                                      var home_icon = base_url + '/assets/img/home_pin.png';
-
-                                      const marker = new google.maps.Marker({
-                                          map: map,
-                                          position: {lat: lat, lng: lng},
-                                          draggable: false,
-                                          animation: google.maps.Animation.DROP,
-                                          icon: {url:home_icon, scaledSize: new google.maps.Size(40, 45)}
-                                      });
-
-
-                                      marker.addListener('click', function() {
-
-                                          var location = $('#city').val();
-
-                                          infoWindow.setContent(location);
-                                          infoWindow.open(map, marker);
-                                          map.setZoom(15);
-                                          map.setCenter(marker.getPosition());
-
-                                      });
-
-                                      // Display an InfoWindow at the map center
-                                      infoWindow.setPosition(pos);
-                                      /*infoWindow.setContent(browserHasGeolocation ?
-                                          'Geolocation permissions denied. Using default location.' :
-                                          'Error: Your browser doesn\'t support geolocation.');
-                                      infoWindow.open(map);*/
-                                      currentInfoWindow = infoWindow;
-
-                                      // Call Places Nearby Search on the default location
-                                      getNearbyPlaces(pos,type);
-                                  }
-
-                                  function toggleStreetView() {
-                                      var toggle = panorama.getVisible();
-                                      if (toggle == false) {
-                                          panorama.setVisible(true);
-                                      } else {
-                                          panorama.setVisible(false);
-                                      }
-                                  }
-
-                                  // Perform a Places Nearby Search Request
-                                  function getNearbyPlaces(position,type) {
-
-
-                                      let request = {
-                                          location: position,
-                                          radius: '1000',
-                                          type: [type]
-                                      };
-
-                                      var new_type = capitalizeFirstLetter(type);
-
-                                      function capitalizeFirstLetter(string) {
-                                          return string.charAt(0).toUpperCase() + string.slice(1);
-                                      }
-
-
-                                          if(new_type == 'Shopping_mall')
-                                          {
-
-                                              new_type = 'Shopping Malls';
-
-                                          }
-
-                                      $("#panel div:eq(0)").children().first().text(new_type);
-
-
-                                      service = new google.maps.places.PlacesService(map);
-                                      service.nearbySearch(request, nearbyCallback);
-                                  }
-
-                                  // Handle the results (up to 20) of the Nearby Search
-                                  function nearbyCallback(results, status) {
-
-                                      if (status == google.maps.places.PlacesServiceStatus.OK) {
-
-                                          $("#panel div:eq(0)").children().eq(1).text(results.length + ' results found');
-
-                                          /*createMarkers(results);*/
-
-                                          createMarkersDetails(results,pos);
-                                      }
-                                      else
-                                      {
-
-                                          $("#panel div:eq(0)").children().eq(1).text('0 results found');
-
-                                          $("#panel div").not(':first').remove();
-
-                                      }
-                                  }
-
-                                  // Set markers at the location of each place result
-
-                                  /*function createMarkers(places) {
-
-
-
-                                      markers = new Array();
-
-                                      var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
-
-
-
-                                      places.forEach(place => {
-
-
-                                          let marker = new google.maps.Marker({
-                                              position: place.geometry.location,
-                                              map: map,
-                                              icon: image,
-                                              title: place.name
-                                          });
-
-
-
-                                          markers.push(marker);
-
-                                          /!* TODO: Step 4B: Add click listeners to the markers *!/
-                                          // Add click listener to each marker
-                                          google.maps.event.addListener(marker, 'click', () => {
-                                              let request = {
-                                                  placeId: place.place_id,
-                                                  fields: ['name', 'formatted_address', 'geometry', 'rating',
-                                                      'website', 'photos']
-                                              };
-
-                                              /!* Only fetch the details of a place when the user clicks on a marker.
-                                               * If we fetch the details for all place results as soon as we get
-                                               * the search response, we will hit API rate limits. *!/
-
-
-                                              /!*service.getDetails(request, (placeResult, status) => {
-                                                  showDetails(placeResult, marker, status)
-                                              });*!/
-
-                                              showDetails(place.name, marker);
-
-                                          });
-
-                                          // Adjust the map bounds to include the location of this marker
-                                          bounds.extend(place.geometry.location);
-                                      });
-                                      /!* Once all the markers have been placed, adjust the bounds of the map to
-                                       * show all the markers within the visible area. *!/
-                                      map.fitBounds(bounds);
-                                  }*/
-
-
-                                  function createMarkersDetails(places,position) {
-
-
-                                      var i = 0;
-
-                                      var length = places.length;
-
-                                      markers = new Array();
-
-                                      var base_url = window.location.origin;
-
-
-
-                                      if(type == 'shopping_mall')
-                                      {
-                                          var icon = base_url + '/assets/img/shopping_mall-nearby-marker.png';
-                                      }
-                                      else if(type == 'school')
-                                      {
-                                          var icon = base_url + '/assets/img/school-nearby-marker.png';
-                                      }
-                                      else if(type == 'bank')
-                                      {
-                                          var icon = base_url + '/assets/img/bank-nearby-marker.png';
-                                      }
-                                      else if(type == 'hospital')
-                                      {
-                                          var icon = base_url + '/assets/img/hospital-nearby-marker.png';
-                                      }
-                                      else if(type == 'bakery')
-                                      {
-                                          var icon = base_url + '/assets/img/bakery-nearby-marker.png';
-                                      }
-                                      else if(type == 'pharmacy')
-                                      {
-                                          var icon = base_url + '/assets/img/pharmacy-nearby-marker.png';
-                                      }
-
-
-                                      $("#panel div").not(':first').remove();
-
-                                      places.forEach(place => {
-
-
-                                          var origin1 = new google.maps.LatLng(position.lat, position.lng);
-
-                                          var destinationA = new google.maps.LatLng(place.geometry.location.lat(), place.geometry.location.lng());
-
-
-                                          var service = new google.maps.DistanceMatrixService();
-
-                                          service.getDistanceMatrix(
-                                              {
-                                                  origins: [origin1],
-                                                  destinations: [destinationA],
-                                                  travelMode: 'DRIVING',
-                                                  avoidHighways: false,
-                                                  avoidTolls: false,
-                                              }, callback);
-
-
-                                          function callback(response, status) {
-
-
-                                              let marker = new google.maps.Marker({
-                                                  position: place.geometry.location,
-                                                  map: map,
-                                                  animation: google.maps.Animation.DROP,
-                                                  icon: {url:icon, scaledSize: new google.maps.Size(35, 40)},
-                                                  title: place.name
-                                              });
-
-
-
-                                              markers.push(marker);
-
-                                              /* TODO: Step 4B: Add click listeners to the markers */
-                                              // Add click listener to each marker
-                                              google.maps.event.addListener(marker, 'click', () => {
-                                                  let request = {
-                                                      placeId: place.place_id,
-                                                      fields: ['name', 'formatted_address', 'geometry', 'rating',
-                                                          'website', 'photos']
-                                                  };
-
-                                                  /* Only fetch the details of a place when the user clicks on a marker.
-                                                   * If we fetch the details for all place results as soon as we get
-                                                   * the search response, we will hit API rate limits. */
-
-
-                                                  /*service.getDetails(request, (placeResult, status) => {
-                                                      showDetails(placeResult, marker, status)
-                                                  });*/
-
-                                                  showDetails(place.name, marker);
-
-                                              });
-
-                                              // Adjust the map bounds to include the location of this marker
-                                              bounds.extend(place.geometry.location);
-
-
-
-                                              $("#panel div:eq(0)").after('<a data-id="'+i+'" href="javascript:void(0);" class="trigger"><div style="padding: 10px 0px 0px 10px;border-bottom: 1px solid rgba(190, 190, 190, 0.6);">\n' +
-                                                  '                                                  <span style="display: block;">'+place.name+'</span>\n' +
-                                                  '                                                  <span style="display: inline-block;"><i class="fas fa-tachometer-alt" aria-hidden="true" style="font-size: 15px;margin: 10px;float: left;"></i><p style="float: left;margin-top: 6px;margin-bottom: 0;">'+response.rows[0].elements[0].distance.text+'</p></span>\n' +
-                                                  '                                              </div></a>');
-
-
-                                              i = i + 1;
-
-                                          }
-
-
-                                          $(document).on("click", "a.trigger" , function() {
-
-                                              google.maps.event.trigger(markers[$(this).data('id')], 'click');
-
-                                          });
-
-                                      });
-
-                                  }
-
-
-
-
-
-                                  /* TODO: Step 4C: Show place details in an info window */
-                                  // Builds an InfoWindow to display details above the marker
-
-
-                                  /*function showDetails(placeResult, marker, status) {
-                                      if (status == google.maps.places.PlacesServiceStatus.OK) {
-                                          let placeInfowindow = new google.maps.InfoWindow();
-                                          let rating = "None";
-                                          if (placeResult.rating) rating = placeResult.rating;
-                                          placeInfowindow.setContent('<div><strong>' + placeResult.name +
-                                              '</strong><br>' + 'Rating: ' + rating + '</div>');
-                                          placeInfowindow.open(marker.map, marker);
-                                          currentInfoWindow.close();
-                                          currentInfoWindow = placeInfowindow;
-                                         /!* showPanel(placeResult);*!/
-                                      } else {
-                                          console.log('showDetails failed: ' + status);
-                                      }
-                                  }*/
-
-                                  function showDetails(placeName,marker) {
-
-                                      let placeInfowindow = new google.maps.InfoWindow();
-
-                                      placeInfowindow.setContent('<div><strong>' + placeName + '</strong></div>');
-                                      placeInfowindow.open(marker.map, marker);
-                                      currentInfoWindow.close();
-                                      currentInfoWindow = placeInfowindow;
-
-
-                                  }
-
-                                  /* TODO: Step 4D: Load place details in a sidebar */
-                                  // Displays place details in a sidebar
-                                  function showPanel(placeResult) {
-                                      // If infoPane is already open, close it
-                                      if (infoPane.classList.contains("open")) {
-                                          infoPane.classList.remove("open");
-                                      }
-
-                                      // Clear the previous details
-                                      while (infoPane.lastChild) {
-                                          infoPane.removeChild(infoPane.lastChild);
-                                      }
-
-                                      /* TODO: Step 4E: Display a Place Photo with the Place Details */
-                                      // Add the primary photo, if there is one
-                                      if (placeResult.photos) {
-                                          let firstPhoto = placeResult.photos[0];
-                                          let photo = document.createElement('img');
-                                          photo.classList.add('hero');
-                                          photo.src = firstPhoto.getUrl();
-                                          infoPane.appendChild(photo);
-                                      }
-
-                                      // Add place details with text formatting
-                                      let name = document.createElement('h1');
-                                      name.classList.add('place');
-                                      name.textContent = placeResult.name;
-                                      infoPane.appendChild(name);
-                                      if (placeResult.rating) {
-                                          let rating = document.createElement('p');
-                                          rating.classList.add('details');
-                                          rating.textContent = `Rating: ${placeResult.rating} \u272e`;
-                                          infoPane.appendChild(rating);
-                                      }
-                                      let address = document.createElement('p');
-                                      address.classList.add('details');
-                                      address.textContent = placeResult.formatted_address;
-                                      infoPane.appendChild(address);
-                                      if (placeResult.website) {
-                                          let websitePara = document.createElement('p');
-                                          let websiteLink = document.createElement('a');
-                                          let websiteUrl = document.createTextNode(placeResult.website);
-                                          websiteLink.appendChild(websiteUrl);
-                                          websiteLink.title = placeResult.website;
-                                          websiteLink.href = placeResult.website;
-                                          websitePara.appendChild(websiteLink);
-                                          infoPane.appendChild(websitePara);
-                                      }
-
-                                      // Open the infoPane
-                                      infoPane.classList.add("open");
-                                  }
-
-
-
-                                  $('.box-carousel').slick({
-                                      dots: false,
-                                      arrows: true,
-                                      slidesToShow: 4,
-                                      slidesToScroll: 1,
-                                      prevArrow: "<button type='button' class='mission-prev-arrow'></button>",
-                                      nextArrow: "<button type='button' class='mission-next-arrow'></button>"
-                                  });
-
-                              });
-
-                          </script>
 
                       </div>
 
@@ -957,5 +351,612 @@
       </div>
     </div>
     <!-- end:modal-message -->
+
+    <style>
+
+        #map {
+            height: 100%;
+            background-color: grey;
+        }
+
+        .box {
+            width: 150px;
+            height: 90px;
+            background-color: transparent;
+        }
+        .box a {
+            color: #461e52;
+            display: block;
+            width: 100%;
+            height: 100%;
+            font-size: 16px;
+            font-weight: 700;
+            padding: 10% 30px 0 30px;
+            text-align: center;
+            transition: none;
+            line-height: 1;
+            font-family: 'Open Sans Condensed', Arial, Verdana, sans-serif;
+            outline: none;
+        }
+        .box:hover{
+            background-color: #461e52;
+            cursor: pointer;
+        }
+
+        .background-active{
+            background-color: #461e52;
+        }
+
+        .background-active a{
+            color:#fff;
+            text-decoration:none;
+        }
+
+
+        .box:hover a{
+            color:#fff;
+            text-decoration:none;
+        }
+        .mission-next-arrow {
+            position: absolute;
+            background: url(https://raw.githubusercontent.com/solodev/icon-box-slider/master/nextarrow2.png) no-repeat center;
+            background-size: contain;
+            top: 50%;
+            transform: translateY(-50%);
+            right: -36px;
+            height: 17px;
+            width: 10px;
+            border:none;
+            outline: none;
+        }
+        .mission-next-arrow:hover {
+            cursor: pointer;
+        }
+        .mission-prev-arrow {
+            background: url(https://raw.githubusercontent.com/solodev/icon-box-slider/master/prevarrow2.png) no-repeat center;
+            background-size: contain;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: -36px;
+            height: 17px;
+            width: 10px;
+            border:none;
+            outline: none;
+        }
+        .mission-prev-arrow:hover {
+            cursor: pointer;
+        }
+        .box a.more-links {
+            color: #fff;
+            padding: 70px 110px 0 20px;
+            background: #a89269 url(https://raw.githubusercontent.com/solodev/icon-box-slider/master/rightarrow.png) no-repeat 155px 170px;
+        }
+
+
+
+    </style>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+
+    <script>
+
+        $( document ).ready(function() {
+
+            $(".box").on('click', function() {
+
+                $(this).parent().find('.box').removeClass('background-active');
+
+                $(this).addClass('background-active');
+
+                type = $(this).data('type');
+
+                infoWindow = new google.maps.InfoWindow;
+
+                handleLocationError(false, infoWindow,type);
+
+            });
+
+
+
+            let pos;
+            let map;
+            let bounds;
+            let infoWindow;
+            let currentInfoWindow;
+            let service;
+            let infoPane;
+            var markers = new Array();
+            var type = $('#type').val();
+
+
+            function initMap() {
+                // Initialize variables
+                bounds = new google.maps.LatLngBounds();
+                infoWindow = new google.maps.InfoWindow;
+                currentInfoWindow = infoWindow;
+                /* TODO: Step 4A3: Add a generic sidebar */
+                infoPane = document.getElementById('panel');
+
+                handleLocationError(false, infoWindow,type);
+
+                // Try HTML5 geolocation
+                /*if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(position => {
+                        pos = {
+                            lat: position.coords.latitude,
+                            lng: position.coords.longitude
+                        };
+                        map = new google.maps.Map(document.getElementById('map'), {
+                            center: pos,
+                            zoom: 15
+                        });
+                        bounds.extend(pos);
+
+                        infoWindow.setPosition(pos);
+                        infoWindow.setContent('Location found.');
+                        infoWindow.open(map);
+                        map.setCenter(pos);
+
+                        // Call Places Nearby Search on user's location
+                        getNearbyPlaces(pos);
+                    }, () => {
+                        // Browser supports geolocation, but user has denied permission
+                        handleLocationError(true, infoWindow);
+                    });
+                } else {
+                    // Browser doesn't support geolocation
+                    handleLocationError(false, infoWindow);
+                }*/
+            }
+
+            initMap();
+
+            function CenterControl(controlDiv, map) {
+
+                // Set CSS for the control border.
+                var controlUI = document.createElement('div');
+                controlUI.style.backgroundColor = '#fff';
+                controlUI.style.border = '2px solid #fff';
+                controlUI.style.borderRadius = '3px';
+                controlUI.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
+                controlUI.style.cursor = 'pointer';
+                controlUI.style.marginTop = '10px';
+                controlUI.style.textAlign = 'center';
+                controlUI.title = 'Street View';
+                controlDiv.appendChild(controlUI);
+
+                // Set CSS for the control interior.
+                var controlText = document.createElement('div');
+                controlText.style.color = 'rgb(25,25,25)';
+                controlText.style.fontFamily = 'Roboto,Arial,sans-serif';
+                controlText.style.fontSize = '16px';
+                controlText.style.lineHeight = '38px';
+                controlText.style.paddingLeft = '5px';
+                controlText.style.paddingRight = '5px';
+                controlText.innerHTML = 'Street View';
+                controlUI.appendChild(controlText);
+
+                // Setup the click event listeners: simply set the map to Chicago.
+                controlUI.addEventListener('click', function() {
+                    toggleStreetView();
+                });
+
+            }
+
+
+
+            // Handle a geolocation error
+            function handleLocationError(browserHasGeolocation, infoWindow, type) {
+
+
+                var lat = parseFloat(document.getElementById('map_latitude').value);
+                var lng = parseFloat(document.getElementById('map_longitude').value);
+
+                pos = { lat: lat, lng: lng };
+
+                map = new google.maps.Map(document.getElementById('map'), {
+                    center: pos,
+                    zoom: 15
+                });
+
+                var centerControlDiv = document.createElement('div');
+                var centerControl = new CenterControl(centerControlDiv, map);
+
+                centerControlDiv.index = 1;
+                map.controls[google.maps.ControlPosition.TOP_CENTER].push(centerControlDiv);
+
+
+                panorama = map.getStreetView();
+                panorama.setPosition(pos);
+                panorama.setPov(/** @type {google.maps.StreetViewPov} */({
+                    heading: 265,
+                    pitch: 0
+                }));
+
+
+
+
+                var base_url = window.location.origin;
+
+                var home_icon = base_url + '/assets/img/home_pin.png';
+
+                const marker = new google.maps.Marker({
+                    map: map,
+                    position: {lat: lat, lng: lng},
+                    draggable: false,
+                    animation: google.maps.Animation.DROP,
+                    icon: {url:home_icon, scaledSize: new google.maps.Size(40, 45)}
+                });
+
+
+                marker.addListener('click', function() {
+
+                    var location = $('#city').val();
+
+                    infoWindow.setContent(location);
+                    infoWindow.open(map, marker);
+                    map.setZoom(15);
+                    map.setCenter(marker.getPosition());
+
+                });
+
+                // Display an InfoWindow at the map center
+                infoWindow.setPosition(pos);
+                /*infoWindow.setContent(browserHasGeolocation ?
+                    'Geolocation permissions denied. Using default location.' :
+                    'Error: Your browser doesn\'t support geolocation.');
+                infoWindow.open(map);*/
+                currentInfoWindow = infoWindow;
+
+                // Call Places Nearby Search on the default location
+                getNearbyPlaces(pos,type);
+            }
+
+            function toggleStreetView() {
+                var toggle = panorama.getVisible();
+                if (toggle == false) {
+                    panorama.setVisible(true);
+                } else {
+                    panorama.setVisible(false);
+                }
+            }
+
+            // Perform a Places Nearby Search Request
+            function getNearbyPlaces(position,type) {
+
+
+                let request = {
+                    location: position,
+                    radius: '1000',
+                    type: [type]
+                };
+
+                var new_type = capitalizeFirstLetter(type);
+
+                function capitalizeFirstLetter(string) {
+                    return string.charAt(0).toUpperCase() + string.slice(1);
+                }
+
+
+                if(new_type == 'Shopping_mall')
+                {
+
+                    new_type = 'Shopping Malls';
+
+                }
+
+                $("#panel div:eq(0)").children().first().text(new_type);
+
+
+                service = new google.maps.places.PlacesService(map);
+                service.nearbySearch(request, nearbyCallback);
+            }
+
+            // Handle the results (up to 20) of the Nearby Search
+            function nearbyCallback(results, status) {
+
+                if (status == google.maps.places.PlacesServiceStatus.OK) {
+
+                    $("#panel div:eq(0)").children().eq(1).text(results.length + ' results found');
+
+                    /*createMarkers(results);*/
+
+                    createMarkersDetails(results,pos);
+                }
+                else
+                {
+
+                    $("#panel div:eq(0)").children().eq(1).text('0 results found');
+
+                    $("#panel div").not(':first').remove();
+
+                }
+            }
+
+            // Set markers at the location of each place result
+
+            /*function createMarkers(places) {
+
+
+
+                markers = new Array();
+
+                var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
+
+
+
+                places.forEach(place => {
+
+
+                    let marker = new google.maps.Marker({
+                        position: place.geometry.location,
+                        map: map,
+                        icon: image,
+                        title: place.name
+                    });
+
+
+
+                    markers.push(marker);
+
+                    /!* TODO: Step 4B: Add click listeners to the markers *!/
+                    // Add click listener to each marker
+                    google.maps.event.addListener(marker, 'click', () => {
+                        let request = {
+                            placeId: place.place_id,
+                            fields: ['name', 'formatted_address', 'geometry', 'rating',
+                                'website', 'photos']
+                        };
+
+                        /!* Only fetch the details of a place when the user clicks on a marker.
+                         * If we fetch the details for all place results as soon as we get
+                         * the search response, we will hit API rate limits. *!/
+
+
+                        /!*service.getDetails(request, (placeResult, status) => {
+                            showDetails(placeResult, marker, status)
+                        });*!/
+
+                        showDetails(place.name, marker);
+
+                    });
+
+                    // Adjust the map bounds to include the location of this marker
+                    bounds.extend(place.geometry.location);
+                });
+                /!* Once all the markers have been placed, adjust the bounds of the map to
+                 * show all the markers within the visible area. *!/
+                map.fitBounds(bounds);
+            }*/
+
+
+            function createMarkersDetails(places,position) {
+
+
+                var i = 0;
+
+                var length = places.length;
+
+                markers = new Array();
+
+                var base_url = window.location.origin;
+
+
+
+                if(type == 'shopping_mall')
+                {
+                    var icon = base_url + '/assets/img/shopping_mall-nearby-marker.png';
+                }
+                else if(type == 'school')
+                {
+                    var icon = base_url + '/assets/img/school-nearby-marker.png';
+                }
+                else if(type == 'bank')
+                {
+                    var icon = base_url + '/assets/img/bank-nearby-marker.png';
+                }
+                else if(type == 'hospital')
+                {
+                    var icon = base_url + '/assets/img/hospital-nearby-marker.png';
+                }
+                else if(type == 'bakery')
+                {
+                    var icon = base_url + '/assets/img/bakery-nearby-marker.png';
+                }
+                else if(type == 'pharmacy')
+                {
+                    var icon = base_url + '/assets/img/pharmacy-nearby-marker.png';
+                }
+
+
+                $("#panel div").not(':first').remove();
+
+                places.forEach(place => {
+
+
+                    var origin1 = new google.maps.LatLng(position.lat, position.lng);
+
+                    var destinationA = new google.maps.LatLng(place.geometry.location.lat(), place.geometry.location.lng());
+
+
+                    var service = new google.maps.DistanceMatrixService();
+
+                    service.getDistanceMatrix(
+                        {
+                            origins: [origin1],
+                            destinations: [destinationA],
+                            travelMode: 'DRIVING',
+                            avoidHighways: false,
+                            avoidTolls: false,
+                        }, callback);
+
+
+                    function callback(response, status) {
+
+
+                        let marker = new google.maps.Marker({
+                            position: place.geometry.location,
+                            map: map,
+                            animation: google.maps.Animation.DROP,
+                            icon: {url:icon, scaledSize: new google.maps.Size(35, 40)},
+                            title: place.name
+                        });
+
+
+
+                        markers.push(marker);
+
+                        /* TODO: Step 4B: Add click listeners to the markers */
+                        // Add click listener to each marker
+                        google.maps.event.addListener(marker, 'click', () => {
+                            let request = {
+                                placeId: place.place_id,
+                                fields: ['name', 'formatted_address', 'geometry', 'rating',
+                                    'website', 'photos']
+                            };
+
+                            /* Only fetch the details of a place when the user clicks on a marker.
+                             * If we fetch the details for all place results as soon as we get
+                             * the search response, we will hit API rate limits. */
+
+
+                            /*service.getDetails(request, (placeResult, status) => {
+                                showDetails(placeResult, marker, status)
+                            });*/
+
+                            showDetails(place.name, marker);
+
+                        });
+
+                        // Adjust the map bounds to include the location of this marker
+                        bounds.extend(place.geometry.location);
+
+
+
+                        $("#panel div:eq(0)").after('<a data-id="'+i+'" href="javascript:void(0);" class="trigger"><div style="padding: 10px 0px 0px 10px;border-bottom: 1px solid rgba(190, 190, 190, 0.6);">\n' +
+                            '                                                  <span style="display: block;">'+place.name+'</span>\n' +
+                            '                                                  <span style="display: inline-block;"><i class="fas fa-tachometer-alt" aria-hidden="true" style="font-size: 15px;margin: 10px;float: left;"></i><p style="float: left;margin-top: 6px;margin-bottom: 0;">'+response.rows[0].elements[0].distance.text+'</p></span>\n' +
+                            '                                              </div></a>');
+
+
+                        i = i + 1;
+
+                    }
+
+
+                    $(document).on("click", "a.trigger" , function() {
+
+                        google.maps.event.trigger(markers[$(this).data('id')], 'click');
+
+                    });
+
+                });
+
+            }
+
+
+
+
+
+            /* TODO: Step 4C: Show place details in an info window */
+            // Builds an InfoWindow to display details above the marker
+
+
+            /*function showDetails(placeResult, marker, status) {
+                if (status == google.maps.places.PlacesServiceStatus.OK) {
+                    let placeInfowindow = new google.maps.InfoWindow();
+                    let rating = "None";
+                    if (placeResult.rating) rating = placeResult.rating;
+                    placeInfowindow.setContent('<div><strong>' + placeResult.name +
+                        '</strong><br>' + 'Rating: ' + rating + '</div>');
+                    placeInfowindow.open(marker.map, marker);
+                    currentInfoWindow.close();
+                    currentInfoWindow = placeInfowindow;
+                   /!* showPanel(placeResult);*!/
+                } else {
+                    console.log('showDetails failed: ' + status);
+                }
+            }*/
+
+            function showDetails(placeName,marker) {
+
+                let placeInfowindow = new google.maps.InfoWindow();
+
+                placeInfowindow.setContent('<div><strong>' + placeName + '</strong></div>');
+                placeInfowindow.open(marker.map, marker);
+                currentInfoWindow.close();
+                currentInfoWindow = placeInfowindow;
+
+
+            }
+
+            /* TODO: Step 4D: Load place details in a sidebar */
+            // Displays place details in a sidebar
+            function showPanel(placeResult) {
+                // If infoPane is already open, close it
+                if (infoPane.classList.contains("open")) {
+                    infoPane.classList.remove("open");
+                }
+
+                // Clear the previous details
+                while (infoPane.lastChild) {
+                    infoPane.removeChild(infoPane.lastChild);
+                }
+
+                /* TODO: Step 4E: Display a Place Photo with the Place Details */
+                // Add the primary photo, if there is one
+                if (placeResult.photos) {
+                    let firstPhoto = placeResult.photos[0];
+                    let photo = document.createElement('img');
+                    photo.classList.add('hero');
+                    photo.src = firstPhoto.getUrl();
+                    infoPane.appendChild(photo);
+                }
+
+                // Add place details with text formatting
+                let name = document.createElement('h1');
+                name.classList.add('place');
+                name.textContent = placeResult.name;
+                infoPane.appendChild(name);
+                if (placeResult.rating) {
+                    let rating = document.createElement('p');
+                    rating.classList.add('details');
+                    rating.textContent = `Rating: ${placeResult.rating} \u272e`;
+                    infoPane.appendChild(rating);
+                }
+                let address = document.createElement('p');
+                address.classList.add('details');
+                address.textContent = placeResult.formatted_address;
+                infoPane.appendChild(address);
+                if (placeResult.website) {
+                    let websitePara = document.createElement('p');
+                    let websiteLink = document.createElement('a');
+                    let websiteUrl = document.createTextNode(placeResult.website);
+                    websiteLink.appendChild(websiteUrl);
+                    websiteLink.title = placeResult.website;
+                    websiteLink.href = placeResult.website;
+                    websitePara.appendChild(websiteLink);
+                    infoPane.appendChild(websitePara);
+                }
+
+                // Open the infoPane
+                infoPane.classList.add("open");
+            }
+
+
+
+            $('.box-carousel').slick({
+                dots: false,
+                arrows: true,
+                slidesToShow: 4,
+                slidesToScroll: 1,
+                prevArrow: "<button type='button' class='mission-prev-arrow'></button>",
+                nextArrow: "<button type='button' class='mission-next-arrow'></button>"
+            });
+
+        });
+
+    </script>
 
 @endsection

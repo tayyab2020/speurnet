@@ -6,7 +6,7 @@
 
 @section("content")
 
-    <script src="https://kit.fontawesome.com/29532268c4.js" crossorigin="anonymous"></script>
+
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.css" rel="stylesheet">
 
 
