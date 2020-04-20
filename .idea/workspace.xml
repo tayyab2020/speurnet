@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7fe7f36f-c82f-4504-8c0a-7874522d22c9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PropertiesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PropertiesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/pages/addeditproperty.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/pages/addeditproperty.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/app.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/pages/properties.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/properties.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/pages/propertysingle.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/propertysingle.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -205,7 +200,7 @@
       <workItem from="1587231303058" duration="18145000" />
       <workItem from="1587309735686" duration="382000" />
       <workItem from="1587310342077" duration="1719000" />
-      <workItem from="1587393741174" duration="7311000" />
+      <workItem from="1587393741174" duration="7628000" />
     </task>
     <servers />
   </component>

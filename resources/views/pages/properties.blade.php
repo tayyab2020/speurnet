@@ -43,7 +43,7 @@
                 <img src="{{ URL::asset('upload/properties/'.$property->featured_image.'-s.jpg') }}" alt="{{ $property->property_name }}">
 
 
-                  <div class="property-price" style="top: 12px;left: 12px;">
+                  <div class="property-price" style="top: 12px;left: 12px;border-radius: 5px;">
                       <span>For {{$property->property_purpose}}</span>
                   {{--<h4>{{ getPropertyTypeName($property->property_type)->types }}</h4>
                   <span>{{getcong('currency_sign')}}@if($property->sale_price) {{$property->sale_price}} @else {{$property->rent_price}} @endif</span>--}}
@@ -52,7 +52,7 @@
 
                   <?php $x = 0; if($property->featured_image){ $x = $x + 1;} if($property->property_imags1){ $x = $x + 1;} if($property->property_imags2){ $x = $x + 1;} if($property->property_imags3){ $x = $x + 1;} if($property->property_imags4){ $x = $x + 1;} if($property->property_imags5){ $x = $x + 1;} ?>
 
-                <div class="property-status" style="background:#48cfad;width:40%;bottom: 12px;left: 12px;border-radius: 7%;padding: 5px 6px 5px 10px;">
+                <div class="property-status" style="background:#48cfad;width:40%;bottom: 12px;left: 12px;border-radius: 5px;padding: 5px 6px 5px 10px;">
                  <span>Available Immediately</span>
                 </div>
 
@@ -77,10 +77,10 @@
                 <div class="property-content" style="border-top:1px solid #cacaca;display: flex;padding: 0;height: 125px;align-items: center;">
 
                 <div style="width: 40%;padding-left: 3px;">
-                    <span>Brought to you by</span>
+                    <span style="font-weight: 700;color: #aca6a6;">Brought to you by</span>
                 </div>
 
-                <div style="width: 60%;height: 100%;padding: 8px;">
+                <div style="width: 60%;height: 100%;padding: 8px;padding-bottom: 2px;">
 
                     @if($property->image_icon)
                     <img style="width: 100%;height: 100%;" src="{{ URL::asset('upload/members/'.$property->image_icon.'-b.jpg') }}">
