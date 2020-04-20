@@ -35,7 +35,7 @@
            	  @foreach($properties as $i => $property)
              	 <div class="col-md-6 col-sm-6 col-xs-12">
 
-                     <div class="property-price" style="position:relative;max-width: 100%;font-size: 15px;padding: 10px 0px;margin-bottom: 12px;">Open House <span>{{$property->open_date}} {{$property->open_timeFrom}} to {{$property->open_timeTo}}</span></div>
+                     <div class="property-price" style="position:relative;max-width: 100%;font-size: 15px;padding: 10px 0px;margin-bottom: 12px;border-radius: 5px;">Open House <span>{{$property->open_date}} {{$property->open_timeFrom}} to {{$property->open_timeTo}}</span></div>
 
             <div class="property-container" style="border: 1px solid #48cfad;">
               <div class="property-image">
