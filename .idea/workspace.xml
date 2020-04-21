@@ -2,6 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7fe7f36f-c82f-4504-8c0a-7874522d22c9" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/PropertiesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/PropertiesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PropertiesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PropertiesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/app.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/pages/properties.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/properties.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -200,7 +204,8 @@
       <workItem from="1587231303058" duration="18145000" />
       <workItem from="1587309735686" duration="382000" />
       <workItem from="1587310342077" duration="1719000" />
-      <workItem from="1587393741174" duration="7628000" />
+      <workItem from="1587393741174" duration="8082000" />
+      <workItem from="1587489358900" duration="14007000" />
     </task>
     <servers />
   </component>
@@ -219,10 +224,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1587232447831" />
-    <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1587393800304">
+    <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1587489371571">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1587393800304" />
+    <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1587489371571" />
     <state x="492" y="286" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1585578486261">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
@@ -232,10 +237,10 @@
     </state>
     <state x="380" y="101" width="606" height="536" key="find.popup/0.0.1366.738@0.0.1366.738" timestamp="1585579040164" />
     <state x="427" y="113" width="682" height="599" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1587288868235" />
-    <state x="389" y="66" width="756" height="758" key="search.everywhere.popup" timestamp="1587288735511">
+    <state x="389" y="66" width="756" height="758" key="search.everywhere.popup" timestamp="1587504553736">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="346" y="59" width="672" height="678" key="search.everywhere.popup/0.0.1366.738@0.0.1366.738" timestamp="1585581891307" />
-    <state x="389" y="66" width="756" height="758" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1587288735511" />
+    <state x="389" y="66" width="756" height="758" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1587504553736" />
   </component>
 </project>

@@ -32,15 +32,18 @@
 
             <!-- begin:product -->
             <div class="row {{--container-realestate--}}">
+
+                <?php $i = 0; ?>
+                
            	  @foreach($properties as $i => $property)
-             	 <div class="col-md-6 col-sm-6 col-xs-12">
+             	 <div class="col-md-6 col-sm-6 col-xs-12" style="margin-bottom: 40px;">
 
                      <div class="property-price" style="position:relative;max-width: 100%;font-size: 15px;padding: 10px 0px;margin-bottom: 12px;border-radius: 5px;">Open House <span>{{$property->open_date}} {{$property->open_timeFrom}} to {{$property->open_timeTo}}</span></div>
 
-            <div class="property-container" style="border: 1px solid #48cfad;">
+            <div class="property-container" style="border: 1px solid #48cfad;margin-bottom: 10px">
               <div class="property-image">
 
-                <img src="{{ URL::asset('upload/properties/'.$property->featured_image.'-s.jpg') }}" alt="{{ $property->property_name }}">
+                <img src="{{ URL::asset('upload/properties/'.$property->featured_image.'-b.jpg') }}" alt="{{ $property->property_name }}">
 
 
                   <div class="property-price" style="top: 12px;left: 12px;border-radius: 5px;">
@@ -50,15 +53,69 @@
                 </div>
 
 
-                  <?php $x = 0; if($property->featured_image){ $x = $x + 1;} if($property->property_imags1){ $x = $x + 1;} if($property->property_imags2){ $x = $x + 1;} if($property->property_imags3){ $x = $x + 1;} if($property->property_imags4){ $x = $x + 1;} if($property->property_imags5){ $x = $x + 1;} ?>
 
                 <div class="property-status" style="background:#48cfad;width:40%;bottom: 12px;left: 12px;border-radius: 5px;padding: 5px 6px 5px 10px;">
                  <span>Available Immediately</span>
                 </div>
 
+                  <?php
+
+                  $x = 0;
+
+                  if($property->featured_image){ $x = $x + 1;} if($property->property_images1){ $x = $x + 1;} if($property->property_images2){ $x = $x + 1;} if($property->property_images3){ $x = $x + 1;} if($property->property_images4){ $x = $x + 1;} if($property->property_images5){ $x = $x + 1;}
+
+                  preg_match('/<iframe.*src=\"(.*)\".*><\/iframe>/isU', $property->description, $matches);
+                  if(!empty($matches[1])){ $url = $matches[1];}else{ $url = '';}
+
+                  ?>
+
                   <div class="property-status" style="bottom: 12px;right: 12px;background: rgba(0,0,0,.5);border-radius: 7%;padding: 5px 6px 5px 10px;">
-                      <a style="color: white;"> <i class="fas fa-film" style="font-size: 18px;margin-right: 12px;"></i> </a>
-                      <a href="{{URL::to('properties/'.$property->property_slug)}}" style="color: white;"> <i class="fas fa-camera" style="font-size: 18px;"></i><span style="padding: 0px 6px;font-weight: 700;font-size: 18px;position: relative;bottom: 1px;margin-left: 5px;">{{$x}}</span></a>
+
+                      @if($url)
+
+                          <a data-width="1280" href="{{$url}}" style="color: white;" data-toggle="lightbox"> <i class="fas fa-film" style="font-size: 18px;margin-right: 12px;"></i> </a>
+
+                          @else
+
+                          <a href="#" style="color: white;" > <i class="fas fa-film" style="font-size: 18px;margin-right: 12px;"></i> </a>
+
+                          @endif
+
+                      <a data-toggle="lightbox" data-gallery="hidden-images{{$i}}" href="{{ URL::asset('upload/properties/'.$property->featured_image.'-b.jpg') }}" style="color: white;"> <i class="fas fa-camera" style="font-size: 18px;"></i><span style="padding: 0px 6px;font-weight: 700;font-size: 18px;position: relative;bottom: 1px;margin-left: 5px;">{{$x}}</span></a>
+
+                          @if($property->property_images1)
+
+                              <div data-toggle="lightbox" data-gallery="hidden-images{{$i}}" data-remote="{{ URL::asset('upload/properties/'.$property->property_images1.'-b.jpg') }}"></div>
+
+                          @endif
+
+                          @if($property->property_images2)
+
+                              <div data-toggle="lightbox" data-gallery="hidden-images{{$i}}" data-remote="{{ URL::asset('upload/properties/'.$property->property_images2.'-b.jpg') }}"></div>
+
+                          @endif
+
+                          @if($property->property_images3)
+
+                              <div data-toggle="lightbox" data-gallery="hidden-images{{$i}}" data-remote="{{ URL::asset('upload/properties/'.$property->property_images3.'-b.jpg') }}"></div>
+
+                          @endif
+
+                          @if($property->property_images4)
+
+                              <div data-toggle="lightbox" data-gallery="hidden-images{{$i}}" data-remote="{{ URL::asset('upload/properties/'.$property->property_images4.'-b.jpg') }}"></div>
+
+                          @endif
+
+                          @if($property->property_images5)
+
+                              <div data-toggle="lightbox" data-gallery="hidden-images{{$i}}" data-remote="{{ URL::asset('upload/properties/'.$property->property_images5.'-b.jpg') }}"></div>
+
+                          @endif
+
+                      <? $i = $i + 1; ?>
+
+
                   </div>
               </div>
 
@@ -94,6 +151,24 @@
 
             </div>
 
+                     <?php
+
+
+                     $time = strtotime($property->created_at);
+
+                     $first = date('m/d/Y',$time);
+
+                     $second = date("m/d/Y");
+
+
+                     $diff = strtotime($second, 0) - strtotime($first, 0);
+                     $week_number =  floor($diff / 604800);
+
+
+                         ?>
+
+        <div class="property-price" style="background: #d6d63e;position:relative;max-width: 50%;margin-bottom: 12px;-size: 15px;padding: 5px 0px;border-radius: 5px;">Listed on {{$week_number}} @if($week_number == 1) week @else weeks @endif ago</div>
+
 
           </div>
               <!-- break -->
@@ -117,5 +192,101 @@
       </div>
     </div>
     <!-- end:content -->
+
+ <style>
+
+     .modal-backdrop.fade
+     {
+         opacity: 0.5;
+     }
+
+     .modal-header
+     {
+         min-height: 0;
+         padding: 0;
+         border: 0;
+
+
+     }
+
+     .modal-title
+     {
+         display: none;
+     }
+
+     .modal-header .close
+     {
+         font-size: 60px;
+         position: absolute;
+         right: -115px;
+         top: -62px;
+         opacity: 0.8;
+         text-shadow: none;
+
+     }
+
+     .modal-body
+     {
+         padding: 0;
+     }
+
+     .modal-content
+     {
+         border:0;
+     }
+
+     .ekko-lightbox .close{
+         position: absolute;
+         right: 43px;
+         top: -3px;
+         opacity: 0.6;
+         text-shadow: none;
+         outline: 0;
+     }
+
+     .ekko-lightbox .close span{
+         font-size: 88px;
+     }
+
+     a
+     {
+         text-decoration: none;
+     }
+
+     a:hover, a:focus
+     {
+         text-decoration: none;
+     }
+
+     .fade {
+         transform: scale(0);
+         opacity: 0;
+         transition: all .2s linear;
+
+     }
+
+     .fade.show {
+         transform: scale(1);
+     }
+
+
+ </style>
+
+ <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+
+    <script>
+
+        $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+            event.preventDefault();
+            $(this).ekkoLightbox({
+                alwaysShowClose: true
+            });
+
+
+                $('.modal-header .close').appendTo(".ekko-lightbox");
+
+        });
+
+    </script>
 
 @endsection
