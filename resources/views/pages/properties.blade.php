@@ -34,7 +34,7 @@
             <div class="row {{--container-realestate--}}">
 
                 <?php $i = 0; ?>
-                
+
            	  @foreach($properties as $i => $property)
              	 <div class="col-md-6 col-sm-6 col-xs-12" style="margin-bottom: 40px;">
 
@@ -194,6 +194,16 @@
     <!-- end:content -->
 
  <style>
+
+     .property-image
+     {
+         height: 265px;
+     }
+
+     .property-image img
+     {
+         height: 100%;
+     }
 
      .modal-backdrop.fade
      {
