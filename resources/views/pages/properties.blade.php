@@ -38,7 +38,7 @@
            	  @foreach($properties as $i => $property)
              	 <div class="col-md-6 col-sm-6 col-xs-12" style="margin-bottom: 40px;">
 
-                     <div class="property-price" style="position:relative;max-width: 100%;font-size: 15px;padding: 10px 0px;margin-bottom: 12px;border-radius: 5px;">Open House <span>{{$property->open_date}} {{$property->open_timeFrom}} to {{$property->open_timeTo}}</span></div>
+                     <div class="property-price" style="position:relative;max-width: 100%;font-size: 15px;padding: 3px 0px;margin-bottom: 6px;border-radius: 5px;">Open House <span>{{$property->open_date}} {{$property->open_timeFrom}} to {{$property->open_timeTo}}</span></div>
 
             <div class="property-container" style="border: 1px solid #48cfad;margin-bottom: 10px">
               <div class="property-image">
@@ -167,7 +167,7 @@
 
                          ?>
 
-        <div class="property-price" style="background: #d6d63e;position:relative;max-width: 50%;margin-bottom: 12px;-size: 15px;padding: 5px 0px;border-radius: 5px;">Listed on {{$week_number}} @if($week_number == 1) week @else weeks @endif ago</div>
+        <div class="property-price" style="background: #d6d63e;position:relative;max-width: 50%;margin-bottom: 12px;font-size: 15px;padding: 2px 0px;border-radius: 5px;">Listed on {{$week_number}} @if($week_number == 1) week @else weeks @endif ago</div>
 
 
           </div>
