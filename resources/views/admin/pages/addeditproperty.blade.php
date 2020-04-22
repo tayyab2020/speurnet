@@ -416,6 +416,28 @@
 
                                 </div>
 
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;">
+
+                                    <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
+
+
+                                        <label class="left-label" style="float: left;">Available Immediately</label>
+
+                                        <div style="width: 100%;display: inline-block;margin: auto">
+
+                                            <select name="available_immediately" id="basic" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 40%;">
+                                               <option value="1">Yes</option>
+                                                <option value="0">No</option>
+                                            </select>
+
+
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
 
 
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;">

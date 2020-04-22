@@ -244,6 +244,7 @@ class PropertiesController extends MainAdminController
 		$user_id=Auth::user()->id;
 
 		$property->user_id = $user_id;
+		$property->available_immediately = $request->available_immediately;
 		$property->property_name = $request->property_name;
 		$property->property_slug = $property_slug;
 		$property->city_id = $city_id;

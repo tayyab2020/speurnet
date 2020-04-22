@@ -52,11 +52,13 @@
                   <span>{{getcong('currency_sign')}}@if($property->sale_price) {{$property->sale_price}} @else {{$property->rent_price}} @endif</span>--}}
                 </div>
 
-
+                  @if($property->available_immediately)
 
                 <div class="property-status" style="background:#48cfad;width:40%;bottom: 12px;left: 12px;border-radius: 5px;padding: 0px;text-align: center;">
                  <span>Available Immediately</span>
                 </div>
+
+                  @endif
 
                   <?php
 
@@ -74,10 +76,7 @@
                       @if($url)
 
                           <a data-width="1280" href="{{$url}}" style="color: white;" data-toggle="lightbox"> <i class="fas fa-film" style="font-size: 18px;margin-right: 12px;"></i> </a>
-
-                          @else
-
-                          <a href="#" style="color: white;" > <i class="fas fa-film" style="font-size: 18px;margin-right: 12px;"></i> </a>
+                          
 
                           @endif
 
