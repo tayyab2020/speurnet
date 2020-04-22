@@ -46,7 +46,7 @@
                 <img src="{{ URL::asset('upload/properties/'.$property->featured_image.'-b.jpg') }}" alt="{{ $property->property_name }}">
 
 
-                  <div class="property-price" style="top: 12px;left: 12px;border-radius: 5px;">
+                  <div class="property-price" style="top: 12px;left: 12px;border-radius: 5px;padding: 5px 10px;">
                       <span>For {{$property->property_purpose}}</span>
                   {{--<h4>{{ getPropertyTypeName($property->property_type)->types }}</h4>
                   <span>{{getcong('currency_sign')}}@if($property->sale_price) {{$property->sale_price}} @else {{$property->rent_price}} @endif</span>--}}
@@ -54,7 +54,7 @@
 
 
 
-                <div class="property-status" style="background:#48cfad;width:40%;bottom: 12px;left: 12px;border-radius: 5px;padding: 5px 6px 5px 10px;">
+                <div class="property-status" style="background:#48cfad;width:40%;bottom: 12px;left: 12px;border-radius: 5px;padding: 0px;text-align: center;">
                  <span>Available Immediately</span>
                 </div>
 
