@@ -76,7 +76,7 @@ class PropertiesController extends MainAdminController
             'property_images3' => 'mimes:jpg,jpeg,gif,png|max:3000',
             'property_images4' => 'mimes:jpg,jpeg,gif,png|max:3000',
             'property_images5' => 'mimes:jpg,jpeg,gif,png|max:3000',
-            'video' => 'mimes:webm,mpg,mpeg,mp4,m4v,avi,wmv,flv,mkv|max:10000',
+            'video' => 'mimes:webm,mpg,mpeg,mp4,m4v,avi,wmv,flv,mkv,mov|max:10000',
             'documents.*' => 'mimes:pdf,doc,docx,txt,rtf,wpd,ppt,pptx',
             'first_floor' => 'mimes:jpg,jpeg,gif,png|max:3000',
             'second_floor' => 'mimes:jpg,jpeg,gif,png|max:3000',

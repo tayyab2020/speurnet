@@ -609,9 +609,12 @@
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
 
+
     <script>
 
         $( document ).ready(function() {
+
+
 
             $(".floors_links").click(function(){
 
