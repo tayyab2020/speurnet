@@ -66,7 +66,6 @@ class PropertiesController extends MainAdminController
 	    $inputs = $request->all();
 
 
-
         $rule=array(
             'property_name' => 'required',
             'description' => 'required',
@@ -266,6 +265,8 @@ class PropertiesController extends MainAdminController
 
         $countfiles = count($_FILES['documents']['name']);
 
+        $docs = [];
+
 
         if($documents){
 
@@ -298,11 +299,7 @@ class PropertiesController extends MainAdminController
 
                 move_uploaded_file($_FILES["documents"]["tmp_name"][$i],$target_file);
 
-
-                $property_documents = new property_documents;
-                $property_documents->property_id = $property->id;
-                $property_documents->document = $hardPath . '.' . $ext;
-                $property_documents->save();
+                $docs[$i] = $hardPath . "." . $ext;
 
             }
 
@@ -443,6 +440,22 @@ class PropertiesController extends MainAdminController
 
 
 	    $property->save();
+
+	    if(count($docs) > 0)
+        {
+            foreach ($docs as $key)
+            {
+
+                $property_documents = new property_documents;
+                $property_documents->property_id = $property->id;
+                $property_documents->document = $key;
+                $property_documents->save();
+
+            }
+
+        }
+
+
 
 		if(!empty($inputs['id'])){
 
