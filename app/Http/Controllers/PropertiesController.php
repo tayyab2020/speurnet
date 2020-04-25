@@ -6,6 +6,7 @@ use App\User;
 use App\Properties;
 use App\Enquire;
 use App\Types;
+use App\property_documents;
 
 use Illuminate\Http\Request;
 
@@ -20,7 +21,7 @@ class PropertiesController extends Controller
 
     public function index()
     {
-    	$properties = Properties::leftjoin('users','users.id','=','properties.user_id')->where('properties.status','1')->orderBy('properties.id', 'desc')->select('properties.id','properties.property_name','properties.description','properties.property_slug','properties.available_immediately','properties.property_type','properties.property_purpose','properties.sale_price','properties.rent_price','properties.address','properties.bathrooms','properties.bedrooms','properties.area','properties.featured_image','properties.property_images1','properties.property_images2','properties.property_images3','properties.property_images4','properties.property_images5','properties.open_date','properties.open_timeFrom','properties.open_timeTo','properties.created_at','users.image_icon')->paginate(9);
+    	$properties = Properties::leftjoin('users','users.id','=','properties.user_id')->where('properties.status','1')->orderBy('properties.id', 'desc')->select('properties.id','properties.property_name','properties.description','properties.property_slug','properties.available_immediately','properties.video','properties.property_type','properties.property_purpose','properties.sale_price','properties.rent_price','properties.address','properties.bathrooms','properties.bedrooms','properties.area','properties.featured_image','properties.property_images1','properties.property_images2','properties.property_images3','properties.property_images4','properties.property_images5','properties.open_date','properties.open_timeFrom','properties.open_timeTo','properties.created_at','users.image_icon')->paginate(9);
 
         return view('pages.properties',compact('properties'));
     }
@@ -67,13 +68,15 @@ class PropertiesController extends Controller
     {
     	$property = Properties::where("property_slug", $slug)->first();
 
+    	$property_documents = property_documents::where('property_id',$property->id)->get();
+
     	if(!$property){
             abort('404');
         }
 
     	$agent = User::findOrFail($property->user_id);
 
-        return view('pages.propertysingle',compact('property','agent'));
+        return view('pages.propertysingle',compact('property','property_documents','agent'));
     }
 
 	public function agentscontact(Request $request)

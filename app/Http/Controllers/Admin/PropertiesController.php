@@ -7,6 +7,7 @@ use App\User;
 use App\City;
 use App\Types;
 use App\Properties;
+use App\property_documents;
 
 use Carbon\Carbon;
 use App\Http\Requests;
@@ -59,17 +60,29 @@ class PropertiesController extends MainAdminController
     {
 
 
+
     	$data =  \Request::except(array('_token')) ;
 
 	    $inputs = $request->all();
 
 
 
-	    $rule=array(
-		        'property_name' => 'required',
-				'description' => 'required',
-		        'featured_image' => 'mimes:jpg,jpeg,gif,png'
-		   		 );
+        $rule=array(
+            'property_name' => 'required',
+            'description' => 'required',
+            'featured_image' => 'mimes:jpg,jpeg,gif,png|max:3000',
+            'property_images1' => 'mimes:jpg,jpeg,gif,png|max:3000',
+            'property_images2' => 'mimes:jpg,jpeg,gif,png|max:3000',
+            'property_images3' => 'mimes:jpg,jpeg,gif,png|max:3000',
+            'property_images4' => 'mimes:jpg,jpeg,gif,png|max:3000',
+            'property_images5' => 'mimes:jpg,jpeg,gif,png|max:3000',
+            'video' => 'mimes:webm,mpg,mpeg,mp4,m4v,avi,wmv,flv,mkv|max:10000',
+            'documents.*' => 'mimes:pdf,doc,docx,txt,rtf,wpd,ppt,pptx',
+            'first_floor' => 'mimes:jpg,jpeg,gif,png|max:3000',
+            'second_floor' => 'mimes:jpg,jpeg,gif,png|max:3000',
+            'ground_floor' => 'mimes:jpg,jpeg,gif,png|max:3000',
+            'basement' => 'mimes:jpg,jpeg,gif,png|max:3000',
+        );
 
 	   	 $validator = \Validator::make($data,$rule);
 
@@ -77,6 +90,8 @@ class PropertiesController extends MainAdminController
         {
                 return redirect()->back()->withErrors($validator->messages());
         }
+
+
 
 		if(!empty($inputs['id'])){
 
@@ -125,8 +140,9 @@ class PropertiesController extends MainAdminController
 
             $img = Image::make($property_images1);
 
-            $img->fit(640, 425)->save($tmpFilePath.$hardPath.'-b.jpg');
+            /*$img->fit(640, 425)->save($tmpFilePath.$hardPath.'-b.jpg');*/
 
+            $img->save($tmpFilePath.$hardPath.'-b.jpg');
 
             $property->property_images1 = $hardPath;
 
@@ -146,7 +162,7 @@ class PropertiesController extends MainAdminController
 
             $img = Image::make($property_images2);
 
-            $img->fit(640, 425)->save($tmpFilePath.$hardPath.'-b.jpg');
+            $img->save($tmpFilePath.$hardPath.'-b.jpg');
 
 
             $property->property_images2 = $hardPath;
@@ -167,7 +183,7 @@ class PropertiesController extends MainAdminController
 
             $img = Image::make($property_images3);
 
-            $img->fit(640, 425)->save($tmpFilePath.$hardPath.'-b.jpg');
+            $img->save($tmpFilePath.$hardPath.'-b.jpg');
 
 
             $property->property_images3 = $hardPath;
@@ -188,7 +204,7 @@ class PropertiesController extends MainAdminController
 
             $img = Image::make($property_images4);
 
-            $img->fit(640, 425)->save($tmpFilePath.$hardPath.'-b.jpg');
+            $img->save($tmpFilePath.$hardPath.'-b.jpg');
 
 
             $property->property_images4 = $hardPath;
@@ -209,12 +225,171 @@ class PropertiesController extends MainAdminController
 
             $img = Image::make($property_images5);
 
-            $img->fit(640, 425)->save($tmpFilePath.$hardPath.'-b.jpg');
+            $img->save($tmpFilePath.$hardPath.'-b.jpg');
 
 
             $property->property_images5 = $hardPath;
 
         }
+
+        $video = $request->file('video');
+
+
+
+        if($video){
+
+            $video_file_name = $_FILES['video']['name'];
+
+
+            $ext = pathinfo($video_file_name, PATHINFO_EXTENSION);
+
+
+            \File::delete(public_path() .'/upload/properties/'.$property->video);
+
+
+            $tmpFilePath = 'upload/properties/';
+
+            $hardPath =  Str::slug($inputs['property_name'], '-').'-'.md5(rand(0,99999));
+
+
+            $target_file = $tmpFilePath . $hardPath . '.' . $ext;
+
+            move_uploaded_file($_FILES["video"]["tmp_name"],$target_file);
+
+
+            $property->video = $hardPath . '.' . $ext;
+
+        }
+
+
+        $documents = $request->file('documents');
+
+        $countfiles = count($_FILES['documents']['name']);
+
+
+        if($documents){
+
+
+            $find = property_documents::where('property_id',$property->id)->get();
+
+            foreach ($find as $temp)
+            {
+                \File::delete(public_path() .'/upload/properties/documents/'.$temp->document);
+
+                property_documents::where('property_id',$property->id)->delete();
+            }
+
+
+
+            $tmpFilePath = 'upload/properties/documents/';
+
+            for($i=0;$i<$countfiles;$i++) {
+
+
+
+                $filename = $_FILES['documents']['name'][$i];
+
+                $ext = pathinfo($filename, PATHINFO_EXTENSION);
+
+                $hardPath =  Str::slug('property-name', '-').'-'.md5(rand(0,99999));
+
+
+                $target_file = $tmpFilePath . $hardPath . '.' . $ext;
+
+                move_uploaded_file($_FILES["documents"]["tmp_name"][$i],$target_file);
+
+
+                $property_documents = new property_documents;
+                $property_documents->property_id = $property->id;
+                $property_documents->document = $hardPath . '.' . $ext;
+                $property_documents->save();
+
+            }
+
+
+        }
+
+
+        $first_floor = $request->file('first_floor');
+
+        if($first_floor){
+
+            \File::delete(public_path() .'/upload/properties/'.$property->first_floor.'-b.jpg');
+
+
+            $tmpFilePath = 'upload/properties/';
+
+            $hardPath =  Str::slug($inputs['property_name'], '-').'-'.md5(rand(0,99999));
+
+            $img = Image::make($first_floor);
+
+            $img->save($tmpFilePath.$hardPath.'-b.jpg');
+
+
+            $property->first_floor = $hardPath;
+
+        }
+
+        $second_floor = $request->file('second_floor');
+
+        if($second_floor){
+
+            \File::delete(public_path() .'/upload/properties/'.$property->second_floor.'-b.jpg');
+
+
+            $tmpFilePath = 'upload/properties/';
+
+            $hardPath =  Str::slug($inputs['property_name'], '-').'-'.md5(rand(0,99999));
+
+            $img = Image::make($second_floor);
+
+            $img->save($tmpFilePath.$hardPath.'-b.jpg');
+
+
+            $property->second_floor = $hardPath;
+
+        }
+
+        $ground_floor = $request->file('ground_floor');
+
+        if($ground_floor){
+
+            \File::delete(public_path() .'/upload/properties/'.$property->ground_floor.'-b.jpg');
+
+
+            $tmpFilePath = 'upload/properties/';
+
+            $hardPath =  Str::slug($inputs['property_name'], '-').'-'.md5(rand(0,99999));
+
+            $img = Image::make($ground_floor);
+
+            $img->save($tmpFilePath.$hardPath.'-b.jpg');
+
+
+            $property->ground_floor = $hardPath;
+
+        }
+
+        $basement = $request->file('basement');
+
+        if($basement){
+
+            \File::delete(public_path() .'/upload/properties/'.$property->basement.'-b.jpg');
+
+
+            $tmpFilePath = 'upload/properties/';
+
+            $hardPath =  Str::slug($inputs['property_name'], '-').'-'.md5(rand(0,99999));
+
+            $img = Image::make($basement);
+
+            $img->save($tmpFilePath.$hardPath.'-b.jpg');
+
+
+            $property->basement = $hardPath;
+
+        }
+
 
 		if($inputs['property_slug']=="")
 		{

@@ -92,7 +92,7 @@
                                 <h2>Step 1: What do you want to do with your property?</h2>
 
 
-                                <ul class="property-radios" style="padding: 0;margin-top: 40px;display: inline-block;">
+                                <ul class="property-radios" style="padding: 0;margin-top: 40px;display: inline-block;width: 100%;">
 
                                 @if(isset($property->property_purpose))
 
@@ -102,7 +102,7 @@
 
                                             <div class="type-holder-main">
 
-                                                <label>
+                                                <label style="min-width: 100%;min-height: 147px;">
 
                                                     <input type="radio" name="property_purpose"  @if($property->property_purpose=='Sale') checked="checked" @endif  value="Sale">
 
@@ -119,7 +119,7 @@
 
                                             <div class="type-holder-main">
 
-                                                <label>
+                                                <label style="min-width: 100%;min-height: 147px;">
 
                                                     <img src="{{ URL::asset('assets/img/rent.png') }}"  style="width: 65%;">
 
@@ -141,7 +141,7 @@
 
                                             <div class="type-holder-main">
 
-                                                <label>
+                                                <label style="min-width: 100%;min-height: 147px;">
 
                                                     <input type="radio" name="property_purpose"  checked="checked"  value="Sale">
 
@@ -158,7 +158,7 @@
 
                                             <div class="type-holder-main">
 
-                                                <label>
+                                                <label style="min-width: 100%;min-height: 147px;">
 
                                                     <img src="{{ URL::asset('assets/img/rent.png') }}"  style="width: 65%;">
 
@@ -768,7 +768,7 @@
 
                                                 </div>
                                                 <div class="media-body media-middle">
-                                                    <input type="file" name="featured_image" class="filestyle stepper-step-4-validate">
+                                                    <input type="file" name="featured_image" class="filestyle stepper-step-4-validate" style="width: 100%;border: none;">
                                                 </div>
                                             </div>
 
@@ -803,7 +803,7 @@
                                                         <div class="media-left"><a href="#" class="btn btn-default btn-rounded"><i class="md md-delete"></i></a></div><br />
                                                     @endif
 
-                                                    <input type="file" name="property_images1" class="filestyle">
+                                                    <input type="file" name="property_images1" class="filestyle" style="width: 100%;border: none;">
                                                 </div>
                                             </div>
 
@@ -833,7 +833,7 @@
 
                                                 </div>
                                                 <div class="media-body media-middle">
-                                                    <input type="file" name="property_images2" class="filestyle">
+                                                    <input type="file" name="property_images2" class="filestyle" style="width: 100%;border: none;">
                                                 </div>
                                             </div>
 
@@ -863,7 +863,7 @@
 
                                                 </div>
                                                 <div class="media-body media-middle">
-                                                    <input type="file" name="property_images3" class="filestyle">
+                                                    <input type="file" name="property_images3" class="filestyle" style="width: 100%;border: none;">
                                                 </div>
                                             </div>
 
@@ -893,7 +893,7 @@
 
                                                 </div>
                                                 <div class="media-body media-middle">
-                                                    <input type="file" name="property_images4" class="filestyle">
+                                                    <input type="file" name="property_images4" class="filestyle" style="width: 100%;border: none;">
                                                 </div>
                                             </div>
 
@@ -924,7 +924,181 @@
 
                                                 </div>
                                                 <div class="media-body media-middle">
-                                                    <input type="file" name="property_images5" class="filestyle">
+                                                    <input type="file" name="property_images5" class="filestyle" style="width: 100%;border: none;">
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
+
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;">
+
+                                    <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
+
+
+                                        <label class="left-label" style="float: left;">Video Upload</label>
+
+                                        <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
+
+                                            <div class="media">
+                                                {{--<div class="media-left">
+                                                    @if(isset($property->property_images5) and $property->property_images5!='')
+
+                                                        <img src="{{ URL::asset('upload/properties/'.$property->property_images5.'-b.jpg') }}" width="150" alt="person">
+
+                                                    @endif
+
+                                                </div>--}}
+                                                <div class="media-body media-middle">
+                                                    <input type="file" name="video" class="filestyle" style="width: 100%;border: none;">
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;">
+
+                                    <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
+
+
+                                        <label class="left-label" style="float: left;">File Documents</label>
+
+                                        <div style="display:inline-block;width: 100%;"><small>Press &amp; hold CTRL key to select multiple files.</small></div>
+
+                                        <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
+
+                                            <div class="media">
+                                                {{--<div class="media-left">
+                                                    @if(isset($property->property_images5) and $property->property_images5!='')
+
+                                                        <img src="{{ URL::asset('upload/properties/'.$property->property_images5.'-b.jpg') }}" width="150" alt="person">
+
+                                                    @endif
+
+                                                </div>--}}
+                                                <div class="media-body media-middle">
+                                                    <input type="file" name="documents[]" multiple class="filestyle" style="width: 100%;border: none;">
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
+
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="border: 1px solid #d9d9d9;padding: 15px 30px;margin-top: 35px;">
+
+                                    <h4 style="text-align: center;">Floor Plans</h4>
+
+                                    <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;margin-top: 0px;">
+
+
+                                        <label class="left-label" style="float: left;">First Floor</label>
+
+                                        <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
+
+                                            <div class="media">
+                                                {{--<div class="media-left">
+                                                    @if(isset($property->property_images5) and $property->property_images5!='')
+
+                                                        <img src="{{ URL::asset('upload/properties/'.$property->property_images5.'-b.jpg') }}" width="150" alt="person">
+
+                                                    @endif
+
+                                                </div>--}}
+                                                <div class="media-body media-middle">
+                                                    <input type="file" name="first_floor" multiple class="filestyle" style="width: 100%;border: none;">
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;margin-top: 0px;">
+
+
+                                        <label class="left-label" style="float: left;">Second Floor</label>
+
+                                        <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
+
+                                            <div class="media">
+                                                {{--<div class="media-left">
+                                                    @if(isset($property->property_images5) and $property->property_images5!='')
+
+                                                        <img src="{{ URL::asset('upload/properties/'.$property->property_images5.'-b.jpg') }}" width="150" alt="person">
+
+                                                    @endif
+
+                                                </div>--}}
+                                                <div class="media-body media-middle">
+                                                    <input type="file" name="second_floor" multiple class="filestyle" style="width: 100%;border: none;">
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;margin-top: 0px;">
+
+
+                                        <label class="left-label" style="float: left;">Ground Floor</label>
+
+                                        <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
+
+                                            <div class="media">
+                                                {{--<div class="media-left">
+                                                    @if(isset($property->property_images5) and $property->property_images5!='')
+
+                                                        <img src="{{ URL::asset('upload/properties/'.$property->property_images5.'-b.jpg') }}" width="150" alt="person">
+
+                                                    @endif
+
+                                                </div>--}}
+                                                <div class="media-body media-middle">
+                                                    <input type="file" name="ground_floor" multiple class="filestyle" style="width: 100%;border: none;">
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;margin-top: 0px;">
+
+
+                                        <label class="left-label" style="float: left;">Basement</label>
+
+                                        <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
+
+                                            <div class="media">
+                                                {{--<div class="media-left">
+                                                    @if(isset($property->property_images5) and $property->property_images5!='')
+
+                                                        <img src="{{ URL::asset('upload/properties/'.$property->property_images5.'-b.jpg') }}" width="150" alt="person">
+
+                                                    @endif
+
+                                                </div>--}}
+                                                <div class="media-body media-middle">
+                                                    <input type="file" name="basement" multiple class="filestyle" style="width: 100%;border: none;">
                                                 </div>
                                             </div>
 
@@ -979,6 +1153,11 @@
 
 
     <style>
+
+        .note-video-btn
+        {
+            background: green !important;
+        }
 
         .validate-error
         {

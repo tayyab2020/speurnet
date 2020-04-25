@@ -34,6 +34,7 @@
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.5.10/plyr.css" />
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="{{ URL::asset('assets/js/html5shiv.js') }}"></script>
@@ -67,6 +68,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.js"></script>
     <script src="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/src/js/bootstrap-datetimepicker.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFPa3LVeBRpaGafuUtk4znrty6IIqtMUw&libraries=places&region=nl" async defer></script>
+    <script src="https://cdn.plyr.io/3.5.10/plyr.js"></script>
     <script src="{{ URL::asset('assets/js/gmap3.min.js') }}"></script>
     <script src="{{ URL::asset('assets/js/jquery.easing.js') }}"></script>
     <script src="{{ URL::asset('assets/js/jquery.jcarousel.min.js') }}"></script>

@@ -223,6 +223,174 @@
 
                           </div>
 
+                          @if($property->video)
+
+
+                          <div class="row" style="margin-top: 40px;">
+
+                              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                                  <h2>Property Video</h2>
+
+                                  <?php $ext = pathinfo($property->video, PATHINFO_EXTENSION); ?>
+
+
+
+
+                                  <video id="player" playsinline controls>
+                                      <source src="{{ URL::asset('upload/properties/'.$property->video) }}" type="video/{{$ext}}" />
+
+                                  </video>
+
+                              </div></div>
+
+                          @endif
+
+
+
+                          @if(count($property_documents) > 0)
+
+                          <div class="row" style="margin-top: 40px;">
+
+                              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                                  <h2>Files Attachments</h2>
+
+                                  @foreach($property_documents as $key)
+
+                                      <?php $ext = pathinfo($key->document, PATHINFO_EXTENSION); ?>
+
+                                  @if($ext == 'pdf')
+
+                                      <a href="{{ URL::asset('upload/properties/documents/'.$key->document) }}" style="display: inline-block">
+
+                                              <div style="display:inline-block;margin: 10px;">
+                                                  <img src="http://homevillas.chimpgroup.com/wp-content/plugins/wp-realestate-manager//assets/common/attachment-images/attach-pdf.png">
+                                                  <label style="cursor: pointer">PDF Document</label>
+                                              </div>
+
+                                      </a>
+
+                                      @else
+
+                                              <a href="{{ URL::asset('upload/properties/documents/'.$key->document) }}" style="display: inline-block">
+
+                                              <div style="display:inline-block;margin: 10px;">
+                                                  <img src="http://homevillas.chimpgroup.com/wp-content/plugins/wp-realestate-manager//assets/common/attachment-images/attach-docx.png">
+                                                  <label style="cursor:pointer;">DOCX Document</label>
+                                              </div>
+
+                                              </a>
+
+                                      @endif
+
+                                      @endforeach
+
+
+                              </div></div>
+
+                              @endif
+
+                          @if($property->first_floor || $property->second_floor || $property->ground_floor || $property->basement)
+
+                              <div class="row" style="margin-top: 40px;">
+
+                                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                                      <h2>Floor Plans</h2>
+
+                                      <ul style="list-style: none;display: inline-block;padding: 0;">
+
+                                          @if($property->first_floor)
+                                          <li style="float: left;margin: 10px;">
+                                              <a style="text-decoration: underline;cursor: pointer;" data-id="first" class="floors_links">First Floor</a>
+                                          </li>
+                                           @endif
+
+                                              @if($property->second_floor)
+                                                  <li style="float: left;margin: 10px;">
+                                                      <a style="text-decoration: underline;cursor: pointer;" data-id="second" class="floors_links">Second Floor</a>
+                                                  </li>
+                                              @endif
+
+                                              @if($property->ground_floor)
+                                                  <li style="float: left;margin: 10px;">
+                                                      <a style="text-decoration: underline;cursor: pointer;" data-id="ground" class="floors_links">Ground Floor</a>
+                                                  </li>
+                                              @endif
+
+                                              @if($property->basement)
+                                                  <li style="float: left;margin: 10px;">
+                                                      <a style="text-decoration: underline;cursor: pointer;" data-id="basement" class="floors_links">Basement</a>
+                                                  </li>
+                                              @endif
+                                      </ul>
+
+                                      <?php $check = 0; ?>
+
+                                      <div id="floors_box" class="tab-content" style="border: 0;">
+
+                                      @if($property->first_floor)
+
+                                      <div class="tab-pane fade active in" id="first">
+
+                                          <h4 style="text-align: center;">First Floor</h4>
+
+                                          <img style="display: block;width: 80%;margin: auto;" src="{{ URL::asset('upload/properties/'.$property->first_floor.'-b.jpg') }}">
+
+                                      </div>
+
+                                          <?php $check = 1; ?>
+
+                                      @endif
+
+                                      @if($property->second_floor)
+
+                                          <div  @if(!$check) class="tab-pane fade active in" <?php $check = 1; ?> @else class="tab-pane fade"  @endif id="second">
+
+                                              <h4 style="text-align: center;">Second Floor</h4>
+
+                                              <img style="display: block;width: 80%;margin: auto;" src="{{ URL::asset('upload/properties/'.$property->second_floor.'-b.jpg') }}">
+
+                                          </div>
+
+
+                                      @endif
+
+                                      @if($property->ground_floor)
+
+                                          <div @if(!$check) class="tab-pane fade active in" <?php $check = 1; ?> @else class="tab-pane fade"  @endif id="ground" >
+
+                                              <h4 style="text-align: center;">Ground Floor</h4>
+
+                                              <img style="display: block;width: 80%;margin: auto;" src="{{ URL::asset('upload/properties/'.$property->ground_floor.'-b.jpg') }}">
+
+                                          </div>
+
+
+
+                                      @endif
+
+                                      @if($property->basement)
+
+                                          <div @if(!$check) class="tab-pane fade active in" <?php $check = 1; ?> @else class="tab-pane fade"  @endif id="basement" >
+
+                                              <h4 style="text-align: center;">Basement</h4>
+
+                                              <img style="display: block;width: 80%;margin: auto;" src="{{ URL::asset('upload/properties/'.$property->basement.'-b.jpg') }}">
+
+                                          </div>
+
+
+
+                                      @endif
+
+                                      </div>
+
+                                  </div></div>
+
+                              @endif
+
 
                       </div>
 
@@ -354,6 +522,8 @@
 
     <style>
 
+
+
         #map {
             height: 100%;
             background-color: grey;
@@ -442,6 +612,23 @@
     <script>
 
         $( document ).ready(function() {
+
+            $(".floors_links").click(function(){
+
+               var id =  $(this).data('id');
+
+               id = '#' + id;
+
+                $('#floors_box').children().not(id).removeClass('active in');
+
+               $(id).addClass('active');
+
+                $(id).addClass('in');
+
+
+            });
+
+            const player = new Plyr('#player');
 
             $(".box").on('click', function() {
 
