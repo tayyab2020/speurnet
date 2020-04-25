@@ -232,10 +232,17 @@
 
                                   <h2>Property Video</h2>
 
-                                  <?php $ext = pathinfo($property->video, PATHINFO_EXTENSION); ?>
+                                  <?php $ext = pathinfo($property->video, PATHINFO_EXTENSION);
 
+                                  $ext = strtolower($ext);
 
+                                  if($ext == 'mov')
+                                      {
+                                          $ext = 'mp4';
+                                      }
 
+                                  ?>
+                                  
 
                                   <video id="player" playsinline controls>
                                       <source src="{{ URL::asset('upload/properties/'.$property->video) }}" type="video/{{$ext}}" />
