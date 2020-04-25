@@ -236,16 +236,15 @@
 
                                   $ext = strtolower($ext);
 
-                                  if($ext == 'mov')
-                                      {
-                                          $ext = 'mp4';
-                                      }
 
                                   ?>
-                                  
+
 
                                   <video id="player" playsinline controls>
                                       <source src="{{ URL::asset('upload/properties/'.$property->video) }}" type="video/{{$ext}}" />
+                                      <source src="{{ URL::asset('upload/properties/'.$property->video) }}" type="video/mp4" />
+                                      <source src="{{ URL::asset('upload/properties/'.$property->video) }}" type="video/ogv" />
+                                      <source src="{{ URL::asset('upload/properties/'.$property->video) }}" type="video/webm" />
 
                                   </video>
 
