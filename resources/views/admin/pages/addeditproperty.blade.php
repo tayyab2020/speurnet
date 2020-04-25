@@ -1154,6 +1154,11 @@
 
     <style>
 
+        .bootstrap-tagsinput
+        {
+            width: 100%;
+        }
+
         .note-video-btn
         {
             background: green !important;

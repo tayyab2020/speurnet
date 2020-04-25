@@ -74,19 +74,23 @@
 
                   <div class="property-status" style="bottom: 12px;right: 12px;background: rgba(0,0,0,.5);border-radius: 7%;padding: 5px 6px 5px 10px;">
 
-                      @if($url)
+                          @if($url)
 
                           <a data-width="1280" href="{{$url}}" data-gallery="videos{{$i}}" style="color: white;" data-toggle="lightbox"> <i class="fas fa-film" style="font-size: 18px;margin-right: 12px;"></i> </a>
 
+                            @if($property->video)
+
                           <div style="display: none;" data-toggle="lightbox" data-type="video" data-gallery="videos{{$i}}" data-width="1280" data-remote="{{ URL::asset('upload/properties/'.$property->video) }}"></div>
+
+                            @endif
 
                           @else
 
-                          @if($property->video)
+                            @if($property->video)
 
                               <a data-width="1280" href="{{ URL::asset('upload/properties/'.$property->video) }}" data-type="video" data-gallery="videos{{$i}}" style="color: white;" data-toggle="lightbox"> <i class="fas fa-film" style="font-size: 18px;margin-right: 12px;"></i> </a>
 
-                              @endif
+                            @endif
 
                           @endif
 
@@ -284,7 +288,7 @@
 
      }
 
-     .fade.show {
+     .fade.in {
          transform: scale(1);
      }
 
