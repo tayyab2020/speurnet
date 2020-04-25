@@ -91,37 +91,6 @@
 
                                 <h2>Step 1: What do you want to do with your property?</h2>
 
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;">
-
-                                    <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
-
-
-                                        <label class="left-label" style="float: left;">Video Upload</label>
-
-                                        <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
-
-                                            <div class="media">
-                                                {{--<div class="media-left">
-                                                    @if(isset($property->property_images5) and $property->property_images5!='')
-
-                                                        <img src="{{ URL::asset('upload/properties/'.$property->property_images5.'-b.jpg') }}" width="150" alt="person">
-
-                                                    @endif
-
-                                                </div>--}}
-                                                <div class="media-body media-middle">
-                                                    <input type="file" name="video1" class="filestyle" style="width: 100%;border: none;">
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-                                <button type="submit" data-id="stepper-step-4" class="btn btn-primary">{{ isset($property->property_name) ? 'Edit Property' : 'Add Property' }}</button>
-
 
                                 <ul class="property-radios" style="padding: 0;margin-top: 40px;display: inline-block;width: 100%;">
 

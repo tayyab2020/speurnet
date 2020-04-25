@@ -65,11 +65,6 @@ class PropertiesController extends MainAdminController
 
 	    $inputs = $request->all();
 
-        $file = $request->file('video1');
-        $mime = $file->getMimeType();
-
-        var_dump($mime);
-        exit();
 
 
         $rule=array(
@@ -96,7 +91,7 @@ class PropertiesController extends MainAdminController
                 return redirect()->back()->withErrors($validator->messages());
         }
 
-exit();
+
 
 		if(!empty($inputs['id'])){
 
