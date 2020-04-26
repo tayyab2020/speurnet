@@ -137,13 +137,13 @@
                                 @else
 
 
-                                        <li class="active1 pp col-md-3 col-sm-4 col-xs-12">
+                                        <li @if(old('property_purpose') == 'Sale') class="active1 pp col-md-3 col-sm-4 col-xs-12" @elseif(old('property_purpose') == '') class="active1 pp col-md-3 col-sm-4 col-xs-12" @else class="pp col-md-3 col-sm-4 col-xs-12"  @endif >
 
                                             <div class="type-holder-main">
 
                                                 <label style="min-width: 100%;min-height: 147px;">
 
-                                                    <input type="radio" name="property_purpose"  checked="checked"  value="Sale">
+                                                    <input type="radio" name="property_purpose" @if(old('property_purpose') == 'Sale') checked="checked" @elseif(old('property_purpose') == '') checked="checked"  @endif  value="Sale">
 
                                                     <img src="{{ URL::asset('assets/img/sale.png') }}" style="width: 65%;">
 
@@ -154,7 +154,7 @@
                                             </div>
                                         </li>
 
-                                        <li class="pp col-md-3 col-sm-4 col-xs-12" style="margin-left: 10px;">
+                                        <li @if(old('property_purpose') == 'Rent') class="active1 pp col-md-3 col-sm-4 col-xs-12" @elseif(old('property_purpose') == '') class="pp col-md-3 col-sm-4 col-xs-12" @else class="pp col-md-3 col-sm-4 col-xs-12"  @endif style="margin-left: 10px;">
 
                                             <div class="type-holder-main">
 
@@ -162,7 +162,7 @@
 
                                                     <img src="{{ URL::asset('assets/img/rent.png') }}"  style="width: 65%;">
 
-                                                    <input type="radio" name="property_purpose" value="Rent">
+                                                    <input type="radio" name="property_purpose" @if(old('property_purpose') == 'Rent') checked="checked"  @endif value="Rent">
 
                                                     <span>For Rent</span>
 
@@ -232,13 +232,13 @@
                                         @if($x == 0)
 
 
-                                            <li class="active1 pt" style="width: auto;">
+                                            <li @if(old('property_type') == $type->id) class="active1 pt" @elseif(old('property_type') == '') class="active1 pt" @else class="pt" @endif style="width: auto;">
 
                                                 <div class="type-holder-main">
 
                                                     <label style="padding: 13px;">
 
-                                                        <input type="radio" name="property_type"  checked="checked"  value="{{$type->id}}">
+                                                        <input type="radio" name="property_type" @if(old('property_type') == $type->id) checked="checked" @elseif(old('property_type') == '') checked="checked" @endif  value="{{$type->id}}">
 
                                                         <span style="padding-top: 0;">{{$type->types}}</span>
 
@@ -251,13 +251,13 @@
 
                                             @else
 
-                                                <li class="pt" style="width: auto;">
+                                                <li @if(old('property_type') == $type->id) class="active1 pt" @elseif(old('property_type') == '') class="pt" @else class="pt" @endif style="width: auto;">
 
                                                     <div class="type-holder-main">
 
                                                         <label style="padding: 13px;">
 
-                                                            <input type="radio" name="property_type"  value="{{$type->id}}">
+                                                            <input type="radio" name="property_type" @if(old('property_type') == $type->id) checked="checked" @endif  value="{{$type->id}}">
 
                                                             <span style="padding-top: 0;">{{$type->types}}</span>
 
@@ -277,6 +277,7 @@
                                 </ul>
 
 
+
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;">
 
                                 <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
@@ -287,13 +288,14 @@
 
                                         <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-bed"></i></div>
 
-                                        <input type="number" step="1" max="" name="bedrooms" value="{{ isset($property->bathrooms) ? $property->bathrooms : 1 }}" class="quantity-field stepper-step-2-validate" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+                                        <input type="number" step="1" max="" name="bedrooms" @if(old('bedrooms') != '') value="{{old('bedrooms')}}" @else value="{{ isset($property->bedrooms) ? $property->bathrooms : 1 }}" @endif class="quantity-field stepper-step-2-validate" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
                                         <input type="button" value="+" class="button-plus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d7d7d7;margin-top: -0.1px;">
                                         <input type="button" value="-" class="button-minus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;margin-top: -0.1px;">
 
                                     </div>
 
                                 </div>
+
 
                                     <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 right-div" style="display: inline-block;float: right">
 
@@ -303,7 +305,7 @@
 
                                             <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-restroom"></i></div>
 
-                                            <input type="number" step="1" max="" name="bathrooms" value="{{ isset($property->bathrooms) ? $property->bathrooms : 1 }}" class="quantity-field stepper-step-2-validate" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+                                            <input type="number" step="1" max="" name="bathrooms" @if(old('bathrooms') != '') value="{{old('bathrooms')}}"  @else value="{{ isset($property->bathrooms) ? $property->bathrooms : 1 }}" @endif class="quantity-field stepper-step-2-validate" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
                                             <input type="button" value="+" class="button-plus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d7d7d7;margin-top: -0.1px;">
                                             <input type="button" value="-" class="button-minus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;margin-top: -0.1px;">
 
@@ -325,7 +327,7 @@
 
                                             <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-warehouse"></i></div>
 
-                                            <input type="number" step="1" max="" value="1" name="garage" class="quantity-field stepper-step-2-validate" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+                                            <input type="number" step="1" max="" @if(old('garage') != '') value="{{old('garage')}}" @else value="1" @endif name="garage" class="quantity-field stepper-step-2-validate" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
                                             <input type="button" value="+" class="button-plus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d7d7d7;">
                                             <input type="button" value="-" class="button-minus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;">
 
@@ -341,7 +343,7 @@
 
                                             <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-crop-alt"></i></div>
 
-                                            <input type="text"  name="area" value="{{ isset($property->area) ? $property->area : null }}"  placeholder="800m2" class="quantity-field stepper-step-2-validate" style="border: 0;margin: 0;float: left;width: 80%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+                                            <input type="text"  name="area" @if(old('area') != '') value="{{old('area')}}" @else value="{{ isset($property->area) ? $property->area : null }}" @endif placeholder="800m2" class="quantity-field stepper-step-2-validate" style="border: 0;margin: 0;float: left;width: 80%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
 
 
                                         </div>
@@ -367,7 +369,7 @@
                                             <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-calendar-alt"></i></div>
 
 
-                                        <input type='text' placeholder="Select Date" name="date" style="box-shadow: none;border: 0;margin: 0;float: left;width: 80%;left: 0;height: 37.5px;text-align: left;padding-left: 0px;" class="form-control stepper-step-2-validate" id='datetimepicker4' />
+                                        <input type='text' placeholder="Select Date" name="date" style="box-shadow: none;border: 0;margin: 0;float: left;width: 80%;left: 0;height: 37.5px;text-align: left;padding-left: 0px;" class="form-control" value="{{old('date')}}" id='datetimepicker4' />
 
 
                                         </div>
@@ -375,6 +377,7 @@
                                     </div>
 
                                 </div>
+
 
                                     <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 left-div" style="display: inline-block;float: right;text-align: right;margin-top: 0;">
 
@@ -388,7 +391,7 @@
                                             <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-calendar-alt"></i></div>
 
 
-                                            <input type='text' placeholder="Time From" name="time_from" style="box-shadow: none;border: 0;margin: 0;float: left;width: 80%;left: 0;height: 37.5px;text-align: left;padding-left: 8px;padding-bottom: 5px;" class="form-control stepper-step-2-validate" id='datetimepicker3' />
+                                            <input type='text' placeholder="Time From" name="time_from" style="box-shadow: none;border: 0;margin: 0;float: left;width: 80%;left: 0;height: 37.5px;text-align: left;padding-left: 8px;padding-bottom: 5px;" value="{{old('time_from')}}" class="form-control" id='datetimepicker3' />
 
 
                                         </div>
@@ -405,7 +408,7 @@
                                             <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-calendar-alt"></i></div>
 
 
-                                            <input type='text' placeholder="Time To" name="time_to" style="box-shadow: none;border: 0;margin: 0;float: left;width: 80%;left: 0;height: 37.5px;text-align: left;padding-left: 8px;padding-bottom: 5px;" class="form-control stepper-step-2-validate" id='datetimepicker2' />
+                                            <input type='text' placeholder="Time To" name="time_to" style="box-shadow: none;border: 0;margin: 0;float: left;width: 80%;left: 0;height: 37.5px;text-align: left;padding-left: 8px;padding-bottom: 5px;" value="{{old('time_to')}}" class="form-control" id='datetimepicker2' />
 
 
                                         </div>
@@ -426,8 +429,8 @@
                                         <div style="width: 100%;display: inline-block;margin: auto">
 
                                             <select name="available_immediately" id="basic" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 40%;">
-                                               <option value="1">Yes</option>
-                                                <option value="0">No</option>
+                                               <option value="1" @if(old('available_immediately') == 1) selected @endif>Yes</option>
+                                                <option value="0" @if(old('available_immediately') == 0) selected @endif>No</option>
                                             </select>
 
 
@@ -450,7 +453,7 @@
                                         <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
 
 
-                                            <input type="text" name="property_features" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;" value="{{ isset($property->property_features) ? $property->property_features : null }}" data-role="tagsinput tag-primary" class="form-control" placeholder="{{ isset($property->property_features) ? null : 'Balcony,Internet' }}" >
+                                            <input type="text" name="property_features" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;" @if(old('property_features')) value="{{old('property_features')}}" @else value="{{ isset($property->property_features) ? $property->property_features : null }}" @endif data-role="tagsinput tag-primary" class="form-control" placeholder="{{ isset($property->property_features) ? null : 'Balcony,Internet' }}" >
 
 
                                         </div>
@@ -539,7 +542,7 @@
                                         <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
 
 
-                                            <input type="text" placeholder="Property Title" name="property_name" value="{{ isset($property->property_name) ? $property->property_name : null }}" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control stepper-step-3-validate"  >
+                                            <input type="text" placeholder="Property Title" name="property_name" @if(old('property_name')) value="{{old('property_name')}}" @else value="{{ isset($property->property_name) ? $property->property_name : null }}" @endif style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control stepper-step-3-validate"  >
 
 
                                         </div>
@@ -561,7 +564,7 @@
                                         <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
 
 
-                                            <input type="text" placeholder="Property Slug" name="property_slug" value="{{ isset($property->property_slug) ? $property->property_slug : null }}" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control"  >
+                                            <input type="text" placeholder="Property Slug" name="property_slug" @if(old('property_slug')) value="{{old('property_slug')}}" @else value="{{ isset($property->property_slug) ? $property->property_slug : null }}" @endif style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control"  >
 
 
                                         </div>
@@ -581,7 +584,7 @@
                                         <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
 
 
-                                            <input type="text" name="sale_price" value="{{ isset($property->sale_price) ? $property->sale_price : null }}"  placeholder="800000" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control"  >
+                                            <input type="text" name="sale_price" @if(old('sale_price')) value="{{old('sale_price')}}" @else value="{{ isset($property->sale_price) ? $property->sale_price : null }}" @endif placeholder="800000" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control"  >
 
 
                                         </div>
@@ -601,7 +604,7 @@
                                         <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
 
 
-                                            <input type="text" name="rent_price" value="{{ isset($property->rent_price) ? $property->rent_price : null }}"  placeholder="10000" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control"  >
+                                            <input type="text" name="rent_price" @if(old('rent_price')) value="{{old('rent_price')}}" @else value="{{ isset($property->rent_price) ? $property->rent_price : null }}" @endif placeholder="10000" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control"  >
 
 
                                         </div>
@@ -620,7 +623,7 @@
 
                                         <div style="width: 100%;display: inline-block;margin: auto">
 
-                                            <textarea name="description" rows="10" class="form-control stepper-step-3-validate summernote">{{ isset($property->description) ? $property->description : null }}</textarea>
+                                            <textarea name="description" rows="10" class="form-control stepper-step-3-validate summernote">@if(old('description')) {{old('description')}} @else {{ isset($property->description) ? $property->description : null }} @endif</textarea>
 
 
                                         </div>
@@ -640,7 +643,7 @@
                                         <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
 
 
-                                            <input type="text" name="property_keywords" placeholder="Keywords" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;" data-role="tagsinput tag-primary" class="form-control">
+                                            <input type="text" name="property_keywords" @if(old('property_keywords')) value="{{old('property_keywords')}}" @endif placeholder="Keywords" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;" data-role="tagsinput tag-primary" class="form-control">
 
 
                                         </div>
@@ -685,9 +688,9 @@
 
                                         <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
 
-                                            <input type="text" id="address-input" placeholder="Enter Address" name="address" value="{{ isset($property->address) ? $property->address : null }}" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control map-input stepper-step-4-validate">
-                                            <input type="hidden" name="address_latitude" id="address-latitude" value="52.3666969" />
-                                            <input type="hidden" name="address_longitude" id="address-longitude" value="4.8945398" />
+                                            <input type="text" id="address-input" placeholder="Enter Address" name="address" @if(old('address')) value="{{old('address')}}" @else value="{{ isset($property->address) ? $property->address : null }}" @endif style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control map-input stepper-step-4-validate">
+                                            <input type="hidden" name="address_latitude" id="address-latitude" @if(old('address_latitude')) value="{{old('address_latitude')}}" @else value="52.3666969" @endif />
+                                            <input type="hidden" name="address_longitude" id="address-longitude" @if(old('address_longitude')) value="{{old('address_longitude')}}" @else value="4.8945398" @endif  />
 
                                         </div>
 
@@ -737,7 +740,7 @@
 
                                             @else
 
-                                                <input type="text" id="city_name" name="city_name" readonly class="form-control stepper-step-4-validate" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;">
+                                                <input type="text" id="city_name" name="city_name" @if(old('city_name')) value="{{old('city_name')}}" @endif readonly class="form-control stepper-step-4-validate" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;">
 
 
                                             @endif

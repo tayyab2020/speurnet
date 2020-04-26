@@ -67,16 +67,17 @@ class PropertiesController extends MainAdminController
 
 
 
+
         $rule=array(
             'property_name' => 'required',
             'description' => 'required',
-            'featured_image' => 'mimes:jpg,jpeg,gif,png',
+            'featured_image' => 'mimes:jpg,jpeg,gif,png|max:5000',
             'property_images1' => 'mimes:jpg,jpeg,gif,png|max:3000',
             'property_images2' => 'mimes:jpg,jpeg,gif,png|max:3000',
             'property_images3' => 'mimes:jpg,jpeg,gif,png|max:3000',
             'property_images4' => 'mimes:jpg,jpeg,gif,png|max:3000',
             'property_images5' => 'mimes:jpg,jpeg,gif,png|max:3000',
-            'video' => 'mimetypes:video/x-ms-asf,video/x-flv,video/mp4,application/x-mpegURL,video/MP2T,video/3gpp,video/quicktime,video/x-msvideo,video/x-ms-wmv,video/avi',
+            'video' => 'mimetypes:video/x-ms-asf,video/x-flv,video/mp4,application/x-mpegURL,video/MP2T,video/3gpp,video/quicktime,video/x-msvideo,video/x-ms-wmv,video/avi|max:20000',
             'documents.*' => 'mimes:pdf,doc,docx,txt,rtf,wpd,ppt,pptx',
             'first_floor' => 'mimes:jpg,jpeg,gif,png|max:5000',
             'second_floor' => 'mimes:jpg,jpeg,gif,png|max:5000',
@@ -84,11 +85,15 @@ class PropertiesController extends MainAdminController
             'basement' => 'mimes:jpg,jpeg,gif,png|max:5000',
         );
 
-	   	 $validator = \Validator::make($data,$rule);
+        $messages = [
+            'property_name.required' => 'Property Name is required.'
+        ];
+
+	   	 $validator = \Validator::make($data,$rule,$messages);
 
         if ($validator->fails())
         {
-                return redirect()->back()->withErrors($validator->messages());
+                return redirect()->back()->withErrors($validator->messages())->withInput();
         }
 
 
