@@ -264,27 +264,97 @@
 
                                   @foreach($property_documents as $key)
 
-                                      <?php $ext = pathinfo($key->document, PATHINFO_EXTENSION); ?>
+                                      <?php $ext = pathinfo($key->document, PATHINFO_EXTENSION);
+
+                                      $ext = strtolower($ext);
+
+                                      ?>
 
                                   @if($ext == 'pdf')
 
                                       <a href="{{ URL::asset('upload/properties/documents/'.$key->document) }}" style="display: inline-block">
 
                                               <div style="display:inline-block;margin: 10px;">
-                                                  <img src="http://homevillas.chimpgroup.com/wp-content/plugins/wp-realestate-manager//assets/common/attachment-images/attach-pdf.png">
-                                                  <label style="cursor: pointer">PDF Document</label>
+                                                  <img src="{{ URL::asset('assets/img/pdf.png') }}" style="width: 45px;">
+                                                  <label style="cursor: pointer">Download</label>
                                               </div>
 
                                       </a>
 
-                                      @else
+                                      @elseif($ext == 'docx')
 
                                               <a href="{{ URL::asset('upload/properties/documents/'.$key->document) }}" style="display: inline-block">
 
                                               <div style="display:inline-block;margin: 10px;">
-                                                  <img src="http://homevillas.chimpgroup.com/wp-content/plugins/wp-realestate-manager//assets/common/attachment-images/attach-docx.png">
-                                                  <label style="cursor:pointer;">DOCX Document</label>
+                                                  <img src="{{ URL::asset('assets/img/docx.png') }}" style="width: 45px;">
+                                                  <label style="cursor:pointer;">Download</label>
                                               </div>
+
+                                              </a>
+
+                                          @elseif($ext == 'doc')
+
+                                              <a href="{{ URL::asset('upload/properties/documents/'.$key->document) }}" style="display: inline-block">
+
+                                                  <div style="display:inline-block;margin: 10px;">
+                                                      <img src="{{ URL::asset('assets/img/doc.png') }}" style="width: 45px;">
+                                                      <label style="cursor:pointer;">Download</label>
+                                                  </div>
+
+                                              </a>
+
+                                          @elseif($ext == 'txt')
+
+                                              <a href="{{ URL::asset('upload/properties/documents/'.$key->document) }}" style="display: inline-block">
+
+                                                  <div style="display:inline-block;margin: 10px;">
+                                                      <img src="{{ URL::asset('assets/img/txt.png') }}" style="width: 45px;">
+                                                      <label style="cursor:pointer;">Download</label>
+                                                  </div>
+
+                                              </a>
+
+                                          @elseif($ext == 'pptx')
+
+                                              <a href="{{ URL::asset('upload/properties/documents/'.$key->document) }}" style="display: inline-block">
+
+                                                  <div style="display:inline-block;margin: 10px;">
+                                                      <img src="{{ URL::asset('assets/img/pptx.png') }}" style="width: 45px;">
+                                                      <label style="cursor:pointer;">Download</label>
+                                                  </div>
+
+                                              </a>
+
+                                          @elseif($ext == 'ppt')
+
+                                              <a href="{{ URL::asset('upload/properties/documents/'.$key->document) }}" style="display: inline-block">
+
+                                                  <div style="display:inline-block;margin: 10px;">
+                                                      <img src="{{ URL::asset('assets/img/ppt.png') }}" style="width: 45px;">
+                                                      <label style="cursor:pointer;">Download</label>
+                                                  </div>
+
+                                              </a>
+
+                                          @elseif($ext == 'wpd')
+
+                                              <a href="{{ URL::asset('upload/properties/documents/'.$key->document) }}" style="display: inline-block">
+
+                                                  <div style="display:inline-block;margin: 10px;">
+                                                      <img src="{{ URL::asset('assets/img/wpd.png') }}" style="width: 45px;">
+                                                      <label style="cursor:pointer;">Download</label>
+                                                  </div>
+
+                                              </a>
+
+                                          @elseif($ext == 'rtf')
+
+                                              <a href="{{ URL::asset('upload/properties/documents/'.$key->document) }}" style="display: inline-block">
+
+                                                  <div style="display:inline-block;margin: 10px;">
+                                                      <img src="{{ URL::asset('assets/img/rtf.png') }}" style="width: 45px;">
+                                                      <label style="cursor:pointer;">Download</label>
+                                                  </div>
 
                                               </a>
 
@@ -334,15 +404,30 @@
 
                                       <?php $check = 0; ?>
 
-                                      <div id="floors_box" class="tab-content" style="border: 0;">
+                                      <div id="floors_box" class="tab-content" style="border: 0;padding: 20px;">
 
                                       @if($property->first_floor)
+
+                                              <?php $ext = pathinfo($property->first_floor, PATHINFO_EXTENSION);
+
+                                              $ext = strtolower($ext);
+
+                                              ?>
 
                                       <div class="tab-pane fade active in" id="first">
 
                                           <h4 style="text-align: center;">First Floor</h4>
 
-                                          <img style="display: block;width: 80%;margin: auto;" src="{{ URL::asset('upload/properties/'.$property->first_floor.'-b.jpg') }}">
+                                          @if($ext == 'pdf')
+
+                                              <embed src="{{ URL::asset('upload/properties/'.$property->first_floor) }}" width="800px" height="2100px" />
+
+                                              @else
+
+                                              <img style="display: block;width: 80%;margin: auto;" src="{{ URL::asset('upload/properties/'.$property->first_floor) }}">
+
+                                              @endif
+
 
                                       </div>
 
@@ -352,11 +437,25 @@
 
                                       @if($property->second_floor)
 
+                                              <?php $ext = pathinfo($property->second_floor, PATHINFO_EXTENSION);
+
+                                              $ext = strtolower($ext);
+
+                                              ?>
+
                                           <div  @if(!$check) class="tab-pane fade active in" <?php $check = 1; ?> @else class="tab-pane fade"  @endif id="second">
 
                                               <h4 style="text-align: center;">Second Floor</h4>
 
-                                              <img style="display: block;width: 80%;margin: auto;" src="{{ URL::asset('upload/properties/'.$property->second_floor.'-b.jpg') }}">
+                                              @if($ext == 'pdf')
+
+                                                  <embed src="{{ URL::asset('upload/properties/'.$property->second_floor) }}" width="100%" height="800px" />
+
+                                              @else
+
+                                              <img style="display: block;width: 80%;margin: auto;" src="{{ URL::asset('upload/properties/'.$property->second_floor) }}">
+
+                                                  @endif
 
                                           </div>
 
@@ -365,12 +464,25 @@
 
                                       @if($property->ground_floor)
 
+                                              <?php $ext = pathinfo($property->ground_floor, PATHINFO_EXTENSION);
+
+                                              $ext = strtolower($ext);
+
+                                              ?>
+
                                           <div @if(!$check) class="tab-pane fade active in" <?php $check = 1; ?> @else class="tab-pane fade"  @endif id="ground" >
 
                                               <h4 style="text-align: center;">Ground Floor</h4>
 
-                                              <img style="display: block;width: 80%;margin: auto;" src="{{ URL::asset('upload/properties/'.$property->ground_floor.'-b.jpg') }}">
+                                              @if($ext == 'pdf')
 
+                                                  <embed src="{{ URL::asset('upload/properties/'.$property->ground_floor) }}" width="100%" height="800px" />
+
+                                              @else
+
+                                              <img style="display: block;width: 80%;margin: auto;" src="{{ URL::asset('upload/properties/'.$property->ground_floor) }}">
+
+                                                  @endif
                                           </div>
 
 
@@ -379,11 +491,25 @@
 
                                       @if($property->basement)
 
+                                              <?php $ext = pathinfo($property->basement, PATHINFO_EXTENSION);
+
+                                              $ext = strtolower($ext);
+
+                                              ?>
+
                                           <div @if(!$check) class="tab-pane fade active in" <?php $check = 1; ?> @else class="tab-pane fade"  @endif id="basement" >
 
                                               <h4 style="text-align: center;">Basement</h4>
 
-                                              <img style="display: block;width: 80%;margin: auto;" src="{{ URL::asset('upload/properties/'.$property->basement.'-b.jpg') }}">
+                                              @if($ext == 'pdf')
+
+                                                  <embed src="{{ URL::asset('upload/properties/'.$property->basement) }}" width="100%" height="800px" />
+
+                                              @else
+
+                                              <img style="display: block;width: 80%;margin: auto;" src="{{ URL::asset('upload/properties/'.$property->basement) }}">
+
+                                                  @endif
 
                                           </div>
 

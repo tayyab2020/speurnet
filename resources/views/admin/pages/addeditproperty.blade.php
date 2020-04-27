@@ -771,7 +771,14 @@
 
                                                 </div>
                                                 <div class="media-body media-middle">
-                                                    <input type="file" name="featured_image" class="filestyle stepper-step-4-validate" style="width: 100%;border: none;">
+                                                    <input type="file" name="featured_image"  class="filestyle stepper-step-4-validate" style="width: 50%;border: none;float: left;">
+
+                                                    <button type="button" class="remove-btn" style="outline: none;border: 0;color: red;float: right;font-size: 21px;background: transparent;padding: 10px 5px;margin-right: 5px;">
+
+                                                        <i aria-hidden="true" class="fas fa-times-circle" style="position:relative;top: 1px;"></i>
+
+                                                    </button>
+
                                                 </div>
                                             </div>
 
@@ -806,7 +813,15 @@
                                                         <div class="media-left"><a href="#" class="btn btn-default btn-rounded"><i class="md md-delete"></i></a></div><br />
                                                     @endif
 
-                                                    <input type="file" name="property_images1" class="filestyle" style="width: 100%;border: none;">
+                                                    <input type="file" name="property_images1" class="filestyle" style="width: 50%;border: none;float: left;">
+
+                                                        <button type="button" class="remove-btn" style="outline: none;border: 0;color: red;float: right;font-size: 21px;background: transparent;padding: 10px 5px;margin-right: 5px;">
+
+                                                            <i aria-hidden="true" class="fas fa-times-circle" style="position:relative;top: 1px;"></i>
+
+                                                        </button>
+
+
                                                 </div>
                                             </div>
 
@@ -836,7 +851,15 @@
 
                                                 </div>
                                                 <div class="media-body media-middle">
-                                                    <input type="file" name="property_images2" class="filestyle" style="width: 100%;border: none;">
+                                                    <input type="file" name="property_images2" class="filestyle" style="width: 50%;border: none;float: left;">
+
+                                                    <button type="button" class="remove-btn" style="outline: none;border: 0;color: red;float: right;font-size: 21px;background: transparent;padding: 10px 5px;margin-right: 5px;">
+
+                                                        <i aria-hidden="true" class="fas fa-times-circle" style="position:relative;top: 1px;"></i>
+
+                                                    </button>
+
+
                                                 </div>
                                             </div>
 
@@ -866,7 +889,14 @@
 
                                                 </div>
                                                 <div class="media-body media-middle">
-                                                    <input type="file" name="property_images3" class="filestyle" style="width: 100%;border: none;">
+                                                    <input type="file" name="property_images3" class="filestyle" style="width: 50%;border: none;float: left;">
+
+                                                    <button type="button" class="remove-btn" style="outline: none;border: 0;color: red;float: right;font-size: 21px;background: transparent;padding: 10px 5px;margin-right: 5px;">
+
+                                                        <i aria-hidden="true" class="fas fa-times-circle" style="position:relative;top: 1px;"></i>
+
+                                                    </button>
+
                                                 </div>
                                             </div>
 
@@ -896,7 +926,15 @@
 
                                                 </div>
                                                 <div class="media-body media-middle">
-                                                    <input type="file" name="property_images4" class="filestyle" style="width: 100%;border: none;">
+                                                    <input type="file" name="property_images4" class="filestyle" style="width: 50%;border: none;float: left;">
+
+                                                    <button type="button" class="remove-btn" style="outline: none;border: 0;color: red;float: right;font-size: 21px;background: transparent;padding: 10px 5px;margin-right: 5px;">
+
+                                                        <i aria-hidden="true" class="fas fa-times-circle" style="position:relative;top: 1px;"></i>
+
+                                                    </button>
+
+
                                                 </div>
                                             </div>
 
@@ -927,7 +965,14 @@
 
                                                 </div>
                                                 <div class="media-body media-middle">
-                                                    <input type="file" name="property_images5" class="filestyle" style="width: 100%;border: none;">
+                                                    <input type="file" name="property_images5" class="filestyle" style="width: 50%;border: none;float: left;">
+
+                                                    <button type="button" class="remove-btn" style="outline: none;border: 0;color: red;float: right;font-size: 21px;background: transparent;padding: 10px 5px;margin-right: 5px;">
+
+                                                        <i aria-hidden="true" class="fas fa-times-circle" style="position:relative;top: 1px;"></i>
+
+                                                    </button>
+
                                                 </div>
                                             </div>
 
@@ -958,7 +1003,14 @@
 
                                                 </div>--}}
                                                 <div class="media-body media-middle">
-                                                    <input type="file" name="video" class="filestyle" style="width: 100%;border: none;">
+                                                    <input type="file" name="video" class="filestyle" style="width: 50%;border: none;float: left;">
+
+                                                    <button type="button" class="remove-btn" style="outline: none;border: 0;color: red;float: right;font-size: 21px;background: transparent;padding: 10px 5px;margin-right: 5px;">
+
+                                                        <i aria-hidden="true" class="fas fa-times-circle" style="position:relative;top: 1px;"></i>
+
+                                                    </button>
+
                                                 </div>
                                             </div>
 
@@ -990,7 +1042,15 @@
 
                                                 </div>--}}
                                                 <div class="media-body media-middle">
-                                                    <input type="file" name="documents[]" multiple class="filestyle" style="width: 100%;border: none;">
+                                                    <input type="file" name="documents[]" multiple class="filestyle" style="width: 50%;border: none;float: left;">
+
+                                                    <button type="button" class="remove-btn" style="outline: none;border: 0;color: red;float: right;font-size: 21px;background: transparent;padding: 10px 5px;margin-right: 5px;">
+
+                                                        <i aria-hidden="true" class="fas fa-times-circle" style="position:relative;top: 1px;"></i>
+
+                                                    </button>
+
+
                                                 </div>
                                             </div>
 
@@ -1023,7 +1083,15 @@
 
                                                 </div>--}}
                                                 <div class="media-body media-middle">
-                                                    <input type="file" name="first_floor" multiple class="filestyle" style="width: 100%;border: none;">
+
+                                                    <input type="file" name="first_floor" multiple class="filestyle" style="width: 50%;border: none;float: left;">
+
+                                                    <button type="button" class="remove-btn" style="outline: none;border: 0;color: red;float: right;font-size: 21px;background: transparent;padding: 10px 5px;margin-right: 5px;">
+
+                                                        <i aria-hidden="true" class="fas fa-times-circle" style="position:relative;top: 1px;"></i>
+
+                                                    </button>
+
                                                 </div>
                                             </div>
 
@@ -1049,7 +1117,14 @@
 
                                                 </div>--}}
                                                 <div class="media-body media-middle">
-                                                    <input type="file" name="second_floor" multiple class="filestyle" style="width: 100%;border: none;">
+                                                    <input type="file" name="second_floor" multiple class="filestyle" style="width: 50%;border: none;float: left;">
+
+                                                    <button type="button" class="remove-btn" style="outline: none;border: 0;color: red;float: right;font-size: 21px;background: transparent;padding: 10px 5px;margin-right: 5px;">
+
+                                                        <i aria-hidden="true" class="fas fa-times-circle" style="position:relative;top: 1px;"></i>
+
+                                                    </button>
+
                                                 </div>
                                             </div>
 
@@ -1075,7 +1150,14 @@
 
                                                 </div>--}}
                                                 <div class="media-body media-middle">
-                                                    <input type="file" name="ground_floor" multiple class="filestyle" style="width: 100%;border: none;">
+                                                    <input type="file" name="ground_floor" multiple class="filestyle" style="width: 50%;border: none;float: left;">
+
+                                                    <button type="button" class="remove-btn" style="outline: none;border: 0;color: red;float: right;font-size: 21px;background: transparent;padding: 10px 5px;margin-right: 5px;">
+
+                                                        <i aria-hidden="true" class="fas fa-times-circle" style="position:relative;top: 1px;"></i>
+
+                                                    </button>
+
                                                 </div>
                                             </div>
 
@@ -1101,7 +1183,14 @@
 
                                                 </div>--}}
                                                 <div class="media-body media-middle">
-                                                    <input type="file" name="basement" multiple class="filestyle" style="width: 100%;border: none;">
+                                                    <input type="file" name="basement" multiple class="filestyle" style="width: 50%;border: none;float: left;">
+
+                                                    <button type="button" class="remove-btn" style="outline: none;border: 0;color: red;float: right;font-size: 21px;background: transparent;padding: 10px 5px;margin-right: 5px;">
+
+                                                        <i aria-hidden="true" class="fas fa-times-circle" style="position:relative;top: 1px;"></i>
+
+                                                    </button>
+
                                                 </div>
                                             </div>
 
@@ -1461,6 +1550,14 @@
 
 
         $(document).ready(function() {
+
+
+
+            $(".remove-btn").on('click', function() {
+
+                $(this).prev().val('');
+
+            });
 
             $(".submit-form").on('click', function() {
 

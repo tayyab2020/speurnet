@@ -164,23 +164,8 @@
 
             </div>
 
-                     <?php
 
-
-                     $time = strtotime($property->created_at);
-
-                     $first = date('m/d/Y',$time);
-
-                     $second = date("m/d/Y");
-
-
-                     $diff = strtotime($second, 0) - strtotime($first, 0);
-                     $week_number =  floor($diff / 604800);
-
-
-                         ?>
-
-        <div class="property-price" style="background: #d6d63e;position:relative;max-width: 50%;margin-bottom: 12px;font-size: 15px;padding: 2px 0px;border-radius: 5px;">Listed on {{$week_number}} @if($week_number == 1) week @else weeks @endif ago</div>
+        <div class="property-price" style="background: #d6d63e;position:relative;max-width: 50%;margin-bottom: 12px;font-size: 15px;padding: 2px 0px;border-radius: 5px;">Listed {{$property->listed}}</div>
 
 
           </div>

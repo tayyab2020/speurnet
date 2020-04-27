@@ -79,14 +79,38 @@ class PropertiesController extends MainAdminController
             'property_images5' => 'mimes:jpg,jpeg,gif,png|max:3000',
             'video' => 'mimetypes:video/x-ms-asf,video/x-flv,video/mp4,application/x-mpegURL,video/MP2T,video/3gpp,video/quicktime,video/x-msvideo,video/x-ms-wmv,video/avi|max:20000',
             'documents.*' => 'mimes:pdf,doc,docx,txt,rtf,wpd,ppt,pptx',
-            'first_floor' => 'mimes:jpg,jpeg,gif,png|max:5000',
-            'second_floor' => 'mimes:jpg,jpeg,gif,png|max:5000',
-            'ground_floor' => 'mimes:jpg,jpeg,gif,png|max:5000',
-            'basement' => 'mimes:jpg,jpeg,gif,png|max:5000',
+            'first_floor' => 'mimes:jpg,jpeg,gif,png,pdf|max:5000',
+            'second_floor' => 'mimes:jpg,jpeg,gif,png,pdf|max:5000',
+            'ground_floor' => 'mimes:jpg,jpeg,gif,png,pdf|max:5000',
+            'basement' => 'mimes:jpg,jpeg,gif,png,pdf|max:5000',
         );
 
         $messages = [
-            'property_name.required' => 'Property Name is required.'
+            'property_name.required' => 'Property Name is required.',
+            'description.required' => 'Description is required.',
+            'featured_image.mimes' => 'Featured Image must be a file of type: jpg, jpeg, gif, png.',
+            'featured_image.max' => 'Featured Image may not be greater than 5mb.',
+            'property_images1.mimes' => 'Property Image 1 must be a file of type: jpg, jpeg, gif, png.',
+            'property_images1.max' => 'Property Image 1 may not be greater than 3mb.',
+            'property_images2.mimes' => 'Property Image 2 must be a file of type: jpg, jpeg, gif, png.',
+            'property_images2.max' => 'Property Image 2 may not be greater than 3mb.',
+            'property_images3.mimes' => 'Property Image 3 must be a file of type: jpg, jpeg, gif, png.',
+            'property_images3.max' => 'Property Image 3 may not be greater than 3mb.',
+            'property_images4.mimes' => 'Property Image 4 must be a file of type: jpg, jpeg, gif, png.',
+            'property_images4.max' => 'Property Image 4 may not be greater than 3mb.',
+            'property_images5.mimes' => 'Property Image 5 must be a file of type: jpg, jpeg, gif, png.',
+            'property_images5.max' => 'Property Image 5 may not be greater than 3mb.',
+            'video.mimetypes' => 'Video must be a file of type: wmv, flv, mp4, m3u8, ts, 3gp, mov, avi.',
+            'video.max' => 'Video may not be greater than 20mb.',
+            'documents.*.mimes' => 'Documents be a file of type: pdf, doc, txt, rtf, wpd, ppt, pptx.',
+            'first_floor.mimes' => 'First Floor must be a file of type: jpg, jpeg, gif, png, pdf.',
+            'first_floor.max' => 'First Floor may not be greater than 5mb.',
+            'second_floor.mimes' => 'Second Floor must be a file of type: jpg, jpeg, gif, png, pdf.',
+            'second_floor.max' => 'Second Floor may not be greater than 5mb.',
+            'ground_floor.mimes' => 'Ground Floor must be a file of type: jpg, jpeg, gif, png, pdf.',
+            'ground_floor.max' => 'Ground Floor may not be greater than 5mb.',
+            'basement.mimes' => 'Basement must be a file of type: jpg, jpeg, gif, png, pdf.',
+            'basement.max' => 'Basement may not be greater than 5mb.',
         ];
 
 	   	 $validator = \Validator::make($data,$rule,$messages);
@@ -317,59 +341,106 @@ class PropertiesController extends MainAdminController
 
         if($first_floor){
 
-            \File::delete(public_path() .'/upload/properties/'.$property->first_floor.'-b.jpg');
+            \File::delete(public_path() .'/upload/properties/'.$property->first_floor);
+
+            $filename = $_FILES['first_floor']['name'];
+
+            $ext = pathinfo($filename, PATHINFO_EXTENSION);
 
 
             $tmpFilePath = 'upload/properties/';
 
             $hardPath =  Str::slug($inputs['property_name'], '-').'-'.md5(rand(0,99999));
 
-            $img = Image::make($first_floor);
+            if($ext == 'pdf' || $ext == 'PDF')
+            {
+                $target_file = $tmpFilePath . $hardPath . '.' . $ext;
 
-            $img->save($tmpFilePath.$hardPath.'-b.jpg');
+                move_uploaded_file($_FILES["first_floor"]["tmp_name"],$target_file);
+            }
+            else
+            {
+
+                $img = Image::make($first_floor);
+
+                $img->save($tmpFilePath.$hardPath.'.'.$ext);
+            }
 
 
-            $property->first_floor = $hardPath;
+
+            $property->first_floor = $hardPath . '.' . $ext;
 
         }
 
         $second_floor = $request->file('second_floor');
 
+
         if($second_floor){
 
-            \File::delete(public_path() .'/upload/properties/'.$property->second_floor.'-b.jpg');
+            \File::delete(public_path() .'/upload/properties/'.$property->second_floor);
+
+            $filename = $_FILES['second_floor']['name'];
+
+            $ext = pathinfo($filename, PATHINFO_EXTENSION);
 
 
             $tmpFilePath = 'upload/properties/';
 
             $hardPath =  Str::slug($inputs['property_name'], '-').'-'.md5(rand(0,99999));
 
-            $img = Image::make($second_floor);
+            if($ext == 'pdf' || $ext == 'PDF')
+            {
+                $target_file = $tmpFilePath . $hardPath . '.' . $ext;
 
-            $img->save($tmpFilePath.$hardPath.'-b.jpg');
+                move_uploaded_file($_FILES["second_floor"]["tmp_name"],$target_file);
+            }
+            else
+            {
+
+                $img = Image::make($second_floor);
 
 
-            $property->second_floor = $hardPath;
+                $img->save($tmpFilePath.$hardPath.'.'.$ext);
+            }
+
+
+            $property->second_floor = $hardPath . '.' . $ext;
 
         }
+
+
 
         $ground_floor = $request->file('ground_floor');
 
         if($ground_floor){
 
-            \File::delete(public_path() .'/upload/properties/'.$property->ground_floor.'-b.jpg');
+            \File::delete(public_path() .'/upload/properties/'.$property->ground_floor);
+
+            $filename = $_FILES['ground_floor']['name'];
+
+            $ext = pathinfo($filename, PATHINFO_EXTENSION);
 
 
             $tmpFilePath = 'upload/properties/';
 
             $hardPath =  Str::slug($inputs['property_name'], '-').'-'.md5(rand(0,99999));
 
-            $img = Image::make($ground_floor);
+            if($ext == 'pdf' || $ext == 'PDF')
+            {
+                $target_file = $tmpFilePath . $hardPath . '.' . $ext;
 
-            $img->save($tmpFilePath.$hardPath.'-b.jpg');
+                move_uploaded_file($_FILES["ground_floor"]["tmp_name"],$target_file);
+            }
+            else
+            {
+
+                $img = Image::make($ground_floor);
+
+                $img->save($tmpFilePath.$hardPath.'.'.$ext);
+            }
 
 
-            $property->ground_floor = $hardPath;
+            $property->ground_floor = $hardPath . '.' . $ext;
 
         }
 
@@ -377,19 +448,34 @@ class PropertiesController extends MainAdminController
 
         if($basement){
 
-            \File::delete(public_path() .'/upload/properties/'.$property->basement.'-b.jpg');
+            \File::delete(public_path() .'/upload/properties/'.$property->basement);
+
+            $filename = $_FILES['basement']['name'];
+
+            $ext = pathinfo($filename, PATHINFO_EXTENSION);
 
 
             $tmpFilePath = 'upload/properties/';
 
             $hardPath =  Str::slug($inputs['property_name'], '-').'-'.md5(rand(0,99999));
 
-            $img = Image::make($basement);
+            if($ext == 'pdf' || $ext == 'PDF')
+            {
+                $target_file = $tmpFilePath . $hardPath . '.' . $ext;
 
-            $img->save($tmpFilePath.$hardPath.'-b.jpg');
+                move_uploaded_file($_FILES["basement"]["tmp_name"],$target_file);
+            }
+            else
+            {
+
+                $img = Image::make($basement);
+
+                $img->save($tmpFilePath.$hardPath.'.'.$ext);
+
+            }
 
 
-            $property->basement = $hardPath;
+            $property->basement = $hardPath . '.' . $ext;
 
         }
 
