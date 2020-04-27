@@ -60,7 +60,6 @@ class PropertiesController extends MainAdminController
     {
 
 
-
     	$data =  \Request::except(array('_token')) ;
 
 	    $inputs = $request->all();
