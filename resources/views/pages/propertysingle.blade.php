@@ -94,7 +94,128 @@
                           <a class="right carousel-control" href="#slider-property" data-slide="next">
                             <span class="glyphicon glyphicon-chevron-right"></span>
                           </a>
-                        </div>
+
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 10px 0px;padding-bottom: 0px;">
+
+                                <h4 style="margin: 0;float: left;font-weight: 600;">{{$property->views}}</h4>
+
+                                <span style="margin-left: 5px;margin-right: 10px;"><i class="fa fa-eye" aria-hidden="true" style="font-size: 16px;padding-left: 3px;"></i></span>
+
+                                <?php $url = "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; ?>
+
+                                <span style="margin-left: 10px;"><a target="_blank" title="Share by Whatsapp" href="https://api.whatsapp.com/send?text={{$url}}"><i class="fa fa-whatsapp" aria-hidden="true" style="font-size: 16px;"></i></a></span>
+
+                                <span style="margin-left: 10px;"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{$url}}"><i class="fa fa-facebook" aria-hidden="true" style="font-size: 16px;color: #7191d3;"></i></a></span>
+
+                                <span style="margin-left: 10px;"><a target="_blank" title="Share by Email" href="mailto:?subject=I wanted you to see this Property AD I just Found on zoekjehuisje.nl&amp;body=Check out this link {{$url}}"><i class="far fa-envelope" aria-hidden="true" style="font-size: 16px;color:goldenrod;"></i></a></span>
+
+                                <button style="float: right;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                    <i class="far fa-calendar-check" style="margin-right: 7px;"></i> Request Viewing
+                                </button>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+
+                                        <form role="form" action="{{route('request-viewing')}}" method="POST">
+
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+                                        <div class="modal-content">
+
+                                            <div class="modal-header" style="border-bottom: 0;display: inline-block;width: 100%;padding: 15px 25px;">
+
+                                                <button style="opacity: 0.5;font-size: 30px;font-weight: 600;" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+
+                                                <h4 style="margin-top: 5px;" class="modal-title" id="exampleModalLabel">REQUEST VIEWING</h4>
+                                                <p style="margin-top: 15px;width: 90%;">Physical Arrange viewings is always been attractive to property clients. Just fill out the form to arrange visualizations around our properties.</p>
+
+                                            </div>
+
+
+                                            <div class="modal-body" style="padding: 10px 25px;">
+
+                                                    <input type="hidden" name="id" value="{{$property->id}}">
+
+                                                    <div class="form-group">
+
+                                                        <div style="width: 100%;position: relative;">
+
+                                                            <i class="fas fa-calendar-alt" style="position: absolute;left: 15px;right: auto;color: #d5d5d5;font-size: 14px;top: 55%;margin:-9px 0 0;pointer-events:none;"></i>
+                                                            <i class="fas fa-chevron-down" style="position: absolute;font-size: 14px;top: 55%;right:10px;left: auto;margin: -7px 0 0;pointer-events: none;color: #767676;"></i>
+
+                                                            <input style="padding: 0 0 0 40px;cursor: pointer;height: 42px;color:#bcbcbc;border-color:#e6e6e6;border-radius: 3px;box-shadow: none;" type='text' placeholder="Select Schedule *" name="date" required  class="form-control" id='datetimepicker4' />
+
+                                                        </div>
+
+                                                    </div>
+
+                                                    <div class="form-group">
+
+                                                        <div style="width: 100%;position: relative;">
+
+                                                            <i class="far fa-clock" style="position: absolute;left: 15px;right: auto;color: #d5d5d5;font-size: 14px;top: 55%;margin:-9px 0 0;pointer-events:none;"></i>
+                                                            <i class="fas fa-chevron-down" style="position: absolute;font-size: 14px;top: 55%;right:10px;left: auto;margin: -7px 0 0;pointer-events: none;color: #767676;"></i>
+
+                                                            <input style="padding: 0 0 0 40px;cursor: pointer;height: 42px;color:#bcbcbc;border-color:#e6e6e6;border-radius: 3px;box-shadow: none;" type='text' placeholder="Select Time *" name="time" required  class="form-control" id='datetimepicker3' />
+
+                                                        </div>
+
+                                                    </div>
+
+                                                    <div class="form-group">
+
+                                                        <div style="width: 100%;position: relative;">
+
+                                                            <i class="fas fa-user" style="position: absolute;left: 15px;right: auto;color: #d5d5d5;font-size: 14px;top: 55%;margin:-9px 0 0;pointer-events:none;"></i>
+
+                                                            <input style="padding: 0 0 0 40px;height: 42px;color:#bcbcbc;border-color:#e6e6e6;border-radius: 3px;box-shadow: none;" type='text' placeholder="Your Name *" name="username" required  class="form-control" id='username' />
+
+                                                        </div>
+
+                                                    </div>
+
+                                                    <div class="form-group">
+
+                                                        <div style="width: 100%;position: relative;">
+
+                                                            <i class="far fa-comment-alt" style="position: absolute;left: 15px;right: auto;color: #d5d5d5;font-size: 14px;margin:10px 0 0;pointer-events:none;"></i>
+
+                                                            <textarea style="height:100px;padding-left:40px;color:#bcbcbc;border-color:#e6e6e6;border-radius: 3px;box-shadow: none;" class="form-control" id="message-text" placeholder="Message" name="message"></textarea>
+
+
+                                                        </div>
+
+                                                    </div>
+
+
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-primary">Send message</button>
+                                            </div>
+                                        </div>
+
+                                    </form>
+
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 10px 0px;padding-top: 0;">
+
+                                <?php $date = date_format($property->created_at,"F d, Y");?>
+
+                             <span style="font-size: 12px;">Posted On {{$date}}</span>
+
+                            </div>
+
+                            </div>
                         <h3>Property Overview</h3>
                         <table class="table table-bordered">
                           <tr>
@@ -654,6 +775,58 @@
 
     <style>
 
+        .modal-dialog-centered
+        {
+            display: flex;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            -webkit-box-align:center;
+            -ms-flex-align: center;
+            align-items: center;
+            min-height: calc(100% - (.5rem * 2));
+        }
+
+        @media (min-width: 768px)
+        {
+            .modal-dialog
+            {
+                width: 500px;
+            }
+        }
+
+        @media (min-width: 576px)
+        {
+            .modal-dialog-centered{
+                min-height: calc(100% - (1.75rem * 2));
+            }
+        }
+
+        .dropdown-menu{ position:absolute;top:100%;left:0;z-index:1000;display:none;
+            float:left;min-width:160px;padding:5px 0;margin:2px 0 0;font-size:14px;
+            text-align:left;list-style:none;background-color:#fff;-webkit-background-clip:padding-box;
+            background-clip:padding-box;border:1px solid #ccc;border:1px solid rgba(0,0,0,.15);
+            border-radius:4px;-webkit-box-shadow:0 6px 12px rgba(0,0,0,.175);
+            box-shadow:0 6px 12px rgba(0,0,0,.175) }
+
+        @media (min-width: 700px)
+        {
+
+            .carousel-inner
+            {
+                height: 500px;
+            }
+
+        }
+
+        .carousel-inner > .item
+        {
+            height: 100%;
+        }
+
+        #slider-property .carousel-inner .item img
+        {
+            height: 100%;
+        }
 
 
         #map {
@@ -746,7 +919,11 @@
 
         $( document ).ready(function() {
 
+            $('#datetimepicker4').datetimepicker({format: 'DD/MM/YYYY'});
 
+            $('#datetimepicker3').datetimepicker({
+                format: 'LT'
+            });
 
             $(".floors_links").click(function(){
 

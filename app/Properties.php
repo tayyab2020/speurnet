@@ -8,9 +8,15 @@ class Properties extends Model
 {
     protected $table = 'properties';
 
-    protected $fillable = ['user_id','available_immediately','property_name','property_type','property_purpose','sale_price','rent_price','address','map_latitude','map_longitude','bathrooms','bedrooms','area','description','featured_image'];
+    protected $fillable = ['user_id','available_immediately','views','property_name','property_type','property_purpose','sale_price','rent_price','address','map_latitude','map_longitude','bathrooms','bedrooms','area','description','featured_image'];
 
-	public function scopeSearchByKeyword($query, $city_id,$type,$purpose,$price,$min_price,$max_price)
+    /*protected static function boot()
+    {
+        parent::boot();
+        static::retrieved(function ($model) {});
+    }*/
+
+    public function scopeSearchByKeyword($query, $city_id,$type,$purpose,$price,$min_price,$max_price)
     {
 
         if ($min_price!='' and $max_price!='') {

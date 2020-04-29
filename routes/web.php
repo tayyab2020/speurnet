@@ -132,6 +132,8 @@ Route::get('rent', 'PropertiesController@rentproperties');
 
 Route::get('properties/{slug}', 'PropertiesController@propertysingle');
 
+Route::post('properties/request-viewing', 'PropertiesController@PostRequestViewing')->name('request-viewing');
+
 Route::get('type/{slug}', 'PropertiesController@propertiesbytype');
 
 Route::post('agentscontact', 'PropertiesController@agentscontact');

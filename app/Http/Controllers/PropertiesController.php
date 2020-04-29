@@ -7,6 +7,7 @@ use App\Properties;
 use App\Enquire;
 use App\Types;
 use App\property_documents;
+use App\request_viewings;
 
 use Illuminate\Http\Request;
 
@@ -108,6 +109,27 @@ class PropertiesController extends Controller
         return view('pages.properties',compact('properties'));
     }
 
+    public function PostRequestViewing(Request $request)
+    {
+
+
+        $post = new request_viewings;
+
+        $post->property_id = $request->id;
+        $post->status = 0;
+        $post->date = $request->date;
+        $post->time = $request->time;
+        $post->name = $request->username;
+        $post->message = $request->message;
+        $post->save();
+
+        \Session::flash('flash_message', 'Request for viewing posted successfully!');
+
+        return \Redirect::back();
+
+
+    }
+
     public function featuredproperties()
     {
     	$properties = Properties::where('featured_property','1')->where('status','1')->orderBy('id', 'desc')->paginate(9);;
@@ -149,6 +171,11 @@ class PropertiesController extends Controller
     public function propertysingle($slug)
     {
     	$property = Properties::where("property_slug", $slug)->first();
+
+        $property->views =$property->views + 1;
+        $property->save();
+
+        $property = Properties::where("property_slug", $slug)->first();
 
     	$property_documents = property_documents::where('property_id',$property->id)->get();
 
