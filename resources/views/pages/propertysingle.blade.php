@@ -541,7 +541,15 @@
 
                                           @if($ext == 'pdf')
 
-                                              <embed src="{{ URL::asset('upload/properties/'.$property->first_floor) }}" width="800px" height="2100px" />
+                                              <a href="{{ URL::asset('upload/properties/'.$property->first_floor) }}" style="display: inline-block">
+
+                                                  <div style="display:inline-block;margin: 10px;margin-top: 50px;">
+                                                      <img src="{{ URL::asset('assets/img/pdf.png') }}" style="width: 45px;">
+                                                      <label style="cursor:pointer;">Download</label>
+                                                  </div>
+
+                                              </a>
+
 
                                               @else
 
@@ -570,7 +578,15 @@
 
                                               @if($ext == 'pdf')
 
-                                                  <embed src="{{ URL::asset('upload/properties/'.$property->second_floor) }}" width="100%" height="800px" />
+                                                  <a href="{{ URL::asset('upload/properties/'.$property->second_floor) }}" style="display: inline-block">
+
+                                                      <div style="display:inline-block;margin: 10px;margin-top: 50px;">
+                                                          <img src="{{ URL::asset('assets/img/pdf.png') }}" style="width: 45px;">
+                                                          <label style="cursor:pointer;">Download</label>
+                                                      </div>
+
+                                                  </a>
+
 
                                               @else
 
@@ -597,7 +613,15 @@
 
                                               @if($ext == 'pdf')
 
-                                                  <embed src="{{ URL::asset('upload/properties/'.$property->ground_floor) }}" width="100%" height="800px" />
+                                                  <a href="{{ URL::asset('upload/properties/'.$property->ground_floor) }}" style="display: inline-block">
+
+                                                      <div style="display:inline-block;margin: 10px;margin-top: 50px;">
+                                                          <img src="{{ URL::asset('assets/img/pdf.png') }}" style="width: 45px;">
+                                                          <label style="cursor:pointer;">Download</label>
+                                                      </div>
+
+                                                  </a>
+
 
                                               @else
 
@@ -624,7 +648,15 @@
 
                                               @if($ext == 'pdf')
 
-                                                  <embed src="{{ URL::asset('upload/properties/'.$property->basement) }}" width="100%" height="800px" />
+                                                  <a href="{{ URL::asset('upload/properties/'.$property->basement) }}" style="display: inline-block">
+
+                                                      <div style="display:inline-block;margin: 10px;margin-top: 50px;">
+                                                          <img src="{{ URL::asset('assets/img/pdf.png') }}" style="width: 45px;">
+                                                          <label style="cursor:pointer;">Download</label>
+                                                      </div>
+
+                                                  </a>
+                                                  
 
                                               @else
 
