@@ -207,7 +207,7 @@
                             </div>
 
 
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 10px 0px;padding-top: 0;">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 40px 0px;padding-top: 0;">
 
                                 <?php $date = date_format($property->created_at,"F d, Y");?>
 
