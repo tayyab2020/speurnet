@@ -74,6 +74,168 @@
 
                   <div class="property-status" style="bottom: 12px;right: 12px;background: rgba(0,0,0,.5);border-radius: 7%;padding: 5px 6px 5px 10px;">
 
+                      @if($property->first_floor || $property->second_floor || $property->ground_floor || $property->basement)
+
+                          <?php $check = 0; ?>
+
+
+                          @if($property->first_floor)
+
+                                  <?php $ext = pathinfo($property->first_floor, PATHINFO_EXTENSION);
+
+                                  $ext = strtolower($ext);
+
+                                  ?>
+
+                              @if($ext == 'pdf')
+
+                                          <a data-gallery="floor-images{{$i}}" href=" {{ URL::asset('upload/properties/'.$property->first_floor) }} " style="color: white;" data-toggle="lightbox"> <img style="width: 20px;margin-right: 10px;position: relative;bottom: 2px;" src="{{ URL::asset('assets/img/blueprint.png') }}" > </a>
+
+                              @else
+
+                                          <a data-gallery="floor-images{{$i}}" href="{{ URL::asset('upload/properties/'.$property->first_floor) }}" style="color: white;" data-toggle="lightbox"> <img style="width: 20px;margin-right: 10px;position: relative;bottom: 2px;" src="{{ URL::asset('assets/img/blueprint.png') }}" > </a>
+
+                              @endif
+
+
+
+                              <?php $check = 1; ?>
+
+                          @endif
+
+                              @if($property->second_floor)
+
+                                  <?php $ext = pathinfo($property->second_floor, PATHINFO_EXTENSION);
+
+                                  $ext = strtolower($ext);
+
+                                  ?>
+
+
+                                  @if($check)
+
+                                          @if($ext == 'pdf')
+
+                                              <div style="display: none;" data-toggle="lightbox" data-gallery="floor-images{{$i}}" data-remote=" {{ URL::asset('upload/properties/'.$property->second_floor) }} "></div>
+
+                                          @else
+
+                                              <div style="display: none;" data-toggle="lightbox" data-gallery="floor-images{{$i}}" data-remote="{{ URL::asset('upload/properties/'.$property->second_floor) }}"></div>
+
+                                          @endif
+
+
+
+                                      @else
+
+                                          @if($ext == 'pdf')
+
+                                              <a data-gallery="floor-images{{$i}}" href="{{ URL::asset('upload/properties/'.$property->second_floor) }}" style="color: white;" data-toggle="lightbox"> <img style="width: 20px;margin-right: 10px;position: relative;bottom: 2px;" src=" {{ URL::asset('assets/img/blueprint.png') }} " > </a>
+
+                                              @else
+
+                                              <a data-gallery="floor-images{{$i}}" href="{{ URL::asset('upload/properties/'.$property->second_floor) }}" style="color: white;" data-toggle="lightbox"> <img style="width: 20px;margin-right: 10px;position: relative;bottom: 2px;" src="{{ URL::asset('assets/img/blueprint.png') }}" > </a>
+
+                                              @endif
+
+
+                                      <?php $check = 1; ?>
+
+                                      @endif
+
+
+                              @endif
+
+
+                              @if($property->ground_floor)
+
+                                  <?php $ext = pathinfo($property->ground_floor, PATHINFO_EXTENSION);
+
+                                  $ext = strtolower($ext);
+
+                                  ?>
+
+                                  @if($check)
+
+                                          @if($ext == 'pdf')
+
+                                              <div style="display: none;" data-toggle="lightbox" data-gallery="floor-images{{$i}}" data-remote=" {{ URL::asset('upload/properties/'.$property->ground_floor) }} "></div>
+
+                                              @else
+
+                                              <div style="display: none;" data-toggle="lightbox" data-gallery="floor-images{{$i}}" data-remote="{{ URL::asset('upload/properties/'.$property->ground_floor) }}"></div>
+
+                                              @endif
+
+
+
+                                  @else
+
+                                          @if($ext == 'pdf')
+
+                                              <a data-gallery="floor-images{{$i}}" href=" {{ URL::asset('upload/properties/'.$property->ground_floor) }} " style="color: white;" data-toggle="lightbox"> <img style="width: 20px;margin-right: 10px;position: relative;bottom: 2px;" src="{{ URL::asset('assets/img/blueprint.png') }}" > </a>
+
+                                              @else
+
+                                              <a data-gallery="floor-images{{$i}}" href="{{ URL::asset('upload/properties/'.$property->ground_floor) }}" style="color: white;" data-toggle="lightbox"> <img style="width: 20px;margin-right: 10px;position: relative;bottom: 2px;" src="{{ URL::asset('assets/img/blueprint.png') }}" > </a>
+
+                                              @endif
+
+
+
+                                      <?php $check = 1; ?>
+
+                                  @endif
+
+
+                              @endif
+
+
+                              @if($property->basement)
+
+                                  <?php $ext = pathinfo($property->basement, PATHINFO_EXTENSION);
+
+                                  $ext = strtolower($ext);
+
+                                  ?>
+
+                                  @if($check)
+
+                                          @if($ext == 'pdf')
+
+                                              <div style="display: none;" data-toggle="lightbox" data-gallery="floor-images{{$i}}" data-remote=" {{ URL::asset('upload/properties/'.$property->basement) }} "></div>
+
+                                              @else
+
+                                              <div style="display: none;" data-toggle="lightbox" data-gallery="floor-images{{$i}}" data-remote="{{ URL::asset('upload/properties/'.$property->basement) }}"></div>
+
+                                              @endif
+
+
+
+                                  @else
+
+                                          @if($ext == 'pdf')
+
+                                              <a data-gallery="floor-images{{$i}}" href=" {{ URL::asset('upload/properties/'.$property->basement) }} " style="color: white;" data-toggle="lightbox"> <img style="width: 20px;margin-right: 10px;position: relative;bottom: 2px;" src="{{ URL::asset('assets/img/blueprint.png') }}" > </a>
+
+                                              @else
+
+                                              <a data-gallery="floor-images{{$i}}" href="{{ URL::asset('upload/properties/'.$property->basement) }}" style="color: white;" data-toggle="lightbox"> <img style="width: 20px;margin-right: 10px;position: relative;bottom: 2px;" src="{{ URL::asset('assets/img/blueprint.png') }}" > </a>
+
+                                              @endif
+
+
+                                      <?php $check = 1; ?>
+
+                                  @endif
+
+
+                              @endif
+
+                      @endif
+
+
                           @if($url)
 
                           <a data-width="1280" href="{{$url}}" data-gallery="videos{{$i}}" style="color: white;" data-toggle="lightbox"> <i class="fas fa-film" style="font-size: 18px;margin-right: 12px;"></i> </a>
@@ -98,35 +260,35 @@
 
                           @if($property->property_images1)
 
-                              <div data-toggle="lightbox" data-gallery="hidden-images{{$i}}" data-remote="{{ URL::asset('upload/properties/'.$property->property_images1.'-b.jpg') }}"></div>
+                              <div style="display: none;" data-toggle="lightbox" data-gallery="hidden-images{{$i}}" data-remote="{{ URL::asset('upload/properties/'.$property->property_images1.'-b.jpg') }}"></div>
 
                           @endif
 
                           @if($property->property_images2)
 
-                              <div data-toggle="lightbox" data-gallery="hidden-images{{$i}}" data-remote="{{ URL::asset('upload/properties/'.$property->property_images2.'-b.jpg') }}"></div>
+                              <div style="display: none;" data-toggle="lightbox" data-gallery="hidden-images{{$i}}" data-remote="{{ URL::asset('upload/properties/'.$property->property_images2.'-b.jpg') }}"></div>
 
                           @endif
 
                           @if($property->property_images3)
 
-                              <div data-toggle="lightbox" data-gallery="hidden-images{{$i}}" data-remote="{{ URL::asset('upload/properties/'.$property->property_images3.'-b.jpg') }}"></div>
+                              <div style="display: none;" data-toggle="lightbox" data-gallery="hidden-images{{$i}}" data-remote="{{ URL::asset('upload/properties/'.$property->property_images3.'-b.jpg') }}"></div>
 
                           @endif
 
                           @if($property->property_images4)
 
-                              <div data-toggle="lightbox" data-gallery="hidden-images{{$i}}" data-remote="{{ URL::asset('upload/properties/'.$property->property_images4.'-b.jpg') }}"></div>
+                              <div style="display: none;" data-toggle="lightbox" data-gallery="hidden-images{{$i}}" data-remote="{{ URL::asset('upload/properties/'.$property->property_images4.'-b.jpg') }}"></div>
 
                           @endif
 
                           @if($property->property_images5)
 
-                              <div data-toggle="lightbox" data-gallery="hidden-images{{$i}}" data-remote="{{ URL::asset('upload/properties/'.$property->property_images5.'-b.jpg') }}"></div>
+                              <div style="display: none;" data-toggle="lightbox" data-gallery="hidden-images{{$i}}" data-remote="{{ URL::asset('upload/properties/'.$property->property_images5.'-b.jpg') }}"></div>
 
                           @endif
 
-                      <? $i = $i + 1; ?>
+                      <?php $i = $i + 1; ?>
 
 
                   </div>
