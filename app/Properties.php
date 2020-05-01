@@ -2,7 +2,9 @@
 
 namespace App;
 
+use App\Enquire;
 use Illuminate\Database\Eloquent\Model;
+use App\request_viewings;
 
 class Properties extends Model
 {
@@ -59,6 +61,14 @@ class Properties extends Model
             });
 		}
         return $query;
+    }
+
+    public function enquiries() {
+        return $this->hasMany(Enquire::class, 'property_id','id');
+    }
+
+    public function viewings() {
+        return $this->hasMany(request_viewings::class, 'property_id','id');
     }
 
 }

@@ -9,8 +9,13 @@ class Enquire extends Model
     protected $table = 'enquire';
 
     protected $fillable = ['name','email','phone','message'];
- 
-	
+
+
 	 public $timestamps = false;
-    
+
+    public function user()
+    {
+        return $this->hasOne('App\User','id','agent_id');
+    }
+
 }

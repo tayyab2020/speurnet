@@ -121,6 +121,10 @@
 
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
+                                        <input type="hidden" name="agent_id" value="{{$property->user_id}}">
+
+                                        <input type="hidden" name="property_name" value="{{$property->property_name}}">
+
                                         <div class="modal-content">
 
                                             <div class="modal-header" style="border-bottom: 0;display: inline-block;width: 100%;padding: 15px 25px;">
@@ -176,6 +180,30 @@
                                                         </div>
 
                                                     </div>
+
+                                                <div class="form-group">
+
+                                                    <div style="width: 100%;position: relative;">
+
+                                                        <i class="fas fa-at" style="position: absolute;left: 15px;right: auto;color: #d5d5d5;font-size: 14px;top: 55%;margin:-9px 0 0;pointer-events:none;"></i>
+
+                                                        <input style="padding: 0 0 0 40px;height: 42px;color:#bcbcbc;border-color:#e6e6e6;border-radius: 3px;box-shadow: none;" type='email' placeholder="Your Email *" name="email" required  class="form-control" id='email' />
+
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="form-group">
+
+                                                    <div style="width: 100%;position: relative;">
+
+                                                        <i class="fas fa-phone-alt" style="position: absolute;left: 15px;right: auto;color: #d5d5d5;font-size: 14px;top: 55%;margin:-9px 0 0;pointer-events:none;"></i>
+
+                                                        <input style="padding: 0 0 0 40px;height: 42px;color:#bcbcbc;border-color:#e6e6e6;border-radius: 3px;box-shadow: none;" type='text' placeholder="Your Phone Number" name="phone" class="form-control" id='phone' />
+
+                                                    </div>
+
+                                                </div>
 
                                                     <div class="form-group">
 
@@ -795,7 +823,7 @@
 				@if(Session::has('flash_message'))
 				    <div class="alert alert-success">
 
-				        {{ Session::get('flash_message') }}
+				        {!! Session::get('flash_message') !!}
 				    </div>
 				@endif
           </div>

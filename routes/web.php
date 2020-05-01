@@ -51,6 +51,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
 
 
 	Route::get('properties', 'PropertiesController@propertieslist');
+    Route::post('checkboxes', 'PropertiesController@Checkboxes');
 	Route::get('properties/addproperty', 'PropertiesController@addeditproperty');
 	Route::post('properties/addproperty', 'PropertiesController@addnew');
 	Route::get('properties/addproperty/{id}', 'PropertiesController@editproperty');
@@ -88,7 +89,9 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
 	Route::get('partners/delete/{id}', 'PartnersController@delete');
 
 	Route::get('inquiries', 'InquiriesController@inquirieslist');
+    Route::get('viewings', 'InquiriesController@viewingslist');
 	Route::get('inquiries/delete/{id}', 'InquiriesController@delete');
+    Route::get('viewings/delete/{id}', 'InquiriesController@Viewingsdelete');
 
 
 	Route::get('types', 'TypesController@typeslist');

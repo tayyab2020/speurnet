@@ -7,6 +7,7 @@ use App\User;
 use App\City;
 use App\Types;
 use App\Properties;
+use App\Enquire;
 use App\property_documents;
 
 use Carbon\Carbon;
@@ -26,19 +27,58 @@ class PropertiesController extends MainAdminController
 		 parent::__construct();
 
     }
+
+    public function Checkboxes(Request $request)
+    {
+        if($request->sold)
+        {
+            $sold = 1;
+        }
+        else
+        {
+            $sold = 0;
+        }
+
+        if($request->rented)
+        {
+            $rented = 1;
+        }
+        else
+        {
+            $rented = 0;
+        }
+
+        if($request->available)
+        {
+            $available = 1;
+        }
+        else
+        {
+            $available = 0;
+        }
+
+        $property = Properties::where('id',$request->id)->update(["is_sold"=>$sold,"is_rented"=>$rented,"available_immediately"=>$available]);
+
+        \Session::flash('flash_message', 'Status updated successfully!');
+
+        return \Redirect::back();
+
+    }
+
     public function propertieslist()
     {
 
 
     	if(Auth::user()->usertype=='Admin')
         {
-        	$propertieslist = Properties::orderBy('id')->get();
+        	$propertieslist = Properties::orderBy('id')->withCount(['enquiries'])->withCount(['viewings'])->get();
         }
         else
         {
         	$user_id=Auth::user()->id;
 
-			$propertieslist = Properties::where('user_id',$user_id)->orderBy('id')->get();
+			$propertieslist = Properties::where('user_id',$user_id)->orderBy('id')->withCount(['enquiries'])->withCount(['viewings'])->get();
+
 		}
 
 

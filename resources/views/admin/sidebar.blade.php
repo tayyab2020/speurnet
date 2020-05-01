@@ -38,6 +38,8 @@
 
 					<li class="{{classActivePath('featuredproperties')}}"><a href="{{ URL::to('admin/featuredproperties') }}"><i class="md md-star"></i>Featured</a></li>
 
+                    <li class="{{classActivePath('viewings')}}"><a href="{{ URL::to('admin/viewings') }}"><i class="md md-pin-drop"></i>Requested Viewings</a></li>
+
 					<li class="{{classActivePath('inquiries')}}"><a href="{{ URL::to('admin/inquiries') }}"><i class="fa fa-send"></i>Inquiries</a></li>
 
 	                <li class="{{classActivePath('slider')}}"><a href="{{ URL::to('admin/slider') }}"><i class="fa fa-sliders"></i>Home Slider</a></li>
@@ -61,21 +63,21 @@
 
                		 <li class="{{classActivePath('properties')}}"><a href="{{ URL::to('admin/properties') }}"><i class="md md-pin-drop"></i>My Properties</a></li>
 
-               		 <li class="{{classActivePath('properties')}}"><a href="{{ URL::to('admin/properties') }}"><i class="md md-favorite"></i>Favourite Properties</a></li>
+               		 <li class="{{classActivePath('favourite-properties')}}"><a href=""><i class="md md-favorite"></i>Favourite Properties</a></li>
 
-               		 <li class="{{classActivePath('properties')}}"><a href="{{ URL::to('admin/properties') }}"><i class="md md-location-disabled"></i>Hidden Properties</a></li>
+               		 <li class="{{classActivePath('hidden-properties')}}"><a href=""><i class="md md-location-disabled"></i>Hidden Properties</a></li>
 
-                     <li class="{{classActivePath('properties')}}"><a href="{{ URL::to('admin/properties') }}"><i class="md md-speaker-notes"></i>Property Notes</a></li>
+                     <li class="{{classActivePath('property-notes')}}"><a href=""><i class="md md-speaker-notes"></i>Property Notes</a></li>
 
-                     <li class="{{classActivePath('properties')}}"><a href="{{ URL::to('admin/properties') }}"><i class="md md-pin-drop"></i>Requested Viewings</a></li>
+                     <li class="{{classActivePath('viewings')}}"><a href="{{ URL::to('admin/viewings') }}"><i class="md md-pin-drop"></i>Requested Viewings</a></li>
 
-                     <li class="{{classActivePath('properties')}}"><a href="{{ URL::to('admin/properties') }}"><i class="md md-star"></i>Reviews</a></li>
+                     <li class="{{classActivePath('reviews')}}"><a href=""><i class="md md-star"></i>Reviews</a></li>
 
-                     <li class="{{classActivePath('properties')}}"><a href="{{ URL::to('admin/properties') }}"><i class="md md-save"></i>Alerts & Searches</a></li>
+                     <li class="{{classActivePath('alerts-searches')}}"><a href=""><i class="md md-save"></i>Alerts & Searches</a></li>
 
-               		 <li class="{{classActivePath('inquiries')}}"><a href="{{ URL::to('admin/inquiries') }}"><i class="md md-perm-phone-msg"></i>Enquiries</a></li>
+               		 <li class="{{classActivePath('inquiries')}}"><a href="{{ URL::to('admin/inquiries') }}"><i class="md md-perm-phone-msg"></i>Inquiries</a></li>
 
-               		 <li class="{{classActivePath('packages')}}"><a href="{{ URL::to('admin/inquiries') }}"><i class="md md-check-box-outline-blank"></i>Packages</a></li>
+               		 <li class="{{classActivePath('packages')}}"><a href=""><i class="md md-check-box-outline-blank"></i>Packages</a></li>
 
                		 <li class="{{classActivePath('admin')}}"><a href="{{ URL::to('admin/profile') }}"><i class="md md-person-outline"></i> Account</a></li>
                 @endif
