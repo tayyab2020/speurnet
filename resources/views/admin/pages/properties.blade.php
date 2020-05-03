@@ -63,8 +63,17 @@
 
                 <ul style="list-style: none;padding: 15px 0px;font-size: 13px;">
 
-                    <li><input name="sold" @if($property->is_sold) checked @endif  type="checkbox" id="sold{{$i}}" style="position: relative;top: 2px;"><label for="sold{{$i}}">MARK AS SOLD</label></li>
-                    <li><input name="rented" @if($property->is_rented) checked @endif  type="checkbox" id="rent{{$i}}" style="position: relative;top: 2px;"><label for="rent{{$i}}">MARK AS RENTOUT</label></li>
+                    @if( $property->property_purpose == "Sale" )
+
+                        <li><input name="sold" @if($property->is_sold) checked @endif  type="checkbox" id="sold{{$i}}" style="position: relative;top: 2px;"><label for="sold{{$i}}">MARK AS SOLD</label></li>
+
+                    @elseif( $property->property_purpose == "Rent" )
+
+                        <li><input name="rented" @if($property->is_rented) checked @endif  type="checkbox" id="rent{{$i}}" style="position: relative;top: 2px;"><label for="rent{{$i}}">MARK AS RENTOUT</label></li>
+
+                    @endif
+
+
                     <li><input name="available" @if($property->available_immediately) checked @endif  type="checkbox" id="available{{$i}}" style="position: relative;top: 2px;"><label for="available{{$i}}">MARK AVAILABLE IMMEDIATELY</label></li>
 
                     <li style="margin-top: 5px;padding-left: 12px;">
