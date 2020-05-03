@@ -162,10 +162,22 @@
 
             $(this).closest('form').submit();
         });
+
+        $('#data-table tr').click(function () {
+            $('#data-table tr').removeClass("bg_color");
+            $(this).addClass("bg_color");
+
+        });
+
     });
 </script>
 
 <style>
+
+    tr.bg_color  {
+        background-color: #8fc3f7 !important;
+    }
+
     [type="checkbox"]:not(:checked),
     [type="checkbox"]:checked {
         position: absolute;
