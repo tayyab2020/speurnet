@@ -78,7 +78,7 @@
 
                     <li style="margin-top: 5px;padding-left: 12px;">
 
-                        <a style="color:#786d6d;font-weight: 700;text-decoration: underline;font-size: 15px;" href="{{ URL::to('admin/inquiries') }}">Received Inquiries</a>
+                        <a style="color:#786d6d;font-weight: 700;text-decoration: underline;font-size: 15px;" href="{{ URL::to('admin/inquiries/show') }}/{{$property->id}}">Received Inquiries</a>
 
                         <b style="position: relative;bottom: 1px;background: #555;color: white;border-radius: 20px;padding: 0px 8px;display: inline-block;margin-left: 5px;font-size: 9px;line-height: 16px;">{{$property->enquiries_count}}</b>
 
@@ -86,7 +86,7 @@
 
                     <li style="margin-top: 5px;padding-left: 12px;">
 
-                        <a style="color:#786d6d;font-weight: 700;text-decoration: underline;font-size: 15px;" href="{{ URL::to('admin/viewings') }}">Received Viewings</a>
+                        <a style="color:#786d6d;font-weight: 700;text-decoration: underline;font-size: 15px;" href="{{ URL::to('admin/viewings/show') }}/{{$property->id}}">Received Viewings</a>
 
                         <b style="position: relative;bottom: 1px;background: #555;color: white;border-radius: 20px;padding: 0px 8px;display: inline-block;margin-left: 5px;font-size: 9px;line-height: 16px;">{{$property->viewings_count}}</b>
 

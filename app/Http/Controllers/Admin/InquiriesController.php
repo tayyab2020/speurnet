@@ -41,6 +41,40 @@ class InquiriesController extends MainAdminController
         return view('admin.pages.viewings',compact('viewingslist'));
     }
 
+    public function ShowView($id)
+    {
+        if(Auth::User()->usertype!="Admin")
+        {
+            $user_id=Auth::user()->id;
+
+            $viewingslist = request_viewings::where('property_id',$id)->where('agent_id',$user_id)->with('user')->get();
+        }
+        else
+        {
+            $viewingslist = request_viewings::where('property_id',$id)->get();
+        }
+
+
+
+        return view('admin.pages.viewing',compact('viewingslist'));
+    }
+
+    public function ShowInquiry($id)
+    {
+        if(Auth::User()->usertype!="Admin")
+        {
+            $user_id=Auth::user()->id;
+
+            $inquirieslist = Enquire::where('property_id',$id)->where('agent_id',$user_id)->orderBy('id')->with('user')->get();
+        }
+        else
+        {
+            $inquirieslist = Enquire::where('property_id',$id)->get();
+        }
+
+        return view('admin.pages.inquiry',compact('inquirieslist'));
+    }
+
     public function inquirieslist()
     {
     	if(Auth::User()->usertype!="Admin")

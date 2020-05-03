@@ -25,6 +25,7 @@
 	                <th>Name</th>
 	                <th>Email</th>
 	                <th>Phone</th>
+                    <th>Posting Date</th>
 	                <th>Message</th>
 
 	                <th class="text-center width-100">Action</th>
@@ -33,6 +34,12 @@
 
             <tbody>
             @foreach($inquirieslist as $i => $inquiries)
+
+                <?php
+                $date=date_create($inquiries->created_at);
+                $date = date_format($date,"d-F-Y");
+                ?>
+
          	   <tr>
 
                 <td>{{ $inquiries->property_id }}</td>
@@ -40,6 +47,7 @@
                 <td>{{ $inquiries->name }}</td>
                 <td>{{ $inquiries->email }}</td>
                 <td>{{ $inquiries->phone }}</td>
+                <td>{{ $date }}</td>
                 <td>{{ $inquiries->message }}</td>
                 <td class="text-center">
                 	<a href="{{ url('admin/inquiries/delete/'.$inquiries->id) }}" class="btn btn-default btn-rounded"><i class="md md-delete"></i></a>
@@ -63,10 +71,17 @@
 <script>
     $(document).ready(function(){
 
-
         $('#data-table tr').click(function () {
-            $('#data-table tr').removeClass("bg_color");
-            $(this).addClass("bg_color");
+
+            if($('#data-table tr').hasClass("bg_color"))
+            {
+                $('#data-table tr').removeClass("bg_color");
+            }
+            else
+            {
+                $(this).addClass("bg_color");
+            }
+
 
         });
 

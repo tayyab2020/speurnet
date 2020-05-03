@@ -11,7 +11,6 @@ class Enquire extends Model
     protected $fillable = ['name','email','phone','message'];
 
 
-	 public $timestamps = false;
 
     public function user()
     {

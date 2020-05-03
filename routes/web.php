@@ -90,6 +90,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
 
 	Route::get('inquiries', 'InquiriesController@inquirieslist');
     Route::get('viewings', 'InquiriesController@viewingslist');
+    Route::get('inquiries/show/{id}', 'InquiriesController@ShowInquiry');
+    Route::get('viewings/show/{id}', 'InquiriesController@ShowView');
 	Route::get('inquiries/delete/{id}', 'InquiriesController@delete');
     Route::get('viewings/delete/{id}', 'InquiriesController@Viewingsdelete');
 

@@ -4,7 +4,7 @@
     <div id="main">
         <div class="page-header">
 
-            <h2>Requested Viewings</h2>
+            <h2>Inquiries</h2>
         </div>
         @if(Session::has('flash_message'))
             <div class="alert alert-success">
@@ -33,24 +33,24 @@
                     </thead>
 
                     <tbody>
-                    @foreach($viewingslist as $i => $viewings)
+                    @foreach($inquirieslist as $i => $inquiries)
 
                         <?php
-                        $date=date_create($viewings->created_at);
+                        $date=date_create($inquiries->created_at);
                         $date = date_format($date,"d-F-Y");
                         ?>
 
                         <tr>
 
-                            <td>{{ $viewings->property_id }}</td>
-                            <td>{{ $viewings->user->name }}</td>
-                            <td>{{ $viewings->name }}</td>
-                            <td>{{ $viewings->email }}</td>
-                            <td>{{ $viewings->phone }}</td>
+                            <td>{{ $inquiries->property_id }}</td>
+                            <td>{{ $inquiries->user->name }}</td>
+                            <td>{{ $inquiries->name }}</td>
+                            <td>{{ $inquiries->email }}</td>
+                            <td>{{ $inquiries->phone }}</td>
                             <td>{{ $date }}</td>
-                            <td>{{ $viewings->message }}</td>
+                            <td>{{ $inquiries->message }}</td>
                             <td class="text-center">
-                                <a href="{{ url('admin/viewings/delete/'.$viewings->id) }}" class="btn btn-default btn-rounded"><i class="md md-delete"></i></a>
+                                <a href="{{ url('admin/inquiries/delete/'.$inquiries->id) }}" class="btn btn-default btn-rounded"><i class="md md-delete"></i></a>
 
 
                             </td>
@@ -96,5 +96,6 @@
         }
 
     </style>
+
 
 @endsection
