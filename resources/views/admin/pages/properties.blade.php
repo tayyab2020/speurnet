@@ -175,7 +175,7 @@
 <style>
 
     tr.bg_color  {
-        background-color: #8fc3f7 !important;
+        background-color: #edf671 !important;
     }
 
     [type="checkbox"]:not(:checked),
