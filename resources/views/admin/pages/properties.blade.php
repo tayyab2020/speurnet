@@ -65,16 +65,16 @@
 
                     @if( $property->property_purpose == "Sale" )
 
-                        <li><input name="sold" @if($property->is_sold) checked @endif  type="checkbox" id="sold{{$i}}" style="position: relative;top: 2px;"><label for="sold{{$i}}">MARK AS SOLD</label></li>
+                        <li><input name="sold" @if($property->is_sold) checked @endif  type="checkbox" id="sold{{$i}}" style="position: relative;top: 2px;"><label class="bg" for="sold{{$i}}">MARK AS SOLD</label></li>
 
                     @elseif( $property->property_purpose == "Rent" )
 
-                        <li><input name="rented" @if($property->is_rented) checked @endif  type="checkbox" id="rent{{$i}}" style="position: relative;top: 2px;"><label for="rent{{$i}}">MARK AS RENTOUT</label></li>
+                        <li><input name="rented" @if($property->is_rented) checked @endif  type="checkbox" id="rent{{$i}}" style="position: relative;top: 2px;"><label class="bg" for="rent{{$i}}">MARK AS RENTOUT</label></li>
 
                     @endif
 
 
-                    <li><input name="available" @if($property->available_immediately) checked @endif  type="checkbox" id="available{{$i}}" style="position: relative;top: 2px;"><label for="available{{$i}}">MARK AVAILABLE IMMEDIATELY</label></li>
+                    <li><input name="available" @if($property->available_immediately) checked @endif @if($property->is_sold || $property->is_rented) disabled @endif  type="checkbox" id="available{{$i}}" style="position: relative;top: 2px;"><label @if(!$property->is_sold && !$property->is_rented) class="bg" @endif for="available{{$i}}">MARK AVAILABLE IMMEDIATELY</label></li>
 
                     <li style="margin-top: 5px;padding-left: 12px;">
 
@@ -173,8 +173,16 @@
         });
 
         $('#data-table tr').click(function () {
-            $('#data-table tr').removeClass("bg_color");
-            $(this).addClass("bg_color");
+
+            if($('#data-table tr').hasClass("bg_color"))
+            {
+                $('#data-table tr').removeClass("bg_color");
+            }
+            else
+            {
+                $(this).addClass("bg_color");
+            }
+
 
         });
 
@@ -252,7 +260,7 @@
     }*/
 
     /* hover style just for information */
-    label:hover:before {
+    label.bg:hover:before {
         border: 2px solid #4778d9!important;
     }
 </style>
