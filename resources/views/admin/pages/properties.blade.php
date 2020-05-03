@@ -73,6 +73,13 @@
 
                     @endif
 
+                        <li><input name="negotiation" @if($property->is_negotiation) checked @endif  type="checkbox" id="negotiation{{$i}}" style="position: relative;top: 2px;"><label class="bg" for="negotiation{{$i}}">MARK AS IN NEGOTIATION</label></li>
+
+                        @if( $property->property_purpose == "Sale" )
+
+                            <li><input name="under_offer" @if($property->is_under_offer) checked @endif  type="checkbox" id="under_offer{{$i}}" style="position: relative;top: 2px;"><label class="bg" for="under_offer{{$i}}">MARK AS UNDER OFFER</label></li>
+
+                        @endif
 
                     <li><input name="available" @if($property->available_immediately) checked @endif @if($property->is_sold || $property->is_rented) disabled @endif  type="checkbox" id="available{{$i}}" style="position: relative;top: 2px;"><label @if(!$property->is_sold && !$property->is_rented) class="bg" @endif for="available{{$i}}">MARK AVAILABLE IMMEDIATELY</label></li>
 

@@ -57,7 +57,25 @@ class PropertiesController extends MainAdminController
             $available = 0;
         }
 
-        $property = Properties::where('id',$request->id)->update(["is_sold"=>$sold,"is_rented"=>$rented,"available_immediately"=>$available]);
+        if($request->negotiation)
+        {
+            $negotiation = 1;
+        }
+        else
+        {
+            $negotiation = 0;
+        }
+
+        if($request->under_offer)
+        {
+            $under_offer = 1;
+        }
+        else
+        {
+            $under_offer = 0;
+        }
+
+        $property = Properties::where('id',$request->id)->update(["is_sold"=>$sold,"is_rented"=>$rented,"available_immediately"=>$available,"is_negotiation"=>$negotiation,"is_under_offer"=>$under_offer]);
 
         \Session::flash('flash_message', 'Status updated successfully!');
 
