@@ -127,7 +127,7 @@
 
                                         <div class="modal-content">
 
-                                            <div class="modal-header" style="border-bottom: 0;display: inline-block;width: 100%;padding: 15px 25px;">
+                                            <div class="modal-header" style="border-bottom: 0;display: inline-block;width: 100%;padding: 15px 25px; 0px 25px;">
 
                                                 <button style="opacity: 0.5;font-size: 30px;font-weight: 600;" type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
@@ -139,18 +139,58 @@
                                             </div>
 
 
-                                            <div class="modal-body" style="padding: 10px 25px;">
+                                            <div class="modal-body" style="padding: 10px 25px;padding-top: 0px;">
 
                                                     <input type="hidden" name="id" value="{{$property->id}}">
+
+                                                <div class="form-group">
+
+                                                    <div style="position: relative;width: 100%;">
+
+                                                        <div class="bulgy-radios" role="radiogroup" aria-labelledby="bulgy-radios-label" style="width: 100%;min-height: 100px;text-align: left;">
+
+                                                        <h3 id="bulgy-radios-label">Select Gender</h3>
+
+                                                        <label style="margin-left: 5px;">
+                                                            <input type="radio" name="gender" value="Mr." checked />
+                                                            <span class="radio"></span>
+                                                            <span class="label">Mr.</span>
+                                                        </label>
+
+                                                        <label>
+                                                            <input type="radio" name="gender" value="Ms." />
+                                                            <span class="radio"></span>
+                                                            <span class="label">Ms.</span>
+                                                        </label>
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
 
                                                     <div class="form-group">
 
                                                         <div style="width: 100%;position: relative;">
 
-                                                            <i class="fas fa-calendar-alt" style="position: absolute;left: 15px;right: auto;color: #d5d5d5;font-size: 14px;top: 55%;margin:-9px 0 0;pointer-events:none;"></i>
-                                                            <i class="fas fa-chevron-down" style="position: absolute;font-size: 14px;top: 55%;right:10px;left: auto;margin: -7px 0 0;pointer-events: none;color: #767676;"></i>
+                                                            <label style="font-weight: 600;">Preferred Day*</label>
 
-                                                            <input style="padding: 0 0 0 40px;cursor: pointer;height: 42px;color:#bcbcbc;border-color:#e6e6e6;border-radius: 3px;box-shadow: none;" type='text' placeholder="Select Schedule *" name="date" required  class="form-control" id='datetimepicker4' />
+                                                            <i class="fas fa-calendar-alt" style="position: absolute;left: 15px;right: auto;color: #d5d5d5;font-size: 14px;top: 72%;margin:-9px 0 0;pointer-events:none;"></i>
+                                                            <i class="fas fa-chevron-down" style="position: absolute;font-size: 14px;top: 72%;right:10px;left: auto;margin: -7px 0 0;pointer-events: none;color: #767676;"></i>
+
+                                                            <select style="-webkit-appearance:none;-moz-appearance:none;appearance:none;padding: 0 0 0 40px;cursor: pointer;height: 42px;color:#bcbcbc;border-color:#e6e6e6;border-radius: 3px;box-shadow: none;"  placeholder="Preferred Day *" name="day" required  class="form-control" >
+
+                                                                <option value="">No preference</option>
+                                                                <option value="Only on workdays">Only on workdays</option>
+                                                                <option value="Weekend">Weekend</option>
+                                                                <option value="Monday">Monday</option>
+                                                                <option value="Tuesday">Tuesday</option>
+                                                                <option value="Wednesday">Wednesday</option>
+                                                                <option value="Thursday">Thursday</option>
+                                                                <option value="Friday">Friday</option>
+                                                                <option value="Saturday">Saturday</option>
+
+                                                            </select>
 
                                                         </div>
 
@@ -160,10 +200,18 @@
 
                                                         <div style="width: 100%;position: relative;">
 
-                                                            <i class="far fa-clock" style="position: absolute;left: 15px;right: auto;color: #d5d5d5;font-size: 14px;top: 55%;margin:-9px 0 0;pointer-events:none;"></i>
-                                                            <i class="fas fa-chevron-down" style="position: absolute;font-size: 14px;top: 55%;right:10px;left: auto;margin: -7px 0 0;pointer-events: none;color: #767676;"></i>
+                                                            <label style="font-weight: 600;">Preferred Moment*</label>
 
-                                                            <input style="padding: 0 0 0 40px;cursor: pointer;height: 42px;color:#bcbcbc;border-color:#e6e6e6;border-radius: 3px;box-shadow: none;" type='text' placeholder="Select Time *" name="time" required  class="form-control" id='datetimepicker3' />
+                                                            <i class="far fa-clock" style="position: absolute;left: 15px;right: auto;color: #d5d5d5;font-size: 14px;top: 72%;margin:-9px 0 0;pointer-events:none;"></i>
+                                                            <i class="fas fa-chevron-down" style="position: absolute;font-size: 14px;top: 72%;right:10px;left: auto;margin: -7px 0 0;pointer-events: none;color: #767676;"></i>
+
+                                                            <select style="-webkit-appearance:none;-moz-appearance:none;appearance:none;padding: 0 0 0 40px;cursor: pointer;height: 42px;color:#bcbcbc;border-color:#e6e6e6;border-radius: 3px;box-shadow: none;"  placeholder="Preferred Moment *" name="moment" required  class="form-control" >
+
+                                                                <option value="">No preference</option>
+                                                                <option value="in the morning">in the morning</option>
+                                                                <option value="in the afternoon">in the afternoon</option>
+
+                                                            </select>
 
                                                         </div>
 
@@ -835,6 +883,149 @@
 
     <style>
 
+        .bulgy-radios {
+            width: 38rem;
+            background: #fff;
+            padding: 0rem 0 0rem 0rem;
+            border-radius: 1rem;
+            text-align: center;
+        }
+        .bulgy-radios label {
+            display: inline-block;
+            position: relative;
+            height: 35px;
+            padding-left: 20px;
+            margin-bottom: 0;
+            cursor: pointer;
+            font-size: 25px;
+            user-select: none;
+            color: #555;
+            letter-spacing: 1px;
+        }
+        .bulgy-radios label:hover input:not(:checked) ~ .radio {
+            opacity: 0.8;
+        }
+        .bulgy-radios .label {
+            display: flex;
+            align-items: center;
+            padding: 10px 30px 0px 0px;
+            color: #0bae72;
+        }
+        .bulgy-radios .label span {
+            line-height: 1em;
+        }
+        .bulgy-radios input {
+            position: absolute;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+            left: -2000px;
+        }
+        .bulgy-radios input:checked ~ .radio {
+            background-color: #0ac07d;
+            transition: background 0.3s;
+        }
+        .bulgy-radios input:checked ~ .radio::after {
+            opacity: 1;
+        }
+        .bulgy-radios input:checked ~ .label {
+            color: #0bae72;
+        }
+        .bulgy-radios input:checked ~ .label span {
+            animation: bulge 0.75s forwards;
+        }
+        .bulgy-radios input:checked ~ .label span:nth-child(1) {
+            animation-delay: 0.025s;
+        }
+        .bulgy-radios input:checked ~ .label span:nth-child(2) {
+            animation-delay: 0.05s;
+        }
+        .bulgy-radios input:checked ~ .label span:nth-child(3) {
+            animation-delay: 0.075s;
+        }
+        .bulgy-radios input:checked ~ .label span:nth-child(4) {
+            animation-delay: 0.1s;
+        }
+        .bulgy-radios input:checked ~ .label span:nth-child(5) {
+            animation-delay: 0.125s;
+        }
+        .bulgy-radios input:checked ~ .label span:nth-child(6) {
+            animation-delay: 0.15s;
+        }
+        .bulgy-radios input:checked ~ .label span:nth-child(7) {
+            animation-delay: 0.175s;
+        }
+        .bulgy-radios input:checked ~ .label span:nth-child(8) {
+            animation-delay: 0.2s;
+        }
+        .bulgy-radios input:checked ~ .label span:nth-child(9) {
+            animation-delay: 0.225s;
+        }
+        .bulgy-radios input:checked ~ .label span:nth-child(10) {
+            animation-delay: 0.25s;
+        }
+        .bulgy-radios input:checked ~ .label span:nth-child(11) {
+            animation-delay: 0.275s;
+        }
+        .bulgy-radios input:checked ~ .label span:nth-child(12) {
+            animation-delay: 0.3s;
+        }
+        .bulgy-radios input:checked ~ .label span:nth-child(13) {
+            animation-delay: 0.325s;
+        }
+        .bulgy-radios input:checked ~ .label span:nth-child(14) {
+            animation-delay: 0.35s;
+        }
+        .bulgy-radios input:checked ~ .label span:nth-child(15) {
+            animation-delay: 0.375s;
+        }
+        .bulgy-radios input:checked ~ .label span:nth-child(16) {
+            animation-delay: 0.4s;
+        }
+        .bulgy-radios input:checked ~ .label span:nth-child(17) {
+            animation-delay: 0.425s;
+        }
+        .bulgy-radios input:checked ~ .label span:nth-child(18) {
+            animation-delay: 0.45s;
+        }
+        .bulgy-radios input:checked ~ .label span:nth-child(19) {
+            animation-delay: 0.475s;
+        }
+        .radio {
+            position: absolute;
+            top: 0.2rem;
+            left: 0;
+            height: 15px;
+            width: 15px;
+            min-height: 0px;
+            background: #c9ded6;
+            border-radius: 50%;
+        }
+        .radio::after {
+            content: '';
+            position: absolute;
+            opacity: 0;
+            top: 4px;
+            left: 4px;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #fff;
+        }
+        @keyframes bulge {
+            50% {
+                transform: rotate(4deg);
+                font-size: 1.5em;
+                font-weight: bold;
+            }
+            100% {
+                transform: rotate(0);
+                font-size: 1em;
+                font-weight: bold;
+            }
+        }
+
+
         .modal-dialog-centered
         {
             display: flex;
@@ -978,6 +1169,15 @@
     <script>
 
         $( document ).ready(function() {
+
+            const labels = document.querySelectorAll('.label');
+            labels.forEach(label => {
+                const chars = label.textContent.split('');
+                label.innerHTML = '';
+                chars.forEach(char => {
+                    label.innerHTML += `<span>${char === ' ' ? '&nbsp' : char}</span>`;
+                });
+            })
 
             $('#datetimepicker4').datetimepicker({format: 'DD/MM/YYYY'});
 

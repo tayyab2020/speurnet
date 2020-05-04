@@ -117,16 +117,17 @@ class PropertiesController extends Controller
 
         $post->property_id = $request->id;
         $post->agent_id = $request->agent_id;
+        $post->gender = $request->gender;
         $post->status = 0;
-        $post->date = $request->date;
-        $post->time = $request->time;
+        $post->day = $request->day;
+        $post->moment = $request->moment;
         $post->name = $request->username;
         $post->email = $request->email;
         $post->phone = $request->phone;
         $post->message = $request->message;
         $post->save();
 
-        \Session::flash('flash_message', 'Dear Mr/Mrs. ' . $request->username . ', <br>You requested a viewing of  "'. $request->property_name . '". We expect the real estate agent to contact you in near future. <br>The real estate agent will contact you using the following information:<br><i class="fas fa-at" style="color: black;font-size: 13px;margin-right: 7px;"></i><b>Email Address: </b><span style="color: #7474d3;font-weight: 700;">'.$request->email .'</span><br><i class="fas fa-phone-alt" style="color: black;font-size: 13px;margin-right: 7px;"></i><b>Telephone Number: </b><span style="color: #7474d3;font-weight: 700;">'.$request->phone . '</span>');
+        \Session::flash('flash_message', 'Dear ' . $request->gender . ' ' . $request->username . ', <br>You requested a viewing of  "'. $request->property_name . '". We expect the real estate agent to contact you in near future. <br>The real estate agent will contact you using the following information:<br><i class="fas fa-at" style="color: black;font-size: 13px;margin-right: 7px;"></i><b>Email Address: </b><span style="color: #7474d3;font-weight: 700;">'.$request->email .'</span><br><i class="fas fa-phone-alt" style="color: black;font-size: 13px;margin-right: 7px;"></i><b>Telephone Number: </b><span style="color: #7474d3;font-weight: 700;">'.$request->phone . '</span>');
 
         return \Redirect::back();
 
