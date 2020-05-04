@@ -30,23 +30,6 @@ class PropertiesController extends MainAdminController
 
     public function Checkboxes(Request $request)
     {
-        if($request->sold)
-        {
-            $sold = 1;
-        }
-        else
-        {
-            $sold = 0;
-        }
-
-        if($request->rented)
-        {
-            $rented = 1;
-        }
-        else
-        {
-            $rented = 0;
-        }
 
         if($request->available)
         {
@@ -74,6 +57,32 @@ class PropertiesController extends MainAdminController
         {
             $under_offer = 0;
         }
+
+        
+        if($request->sold)
+        {
+            $sold = 1;
+            $negotiation = 0;
+            $under_offer = 0;
+            $available = 0;
+        }
+        else
+        {
+            $sold = 0;
+        }
+
+        if($request->rented)
+        {
+            $rented = 1;
+            $negotiation = 0;
+            $available = 0;
+        }
+        else
+        {
+            $rented = 0;
+        }
+
+
 
         $property = Properties::where('id',$request->id)->update(["is_sold"=>$sold,"is_rented"=>$rented,"available_immediately"=>$available,"is_negotiation"=>$negotiation,"is_under_offer"=>$under_offer]);
 
