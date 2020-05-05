@@ -17,7 +17,7 @@
 <p>You requested a viewing of  {{$property_name}}. We expect the real estate agent to contact you in near future.</p>
 <p>The real estate agent will contact you using the following information:</p>
 <img src="{{ URL::asset('assets/img/signs.svg') }}"><b>Email Address: </b><span style="color: #7474d3;font-weight: 700;">{{$email}}</span>
-<img src="{{ $message->embed(public_path() . '/assets/img/signs.svg') }}"><b>Telephone Number: </b><span style="color: #7474d3;font-weight: 700;">{{$phone}}</span>
+<img src="{{ public_path('assets/img/signs.svg') }}"><b>Telephone Number: </b><span style="color: #7474d3;font-weight: 700;">{{$phone}}</span>
 
 </body>
 </html>
