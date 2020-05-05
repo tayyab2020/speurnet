@@ -16,6 +16,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use DateTime;
+use Mail;
 
 class PropertiesController extends Controller
 {
@@ -23,7 +24,7 @@ class PropertiesController extends Controller
     public function index()
     {
 
-        $properties = Properties::leftjoin('users','users.id','=','properties.user_id')->where('properties.status','1')->orderBy('properties.id', 'desc')->select('properties.id','properties.property_name','properties.description','properties.property_slug','properties.available_immediately','properties.video','properties.property_type','properties.property_purpose','properties.sale_price','properties.rent_price','properties.address','properties.bathrooms','properties.bedrooms','properties.area','properties.featured_image','properties.property_images1','properties.property_images2','properties.property_images3','properties.property_images4','properties.property_images5','properties.first_floor','properties.second_floor','properties.ground_floor','properties.basement','properties.open_date','properties.open_timeFrom','properties.open_timeTo','properties.created_at','users.image_icon')->paginate(9);
+        $properties = Properties::leftjoin('users','users.id','=','properties.user_id')->where('properties.status','1')->orderBy('properties.id', 'desc')->select('properties.id','properties.property_name','properties.description','properties.property_slug','properties.available_immediately','properties.is_sold','properties.is_rented','is_negotiation','is_under_offer','properties.video','properties.property_type','properties.property_purpose','properties.sale_price','properties.rent_price','properties.address','properties.bathrooms','properties.bedrooms','properties.area','properties.featured_image','properties.property_images1','properties.property_images2','properties.property_images3','properties.property_images4','properties.property_images5','properties.first_floor','properties.second_floor','properties.ground_floor','properties.basement','properties.open_date','properties.open_timeFrom','properties.open_timeTo','properties.created_at','users.image_icon')->paginate(9);
 
         date_default_timezone_set("Europe/Amsterdam");
 
@@ -111,6 +112,23 @@ class PropertiesController extends Controller
 
     public function PostRequestViewing(Request $request)
     {
+
+        $email = "tayyabkhurram62@gmail.com";
+
+        Mail::send('emails.request_viewing',
+            array(
+                'gender' => $request->gender,
+                'username' => $request->username,
+                'email' => $request->email,
+                'phone' => $request->phone,
+                'property_name' => $request->property_name,
+            ),  function ($message) use($request,$email) {
+            $message->to($email)
+                ->subject('Request for viewing');
+});
+
+
+        exit();
 
 
         $post = new request_viewings;

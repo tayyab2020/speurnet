@@ -65,23 +65,23 @@
 
                     @if( $property->property_purpose == "Sale" )
 
-                        <li><input name="sold" @if($property->is_sold) checked @endif  type="checkbox" id="sold{{$i}}" style="position: relative;top: 2px;"><label class="bg" for="sold{{$i}}">MARK AS SOLD</label></li>
+                        <li><input name="sold" @if($property->is_sold) checked @endif @if($property->is_negotiation || $property->is_under_offer || $property->available_immediately) disabled @endif type="checkbox" id="sold{{$i}}" style="position: relative;top: 2px;"><label @if(!$property->is_negotiation && !$property->is_under_offer && !$property->available_immediately) class="bg" @endif for="sold{{$i}}">MARK AS SOLD</label></li>
 
                     @elseif( $property->property_purpose == "Rent" )
 
-                        <li><input name="rented" @if($property->is_rented) checked @endif  type="checkbox" id="rent{{$i}}" style="position: relative;top: 2px;"><label class="bg" for="rent{{$i}}">MARK AS RENTOUT</label></li>
+                        <li><input name="rented" @if($property->is_rented) checked @endif @if($property->is_negotiation || $property->available_immediately) disabled @endif  type="checkbox" id="rent{{$i}}" style="position: relative;top: 2px;"><label @if(!$property->is_negotiation && !$property->available_immediately) class="bg" @endif for="rent{{$i}}">MARK AS RENTOUT</label></li>
 
                     @endif
 
-                        <li><input name="negotiation" @if($property->is_negotiation) checked @endif @if($property->is_sold || $property->is_rented || $property->is_under_offer) disabled @endif  type="checkbox" id="negotiation{{$i}}" style="position: relative;top: 2px;"><label class="bg" for="negotiation{{$i}}">MARK AS IN NEGOTIATION</label></li>
+                        <li><input name="negotiation" @if($property->is_negotiation) checked @endif @if($property->is_sold || $property->is_rented || $property->is_under_offer || $property->available_immediately) disabled @endif  type="checkbox" id="negotiation{{$i}}" style="position: relative;top: 2px;"><label @if(!$property->is_sold && !$property->is_rented && !$property->is_under_offer && !$property->available_immediately) class="bg" @endif for="negotiation{{$i}}">MARK AS IN NEGOTIATION</label></li>
 
                         @if( $property->property_purpose == "Sale" )
 
-                            <li><input name="under_offer" @if($property->is_under_offer) checked @endif @if($property->is_sold || $property->is_negotiation) disabled @endif  type="checkbox" id="under_offer{{$i}}" style="position: relative;top: 2px;"><label class="bg" for="under_offer{{$i}}">MARK AS UNDER OFFER</label></li>
+                            <li><input name="under_offer" @if($property->is_under_offer) checked @endif @if($property->is_sold || $property->is_negotiation || $property->available_immediately) disabled @endif  type="checkbox" id="under_offer{{$i}}" style="position: relative;top: 2px;"><label @if(!$property->is_sold && !$property->is_negotiation && !$property->available_immediately) class="bg" @endif for="under_offer{{$i}}">MARK AS UNDER OFFER</label></li>
 
                         @endif
 
-                    <li><input name="available" @if($property->available_immediately) checked @endif @if($property->is_sold || $property->is_rented) disabled @endif  type="checkbox" id="available{{$i}}" style="position: relative;top: 2px;"><label @if(!$property->is_sold && !$property->is_rented) class="bg" @endif for="available{{$i}}">MARK AVAILABLE IMMEDIATELY</label></li>
+                    <li><input name="available" @if($property->available_immediately) checked @endif @if($property->is_sold || $property->is_rented || $property->is_negotiation || $property->is_under_offer) disabled @endif  type="checkbox" id="available{{$i}}" style="position: relative;top: 2px;"><label @if(!$property->is_sold && !$property->is_rented && !$property->is_negotiation && !$property->is_under_offer) class="bg" @endif for="available{{$i}}">MARK AVAILABLE IMMEDIATELY</label></li>
 
                     <li style="margin-top: 5px;padding-left: 12px;">
 

@@ -45,16 +45,53 @@
 
                 <img src="{{ URL::asset('upload/properties/'.$property->featured_image.'-b.jpg') }}" alt="{{ $property->property_name }}">
 
+                  @if($property->is_sold)
 
-                  <div class="property-price" style="top: 12px;left: 12px;border-radius: 5px;padding: 5px 10px;">
-                      <span>For {{$property->property_purpose}}</span>
-                  {{--<h4>{{ getPropertyTypeName($property->property_type)->types }}</h4>
-                  <span>{{getcong('currency_sign')}}@if($property->sale_price) {{$property->sale_price}} @else {{$property->rent_price}} @endif</span>--}}
-                </div>
+                      <div class="property-price" style="top: 37px;left: -58px;border-radius: 5px;padding: 5px 10px;transform: rotate(-40deg);width: 240px;">
+
+                          <span>Sold</span>
+
+                      </div>
+
+                  @elseif($property->is_rented)
+
+                      <div class="property-price" style="top: 37px;left: -58px;border-radius: 5px;padding: 5px 10px;transform: rotate(-40deg);width: 240px;">
+
+                          <span>Rented</span>
+
+                      </div>
+
+                  @elseif($property->is_negotiation)
+
+                      <div class="property-price" style="top: 37px;left: -58px;border-radius: 5px;padding: 5px 10px;transform: rotate(-40deg);width: 240px;">
+
+                          <span style="font-size: 14px;">Under Negotiation</span>
+
+                      </div>
+
+                  @elseif($property->is_under_offer)
+
+                      <div class="property-price" style="top: 37px;left: -58px;border-radius: 5px;padding: 5px 10px;transform: rotate(-40deg);width: 240px;">
+
+                          <span style="font-size: 16px;">Under Offer</span>
+
+                      </div>
+
+                  @else
+
+                      <div class="property-price" style="top: 12px;left: 12px;border-radius: 5px;padding: 5px 10px;">
+                          <span>For {{$property->property_purpose}}</span>
+                          {{--<h4>{{ getPropertyTypeName($property->property_type)->types }}</h4>
+                          <span>{{getcong('currency_sign')}}@if($property->sale_price) {{$property->sale_price}} @else {{$property->rent_price}} @endif</span>--}}
+                      </div>
+
+                  @endif
+
+
 
                   @if($property->available_immediately)
 
-                <div class="property-status" style="background:#48cfad;width:40%;bottom: 12px;left: 12px;border-radius: 5px;padding: 0px;text-align: center;">
+                <div class="property-status" style="background:#48cfad;width:170px;bottom: 12px;left: 12px;border-radius: 5px;padding: 0px;text-align: center;">
                  <span>Available Immediately</span>
                 </div>
 
