@@ -113,23 +113,6 @@ class PropertiesController extends Controller
     public function PostRequestViewing(Request $request)
     {
 
-        $email = "tayyabkhurram62@gmail.com";
-
-        Mail::send('emails.request_viewing',
-            array(
-                'gender' => $request->gender,
-                'username' => $request->username,
-                'email' => $request->email,
-                'phone' => $request->phone,
-                'property_name' => $request->property_name,
-            ),  function ($message) use($request,$email) {
-            $message->to($email)
-                ->subject('Request for viewing');
-});
-
-
-        exit();
-
 
         $post = new request_viewings;
 
@@ -144,6 +127,61 @@ class PropertiesController extends Controller
         $post->phone = $request->phone;
         $post->message = $request->message;
         $post->save();
+
+        $broker = User::where('id',$request->agent_id)->first();
+
+        $broker_email = $broker->email;
+
+        $broker_name = $broker->name;
+
+        $broker_phone = $broker->phone;
+
+        $customer_email = $request->email;
+
+        $admin_email = getcong('site_email');
+
+        Mail::send('emails.request_viewing',
+            array(
+                'gender' => $request->gender,
+                'username' => $request->username,
+                'email' => $request->email,
+                'phone' => $request->phone,
+                'property_name' => $request->property_name,
+            ),  function ($message) use($request,$customer_email) {
+                $message->from(getcong('site_email'),getcong('site_name'));
+                $message->to($customer_email)
+                    ->subject('Request for viewing');
+            });
+
+        Mail::send('emails.agent_request_viewing',
+            array(
+                'gender' => $request->gender,
+                'broker_name' => $broker_name,
+                'username' => $request->username,
+                'email' => $request->email,
+                'phone' => $request->phone,
+                'property_name' => $request->property_name,
+            ),  function ($message) use($request,$broker_email) {
+                $message->from(getcong('site_email'),getcong('site_name'));
+                $message->to($broker_email)
+                    ->subject('Request for viewing');
+            });
+
+        Mail::send('emails.admin_request_viewing',
+            array(
+                'gender' => $request->gender,
+                'broker_name' => $broker_name,
+                'broker_email' => $broker_email,
+                'broker_phone' => $broker_phone,
+                'username' => $request->username,
+                'email' => $request->email,
+                'phone' => $request->phone,
+                'property_name' => $request->property_name,
+            ),  function ($message) use($request,$admin_email) {
+                $message->from(getcong('site_email'),getcong('site_name'));
+                $message->to('tayyabkhurram62@gmail.com')
+                    ->subject('Request for viewing');
+            });
 
         \Session::flash('flash_message', 'Dear ' . $request->gender . ' ' . $request->username . ', <br>You requested a viewing of  "'. $request->property_name . '". We expect the real estate agent to contact you in near future. <br>The real estate agent will contact you using the following information:<br><i class="fas fa-at" style="color: black;font-size: 13px;margin-right: 7px;"></i><b>Email Address: </b><span style="color: #7474d3;font-weight: 700;">'.$request->email .'</span><br><i class="fas fa-phone-alt" style="color: black;font-size: 13px;margin-right: 7px;"></i><b>Telephone Number: </b><span style="color: #7474d3;font-weight: 700;">'.$request->phone . '</span>');
 
