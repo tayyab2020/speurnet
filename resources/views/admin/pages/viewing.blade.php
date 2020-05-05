@@ -25,6 +25,8 @@
                         <th>Name</th>
                         <th>Email</th>
                         <th>Phone</th>
+                        <th>Preferred Day</th>
+                        <th>Preferred Moment</th>
                         <th>Posting Date</th>
                         <th>Message</th>
 
@@ -47,6 +49,8 @@
                             <td>{{ $viewings->name }}</td>
                             <td>{{ $viewings->email }}</td>
                             <td>{{ $viewings->phone }}</td>
+                            <td>{{ $viewings->day }}</td>
+                            <td>{{ $viewings->moment }}</td>
                             <td>{{ $date }}</td>
                             <td>{{ $viewings->message }}</td>
                             <td class="text-center">
