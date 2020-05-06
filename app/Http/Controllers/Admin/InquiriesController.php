@@ -30,11 +30,11 @@ class InquiriesController extends MainAdminController
         {
             $user_id=Auth::user()->id;
 
-            $viewingslist = request_viewings::where('agent_id',$user_id)->orderBy('id')->with('user')->get();
+            $viewingslist = request_viewings::where('agent_id',$user_id)->orderBy('id','desc')->with('user')->get();
         }
         else
         {
-            $viewingslist = request_viewings::orderBy('id')->get();
+            $viewingslist = request_viewings::orderBy('id','desc')->get();
         }
 
 
@@ -47,11 +47,11 @@ class InquiriesController extends MainAdminController
         {
             $user_id=Auth::user()->id;
 
-            $viewingslist = request_viewings::where('property_id',$id)->where('agent_id',$user_id)->with('user')->get();
+            $viewingslist = request_viewings::where('property_id',$id)->where('agent_id',$user_id)->orderBy('id','desc')->with('user')->get();
         }
         else
         {
-            $viewingslist = request_viewings::where('property_id',$id)->get();
+            $viewingslist = request_viewings::where('property_id',$id)->orderBy('id','desc')->get();
         }
 
 

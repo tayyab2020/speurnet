@@ -17,7 +17,7 @@
         <div class="panel panel-default panel-shadow">
             <div class="panel-body">
 
-                <table id="data-table" class="table table-striped table-hover dt-responsive" cellspacing="0" width="100%">
+                <table id="data-table1" class="table table-striped table-hover dt-responsive" cellspacing="0" width="100%">
                     <thead>
                     <tr>
                         <th>Property ID</th>
@@ -74,6 +74,10 @@
 
     <script>
         $(document).ready(function(){
+
+            $('#data-table1').dataTable({
+                "order": [[ 0, "desc" ]] // Order on init. # is the column, starting at 0
+            });
 
             $('#data-table tr').click(function () {
 

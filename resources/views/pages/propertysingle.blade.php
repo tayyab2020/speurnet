@@ -328,16 +328,21 @@
                           </tr>
                         </table>
 
-                          @if($property->property_features)
+                          @if($property_features)
 
-                        <h3>Property Features</h3>
-                        <div class="row">
+                        <h3 style="margin-top: 55px;">Property Features</h3>
+
+                        <div class="row" style="margin: 40px 0px;">
 
 
 							<ul style="list-style: none;">
-                              @foreach(explode(',',$property->property_features) as $features)
-                              <li class="col-md-3 col-sm-3"><i class="fa fa-check"></i> {{$features}}</li>
-                              @endforeach
+                              @foreach($property_features as $key => $value)
+
+                                    <li class="col-md-3 col-sm-3">
+
+                                    <img src="{{ URL::asset('assets/img/'.$value) }}" style="width: 14px;position: relative;top:-1px;margin-right: 9px;" /> {{$key}}</li>
+
+                                @endforeach
 
                             </ul>
 
@@ -345,7 +350,8 @@
 
                           @endif
 
-                        <h3>Property Description</h3>
+                        <h3 style="margin-top: 55px;">Property Description</h3>
+
                         {!!$property->description!!}
 
                           <input type="hidden" name="map_latitude" id="map_latitude" value="{{$property->map_latitude}}">
@@ -354,7 +360,7 @@
                           <input type="hidden" name="type" id="type" value="shopping_mall">
 
 
-                          <div class="row" style="border-top:1px solid rgba(190, 190, 190, 0.6); margin-top: 40px;">
+                          <div class="row" style="border-top:1px solid rgba(190, 190, 190, 0.6); margin-top: 55px;">
 
                               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 

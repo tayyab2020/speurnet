@@ -8,6 +8,7 @@ use App\Enquire;
 use App\Types;
 use App\property_documents;
 use App\request_viewings;
+use App\property_features;
 
 use Illuminate\Http\Request;
 
@@ -104,6 +105,7 @@ class PropertiesController extends Controller
             $i = $i + 1;
 
         }
+
 
 
 
@@ -245,7 +247,30 @@ class PropertiesController extends Controller
 
     	$agent = User::findOrFail($property->user_id);
 
-        return view('pages.propertysingle',compact('property','property_documents','agent'));
+    	if($property->property_features)
+        {
+
+            $features = explode(',', $property->property_features);
+
+
+            foreach($features as $key){
+
+                $get = property_features::where('id',$key)->first();
+                $feature_texts[] = $get->text;
+                $feature_icons[] = $get->icon;
+
+                $property_features = array_combine($feature_texts, $feature_icons);
+
+            }
+
+        }
+    	else
+        {
+            $property_features = "";
+        }
+
+
+        return view('pages.propertysingle',compact('property','property_documents','agent','property_features'));
     }
 
 	public function agentscontact(Request $request)

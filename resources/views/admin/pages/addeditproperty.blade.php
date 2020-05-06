@@ -448,13 +448,37 @@
                                     <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
 
 
-                                        <label class="left-label" style="float: left;">Property Features</label>
+                                        <label class="left-label" style="float: left;width: 100%;">Property Features</label>
 
-                                        <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
+                                        <small style="display: block;">Please list the key features of your property this is a good oppurtunity to sell your property!</small>
+
+                                        <div style="width: 100%;display: inline-block;margin: auto">
+
+                                        <ul style="list-style: none;display: inline-block;width: 100%;padding: 0;padding-top: 30px;">
+
+                                            <?php $i = 0; ?>
+
+                                            @foreach($property_features as $key)
+
+                                                <li class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="padding: 0;margin: 5px 0px;">
+
+                                                    <input name="property_features[]" value="{{$key->id}}" type="checkbox" id="property_features{{$i}}" style="position: relative;top: 2px;">
 
 
-                                            <input type="text" name="property_features" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;" @if(old('property_features')) value="{{old('property_features')}}" @else value="{{ isset($property->property_features) ? $property->property_features : null }}" @endif data-role="tagsinput tag-primary" class="form-control" placeholder="{{ isset($property->property_features) ? null : 'Balcony,Internet' }}" >
+                                                    <label class="bg" for="property_features{{$i}}">
 
+                                                        <img src="{{ URL::asset('assets/img/'.$key->icon) }}" style="width: 14px;position: relative;top:-1px;margin-right: 9px;" />{{$key->text}}</label>
+
+
+                                                </li>
+
+                                                <?php $i = $i + 1; ?>
+
+                                            @endforeach
+
+
+
+                                        </ul>
 
                                         </div>
 
@@ -464,6 +488,83 @@
 
 
                             </div>
+
+                            <style>
+
+                                tr.bg_color  {
+                                    background-color: #edf671 !important;
+                                }
+
+                                [type="checkbox"]:not(:checked),
+                                [type="checkbox"]:checked {
+                                    position: absolute;
+                                    left: -9999px;
+                                }
+                                [type="checkbox"]:not(:checked) + label,
+                                [type="checkbox"]:checked + label {
+                                    position: relative;
+                                    padding-left: 1.95em;
+                                    cursor: pointer;
+                                    font-weight: 600;
+                                }
+
+                                /* checkbox aspect */
+                                [type="checkbox"]:not(:checked) + label:before,
+                                [type="checkbox"]:checked + label:before {
+                                    content: '';
+                                    position: absolute;
+                                    left: 0; top: 5.5px;
+                                    width: 15px; height: 15px;
+                                    border: 2px solid #ccc;
+                                    background: #fff;
+                                    border-radius: 4px;
+                                    box-shadow: inset 0 1px 3px rgba(0,0,0,.1);
+                                }
+                                /* checked mark aspect */
+                                [type="checkbox"]:not(:checked) + label:after,
+                                [type="checkbox"]:checked + label:after {
+                                    content: '\2713\0020';
+                                    position: absolute;
+                                    top: 8.5px; left: 2px;
+                                    font-size: 1.0em;
+                                    line-height: 0.8;
+                                    color: #09ad7e;
+                                    transition: all .2s;
+                                    font-family: 'Lucida Sans Unicode', 'Arial Unicode MS', Arial;
+                                }
+                                /* checked mark aspect changes */
+                                [type="checkbox"]:not(:checked) + label:after {
+                                    opacity: 0;
+                                    transform: scale(0);
+                                }
+                                [type="checkbox"]:checked + label:after {
+                                    opacity: 1;
+                                    transform: scale(0.7);
+                                }
+                                /* disabled checkbox */
+                                [type="checkbox"]:disabled:not(:checked) + label:before,
+                                [type="checkbox"]:disabled:checked + label:before {
+                                    box-shadow: none;
+                                    border-color: #bbb;
+                                    background-color: #ddd;
+                                }
+                                [type="checkbox"]:disabled:checked + label:after {
+                                    color: #999;
+                                }
+                                [type="checkbox"]:disabled + label {
+                                    color: #aaa;
+                                }
+                                /* accessibility */
+                                /*[type="checkbox"]:checked:focus + label:before,
+                                [type="checkbox"]:not(:checked):focus + label:before {
+                                    border: 2px dotted blue;
+                                }*/
+
+                                /* hover style just for information */
+                                label.bg:hover:before {
+                                    border: 2px solid #4778d9!important;
+                                }
+                            </style>
 
 
 

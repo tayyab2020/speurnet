@@ -9,6 +9,7 @@ use App\Types;
 use App\Properties;
 use App\Enquire;
 use App\property_documents;
+use App\property_features;
 
 use Carbon\Carbon;
 use App\Http\Requests;
@@ -89,13 +90,13 @@ class PropertiesController extends MainAdminController
 
     	if(Auth::user()->usertype=='Admin')
         {
-        	$propertieslist = Properties::orderBy('id')->withCount(['enquiries'])->withCount(['viewings'])->get();
+        	$propertieslist = Properties::orderBy('id','desc')->withCount(['enquiries'])->withCount(['viewings'])->get();
         }
         else
         {
         	$user_id=Auth::user()->id;
 
-			$propertieslist = Properties::where('user_id',$user_id)->orderBy('id')->withCount(['enquiries'])->withCount(['viewings'])->get();
+			$propertieslist = Properties::where('user_id',$user_id)->orderBy('id','desc')->withCount(['enquiries'])->withCount(['viewings'])->get();
 
 		}
 
@@ -111,7 +112,9 @@ class PropertiesController extends MainAdminController
 
         $city_list = City::where('status','1')->orderBy('city_name')->get();
 
-        return view('admin.pages.addeditproperty',compact('city_list','types'));
+        $property_features = property_features::all();
+
+        return view('admin.pages.addeditproperty',compact('city_list','types','property_features'));
     }
 
     public function addnew(Request $request)
@@ -121,8 +124,6 @@ class PropertiesController extends MainAdminController
     	$data =  \Request::except(array('_token')) ;
 
 	    $inputs = $request->all();
-
-
 
 
         $rule=array(
@@ -562,6 +563,8 @@ class PropertiesController extends MainAdminController
             $city_id = $city->id;
         }
 
+        $features = implode(',', $request->property_features);
+
 		$user_id=Auth::user()->id;
 
 		$property->user_id = $user_id;
@@ -580,7 +583,7 @@ class PropertiesController extends MainAdminController
 		$property->bedrooms = $request->bedrooms;
         $property->garage = $request->garage;
 		$property->area = $request->area;
-		$property->property_features = $request->property_features;
+		$property->property_features = $features;
         $property->keywords = $request->property_keywords;
 		$property->description = $request->description;
         $property->open_date = $request->date;
