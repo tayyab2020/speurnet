@@ -338,9 +338,13 @@
 							<ul style="list-style: none;">
                               @foreach($property_features as $key => $value)
 
-                                    <li class="col-md-3 col-sm-3">
+                                    <li class="col-md-3 col-sm-3" style="margin: 10px 0px;">
 
-                                    <img src="{{ URL::asset('assets/img/'.$value) }}" style="width: 14px;position: relative;top:-1px;margin-right: 9px;" /> {{$key}}</li>
+                                    <img src="{{ URL::asset('assets/img/'.$value) }}" style="width: 20px;position: relative;top:-1px;margin-right: 9px;" />
+
+                                        <span>{{$key}}</span>
+
+                                    </li>
 
                                 @endforeach
 
