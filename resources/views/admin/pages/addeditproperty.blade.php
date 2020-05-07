@@ -421,14 +421,14 @@
 
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;">
 
-                                    <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
+                                    <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
 
 
                                         <label class="left-label" style="float: left;">Available Immediately</label>
 
                                         <div style="width: 100%;display: inline-block;margin: auto">
 
-                                            <select name="available_immediately" id="basic" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 40%;">
+                                            <select name="available_immediately" id="basic" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
                                                <option value="1" @if(old('available_immediately') == 1) selected @endif>Yes</option>
                                                 <option value="0" @if(old('available_immediately') == 0) selected @endif>No</option>
                                             </select>
@@ -460,7 +460,7 @@
 
                                             @foreach($property_features as $key)
 
-                                                <li class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="padding: 0;margin: 10px 0px;">
+                                                <li class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="padding: 0;margin: 10px 0px;text-align: left;">
 
                                                     <input name="property_features[]" value="{{$key->id}}" type="checkbox" id="property_features{{$i}}" style="position: relative;top: 2px;">
 
