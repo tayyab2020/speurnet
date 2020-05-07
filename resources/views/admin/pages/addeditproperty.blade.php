@@ -460,7 +460,7 @@
 
                                             @foreach($property_features as $key)
 
-                                                <li class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="padding: 0;margin: 10px 0px;text-align: left;">
+                                                <li class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="padding: 0;margin: 20px 0px;text-align: left;">
 
                                                     <input name="property_features[]" value="{{$key->id}}" type="checkbox" id="property_features{{$i}}" style="position: relative;top: 2px;">
 
@@ -469,7 +469,7 @@
 
                                                         <img src="{{ URL::asset('assets/img/'.$key->icon) }}" class="icon-feature" />
 
-                                                        <span style="position: relative;top: 1px;">{{$key->text}}</span>
+                                                        <span style="position: relative;top: 3px;font-size: 17px;">{{$key->text}}</span>
 
                                                     </label>
 
@@ -497,10 +497,10 @@
 
                                 .icon-feature
                                 {
-                                    width: 20px;
+                                    width: 30px;
                                     position: relative;
                                     top:-1px;
-                                    margin-right: 3px;
+                                    margin-right: 6px;
                                 }
 
                                 tr.bg_color  {
@@ -525,7 +525,7 @@
                                 [type="checkbox"]:checked + label:before {
                                     content: '';
                                     position: absolute;
-                                    left: 0; top: 5.5px;
+                                    left: 0; top: 9.5px;
                                     width: 15px; height: 15px;
                                     border: 2px solid #ccc;
                                     background: #fff;
@@ -537,7 +537,7 @@
                                 [type="checkbox"]:checked + label:after {
                                     content: '\2713\0020';
                                     position: absolute;
-                                    top: 8.5px; left: 2px;
+                                    top: 12.5px; left: 2px;
                                     font-size: 1.0em;
                                     line-height: 0.8;
                                     color: #09ad7e;
