@@ -460,14 +460,18 @@
 
                                             @foreach($property_features as $key)
 
-                                                <li class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="padding: 0;margin: 5px 0px;">
+                                                <li class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="padding: 0;margin: 10px 0px;">
 
                                                     <input name="property_features[]" value="{{$key->id}}" type="checkbox" id="property_features{{$i}}" style="position: relative;top: 2px;">
 
 
                                                     <label class="bg" for="property_features{{$i}}">
 
-                                                        <img src="{{ URL::asset('assets/img/'.$key->icon) }}" style="width: 14px;position: relative;top:-1px;margin-right: 9px;" />{{$key->text}}</label>
+                                                        <img src="{{ URL::asset('assets/img/'.$key->icon) }}" class="icon-feature" />
+
+                                                        <span style="position: relative;top: 1px;">{{$key->text}}</span>
+
+                                                    </label>
 
 
                                                 </li>
@@ -490,6 +494,14 @@
                             </div>
 
                             <style>
+
+                                .icon-feature
+                                {
+                                    width: 20px;
+                                    position: relative;
+                                    top:-1px;
+                                    margin-right: 3px;
+                                }
 
                                 tr.bg_color  {
                                     background-color: #edf671 !important;
