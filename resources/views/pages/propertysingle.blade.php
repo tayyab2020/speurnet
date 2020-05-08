@@ -550,6 +550,18 @@
 
                           @endif
 
+                          <h3 style="margin-top: 55px;">Travel Time</h3>
+
+                          <div class="row" style="margin: 40px 0px;">
+
+                                      <img src="{{ URL::asset('assets/img/travel-time-logo.svg') }}" style="width: 150px;display: block;" />
+
+                                      <p style="font-size: 19px;font-weight: 600;margin-top: 30px;">See how long it takes you to travel from this house to for example your work or family.</p>
+
+                              <a href="https://www.google.nl/maps/dir///@52.0699981,5.1242385,14z/data=!4m2!4m1!3e3"><i class="fas fa-plus" style="margin-right: 12px;"></i>Add Location</a>
+
+                          </div>
+
                           @if($property_features)
 
                         <h3 style="margin-top: 55px;">Property Features</h3>

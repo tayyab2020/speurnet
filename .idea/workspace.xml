@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7fe7f36f-c82f-4504-8c0a-7874522d22c9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/assets/img/signaling.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img/travel-time-logo.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/PropertiesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/PropertiesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/pages/addeditproperty.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/pages/addeditproperty.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/pages/propertysingle.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/propertysingle.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -212,7 +210,7 @@
       <workItem from="1588148559835" duration="48927000" />
       <workItem from="1588491581177" duration="56915000" />
       <workItem from="1588847328671" duration="19017000" />
-      <workItem from="1588965006833" duration="2637000" />
+      <workItem from="1588965006833" duration="4538000" />
     </task>
     <servers />
   </component>
