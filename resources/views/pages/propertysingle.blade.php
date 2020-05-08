@@ -323,10 +323,232 @@
                             <td>{{$property->bedrooms}}</td>
                           </tr>
                           <tr>
-                            <td><strong>Area</strong></td>
+                            <td><strong>Area <small>(m2)</small></strong></td>
                             <td>{{$property->area}}</sup> </td>
                           </tr>
+
+                            @if($property->garage)
+                                <tr>
+                                    <td><strong>Garage <small>(m2)</small></strong></td>
+                                    <td>{{$property->garage}}</sup> </td>
+                                </tr>
+                            @endif
+
+                            @if($property->house_type)
+
+                                <tr>
+                                    <td><strong>House Type</strong></td>
+                                    <td>{{$property->house_type}}</sup> </td>
+                                </tr>
+
+                            @endif
+
+                            @if($property->construction_type)
+
+                                <tr>
+                                    <td><strong>Construction Type</strong></td>
+                                    <td>{{$property->construction_type}}</sup> </td>
+                                </tr>
+
+                            @endif
+
+                            @if($property->year_construction)
+
+                                <tr>
+                                    <td><strong>Construction Year</strong></td>
+                                    <td>{{$property->year_construction}}</sup> </td>
+                                </tr>
+
+                            @endif
+
+                            @if($property->building_condition)
+
+                                <tr>
+                                    <td><strong>Building Condition</strong></td>
+                                    <td>{{$property->building_condition}}</sup> </td>
+                                </tr>
+
+                            @endif
+
+                            @if($property->volume)
+
+                                <tr>
+                                    <td><strong>Volume <small>(m3)</small></strong></td>
+                                    <td>{{$property->volume}}</sup> </td>
+                                </tr>
+
+                            @endif
+
+                            @if($property->floors)
+
+                                <tr>
+                                    <td><strong>Floors</strong></td>
+                                    <td>{{$property->floors}}</sup> </td>
+                                </tr>
+
+                            @endif
+
+                            @if($property->backyard)
+
+                                <tr>
+                                    <td><strong>Backyard <small>(m2)</small></strong></td>
+                                    <td>{{$property->backyard}}</sup> </td>
+                                </tr>
+
+                            @endif
+
+                            @if($property->frontyard)
+
+                                <tr>
+                                    <td><strong>Frontyard <small>(m2)</small></strong></td>
+                                    <td>{{$property->frontyard}}</sup> </td>
+                                </tr>
+
+                            @endif
+
+                            @if($property->terrace)
+
+                                <tr>
+                                    <td><strong>Terrace <small>(m2)</small></strong></td>
+                                    <td>{{$property->terrace}}</sup> </td>
+                                </tr>
+
+                            @endif
+
+                            @if($property->garage_type)
+
+                                <tr>
+                                    <td><strong>Garage Type</strong></td>
+                                    <td>{{$property->garage_type}}</sup> </td>
+                                </tr>
+
+                            @endif
+
+                            @if($property->energy_rating)
+
+                                <tr>
+                                    <td><strong>Energy Rating</strong></td>
+                                    <td>{{$property->energy_rating}}</sup> </td>
+                                </tr>
+
+                            @endif
+
+                            @if($property->solar_panel)
+
+                                <tr>
+                                    <td><strong>Solar Panel</strong></td>
+                                    <td>{{$property->solar_panel}}</sup> </td>
+                                </tr>
+
+                            @endif
+
+                            @if($property->floor_option)
+
+                                <tr>
+                                    <td><strong>Floors Availability</strong></td>
+                                    <td>{{$property->floor_option}}</sup> </td>
+                                </tr>
+
+                            @endif
+
+                            @if($property->walls)
+
+                                <tr>
+                                    <td><strong>Walls Availability</strong></td>
+                                    <td>{{$property->walls}}</sup> </td>
+                                </tr>
+
+                            @endif
+
+                            @if($property->roof_insulation)
+
+                                <tr>
+                                    <td><strong>Roof Insulation</strong></td>
+                                    <td>{{$property->roof_insulation}}</sup> </td>
+                                </tr>
+
+                            @endif
+
+                            @if($property->cook)
+
+                                <tr>
+                                    <td><strong>Cook</strong></td>
+                                    <td>{{$property->cook}}</sup> </td>
+                                </tr>
+
+                            @endif
+
+                            @if($property->type_of_boiler)
+
+                                <tr>
+                                    <td><strong>Boiler Type</strong></td>
+                                    <td>{{$property->type_of_boiler}}</sup> </td>
+                                </tr>
+
+                            @endif
+
+                            @if($property->agreement_type)
+
+                                <tr>
+                                    <td><strong>Agreement Type</strong></td>
+                                    <td>{{$property->agreement_type}}</sup> </td>
+                                </tr>
+
+                            @endif
+
+                            @if($property->year_boiler)
+
+                                <tr>
+                                    <td><strong>Boiler Year</strong></td>
+                                    <td>{{$property->year_boiler}}</sup> </td>
+                                </tr>
+
+                            @endif
+
+                            @if($property->property_furnished)
+
+                                <tr>
+                                    <td><strong>Property Furnished</strong></td>
+                                    <td>{{$property->property_furnished}}</sup> </td>
+                                </tr>
+
+                            @endif
+
+                            @if($property->available_from)
+
+                                <tr>
+                                    <td><strong>Available From</strong></td>
+                                    <td>{{$property->available_from}}</sup> </td>
+                                </tr>
+
+                            @endif
+
+
                         </table>
+
+                          @if($property->wheelchair)
+
+
+                              <div class="row" style="margin: 40px 0px;">
+
+
+                                  <ul style="list-style: none;padding: 0;">
+
+
+                                          <li class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin: 20px 0px;padding: 0;">
+
+                                              <img src="{{ URL::asset('assets/img/signaling.png') }}" style="width: 30px;position: relative;top:-1px;margin-right: 9px;" />
+
+                                              <span style="font-size: 19px;font-weight: 600;position: relative;top: 4px;">Wheelchair friendly home for people with walking difficulties</span>
+
+                                          </li>
+
+
+                                  </ul>
+
+                              </div>
+
+                          @endif
 
                           @if($property_features)
 

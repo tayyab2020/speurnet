@@ -126,6 +126,7 @@ class PropertiesController extends MainAdminController
 	    $inputs = $request->all();
 
 
+
         $rule=array(
             'property_name' => 'required',
             'description' => 'required',
@@ -565,6 +566,15 @@ class PropertiesController extends MainAdminController
 
         $features = implode(',', $request->property_features);
 
+		if($request->wheelchair)
+        {
+            $wheelchair = 1;
+        }
+		else
+        {
+            $wheelchair = 0;
+        }
+
 		$user_id=Auth::user()->id;
 
 		$property->user_id = $user_id;
@@ -589,6 +599,28 @@ class PropertiesController extends MainAdminController
         $property->open_date = $request->date;
         $property->open_timeFrom = $request->time_from;
         $property->open_timeTo = $request->time_to;
+        $property->house_type = $request->house_type;
+        $property->construction_type = $request->construction_type;
+        $property->year_construction = $request->year_construction;
+        $property->building_condition = $request->building_condition;
+        $property->volume = $request->volume;
+        $property->floors = $request->floors;
+        $property->backyard = $request->backyard;
+        $property->frontyard = $request->frontyard;
+        $property->terrace = $request->terrace;
+        $property->garage_type = $request->garage_type;
+        $property->energy_rating = $request->energy_rating;
+        $property->solar_panel = $request->solar_panel;
+        $property->floor_option = $request->floor_option;
+        $property->walls = $request->walls;
+        $property->roof_insulation = $request->roof_insulation;
+        $property->cook = $request->cook;
+        $property->type_of_boiler = $request->type_of_boiler;
+        $property->agreement_type = $request->agreement_type;
+        $property->year_boiler = $request->year_boiler;
+        $property->property_furnished = $request->property_furnished;
+        $property->wheelchair = $wheelchair;
+        $property->available_from = $request->available_from;
 
 
 	    $property->save();

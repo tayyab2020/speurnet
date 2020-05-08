@@ -276,6 +276,86 @@
 
                                 </ul>
 
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="border:1px solid #e6e6e6;padding: 20px;margin: 25px 0px;">
+
+                                    <h3>House Features</h3>
+
+                                    <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 left-div" style="display: inline-block;margin: 25px 0px;">
+
+                                        <label class="left-label" style="float: left;">TYPE OF HOUSE</label>
+
+                                        <div style="width: 100%;display: inline-block;margin: auto">
+
+                                            <select name="house_type" id="house_type" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
+                                                <option value="Apartment" @if(old('house_type') == 'Apartment') selected @endif>Apartment</option>
+                                                <option value="Penthouse" @if(old('house_type') == 'Penthouse') selected @endif>Penthouse</option>
+                                                <option value="Room" @if(old('house_type') == 'Room') selected @endif>Room</option>
+                                                <option value="Senior Residence" @if(old('house_type') == 'Senior Residence') selected @endif>Senior Residence</option>
+                                                <option value="Villa" @if(old('house_type') == 'Villa') selected @endif>Villa</option>
+                                                <option value="Semi-Detached" @if(old('house_type') == 'Semi-Detached') selected @endif>Semi-Detached</option>
+                                                <option value="Single Family House (Middle House)" @if(old('house_type') == 'Single Family House (Middle House)') selected @endif>Single Family House (Middle House)</option>
+                                                <option value="Single Family House (Corner House)" @if(old('house_type') == 'Single Family House (Corner House)') selected @endif>Single Family House (Corner House)</option>
+                                            </select>
+
+
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 right-div" style="display: inline-block;float: right;margin: 25px 0px;">
+
+                                        <label class="right-label" style="float: left;">TYPE OF CONSTRUCTION</label>
+
+                                        <div style="width: 100%;display: inline-block;margin: auto">
+
+                                            <select name="construction_type" id="construction_type" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
+                                                <option value="New" @if(old('construction_type') == 'New') selected @endif>New</option>
+                                                <option value="Old" @if(old('construction_type') == 'Old') selected @endif>Old</option>
+                                            </select>
+
+
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 left-div" style="display: inline-block;margin: 20px 0px;">
+
+                                        <label class="left-label" style="float: left;">YEAR OF CONSTRUCTION</label>
+
+                                        <div  style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;border-right: 0;margin: auto">
+
+                                            <input type="number" step="1" max="" name="year_construction" @if(old('year_construction') != '') value="{{old('year_construction')}}" @else value="{{ isset($property->year_construction) ? $property->year_construction : 1980 }}" @endif class="quantity-field" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+                                            <input type="button" value="+" class="button-plus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d7d7d7;margin-top: -0.1px;">
+                                            <input type="button" value="-" class="button-minus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;margin-top: -0.1px;">
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 right-div" style="display: inline-block;float: right;margin: 25px 0px;">
+
+                                        <label class="right-label" style="float: left;">CONDITION OF THE BUILDING</label>
+
+                                        <div style="width: 100%;display: inline-block;margin: auto">
+
+                                            <select name="building_condition" id="building_condition" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
+                                                <option value="Very Good Condition" @if(old('building_condition') == 'Very Good Condition') selected @endif>Very Good Condition</option>
+                                                <option value="Good Condition" @if(old('building_condition') == 'Good Condition') selected @endif>Good Condition</option>
+                                                <option value="Needs Some Maintenance" @if(old('building_condition') == 'Needs Some Maintenance') selected @endif>Needs Some Maintenance</option>
+                                            </select>
+
+                                        </div>
+
+                                    </div>
+
+
+                                </div>
+
 
 
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;">
@@ -319,36 +399,336 @@
 
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;">
 
-                                    <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
 
-                                        <label class="left-label" style="float: left;">GARAGE</label>
+                                    <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 right-div" style="display: inline-block">
 
-                                        <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;border-right:0;margin: auto">
-
-                                            <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-warehouse"></i></div>
-
-                                            <input type="number" step="1" max="" @if(old('garage') != '') value="{{old('garage')}}" @else value="1" @endif name="garage" class="quantity-field stepper-step-2-validate" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
-                                            <input type="button" value="+" class="button-plus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d7d7d7;">
-                                            <input type="button" value="-" class="button-minus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;">
-
-                                        </div>
-
-                                    </div>
-
-                                    <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 right-div" style="display: inline-block;float: right;">
-
-                                        <label class="right-label" style="float: left;">SQFT</label>
+                                        <label class="right-label" style="float: left;">SQFT <small>(m2)</small></label>
 
                                         <div class="right-content" style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto;">
 
                                             <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-crop-alt"></i></div>
 
-                                            <input type="text"  name="area" @if(old('area') != '') value="{{old('area')}}" @else value="{{ isset($property->area) ? $property->area : null }}" @endif placeholder="800m2" class="quantity-field stepper-step-2-validate" style="border: 0;margin: 0;float: left;width: 80%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+                                            <input type="text" name="area" @if(old('area') != '') value="{{old('area')}}" @else value="{{ isset($property->area) ? $property->area : null }}" @endif placeholder="800m2" class="quantity-field stepper-step-2-validate" style="border: 0;margin: 0;float: left;width: 80%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
 
 
                                         </div>
 
                                     </div>
+
+                                    <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 left-div" style="display: inline-block;float: right;">
+
+                                        <label class="left-label" style="float: left;">VOLUME <small>(m3)</small></label>
+
+                                        <div class="right-content" style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto;">
+
+                                            <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-arrows-alt-h"></i></div>
+
+                                            <input type="text" name="volume" @if(old('volume') != '') value="{{old('volume')}}" @else value="{{ isset($property->volume) ? $property->volume : null }}" @endif placeholder="800m3" class="quantity-field" style="border: 0;margin: 0;float: left;width: 80%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+
+
+                                        </div>
+
+                                    </div>
+
+
+                                </div>
+
+
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;">
+
+
+                                    <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
+
+                                        <label class="left-label" style="float: left;">NUMBER OF FLOORS</label>
+
+                                        <div  style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;border-right: 0;margin: auto">
+
+                                            <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-sort-numeric-up"></i></div>
+
+                                            <input type="number" step="1" max="" name="floors" @if(old('floors') != '') value="{{old('floors')}}" @else value="{{ isset($property->floors) ? $property->floors : 1 }}" @endif class="quantity-field" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+                                            <input type="button" value="+" class="button-plus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d7d7d7;margin-top: -0.1px;">
+                                            <input type="button" value="-" class="button-minus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;margin-top: -0.1px;">
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="border:1px solid #e6e6e6;padding: 20px;margin: 25px 0px;">
+
+                                    <h3>Outdoor Space Features</h3>
+
+                                    <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 left-div" style="display: inline-block;margin: 25px 0px;">
+
+                                        <label class="left-label" style="float: left;">BACKYARD <small>(m2)</small></label>
+
+                                        <div class="right-content" style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto;">
+
+                                            <input type="text" @if(old('backyard') != '') value="{{old('backyard')}}" @else value="{{ isset($property->backyard) ? $property->backyard : null }}" @endif name="backyard" placeholder="800m2" class="quantity-field" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 right-div" style="display: inline-block;float: right;margin: 25px 0px;">
+
+                                        <label class="right-label" style="float: left;">FRONT YARD <small>(m2)</small></label>
+
+                                        <div class="right-content" style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto;">
+
+                                            <input type="text" @if(old('frontyard') != '') value="{{old('frontyard')}}" @else value="{{ isset($property->frontyard) ? $property->frontyard : null }}" @endif name="frontyard" placeholder="800m2" class="quantity-field" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 left-div" style="display: inline-block;margin: 25px 0px;">
+
+                                        <label class="left-label" style="float: left;">GARAGE <small>(m2)</small></label>
+
+                                        <div class="right-content" style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto;">
+
+                                            <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-warehouse"></i></div>
+
+                                            <input type="text"  @if(old('garage') != '') value="{{old('garage')}}" @else value="{{ isset($property->garage) ? $property->garage : null }}" @endif name="garage" placeholder="800m2" class="quantity-field stepper-step-2-validate" style="border: 0;margin: 0;float: left;width: 80%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 right-div" style="display: inline-block;float: right;margin: 25px 0px;">
+
+                                        <label class="right-label" style="float: left;">TERRACE <small>(m2)</small></label>
+
+                                        <div class="right-content" style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto;">
+
+                                            <input type="text" @if(old('terrace') != '') value="{{old('terrace')}}" @else value="{{ isset($property->terrace) ? $property->terrace : null }}" @endif name="terrace" placeholder="800m2" class="quantity-field" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 left-div" style="display: inline-block;margin: 25px 0px;">
+
+                                        <label class="left-label" style="float: left;">TYPE OF GARAGE</label>
+
+                                        <div class="right-content" style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto;">
+
+
+                                            <input type="text"  @if(old('garage_type') != '') value="{{old('garage_type')}}" @else value="{{ isset($property->garage_type) ? $property->garage_type : null }}" @endif name="garage_type" placeholder="Type of garage" class="quantity-field" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+
+                                        </div>
+
+                                    </div>
+
+
+                                </div>
+
+
+
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="border:1px solid #e6e6e6;padding: 20px;margin: 25px 0px;">
+
+                                    <h3>Energie</h3>
+
+                                    <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 left-div" style="display: inline-block;margin: 25px 0px;">
+
+                                        <label class="left-label" style="float: left;">ENERGY RATING</label>
+
+                                        <div style="width: 100%;display: inline-block;margin: auto">
+
+                                            <select name="energy_rating" id="energy_rating" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
+                                                <option value="A+" @if(old('energy_rating') == 'A+') selected @endif>A+</option>
+                                                <option value="A" @if(old('energy_rating') == 'A') selected @endif>A</option>
+                                                <option value="B" @if(old('energy_rating') == 'B') selected @endif>B</option>
+                                                <option value="C" @if(old('energy_rating') == 'C') selected @endif>C</option>
+                                                <option value="D" @if(old('energy_rating') == 'D') selected @endif>D</option>
+                                                <option value="E" @if(old('energy_rating') == 'E') selected @endif>E</option>
+                                                <option value="F" @if(old('energy_rating') == 'F') selected @endif>F</option>
+                                                <option value="G" @if(old('energy_rating') == 'G') selected @endif>G</option>
+                                            </select>
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 right-div" style="display: inline-block;float: right;margin: 20px 0px;">
+
+                                        <label class="right-label" style="float: left;">SOLAR PANEL</label>
+
+                                        <div  style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;border-right: 0;margin: auto">
+
+                                            <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-sort-numeric-up"></i></div>
+
+                                            <input type="number" step="1" max="" name="solar_panel" @if(old('solar_panel') != '') value="{{old('solar_panel')}}" @else value="{{ isset($property->solar_panel) ? $property->solar_panel : 1 }}" @endif class="quantity-field" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+                                            <input type="button" value="+" class="button-plus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d7d7d7;margin-top: -0.1px;">
+                                            <input type="button" value="-" class="button-minus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;margin-top: -0.1px;">
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 left-div" style="display: inline-block;margin: 25px 0px;">
+
+                                        <label class="left-label" style="float: left;">FLOORS</label>
+
+                                        <div style="width: 100%;display: inline-block;margin: auto">
+
+                                            <select name="floor_option" id="floor_option" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
+                                                <option value="Yes" @if(old('floor') == 'Yes') selected @endif>Yes</option>
+                                                <option value="No" @if(old('floor') == 'No') selected @endif>No</option>
+                                                <option value="Partly" @if(old('floor') == 'Partly') selected @endif>Partly</option>
+                                            </select>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 left-div" style="display: inline-block;float: right;margin: 25px 0px;">
+
+                                        <label class="left-label" style="float: left;">WALLS</label>
+
+                                        <div style="width: 100%;display: inline-block;margin: auto">
+
+                                            <select name="walls" id="walls" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
+                                                <option value="Yes" @if(old('walls') == 'Yes') selected @endif>Yes</option>
+                                                <option value="No" @if(old('walls') == 'No') selected @endif>No</option>
+                                                <option value="Partly" @if(old('walls') == 'Partly') selected @endif>Partly</option>
+                                            </select>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 left-div" style="display: inline-block;margin: 25px 0px;">
+
+                                        <label class="left-label" style="float: left;">ROOF INSULATION</label>
+
+                                        <div style="width: 100%;display: inline-block;margin: auto">
+
+                                            <select name="roof_insulation" id="roof_insulation" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
+                                                <option value="Yes" @if(old('roof_insulation') == 'Yes') selected @endif>Yes</option>
+                                                <option value="No" @if(old('roof_insulation') == 'No') selected @endif>No</option>
+                                                <option value="Partly" @if(old('roof_insulation') == 'Partly') selected @endif>Partly</option>
+                                            </select>
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <h3>Other Characteristics</h3>
+
+                                    <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 left-div" style="display: inline-block;margin: 25px 0px;">
+
+                                        <label class="left-label" style="float: left;">COOK</label>
+
+                                        <div style="width: 100%;display: inline-block;margin: auto">
+
+                                            <select name="cook" id="cook" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
+                                                <option value="Gas" @if(old('cook') == 'Gas') selected @endif>Gas</option>
+                                                <option value="Electricity" @if(old('cook') == 'Electricity') selected @endif>Electricity</option>
+                                            </select>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 right-div" style="display: inline-block;float: right;margin: 20px 0px;">
+
+                                        <label class="right-label" style="float: left;">TYPE OF BOILER</label>
+
+                                        <div class="right-content" style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto;">
+
+                                            <input type="text" @if(old('type_of_boiler') != '') value="{{old('type_of_boiler')}}" @else value="{{ isset($property->type_of_boiler) ? $property->type_of_boiler : null }}" @endif name="type_of_boiler" placeholder="Type of boiler" class="quantity-field" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 left-div" style="display: inline-block;margin: 25px 0px;">
+
+                                        <label class="left-label" style="float: left;">TYPE OF AGREEMENT</label>
+
+                                        <div style="width: 100%;display: inline-block;margin: auto">
+
+                                            <select name="agreement_type" id="agreement_type" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
+                                                <option value="Temporarily" @if(old('agreement_type') == 'Temporarily') selected @endif>Temporarily</option>
+                                                <option value="Indefinitely" @if(old('agreement_type') == 'Indefinitely') selected @endif>Indefinitely</option>
+                                            </select>
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 right-div" style="display: inline-block;float: right;margin: 20px 0px;">
+
+                                        <label class="right-label" style="float: left;">YEAR OF THE BOILER</label>
+
+                                        <div  style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;border-right: 0;margin: auto">
+
+                                            <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-sort-numeric-up"></i></div>
+
+                                            <input type="number" step="1" max="" name="year_boiler" @if(old('year_boiler') != '') value="{{old('year_boiler')}}" @else value="{{ isset($property->year_boiler) ? $property->year_boiler : 1980 }}" @endif class="quantity-field" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+                                            <input type="button" value="+" class="button-plus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d7d7d7;margin-top: -0.1px;">
+                                            <input type="button" value="-" class="button-minus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;margin-top: -0.1px;">
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 right-div" style="display: inline-block;margin: 25px 0px;">
+
+                                        <label class="right-label" style="float: left;">PROPERTY FURNISHED</label>
+
+                                        <div style="width: 100%;display: inline-block;margin: auto">
+
+                                            <select name="property_furnished" id="property_furnished" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
+                                                <option value="Unfurnished" @if(old('property_furnished') == 'Unfurnished') selected @endif>Unfurnished</option>
+                                                <option value="Bare" @if(old('property_furnished') == 'Bare') selected @endif>Bare</option>
+                                                <option value="Furnished" @if(old('property_furnished') == 'Furnished') selected @endif>Furnished</option>
+                                            </select>
+
+                                        </div>
+
+                                    </div>
+
+
+                                </div>
+
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;">
+
+                                    <div style="width: 100%;display: inline-block;margin: auto">
+
+                                        <ul style="list-style: none;display: inline-block;width: 100%;padding: 0;">
+
+
+                                                <li class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;margin: 20px 0px;text-align: left;">
+
+                                                    <input name="wheelchair" @if(old('wheelchair') == 1) checked @endif value="1" type="checkbox" id="wheelchair" style="position: relative;top: 2px;">
+
+
+                                                    <label class="bg" for="wheelchair">
+
+                                                        <img src="{{ URL::asset('assets/img/signaling.png') }}" class="icon-feature" />
+
+                                                        <span style="position: relative;top: 3px;font-size: 17px;">Wheelchair friendly home for people with walking difficulties</span>
+
+                                                    </label>
+
+
+                                                </li>
+
+
+                                        </ul>
+
+                                    </div>
+
 
                                 </div>
 
@@ -424,7 +804,7 @@
                                     <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
 
 
-                                        <label class="left-label" style="float: left;">Available Immediately</label>
+                                        <label class="left-label" style="float: left;">AVAILABLE IMMEDIATELY</label>
 
                                         <div style="width: 100%;display: inline-block;margin: auto">
 
@@ -441,14 +821,35 @@
 
                                 </div>
 
-
-
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;">
+
+                                    <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
+
+
+                                        <label class="left-label" style="float: left;">AVAILABLE FROM</label>
+
+
+                                        <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
+
+                                            <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-calendar-alt"></i></div>
+
+
+                                            <input type='text' placeholder="Select Date" name="available_from" style="box-shadow: none;border: 0;margin: 0;float: left;width: 80%;left: 0;height: 37.5px;text-align: left;padding-left: 0px;" class="form-control" value="{{old('available_from')}}" id='datetimepicker5' />
+
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;margin-top: 20px;">
 
                                     <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
 
 
-                                        <label class="left-label" style="float: left;width: 100%;">Property Features</label>
+                                        <label class="left-label" style="float: left;width: 100%;">PROPERTY FEATURES</label>
 
                                         <small style="display: block;">Please list the key features of your property this is a good oppurtunity to sell your property!</small>
 
@@ -493,90 +894,7 @@
 
                             </div>
 
-                            <style>
 
-                                .icon-feature
-                                {
-                                    width: 30px;
-                                    position: relative;
-                                    top:-1px;
-                                    margin-right: 6px;
-                                }
-
-                                tr.bg_color  {
-                                    background-color: #edf671 !important;
-                                }
-
-                                [type="checkbox"]:not(:checked),
-                                [type="checkbox"]:checked {
-                                    position: absolute;
-                                    left: -9999px;
-                                }
-                                [type="checkbox"]:not(:checked) + label,
-                                [type="checkbox"]:checked + label {
-                                    position: relative;
-                                    padding-left: 1.95em;
-                                    cursor: pointer;
-                                    font-weight: 600;
-                                }
-
-                                /* checkbox aspect */
-                                [type="checkbox"]:not(:checked) + label:before,
-                                [type="checkbox"]:checked + label:before {
-                                    content: '';
-                                    position: absolute;
-                                    left: 0; top: 9.5px;
-                                    width: 15px; height: 15px;
-                                    border: 2px solid #ccc;
-                                    background: #fff;
-                                    border-radius: 4px;
-                                    box-shadow: inset 0 1px 3px rgba(0,0,0,.1);
-                                }
-                                /* checked mark aspect */
-                                [type="checkbox"]:not(:checked) + label:after,
-                                [type="checkbox"]:checked + label:after {
-                                    content: '\2713\0020';
-                                    position: absolute;
-                                    top: 12.5px; left: 2px;
-                                    font-size: 1.0em;
-                                    line-height: 0.8;
-                                    color: #09ad7e;
-                                    transition: all .2s;
-                                    font-family: 'Lucida Sans Unicode', 'Arial Unicode MS', Arial;
-                                }
-                                /* checked mark aspect changes */
-                                [type="checkbox"]:not(:checked) + label:after {
-                                    opacity: 0;
-                                    transform: scale(0);
-                                }
-                                [type="checkbox"]:checked + label:after {
-                                    opacity: 1;
-                                    transform: scale(0.7);
-                                }
-                                /* disabled checkbox */
-                                [type="checkbox"]:disabled:not(:checked) + label:before,
-                                [type="checkbox"]:disabled:checked + label:before {
-                                    box-shadow: none;
-                                    border-color: #bbb;
-                                    background-color: #ddd;
-                                }
-                                [type="checkbox"]:disabled:checked + label:after {
-                                    color: #999;
-                                }
-                                [type="checkbox"]:disabled + label {
-                                    color: #aaa;
-                                }
-                                /* accessibility */
-                                /*[type="checkbox"]:checked:focus + label:before,
-                                [type="checkbox"]:not(:checked):focus + label:before {
-                                    border: 2px dotted blue;
-                                }*/
-
-                                /* hover style just for information */
-                                label.bg:hover:before {
-                                    border: 2px solid #4778d9!important;
-                                }
-                            </style>
 
 
 
@@ -1359,6 +1677,88 @@
 
     <style>
 
+        .icon-feature
+        {
+            width: 30px;
+            position: relative;
+            top:-1px;
+            margin-right: 6px;
+        }
+
+        tr.bg_color  {
+            background-color: #edf671 !important;
+        }
+
+        [type="checkbox"]:not(:checked),
+        [type="checkbox"]:checked {
+            position: absolute;
+            left: -9999px;
+        }
+        [type="checkbox"]:not(:checked) + label,
+        [type="checkbox"]:checked + label {
+            position: relative;
+            padding-left: 1.95em;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        /* checkbox aspect */
+        [type="checkbox"]:not(:checked) + label:before,
+        [type="checkbox"]:checked + label:before {
+            content: '';
+            position: absolute;
+            left: 0; top: 9.5px;
+            width: 15px; height: 15px;
+            border: 2px solid #ccc;
+            background: #fff;
+            border-radius: 4px;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,.1);
+        }
+        /* checked mark aspect */
+        [type="checkbox"]:not(:checked) + label:after,
+        [type="checkbox"]:checked + label:after {
+            content: '\2713\0020';
+            position: absolute;
+            top: 12.5px; left: 2px;
+            font-size: 1.0em;
+            line-height: 0.8;
+            color: #09ad7e;
+            transition: all .2s;
+            font-family: 'Lucida Sans Unicode', 'Arial Unicode MS', Arial;
+        }
+        /* checked mark aspect changes */
+        [type="checkbox"]:not(:checked) + label:after {
+            opacity: 0;
+            transform: scale(0);
+        }
+        [type="checkbox"]:checked + label:after {
+            opacity: 1;
+            transform: scale(0.7);
+        }
+        /* disabled checkbox */
+        [type="checkbox"]:disabled:not(:checked) + label:before,
+        [type="checkbox"]:disabled:checked + label:before {
+            box-shadow: none;
+            border-color: #bbb;
+            background-color: #ddd;
+        }
+        [type="checkbox"]:disabled:checked + label:after {
+            color: #999;
+        }
+        [type="checkbox"]:disabled + label {
+            color: #aaa;
+        }
+        /* accessibility */
+        /*[type="checkbox"]:checked:focus + label:before,
+        [type="checkbox"]:not(:checked):focus + label:before {
+            border: 2px dotted blue;
+        }*/
+
+        /* hover style just for information */
+        label.bg:hover:before {
+            border: 2px solid #4778d9!important;
+        }
+
         .bootstrap-tagsinput
         {
             width: 100%;
@@ -1988,6 +2388,8 @@
 
 
             $('#datetimepicker4').datetimepicker({format: 'DD/MM/YYYY'});
+
+            $('#datetimepicker5').datetimepicker({format: 'DD/MM/YYYY'});
 
             $('#datetimepicker3').datetimepicker({
                 format: 'LT'
