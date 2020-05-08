@@ -181,7 +181,7 @@ class PropertiesController extends Controller
                 'property_name' => $request->property_name,
             ),  function ($message) use($request,$admin_email) {
                 $message->from(getcong('site_email'),getcong('site_name'));
-                $message->to('tayyabkhurram62@gmail.com')
+                $message->to($admin_email)
                     ->subject('Request for viewing');
             });
 
@@ -302,9 +302,64 @@ class PropertiesController extends Controller
     	$enquire->phone = $inputs['phone'];
     	$enquire->message = $inputs['message'];
 
-
-
 	    $enquire->save();
+
+
+
+        $broker = User::where('id',$request->agent_id)->first();
+
+        $broker_email = $broker->email;
+
+        $broker_name = $broker->name;
+
+        $broker_phone = $broker->phone;
+
+        $customer_email = $request->email;
+
+        $admin_email = getcong('site_email');
+
+        Mail::send('emails.inquiry',
+            array(
+                'gender' => $request->gender,
+                'username' => $request->name,
+                'email' => $request->email,
+                'phone' => $request->phone,
+                'property_name' => $request->property_name,
+            ),  function ($message) use($request,$customer_email) {
+                $message->from(getcong('site_email'),getcong('site_name'));
+                $message->to($customer_email)
+                    ->subject('Property Inquiry');
+            });
+
+        Mail::send('emails.agent_inquiry',
+            array(
+                'gender' => $request->gender,
+                'broker_name' => $broker_name,
+                'username' => $request->username,
+                'email' => $request->email,
+                'phone' => $request->phone,
+                'property_name' => $request->property_name,
+            ),  function ($message) use($request,$broker_email) {
+                $message->from(getcong('site_email'),getcong('site_name'));
+                $message->to($broker_email)
+                    ->subject('Property Inquiry');
+            });
+
+        Mail::send('emails.admin_inquiry',
+            array(
+                'gender' => $request->gender,
+                'broker_name' => $broker_name,
+                'broker_email' => $broker_email,
+                'broker_phone' => $broker_phone,
+                'username' => $request->username,
+                'email' => $request->email,
+                'phone' => $request->phone,
+                'property_name' => $request->property_name,
+            ),  function ($message) use($request,$admin_email) {
+                $message->from(getcong('site_email'),getcong('site_name'));
+                $message->to($admin_email)
+                    ->subject('Property Inquiry');
+            });
 
 	    \Session::flash('flash_message', 'Message send successfully');
 

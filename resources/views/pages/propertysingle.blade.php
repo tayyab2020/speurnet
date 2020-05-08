@@ -121,7 +121,7 @@
 
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-                                        <input type="hidden" name="agent_id" value="{{$property->user_id}}">
+                                        <input type="hidden" name="agent_id" value="{{$agent->id}}">
 
                                         <input type="hidden" name="property_name" value="{{$property->property_name}}">
 
@@ -1045,7 +1045,35 @@
 
                          <input type="hidden" name="agent_id" value="{{$agent->id}}">
 
+                         <input type="hidden" name="property_name" value="{{$property->property_name}}">
+
                           <div id="ajax" style="color: #db2424"></div>
+
+                          <div class="form-group">
+
+                              <div style="position: relative;width: 100%;">
+
+                                  <div class="bulgy-radios" role="radiogroup" aria-labelledby="bulgy-radios-label" style="width: 100%;min-height: 100px;text-align: left;">
+
+                                      <h3 id="bulgy-radios-label">Select Gender</h3>
+
+                                      <label style="margin-left: 5px;">
+                                          <input type="radio" name="gender" value="Mr." checked />
+                                          <span class="radio"></span>
+                                          <span class="label">Mr.</span>
+                                      </label>
+
+                                      <label>
+                                          <input type="radio" name="gender" value="Ms." />
+                                          <span class="radio"></span>
+                                          <span class="label">Ms.</span>
+                                      </label>
+
+                                  </div>
+
+                              </div>
+
+                          </div>
 
                           <div class="form-group">
                             <label for="name">Name</label>
