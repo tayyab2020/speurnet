@@ -280,6 +280,7 @@ class PropertiesController extends Controller
 
 	    $inputs = $request->all();
 
+
 	    $rule=array(
 		        'name' => 'required',
 				'email' => 'required',
@@ -338,6 +339,7 @@ class PropertiesController extends Controller
                 'username' => $request->username,
                 'email' => $request->email,
                 'phone' => $request->phone,
+                'inquiry' => $request->message,
                 'property_name' => $request->property_name,
             ),  function ($message) use($request,$broker_email) {
                 $message->from(getcong('site_email'),getcong('site_name'));
@@ -354,10 +356,11 @@ class PropertiesController extends Controller
                 'username' => $request->username,
                 'email' => $request->email,
                 'phone' => $request->phone,
+                'inquiry' => $request->message,
                 'property_name' => $request->property_name,
             ),  function ($message) use($request,$admin_email) {
                 $message->from(getcong('site_email'),getcong('site_name'));
-                $message->to($admin_email)
+                $message->to('tayyabkhurram62@gmail.com')
                     ->subject('Property Inquiry');
             });
 

@@ -25,6 +25,7 @@
 
     <p style="color: black;">Hi Admin,</p>
     <p style="color: black;">{{$gender}} {{$username}} has just posted a inquiry for property  "{{$property_name}}" on your website.</p>
+    <p style="color: black;">Message: "{!! $inquiry !!}"</p>
     <p style="color: black;">You can contact the person who requested for viewing or the broker using the following information:</p>
 
     <img src="{{ $message->embed(public_path() . '/assets/img/signs.png') }}" style="width: 13px;margin-right: 4px;display: block;float: left;margin-top: 4px;"><b style="color: black;">Customer Email Address: </b><span style="color: #7474d3;font-weight: 700;">{{$email}}</span><br><br>
