@@ -360,7 +360,7 @@ class PropertiesController extends Controller
                 'property_name' => $request->property_name,
             ),  function ($message) use($request,$admin_email) {
                 $message->from(getcong('site_email'),getcong('site_name'));
-                $message->to('tayyabkhurram62@gmail.com')
+                $message->to($admin_email)
                     ->subject('Property Inquiry');
             });
 

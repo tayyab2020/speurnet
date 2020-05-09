@@ -28,21 +28,21 @@
     <p style="color: black;">Message: "{!! $inquiry !!}"</p>
     <p style="color: black;">You can contact the person who requested for viewing or the broker using the following information:</p>
 
-    <img src="{{ $message->embed(public_path() . '/assets/img/signs.png') }}" style="width: 13px;margin-right: 4px;display: block;float: left;margin-top: 4px;"><b style="color: black;">Customer Email Address: </b><span style="color: #7474d3;font-weight: 700;">{{$email}}</span><br><br>
+    <img src="{{ $message->embed(public_path() . '/assets/img/signs.png') }}" style="width: 13px;margin-right: 8px;display: block;float: left;margin-top: 4px;"><b style="color: black;">Customer Email Address: </b><span style="color: #7474d3;font-weight: 700;">{{$email}}</span><br><br>
 
     @if($phone)
 
-        <img src="{{ $message->embed(public_path() . '/assets/img/communications.png') }}" style="width: 13px;margin-right: 4px;display: block;float: left;margin-top: 4px;"><b style="color: black;">Phone Number: </b><span style="color: #7474d3;font-weight: 700;">{{$phone}}</span><br><br>
+        <img src="{{ $message->embed(public_path() . '/assets/img/communications.png') }}" style="width: 13px;margin-right: 8px;display: block;float: left;margin-top: 4px;"><b style="color: black;">Phone Number: </b><span style="color: #7474d3;font-weight: 700;">{{$phone}}</span><br><br>
 
     @endif
 
-    <img src="{{ $message->embed(public_path() . '/assets/img/business.png') }}" style="width: 13px;margin-right: 4px;display: block;float: left;margin-top: 4px;"><b style="color: black;">Broker Name: </b><span style="color: #7474d3;font-weight: 700;">{{$broker_name}}</span><br><br>
+    <img src="{{ $message->embed(public_path() . '/assets/img/business.png') }}" style="width: 13px;margin-right: 8px;display: block;float: left;margin-top: 4px;"><b style="color: black;">Broker Name: </b><span style="color: #7474d3;font-weight: 700;">{{$broker_name}}</span><br><br>
 
-    <img src="{{ $message->embed(public_path() . '/assets/img/signs.png') }}" style="width: 13px;margin-right: 4px;display: block;float: left;margin-top: 4px;"><b style="color: black;">Broker Email Address: </b><span style="color: #7474d3;font-weight: 700;">{{$broker_email}}</span><br><br>
+    <img src="{{ $message->embed(public_path() . '/assets/img/signs.png') }}" style="width: 13px;margin-right: 8px;display: block;float: left;margin-top: 4px;"><b style="color: black;">Broker Email Address: </b><span style="color: #7474d3;font-weight: 700;">{{$broker_email}}</span><br><br>
 
     @if($broker_phone)
 
-        <img src="{{ $message->embed(public_path() . '/assets/img/communications.png') }}" style="width: 13px;margin-right: 4px;display: block;float: left;margin-top: 4px;"><b style="color: black;">Broker Phone Number: </b><span style="color: #7474d3;font-weight: 700;">{{$broker_phone}}</span>
+        <img src="{{ $message->embed(public_path() . '/assets/img/communications.png') }}" style="width: 13px;margin-right: 8px;display: block;float: left;margin-top: 4px;"><b style="color: black;">Broker Phone Number: </b><span style="color: #7474d3;font-weight: 700;">{{$broker_phone}}</span>
 
     @endif
 

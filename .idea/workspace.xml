@@ -5,7 +5,11 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PropertiesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PropertiesController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/emails/admin_inquiry.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/emails/admin_inquiry.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/emails/admin_request_viewing.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/emails/admin_request_viewing.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/emails/agent_inquiry.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/emails/agent_inquiry.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/emails/agent_request_viewing.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/emails/agent_request_viewing.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/emails/inquiry.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/emails/inquiry.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/emails/request_viewing.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/emails/request_viewing.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -211,7 +215,7 @@
       <workItem from="1588148559835" duration="48927000" />
       <workItem from="1588491581177" duration="56915000" />
       <workItem from="1588847328671" duration="19017000" />
-      <workItem from="1588965006833" duration="8597000" />
+      <workItem from="1588965006833" duration="10472000" />
     </task>
     <servers />
   </component>

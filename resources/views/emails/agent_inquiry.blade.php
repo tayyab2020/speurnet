@@ -27,11 +27,11 @@
     <p style="color: black;">You have received a inquiry for you property  "{{$property_name}}" by {{$gender}} {{$username}}.</p>
     <p style="color: black;">Message: "{!! $inquiry !!}"</p>
     <p style="color: black;">You can contact the person who requested for viewing using the following information:</p>
-    <img src="{{ $message->embed(public_path() . '/assets/img/signs.png') }}" style="width: 13px;margin-right: 4px;display: block;float: left;margin-top: 4px;"><b style="color: black;">Email Address: </b><span style="color: #7474d3;font-weight: 700;">{{$email}}</span><br><br>
+    <img src="{{ $message->embed(public_path() . '/assets/img/signs.png') }}" style="width: 13px;margin-right: 8px;display: block;float: left;margin-top: 4px;"><b style="color: black;">Email Address: </b><span style="color: #7474d3;font-weight: 700;">{{$email}}</span><br><br>
 
     @if($phone)
 
-        <img src="{{ $message->embed(public_path() . '/assets/img/communications.png') }}" style="width: 13px;margin-right: 4px;display: block;float: left;margin-top: 4px;"><b style="color: black;">Telephone Number: </b><span style="color: #7474d3;font-weight: 700;">{{$phone}}</span>
+        <img src="{{ $message->embed(public_path() . '/assets/img/communications.png') }}" style="width: 13px;margin-right: 8px;display: block;float: left;margin-top: 4px;"><b style="color: black;">Telephone Number: </b><span style="color: #7474d3;font-weight: 700;">{{$phone}}</span>
 
     @endif
 
