@@ -1053,7 +1053,7 @@
                         <h3>Contact </h3>
                       </div>
                     </div>
-                    <div class="row">
+                    <div class="row" style="display:inline-block;width: 100%;">
                       <div class="col-md-6 col-sm-6">
                         <div class="team-container team-dark">
                           <div class="team-image">
@@ -1065,9 +1065,14 @@
                           </div>
                           <div class="team-description">
                             <h3>{{$agent->name}}</h3>
-                            <p><i class="fa fa-phone"></i> Office : {{$agent->phone}}<br>
-                            <i class="fa fa-print"></i> Fax : {{$agent->fax}}</p>
+                            <p><i class="fa fa-phone"></i> Office : {{$agent->phone}}<br></p>
+                            <p><i class="fa fa-envelope"></i>&nbsp Email : {{$agent->email}}</p>
                             <p>{{$agent->about}}</p>
+
+                              @if($properties_count>1)
+                                  <p><a style="color: white" href="{{ URL::to('/similar-properties/user/'.$agent->id.'/'.$property->id) }}" target="_blank">See Other {{$properties_count-1}} Properties posted by this Broker</a></p>
+                              @endif
+
                             <div class="team-social">
                               <span><a href="{{$agent->twitter}}" title="Twitter" rel="tooltip" data-placement="top"><i class="fa fa-twitter"></i></a></span>
                               <span><a href="{{$agent->facebook}}" title="Facebook" rel="tooltip" data-placement="top"><i class="fa fa-facebook"></i></a></span>
@@ -1136,7 +1141,25 @@
                             <input type="submit" name="submit" value="Send Message" class="btn btn-primary btn-lg">
                           </div>
                         {!! Form::close() !!}
+
+
+
                       </div>
+
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                            <h3>Location of Agent:</h3>
+
+                            <input type="hidden" name="agent_latitude" id="agent_latitude" @if($agent->address_latitude) value="{{$agent->address_latitude}}" @else value="52.3666969" @endif />
+                            <input type="hidden" name="agent_longitude" id="agent_longitude" @if($agent->address_longitude) value="{{$agent->address_longitude}}" @else value="4.8945398"  @endif  />
+
+                            <div id="agent-map-container" style="width:100%;height:400px; ">
+                                <div style="width: 100%; height: 100%" id="agent-map"></div>
+                            </div>
+
+                        </div>
+
+
                     </div>
                   </div>
                 </div>
@@ -1598,7 +1621,17 @@
                 }*/
             }
 
+            function agent_initMap() {
+                // Initialize variables
+                bounds = new google.maps.LatLngBounds();
+                infoWindow = new google.maps.InfoWindow;
+                currentInfoWindow = infoWindow;
+                /* TODO: Step 4A3: Add a generic sidebar */
+                agent_handleLocationError(false, infoWindow,type);
+            }
+
             initMap();
+            agent_initMap();
 
             function CenterControl(controlDiv, map) {
 
@@ -1699,6 +1732,54 @@
 
                 // Call Places Nearby Search on the default location
                 getNearbyPlaces(pos,type);
+            }
+
+            function agent_handleLocationError(browserHasGeolocation, infoWindow, type) {
+
+
+                var lat = parseFloat(document.getElementById('agent_latitude').value);
+                var lng = parseFloat(document.getElementById('agent_longitude').value);
+
+                pos = { lat: lat, lng: lng };
+
+                map = new google.maps.Map(document.getElementById('agent-map'), {
+                    center: pos,
+                    zoom: 15
+                });
+
+                var base_url = window.location.origin;
+
+                var home_icon = base_url + '/assets/img/home_pin.png';
+
+                const marker = new google.maps.Marker({
+                    map: map,
+                    position: {lat: lat, lng: lng},
+                    draggable: false,
+                    icon: {url:home_icon, scaledSize: new google.maps.Size(40, 45)}
+                });
+
+
+                marker.addListener('click', function() {
+
+                    var location = $('#agent_city').val();
+
+                    infoWindow.setContent(location);
+                    infoWindow.open(map, marker);
+                    map.setZoom(15);
+                    map.setCenter(marker.getPosition());
+
+                });
+
+                // Display an InfoWindow at the map center
+                infoWindow.setPosition(pos);
+                /*infoWindow.setContent(browserHasGeolocation ?
+                    'Geolocation permissions denied. Using default location.' :
+                    'Error: Your browser doesn\'t support geolocation.');
+                infoWindow.open(map);*/
+                currentInfoWindow = infoWindow;
+
+                // Call Places Nearby Search on the default location
+                // getNearbyPlaces(pos,type);
             }
 
             function toggleStreetView() {

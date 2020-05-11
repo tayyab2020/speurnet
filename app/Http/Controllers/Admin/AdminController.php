@@ -38,10 +38,15 @@ class AdminController extends MainAdminController
 
 	    $data =  \Request::except(array('_token')) ;
 
+
 	    $rule=array(
 		        'name' => 'required',
 		        'email' => 'required|email|max:75|unique:users,id',
-		        'image_icon' => 'mimes:jpg,jpeg,gif,png'
+		        'image_icon' => 'mimes:jpg,jpeg,gif,png',
+                'address' => 'required',
+                'address_latitude' => 'required',
+                'address_longitude' => 'required',
+                'city' => 'required'
 		   		 );
 
 	   	 $validator = \Validator::make($data,$rule);
@@ -78,6 +83,9 @@ class AdminController extends MainAdminController
 		$user->email = $inputs['email'];
 		$user->phone = $inputs['phone'];
 		$user->fax = $inputs['fax'];
+		$user->address = $inputs['address'];
+		$user->address_latitude = $inputs['address_latitude'];
+		$user->address_longitude = $inputs['address_longitude'];
 		$user->city= $inputs['city'];
 		$user->about = $inputs['about'];
 		$user->facebook = $inputs['facebook'];

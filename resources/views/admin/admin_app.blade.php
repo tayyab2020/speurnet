@@ -50,6 +50,7 @@
 
   <div class="overlay-disabled"></div>
 
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFPa3LVeBRpaGafuUtk4znrty6IIqtMUw&libraries=places&region=nl" async defer></script>
 
   <!-- Plugins -->
   <script src="{{ URL::asset('admin_assets/js/plugins.min.js') }}"></script>
