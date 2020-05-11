@@ -10,6 +10,7 @@ use App\Properties;
 use App\Enquire;
 use App\property_documents;
 use App\property_features;
+use App\saved_properties;
 
 use Carbon\Carbon;
 use App\Http\Requests;
@@ -27,6 +28,42 @@ class PropertiesController extends MainAdminController
 
 		 parent::__construct();
 
+    }
+
+    public function saveProperty(Request $request)
+    {
+        $existingProperties = saved_properties::where('property_id',$request->property_id)->where('user_id',$request->user_id)->first();
+
+        if($existingProperties){
+
+            $existingProperties->delete();
+
+            $property = Properties::where('id',$request->property_id)->first();
+            $property->saved_properties = $property->saved_properties-1;
+            $property->save();
+
+            Session::flash('flash_message', 'Property Removed from Your Saved Properties List!');
+
+        }
+
+        else{
+
+            $property = new saved_properties();
+            $property->property_id = $request->property_id;
+            $property->user_id = $request->user_id;
+            $property->save();
+
+            $property = Properties::where('id',$request->property_id)->first();
+            $property->saved_properties = $property->saved_properties+1;
+            $property->save();
+
+            /*$user=User::where('id',$request->user_id)->first();
+            $user->views=$user->views+1;
+            $user->save();*/
+            Session::flash('flash_message', 'Property Successfully Saved to Your Dashboard!');
+
+        }
+        return redirect()->back();
     }
 
     public function Checkboxes(Request $request)
@@ -105,16 +142,83 @@ class PropertiesController extends MainAdminController
         return view('admin.pages.properties',compact('propertieslist'));
     }
 
+    public function favouriteProperties()
+    {
+
+
+        if(Auth::user()->usertype=='Admin')
+        {
+            $propertieslist = saved_properties::leftjoin('properties','properties.id','=','saved_properties.property_id')->leftjoin('users','users.id','=','saved_properties.user_id')->orderBy('properties.id','desc')->select('properties.id','properties.user_id','properties.property_slug','properties.property_name','properties.property_type','properties.property_purpose','users.name as client_name','saved_properties.created_at','saved_properties.id as saved_id')->get();
+        }
+        else
+        {
+            $user_id=Auth::user()->id;
+
+            if(Auth::user()->usertype == 'Agents')
+            {
+
+                $propertieslist = saved_properties::leftjoin('properties','properties.id','=','saved_properties.property_id')->leftjoin('users','users.id','=','saved_properties.user_id')->where('properties.user_id',$user_id)->orderBy('properties.id','desc')->select('properties.id','properties.user_id','properties.property_slug','properties.property_name','properties.property_type','properties.property_purpose','users.name as client_name','saved_properties.created_at','saved_properties.id as saved_id')->get();
+
+            }
+            elseif(Auth::user()->usertype == 'Users')
+            {
+
+                $propertieslist = saved_properties::leftjoin('properties','properties.id','=','saved_properties.property_id')->leftjoin('users','users.id','=','saved_properties.user_id')->where('saved_properties.user_id',$user_id)->orderBy('properties.id','desc')->select('properties.id','properties.user_id','properties.property_slug','properties.property_name','properties.property_type','properties.property_purpose','users.name as client_name','saved_properties.created_at','saved_properties.id as saved_id')->get();
+
+            }
+
+
+
+
+        }
+
+        return view('admin.pages.favourite_properties',compact('propertieslist'));
+    }
+
+    public function savedPropertyDelete($id)
+    {
+
+        $user_id=Auth::user()->id;
+
+        $property = saved_properties::where('id',$id)->where('user_id',$user_id)->first();
+
+
+        if($property)
+        {
+            $property_id = $property->property_id;
+            $property->delete();
+
+            $property = Properties::where('id',$property_id)->first();
+            $property->saved_properties = $property->saved_properties-1;
+            $property->save();
+
+            \Session::flash('flash_message', 'Property Removed from your list!');
+        }
+
+
+        return redirect()->back();
+
+    }
+
 	 public function addeditproperty()
 	 {
 
-        $types = Types::orderBy('types')->get();
+         if(Auth::user()->usertype=='Admin' || Auth::user()->usertype=='Agents')
+         {
+             $types = Types::orderBy('types')->get();
 
-        $city_list = City::where('status','1')->orderBy('city_name')->get();
+             $city_list = City::where('status','1')->orderBy('city_name')->get();
 
-        $property_features = property_features::all();
+             $property_features = property_features::all();
 
-        return view('admin.pages.addeditproperty',compact('city_list','types','property_features'));
+             return view('admin.pages.addeditproperty',compact('city_list','types','property_features'));
+         }
+         else
+         {
+             return redirect('/');
+         }
+
+
     }
 
     public function addnew(Request $request)

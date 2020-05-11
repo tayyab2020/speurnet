@@ -101,13 +101,54 @@
 
                                 <span style="margin-left: 5px;margin-right: 10px;"><i class="fa fa-eye" aria-hidden="true" style="font-size: 16px;padding-left: 3px;"></i></span>
 
-                                <?php $url = "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; ?>
+                                <?php $url = "https://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; ?>
 
                                 <span style="margin-left: 10px;"><a target="_blank" title="Share by Whatsapp" href="https://api.whatsapp.com/send?text={{$url}}"><i class="fa fa-whatsapp" aria-hidden="true" style="font-size: 16px;"></i></a></span>
 
                                 <span style="margin-left: 10px;"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{$url}}"><i class="fa fa-facebook" aria-hidden="true" style="font-size: 16px;color: #7191d3;"></i></a></span>
 
                                 <span style="margin-left: 10px;"><a target="_blank" title="Share by Email" href="mailto:?subject=I wanted you to see this Property AD I just Found on zoekjehuisje.nl&amp;body=Check out this link {{$url}}"><i class="far fa-envelope" aria-hidden="true" style="font-size: 16px;color:goldenrod;"></i></a></span>
+
+                                @if( isset(Auth::user()->usertype) && Auth::user()->usertype == 'Users')
+
+
+                                    <form action="{{ URL::to('admin/save-property') }}" method="POST" id="save_property_form" style="display: inline-block;margin-left: 10px;">
+
+                                    <input type="hidden" name="_token" value="{{csrf_token()}}"/>
+
+                                    <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+
+                                    <input type="hidden" name="property_id" value="{{$property->id}}">
+
+                                    <button type="submit" @if(!$saved) title="Be First to Save this property" @endif style="padding: 0;background: transparent;border: 0;outline: 0;box-shadow: none;" class="btn btn-success" id="saveProperty">
+
+                                    @if($saved)
+
+                                        <i class="fa fa-heart" style="color: red;" id="heart" ></i>
+
+                                    @else
+
+                                        <i class="far fa-heart" style="color: red;" id="heart" ></i>
+
+                                    @endif
+
+                                        <span style="color: black;">{{ $property->saved_properties }}</span>
+
+                                    </button>
+
+                                    </form>
+
+                                @else
+
+                                    @if(!isset(Auth::user()->usertype))
+
+                                    <span style="margin-left: 10px;"><a href="{{ URL::to('/login') }}" >
+                                        <i style="color: red;" id="heart" class="far fa-heart" title="Be First to Save this property"></i>
+                                        </a>{{ $property->saved_properties }}</span>
+
+                                        @endif
+
+                                @endif
 
                                 <button style="float: right;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                                     <i class="far fa-calendar-check" style="margin-right: 7px;"></i> Request Viewing
@@ -1326,7 +1367,7 @@
 
         .dropdown-menu{ position:absolute;top:100%;left:0;z-index:1000;display:none;
             float:left;min-width:160px;padding:5px 0;margin:2px 0 0;font-size:14px;
-            text-align:left;list-style:none;background-color:#fff;-webkit-background-clip:padding-box;
+            text-align:left;list-style:none;background-color:#48cfad;-webkit-background-clip:padding-box;
             background-clip:padding-box;border:1px solid #ccc;border:1px solid rgba(0,0,0,.15);
             border-radius:4px;-webkit-box-shadow:0 6px 12px rgba(0,0,0,.175);
             box-shadow:0 6px 12px rgba(0,0,0,.175) }
@@ -1441,6 +1482,22 @@
     <script>
 
         $( document ).ready(function() {
+
+
+                $('#heart').hover(function () {
+
+                    if($(this).hasClass('far fa-heart'))
+                    {
+                        $(this).removeClass('far fa-heart');
+                        $(this).addClass('fa fa-heart');
+                    }
+                    else
+                    {
+                        $(this).removeClass('fa fa-heart');
+                        $(this).addClass('far fa-heart');
+                    }
+
+                });
 
             const labels = document.querySelectorAll('.label');
             labels.forEach(label => {

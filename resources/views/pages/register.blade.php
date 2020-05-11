@@ -100,11 +100,8 @@
 
 		                        <select name="usertype" id="basic" class="selectpicker show-tick form-control" data-live-search="true">
 
-										<option value="Owner">Owner</option>
-										<option value="Agents">Agents</option>
-										<option value="Builder">Builder</option>
-
-
+										<option value="Agents">Agent</option>
+										<option value="Users">User</option>
 
 								</select>
 

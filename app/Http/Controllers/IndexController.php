@@ -45,7 +45,7 @@ class IndexController extends Controller
 
         auth()->login($user);
 
-        return redirect('/');
+        return redirect('admin/confirm-user-type');
 
     }
 
@@ -57,7 +57,7 @@ class IndexController extends Controller
             $user = User::create([
                 'name'     => $getInfo->name,
                 'email'    => $getInfo->email,
-                'usertype' => 'Agents',
+                'usertype' => '',
                 'password' => bcrypt(Str::random(10)),
                 'provider' => $provider,
                 'provider_id' => $getInfo->id,

@@ -6,12 +6,20 @@
 	<div class="page-header">
 		<h2>Overview</h2>
 	</div>
-    
- 
+
+    @if(Session::has('flash_message'))
+        <div class="alert alert-success">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span></button>
+            {{ Session::get('flash_message') }}
+        </div>
+    @endif
+
+
 <div class="row">
-    
+
   	@if(Auth::user()->usertype=='Admin')
-    	
+
     	<a href="{{ URL::to('admin/properties') }}">
     	<div class="col-sm-6 col-md-3">
         <div class="panel panel-orange panel-shadow">
@@ -84,7 +92,7 @@
         </div>
     </div>
     </a>
-    
+
     <a href="{{ URL::to('admin/properties') }}">
         <div class="col-sm-6 col-md-3">
         <div class="panel panel-grey panel-shadow">
@@ -108,7 +116,7 @@
             </div>
         </div>
     </div>
-    </a> 
+    </a>
     <a href="{{ URL::to('admin/inquiries') }}">
     	<div class="col-sm-6 col-md-3">
         <div class="panel panel-primary panel-shadow">
@@ -133,7 +141,7 @@
         </div>
     </div>
     </a>
-    
+
     <a href="{{ URL::to('admin/users') }}">
     	<div class="col-sm-6 col-md-3">
         <div class="panel panel-default panel-shadow">
@@ -158,7 +166,7 @@
         </div>
     </div>
     </a>
-    
+
     <a href="{{ URL::to('admin/testimonials') }}">
     	<div class="col-sm-6 col-md-3">
         <div class="panel panel-grey panel-shadow">
@@ -183,7 +191,7 @@
         </div>
     </div>
     </a>
-    
+
     <a href="{{ URL::to('admin/subscriber') }}">
     	<div class="col-sm-6 col-md-3">
         <div class="panel panel-default panel-shadow">
@@ -208,7 +216,7 @@
         </div>
     </div>
     </a>
-    
+
     <a href="{{ URL::to('admin/partners') }}">
     	<div class="col-sm-6 col-md-3">
         <div class="panel panel-orange panel-shadow">
@@ -233,9 +241,9 @@
         </div>
     </div>
     </a>
-    
+
     @else
-    
+
     <a href="{{ URL::to('admin/properties') }}">
     	<div class="col-sm-6 col-md-3">
         <div class="panel panel-orange panel-shadow">
@@ -260,7 +268,7 @@
         </div>
     </div>
     </a>
-    
+
     <a href="{{ URL::to('admin/properties') }}">
     	<div class="col-sm-6 col-md-3">
         <div class="panel panel-green panel-shadow">
@@ -285,7 +293,7 @@
         </div>
     </div>
     </a>
-    
+
     <a href="{{ URL::to('admin/properties') }}">
     	<div class="col-sm-6 col-md-3">
         <div class="panel panel-grey panel-shadow">
@@ -310,7 +318,7 @@
         </div>
     </div>
     </a>
-    
+
     <a href="{{ URL::to('admin/inquiries') }}">
     	<div class="col-sm-6 col-md-3">
         <div class="panel panel-primary panel-shadow">
@@ -335,14 +343,14 @@
         </div>
     </div>
     </a>
-    
+
     @endif
-    
-     
-	
-	 
+
+
+
+
 </div>
- 
+
 </div>
 
 @endsection

@@ -9,6 +9,7 @@ use App\Types;
 use App\property_documents;
 use App\request_viewings;
 use App\property_features;
+use App\saved_properties;
 
 use Illuminate\Http\Request;
 
@@ -18,6 +19,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use DateTime;
 use Mail;
+use Auth;
 
 class PropertiesController extends Controller
 {
@@ -269,8 +271,19 @@ class PropertiesController extends Controller
             $property_features = "";
         }
 
+    	if(Auth::user())
+        {
 
-        return view('pages.propertysingle',compact('property','property_documents','agent','property_features'));
+            $saved = saved_properties::where('property_id',$property->id)->where('user_id',Auth::user()->id)->first();
+
+        }
+    	else
+        {
+            $saved = "";
+        }
+
+
+        return view('pages.propertysingle',compact('property','property_documents','agent','property_features','saved'));
     }
 
 	public function agentscontact(Request $request)

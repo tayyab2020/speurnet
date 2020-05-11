@@ -42,6 +42,8 @@
 
 					<li class="{{classActivePath('inquiries')}}"><a href="{{ URL::to('admin/inquiries') }}"><i class="fa fa-send"></i>Inquiries</a></li>
 
+                    <li class="{{classActivePath('favourite-properties')}}"><a href="{{ URL::to('admin/favourite-properties') }}"><i class="md md-favorite"></i>Favourite Properties</a></li>
+
 	                <li class="{{classActivePath('slider')}}"><a href="{{ URL::to('admin/slider') }}"><i class="fa fa-sliders"></i>Home Slider</a></li>
 
 					<li class="{{classActivePath('testimonials')}}"><a href="{{ URL::to('admin/testimonials') }}"><i class="fa fa-list"></i>Testimonials</a></li>
@@ -63,7 +65,7 @@
 
                		 <li class="{{classActivePath('properties')}}"><a href="{{ URL::to('admin/properties') }}"><i class="md md-pin-drop"></i>My Properties</a></li>
 
-               		 <li class="{{classActivePath('favourite-properties')}}"><a href=""><i class="md md-favorite"></i>Favourite Properties</a></li>
+               		 <li class="{{classActivePath('favourite-properties')}}"><a href="{{ URL::to('admin/favourite-properties') }}"><i class="md md-favorite"></i>Favourite Properties</a></li>
 
                		 <li class="{{classActivePath('hidden-properties')}}"><a href=""><i class="md md-location-disabled"></i>Hidden Properties</a></li>
 
