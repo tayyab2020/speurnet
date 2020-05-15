@@ -83,7 +83,7 @@ class PropertiesController extends Controller
 
 
 
-        return response()->json(['data'=>'Success!']);
+        return response()->json(['id'=>$post->id]);
 
     }
 

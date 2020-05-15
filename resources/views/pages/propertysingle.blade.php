@@ -645,7 +645,7 @@
 
                                                   </div>
 
-                                                  <div class="travel-time-row__remove"><button type="button" class="rui-button-basic travel-time-row__btn remove_travel"  data-id="{{$temp->id}}">Remove</button>
+                                                  <div class="travel-time-row__remove"><button type="button" class="rui-button-basic travel-time-row__btn remove_travel" data-id="{{$temp->id}}">Remove</button>
 
                                                   </div>
 
@@ -1979,10 +1979,11 @@
                                         success: function (data) {
 
 
+
                                             $.each(travel_data, function (key, value) {
 
 
-                                                $('#' + value[0]['mode']).append('<div class="travel-time-row">\n' +
+                                                $('#' + value[0]['mode']).append('<div class="travel-time-row row-'+data.id+'">\n' +
                                                     '\n' +
                                                     '                                              <div class="travel-time-row__input">\n' +
                                                     '\n' +
@@ -1998,11 +1999,39 @@
                                                     '\n' +
                                                     '                                              </div>\n' +
                                                     '\n' +
-                                                    '                                              <div class="travel-time-row__remove"><button class="rui-button-basic travel-time-row__btn">Remove</button>\n' +
+                                                    '                                              <div class="travel-time-row__remove"><button class="rui-button-basic travel-time-row__btn remove_travel" data-id="'+data.id+'">Remove</button>\n' +
                                                     '\n' +
                                                     '                                              </div>\n' +
                                                     '\n' +
                                                     '                                          </div>');
+
+                                                $('.remove_travel').click(function(e) {
+
+                                                    var id = $(this).data('id');
+
+                                                    $.ajax({
+
+                                                        type: 'POST',
+
+                                                        url: "<?php echo url('properties/remove-travel-data') ?>",
+
+                                                        headers: {
+                                                            'X-CSRF-TOKEN': "<?php echo csrf_token() ?>",
+                                                        },
+
+                                                        data: {
+                                                            id: id,
+                                                        },
+
+                                                        success: function (data) {
+
+                                                            $('.row-'+id).remove();
+
+                                                        }
+
+                                                    });
+
+                                                });
 
 
                                             });
