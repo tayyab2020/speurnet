@@ -619,112 +619,119 @@
 
                                   </div>
 
-                                      <div class="travel-time-table active" id="DRIVING">
+                                      @foreach($travel as $temp)
 
-                                          <div class="travel-time-row">
+                                          <div class="travel-time-table active" id="DRIVING">
 
-                                              <div class="travel-time-row__input">
+                                              <div class="travel-time-row">
 
-                                                  <div class="travel-time-row__name">school</div>
+                                                  <div class="travel-time-row__input">
 
-                                                  <div class="travel-time-row__address">1 Y St, Ashburton, VIC 3147</div>
+                                                      <div class="travel-time-row__name">{{$temp->destination_name}}</div>
 
-                                              </div>
+                                                      <div class="travel-time-row__address">{{$temp->destination_address}}</div>
 
-                                              <div class="travel-time-row__result"><div class="travel-time-row__duration">9 hours 1 min</div>
+                                                  </div>
 
-                                                  <div class="travel-time-row__distance">906 km</div>
+                                                  <div class="travel-time-row__result"><div class="travel-time-row__duration">{{$temp->driving_duration}}</div>
 
-                                              </div>
+                                                      <div class="travel-time-row__distance">{{$temp->driving_distance}}</div>
 
-                                              <div class="travel-time-row__remove"><button class="rui-button-basic travel-time-row__btn">Remove</button>
+                                                  </div>
 
-                                              </div>
+                                                  <div class="travel-time-row__remove"><button class="rui-button-basic travel-time-row__btn">Remove</button>
 
-                                          </div>
-
-                                          </div>
-
-
-                                      <div class="travel-time-table" id="TRANSIT">
-
-                                          <div class="travel-time-row">
-
-                                              <div class="travel-time-row__input">
-
-                                                  <div class="travel-time-row__name">school</div>
-
-                                                  <div class="travel-time-row__address">1 Y St, Ashburton, VIC 3147</div>
-
-                                              </div>
-
-                                              <div class="travel-time-row__result"><div class="travel-time-row__duration">9 hours 1 min</div>
-
-                                                  <div class="travel-time-row__distance">906 km</div>
-
-                                              </div>
-
-                                              <div class="travel-time-row__remove"><button class="rui-button-basic travel-time-row__btn">Remove</button>
+                                                  </div>
 
                                               </div>
 
                                           </div>
 
-                                      </div>
 
+                                          <div class="travel-time-table" id="TRANSIT">
 
-                                      <div class="travel-time-table" id="WALKING">
+                                              <div class="travel-time-row">
 
-                                          <div class="travel-time-row">
+                                                  <div class="travel-time-row__input">
 
-                                              <div class="travel-time-row__input">
+                                                      <div class="travel-time-row__name">{{$temp->destination_name}}</div>
 
-                                                  <div class="travel-time-row__name">school</div>
+                                                      <div class="travel-time-row__address">{{$temp->destination_address}}</div>
 
-                                                  <div class="travel-time-row__address">1 Y St, Ashburton, VIC 3147</div>
+                                                  </div>
 
-                                              </div>
+                                                  <div class="travel-time-row__result"><div class="travel-time-row__duration">{{$temp->transit_duration}}</div>
 
-                                              <div class="travel-time-row__result"><div class="travel-time-row__duration">9 hours 1 min</div>
+                                                      <div class="travel-time-row__distance">{{$temp->transit_distance}}</div>
 
-                                                  <div class="travel-time-row__distance">906 km</div>
+                                                  </div>
 
-                                              </div>
+                                                  <div class="travel-time-row__remove"><button class="rui-button-basic travel-time-row__btn">Remove</button>
 
-                                              <div class="travel-time-row__remove"><button class="rui-button-basic travel-time-row__btn">Remove</button>
-
-                                              </div>
-
-                                          </div>
-
-                                      </div>
-
-
-                                      <div class="travel-time-table" id="BICYCLING">
-
-                                          <div class="travel-time-row">
-
-                                              <div class="travel-time-row__input">
-
-                                                  <div class="travel-time-row__name">school</div>
-
-                                                  <div class="travel-time-row__address">1 Y St, Ashburton, VIC 3147</div>
-
-                                              </div>
-
-                                              <div class="travel-time-row__result"><div class="travel-time-row__duration">9 hours 1 min</div>
-
-                                                  <div class="travel-time-row__distance">906 km</div>
-
-                                              </div>
-
-                                              <div class="travel-time-row__remove"><button class="rui-button-basic travel-time-row__btn">Remove</button>
+                                                  </div>
 
                                               </div>
 
                                           </div>
 
-                                      </div>
+
+                                          <div class="travel-time-table" id="WALKING">
+
+                                              <div class="travel-time-row">
+
+                                                  <div class="travel-time-row__input">
+
+                                                      <div class="travel-time-row__name">{{$temp->destination_name}}</div>
+
+                                                      <div class="travel-time-row__address">{{$temp->destination_address}}</div>
+
+                                                  </div>
+
+                                                  <div class="travel-time-row__result"><div class="travel-time-row__duration">{{$temp->walking_duration}}</div>
+
+                                                      <div class="travel-time-row__distance">{{$temp->walking_distance}}</div>
+
+                                                  </div>
+
+                                                  <div class="travel-time-row__remove"><button class="rui-button-basic travel-time-row__btn">Remove</button>
+
+                                                  </div>
+
+                                              </div>
+
+                                          </div>
+
+
+                                          <div class="travel-time-table" id="BICYCLING">
+
+                                              <div class="travel-time-row">
+
+                                                  <div class="travel-time-row__input">
+
+                                                      <div class="travel-time-row__name">{{$temp->destination_name}}</div>
+
+                                                      <div class="travel-time-row__address">{{$temp->destination_address}}</div>
+
+                                                  </div>
+
+                                                  <div class="travel-time-row__result"><div class="travel-time-row__duration">{{$temp->cycling_duration}}</div>
+
+                                                      <div class="travel-time-row__distance">{{$temp->cycling_distance}}</div>
+
+                                                  </div>
+
+                                                  <div class="travel-time-row__remove"><button class="rui-button-basic travel-time-row__btn">Remove</button>
+
+                                                  </div>
+
+                                              </div>
+
+                                          </div>
+
+                                          @endforeach
+
+
+
 
                                       <form id="loc-form">
 

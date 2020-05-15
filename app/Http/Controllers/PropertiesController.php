@@ -305,15 +305,17 @@ class PropertiesController extends Controller
         {
 
             $saved = saved_properties::where('property_id',$property->id)->where('user_id',Auth::user()->id)->first();
+            $travel = travel_data_results::where('property_id',$property->id)->where('user_id',Auth::user()->id)->get();
 
         }
     	else
         {
             $saved = "";
+            $travel = "";
         }
 
 
-        return view('pages.propertysingle',compact('property','property_documents','agent','property_features','saved','properties_count'));
+        return view('pages.propertysingle',compact('property','property_documents','agent','property_features','saved','properties_count','travel'));
     }
 
     public function propertiesUser($id,$id2)
