@@ -622,174 +622,25 @@
                                   </div>
 
 
-                                      @if($driving_data)
-
-                                          <div class="travel-time-table active" id="DRIVING">
-
-                                          @foreach($driving_data as $temp)
-
-
-                                              <div class="travel-time-row row-{{$temp->id}}">
-
-                                                  <div class="travel-time-row__input">
-
-                                                      <div class="travel-time-row__name">{{$temp->destination_name}}</div>
-
-                                                      <div class="travel-time-row__address">{{$temp->destination_address}}</div>
-
-                                                  </div>
-
-                                                  <div class="travel-time-row__result"><div class="travel-time-row__duration">{{$temp->driving_duration}}</div>
-
-                                                      <div class="travel-time-row__distance">{{$temp->driving_distance}}</div>
-
-                                                  </div>
-
-                                                  <div class="travel-time-row__remove"><button type="button" class="rui-button-basic travel-time-row__btn remove_travel" data-id="{{$temp->id}}">Remove</button>
-
-                                                  </div>
-
-                                              </div>
-
-                                              @endforeach
-
-                                          </div>
-
-                                          @else
-
                                           <div class="travel-time-table active" id="DRIVING">
 
                                           </div>
 
-                                      @endif
-
-
-                                      @if($transit_data)
 
                                           <div class="travel-time-table" id="TRANSIT">
 
-                                              @foreach($transit_data as $temp)
-
-
-                                                  <div class="travel-time-row row-{{$temp->id}}">
-
-                                                      <div class="travel-time-row__input">
-
-                                                          <div class="travel-time-row__name">{{$temp->destination_name}}</div>
-
-                                                          <div class="travel-time-row__address">{{$temp->destination_address}}</div>
-
-                                                      </div>
-
-                                                      <div class="travel-time-row__result"><div class="travel-time-row__duration">{{$temp->transit_duration}}</div>
-
-                                                          <div class="travel-time-row__distance">{{$temp->transit_distance}}</div>
-
-                                                      </div>
-
-                                                      <div class="travel-time-row__remove"><button type="button" class="rui-button-basic travel-time-row__btn remove_travel"  data-id="{{$temp->id}}">Remove</button>
-
-                                                      </div>
-
-                                                  </div>
-
-                                              @endforeach
-
                                           </div>
 
-                                      @else
-
-                                          <div class="travel-time-table active" id="TRANSIT">
-
-                                          </div>
-
-                                      @endif
-
-
-
-                                      @if($walking_data)
 
                                           <div class="travel-time-table" id="WALKING">
 
-                                              @foreach($walking_data as $temp)
-
-
-                                                  <div class="travel-time-row row-{{$temp->id}}">
-
-                                                      <div class="travel-time-row__input">
-
-                                                          <div class="travel-time-row__name">{{$temp->destination_name}}</div>
-
-                                                          <div class="travel-time-row__address">{{$temp->destination_address}}</div>
-
-                                                      </div>
-
-                                                      <div class="travel-time-row__result"><div class="travel-time-row__duration">{{$temp->walking_duration}}</div>
-
-                                                          <div class="travel-time-row__distance">{{$temp->walking_distance}}</div>
-
-                                                      </div>
-
-                                                      <div class="travel-time-row__remove"><button type="button" class="rui-button-basic travel-time-row__btn remove_travel"  data-id="{{$temp->id}}">Remove</button>
-
-                                                      </div>
-
-                                                  </div>
-
-                                              @endforeach
-
                                           </div>
 
-                                      @else
-
-                                          <div class="travel-time-table active" id="WALKING">
-
-                                          </div>
-
-                                      @endif
-
-
-
-                                      @if($cycling_data)
 
                                           <div class="travel-time-table" id="BICYCLING">
 
-                                              @foreach($cycling_data as $temp)
-
-
-                                                  <div class="travel-time-row row-{{$temp->id}}">
-
-                                                      <div class="travel-time-row__input">
-
-                                                          <div class="travel-time-row__name">{{$temp->destination_name}}</div>
-
-                                                          <div class="travel-time-row__address">{{$temp->destination_address}}</div>
-
-                                                      </div>
-
-                                                      <div class="travel-time-row__result"><div class="travel-time-row__duration">{{$temp->cycling_duration}}</div>
-
-                                                          <div class="travel-time-row__distance">{{$temp->cycling_distance}}</div>
-
-                                                      </div>
-
-                                                      <div class="travel-time-row__remove"><button type="button" class="rui-button-basic travel-time-row__btn remove_travel" data-id="{{$temp->id}}">Remove</button>
-
-                                                      </div>
-
-                                                  </div>
-
-                                              @endforeach
 
                                           </div>
-
-                                      @else
-
-                                          <div class="travel-time-table active" id="BICYCLING">
-
-                                          </div>
-
-                                      @endif
 
 
                                       <form id="loc-form">
@@ -1835,7 +1686,7 @@
 
         $( document ).ready(function() {
 
-
+            var row_id = 0;
 
             $('.travel-time-transport-modes__button').click(function(e) {
 
@@ -1847,33 +1698,7 @@
 
             });
 
-            $('.remove_travel').click(function(e) {
 
-                var id = $(this).data('id');
-
-                $.ajax({
-
-                    type: 'POST',
-
-                    url: "<?php echo url('properties/remove-travel-data') ?>",
-
-                    headers: {
-                        'X-CSRF-TOKEN': "<?php echo csrf_token() ?>",
-                    },
-
-                    data: {
-                        id: id,
-                    },
-
-                    success: function (data) {
-
-                        $('.row-'+id).remove();
-
-                    }
-
-                });
-
-            });
 
             $('.rui-button-brand').click(function(e) {
 
@@ -1908,18 +1733,12 @@
 
                 $(".rui-button-brand").attr('disabled', true);
 
-                if(!user_id)
-                {
-                    window.location.replace(login_url);
-                }
-                else
-                {
+
 
                     var travel_modes = ['DRIVING','TRANSIT','WALKING','BICYCLING'];
 
                     var travel_data = [];
 
-                    var call = 0;
 
 
                     $.each(travel_modes, function(key, value) {
@@ -1940,7 +1759,64 @@
                         function callback(response, status) {
 
 
-                            travel_data[key] = [
+                            $('#' + value).append('<div class="travel-time-row row-'+row_id+'">\n' +
+                                '\n' +
+                                '                                              <div class="travel-time-row__input">\n' +
+                                '\n' +
+                                '                                                  <div class="travel-time-row__name">' + name + '</div>\n' +
+                                '\n' +
+                                '                                                  <div class="travel-time-row__address">' + address + '</div>\n' +
+                                '\n' +
+                                '                                              </div>\n' +
+                                '\n' +
+                                '                                              <div class="travel-time-row__result"><div class="travel-time-row__duration">' + response.rows[0].elements[0].duration.text + '</div>\n' +
+                                '\n' +
+                                '                                                  <div class="travel-time-row__distance">' + response.rows[0].elements[0].distance.text + '</div>\n' +
+                                '\n' +
+                                '                                              </div>\n' +
+                                '\n' +
+                                '                                              <div class="travel-time-row__remove"><button class="rui-button-basic travel-time-row__btn remove_travel" data-id="'+row_id+'" >Remove</button>\n' +
+                                '\n' +
+                                '                                              </div>\n' +
+                                '\n' +
+                                '                                          </div>');
+
+
+
+                            $('.remove_travel').click(function(e) {
+
+                                var id = $(this).data('id');
+
+                                $('.row-'+id).remove();
+
+                                /*$.ajax({
+
+                                    type: 'POST',
+
+                                    url: "<?php echo url('properties/remove-travel-data') ?>",
+
+                    headers: {
+                        'X-CSRF-TOKEN': "<?php echo csrf_token() ?>",
+                    },
+
+                    data: {
+                        id: id,
+                    },
+
+                    success: function (data) {
+
+
+
+                    }
+
+                });*/
+
+                            });
+
+
+                            //Store to database code...
+
+                           /* travel_data[key] = [
 
                                 {
                                     mode: value,
@@ -1977,7 +1853,6 @@
                                         },
 
                                         success: function (data) {
-
 
 
                                             $.each(travel_data, function (key, value) {
@@ -2028,35 +1903,19 @@
                                                             $('.row-'+id).remove();
 
                                                         }
-
                                                     });
-
                                                 });
-
-
                                             });
-
-
-
                                         }
-
                                     });
-
                                 }
+                        }*/
                         }
-
-                        }
-
                     });
 
+                row_id = row_id + 1;
 
-
-
-
-
-                }
-
-            });
+                });
 
             $('.loc-remove').click(function(e) {
 
