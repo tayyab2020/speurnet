@@ -619,6 +619,8 @@
 
                                   </div>
 
+                                      @if($travel)
+
                                       @foreach($travel as $temp)
 
                                           <div class="travel-time-table active" id="DRIVING">
@@ -729,9 +731,7 @@
                                           </div>
 
                                           @endforeach
-
-
-
+                                      @endif
 
                                       <form id="loc-form">
 
