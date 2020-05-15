@@ -20,9 +20,35 @@ use Illuminate\Support\Str;
 use DateTime;
 use Mail;
 use Auth;
+use App\travel_data_results;
 
 class PropertiesController extends Controller
 {
+
+    public function storeTravelData(Request $request)
+
+    {
+
+        $post = new travel_data_results();
+        $post->property_id = $request->property_id;
+        $post->user_id = $request->user_id;
+        $post->destination_address = $request->address;
+        $post->destination_name = $request->name;
+        $post->driving_duration = $request->travel_data[0][0]['duration'];
+        $post->driving_distance = $request->travel_data[0][0]['distance'];
+        $post->transit_duration = $request->travel_data[1][0]['duration'];
+        $post->transit_distance = $request->travel_data[1][0]['distance'];
+        $post->walking_duration = $request->travel_data[2][0]['duration'];
+        $post->walking_distance = $request->travel_data[2][0]['distance'];
+        $post->cycling_duration = $request->travel_data[3][0]['duration'];
+        $post->cycling_distance = $request->travel_data[3][0]['distance'];
+
+        $post->save();
+
+
+        return response()->json(['data'=>'Got Simple Ajax Request.']);
+
+    }
 
     public function index()
     {

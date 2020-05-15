@@ -601,6 +601,268 @@
 
                               <a href="https://www.google.nl/maps/dir///@52.0699981,5.1242385,14z/data=!4m2!4m1!3e3"><i class="fas fa-plus" style="margin-right: 12px;"></i>Add Location</a>
 
+                              <div class="travel-time">
+
+                                  <h2 class="travel-time__heading">Your travel time</h2>
+
+                                  <p class="travel-time__txt">From {{$property->address}}</p><div>
+
+                                  <div class="travel-time-transport-modes">
+
+                                      <a href="#DRIVING" data-toggle="tab"  style="text-decoration: none;" class="travel-time-transport-modes__button travel-time-transport-modes--active" disabled="">Driving</a>
+
+                                      <a href="#TRANSIT" data-toggle="tab"  style="text-decoration: none;" class="travel-time-transport-modes__button ">Transit</a>
+
+                                      <a href="#WALKING" data-toggle="tab"  style="text-decoration: none;" class="travel-time-transport-modes__button ">Walking</a>
+
+                                      <a href="#BICYCLING" data-toggle="tab"  style="text-decoration: none;" class="travel-time-transport-modes__button ">Cycling</a>
+
+                                  </div>
+
+                                      <div class="travel-time-table active" id="DRIVING">
+
+                                          <div class="travel-time-row">
+
+                                              <div class="travel-time-row__input">
+
+                                                  <div class="travel-time-row__name">school</div>
+
+                                                  <div class="travel-time-row__address">1 Y St, Ashburton, VIC 3147</div>
+
+                                              </div>
+
+                                              <div class="travel-time-row__result"><div class="travel-time-row__duration">9 hours 1 min</div>
+
+                                                  <div class="travel-time-row__distance">906 km</div>
+
+                                              </div>
+
+                                              <div class="travel-time-row__remove"><button class="rui-button-basic travel-time-row__btn">Remove</button>
+
+                                              </div>
+
+                                          </div>
+
+                                          </div>
+
+
+                                      <div class="travel-time-table" id="TRANSIT">
+
+                                          <div class="travel-time-row">
+
+                                              <div class="travel-time-row__input">
+
+                                                  <div class="travel-time-row__name">school</div>
+
+                                                  <div class="travel-time-row__address">1 Y St, Ashburton, VIC 3147</div>
+
+                                              </div>
+
+                                              <div class="travel-time-row__result"><div class="travel-time-row__duration">9 hours 1 min</div>
+
+                                                  <div class="travel-time-row__distance">906 km</div>
+
+                                              </div>
+
+                                              <div class="travel-time-row__remove"><button class="rui-button-basic travel-time-row__btn">Remove</button>
+
+                                              </div>
+
+                                          </div>
+
+                                      </div>
+
+
+                                      <div class="travel-time-table" id="WALKING">
+
+                                          <div class="travel-time-row">
+
+                                              <div class="travel-time-row__input">
+
+                                                  <div class="travel-time-row__name">school</div>
+
+                                                  <div class="travel-time-row__address">1 Y St, Ashburton, VIC 3147</div>
+
+                                              </div>
+
+                                              <div class="travel-time-row__result"><div class="travel-time-row__duration">9 hours 1 min</div>
+
+                                                  <div class="travel-time-row__distance">906 km</div>
+
+                                              </div>
+
+                                              <div class="travel-time-row__remove"><button class="rui-button-basic travel-time-row__btn">Remove</button>
+
+                                              </div>
+
+                                          </div>
+
+                                      </div>
+
+
+                                      <div class="travel-time-table" id="BICYCLING">
+
+                                          <div class="travel-time-row">
+
+                                              <div class="travel-time-row__input">
+
+                                                  <div class="travel-time-row__name">school</div>
+
+                                                  <div class="travel-time-row__address">1 Y St, Ashburton, VIC 3147</div>
+
+                                              </div>
+
+                                              <div class="travel-time-row__result"><div class="travel-time-row__duration">9 hours 1 min</div>
+
+                                                  <div class="travel-time-row__distance">906 km</div>
+
+                                              </div>
+
+                                              <div class="travel-time-row__remove"><button class="rui-button-basic travel-time-row__btn">Remove</button>
+
+                                              </div>
+
+                                          </div>
+
+                                      </div>
+
+                                      <form id="loc-form">
+
+                                      <input type="hidden" name="_token" value="{{csrf_token()}}">
+
+                                          <div class="travel-time-add__inputs" style="margin-top: 25px;">
+
+                                              <label class="travel-time-add__address" style="font-size: 17px;font-weight: 600;">To
+
+                                                  <div class="input-container">
+
+                                                      <span style="display: block;border:1px solid #e5e5e5;">
+
+                                                      <img src="{{ URL::asset('assets/img/tools-and-utensils.png') }}" style="width: 15px;margin-left: 18px;" />
+
+                                                      <input  class="input-field add-location loc-input" type="text" placeholder="Location" name="loc" id="loc-input" style="border: 0;outline: 0;">
+
+                                                          <input  type="hidden" name="loc" id="loc-real">
+
+                                                      <img class="loc-remove" src="{{ URL::asset('assets/img/close.png') }}" style="width: 15px;float: right;padding-top: 20px;position: relative;right: 15px;display: none;cursor: pointer;" />
+
+                                                      <input type="hidden" name="loc_latitude" id="loc-latitude"  />
+                                                      <input type="hidden" name="loc_longitude" id="loc-longitude"  />
+
+                                                      </span>
+
+                                                  </div>
+
+                                              </label>
+
+                                              <label class="travel-time-add__address" style="font-size: 17px;font-weight: 600;">Name
+
+                                                  <div class="input-container">
+
+                                                      <input class="input-field name-destination" type="text" placeholder="Name your destination (Optional)" name="destination_name" id="destination_name">
+
+                                                  </div>
+
+                                              </label>
+
+                                          </div>
+
+
+
+                                          <div class="travel-time-add__cta-wrapper">
+
+                                              <input type="button" class="rui-button-brand rui-button-disabled" value="Add location" disabled="">
+
+                                          </div>
+
+                                          <input type="hidden" name="p_id" id="p_id" value="{{$property->id}}">
+
+                                          <input type="hidden" name="u_id" id="u_id"  @if( isset(Auth::user()->usertype) ) value="{{Auth::user()->id}}" @else value="" @endif>
+
+                                      </form>
+
+                                  </div></div>
+
+                              <style>
+
+                                  .travel-time-add__cta-wrapper{margin:.5rem 0 0;width:100%;text-align:right}
+
+                                  .rui-button-brand.rui-button-disabled,.rui-button-brand.rui-button-disabled:hover{color:#8e9397;border-color:#eaebec;background:#eaebec}
+
+                                  .rui-button-basic, .rui-button-basic-light, .rui-button-brand, .rui-button-brand-dark{display:inline-block;font-family:Museo-Sans-500,Helvetica Neue,Helvetica,Arial,sans-serif;text-decoration:none;padding:.875em 1em;font-weight:400;font-size:1em;cursor:pointer;border-radius:4px;line-height:1;border-width:2px;border-style:solid;color:#fff;text-align:center;transition-duration:.2s,.2s;transition-timing-function:ease-in,ease-out}
+
+                                  .rui-button-brand{border-color:#e4002b;background:#e4002b;}
+
+                                  ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+                                      color: #bebebe;
+                                      opacity: 1; /* Firefox */
+                                  }
+
+                                  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+                                      color: #bebebe;
+                                  }
+
+                                  ::-ms-input-placeholder { /* Microsoft Edge */
+                                      color: #bebebe;
+                                  }
+
+                                  .add-location
+                                  {
+                                      padding:15px;
+                                      padding-left: 30px;
+                                      font-weight: 100;
+                                      font-size: 18px;
+                                      background: white;
+                                  }
+
+                                  .name-destination
+                                  {
+
+                                      padding:15px;
+                                      padding-left: 35px;
+                                      border:1px solid #e5e5e5;
+                                      width: 100%;
+                                      font-weight: 100;
+                                      font-size: 18px;
+                                  }
+
+                                  @media only screen and (min-width:501px){.travel-time-add__inputs{width:100%;display:flex;flex-direction:row}.travel-time-add__address{width:50%;margin-right:.75rem;}}
+
+
+                                  .travel-time{margin-top:2.5rem;padding-top:2.5rem;border-top:1px solid #d2d5da;border-bottom: 1px solid #d2d5da;padding-bottom: 30px;}
+
+                                  @media only screen and (min-width:501px){.travel-time__heading{font-size:2.125rem !important;line-height:2.5rem !important;margin-bottom: 10px !important;}}
+
+                                  .travel-time-transport-modes{border-bottom: 1px solid #e9ebed;margin-top: 20px;}
+
+                                  .travel-time-transport-modes--active{color:#2b6ed2;border-bottom:2px solid #2b6ed2 !important;}
+
+                                  .travel-time-transport-modes__button{font-size: 122%;cursor:pointer !important;border:none;border-bottom:2px solid transparent;font-family:Museo-Sans-500,Helvetica Neue,Helvetica,Arial,sans-serif;background:transparent;padding:6px 15px;line-height:2;-webkit-appearance:none;-moz-appearance:none}
+
+                                  .travel-time-table{width: 100%;display: none;}
+
+                                  .active{display: block;}
+
+                                  .travel-time-table, .travel-time__txt{ margin-bottom: .75rem; }
+
+                                  .travel-time-row{width:100%;display:flex;flex-direction:row;align-items:center;justify-content:space-between;padding:.75rem 0;border-bottom:1px solid #e9ebed}
+
+                                  .travel-time-row__input{width:50%;padding-right:.75rem}
+
+                                  @media only screen and (min-width:501px){.travel-time-row__name,.travel-time-row__duration{font-size:16px;line-height:3.5rem;font-weight: 600;}}
+
+                                  .travel-time-row__name{text-overflow:ellipsis;white-space:nowrap;overflow:hidden}
+
+                                  .travel-time-row__result{width:30%;padding-right:.75rem;overflow:hidden}
+
+                                  .travel-time-row__btn{font-family:Museo-Sans-300,Helvetica Neue,Helvetica,Arial,sans-serif;font-size:12px;background-color: white;line-height:1rem;border-width:1px;font-family:Museo-Sans-500,Helvetica Neue,Helvetica,Arial,sans-serif}
+
+                                  .rui-button-basic{color:#333f48 !important;border-color:#c3c8ce}
+
+
+
+                              </style>
+
                           </div>
 
                           @if($property_features)
@@ -1502,9 +1764,292 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
 
 
+
     <script>
 
         $( document ).ready(function() {
+
+
+
+            $('.travel-time-transport-modes__button').click(function(e) {
+
+                $('.travel-time-transport-modes').find('.travel-time-transport-modes--active').removeClass('travel-time-transport-modes--active');
+
+                $(this).addClass('travel-time-transport-modes--active');
+
+
+
+            });
+
+            $('.rui-button-brand').click(function(e) {
+
+                var map_latitude = parseFloat($('#map_latitude').val());
+                var map_longitude = parseFloat($('#map_longitude').val());
+
+                var lat = parseFloat($('#loc-latitude').val());
+                var lng = parseFloat($('#loc-longitude').val());
+
+
+                var travel_origin = new google.maps.LatLng(map_latitude, map_longitude);
+
+                var travel_destination = new google.maps.LatLng(lat, lng);
+
+                var address = $('.loc-input').val();
+                var name = $('#destination_name').val();
+                var property_id = $('#p_id').val();
+                var user_id = $('#u_id').val();
+
+                var base_url = window.location.origin;
+
+                var login_url = base_url + '/login';
+
+                if(!user_id)
+                {
+                    window.location.replace(login_url);
+                }
+                else
+                {
+
+                    var travel_modes = ['DRIVING','TRANSIT','WALKING','BICYCLING'];
+
+                    var travel_data = [];
+
+                    var call = 0;
+
+
+                    $.each(travel_modes, function(key, value) {
+
+
+                        var service = new google.maps.DistanceMatrixService();
+
+                        service.getDistanceMatrix(
+                            {
+                                origins: [travel_origin],
+                                destinations: [travel_destination],
+                                travelMode: value,
+                                avoidHighways: false,
+                                avoidTolls: false,
+                            }, callback);
+
+
+                        function callback(response, status) {
+
+
+                            travel_data[key] = [
+
+                                {
+                                    mode: value,
+                                    duration: response.rows[0].elements[0].duration.text,
+                                    distance: response.rows[0].elements[0].distance.text
+                                }
+
+                            ];
+
+                            if (call < 4){
+
+                                call = call + 1;
+
+                                if (call == 4) {
+
+                                    call = 0;
+
+                                    $.ajax({
+
+                                        type: 'POST',
+
+                                        url: "<?php echo url('properties/store-travel-data') ?>",
+
+                                        headers: {
+                                            'X-CSRF-TOKEN': "<?php echo csrf_token() ?>",
+                                        },
+
+                                        data: {
+                                            name: name,
+                                            address: address,
+                                            property_id: property_id,
+                                            user_id: user_id,
+                                            travel_data: travel_data
+                                        },
+
+                                        success: function (data) {
+
+
+                                            $.each(travel_data, function (key, value) {
+
+
+                                                $('#' + value[0]['mode']).append('<div class="travel-time-row">\n' +
+                                                    '\n' +
+                                                    '                                              <div class="travel-time-row__input">\n' +
+                                                    '\n' +
+                                                    '                                                  <div class="travel-time-row__name">' + name + '</div>\n' +
+                                                    '\n' +
+                                                    '                                                  <div class="travel-time-row__address">' + address + '</div>\n' +
+                                                    '\n' +
+                                                    '                                              </div>\n' +
+                                                    '\n' +
+                                                    '                                              <div class="travel-time-row__result"><div class="travel-time-row__duration">' + value[0]['duration'] + '</div>\n' +
+                                                    '\n' +
+                                                    '                                                  <div class="travel-time-row__distance">' + value[0]['distance'] + '</div>\n' +
+                                                    '\n' +
+                                                    '                                              </div>\n' +
+                                                    '\n' +
+                                                    '                                              <div class="travel-time-row__remove"><button class="rui-button-basic travel-time-row__btn">Remove</button>\n' +
+                                                    '\n' +
+                                                    '                                              </div>\n' +
+                                                    '\n' +
+                                                    '                                          </div>');
+
+
+                                            });
+
+                                            $('.loc-input').val('');
+                                            $('.loc-input').attr('disabled', false);
+                                            $('.loc-remove').hide();
+                                            $('#loc-real').val('');
+                                            $('#destination_name').val('');
+
+
+                                            $(".rui-button-brand").addClass('rui-button-disabled');
+
+                                            $(".rui-button-brand").attr('disabled', true);
+
+                                        }
+
+                                    });
+
+                                }
+                        }
+
+                        }
+
+                    });
+
+
+
+
+
+
+                }
+
+            });
+
+            $('.loc-remove').click(function(e) {
+
+                $(this).parent().children('.loc-input').val("");
+
+                $(this).parent().children('.loc-input').attr('disabled',false);
+
+                $(this).hide();
+
+                $(".rui-button-brand").addClass('rui-button-disabled');
+
+                $(".rui-button-brand").attr('disabled',true);
+
+            });
+
+            $('.loc-input').on('keyup keypress', function(e) {
+
+                    var keyCode = e.keyCode || e.which;
+
+                    if (keyCode === 13) {
+                        e.preventDefault();
+                        return false;
+                    }
+
+
+
+                const locationInputs = $(this);
+
+
+                var options = {
+
+                    componentRestrictions: {country: "nl"}
+
+                };
+
+                const autocompletes = [];
+                const geocoder = new google.maps.Geocoder;
+
+                for (let i = 0; i < locationInputs.length; i++) {
+
+                    const input = locationInputs[i];
+                    const fieldKey = input.id.replace("-input", "");
+
+
+
+                    const autocomplete = new google.maps.places.Autocomplete(input,options);
+                    autocomplete.key = fieldKey;
+                    autocompletes.push({input: input, autocomplete: autocomplete});
+                }
+
+                for (let i = 0; i < autocompletes.length; i++) {
+
+                    const input = autocompletes[i].input;
+                    const autocomplete = autocompletes[i].autocomplete;
+
+
+                    google.maps.event.addListener(autocomplete, 'place_changed', function () {
+
+                        const place = autocomplete.getPlace();
+
+                        geocoder.geocode({'placeId': place.place_id}, function (results, status) {
+
+
+
+                            if (status === google.maps.GeocoderStatus.OK) {
+
+                                if (results[0]) {
+
+                                    const lat = results[0].geometry.location.lat();
+                                    const lng = results[0].geometry.location.lng();
+
+
+                                    $(input).parent().children('#loc-latitude').val(lat);
+                                    $(input).parent().children('#loc-longitude').val(lng);
+
+                                    var value = $(input).val();
+                                    var name = $('#destination_name').val();
+
+                                    $(input).parent().children('#loc-real').val(value);
+
+                                    $(input).attr('disabled',true);
+
+                                    $(input).parent().children('.loc-remove').show();
+
+                                    $(".rui-button-brand").removeClass('rui-button-disabled');
+
+                                    $(".rui-button-brand").attr('disabled',false);
+
+
+
+
+                                }
+                                else
+                                {
+
+                                    alert("No results found!");
+
+                                }
+
+                            }
+
+                        });
+
+                        if (!place.geometry) {
+                            window.alert("No details available for input: '" + place.name + "'");
+                            input.value = "";
+                            return;
+                        }
+
+
+
+                    });
+                }
+
+
+            });
+
+
 
 
                 $('#heart').hover(function () {
@@ -1581,6 +2126,17 @@
             var type = $('#type').val();
 
 
+
+
+            let pos1;
+            let map1;
+            let bounds1;
+            let infoWindow1;
+            let currentInfoWindow1;
+            let service1;
+            let infoPane1;
+
+
             function initMap() {
                 // Initialize variables
                 bounds = new google.maps.LatLngBounds();
@@ -1623,11 +2179,11 @@
 
             function agent_initMap() {
                 // Initialize variables
-                bounds = new google.maps.LatLngBounds();
-                infoWindow = new google.maps.InfoWindow;
-                currentInfoWindow = infoWindow;
+                bounds1 = new google.maps.LatLngBounds();
+                infoWindow1 = new google.maps.InfoWindow;
+                currentInfoWindow1 = infoWindow1;
                 /* TODO: Step 4A3: Add a generic sidebar */
-                agent_handleLocationError(false, infoWindow,type);
+                agent_handleLocationError(false, infoWindow1,type);
             }
 
             initMap();
@@ -1734,49 +2290,49 @@
                 getNearbyPlaces(pos,type);
             }
 
-            function agent_handleLocationError(browserHasGeolocation, infoWindow, type) {
+            function agent_handleLocationError(browserHasGeolocation1, infoWindow1, type1) {
 
 
-                var lat = parseFloat(document.getElementById('agent_latitude').value);
-                var lng = parseFloat(document.getElementById('agent_longitude').value);
+                var lat1 = parseFloat(document.getElementById('agent_latitude').value);
+                var lng1 = parseFloat(document.getElementById('agent_longitude').value);
 
-                pos = { lat: lat, lng: lng };
+                pos1 = { lat: lat1, lng: lng1 };
 
-                map = new google.maps.Map(document.getElementById('agent-map'), {
-                    center: pos,
+                map1 = new google.maps.Map(document.getElementById('agent-map'), {
+                    center: pos1,
                     zoom: 15
                 });
 
-                var base_url = window.location.origin;
+                var base_url1 = window.location.origin;
 
-                var home_icon = base_url + '/assets/img/home_pin.png';
+                var home_icon1 = base_url1 + '/assets/img/home_pin.png';
 
-                const marker = new google.maps.Marker({
-                    map: map,
-                    position: {lat: lat, lng: lng},
+                const marker1 = new google.maps.Marker({
+                    map: map1,
+                    position: {lat: lat1, lng: lng1},
                     draggable: false,
-                    icon: {url:home_icon, scaledSize: new google.maps.Size(40, 45)}
+                    icon: {url:home_icon1, scaledSize: new google.maps.Size(40, 45)}
                 });
 
 
-                marker.addListener('click', function() {
+                marker1.addListener('click', function() {
 
-                    var location = $('#agent_city').val();
+                    var location1 = $('#agent_city').val();
 
-                    infoWindow.setContent(location);
-                    infoWindow.open(map, marker);
-                    map.setZoom(15);
-                    map.setCenter(marker.getPosition());
+                    infoWindow1.setContent(location1);
+                    infoWindow1.open(map1, marker1);
+                    map1.setZoom(15);
+                    map1.setCenter(marker1.getPosition());
 
                 });
 
                 // Display an InfoWindow at the map center
-                infoWindow.setPosition(pos);
+                infoWindow1.setPosition(pos1);
                 /*infoWindow.setContent(browserHasGeolocation ?
                     'Geolocation permissions denied. Using default location.' :
                     'Error: Your browser doesn\'t support geolocation.');
                 infoWindow.open(map);*/
-                currentInfoWindow = infoWindow;
+                currentInfoWindow1 = infoWindow1;
 
                 // Call Places Nearby Search on the default location
                 // getNearbyPlaces(pos,type);
@@ -1830,6 +2386,7 @@
                     $("#panel div:eq(0)").children().eq(1).text(results.length + ' results found');
 
                     /*createMarkers(results);*/
+
 
                     createMarkersDetails(results,pos);
                 }

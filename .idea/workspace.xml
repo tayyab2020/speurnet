@@ -2,13 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7fe7f36f-c82f-4504-8c0a-7874522d22c9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/pages/agent_properties.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/travel_data_results.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img/close.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img/tools-and-utensils.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/AdminController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PropertiesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PropertiesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/admin_app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/admin_app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/pages/profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/pages/profile.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/sidebar.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/pages/propertysingle.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/propertysingle.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
@@ -217,7 +215,8 @@
       <workItem from="1588491581177" duration="56915000" />
       <workItem from="1588847328671" duration="19017000" />
       <workItem from="1588965006833" duration="11221000" />
-      <workItem from="1589123948620" duration="32710000" />
+      <workItem from="1589123948620" duration="33309000" />
+      <workItem from="1589451747170" duration="38099000" />
     </task>
     <servers />
   </component>
@@ -240,19 +239,23 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1587232447831" />
-    <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1589124006061">
+    <state x="93" y="93" width="1350" height="638" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1589535961848">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1589124006061" />
+    <state x="93" y="93" width="1350" height="638" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1536.824@0.0.1536.824" timestamp="1589535961848" />
+    <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1589451752325">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1589451752325" />
     <state x="492" y="286" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1585578486261">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="492" y="286" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.738@0.0.1366.738" timestamp="1585578486261" />
-    <state x="427" y="113" width="682" height="599" key="find.popup" timestamp="1589146392361">
+    <state x="427" y="113" width="682" height="599" key="find.popup" timestamp="1589466605114">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="380" y="101" width="606" height="536" key="find.popup/0.0.1366.738@0.0.1366.738" timestamp="1585579040164" />
-    <state x="427" y="113" width="682" height="599" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1589146392361" />
+    <state x="427" y="113" width="682" height="599" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1589466605114" />
     <state x="389" y="66" width="756" height="758" key="search.everywhere.popup" timestamp="1588948669461">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

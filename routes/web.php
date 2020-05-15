@@ -147,6 +147,8 @@ Route::group(['middleware' => 'App\Http\Middleware\UserTypeMiddleware'], functio
 
     Route::get('similar-properties/user/{id}/{property_id}', 'PropertiesController@propertiesUser');
 
+    Route::post('properties/store-travel-data', 'PropertiesController@storeTravelData');
+
     Route::post('properties/request-viewing', 'PropertiesController@PostRequestViewing')->name('request-viewing');
 
     Route::get('type/{slug}', 'PropertiesController@propertiesbytype');
