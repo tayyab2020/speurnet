@@ -314,6 +314,9 @@ class PropertiesController extends Controller
             $travel = "";
         }
 
+    	var_dump($travel);
+    	exit();
+
 
         return view('pages.propertysingle',compact('property','property_documents','agent','property_features','saved','properties_count','travel'));
     }
