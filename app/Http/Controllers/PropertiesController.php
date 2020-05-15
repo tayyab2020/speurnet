@@ -21,9 +21,30 @@ use DateTime;
 use Mail;
 use Auth;
 use App\travel_data_results;
+use App\driving_data;
+use App\transit_data;
+use App\walking_data;
+use App\cycling_data;
 
 class PropertiesController extends Controller
 {
+
+    public function removeTravelData(Request $request)
+    {
+
+        $post = travel_data_results::where('id',$request->id)->delete();
+
+        $driving = driving_data::where('data_id',$request->id)->delete();
+
+        $transit = transit_data::where('data_id',$request->id)->delete();
+
+        $walking = walking_data::where('data_id',$request->id)->delete();
+
+        $cycling = cycling_data::where('data_id',$request->id)->delete();
+
+        return response()->json(['data'=>'Success!']);
+
+    }
 
     public function storeTravelData(Request $request)
 
@@ -34,19 +55,35 @@ class PropertiesController extends Controller
         $post->user_id = $request->user_id;
         $post->destination_address = $request->address;
         $post->destination_name = $request->name;
-        $post->driving_duration = $request->travel_data[0][0]['duration'];
-        $post->driving_distance = $request->travel_data[0][0]['distance'];
-        $post->transit_duration = $request->travel_data[1][0]['duration'];
-        $post->transit_distance = $request->travel_data[1][0]['distance'];
-        $post->walking_duration = $request->travel_data[2][0]['duration'];
-        $post->walking_distance = $request->travel_data[2][0]['distance'];
-        $post->cycling_duration = $request->travel_data[3][0]['duration'];
-        $post->cycling_distance = $request->travel_data[3][0]['distance'];
-
         $post->save();
 
+        $driving = new driving_data();
+        $driving->data_id = $post->id;
+        $driving->duration = $request->travel_data[0][0]['duration'];
+        $driving->distance = $request->travel_data[0][0]['distance'];
+        $driving->save();
 
-        return response()->json(['data'=>'Got Simple Ajax Request.']);
+        $transit = new transit_data();
+        $transit->data_id = $post->id;
+        $transit->duration = $request->travel_data[1][0]['duration'];
+        $transit->distance = $request->travel_data[1][0]['distance'];
+        $transit->save();
+
+        $walking = new walking_data();
+        $walking->data_id = $post->id;
+        $walking->duration = $request->travel_data[2][0]['duration'];
+        $walking->distance = $request->travel_data[2][0]['distance'];
+        $walking->save();
+
+        $cycling = new cycling_data();
+        $cycling->data_id = $post->id;
+        $cycling->duration = $request->travel_data[3][0]['duration'];
+        $cycling->distance = $request->travel_data[3][0]['distance'];
+        $cycling->save();
+
+
+
+        return response()->json(['data'=>'Success!']);
 
     }
 
@@ -305,19 +342,24 @@ class PropertiesController extends Controller
         {
 
             $saved = saved_properties::where('property_id',$property->id)->where('user_id',Auth::user()->id)->first();
-            $travel = travel_data_results::where('property_id',$property->id)->where('user_id',Auth::user()->id)->get();
+            $driving_data = travel_data_results::leftjoin('driving_data','driving_data.data_id','=','travel_data_results.id')->where('travel_data_results.property_id',$property->id)->where('travel_data_results.user_id',Auth::user()->id)->select('travel_data_results.id','travel_data_results.destination_address','travel_data_results.destination_name','driving_data.duration as driving_duration','driving_data.distance as driving_distance')->get();
+            $transit_data = travel_data_results::leftjoin('transit_data','transit_data.data_id','=','travel_data_results.id')->where('travel_data_results.property_id',$property->id)->where('travel_data_results.user_id',Auth::user()->id)->select('travel_data_results.id','travel_data_results.destination_address','travel_data_results.destination_name','transit_data.duration as transit_duration','transit_data.distance as transit_distance')->get();
+            $walking_data = travel_data_results::leftjoin('walking_data','walking_data.data_id','=','travel_data_results.id')->where('travel_data_results.property_id',$property->id)->where('travel_data_results.user_id',Auth::user()->id)->select('travel_data_results.id','travel_data_results.destination_address','travel_data_results.destination_name','walking_data.duration as walking_duration','walking_data.distance as walking_distance')->get();
+            $cycling_data = travel_data_results::leftjoin('cycling_data','cycling_data.data_id','=','travel_data_results.id')->where('travel_data_results.property_id',$property->id)->where('travel_data_results.user_id',Auth::user()->id)->select('travel_data_results.id','travel_data_results.destination_address','travel_data_results.destination_name','cycling_data.duration as cycling_duration','cycling_data.distance as cycling_distance')->get();
 
         }
     	else
         {
             $saved = "";
-            $travel = "";
+            $driving_data = "";
+            $transit_data = "";
+            $walking_data = "";
+            $cycling_data = "";
         }
 
 
 
-
-        return view('pages.propertysingle',compact('property','property_documents','agent','property_features','saved','properties_count','travel'));
+        return view('pages.propertysingle',compact('property','property_documents','agent','property_features','saved','properties_count','driving_data','transit_data','walking_data','cycling_data'));
     }
 
     public function propertiesUser($id,$id2)

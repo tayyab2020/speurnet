@@ -149,6 +149,8 @@ Route::group(['middleware' => 'App\Http\Middleware\UserTypeMiddleware'], functio
 
     Route::post('properties/store-travel-data', 'PropertiesController@storeTravelData');
 
+    Route::post('properties/remove-travel-data', 'PropertiesController@removeTravelData');
+
     Route::post('properties/request-viewing', 'PropertiesController@PostRequestViewing')->name('request-viewing');
 
     Route::get('type/{slug}', 'PropertiesController@propertiesbytype');

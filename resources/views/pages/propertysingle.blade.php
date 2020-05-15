@@ -605,7 +605,9 @@
 
                                   <h2 class="travel-time__heading">Your travel time</h2>
 
-                                  <p class="travel-time__txt">From {{$property->address}}</p><div>
+                                  <p class="travel-time__txt">From {{$property->address}}</p>
+
+                                  <div id="travel_data">
 
                                   <div class="travel-time-transport-modes">
 
@@ -619,13 +621,15 @@
 
                                   </div>
 
-                                      @if($travel)
 
-                                      @foreach($travel as $temp)
+                                      @if($driving_data)
 
                                           <div class="travel-time-table active" id="DRIVING">
 
-                                              <div class="travel-time-row">
+                                          @foreach($driving_data as $temp)
+
+
+                                              <div class="travel-time-row row-{{$temp->id}}">
 
                                                   <div class="travel-time-row__input">
 
@@ -641,97 +645,152 @@
 
                                                   </div>
 
-                                                  <div class="travel-time-row__remove"><button class="rui-button-basic travel-time-row__btn">Remove</button>
+                                                  <div class="travel-time-row__remove"><button type="button" class="rui-button-basic travel-time-row__btn remove_travel"  data-id="{{$temp->id}}">Remove</button>
 
                                                   </div>
 
                                               </div>
 
+                                              @endforeach
+
                                           </div>
 
+                                          @else
+
+                                          <div class="travel-time-table active" id="DRIVING">
+
+                                          </div>
+
+                                      @endif
+
+
+                                      @if($transit_data)
 
                                           <div class="travel-time-table" id="TRANSIT">
 
-                                              <div class="travel-time-row">
+                                              @foreach($transit_data as $temp)
 
-                                                  <div class="travel-time-row__input">
 
-                                                      <div class="travel-time-row__name">{{$temp->destination_name}}</div>
+                                                  <div class="travel-time-row row-{{$temp->id}}">
 
-                                                      <div class="travel-time-row__address">{{$temp->destination_address}}</div>
+                                                      <div class="travel-time-row__input">
+
+                                                          <div class="travel-time-row__name">{{$temp->destination_name}}</div>
+
+                                                          <div class="travel-time-row__address">{{$temp->destination_address}}</div>
+
+                                                      </div>
+
+                                                      <div class="travel-time-row__result"><div class="travel-time-row__duration">{{$temp->transit_duration}}</div>
+
+                                                          <div class="travel-time-row__distance">{{$temp->transit_distance}}</div>
+
+                                                      </div>
+
+                                                      <div class="travel-time-row__remove"><button type="button" class="rui-button-basic travel-time-row__btn remove_travel"  data-id="{{$temp->id}}">Remove</button>
+
+                                                      </div>
 
                                                   </div>
 
-                                                  <div class="travel-time-row__result"><div class="travel-time-row__duration">{{$temp->transit_duration}}</div>
-
-                                                      <div class="travel-time-row__distance">{{$temp->transit_distance}}</div>
-
-                                                  </div>
-
-                                                  <div class="travel-time-row__remove"><button class="rui-button-basic travel-time-row__btn">Remove</button>
-
-                                                  </div>
-
-                                              </div>
+                                              @endforeach
 
                                           </div>
 
+                                      @else
+
+                                          <div class="travel-time-table active" id="TRANSIT">
+
+                                          </div>
+
+                                      @endif
+
+
+
+                                      @if($walking_data)
 
                                           <div class="travel-time-table" id="WALKING">
 
-                                              <div class="travel-time-row">
+                                              @foreach($walking_data as $temp)
 
-                                                  <div class="travel-time-row__input">
 
-                                                      <div class="travel-time-row__name">{{$temp->destination_name}}</div>
+                                                  <div class="travel-time-row row-{{$temp->id}}">
 
-                                                      <div class="travel-time-row__address">{{$temp->destination_address}}</div>
+                                                      <div class="travel-time-row__input">
+
+                                                          <div class="travel-time-row__name">{{$temp->destination_name}}</div>
+
+                                                          <div class="travel-time-row__address">{{$temp->destination_address}}</div>
+
+                                                      </div>
+
+                                                      <div class="travel-time-row__result"><div class="travel-time-row__duration">{{$temp->walking_duration}}</div>
+
+                                                          <div class="travel-time-row__distance">{{$temp->walking_distance}}</div>
+
+                                                      </div>
+
+                                                      <div class="travel-time-row__remove"><button type="button" class="rui-button-basic travel-time-row__btn remove_travel"  data-id="{{$temp->id}}">Remove</button>
+
+                                                      </div>
 
                                                   </div>
 
-                                                  <div class="travel-time-row__result"><div class="travel-time-row__duration">{{$temp->walking_duration}}</div>
-
-                                                      <div class="travel-time-row__distance">{{$temp->walking_distance}}</div>
-
-                                                  </div>
-
-                                                  <div class="travel-time-row__remove"><button class="rui-button-basic travel-time-row__btn">Remove</button>
-
-                                                  </div>
-
-                                              </div>
+                                              @endforeach
 
                                           </div>
 
+                                      @else
+
+                                          <div class="travel-time-table active" id="WALKING">
+
+                                          </div>
+
+                                      @endif
+
+
+
+                                      @if($cycling_data)
 
                                           <div class="travel-time-table" id="BICYCLING">
 
-                                              <div class="travel-time-row">
+                                              @foreach($cycling_data as $temp)
 
-                                                  <div class="travel-time-row__input">
 
-                                                      <div class="travel-time-row__name">{{$temp->destination_name}}</div>
+                                                  <div class="travel-time-row row-{{$temp->id}}">
 
-                                                      <div class="travel-time-row__address">{{$temp->destination_address}}</div>
+                                                      <div class="travel-time-row__input">
+
+                                                          <div class="travel-time-row__name">{{$temp->destination_name}}</div>
+
+                                                          <div class="travel-time-row__address">{{$temp->destination_address}}</div>
+
+                                                      </div>
+
+                                                      <div class="travel-time-row__result"><div class="travel-time-row__duration">{{$temp->cycling_duration}}</div>
+
+                                                          <div class="travel-time-row__distance">{{$temp->cycling_distance}}</div>
+
+                                                      </div>
+
+                                                      <div class="travel-time-row__remove"><button type="button" class="rui-button-basic travel-time-row__btn remove_travel" data-id="{{$temp->id}}">Remove</button>
+
+                                                      </div>
 
                                                   </div>
 
-                                                  <div class="travel-time-row__result"><div class="travel-time-row__duration">{{$temp->cycling_duration}}</div>
-
-                                                      <div class="travel-time-row__distance">{{$temp->cycling_distance}}</div>
-
-                                                  </div>
-
-                                                  <div class="travel-time-row__remove"><button class="rui-button-basic travel-time-row__btn">Remove</button>
-
-                                                  </div>
-
-                                              </div>
+                                              @endforeach
 
                                           </div>
 
-                                          @endforeach
+                                      @else
+
+                                          <div class="travel-time-table active" id="BICYCLING">
+
+                                          </div>
+
                                       @endif
+
 
                                       <form id="loc-form">
 
@@ -1788,6 +1847,34 @@
 
             });
 
+            $('.remove_travel').click(function(e) {
+
+                var id = $(this).data('id');
+
+                $.ajax({
+
+                    type: 'POST',
+
+                    url: "<?php echo url('properties/remove-travel-data') ?>",
+
+                    headers: {
+                        'X-CSRF-TOKEN': "<?php echo csrf_token() ?>",
+                    },
+
+                    data: {
+                        id: id,
+                    },
+
+                    success: function (data) {
+
+                        $('.row-'+id).remove();
+
+                    }
+
+                });
+
+            });
+
             $('.rui-button-brand').click(function(e) {
 
                 var map_latitude = parseFloat($('#map_latitude').val());
@@ -1809,6 +1896,17 @@
                 var base_url = window.location.origin;
 
                 var login_url = base_url + '/login';
+
+                $('.loc-input').val('');
+                $('.loc-input').attr('disabled', false);
+                $('.loc-remove').hide();
+                $('#loc-real').val('');
+                $('#destination_name').val('');
+
+
+                $(".rui-button-brand").addClass('rui-button-disabled');
+
+                $(".rui-button-brand").attr('disabled', true);
 
                 if(!user_id)
                 {
@@ -1909,16 +2007,7 @@
 
                                             });
 
-                                            $('.loc-input').val('');
-                                            $('.loc-input').attr('disabled', false);
-                                            $('.loc-remove').hide();
-                                            $('#loc-real').val('');
-                                            $('#destination_name').val('');
 
-
-                                            $(".rui-button-brand").addClass('rui-button-disabled');
-
-                                            $(".rui-button-brand").attr('disabled', true);
 
                                         }
 
