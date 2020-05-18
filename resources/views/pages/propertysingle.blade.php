@@ -603,6 +603,18 @@
 
                               <div class="travel-time">
 
+                                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding-bottom: 30px;">
+
+                                      <input type="hidden" name="travel_latitude" id="travel_latitude" value="{{$property->map_latitude}}">
+                                      <input type="hidden" name="travel_longitude" id="travel_longitude" value="{{$property->map_longitude}}">
+                                      <input type="hidden" name="travel_address" id="travel_address" value="{{$property->address}}" >
+
+                                      <div id="travel-map-container" style="width:100%;height:400px; ">
+                                          <div style="width: 100%; height: 100%; position: relative; overflow: hidden;" id="travel-map"></div>
+                                      </div>
+
+                                  </div>
+
                                   <h2 class="travel-time__heading">Your travel time</h2>
 
                                   <p class="travel-time__txt">From {{$property->address}}</p>
@@ -762,7 +774,11 @@
 
                                   .travel-time-table, .travel-time__txt{ margin-bottom: .75rem; }
 
-                                  .travel-time-row{width:100%;display:flex;flex-direction:row;align-items:center;justify-content:space-between;padding:.75rem 0;border-bottom:1px solid #e9ebed}
+                                  .travel-time-row{width:100%;display:flex;flex-direction:row;align-items:center;justify-content:space-between;padding:10px 10px;border-bottom:1px solid #e9ebed;transition: background-color 0.2s ease-in-out;}
+
+                                  .travel-time-row:hover{background-color: #f9f9f9;color: black;}
+
+                                  .active-row{border-left:6px solid #0ea800;}
 
                                   .travel-time-row__input{width:50%;padding-right:.75rem}
 
@@ -1322,21 +1338,31 @@
                         {!! Form::close() !!}
 
 
-
                       </div>
+
+                        @if($agent->address_latitude != '' && $agent->address_longitude != '' && $agent->address != '')
+
+                            <input type="hidden" id="agent_map_check" value="1" >
 
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
                             <h3>Location of Agent:</h3>
 
-                            <input type="hidden" name="agent_latitude" id="agent_latitude" @if($agent->address_latitude) value="{{$agent->address_latitude}}" @else value="52.3666969" @endif />
-                            <input type="hidden" name="agent_longitude" id="agent_longitude" @if($agent->address_longitude) value="{{$agent->address_longitude}}" @else value="4.8945398"  @endif  />
+                            <input type="hidden" name="agent_latitude" id="agent_latitude" value="{{$agent->address_latitude}}" />
+                            <input type="hidden" name="agent_longitude" id="agent_longitude" value="{{$agent->address_longitude}}" />
+                            <input type="hidden" name="agent_address" id="agent_address" value="{{$agent->address}}" />
 
                             <div id="agent-map-container" style="width:100%;height:400px; ">
                                 <div style="width: 100%; height: 100%" id="agent-map"></div>
                             </div>
 
                         </div>
+
+                            @else
+
+                            <input type="hidden" id="agent_map_check" value="0" >
+
+                        @endif
 
 
                     </div>
@@ -1686,6 +1712,13 @@
 
         $( document ).ready(function() {
 
+            var directionsDisplay = new google.maps.DirectionsRenderer();
+            var directionsService = new google.maps.DirectionsService();
+            var map2;
+            var marker2;
+            var markerA = new google.maps.Marker();
+            var markerB = new google.maps.Marker();
+
             var row_id = 0;
 
             $('.travel-time-transport-modes__button').click(function(e) {
@@ -1708,6 +1741,84 @@
                 var lat = parseFloat($('#loc-latitude').val());
                 var lng = parseFloat($('#loc-longitude').val());
 
+                var markerBlocation = $('#loc-real').val();
+
+                createRoute(map_latitude,map_longitude,lat,lng,markerBlocation);
+
+                function createRoute(map_latitude,map_longitude,lat,lng,markerBlocation)
+                {
+
+                    var start = new google.maps.LatLng(map_latitude, map_longitude);
+                    //var end = new google.maps.LatLng(38.334818, -181.884886);
+                    var end = new google.maps.LatLng(lat, lng);
+
+
+                    var request = {
+                        origin: start,
+                        destination: end,
+                        travelMode: google.maps.TravelMode.DRIVING
+                    };
+
+                    directionsService.route(request, function(response, status) {
+
+
+                        if (status == google.maps.DirectionsStatus.OK) {
+                            marker2.setMap(null);
+                            markerA.setMap(null);
+                            markerB.setMap(null);
+                            directionsDisplay.setMap(null);
+
+                            directionsDisplay = new google.maps.DirectionsRenderer({
+                                map: map2,
+                                directions: response,
+                                suppressMarkers: true
+                            });
+                            var leg = response.routes[0].legs[0];
+                            var base_url = window.location.origin;
+
+                            var markerA_icon = base_url + '/assets/img/markerA.png';
+                            var markerB_icon = base_url + '/assets/img/markerB.png';
+                            var infoWindowA = new google.maps.InfoWindow;
+                            var infoWindowB = new google.maps.InfoWindow;
+
+                            markerA =  new google.maps.Marker({
+                                position: leg.start_location,
+                                map: map2,
+                                icon: {url:markerA_icon, scaledSize: new google.maps.Size(40, 45)},
+                                title: 'title'
+                            });
+
+                            markerA.addListener('click', function() {
+
+                                var markerAlocation = $('#travel_address').val();
+
+                                infoWindowA.setContent(markerAlocation);
+                                infoWindowA.open(map2, markerA);
+
+                            });
+
+
+                            markerB =  new google.maps.Marker({
+                                position: leg.end_location,
+                                map: map2,
+                                icon: {url:markerB_icon, scaledSize: new google.maps.Size(40, 40)},
+                                title: 'title'
+                            });
+
+                            markerB.addListener('click', function() {
+
+
+                                infoWindowB.setContent(markerBlocation);
+                                infoWindowB.open(map2, markerB);
+
+                            });
+
+                        } else {
+                            alert("Directions Request from " + start.toUrlValue(6) + " to " + end.toUrlValue(6) + " failed: " + status);
+                        }
+                    });
+
+                }
 
                 var travel_origin = new google.maps.LatLng(map_latitude, map_longitude);
 
@@ -1725,7 +1836,6 @@
                 $('.loc-input').val('');
                 $('.loc-input').attr('disabled', false);
                 $('.loc-remove').hide();
-                $('#loc-real').val('');
                 $('#destination_name').val('');
 
 
@@ -1758,8 +1868,14 @@
 
                         function callback(response, status) {
 
+                           $('#' + value).find('.active-row').removeClass('active-row');
 
-                            $('#' + value).append('<div class="travel-time-row row-'+row_id+'">\n' +
+
+                            $('#' + value).append('<div class="travel-time-row active-row row-'+row_id+'" data-id="'+row_id+'">\n' +
+                                '\n' +
+                                '<input type="hidden" id="cur-latitude" value="'+lat+'" />' +
+                                '<input type="hidden" id="cur-longitude" value="'+lng+'" />' +
+                                '<input type="hidden" id="cur-address" value="'+address+'" />' +
                                 '\n' +
                                 '                                              <div class="travel-time-row__input">\n' +
                                 '\n' +
@@ -1782,12 +1898,32 @@
                                 '                                          </div>');
 
 
+                            $('.travel-time-row').click(function(e) {
+
+                                var id = $(this).data('id');
+
+                                $('#' + value).find('.active-row').removeClass('active-row');
+
+                                $('#' + value).find('.row-'+id).addClass('active-row');
+
+                                var map_latitude = parseFloat($('#map_latitude').val());
+                                var map_longitude = parseFloat($('#map_longitude').val());
+
+                                var cur_latitude = $(this).children('#cur-latitude').val();
+                                var cur_longitude = $(this).children('#cur-longitude').val();
+                                var cur_address = $(this).children('#cur-address').val();
+
+                                createRoute(map_latitude,map_longitude,cur_latitude,cur_longitude,cur_address);
+
+                            });
+
+
 
                             $('.remove_travel').click(function(e) {
 
                                 var id = $(this).data('id');
 
-                                $('.row-'+id).remove();
+                                $('#' + value).find('.row-'+id).remove();
 
                                 /*$.ajax({
 
@@ -2121,6 +2257,14 @@
             let infoPane1;
 
 
+            let pos2;
+            let bounds2;
+            let infoWindow2;
+            let currentInfoWindow2;
+            let service2;
+            let infoPane2;
+
+
             function initMap() {
                 // Initialize variables
                 bounds = new google.maps.LatLngBounds();
@@ -2170,8 +2314,25 @@
                 agent_handleLocationError(false, infoWindow1,type);
             }
 
+            function travel_initMap() {
+                // Initialize variables
+                bounds2 = new google.maps.LatLngBounds();
+                infoWindow2 = new google.maps.InfoWindow;
+                currentInfoWindow2 = infoWindow1;
+                /* TODO: Step 4A3: Add a generic sidebar */
+                travel_handleLocationError(false, infoWindow2,type);
+            }
+
             initMap();
-            agent_initMap();
+
+            var agent_map_check = $('#agent_map_check').val();
+
+            if(agent_map_check == 1)
+            {
+                agent_initMap();
+            }
+
+            travel_initMap();
 
             function CenterControl(controlDiv, map) {
 
@@ -2301,7 +2462,7 @@
 
                 marker1.addListener('click', function() {
 
-                    var location1 = $('#agent_city').val();
+                    var location1 = $('#agent_address').val();
 
                     infoWindow1.setContent(location1);
                     infoWindow1.open(map1, marker1);
@@ -2317,6 +2478,55 @@
                     'Error: Your browser doesn\'t support geolocation.');
                 infoWindow.open(map);*/
                 currentInfoWindow1 = infoWindow1;
+
+                // Call Places Nearby Search on the default location
+                // getNearbyPlaces(pos,type);
+            }
+
+
+            function travel_handleLocationError(browserHasGeolocation2, infoWindow2, type2) {
+
+
+                var lat2 = parseFloat(document.getElementById('travel_latitude').value);
+                var lng2 = parseFloat(document.getElementById('travel_longitude').value);
+
+                pos2 = { lat: lat2, lng: lng2 };
+
+                map2 = new google.maps.Map(document.getElementById('travel-map'), {
+                    center: pos2,
+                    zoom: 15
+                });
+
+                var base_url2 = window.location.origin;
+
+                var home_icon2 = base_url2 + '/assets/img/home_pin.png';
+
+                 marker2 = new google.maps.Marker({
+                    map: map2,
+                    position: {lat: lat2, lng: lng2},
+                    draggable: false,
+                    icon: {url:home_icon2, scaledSize: new google.maps.Size(40, 45)}
+                });
+
+
+                marker2.addListener('click', function() {
+
+                    var location2 = $('#travel_address').val();
+
+                    infoWindow2.setContent(location2);
+                    infoWindow2.open(map2, marker2);
+                    map2.setZoom(15);
+                    map2.setCenter(marker2.getPosition());
+
+                });
+
+                // Display an InfoWindow at the map center
+                infoWindow2.setPosition(pos2);
+                /*infoWindow.setContent(browserHasGeolocation ?
+                    'Geolocation permissions denied. Using default location.' :
+                    'Error: Your browser doesn\'t support geolocation.');
+                infoWindow.open(map);*/
+                currentInfoWindow2 = infoWindow2;
 
                 // Call Places Nearby Search on the default location
                 // getNearbyPlaces(pos,type);
