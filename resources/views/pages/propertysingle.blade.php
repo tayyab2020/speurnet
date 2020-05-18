@@ -599,9 +599,9 @@
 
                                       <p style="font-size: 19px;font-weight: 600;margin-top: 30px;">See how long it takes you to travel from this house to for example your work or family.</p>
 
-                              <a href="https://www.google.nl/maps/dir///@52.0699981,5.1242385,14z/data=!4m2!4m1!3e3"><i class="fas fa-plus" style="margin-right: 12px;"></i>Add Location</a>
+                              <a  id="cal_dist" style="cursor: pointer;"><i class="fas fa-plus" style="margin-right: 12px;"></i>Add Location</a>
 
-                              <div class="travel-time">
+                              <div class="travel-time" style="display: none;">
 
                                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding-bottom: 30px;">
 
@@ -760,6 +760,18 @@
 
                                   .travel-time{margin-top:2.5rem;padding-top:2.5rem;border-top:1px solid #d2d5da;border-bottom: 1px solid #d2d5da;padding-bottom: 30px;}
 
+                                  .travel-show{
+                                      -webkit-animation: slide-down 1.3s ease-out;
+                                      -moz-animation: slide-down 1.3s ease-out;
+                                      animation: slide-down 1.3s ease-out;
+                                  }
+
+                                  .travel-hide{
+                                      -webkit-animation: slide-up 1.3s ease-out;
+                                      -moz-animation: slide-up 1.3s ease-out;
+                                      animation: slide-up 1.3s ease-out;
+                                  }
+
                                   @media only screen and (min-width:501px){.travel-time__heading{font-size:2.125rem !important;line-height:2.5rem !important;margin-bottom: 10px !important;}}
 
                                   .travel-time-transport-modes{border-bottom: 1px solid #e9ebed;margin-top: 20px;}
@@ -774,7 +786,7 @@
 
                                   .travel-time-table, .travel-time__txt{ margin-bottom: .75rem; }
 
-                                  .travel-time-row{width:100%;display:flex;flex-direction:row;align-items:center;justify-content:space-between;padding:10px 10px;border-bottom:1px solid #e9ebed;transition: background-color 0.2s ease-in-out;}
+                                  .travel-time-row{width:100%;display:flex;flex-direction:row;align-items:center;justify-content:space-between;padding:10px 10px;border-bottom:1px solid #e9ebed;transition: background-color 0.2s ease-in-out;cursor: pointer;}
 
                                   .travel-time-row:hover{background-color: #f9f9f9;color: black;}
 
@@ -791,6 +803,32 @@
                                   .travel-time-row__btn{font-family:Museo-Sans-300,Helvetica Neue,Helvetica,Arial,sans-serif;font-size:12px;background-color: white;line-height:1rem;border-width:1px;font-family:Museo-Sans-500,Helvetica Neue,Helvetica,Arial,sans-serif}
 
                                   .rui-button-basic{color:#333f48 !important;border-color:#c3c8ce}
+
+                                  @-webkit-keyframes slide-down {
+                                      0% { opacity: 0; -webkit-transform: translateY(-10%); }
+                                      100% { opacity: 1; -webkit-transform: translateY(0); }
+                                  }
+                                  @-moz-keyframes slide-down {
+                                      0% { opacity: 0; -moz-transform: translateY(-10%); }
+                                      100% { opacity: 1; -moz-transform: translateY(0); }
+                                  }
+                                  @keyframes slide-down {
+                                      0% { opacity: 0; transform: translateY(-10%); }
+                                      100% { opacity: 1; transform: translateY(0); }
+                                  }
+
+                                  @-webkit-keyframes slide-up {
+                                      0% { opacity: 1; -webkit-transform: translateY(0); }
+                                      100% { opacity: 0; -webkit-transform: translateY(-10%); }
+                                  }
+                                  @-moz-keyframes slide-up {
+                                      0% { opacity: 1; -moz-transform: translateY(0); }
+                                      100% { opacity: 0; -moz-transform: translateY(-10%); }
+                                  }
+                                  @keyframes slide-up {
+                                      0% { opacity: 1; transform: translateY(0); }
+                                      100% { opacity: 0; transform: translateY(-10%); }
+                                  }
 
 
 
@@ -1712,6 +1750,30 @@
 
         $( document ).ready(function() {
 
+            $('#cal_dist').click(function(e) {
+
+                if($('.travel-time').hasClass('travel-show'))
+                {
+                    $('.travel-time').removeClass('travel-show');
+                    $('.travel-time').addClass('travel-hide');
+
+                    setTimeout(function(){
+                        $('.travel-time').hide()
+                    }, 1100); //Same time as animation
+
+                }
+                else
+                {
+                    $('.travel-time').removeClass('travel-hide');
+                    $('.travel-time').addClass('travel-show');
+                    $('.travel-time').show()
+
+
+                }
+
+
+            });
+
             var directionsDisplay = new google.maps.DirectionsRenderer();
             var directionsService = new google.maps.DirectionsService();
             var map2;
@@ -1720,6 +1782,7 @@
             var markerB = new google.maps.Marker();
 
             var row_id = 0;
+            var sec_id = 0;
 
             $('.travel-time-transport-modes__button').click(function(e) {
 
@@ -1813,6 +1876,7 @@
 
                             });
 
+
                         } else {
                             alert("Directions Request from " + start.toUrlValue(6) + " to " + end.toUrlValue(6) + " failed: " + status);
                         }
@@ -1871,7 +1935,7 @@
                            $('#' + value).find('.active-row').removeClass('active-row');
 
 
-                            $('#' + value).append('<div class="travel-time-row active-row row-'+row_id+'" data-id="'+row_id+'">\n' +
+                            $('#' + value).append('<div id="travel-time-row-'+sec_id+'" class="travel-time-row active-row row-'+row_id+'" data-id="'+row_id+'">\n' +
                                 '\n' +
                                 '<input type="hidden" id="cur-latitude" value="'+lat+'" />' +
                                 '<input type="hidden" id="cur-longitude" value="'+lng+'" />' +
@@ -1891,39 +1955,64 @@
                                 '\n' +
                                 '                                              </div>\n' +
                                 '\n' +
-                                '                                              <div class="travel-time-row__remove"><button class="rui-button-basic travel-time-row__btn remove_travel" data-id="'+row_id+'" >Remove</button>\n' +
+                                '                                              <div class="travel-time-row__remove"><button class="rui-button-basic travel-time-row__btn remove_travel" id="remove_travel_'+sec_id+'" data-id="'+row_id+'" >Remove</button>\n' +
                                 '\n' +
                                 '                                              </div>\n' +
                                 '\n' +
                                 '                                          </div>');
 
 
-                            $('.travel-time-row').click(function(e) {
+                            $('#travel-time-row-'+sec_id).click(function(e) {
 
                                 var id = $(this).data('id');
 
-                                $('#' + value).find('.active-row').removeClass('active-row');
+                                if(!$(this).hasClass('active-row'))
+                                {
+                                    $('#DRIVING').find('.active-row').removeClass('active-row');
+                                    $('#TRANSIT').find('.active-row').removeClass('active-row');
+                                    $('#WALKING').find('.active-row').removeClass('active-row');
+                                    $('#BICYCLING').find('.active-row').removeClass('active-row');
 
-                                $('#' + value).find('.row-'+id).addClass('active-row');
 
-                                var map_latitude = parseFloat($('#map_latitude').val());
-                                var map_longitude = parseFloat($('#map_longitude').val());
+                                    $('#DRIVING').find('.row-'+id).addClass('active-row');
+                                    $('#TRANSIT').find('.row-'+id).addClass('active-row');
+                                    $('#WALKING').find('.row-'+id).addClass('active-row');
+                                    $('#BICYCLING').find('.row-'+id).addClass('active-row');
 
-                                var cur_latitude = $(this).children('#cur-latitude').val();
-                                var cur_longitude = $(this).children('#cur-longitude').val();
-                                var cur_address = $(this).children('#cur-address').val();
+                                    var map_latitude = parseFloat($('#map_latitude').val());
+                                    var map_longitude = parseFloat($('#map_longitude').val());
 
-                                createRoute(map_latitude,map_longitude,cur_latitude,cur_longitude,cur_address);
+                                    var cur_latitude = $(this).children('#cur-latitude').val();
+                                    var cur_longitude = $(this).children('#cur-longitude').val();
+                                    var cur_address = $(this).children('#cur-address').val();
+
+                                    createRoute(map_latitude,map_longitude,cur_latitude,cur_longitude,cur_address);
+                                }
+
+
 
                             });
 
 
 
-                            $('.remove_travel').click(function(e) {
+                            $('#remove_travel_'+sec_id).click(function(e) {
+
 
                                 var id = $(this).data('id');
 
-                                $('#' + value).find('.row-'+id).remove();
+                                $('#DRIVING').find('.row-'+id).remove();
+                                $('#TRANSIT').find('.row-'+id).remove();
+                                $('#WALKING').find('.row-'+id).remove();
+                                $('#BICYCLING').find('.row-'+id).remove();
+
+                                if( $('#DRIVING').children().length >= 1 )
+                                {
+                                    $('#DRIVING').children().first().trigger('click');
+                                }
+                                else
+                                {
+                                    travel_initMap();
+                                }
 
                                 /*$.ajax({
 
@@ -1948,6 +2037,8 @@
                 });*/
 
                             });
+
+                            sec_id = sec_id + 1;
 
 
                             //Store to database code...
@@ -2047,6 +2138,7 @@
                                 }
                         }*/
                         }
+
                     });
 
                 row_id = row_id + 1;
