@@ -36,7 +36,7 @@ class Properties extends Model
             $query->where(function ($query) use ($type,$purpose,$price,$min_price,$max_price) {
                 $query->where("property_type", "$type")
                     ->where("property_purpose", "$purpose")
-                    ->whereRaw("$price > $min_price");
+                    ->whereRaw("$price >= $min_price");
 
             });
         }

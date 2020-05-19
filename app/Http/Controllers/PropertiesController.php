@@ -573,7 +573,6 @@ class PropertiesController extends Controller
 			$price='sale_price';
 		}
 
-
 	 	$type=$request->type;
 	 	$purpose=$request->purpose;
 	 	$min_price=$request->min_price;
@@ -607,7 +606,6 @@ class PropertiesController extends Controller
                  $property_radius = round($property_radius);
 
 
-
                  if($property_radius <= $radius)
                  {
 
@@ -620,7 +618,7 @@ class PropertiesController extends Controller
 
 
          }
-    	 
+
 
     	 $properties = Properties::whereIn('id',$array)->get();
 
