@@ -1004,45 +1004,131 @@
 
                                 </div>
 
+                                @if(old('property_purpose') == 'Sale')
 
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;" id="sale_price_box">
 
-                                    <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
-
-
-                                        <label class="left-label" style="float: left;">Sale Price</label>
-
-                                        <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
+                                        <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
 
 
-                                            <input type="text" name="sale_price" @if(old('sale_price')) value="{{old('sale_price')}}" @else value="{{ isset($property->sale_price) ? $property->sale_price : null }}" @endif placeholder="800000" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control"  >
+                                            <label class="left-label" style="float: left;">Sale Price</label>
+
+                                            <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
 
 
-                                        </div>
-
-                                    </div>
-
-                                </div>
+                                                <input type="text" id="sale_price_field" name="sale_price" @if(old('sale_price')) value="{{old('sale_price')}}" @else value="{{ isset($property->sale_price) ? $property->sale_price : null }}" @endif placeholder="800000" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control stepper-step-3-validate"  >
 
 
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;">
-
-                                    <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
-
-
-                                        <label class="left-label" style="float: left;">Rent Price</label>
-
-                                        <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
-
-
-                                            <input type="text" name="rent_price" @if(old('rent_price')) value="{{old('rent_price')}}" @else value="{{ isset($property->rent_price) ? $property->rent_price : null }}" @endif placeholder="10000" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control"  >
-
+                                            </div>
 
                                         </div>
 
                                     </div>
 
-                                </div>
+
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;display: none;" id="rent_price_box">
+
+                                        <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
+
+
+                                            <label class="left-label" style="float: left;">Rent Price</label>
+
+                                            <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
+
+
+                                                <input type="text" id="rent_price_field" name="rent_price" @if(old('rent_price')) value="{{old('rent_price')}}" @else value="{{ isset($property->rent_price) ? $property->rent_price : null }}" @endif placeholder="10000" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control"  >
+
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                    @elseif(old('property_purpose') == 'Rent')
+
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;display: none;" id="sale_price_box">
+
+                                        <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
+
+
+                                            <label class="left-label" style="float: left;">Sale Price</label>
+
+                                            <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
+
+
+                                                <input type="text" id="sale_price_field" name="sale_price" @if(old('sale_price')) value="{{old('sale_price')}}" @else value="{{ isset($property->sale_price) ? $property->sale_price : null }}" @endif placeholder="800000" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control"  >
+
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;" id="rent_price_box">
+
+                                        <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
+
+
+                                            <label class="left-label" style="float: left;">Rent Price</label>
+
+                                            <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
+
+
+                                                <input type="text" id="rent_price_field" name="rent_price" @if(old('rent_price')) value="{{old('rent_price')}}" @else value="{{ isset($property->rent_price) ? $property->rent_price : null }}" @endif placeholder="10000" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control stepper-step-3-validate"  >
+
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                    @else
+
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;" id="sale_price_box">
+
+                                        <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
+
+
+                                            <label class="left-label" style="float: left;">Sale Price</label>
+
+                                            <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
+
+
+                                                <input type="text" id="sale_price_field" name="sale_price" @if(old('sale_price')) value="{{old('sale_price')}}" @else value="{{ isset($property->sale_price) ? $property->sale_price : null }}" @endif placeholder="800000" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control stepper-step-3-validate"  >
+
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;display: none;" id="rent_price_box">
+
+                                        <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
+
+
+                                            <label class="left-label" style="float: left;">Rent Price</label>
+
+                                            <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
+
+
+                                                <input type="text" id="rent_price_field" name="rent_price" @if(old('rent_price')) value="{{old('rent_price')}}" @else value="{{ isset($property->rent_price) ? $property->rent_price : null }}" @endif placeholder="10000" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control"  >
+
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                    @endif
+
 
 
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;">
@@ -2437,9 +2523,26 @@
 
             $('input[name=property_purpose]').change(function(){
 
+
                 $('.pp').removeClass('active1');
 
                 $(this).parent().closest('li').addClass('active1');
+
+                if( $(this).val() == "Sale" )
+                {
+                    $('#rent_price_box').hide();
+                    $('#rent_price_field').removeClass('stepper-step-3-validate');
+                    $('#sale_price_box').show();
+                    $('#sale_price_field').addClass('stepper-step-3-validate');
+                }
+                else
+                {
+                    $('#sale_price_box').hide();
+                    $('#sale_price_field').removeClass('stepper-step-3-validate');
+                    $('#rent_price_box').show();
+                    $('#rent_price_field').addClass('stepper-step-3-validate');
+
+                }
 
             });
 

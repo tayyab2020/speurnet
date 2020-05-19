@@ -587,40 +587,45 @@ class PropertiesController extends Controller
 
     	 $properties = Properties::SearchByKeyword($type,$purpose,$price,$min_price,$max_price)->get();
 
-    	 foreach ($properties as $key)
+
+    	 if($address_latitude)
          {
-             $property_latitude = $key->map_latitude;
-             $property_longitude = $key->map_longitude;
-
-
-             $url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=".urlencode($address_latitude).",".urlencode($address_longitude)."&destinations=".urlencode($property_latitude).",".urlencode($property_longitude)."&key=AIzaSyDFPa3LVeBRpaGafuUtk4znrty6IIqtMUw";
-
-             $result_string = file_get_contents($url);
-             $result = json_decode($result_string, true);
-
-             if($result['rows'][0]['elements'][0]['status'] == 'OK')
+             foreach ($properties as $key)
              {
-                 $property_radius = $result['rows'][0]['elements'][0]['distance']['value'];
-                 $property_radius = $property_radius / 1000;
-
-                 $property_radius = round($property_radius);
+                 $property_latitude = $key->map_latitude;
+                 $property_longitude = $key->map_longitude;
 
 
-                 if($property_radius <= $radius)
+                 $url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=".urlencode($address_latitude).",".urlencode($address_longitude)."&destinations=".urlencode($property_latitude).",".urlencode($property_longitude)."&key=AIzaSyDFPa3LVeBRpaGafuUtk4znrty6IIqtMUw";
+
+                 $result_string = file_get_contents($url);
+                 $result = json_decode($result_string, true);
+
+                 if($result['rows'][0]['elements'][0]['status'] == 'OK')
                  {
+                     $property_radius = $result['rows'][0]['elements'][0]['distance']['value'];
+                     $property_radius = $property_radius / 1000;
 
-                     $array[$i] = array('property_id'=>$key->id);
+                     $property_radius = round($property_radius);
 
-                     $i = $i + 1;
 
+                     if($property_radius <= $radius)
+                     {
+
+                         $array[$i] = array('property_id'=>$key->id);
+
+                         $i = $i + 1;
+
+                     }
                  }
+
+
              }
 
+             $properties = Properties::whereIn('id',$array)->get();
 
          }
 
-
-    	 $properties = Properties::whereIn('id',$array)->get();
 
         return view('pages.searchproperties',compact('properties'));
     }
