@@ -18,13 +18,13 @@ class Properties extends Model
         static::retrieved(function ($model) {});
     }*/
 
-    public function scopeSearchByKeyword($query, $city_id,$type,$purpose,$price,$min_price,$max_price)
+    public function scopeSearchByKeyword($query,$type,$purpose,$price,$min_price,$max_price)
     {
 
+
         if ($min_price!='' and $max_price!='') {
-            $query->where(function ($query) use ($city_id,$type,$purpose,$price,$min_price,$max_price) {
-                $query->where("city_id", "$city_id")
-                    ->where("property_type", "$type")
+            $query->where(function ($query) use ($type,$purpose,$price,$min_price,$max_price) {
+                $query->where("property_type", "$type")
                     ->where("property_purpose", "$purpose")
                     ->whereRaw("$price > $min_price")
                     ->whereRaw("$price <= $max_price");
@@ -33,18 +33,16 @@ class Properties extends Model
             });
         }
         elseif ($min_price!='') {
-            $query->where(function ($query) use ($city_id,$type,$purpose,$price,$min_price,$max_price) {
-                $query->where("city_id", "$city_id")
-                    ->where("property_type", "$type")
+            $query->where(function ($query) use ($type,$purpose,$price,$min_price,$max_price) {
+                $query->where("property_type", "$type")
                     ->where("property_purpose", "$purpose")
                     ->whereRaw("$price > $min_price");
 
             });
         }
         elseif ($max_price!='') {
-            $query->where(function ($query) use ($city_id,$type,$purpose,$price,$min_price,$max_price) {
-                $query->where("city_id", "$city_id")
-                    ->where("property_type", "$type")
+            $query->where(function ($query) use ($type,$purpose,$price,$min_price,$max_price) {
+                $query->where("property_type", "$type")
                     ->where("property_purpose", "$purpose")
                     ->whereRaw("$price <= $max_price");
 
@@ -52,14 +50,14 @@ class Properties extends Model
         }
         else
         {
-			 $query->where(function ($query) use ($city_id,$type,$purpose,$price,$min_price,$max_price) {
-                $query->where("city_id", "$city_id")
-                    ->where("property_type", "$type")
+			 $query->where(function ($query) use ($type,$purpose,$price,$min_price,$max_price) {
+                $query->where("property_type", "$type")
                     ->where("property_purpose", "$purpose");
 
 
             });
 		}
+
         return $query;
     }
 
