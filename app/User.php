@@ -47,6 +47,12 @@ class User extends Authenticatable
     {
         $this->notify(new CustomPassword($token));
     }
+
+    public function properties()
+    {
+        return $this->hasMany(Properties::class, 'user_id');
+    }
+
 }
 
 class CustomPassword extends ResetPassword

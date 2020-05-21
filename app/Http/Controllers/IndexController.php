@@ -83,7 +83,18 @@ class IndexController extends Controller
 
 		$partners = Partners::orderBy('id', 'desc')->get();
 
-        return view('pages.index',compact('propertieslist','testimonials','partners','city_list'));
+		$top_members = User::withCount('properties') ->where('users.usertype','=','Agents')->where('users.status',1)          // Count the errors
+    ->orderBy('properties_count', 'desc')   // Order by the error count
+    ->take(3)                           // Take the first 5
+    ->get();
+
+		$top_properties = Properties::orderBy('views', 'desc')   // Order by the error count
+        ->take(3)                           // Take the first 5
+        ->get();
+
+
+
+        return view('pages.index',compact('propertieslist','testimonials','partners','city_list','top_members','top_properties'));
     }
 
     public function subscribe(Request $request)
