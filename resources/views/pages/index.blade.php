@@ -28,7 +28,7 @@
 
                                     @else
 
-                                    <img src="{{ URL::asset('upload/members/user.png') }}" style="width: 100%;height: 200px;" >
+                                    <img src="{{ URL::asset('assets/img/user.png') }}" style="width: 100%;height: 200px;" >
 
                                 @endif
 
