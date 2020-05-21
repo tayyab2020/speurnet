@@ -22,7 +22,15 @@
                         <div class="property-container" style="margin-bottom: 0;">
                             <div class="property-image">
 
+                                @if($temp->image_icon)
+
                                 <img src="{{ URL::asset('upload/members/'.$temp->image_icon.'-b.jpg') }}" style="width: 100%;height: 200px;" >
+
+                                    @else
+
+                                    <img src="{{ URL::asset('upload/members/user.png') }}" style="width: 100%;height: 200px;" >
+
+                                @endif
 
                             </div>
 
