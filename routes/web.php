@@ -114,10 +114,6 @@ Route::group(['middleware' => 'App\Http\Middleware\UserTypeMiddleware'], functio
 
     Route::get('/', 'IndexController@index');
 
-    Route::get('create-cv', 'IndexController@CreateCV');
-
-    Route::post('save-cv', 'IndexController@SaveCV');
-
     Route::get('about-us', 'IndexController@aboutus_page');
 
     Route::get('careers-with-us', 'IndexController@careers_with_page');

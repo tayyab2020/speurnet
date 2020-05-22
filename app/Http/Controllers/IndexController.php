@@ -19,52 +19,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Laravel\Socialite\Facades\Socialite;
-use PDF;
-use File;
-use Image;
 
 class IndexController extends Controller
 {
-
-    public function CreateCV()
-    {
-        return view('cv');
-    }
-
-    public function saveCV(Request $request) {
-
-        $show = $request;
-
-        $file_name = 'cv_' . time();
-
-        $tmpFilePath = 'upload/CV_images/';
-
-        $image_file_name = $_FILES['myFile']['name'];
-
-        $ext = pathinfo($image_file_name, PATHINFO_EXTENSION);
-
-
-        $cv_image = $file_name.'.'.$ext;
-
-
-        $img = Image::make($show->myFile);
-
-        $img->save($tmpFilePath.$cv_image);
-
-        ini_set('max_execution_time', '300');
-
-
-        $pdf = PDF::loadView('cvPDF', compact('show','cv_image'))->setOptions(['isRemoteEnabled', TRUE]);
-
-
-        $file = public_path('upload/PDFs/'.$file_name.'.pdf');
-
-
-        // Save the PDF file into temp folder
-        $pdf->save($file);
-
-
-    }
 
     public function redirect($service) {
         return Socialite::driver ( $service )->stateless()->redirect();
