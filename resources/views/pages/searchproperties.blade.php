@@ -18,7 +18,7 @@
                       <label for="bedroom">Keyword</label>
                       <input type="text" name="keyword" class="form-control" placeholder="Enter keyword">
                     </div>
-                     
+
                   </div>
                   <!-- break -->
                   <div class="col-md-3 col-sm-3 col-xs-6">
@@ -29,7 +29,7 @@
                         <option value="Rent">For Rent</option>
                       </select>
                     </div>
-                    
+
                   </div>
                   <!-- break -->
                   <div class="col-md-3 col-sm-3 col-xs-6">
@@ -42,27 +42,27 @@
 
                       </select>
                     </div>
-                    
+
                   </div>
                   <!-- break -->
                   <div class="col-md-3 col-sm-3 col-xs-6">
-                     
+
                     <div class="form-group">
                       <label for="maxprice">&nbsp;</label>
                       <input type="submit" name="submit" value="Search Again" class="btn btn-primary btn-block">
                     </div>
                   </div>
 
-                {!! Form::close() !!} 
+                {!! Form::close() !!}
               </div>
             </div>
             <ol class="breadcrumb">
-              <li><a href="{{ URL::to('/') }}">Home</a></li> 
+              <li><a href="{{ URL::to('/') }}">Home</a></li>
               <li class="active">Search</li>
             </ol>
           </div>
         </div>
-         
+
       </div>
     </div>
     <!-- end:header -->
@@ -73,50 +73,57 @@
         <div class="row">
           <!-- begin:article -->
           <div class="col-md-9 col-md-push-3">
-           
+
             <!-- begin:product -->
             <div class="row container-realestate">
-           	  @foreach($properties as $i => $property) 	
+
+                @if(count($properties) == 0)
+
+                    <h1>No Properties found..</h1>
+
+                @endif
+
+           	  @foreach($properties as $i => $property)
              	 <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="property-container">
               <div class="property-image">
-                 
-                <img src="{{ URL::asset('upload/properties/'.$property->featured_image.'-s.jpg') }}" alt="{{ $property->property_name }}">
+
+                <img src="{{ URL::asset('upload/properties/'.$property[0]->featured_image.'-s.jpg') }}" alt="{{ $property[0]->property_name }}">
                 <div class="property-price">
-                  <h4>{{ getPropertyTypeName($property->property_type)->types }}</h4>
-                  <span>{{getcong('currency_sign')}}@if($property->sale_price) {{$property->sale_price}} @else {{$property->rent_price}} @endif</span>
+                  <h4>{{ getPropertyTypeName($property[0]->property_type)->types }}</h4>
+                  <span>{{getcong('currency_sign')}}@if($property[0]->sale_price) {{$property[0]->sale_price}} @else {{$property[0]->rent_price}} @endif</span>
                 </div>
                 <div class="property-status">
-                  <span>For {{$property->property_purpose}}</span>
+                  <span>For {{$property[0]->property_purpose}}</span>
                 </div>
               </div>
               <div class="property-features">
-                <span><i class="fa fa-home"></i> {{$property->area}}</span>
-                <span><i class="fa fa-hdd-o"></i> {{$property->bedrooms}}</span>
-                <span><i class="fa fa-male"></i> {{$property->bathrooms}}</span>
+                <span><i class="fa fa-home"></i> {{$property[0]->area}}</span>
+                <span><i class="fa fa-hdd-o"></i> {{$property[0]->bedrooms}}</span>
+                <span><i class="fa fa-male"></i> {{$property[0]->bathrooms}}</span>
               </div>
               <div class="property-content">
-                <h3><a href="{{URL::to('properties/'.$property->property_slug)}}">{{ Str::limit($property->property_name,35) }}</a> <small>{{ Str::limit($property->address,40) }}</small></h3>
+                <h3><a href="{{URL::to('properties/'.$property[0]->property_slug)}}">{{ Str::limit($property[0]->property_name,35) }}</a> <small>{{ Str::limit($property[0]->address,40) }}</small></h3>
               </div>
             </div>
           </div>
               <!-- break -->
            	  @endforeach
-           	  
-              
+
+
             </div>
             <!-- end:product -->
- 
+
           </div>
           <!-- end:article -->
 
           <!-- begin:sidebar -->
           @include('_particles.sidebar')
           <!-- end:sidebar -->
-          
+
         </div>
       </div>
     </div>
     <!-- end:content -->
- 
+
 @endsection

@@ -581,16 +581,16 @@ class PropertiesController extends Controller
 	 	$address_latitude = $request->city_latitude;
 	 	$address_longitude = $request->city_longitude;
 	 	$radius = $request->radius;
-        $array = [];
+        $properties = [];
         $i = 0;
 
 
-    	 $properties = Properties::SearchByKeyword($type,$purpose,$price,$min_price,$max_price)->get();
+    	 $properties_search = Properties::SearchByKeyword($type,$purpose,$price,$min_price,$max_price)->get();
 
 
     	 if($address_latitude)
          {
-             foreach ($properties as $key)
+             foreach ($properties_search as $key)
              {
                  $property_latitude = $key->map_latitude;
                  $property_longitude = $key->map_longitude;
@@ -612,7 +612,7 @@ class PropertiesController extends Controller
                      if($property_radius <= $radius)
                      {
 
-                         $array[$i] = array('property_id'=>$key->id);
+                         $properties[$i] = array($key);
 
                          $i = $i + 1;
 
@@ -622,7 +622,7 @@ class PropertiesController extends Controller
 
              }
 
-             $properties = Properties::whereIn('id',$array)->get();
+
 
          }
 

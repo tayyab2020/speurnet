@@ -29,8 +29,6 @@ class IndexController extends Controller
 
     public function callback($service) {
 
-
-
         $user = Socialite::with ( $service )->stateless()->user();
 
         if(!$user->email)

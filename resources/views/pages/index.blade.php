@@ -10,7 +10,7 @@
 
         <div class="row">
 
-            <div class="col-md-2 col-sm-12">
+            <div class="col-md-2 col-sm-12" style="display: inline-block;">
 
                 <div class="col-md-12 col-sm-12"><div class="heading-title">
                         <h2 style="font-size: 18px;">Top Memebrs</h2>
@@ -49,7 +49,7 @@
 
             </div>
 
-            <div class="col-md-8 col-sm-12">
+            <div class="col-md-8 col-sm-12" style="display: inline-block;">
 
                 <div class="col-md-12 col-sm-12">
                     <div class="heading-title">
@@ -90,7 +90,7 @@
 
         </div>
 
-            <div class="col-md-2 cols-sm-12">
+            <div class="col-md-2 cols-sm-12" style="display: inline-block;">
 
                 <div class="col-md-12 col-sm-12"><div class="heading-title">
                         <h2 style="font-size: 18px;">Top Properties</h2>
