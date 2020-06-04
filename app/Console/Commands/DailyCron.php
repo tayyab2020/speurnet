@@ -55,5 +55,9 @@ class DailyCron extends Command
             $mail->to('tayyabkhurram62@gmail.com')
                 ->subject('Word of the Day');
         });
+
+        \Log::info("Cron is working fine!");
+        $this->info('Demo:Cron Cummand Run successfully!');
+        
     }
 }
