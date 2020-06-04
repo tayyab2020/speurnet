@@ -1,7 +1,7 @@
 @extends("app")
 
 @section('head_title', 'Page not found! | '.getcong('site_name') )
- 
+
 @section('head_url', Request::url())
 
 @section("content")
@@ -41,10 +41,10 @@
           <!-- begin:sidebar -->
           @include('_particles.sidebar')
           <!-- end:sidebar -->
-          
+
         </div>
       </div>
     </div>
     <!-- end:content -->
-      
+
 @endsection

@@ -58,6 +58,6 @@ class DailyCron extends Command
 
         \Log::info("Cron is working fine!");
         $this->info('Demo:Cron Cummand Run successfully!');
-        
+
     }
 }
