@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\savedPropertyAlert;
 use Auth;
 use App\User;
 use App\City;
@@ -66,9 +67,40 @@ class IndexController extends Controller
 
     }
 
+    public function savepropertyalert(Request $request)
+    {
+        $existingProperties=savedPropertyAlert::where('user_email',$request->email)
+            ->where('radius',$request->radius)
+            ->where('address',$request->address)->where('longitude',$request->longitude)->where('latitude',$request->latitude)
+            ->where('property_type',$request->property_type)
+            ->where('type',$request->type)
+            ->where('property_purpose',$request->property_purpose)
+            ->where('max_price',$request->max_price)->where('min_price',$request->min_price)
+            ->first();
+        if($existingProperties){
+            return redirect('/')->with('flash_message', 'Your have already created Property Alert for this Search');
+        }
+        else{
+            $property = new savedPropertyAlert;
+            $property->user_email = $request->email;
+            $property->radius = $request->radius;
+            $property->property_type = $request->property_type;
+            $property->type = $request->type;
+            $property->address = $request->address;
+            $property->longitude = $request->longitude;
+            $property->latitude = $request->latitude;
+            $property->property_purpose = $request->property_purpose;
+            $property->max_price = $request->max_price;
+            $property->min_price = $request->min_price;
+            $property->save();
+            return redirect('/')->with('flash_message', 'Property Alert Created Successfully, You will now receive Emails for Similar Properties');;
+        }
+    }
+
 
     public function index()
     {
+
     	if(!$this->alreadyInstalled()) {
             return redirect('install');
         }

@@ -114,6 +114,8 @@ Route::group(['middleware' => 'App\Http\Middleware\UserTypeMiddleware'], functio
 
     Route::get('/', 'IndexController@index');
 
+    Route::post('savepropertyalert', 'IndexController@savepropertyalert');
+
     Route::get('about-us', 'IndexController@aboutus_page');
 
     Route::get('careers-with-us', 'IndexController@careers_with_page');

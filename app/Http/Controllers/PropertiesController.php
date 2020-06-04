@@ -623,11 +623,11 @@ class PropertiesController extends Controller
              }
 
 
-
          }
 
+    	 $property_type = $type;
 
-        return view('pages.searchproperties',compact('properties'));
+        return view('pages.searchproperties',compact('properties','property_type','purpose','min_price','max_price','address','address_latitude','address_longitude','radius'));
     }
 
     public function searchkeywordproperties(Request $request)

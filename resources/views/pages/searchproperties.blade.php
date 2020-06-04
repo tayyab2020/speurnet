@@ -10,14 +10,20 @@
       <div class="container">
         <div class="row">
           <div class="col-md-10 col-md-offset-1 col-sm-12">
-            <div class="quick-search">
+            {{--<div class="quick-search">
               <div class="row">
                 {!! Form::open(array('url' => array('search'),'name'=>'search_form','id'=>'search_form','role'=>'form')) !!}
                   <div class="col-md-3 col-sm-3 col-xs-6">
-                    <div class="form-group">
-                      <label for="bedroom">Keyword</label>
-                      <input type="text" name="keyword" class="form-control" placeholder="Enter keyword">
-                    </div>
+
+                      <div class="form-group">
+                          <label for="city">City</label>
+
+                          <input class="form-control city-input" type="text" placeholder="City, State, Address" name="city_name" id="city-input" autocomplete="off">
+
+                          <input type="hidden" name="city_latitude" id="city-latitude"  />
+                          <input type="hidden" name="city_longitude" id="city-longitude"  />
+
+                      </div>
 
                   </div>
                   <!-- break -->
@@ -55,7 +61,12 @@
 
                 {!! Form::close() !!}
               </div>
-            </div>
+            </div>--}}
+
+              <div class="page-title">
+                  <h2>Search Results</h2>
+              </div>
+
             <ol class="breadcrumb">
               <li><a href="{{ URL::to('/') }}">Home</a></li>
               <li class="active">Search</li>
@@ -69,6 +80,7 @@
 
     <!-- begin:content -->
     <div id="content">
+
       <div class="container">
         <div class="row">
           <!-- begin:article -->

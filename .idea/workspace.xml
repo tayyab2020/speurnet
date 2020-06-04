@@ -2,10 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7fe7f36f-c82f-4504-8c0a-7874522d22c9" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/savedPropertyAlert.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/script.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/IndexController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/IndexController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PropertiesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PropertiesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/_particles/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/_particles/sidebar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/pages/searchproperties.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/searchproperties.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -219,7 +224,8 @@
       <workItem from="1590000311809" duration="15196000" />
       <workItem from="1590772989325" duration="605000" />
       <workItem from="1591044517234" duration="896000" />
-      <workItem from="1591048150531" duration="1565000" />
+      <workItem from="1591048150531" duration="1806000" />
+      <workItem from="1591200637713" duration="13792000" />
     </task>
     <servers />
   </component>
@@ -230,10 +236,14 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1588279314984">
+    <state x="491" y="215" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1591205994767">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1588279314984" />
+    <state x="491" y="215" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1591205994767" />
+    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1591222531916">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1591222531916" />
     <state x="93" y="93" width="1350" height="638" key="DiffContextDialog" timestamp="1587232487914">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -246,19 +256,23 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="93" y="93" width="1350" height="638" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1536.824@0.0.1536.824" timestamp="1589535961848" />
-    <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1589747271704">
+    <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1591200644499">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1589747271704" />
+    <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1591200644499" />
+    <state x="329" y="14" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1591222363428">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="329" y="14" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1536.824@0.0.1536.824" timestamp="1591222363428" />
     <state x="492" y="286" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1585578486261">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="492" y="286" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.738@0.0.1366.738" timestamp="1585578486261" />
-    <state x="427" y="113" width="805" height="599" key="find.popup" timestamp="1589886111632">
+    <state x="427" y="113" width="805" height="599" key="find.popup" timestamp="1591269653757">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="380" y="101" width="606" height="536" key="find.popup/0.0.1366.738@0.0.1366.738" timestamp="1585579040164" />
-    <state x="427" y="113" width="805" height="599" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1589886111632" />
+    <state x="427" y="113" width="805" height="599" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1591269653757" />
     <state x="425" y="187" key="run.anything.popup" timestamp="1590062063923">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
