@@ -668,7 +668,15 @@ class PropertiesController extends MainAdminController
             $city_id = $city->id;
         }
 
-        $features = implode(',', $request->property_features);
+		if($request->property_features)
+        {
+            $features = implode(',', $request->property_features);
+        }
+		else
+        {
+            $features = '';
+        }
+
 
 		if($request->wheelchair)
         {
