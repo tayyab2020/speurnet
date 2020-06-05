@@ -14,6 +14,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         Commands\DailyCron::class,
+        Commands\WeeklyCron::class,
     ];
 
     /**
@@ -25,6 +26,8 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('daily:cron')
+            ->everyMinute();
+        $schedule->command('weekly:cron')
             ->everyMinute();
     }
 

@@ -116,6 +116,8 @@ Route::group(['middleware' => 'App\Http\Middleware\UserTypeMiddleware'], functio
 
     Route::post('savepropertyalert', 'IndexController@savepropertyalert');
 
+    Route::get('properties/alerts/delete/{id}', 'IndexController@unsubscribeAlert');
+
     Route::get('about-us', 'IndexController@aboutus_page');
 
     Route::get('careers-with-us', 'IndexController@careers_with_page');

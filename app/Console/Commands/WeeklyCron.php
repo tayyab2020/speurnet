@@ -4,26 +4,25 @@ namespace App\Console\Commands;
 
 use App\Properties;
 use App\savedPropertyAlert;
-use App\saveJobAlert;
+use Illuminate\Console\Command;
 use Mail;
 use Crypt;
-use Illuminate\Console\Command;
 
-class DailyCron extends Command
+class WeeklyCron extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'daily:cron';
+    protected $signature = 'weekly:cron';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Daily Cron job for Properties alerts.';
+    protected $description = 'Weekly Cron job for Properties alerts.';
 
     /**
      * Create a new command instance.
@@ -42,12 +41,11 @@ class DailyCron extends Command
      */
     public function handle()
     {
-
-        $propertiesalerts = savedPropertyAlert::where('type','1')->get();
+        $propertiesalerts = savedPropertyAlert::where('type','2')->get();
 
         foreach ($propertiesalerts as $key=>$propertyalert){
 
-            $type = $propertyalert->type;
+            $type = $propertyalert->property_type;
             $purpose = $propertyalert->property_purpose;
             $min_price = $propertyalert->min_price;
             $max_price = $propertyalert->max_price;
@@ -123,13 +121,11 @@ class DailyCron extends Command
                 ),  function ($message) use($properties,$sender_email) {
                     $message->from(getcong('site_email'),getcong('site_name'));
                     $message->to($sender_email)
-                        ->subject('Daily Properties Alert based on your saved search by ' . getcong('site_name'));
+                        ->subject('Weekly Properties Alert based on your saved search by ' . getcong('site_name'));
                 });
         }
 
 
-        \Log::info("Daily Cron Job is working fine!");
-
-
+        \Log::info("Weekly Cron Job is working fine!");
     }
 }

@@ -48,6 +48,16 @@
 
                                 <div>
 
+                                    <label>Search Title: </label>
+
+                                    <input class="form-control" name="title" title="You will receive Emails with this title as a reminder" type="text" required placeholder="Enter any Title for saving this search">
+
+                                </div>
+
+                                <br>
+
+                                <div>
+
                                 <label>Property Alert Type: &nbsp</label>
 
                                 <p style="margin-top: 10px;">

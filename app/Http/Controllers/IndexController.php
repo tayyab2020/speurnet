@@ -12,6 +12,7 @@ use App\Subscriber;
 use App\Partners;
 
 use Mail;
+use Crypt;
 
 use Illuminate\Http\Request;
 
@@ -67,9 +68,19 @@ class IndexController extends Controller
 
     }
 
+    public function unsubscribeAlert($id)
+    {
+        $id = Crypt::decrypt($id);
+
+        $post = savedPropertyAlert::where('id',$id)->delete();
+
+        return redirect('/')->with('flash_message', 'Property Alert Unsubscribed Successfully.');;
+
+    }
+
     public function savepropertyalert(Request $request)
     {
-        
+
         $existingProperties=savedPropertyAlert::where('user_email',$request->email)
             ->where('radius',$request->radius)
             ->where('address',$request->address)->where('longitude',$request->longitude)->where('latitude',$request->latitude)
@@ -86,6 +97,7 @@ class IndexController extends Controller
         }
         else{
             $property = new savedPropertyAlert;
+            $property->title = $request->title;
             $property->user_email = $request->email;
             $property->radius = $request->radius;
             $property->property_type = $request->property_type;

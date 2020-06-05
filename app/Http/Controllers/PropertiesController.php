@@ -559,7 +559,6 @@ class PropertiesController extends Controller
 	    $inputs = $request->all();
 
 
-
     	/*$properties = Properties::where(array('property_type'=>$inputs['type'],'property_purpose'=>$inputs['purpose']))
 
     							->orderBy('id', 'desc')->paginate(9);*/
