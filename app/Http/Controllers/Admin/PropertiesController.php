@@ -677,6 +677,24 @@ class PropertiesController extends MainAdminController
             $features = '';
         }
 
+		if($request->sale_price)
+        {
+            $sale_price = $request->sale_price;
+        }
+		else
+        {
+            $sale_price = 0;
+        }
+
+        if($request->rent_price)
+        {
+            $rent_price = $request->rent_price;
+        }
+        else
+        {
+            $rent_price = 0;
+        }
+
 
 		if($request->wheelchair)
         {
@@ -696,8 +714,8 @@ class PropertiesController extends MainAdminController
 		$property->city_id = $city_id;
 		$property->property_type = $request->property_type;
 		$property->property_purpose = $request->property_purpose;
-		$property->sale_price = $request->sale_price;
-		$property->rent_price = $request->rent_price;
+		$property->sale_price = $sale_price;
+		$property->rent_price = $rent_price;
 		$property->address = $request->address;
         $property->map_latitude = $request->address_latitude;
         $property->map_longitude = $request->address_longitude;
