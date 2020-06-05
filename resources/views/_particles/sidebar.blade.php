@@ -4,9 +4,14 @@
                 <h3>Advance Search</h3>
               </div>
 
+
+                @if(Route::currentRouteName() == 'searchproperties')
+
                 @if(count($properties) != 0)
 
                 <button type="button" class="btn btn-warning btn-info btn-lg" data-toggle="modal" data-target="#myModal" style="width: 100%;font-size: 14px;margin-bottom: 20px;white-space: break-spaces;padding: 10px 0px;outline: none;"><i class="fa fa-bullhorn" aria-hidden="true"></i>&nbsp;Create Alert for this Result</button>
+
+                @endif
 
                 @endif
 
@@ -18,6 +23,9 @@
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                                 <h4 class="modal-title">Property Alert Creation</h4>
                             </div>
+
+                            @if(Route::currentRouteName() == 'searchproperties')
+
                             <div class="modal-body" style="display: inline-block;width: 100%;">
                                 {!! Form::open(array('url' => array('savepropertyalert'),'class'=>'form-horizontal padding-15','name'=>'job_form','id'=>'job_form','role'=>'form','enctype' => 'multipart/form-data')) !!}
                                 <label>Email Address: </label>
@@ -30,8 +38,10 @@
                                 <input name="latitude" type="hidden" value="{{$address_latitude}}">
                                 <input name="max_price" type="hidden" value="{{$max_price}}">
                                 <input name="min_price" type="hidden" value="{{$min_price}}">
-                                <input name="bedrooms" type="hidden" value="">
-                                <input name="bathrooms" type="hidden" value="">
+                                <input name="bedrooms" type="hidden" value="{{$bedrooms}}">
+                                <input name="bathrooms" type="hidden" value="{{$bathrooms}}">
+                                <input name="min_area" type="hidden" value="{{$min_area}}">
+                                <input name="max_area" type="hidden" value="{{$max_area}}">
                                 <input name="area" type="hidden" value="">
 
                                 <br>
@@ -42,12 +52,12 @@
 
                                 <p style="margin-top: 10px;">
                                     <input type="radio" id="test1" name="type" value="1" checked>
-                                    <label for="test1">Weekly</label>
+                                    <label for="test1">Daily</label>
                                 </p>
 
                                 <p>
                                     <input type="radio" id="test2" name="type" value="2">
-                                    <label for="test2">Monthly</label>
+                                    <label for="test2">Weekly</label>
                                 </p>
 
                                 </div>
@@ -56,6 +66,9 @@
                                 <button class="btn btn-success" type="submit" style="float: right">Create Property Alert</button>
                                 {!! Form::close() !!}
                             </div>
+
+                                @endif
+
                         </div>
                     </div>
                 </div>
@@ -64,33 +77,33 @@
                <div class="form-group">
                       <label for="city">City</label>
 
-                   <input class="form-control city-input" value="{{$address}}" type="text" placeholder="City, State, Address" name="city_name" id="city-input" autocomplete="off">
+                   <input class="form-control city-input" @if(Route::currentRouteName() == 'searchproperties') value="{{$address}}" @else value="" @endif type="text" placeholder="City, State, Address" name="city_name" id="city-input" autocomplete="off">
 
-                   <input type="hidden" value="{{$address_latitude}}" name="city_latitude" id="city-latitude"  />
-                   <input type="hidden" value="{{$address_longitude}}" name="city_longitude" id="city-longitude"  />
+                   <input type="hidden" @if(Route::currentRouteName() == 'searchproperties') value="{{$address_latitude}}" @else value="" @endif name="city_latitude" id="city-latitude"  />
+                   <input type="hidden" @if(Route::currentRouteName() == 'searchproperties') value="{{$address_longitude}}" @else value="" @endif name="city_longitude" id="city-longitude"  />
 
                     </div>
 
                 <div class="form-group">
                     <label for="purpose">Radius</label>
                     <select class="form-control" name="radius">
-                        <option value="0" @if($radius == 0) selected @endif>0 KM</option>
-                        <option value="1" @if($radius == 1) selected @endif>1 KM</option>
-                        <option value="2" @if($radius == 2) selected @endif>2 KM</option>
-                        <option value="5" @if($radius == 5) selected @endif>5 KM</option>
-                        <option value="10" @if($radius == 10) selected @endif>10 KM</option>
-                        <option value="15" @if($radius == 15) selected @endif>15 KM</option>
-                        <option value="30" @if($radius == 30) selected @endif>30 KM</option>
-                        <option value="50" @if($radius == 50) selected @endif>50 KM</option>
-                        <option value="100" @if($radius == 100) selected @endif>100 KM</option>
+                        <option value="0" @if(Route::currentRouteName() == 'searchproperties') @if($radius == 0) selected @endif @endif>0 KM</option>
+                        <option value="1" @if(Route::currentRouteName() == 'searchproperties') @if($radius == 1) selected @endif @endif>1 KM</option>
+                        <option value="2" @if(Route::currentRouteName() == 'searchproperties') @if($radius == 2) selected @endif @endif>2 KM</option>
+                        <option value="5" @if(Route::currentRouteName() == 'searchproperties') @if($radius == 5) selected @endif @endif>5 KM</option>
+                        <option value="10" @if(Route::currentRouteName() == 'searchproperties') @if($radius == 10) selected @endif @endif>10 KM</option>
+                        <option value="15" @if(Route::currentRouteName() == 'searchproperties') @if($radius == 15) selected @endif @endif>15 KM</option>
+                        <option value="30" @if(Route::currentRouteName() == 'searchproperties') @if($radius == 30) selected @endif @endif>30 KM</option>
+                        <option value="50" @if(Route::currentRouteName() == 'searchproperties') @if($radius == 50) selected @endif @endif>50 KM</option>
+                        <option value="100" @if(Route::currentRouteName() == 'searchproperties') @if($radius == 100) selected @endif @endif>100 KM</option>
                     </select>
                 </div>
 
                 <div class="form-group">
                       <label for="purpose">Purpose</label>
                       <select class="form-control" name="purpose">
-                        <option value="Sale" @if($purpose == 'Sale') selected @endif>For Sale</option>
-                        <option value="Rent" @if($purpose == 'Rent') selected @endif>For Rent</option>
+                        <option value="Sale" @if(Route::currentRouteName() == 'searchproperties') @if($purpose == 'Sale') selected @endif @endif>For Sale</option>
+                        <option value="Rent" @if(Route::currentRouteName() == 'searchproperties') @if($purpose == 'Rent') selected @endif @endif>For Rent</option>
                       </select>
                </div>
                <div class="form-group">
@@ -98,20 +111,42 @@
                       <select class="form-control" name="type">
 
                         @foreach(\App\Types::orderBy('types')->get() as $type)
-                        <option value="{{$type->id}}" @if($property_type == $type->id) selected @endif>{{$type->types}}</option>
+                        <option value="{{$type->id}}" @if(Route::currentRouteName() == 'searchproperties') @if($property_type == $type->id) selected @endif @endif>{{$type->types}}</option>
 						@endforeach
 
                       </select>
               </div>
 
+
                 <div class="form-group">
                       <label for="minprice">Min Price</label>
-                      <input type="text" name="min_price" value="{{$min_price}}" class="form-control" placeholder="Min Price (number)">
+                      <input type="number" name="min_price" @if(Route::currentRouteName() == 'searchproperties') value="{{$min_price}}" @else value="" @endif class="form-control" placeholder="Min Price (number)">
                 </div>
+
                 <div class="form-group">
                       <label for="maxprice">Max Price</label>
-                      <input type="text" name="max_price" value="{{$max_price}}" class="form-control" placeholder="Max Price (number)">
-                    </div>
+                      <input type="number" name="max_price" @if(Route::currentRouteName() == 'searchproperties') value="{{$max_price}}" @else value="" @endif class="form-control" placeholder="Max Price (number)">
+                </div>
+
+                <div class="form-group">
+                    <label for="minprice">Bedrooms</label>
+                    <input type="number" name="bedrooms" @if(Route::currentRouteName() == 'searchproperties') value="{{$bedrooms}}" @else value="" @endif class="form-control" placeholder="No. of Bedrooms">
+                </div>
+
+                <div class="form-group">
+                    <label for="minprice">Bathrooms</label>
+                    <input type="number" name="bathrooms" @if(Route::currentRouteName() == 'searchproperties') value="{{$bathrooms}}" @else value="" @endif class="form-control" placeholder="No. of Bathrooms">
+                </div>
+
+                <div class="form-group">
+                    <label for="minprice">Min Area (m2)</label>
+                    <input type="number" name="min_area" @if(Route::currentRouteName() == 'searchproperties') value="{{$min_area}}" @else value="" @endif class="form-control" placeholder="Minimum SQFT Area (m2)">
+                </div>
+
+                <div class="form-group">
+                    <label for="minprice">Max Area (m2)</label>
+                    <input type="number" name="max_area" @if(Route::currentRouteName() == 'searchproperties') value="{{$max_area}}" @else value="" @endif class="form-control" placeholder="Maximum SQFT Area (m2)">
+                </div>
 
                 <input type="submit" name="submit" value="Search" class="btn btn-primary btn-block">
               {!! Form::close() !!}

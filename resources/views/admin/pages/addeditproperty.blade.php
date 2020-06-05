@@ -408,8 +408,9 @@
 
                                             <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-crop-alt"></i></div>
 
-                                            <input type="text" name="area" @if(old('area') != '') value="{{old('area')}}" @else value="{{ isset($property->area) ? $property->area : null }}" @endif placeholder="800m2" class="quantity-field stepper-step-2-validate" style="border: 0;margin: 0;float: left;width: 80%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
-
+                                            <input type="number" step="1" max="" name="area" @if(old('area') != '') value="{{old('area')}}" @else value="{{ isset($property->area) ? $property->area : null }}" @endif placeholder="800m2" class="quantity-field stepper-step-2-validate" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+                                            <input type="button" value="+" class="button-plus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d7d7d7;margin-top: -0.1px;">
+                                            <input type="button" value="-" class="button-minus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;margin-top: -0.1px;">
 
                                         </div>
 
@@ -423,8 +424,9 @@
 
                                             <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-arrows-alt-h"></i></div>
 
-                                            <input type="text" name="volume" @if(old('volume') != '') value="{{old('volume')}}" @else value="{{ isset($property->volume) ? $property->volume : null }}" @endif placeholder="800m3" class="quantity-field" style="border: 0;margin: 0;float: left;width: 80%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
-
+                                            <input type="number" step="1" max="" name="volume" @if(old('volume') != '') value="{{old('volume')}}" @else value="{{ isset($property->volume) ? $property->volume : null }}" @endif placeholder="800m3" class="quantity-field" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+                                            <input type="button" value="+" class="button-plus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d7d7d7;margin-top: -0.1px;">
+                                            <input type="button" value="-" class="button-minus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;margin-top: -0.1px;">
 
                                         </div>
 
@@ -465,7 +467,9 @@
 
                                         <div class="right-content" style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto;">
 
-                                            <input type="text" @if(old('backyard') != '') value="{{old('backyard')}}" @else value="{{ isset($property->backyard) ? $property->backyard : null }}" @endif name="backyard" placeholder="800m2" class="quantity-field" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+                                            <input type="number" step="1" max="" @if(old('backyard') != '') value="{{old('backyard')}}" @else value="{{ isset($property->backyard) ? $property->backyard : null }}" @endif name="backyard" placeholder="800m2" class="quantity-field" style="border: 0;margin: 0;float: left;width: 70%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+                                            <input type="button" value="+" class="button-plus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d7d7d7;margin-top: -0.1px;">
+                                            <input type="button" value="-" class="button-minus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;margin-top: -0.1px;">
 
                                         </div>
 
@@ -478,7 +482,9 @@
 
                                         <div class="right-content" style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto;">
 
-                                            <input type="text" @if(old('frontyard') != '') value="{{old('frontyard')}}" @else value="{{ isset($property->frontyard) ? $property->frontyard : null }}" @endif name="frontyard" placeholder="800m2" class="quantity-field" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+                                            <input type="number" step="1" max="" @if(old('frontyard') != '') value="{{old('frontyard')}}" @else value="{{ isset($property->frontyard) ? $property->frontyard : null }}" @endif name="frontyard" placeholder="800m2" class="quantity-field" style="border: 0;margin: 0;float: left;width: 70%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+                                            <input type="button" value="+" class="button-plus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d7d7d7;margin-top: -0.1px;">
+                                            <input type="button" value="-" class="button-minus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;margin-top: -0.1px;">
 
                                         </div>
 
@@ -492,7 +498,9 @@
 
                                             <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-warehouse"></i></div>
 
-                                            <input type="text"  @if(old('garage') != '') value="{{old('garage')}}" @else value="{{ isset($property->garage) ? $property->garage : null }}" @endif name="garage" placeholder="800m2" class="quantity-field stepper-step-2-validate" style="border: 0;margin: 0;float: left;width: 80%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+                                            <input type="number" step="1" max="" @if(old('garage') != '') value="{{old('garage')}}" @else value="{{ isset($property->garage) ? $property->garage : null }}" @endif name="garage" placeholder="800m2" class="quantity-field stepper-step-2-validate" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+                                            <input type="button" value="+" class="button-plus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d7d7d7;margin-top: -0.1px;">
+                                            <input type="button" value="-" class="button-minus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;margin-top: -0.1px;">
 
                                         </div>
 
@@ -505,7 +513,9 @@
 
                                         <div class="right-content" style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto;">
 
-                                            <input type="text" @if(old('terrace') != '') value="{{old('terrace')}}" @else value="{{ isset($property->terrace) ? $property->terrace : null }}" @endif name="terrace" placeholder="800m2" class="quantity-field" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+                                            <input type="number" step="1" max="" @if(old('terrace') != '') value="{{old('terrace')}}" @else value="{{ isset($property->terrace) ? $property->terrace : null }}" @endif name="terrace" placeholder="800m2" class="quantity-field" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+                                            <input type="button" value="+" class="button-plus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d7d7d7;margin-top: -0.1px;">
+                                            <input type="button" value="-" class="button-minus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;margin-top: -0.1px;">
 
                                         </div>
 
@@ -1016,7 +1026,7 @@
                                             <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
 
 
-                                                <input type="text" id="sale_price_field" name="sale_price" @if(old('sale_price')) value="{{old('sale_price')}}" @else value="{{ isset($property->sale_price) ? $property->sale_price : null }}" @endif placeholder="800000" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control stepper-step-3-validate"  >
+                                                <input type="number" id="sale_price_field" name="sale_price" @if(old('sale_price')) value="{{old('sale_price')}}" @else value="{{ isset($property->sale_price) ? $property->sale_price : null }}" @endif placeholder="800000" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control stepper-step-3-validate"  >
 
 
                                             </div>
@@ -1036,7 +1046,7 @@
                                             <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
 
 
-                                                <input type="text" id="rent_price_field" name="rent_price" @if(old('rent_price')) value="{{old('rent_price')}}" @else value="{{ isset($property->rent_price) ? $property->rent_price : null }}" @endif placeholder="10000" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control"  >
+                                                <input type="number" id="rent_price_field" name="rent_price" @if(old('rent_price')) value="{{old('rent_price')}}" @else value="{{ isset($property->rent_price) ? $property->rent_price : null }}" @endif placeholder="10000" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control"  >
 
 
                                             </div>
@@ -1057,7 +1067,7 @@
                                             <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
 
 
-                                                <input type="text" id="sale_price_field" name="sale_price" @if(old('sale_price')) value="{{old('sale_price')}}" @else value="{{ isset($property->sale_price) ? $property->sale_price : null }}" @endif placeholder="800000" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control"  >
+                                                <input type="number" id="sale_price_field" name="sale_price" @if(old('sale_price')) value="{{old('sale_price')}}" @else value="{{ isset($property->sale_price) ? $property->sale_price : null }}" @endif placeholder="800000" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control"  >
 
 
                                             </div>
@@ -1077,7 +1087,7 @@
                                             <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
 
 
-                                                <input type="text" id="rent_price_field" name="rent_price" @if(old('rent_price')) value="{{old('rent_price')}}" @else value="{{ isset($property->rent_price) ? $property->rent_price : null }}" @endif placeholder="10000" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control stepper-step-3-validate"  >
+                                                <input type="number" id="rent_price_field" name="rent_price" @if(old('rent_price')) value="{{old('rent_price')}}" @else value="{{ isset($property->rent_price) ? $property->rent_price : null }}" @endif placeholder="10000" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control stepper-step-3-validate"  >
 
 
                                             </div>
@@ -1098,7 +1108,7 @@
                                             <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
 
 
-                                                <input type="text" id="sale_price_field" name="sale_price" @if(old('sale_price')) value="{{old('sale_price')}}" @else value="{{ isset($property->sale_price) ? $property->sale_price : null }}" @endif placeholder="800000" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control stepper-step-3-validate"  >
+                                                <input type="number" id="sale_price_field" name="sale_price" @if(old('sale_price')) value="{{old('sale_price')}}" @else value="{{ isset($property->sale_price) ? $property->sale_price : null }}" @endif placeholder="800000" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control stepper-step-3-validate"  >
 
 
                                             </div>
@@ -1118,7 +1128,7 @@
                                             <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
 
 
-                                                <input type="text" id="rent_price_field" name="rent_price" @if(old('rent_price')) value="{{old('rent_price')}}" @else value="{{ isset($property->rent_price) ? $property->rent_price : null }}" @endif placeholder="10000" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control"  >
+                                                <input type="number" id="rent_price_field" name="rent_price" @if(old('rent_price')) value="{{old('rent_price')}}" @else value="{{ isset($property->rent_price) ? $property->rent_price : null }}" @endif placeholder="10000" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control"  >
 
 
                                             </div>

@@ -365,13 +365,13 @@
                           </tr>
                           <tr>
                             <td><strong>Area <small>(m2)</small></strong></td>
-                            <td>{{$property->area}}</sup> </td>
+                            <td>{{$property->area}} m2</sup> </td>
                           </tr>
 
                             @if($property->garage)
                                 <tr>
                                     <td><strong>Garage <small>(m2)</small></strong></td>
-                                    <td>{{$property->garage}}</sup> </td>
+                                    <td>{{$property->garage}} m2</sup> </td>
                                 </tr>
                             @endif
 
@@ -415,7 +415,7 @@
 
                                 <tr>
                                     <td><strong>Volume <small>(m3)</small></strong></td>
-                                    <td>{{$property->volume}}</sup> </td>
+                                    <td>{{$property->volume}} m3</sup> </td>
                                 </tr>
 
                             @endif
@@ -442,7 +442,7 @@
 
                                 <tr>
                                     <td><strong>Frontyard <small>(m2)</small></strong></td>
-                                    <td>{{$property->frontyard}}</sup> </td>
+                                    <td>{{$property->frontyard}} m2</sup> </td>
                                 </tr>
 
                             @endif
@@ -451,7 +451,7 @@
 
                                 <tr>
                                     <td><strong>Terrace <small>(m2)</small></strong></td>
-                                    <td>{{$property->terrace}}</sup> </td>
+                                    <td>{{$property->terrace}} m2</sup> </td>
                                 </tr>
 
                             @endif

@@ -577,20 +577,23 @@ class PropertiesController extends Controller
 	 	$purpose=$request->purpose;
 	 	$min_price=$request->min_price;
 	 	$max_price=$request->max_price;
+        $min_area=$request->min_area;
+        $max_area=$request->max_area;
 	 	$address = $request->city_name;
 	 	$address_latitude = $request->city_latitude;
 	 	$address_longitude = $request->city_longitude;
 	 	$radius = $request->radius;
-        $properties = [];
-        $i = 0;
+	 	$bedrooms = $request->bedrooms;
+	 	$bathrooms = $request->bathrooms;
+        $properties_search = [];
 
 
-    	 $properties_search = Properties::SearchByKeyword($type,$purpose,$price,$min_price,$max_price)->get();
+    	 $properties = Properties::SearchByKeyword($type,$purpose,$price,$min_price,$max_price,$min_area,$max_area,$bathrooms,$bedrooms)->get();
 
 
-    	 if($address_latitude)
+    	 if($address && $address_latitude && $address_longitude)
          {
-             foreach ($properties_search as $key)
+             foreach ($properties as $key)
              {
                  $property_latitude = $key->map_latitude;
                  $property_longitude = $key->map_longitude;
@@ -611,23 +614,21 @@ class PropertiesController extends Controller
 
                      if($property_radius <= $radius)
                      {
-
-                         $properties[$i] = array($key);
-
-                         $i = $i + 1;
-
+                         array_push($properties_search,$key);
                      }
                  }
 
 
              }
 
+             $properties = $properties_search;
 
          }
 
+
     	 $property_type = $type;
 
-        return view('pages.searchproperties',compact('properties','property_type','purpose','min_price','max_price','address','address_latitude','address_longitude','radius'));
+        return view('pages.searchproperties',compact('properties','property_type','purpose','min_price','max_price','address','address_latitude','address_longitude','radius','min_area','max_area','bedrooms','bathrooms'));
     }
 
     public function searchkeywordproperties(Request $request)

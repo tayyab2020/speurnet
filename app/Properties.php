@@ -18,45 +18,39 @@ class Properties extends Model
         static::retrieved(function ($model) {});
     }*/
 
-    public function scopeSearchByKeyword($query,$type,$purpose,$price,$min_price,$max_price)
+    public function scopeSearchByKeyword($query,$type,$purpose,$price,$min_price,$max_price,$min_area,$max_area,$bathrooms,$bedrooms)
     {
 
-
-        if ($min_price!='' and $max_price!='') {
-            $query->where(function ($query) use ($type,$purpose,$price,$min_price,$max_price) {
-                $query->where("property_type", "$type")
-                    ->where("property_purpose", "$purpose")
-                    ->whereRaw("$price >= $min_price")
-                    ->whereRaw("$price <= $max_price");
+        $query = $query->where("property_type", "$type")
+            ->where("property_purpose", "$purpose");
 
 
-            });
-        }
-        elseif ($min_price!='') {
-            $query->where(function ($query) use ($type,$purpose,$price,$min_price,$max_price) {
-                $query->where("property_type", "$type")
-                    ->where("property_purpose", "$purpose")
-                    ->whereRaw("$price >= $min_price");
-
-            });
-        }
-        elseif ($max_price!='') {
-            $query->where(function ($query) use ($type,$purpose,$price,$min_price,$max_price) {
-                $query->where("property_type", "$type")
-                    ->where("property_purpose", "$purpose")
-                    ->whereRaw("$price <= $max_price");
-
-            });
-        }
-        else
+        if($min_price)
         {
-			 $query->where(function ($query) use ($type,$purpose,$price,$min_price,$max_price) {
-                $query->where("property_type", "$type")
-                    ->where("property_purpose", "$purpose");
+            $query->whereRaw("$price >= $min_price");
+        }
+        if($max_price)
+        {
 
+            $query->whereRaw("$price <= $max_price");
+        }
+        if($min_area)
+        {
+            $query->where("area" ,'>=', $min_area);
+        }
+        if($max_area)
+        {
+            $query->where("area" ,'<=', $max_area);
+        }
+        if($bathrooms)
+        {
+            $query->where("bathrooms", "$bathrooms");
+        }
+        if($bedrooms)
+        {
+            $query->where("bedrooms", "$bedrooms");
+        }
 
-            });
-		}
 
         return $query;
     }
