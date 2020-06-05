@@ -69,7 +69,7 @@ class WeeklyCron extends Command
                 $price='sale_price';
             }
 
-            $properties = Properties::SearchByKeyword($type,$purpose,$price,$min_price,$max_price,$min_area,$max_area,$bathrooms,$bedrooms)->get();
+            $properties = Properties::SearchByKeyword($type,$purpose,$price,$min_price,$max_price,$min_area,$max_area,$bathrooms,$bedrooms)->where('is_sold',0)->where('is_rented',0)->get();
 
 
             if($address && $address_latitude && $address_longitude)
