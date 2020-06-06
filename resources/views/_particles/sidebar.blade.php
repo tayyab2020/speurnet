@@ -7,11 +7,7 @@
 
                 @if(Route::currentRouteName() == 'searchproperties')
 
-                @if(count($properties) != 0)
-
                 <button type="button" class="btn btn-warning btn-info btn-lg" data-toggle="modal" data-target="#myModal" style="width: 100%;font-size: 14px;margin-bottom: 20px;white-space: break-spaces;padding: 10px 0px;outline: none;"><i class="fa fa-bullhorn" aria-hidden="true"></i>&nbsp;Create Alert for this Result</button>
-
-                @endif
 
                 @endif
 
@@ -27,6 +23,63 @@
                             @if(Route::currentRouteName() == 'searchproperties')
 
                             <div class="modal-body" style="display: inline-block;width: 100%;">
+
+                                <div class="form-group">
+
+                                    <p>
+                                        By saving your search you will receive notifications based on the following search criteria:
+                                    </p>
+
+                                    @if($address)
+                                            <span class="button-applied-filter span-heading">{{$address}}</span>
+
+                                            <span class="button-applied-filter span-heading">{{$radius}} KM</span>
+
+                                    @endif
+
+                                    @if($property_type)
+                                            <span class="button-applied-filter span-heading">{{ getPropertyTypeName($property_type)->types }}</span>
+                                    @endif
+
+                                    @if($purpose)
+                                            <span class="button-applied-filter span-heading">For {{$purpose}}</span>
+                                    @endif
+
+                                    @if($min_price != '' || $max_price != '')
+
+                                        @if($min_price != '' && $max_price != '')
+                                        <span class="button-applied-filter span-heading">€ {{$min_price}} - € {{$max_price}}</span>
+                                        @elseif($min_price != '')
+                                        <span class="button-applied-filter span-heading">€ {{$min_price}}+</span>
+                                        @elseif($max_price != '')
+                                        <span class="button-applied-filter span-heading">€ 0 - € {{$max_price}}</span>
+                                        @endif
+
+                                    @endif
+
+                                    @if($bedrooms)
+                                        <span class="button-applied-filter span-heading">{{$bedrooms}}@if($bedrooms!=1) Bedrooms @else Bedroom @endif</span>
+                                    @endif
+
+                                    @if($bathrooms)
+                                        <span class="button-applied-filter span-heading">{{$bathrooms}}@if($bathrooms!=1) Bathrooms @else Bathrooms @endif</span>
+                                    @endif
+
+                                    @if($min_area != '' || $max_area != '')
+
+                                        @if($min_area != '' && $max_area != '')
+                                            <span class="button-applied-filter span-heading">{{$min_area}} m² - {{$max_area}} m² (Plot Area)</span>
+                                        @elseif($min_area != '')
+                                            <span class="button-applied-filter span-heading">{{$min_area}}+ m² (Plot Area)</span>
+                                        @elseif($max_area != '')
+                                            <span class="button-applied-filter span-heading">0 m² - {{$max_area}} m² (Plot Area)</span>
+                                        @endif
+
+                                    @endif
+
+
+                                </div>
+
                                 {!! Form::open(array('url' => array('savepropertyalert'),'class'=>'form-horizontal padding-15','name'=>'job_form','id'=>'job_form','role'=>'form','enctype' => 'multipart/form-data')) !!}
                                 <label>Email Address: </label>
                                 <input class="form-control" name="email" title="You will receive Emails on this Address" type="email" required placeholder="Enter Email for Job Alert Receiving" value="{{isset(Auth::user()->email)?Auth::user()->email:''}}">
@@ -50,7 +103,7 @@
 
                                     <label>Search Title: </label>
 
-                                    <input class="form-control" name="title" title="You will receive Emails with this title as a reminder" type="text" required placeholder="Enter any Title for saving this search">
+                                    <input autocomplete="off" class="form-control" name="title" title="You will receive Emails with this title as a reminder" type="text" required placeholder="Enter any Title for saving this search">
 
                                 </div>
 
@@ -230,6 +283,24 @@
         opacity: 1;
         -webkit-transform: scale(1);
         transform: scale(1);
+    }
+
+    .span-heading
+    {
+        text-align: center;
+        background-color: #e6f2f7;
+        color: #0071b3;
+        line-height: 2;
+        padding: 0 1rem 0 1rem;
+        margin: 0 .375rem .375rem 0;
+        display: inline-block;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        max-width: 100%;
+        height: auto;
+        border: 0;
+        font-family: sans-serif;
     }
 </style>
 
