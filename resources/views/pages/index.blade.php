@@ -48,7 +48,7 @@
                             </div>
 
                             <div class="property-content">
-                                <h3><a>{{$temp->name}}</a> <small>{{$temp->email}}</small></h3>
+                                <h3><a href="{{URL::to('agents')}}">{{$temp->name}}</a> <small>{{$temp->email}}</small></h3>
                             </div>
                         </div>
                     </div>
@@ -89,7 +89,7 @@
                 <span><i class="fa fa-male"></i> {{$property->bathrooms}}</span>
               </div>
               <div class="property-content">
-                <h3><a href="{{URL::to('properties/'.$property->property_slug)}}">{{ Str::limit($property->property_name,35) }}</a> <small>{{ Str::limit($property->address,40) }}</small></h3>
+                <h3><a  style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;" href="{{URL::to('properties/'.$property->property_slug)}}">{{ Str::limit($property->property_name,35) }}</a> <small>{{ Str::limit($property->address,40) }}</small></h3>
               </div>
             </div>
           </div>
