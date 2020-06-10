@@ -585,6 +585,7 @@ class PropertiesController extends Controller
 	 	$bedrooms = $request->bedrooms;
 	 	$bathrooms = $request->bathrooms;
         $properties_search = [];
+        $similar_properties = [];
 
 
     	 $properties = Properties::SearchByKeyword($type,$purpose,$price,$min_price,$max_price,$min_area,$max_area,$bathrooms,$bedrooms)->get();
@@ -614,6 +615,8 @@ class PropertiesController extends Controller
                      if($property_radius <= $radius)
                      {
                          array_push($properties_search,$key);
+                         $similar_property=Properties::where("property_purpose", "$key->purpose")->where("id","!=", "$key->id")->orWhere("city_id", "$key->city_id")->orWhere("property_type", "$key->type")->get();
+                         $similar_properties=array_merge($similar_properties,json_decode($similar_property));
                      }
                  }
 
@@ -623,11 +626,16 @@ class PropertiesController extends Controller
              $properties = $properties_search;
 
          }
-
-
-    	 $property_type = $type;
-
-        return view('pages.searchproperties',compact('properties','property_type','purpose','min_price','max_price','address','address_latitude','address_longitude','radius','min_area','max_area','bedrooms','bathrooms'));
+    	 foreach ($similar_properties as $key=>$property){
+    	     foreach ($properties_search as $key2=>$propert2){
+    	         if($property->id==$propert2->id){
+                     unset($similar_properties[$key]);
+                 }
+             }
+         }
+        $property_type = $type;
+//        $similar_properties=array_unique($similar_properties, SORT_REGULAR);
+        return view('pages.searchproperties',compact('properties','property_type','purpose','min_price','max_price','address','address_latitude','address_longitude','radius','min_area','max_area','bedrooms','bathrooms','similar_properties'));
     }
 
     public function searchkeywordproperties(Request $request)
