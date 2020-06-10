@@ -87,43 +87,70 @@
           <div class="col-md-9 col-md-push-3">
 
             <!-- begin:product -->
-            <div class="row container-realestate">
 
                 @if(count($properties) == 0)
-
                     <h1>No Properties found..</h1>
+                @else
+                  <div class="row container-realestate">
 
+                      @foreach($properties as $i => $property)
+                          <div class="col-md-4 col-sm-6 col-xs-12">
+                              <div class="property-container">
+                                  <div class="property-image">
+
+                                      <img src="{{ URL::asset('upload/properties/'.$property->featured_image.'-s.jpg') }}" alt="{{ $property->property_name }}">
+                                      <div class="property-price">
+                                          <h4>{{ getPropertyTypeName($property->property_type)->types }}</h4>
+                                          <span>{{getcong('currency_sign')}}@if($property->sale_price) {{$property->sale_price}} @else {{$property->rent_price}} @endif</span>
+                                      </div>
+                                      <div class="property-status">
+                                          <span>For {{$property->property_purpose}}</span>
+                                      </div>
+                                  </div>
+                                  <div class="property-features">
+                                      <span><i class="fa fa-home"></i> {{$property->area}}</span>
+                                      <span><i class="fa fa-hdd-o"></i> {{$property->bedrooms}}</span>
+                                      <span><i class="fa fa-male"></i> {{$property->bathrooms}}</span>
+                                  </div>
+                                  <div class="property-content">
+                                      <h3><a href="{{URL::to('properties/'.$property->property_slug)}}">{{ Str::limit($property->property_name,35) }}</a> <small>{{ Str::limit($property->address,40) }}</small></h3>
+                                  </div>
+                              </div>
+                          </div>
+                          <!-- break -->
+                      @endforeach
+                  </div>
+                  <div class="row container-realestate">
+                      <div dir="rtl" class="similarProperties">
+                          @if(count($similar_properties)>0)
+                              @foreach($similar_properties as $i => $property)
+                                  <div class="col-md-4 col-sm-6 col-xs-12">
+                                      <div class="property-container">
+                                          <div class="property-image">
+                                              <img src="{{ URL::asset('upload/properties/'.$property->featured_image.'-s.jpg') }}" alt="{{ $property->property_name }}">
+                                              <div class="property-price">
+                                                  <h4>{{ getPropertyTypeName($property->property_type)->types }}</h4>
+                                                  <span>{{getcong('currency_sign')}}@if($property->sale_price) {{$property->sale_price}} @else {{$property->rent_price}} @endif</span>
+                                              </div>
+                                              <div class="property-status">
+                                                  <span>For {{$property->property_purpose}}</span>
+                                              </div>
+                                          </div>
+                                          <div class="property-features">
+                                              <span><i class="fa fa-home"></i> {{$property->area}}</span>
+                                              <span><i class="fa fa-hdd-o"></i> {{$property->bedrooms}}</span>
+                                              <span><i class="fa fa-male"></i> {{$property->bathrooms}}</span>
+                                          </div>
+                                          <div class="property-content">
+                                              <h3><a href="{{URL::to('properties/'.$property->property_slug)}}">{{ Str::limit($property->property_name,35) }}</a> <small>{{ Str::limit($property->address,40) }}</small></h3>
+                                          </div>
+                                      </div>
+                                  </div>
+                              @endforeach
+                          @endif
+                      </div>
+                  </div>
                 @endif
-
-           	  @foreach($properties as $i => $property)
-             	 <div class="col-md-4 col-sm-6 col-xs-12">
-            <div class="property-container">
-              <div class="property-image">
-
-                <img src="{{ URL::asset('upload/properties/'.$property->featured_image.'-s.jpg') }}" alt="{{ $property->property_name }}">
-                <div class="property-price">
-                  <h4>{{ getPropertyTypeName($property->property_type)->types }}</h4>
-                  <span>{{getcong('currency_sign')}}@if($property->sale_price) {{$property->sale_price}} @else {{$property->rent_price}} @endif</span>
-                </div>
-                <div class="property-status">
-                  <span>For {{$property->property_purpose}}</span>
-                </div>
-              </div>
-              <div class="property-features">
-                <span><i class="fa fa-home"></i> {{$property->area}}</span>
-                <span><i class="fa fa-hdd-o"></i> {{$property->bedrooms}}</span>
-                <span><i class="fa fa-male"></i> {{$property->bathrooms}}</span>
-              </div>
-              <div class="property-content">
-                <h3><a href="{{URL::to('properties/'.$property->property_slug)}}">{{ Str::limit($property->property_name,35) }}</a> <small>{{ Str::limit($property->address,40) }}</small></h3>
-              </div>
-            </div>
-          </div>
-              <!-- break -->
-           	  @endforeach
-
-
-            </div>
             <!-- end:product -->
 
           </div>
@@ -137,5 +164,12 @@
       </div>
     </div>
     <!-- end:content -->
-
+ <script>
+     $(document).ready(function(){
+         $('.similarProperties').slick({
+             rtl: true
+         });
+     });
+ </script>
 @endsection
+
