@@ -35,35 +35,13 @@
 
                                     </div>
 
-                                    <button type="button" value="Filters" class="btn btn-primary" style="position: absolute;right: 200px;top: 17px;color: black;background: transparent;border-color: #9f9c9c;height: 40px;padding-top: 8px;outline: none;"><span><i class="fa fa-filter" aria-hidden="true" style="margin-right: 10px;"></i> Filters</span></button>
+                                    <button type="button" value="Filters" href="#myModal" data-toggle="modal" class="btn btn-primary" style="position: absolute;right: 200px;top: 17px;color: black;background: transparent;border-color: #9f9c9c;height: 40px;padding-top: 8px;outline: none;"><span><i class="fa fa-filter" aria-hidden="true" style="margin-right: 10px;"></i> Filters</span></button>
 
                                     <button type="submit" name="submit" value="Search" class="btn btn-primary" style="padding: 0px 35px;"><span><i class="fa fa-search" aria-hidden="true" style="margin-right: 10px;"></i> Search</span></button>
 
                                 </div>
 
-                                {{--<div class="form-group">
-                                    <label for="purpose">Radius</label>
-                                    <select class="form-control" name="radius">
-                                        <option value="0">0 KM</option>
-                                        <option value="1">1 KM</option>
-                                        <option value="2">2 KM</option>
-                                        <option value="5">5 KM</option>
-                                        <option value="10">10 KM</option>
-                                        <option value="15">15 KM</option>
-                                        <option value="30">30 KM</option>
-                                        <option value="50">50 KM</option>
-                                        <option value="100">100 KM</option>
-                                    </select>
-                                </div>
 
-
-                                <div class="form-group">
-                                    <label for="purpose">Purpose</label>
-                                    <select class="form-control" name="purpose">
-                                        <option value="Sale">For Sale</option>
-                                        <option value="Rent">For Rent</option>
-                                    </select>
-                                </div>--}}
 
                             </div>
 
@@ -71,34 +49,116 @@
                             <!-- break -->
 
 
-                            {{--<div class="col-md-6 col-sm-6 col-xs-6">
 
-                                <div class="form-group">
-                                    <label for="type">Type</label>
-                                    <select class="form-control" name="type">
-                                        @foreach(\App\Types::orderBy('types')->get() as $type)
-                                            <option value="{{$type->id}}">{{$type->types}}</option>
-                                        @endforeach
+                            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div class="modal-dialog modal-full" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Filters</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">×</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body p-4" id="result">
 
-                                    </select>
+                                            <div class="row" style="display: flex;">
+
+                                                <div class="col-sm-4 col-md-4 col-lg-4" style="margin: auto;">
+
+                                                    <div class="form-group">
+                                                        <label for="purpose">Radius</label>
+                                                        <select class="form-control" name="radius">
+                                                            <option value="0">0 KM</option>
+                                                            <option value="1">1 KM</option>
+                                                            <option value="2">2 KM</option>
+                                                            <option value="5">5 KM</option>
+                                                            <option value="10">10 KM</option>
+                                                            <option value="15">15 KM</option>
+                                                            <option value="30">30 KM</option>
+                                                            <option value="50">50 KM</option>
+                                                            <option value="100">100 KM</option>
+                                                        </select>
+                                                    </div>
+
+
+                                                        <div class="form-group">
+                                                            <label for="type">Type</label>
+                                                            <select class="form-control" name="type">
+                                                                @foreach(\App\Types::orderBy('types')->get() as $type)
+                                                                    <option value="{{$type->id}}">{{$type->types}}</option>
+                                                                @endforeach
+
+                                                            </select>
+                                                        </div>
+
+
+                                                        <div class="form-group">
+                                                            <label for="maxprice">Max Price</label>
+                                                            <input type="text" name="max_price" class="form-control" placeholder="800000">
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label for="minprice">Min Price</label>
+                                                            <input type="text" name="min_price" class="form-control" placeholder="20000">
+                                                        </div>
+
+
+                                                </div>
+                                            </div>
+
+
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <div class="col-md-12 col-sm-12 col-xs-12"><button type="submit" name="submit" value="Search" class="btn btn-primary btn-lg btn-block">Search</button></div>
+                                        </div>
+                                    </div>
                                 </div>
+                            </div>
 
+                            <style>
+                                .modal-full {
+                                    min-width: 100%;
+                                }
 
-                                <div class="form-group">
-                                    <label for="maxprice">Max Price</label>
-                                    <input type="text" name="max_price" class="form-control" placeholder="800000">
-                                </div>
+                                .modal-full .modal-content {
+                                    min-height: 100vh;
+                                }
 
-                                <div class="form-group">
-                                    <label for="minprice">Min Price</label>
-                                    <input type="text" name="min_price" class="form-control" placeholder="20000">
-                                </div>
+                                .header-slide
+                                {
+                                    z-index: auto !important;
+                                }
 
+                                .modal-dialog
+                                {
+                                    margin: 0;
+                                }
 
-                            </div>--}}
+                                .modal-header
+                                {
+                                    display: inline-block;
+                                    width: 100%;
+                                }
 
+                                .modal-title
+                                {
+                                    float: left;
+                                    font-size: 20px;
+                                    margin-top: 20px;
+                                }
 
-                            {{--<div class="col-md-12 col-sm-12 col-xs-12"><input type="submit" name="submit" value="Search" class="btn btn-primary btn-lg btn-block"></div>--}}
+                                .modal-header button
+                                {
+                                    float: right;
+                                }
+
+                                .modal-header button span
+                                {
+                                    font-size: 60px;
+                                }
+
+                            </style>
 
                             {!! Form::close() !!}
                         </div>

@@ -2,17 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7fe7f36f-c82f-4504-8c0a-7874522d22c9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/upload/slides/home-slider-6a52989f398cb7719fa053ba5c7489aa.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/upload/slides/home-slider-6a52989f398cb7719fa053ba5c7489aa1.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/SliderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/SliderController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PropertiesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PropertiesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/jquery.backstretch.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/jquery.backstretch.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/script.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/script.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/upload/slides/slider-1-8aa5002830ea048e8f7747db13a95de6.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/_particles/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/_particles/header.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/_particles/slidersearch.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/_particles/slidersearch.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/app.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -231,7 +222,7 @@
       <workItem from="1591396942953" duration="586000" />
       <workItem from="1591439250672" duration="7342000" />
       <workItem from="1591901770276" duration="143000" />
-      <workItem from="1591952307219" duration="9930000" />
+      <workItem from="1591952307219" duration="13418000" />
     </task>
     <servers />
   </component>
@@ -278,11 +269,11 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="492" y="286" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.738@0.0.1366.738" timestamp="1585578486261" />
-    <state x="427" y="113" width="805" height="599" key="find.popup" timestamp="1591956184978">
+    <state x="427" y="113" width="805" height="599" key="find.popup" timestamp="1591978673646">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="380" y="101" width="606" height="536" key="find.popup/0.0.1366.738@0.0.1366.738" timestamp="1585579040164" />
-    <state x="427" y="113" width="805" height="599" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1591956184978" />
+    <state x="427" y="113" width="805" height="599" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1591978673646" />
     <state x="425" y="187" key="run.anything.popup" timestamp="1590062063923">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
