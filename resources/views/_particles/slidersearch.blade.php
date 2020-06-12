@@ -35,7 +35,7 @@
 
                                     </div>
 
-                                    <button type="button" value="Filters" href="#myModal" data-toggle="modal" class="btn btn-primary filter-button" style="position: absolute;right: 200px;top: 17px;color: black;background: white;border-color: #9f9c9c;height: 40px;padding-top: 8px;outline: none;"><span><i class="fa fa-filter" aria-hidden="true" style="margin-right: 10px;"></i> Filters</span></button>
+                                    <button type="button" value="Filters" href="#myModal" data-toggle="modal" class="btn btn-primary filter-button" style="position: absolute;right: 200px;top: 17px;color: black;background: white;border-color: #9f9c9c;height: 40px;padding-top: 8px;outline: none;"><span><i class="fa fa-filter" aria-hidden="true" style="margin-right: 10px;"></i> <span>Filters</span></span></button>
 
                                     <button type="submit" name="submit" value="Search" class="btn btn-primary search-button" style="padding: 0px 35px;"><span><i class="fa fa-search" aria-hidden="true" style="margin-right: 10px;"></i> <span>Search</span></span></button>
 
@@ -178,6 +178,12 @@
                                         padding: 5px 10px !important;
                                         font-size: 12px !important;
 
+                                    }
+
+                                    .filter-button span i
+                                    {
+                                        font-size: 11px;
+                                        margin-right: 5px !important;
                                     }
 
                                     .search-button
