@@ -175,7 +175,7 @@
                                         right: 82px !important;
                                         top: 13px !important;
                                         height: 25px !important;
-                                        padding: 5px 10px !important;
+                                        padding: 4px 10px !important;
                                         font-size: 12px !important;
 
                                     }
