@@ -1,7 +1,7 @@
 <!-- begin:navbar -->
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-      <div class="container">
-            
+      <div class="container" style="width: 90%;">
+
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-top">
@@ -11,9 +11,9 @@
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="{{ URL::to('/') }}" style="padding-right: 0px;">
-          
+
           @if(getcong('site_logo')) <img src="{{ URL::asset('upload/'.getcong('site_logo')) }}" alt=""> @else {{getcong('site_name')}} @endif
-          
+
           </a>
         </div>
 
@@ -21,31 +21,35 @@
         <div class="collapse navbar-collapse" id="navbar-top">
           <ul class="nav navbar-nav navbar-right">
             <li class="{{classActivePathPublic('')}}"><a href="{{ URL::to('/') }}">Home</a></li>
-        	<li class="{{classActivePathPublic('properties')}}"><a href="{{ URL::to('properties/') }}">All Properties</a></li> 
-            <li class="{{classActivePathPublic('featured')}}"><a href="{{ URL::to('featured/') }}">Featured</a></li>
-            <li class="{{classActivePathPublic('sale')}}"><a href="{{ URL::to('sale/') }}">Sale</a></li>
-            <li class="{{classActivePathPublic('rent')}}"><a href="{{ URL::to('rent/') }}">Rent</a></li>
+        	<li class="{{classActivePathPublic('properties')}}"><a href="{{ URL::to('properties/') }}">All Properties</a></li>
+            {{--<li class="{{classActivePathPublic('featured')}}"><a href="{{ URL::to('featured/') }}">Featured</a></li>--}}
+            {{--<li class="{{classActivePathPublic('sale')}}"><a href="{{ URL::to('sale/') }}">Sale</a></li>
+            <li class="{{classActivePathPublic('rent')}}"><a href="{{ URL::to('rent/') }}">Rent</a></li>--}}
             <li class="{{classActivePathPublic('agents')}}"><a href="{{ URL::to('agents/') }}">Agents</a></li>
-            
+            <li class="{{classActivePathPublic('new-constructions')}}"><a href="{{ URL::to('new-constructions/') }}">New Constructions</a></li>
+            <li class="{{classActivePathPublic('home-exchange')}}"><a href="{{ URL::to('home-exchange/') }}">Home Exchange</a></li>
+            <li class="{{classActivePathPublic('moving-tips')}}"><a href="{{ URL::to('moving-tips/') }}">Moving Tips</a></li>
+            <li class="{{classActivePathPublic('expats')}}"><a href="{{ URL::to('expats/') }}">Expats</a></li>
+
              @if(Auth::check())
-             
+
              <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Account <b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li><a href="{{ URL::to('admin/dashboard/') }}">Dashboard</a></li>
                 <li><a href="{{ URL::to('admin/profile/') }}">Profile</a></li>
                 <li><a href="{{ URL::to('logout') }}">Logout</a></li>
-                 
+
               </ul>
             </li>
- 
+
              	<li><a href="{{ URL::to('admin/properties/addproperty') }}" class="signup">Post your Property</a></li>
              @else
              	<li><a href="{{ URL::to('login') }}" class="signin">Sign in</a></li>
             	<li><a href="{{ URL::to('register') }}" class="">Sign up</a></li>
             	<li><a href="{{ URL::to('login') }}" class="signup">Post your Property</a></li>
              @endif
-             
+
 
           </ul>
         </div><!-- /.navbar-collapse -->

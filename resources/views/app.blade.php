@@ -101,6 +101,20 @@
 
 	  </script>
 
+      <style>
+
+          .backstretch
+          {
+              width: 100% !important;
+          }
+
+          .backstretch img{
+              width: 100% !important;
+              left: 0 !important;
+          }
+
+      </style>
+
     {!!getcong('site_footer_code')!!}
 
   </body>

@@ -623,16 +623,11 @@ class PropertiesController extends Controller
 
              }
 
+
              $properties = $properties_search;
 
          }
-    	 foreach ($similar_properties as $key=>$property){
-    	     foreach ($properties_search as $key2=>$propert2){
-    	         if($property->id==$propert2->id){
-                     unset($similar_properties[$key]);
-                 }
-             }
-         }
+
         $property_type = $type;
 //        $similar_properties=array_unique($similar_properties, SORT_REGULAR);
         return view('pages.searchproperties',compact('properties','property_type','purpose','min_price','max_price','address','address_latitude','address_longitude','radius','min_area','max_area','bedrooms','bathrooms','similar_properties'));
