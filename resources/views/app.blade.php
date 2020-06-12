@@ -106,11 +106,14 @@
           .backstretch
           {
               width: 100% !important;
+              height: 100% !important;
           }
 
           .backstretch img{
               width: 100% !important;
+              height: 100% !important;
               left: 0 !important;
+              top: 0px !important;
           }
 
       </style>
