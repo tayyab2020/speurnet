@@ -3,7 +3,7 @@
 
         <div class="container" style="margin-top: 195px;">
             <div class="row" style="display: flex;">
-                <div class="col-md-10" style="margin: auto;">
+                <div class="col-md-10 col-xs-12" style="margin: auto;padding: 0;">
                     <div class="quick-search">
                         <div class="row">
 
@@ -23,7 +23,7 @@
                             </div>
 
                             <div class="col-md-12 col-sm-12 col-xs-12">
-                                <div class="form-group" style="display: flex;flex-direction: row;height: 75px;">
+                                <div class="form-group search-bar" style="display: flex;flex-direction: row;height: 75px;">
 
                                     {{--<label for="address">Address</label>--}}
 
@@ -35,7 +35,7 @@
 
                                     </div>
 
-                                    <button type="button" value="Filters" href="#myModal" data-toggle="modal" class="btn btn-primary" style="position: absolute;right: 200px;top: 17px;color: black;background: transparent;border-color: #9f9c9c;height: 40px;padding-top: 8px;outline: none;"><span><i class="fa fa-filter" aria-hidden="true" style="margin-right: 10px;"></i> Filters</span></button>
+                                    <button type="button" value="Filters" href="#myModal" data-toggle="modal" class="btn btn-primary" style="position: absolute;right: 200px;top: 17px;color: black;background: white;border-color: #9f9c9c;height: 40px;padding-top: 8px;outline: none;"><span><i class="fa fa-filter" aria-hidden="true" style="margin-right: 10px;"></i> Filters</span></button>
 
                                     <button type="submit" name="submit" value="Search" class="btn btn-primary" style="padding: 0px 35px;"><span><i class="fa fa-search" aria-hidden="true" style="margin-right: 10px;"></i> Search</span></button>
 
@@ -156,6 +156,19 @@
                                 .modal-header button span
                                 {
                                     font-size: 60px;
+                                }
+
+                                @media (max-width: 768px)
+                                {
+                                    .quick-search
+                                    {
+                                        padding: 15px;
+                                    }
+
+                                    .search-bar
+                                    {
+                                        height: 50px;
+                                    }
                                 }
 
                             </style>
