@@ -84,6 +84,7 @@
                                                         <div class="form-group">
                                                             <label for="type">Type</label>
                                                             <select class="form-control" name="type">
+                                                                <option value="">All</option>
                                                                 @foreach(\App\Types::orderBy('types')->get() as $type)
                                                                     <option value="{{$type->id}}">{{$type->types}}</option>
                                                                 @endforeach
@@ -94,13 +95,37 @@
 
                                                         <div class="form-group">
                                                             <label for="maxprice">Max Price</label>
-                                                            <input type="text" name="max_price" class="form-control" placeholder="800000">
+                                                            <input type="number" name="max_price" class="form-control" placeholder="800000">
                                                         </div>
 
                                                         <div class="form-group">
                                                             <label for="minprice">Min Price</label>
-                                                            <input type="text" name="min_price" class="form-control" placeholder="20000">
+                                                            <input type="number" name="min_price" class="form-control" placeholder="20000">
                                                         </div>
+
+                                                    <div class="form-group">
+                                                        <label for="bedrooms">Bedrooms</label>
+                                                        <input type="number" name="bedrooms" class="form-control" placeholder="No. of Bedrooms">
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="bethrooms">Bethrooms</label>
+                                                        <input type="number" name="bathrooms" class="form-control" placeholder="No. of Bathrooms">
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="minprice">Type of Construction</label>
+                                                        <select class="form-control" name="type_of_construction">
+                                                            <option value="">All</option>
+                                                            <option value="New">New</option>
+                                                            <option value="Old">Old</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="minprice">Keywords</label>
+                                                        <input type="text" name="keywords" class="form-control" placeholder="Search by Keywords">
+                                                    </div>
 
 
                                                 </div>
@@ -109,8 +134,8 @@
 
 
                                         </div>
-                                        <div class="modal-footer">
-                                            <div class="col-md-12 col-sm-12 col-xs-12"><button type="submit" name="submit" value="Search" class="btn btn-primary btn-lg btn-block">Search</button></div>
+                                        <div class="modal-footer" style="display: flex;">
+                                            <div class="col-md-4 col-sm-5 col-xs-12" style="margin: auto;"><button type="submit" name="submit" value="Search" class="btn btn-primary btn-lg btn-block">Search</button></div>
                                         </div>
                                     </div>
                                 </div>

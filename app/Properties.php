@@ -18,11 +18,16 @@ class Properties extends Model
         static::retrieved(function ($model) {});
     }*/
 
-    public function scopeSearchByKeyword($query,$type,$purpose,$price,$min_price,$max_price,$min_area,$max_area,$bathrooms,$bedrooms)
+    public function scopeSearchByKeyword($query,$type,$purpose,$price,$min_price,$max_price,$min_area,$max_area,$bathrooms,$bedrooms,$type_of_construction,$keywords)
     {
 
-        $query = $query->where("property_type", "$type")
-            ->where("property_purpose", "$purpose");
+        $query = $query->where("property_purpose", "$purpose");
+
+
+        if($type)
+        {
+            $query->where("property_type", "$type");
+        }
 
 
         if($min_price)
@@ -49,6 +54,19 @@ class Properties extends Model
         if($bedrooms)
         {
             $query->where("bedrooms", "$bedrooms");
+        }
+        if($type_of_construction)
+        {
+            $query->where("construction_type", "$type_of_construction");
+        }
+        if($keywords)
+        {
+            $query->where(function($query) use($keywords) {
+                $query->where("keywords",'LIKE', "%$keywords%")
+                    ->orWhere("property_slug",'LIKE', "%$keywords%")
+                    ->orWhere("property_name",'LIKE', "%$keywords%");
+            });
+
         }
 
 

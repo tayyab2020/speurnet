@@ -57,6 +57,8 @@ class WeeklyCron extends Command
             $radius = $propertyalert->radius;
             $bedrooms = $propertyalert->bedrooms;
             $bathrooms = $propertyalert->bathrooms;
+            $type_of_construction = $propertyalert->type_of_construction;
+            $keywords = $propertyalert->keywords;
             $properties_search = [];
 
             if($purpose=='Rent')
@@ -69,7 +71,7 @@ class WeeklyCron extends Command
                 $price='sale_price';
             }
 
-            $properties = Properties::SearchByKeyword($type,$purpose,$price,$min_price,$max_price,$min_area,$max_area,$bathrooms,$bedrooms)->where('is_sold',0)->where('is_rented',0)->get();
+            $properties = Properties::SearchByKeyword($type,$purpose,$price,$min_price,$max_price,$min_area,$max_area,$bathrooms,$bedrooms,$type_of_construction,$keywords)->where('is_sold',0)->where('is_rented',0)->get();
 
 
             if($address && $address_latitude && $address_longitude)
@@ -108,15 +110,14 @@ class WeeklyCron extends Command
 
 
             $sender_email = $propertyalert->user_email;
-            $title = $propertyalert->title;
             $id = $propertyalert->id;
             $encrypted_id = Crypt::encrypt($id);
 
             Mail::send('emails.propertiesAlert',
                 array(
                     'properties' => $properties,
+                    'parameters' => $propertyalert,
                     'type' => 1,
-                    'title' => $title,
                     'id' => $encrypted_id
                 ),  function ($message) use($properties,$sender_email) {
                     $message->from(getcong('site_email'),getcong('site_name'));

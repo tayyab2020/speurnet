@@ -112,6 +112,7 @@ class PropertiesController extends Controller
             $months  = round($seconds / 2629440); //((365+365+365+365+366)/5/12)*24*60*60
             $years   = round($seconds / 31553280); //(365+365+365+365+366)/5 * 24 * 60 * 60
 
+
             if ($seconds <= 60){
 
                 $listed = "Just Now";
@@ -165,13 +166,25 @@ class PropertiesController extends Controller
                 }
 
             }
+            else
+            {
+                if($months == 1)
+                {
+                    $listed = "1 month ago";
+                }
+                else
+                {
+                    $listed = "";
+                }
+
+            }
+
 
             $properties[$i]->listed = $listed;
 
             $i = $i + 1;
 
         }
-
 
 
 
@@ -584,11 +597,13 @@ class PropertiesController extends Controller
 	 	$radius = $request->radius;
 	 	$bedrooms = $request->bedrooms;
 	 	$bathrooms = $request->bathrooms;
+	 	$type_of_construction = $request->type_of_construction;
+	 	$keywords = $request->keywords;
         $properties_search = [];
         $similar_properties = [];
 
 
-    	 $properties = Properties::SearchByKeyword($type,$purpose,$price,$min_price,$max_price,$min_area,$max_area,$bathrooms,$bedrooms)->get();
+    	 $properties = Properties::SearchByKeyword($type,$purpose,$price,$min_price,$max_price,$min_area,$max_area,$bathrooms,$bedrooms,$type_of_construction,$keywords)->where('is_sold',0)->where('is_rented',0)->get();
 
 
     	 if($address && $address_latitude && $address_longitude)
@@ -630,7 +645,7 @@ class PropertiesController extends Controller
 
         $property_type = $type;
 //        $similar_properties=array_unique($similar_properties, SORT_REGULAR);
-        return view('pages.searchproperties',compact('properties','property_type','purpose','min_price','max_price','address','address_latitude','address_longitude','radius','min_area','max_area','bedrooms','bathrooms','similar_properties'));
+        return view('pages.searchproperties',compact('properties','property_type','purpose','min_price','max_price','address','address_latitude','address_longitude','radius','min_area','max_area','bedrooms','bathrooms','type_of_construction','keywords','similar_properties'));
     }
 
     public function searchkeywordproperties(Request $request)

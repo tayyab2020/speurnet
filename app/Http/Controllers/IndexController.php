@@ -91,13 +91,14 @@ class IndexController extends Controller
             ->where('bathrooms',$request->bathrooms)
             ->where('max_price',$request->max_price)->where('min_price',$request->min_price)
             ->where('max_area',$request->max_area)->where('min_area',$request->min_area)
+            ->where('type_of_construction',$request->type_of_construction)
+            ->where('keywords',$request->keywords)
             ->first();
         if($existingProperties){
             return redirect('/')->with('flash_message', 'Your have already created Property Alert for this Search');
         }
         else{
             $property = new savedPropertyAlert;
-            $property->title = $request->title;
             $property->user_email = $request->email;
             $property->radius = $request->radius;
             $property->property_type = $request->property_type;
@@ -112,6 +113,8 @@ class IndexController extends Controller
             $property->min_price = $request->min_price;
             $property->max_area = $request->max_area;
             $property->min_area = $request->min_area;
+            $property->type_of_construction = $request->type_of_construction;
+            $property->keywords = $request->keywords;
             $property->save();
             return redirect('/')->with('flash_message', 'Property Alert Created Successfully, You will now receive Emails for Similar Properties');;
         }

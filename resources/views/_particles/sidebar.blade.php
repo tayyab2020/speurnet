@@ -39,11 +39,18 @@
 
                                     @if($property_type)
                                             <span class="button-applied-filter span-heading">{{ getPropertyTypeName($property_type)->types }}</span>
+                                        @else
+                                            <span class="button-applied-filter span-heading">All Property Types</span>
                                     @endif
 
                                     @if($purpose)
                                             <span class="button-applied-filter span-heading">For {{$purpose}}</span>
                                     @endif
+
+                                    @if($type_of_construction)
+                                        <span class="button-applied-filter span-heading">{{$type_of_construction}} Property</span>
+                                    @endif
+
 
                                     @if($min_price != '' || $max_price != '')
 
@@ -77,6 +84,9 @@
 
                                     @endif
 
+                                    @if($keywords)
+                                        <span class="button-applied-filter span-heading">{{$keywords}}</span>
+                                    @endif
 
                                 </div>
 
@@ -95,17 +105,11 @@
                                 <input name="bathrooms" type="hidden" value="{{$bathrooms}}">
                                 <input name="min_area" type="hidden" value="{{$min_area}}">
                                 <input name="max_area" type="hidden" value="{{$max_area}}">
-                                <input name="area" type="hidden" value="">
+                                <input name="type_of_construction" type="hidden" value="{{$type_of_construction}}">
+                                <input name="keywords" type="hidden" value="{{$keywords}}">
 
                                 <br>
 
-                                <div>
-
-                                    <label>Search Title: </label>
-
-                                    <input autocomplete="off" class="form-control" name="title" title="You will receive Emails with this title as a reminder" type="text" required placeholder="Enter any Title for saving this search">
-
-                                </div>
 
                                 <br>
 
@@ -172,7 +176,7 @@
                <div class="form-group">
                       <label for="type">Type</label>
                       <select class="form-control" name="type">
-
+                          <option value="">All</option>
                         @foreach(\App\Types::orderBy('types')->get() as $type)
                         <option value="{{$type->id}}" @if(Route::currentRouteName() == 'searchproperties') @if($property_type == $type->id) selected @endif @endif>{{$type->types}}</option>
 						@endforeach
@@ -209,6 +213,20 @@
                 <div class="form-group">
                     <label for="minprice">Max Area (m2)</label>
                     <input type="number" name="max_area" @if(Route::currentRouteName() == 'searchproperties') value="{{$max_area}}" @else value="" @endif class="form-control" placeholder="Maximum SQFT Area (m2)">
+                </div>
+
+                <div class="form-group">
+                    <label for="minprice">Type of Construction</label>
+                    <select class="form-control" name="type_of_construction">
+                        <option value="">All</option>
+                        <option value="New" @if(Route::currentRouteName() == 'searchproperties') @if($type_of_construction == 'New') selected @endif @endif>New</option>
+                        <option value="Old" @if(Route::currentRouteName() == 'searchproperties') @if($type_of_construction == 'Old') selected @endif @endif>Old</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="minprice">Keywords</label>
+                    <input type="text" name="keywords" @if(Route::currentRouteName() == 'searchproperties') value="{{$keywords}}" @else value="" @endif class="form-control" placeholder="Search by Keywords">
                 </div>
 
                 <input type="submit" name="submit" value="Search" class="btn btn-primary btn-block">
