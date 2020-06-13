@@ -170,7 +170,7 @@ class PropertiesController extends Controller
             {
                 if($months == 1)
                 {
-                    $listed = "1 month ago";
+                    $listed = "this month";
                 }
                 else
                 {

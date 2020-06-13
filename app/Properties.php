@@ -64,7 +64,8 @@ class Properties extends Model
             $query->where(function($query) use($keywords) {
                 $query->where("keywords",'LIKE', "%$keywords%")
                     ->orWhere("property_slug",'LIKE', "%$keywords%")
-                    ->orWhere("property_name",'LIKE', "%$keywords%");
+                    ->orWhere("property_name",'LIKE', "%$keywords%")
+                    ->orWhere("description",'LIKE', "%$keywords%");
             });
 
         }
