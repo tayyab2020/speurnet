@@ -367,7 +367,7 @@ class PropertiesController extends Controller
 
 
         $similar_property=Properties::where('id','!=', $property->id)->where(function($query) use ($property){
-            $query->orWhere("property_type", "$property->property_type")->orWhere("city_id", "$property->city_id")->orWhere("property_purpose", "$property->property_purpose");
+            $query->orWhere("property_type", "$property->property_type")->orWhere("city_id", "$property->city_id");
         })->get();
 
         $similar_properties=array_merge($similar_properties,json_decode($similar_property));
