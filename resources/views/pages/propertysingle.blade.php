@@ -1519,6 +1519,11 @@
             right: -35px;
         }
 
+        .slick-track
+        {
+            float: left;
+        }
+
         .bulgy-radios {
             width: 38rem;
             background: #fff;
