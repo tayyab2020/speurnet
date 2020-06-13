@@ -4,18 +4,18 @@ use App\User;
 use App\Properties;
 use App\Types;
 
- 
+
 if (! function_exists('getcong')) {
 
     function getcong($key)
     {
-    	 
+
         $settings = Settings::findOrFail('1'); 
 
         return $settings->$key;
     }
 }
- 
+
 if (!function_exists('classActivePath')) {
     function classActivePath($path)
     {
@@ -47,22 +47,22 @@ if (!function_exists('classActivePathPublic')) {
 }
 
 if (! function_exists('getUserInfo')) {
-	function getUserInfo($id) 
-	{ 
+	function getUserInfo($id)
+	{
 		return User::find($id);
 	}
 }
 
 if (! function_exists('countPropertyType')) {
-	function countPropertyType($type_id) 
-	{ 
+	function countPropertyType($type_id)
+	{
 		return Properties::where('property_type',$type_id)->count();
 	}
 }
 
 if (! function_exists('PropertyTypeName')) {
-	function getPropertyTypeName($id) 
-	{ 
+	function getPropertyTypeName($id)
+	{
 		return Types::find($id);
 	}
 }
