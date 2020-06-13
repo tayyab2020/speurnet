@@ -35,8 +35,8 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdn.plyr.io/3.5.10/plyr.css" />
-    <link rel="stylesheet" type="text/css" href="assets/css/slick.css"/>
-    <link rel="stylesheet" type="text/css" href="assets/css/slick-theme.css"/>
+    <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/css/slick.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/css/slick-theme.css') }}"/>
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="{{ URL::asset('assets/js/html5shiv.js') }}"></script>

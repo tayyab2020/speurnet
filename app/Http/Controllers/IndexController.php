@@ -129,7 +129,7 @@ class IndexController extends Controller
 
     	$city_list = City::where('status','1')->orderBy('city_name')->get();
 
-		$propertieslist = Properties::where('status','1')->orderBy('id', 'desc')->take(8)->get();
+		$propertieslist = Properties::where('status','1')->orderBy('id', 'desc')->take(9)->get();
 
 		$testimonials = Testimonials::orderBy('id', 'desc')->get();
 

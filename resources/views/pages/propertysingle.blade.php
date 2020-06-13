@@ -8,7 +8,7 @@
 @section("content")
 
 
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+
 
 <!-- begin:header -->
     <div id="header" class="heading" style="background-image: url({{ URL::asset('assets/img/img01.jpg') }});">
@@ -1416,17 +1416,59 @@
           <!-- end:sidebar -->
 
         </div>
+
+
       </div>
+
+        <div class="row" style="display: flex;margin-top: 30px;">
+            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10" style="margin: auto;">
+                <h2>Similar Properties</h2>
+                <div class="similarProperties">
+                    @if(count($similar_properties)>0)
+                        @foreach($similar_properties as $i => $property)
+                            <div class="col-md-4 col-sm-6 col-xs-12">
+                                <div class="property-container">
+                                    <div class="property-image">
+                                        <img src="{{ URL::asset('upload/properties/'.$property->featured_image.'-s.jpg') }}" alt="{{ $property->property_name }}">
+                                        <div class="property-price">
+                                            <h4>{{ getPropertyTypeName($property->property_type)->types }}</h4>
+                                            <span>{{getcong('currency_sign')}}@if($property->sale_price) {{$property->sale_price}} @else {{$property->rent_price}} @endif</span>
+                                        </div>
+                                        <div class="property-status">
+                                            <span>For {{$property->property_purpose}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="property-features">
+                                        <span><i class="fa fa-home"></i> {{$property->area}}</span>
+                                        <span><i class="fa fa-hdd-o"></i> {{$property->bedrooms}}</span>
+                                        <span><i class="fa fa-male"></i> {{$property->bathrooms}}</span>
+                                    </div>
+                                    <div class="property-content">
+                                        <h3><a href="{{URL::to('properties/'.$property->property_slug)}}">{{ Str::limit($property->property_name,35) }}</a> <small>{{ Str::limit($property->address,40) }}</small></h3>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    @endif
+
+                </div>
+            </div>
+        </div>
+
+
     </div>
     <!-- end:content -->
 
      @if (count($errors) > 0 or Session::has('flash_message'))
      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 
+
      <script type="text/javascript">
 	    $(window).load(function(){
 	        $('#modal-error').modal('show');
 	    });
+
+
 	</script>
  	@endif
     <!-- begin:modal-message -->
@@ -1461,6 +1503,21 @@
     <!-- end:modal-message -->
 
     <style>
+
+        .slick-prev:before, .slick-next:before
+        {
+            font-size: 35px;
+        }
+
+        .slick-prev
+        {
+           left: -50px;
+        }
+
+        .slick-next
+        {
+            right: -35px;
+        }
 
         .bulgy-radios {
             width: 38rem;
@@ -2965,6 +3022,34 @@
                 slidesToScroll: 1,
                 prevArrow: "<button type='button' class='mission-prev-arrow'></button>",
                 nextArrow: "<button type='button' class='mission-next-arrow'></button>"
+            });
+
+
+
+            $('.similarProperties').slick({
+                centerMode: true,
+                centerPadding: '60px',
+                slidesToShow: 3,
+                responsive: [
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            arrows: false,
+                            centerMode: true,
+                            centerPadding: '40px',
+                            slidesToShow: 3
+                        }
+                    },
+                    {
+                        breakpoint: 480,
+                        settings: {
+                            arrows: false,
+                            centerMode: true,
+                            centerPadding: '40px',
+                            slidesToShow: 1
+                        }
+                    }
+                ]
             });
 
         });

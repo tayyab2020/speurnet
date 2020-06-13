@@ -26,6 +26,7 @@ use App\driving_data;
 use App\transit_data;
 use App\walking_data;
 use App\cycling_data;
+use Carbon\Carbon;
 
 class PropertiesController extends Controller
 {
@@ -91,7 +92,9 @@ class PropertiesController extends Controller
     public function index()
     {
 
-        $properties = Properties::leftjoin('users','users.id','=','properties.user_id')->where('properties.status','1')->orderBy('properties.id', 'desc')->select('properties.id','properties.property_name','properties.description','properties.property_slug','properties.available_immediately','properties.is_sold','properties.is_rented','is_negotiation','is_under_offer','properties.video','properties.property_type','properties.property_purpose','properties.sale_price','properties.rent_price','properties.address','properties.bathrooms','properties.bedrooms','properties.area','properties.featured_image','properties.property_images1','properties.property_images2','properties.property_images3','properties.property_images4','properties.property_images5','properties.first_floor','properties.second_floor','properties.ground_floor','properties.basement','properties.open_date','properties.open_timeFrom','properties.open_timeTo','properties.created_at','users.image_icon')->paginate(9);
+        $prev_month = date("t", mktime(0,0,0, date("n") - 1));
+
+        $properties = Properties::leftjoin('users','users.id','=','properties.user_id')->where('properties.status','1')->whereDate('properties.created_at', '>', Carbon::now()->subDays($prev_month))->orderBy('properties.id', 'desc')->select('properties.id','properties.property_name','properties.description','properties.property_slug','properties.available_immediately','properties.is_sold','properties.is_rented','is_negotiation','is_under_offer','properties.video','properties.property_type','properties.property_purpose','properties.sale_price','properties.rent_price','properties.address','properties.bathrooms','properties.bedrooms','properties.area','properties.featured_image','properties.property_images1','properties.property_images2','properties.property_images3','properties.property_images4','properties.property_images5','properties.first_floor','properties.second_floor','properties.ground_floor','properties.basement','properties.open_date','properties.open_timeFrom','properties.open_timeTo','properties.created_at','users.image_icon')->paginate(9);
 
         date_default_timezone_set("Europe/Amsterdam");
 
@@ -161,23 +164,12 @@ class PropertiesController extends Controller
 
                 } else {
 
-                    $listed = "few weeks ago";
-
-                }
-
-            }
-            else
-            {
-                if($months == 1)
-                {
                     $listed = "this month";
-                }
-                else
-                {
-                    $listed = "";
+
                 }
 
             }
+
 
 
             $properties[$i]->listed = $listed;
@@ -312,6 +304,8 @@ class PropertiesController extends Controller
     public function propertysingle($slug)
     {
     	$property = Properties::where("property_slug", $slug)->first();
+        $similar_properties = [];
+
 
         $property->views =$property->views + 1;
         $property->save();
@@ -372,8 +366,14 @@ class PropertiesController extends Controller
         }
 
 
+        $similar_property=Properties::where('id','!=', $property->id)->where(function($query) use ($property){
+            $query->orWhere("property_type", "$property->property_type")->orWhere("city_id", "$property->city_id")->orWhere("property_purpose", "$property->property_purpose");
+        })->get();
 
-        return view('pages.propertysingle',compact('property','property_documents','agent','property_features','saved','properties_count'));
+        $similar_properties=array_merge($similar_properties,json_decode($similar_property));
+
+
+        return view('pages.propertysingle',compact('property','property_documents','agent','property_features','saved','properties_count','similar_properties'));
     }
 
     public function propertiesUser($id,$id2)
@@ -451,6 +451,18 @@ class PropertiesController extends Controller
 
                     $listed = "few weeks ago";
 
+                }
+
+            }
+            else
+            {
+                if($months == 1)
+                {
+                    $listed = "this month";
+                }
+                else
+                {
+                    $listed = "few months ago";
                 }
 
             }
@@ -600,7 +612,6 @@ class PropertiesController extends Controller
 	 	$type_of_construction = $request->type_of_construction;
 	 	$keywords = $request->keywords;
         $properties_search = [];
-        $similar_properties = [];
 
 
     	 $properties = Properties::SearchByKeyword($type,$purpose,$price,$min_price,$max_price,$min_area,$max_area,$bathrooms,$bedrooms,$type_of_construction,$keywords)->where('is_sold',0)->where('is_rented',0)->get();
@@ -630,8 +641,6 @@ class PropertiesController extends Controller
                      if($property_radius <= $radius)
                      {
                          array_push($properties_search,$key);
-                         $similar_property=Properties::where("property_purpose", "$key->purpose")->where("id","!=", "$key->id")->orWhere("city_id", "$key->city_id")->orWhere("property_type", "$key->type")->get();
-                         $similar_properties=array_merge($similar_properties,json_decode($similar_property));
                      }
                  }
 
@@ -644,8 +653,8 @@ class PropertiesController extends Controller
          }
 
         $property_type = $type;
-//        $similar_properties=array_unique($similar_properties, SORT_REGULAR);
-        return view('pages.searchproperties',compact('properties','property_type','purpose','min_price','max_price','address','address_latitude','address_longitude','radius','min_area','max_area','bedrooms','bathrooms','type_of_construction','keywords','similar_properties'));
+
+        return view('pages.searchproperties',compact('properties','property_type','purpose','min_price','max_price','address','address_latitude','address_longitude','radius','min_area','max_area','bedrooms','bathrooms','type_of_construction','keywords'));
     }
 
     public function searchkeywordproperties(Request $request)
