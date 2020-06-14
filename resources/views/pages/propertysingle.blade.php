@@ -1420,11 +1420,26 @@
 
       </div>
 
+        @if(count($similar_properties)>0)
+
         <div class="row" style="display: flex;margin-top: 30px;">
-            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10" style="margin: auto;">
-                <h2>Similar Properties</h2>
+            <div class="col-lg-11 col-md-10 col-sm-10 col-xs-10" style="margin: auto;">
+                <div id="partner" style="padding: 10px 0px;">
+                    <div class="container" style="width: 100%;">
+                        <div class="row">
+                            <div class="col-md-12">
+
+                                <div class="heading-title bg-white">
+                                    <h2>Related Properties</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- break -->
+
+                        <div class="row">
+                            <div class="col-md-12">
                 <div class="similarProperties">
-                    @if(count($similar_properties)>0)
+
                         @foreach($similar_properties as $i => $property)
                             <div class="col-md-4 col-sm-6 col-xs-12">
                                 <div class="property-container">
@@ -1449,11 +1464,13 @@
                                 </div>
                             </div>
                         @endforeach
-                    @endif
 
                 </div>
+                            </div></div></div></div>
             </div>
         </div>
+
+        @endif
 
 
     </div>
@@ -1519,10 +1536,7 @@
             right: -35px;
         }
 
-        .slick-track
-        {
-            float: left;
-        }
+
 
         .bulgy-radios {
             width: 38rem;
@@ -3032,9 +3046,10 @@
 
 
             $('.similarProperties').slick({
-                centerMode: true,
-                centerPadding: '60px',
-                slidesToShow: 3,
+                dots: false,
+                arrows: true,
+                slidesToShow: 4,
+                slidesToScroll: 1,
                 responsive: [
                     {
                         breakpoint: 768,
@@ -3054,7 +3069,9 @@
                             slidesToShow: 1
                         }
                     }
-                ]
+                ],
+                prevArrow: "<button type='button' class='mission-prev-arrow'></button>",
+                nextArrow: "<button type='button' class='mission-next-arrow'></button>"
             });
 
         });
