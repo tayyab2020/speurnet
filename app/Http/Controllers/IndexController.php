@@ -131,6 +131,92 @@ class IndexController extends Controller
 
 		$propertieslist = Properties::leftjoin('users','users.id','=','properties.user_id')->where('properties.status','1')->orderBy('properties.id', 'desc')->select('properties.id','properties.property_name','properties.description','properties.property_slug','properties.available_immediately','properties.is_sold','properties.is_rented','is_negotiation','is_under_offer','properties.video','properties.property_type','properties.property_purpose','properties.sale_price','properties.rent_price','properties.address','properties.bathrooms','properties.bedrooms','properties.area','properties.featured_image','properties.property_images1','properties.property_images2','properties.property_images3','properties.property_images4','properties.property_images5','properties.first_floor','properties.second_floor','properties.ground_floor','properties.basement','properties.open_date','properties.open_timeFrom','properties.open_timeTo','properties.created_at','users.image_icon')->get();
 
+        date_default_timezone_set("Europe/Amsterdam");
+
+        $i = 0;
+
+        foreach($propertieslist as $key)
+        {
+
+            $time_ago        = strtotime($key->created_at);
+            $current_time    = time();
+            $time_difference = $current_time - $time_ago;
+            $seconds         = $time_difference;
+
+            $minutes = round($seconds / 60); // value 60 is seconds
+            $hours   = round($seconds / 3600); //value 3600 is 60 minutes * 60 sec
+            $days    = round($seconds / 86400); //86400 = 24 * 60 * 60;
+            $weeks   = round($seconds / 604800); // 7*24*60*60;
+            $months  = round($seconds / 2629440); //((365+365+365+365+366)/5/12)*24*60*60
+            $years   = round($seconds / 31553280); //(365+365+365+365+366)/5 * 24 * 60 * 60
+
+
+            if ($seconds <= 60){
+
+                $listed = "Just Now";
+
+            } else if ($minutes <= 60){
+
+                if ($minutes == 1){
+
+                    $listed = "one minute ago";
+
+                } else {
+
+                    $listed = "$minutes minutes ago";
+
+                }
+
+            } else if ($hours <= 24){
+
+                if ($hours == 1){
+
+                    $listed = "an hour ago";
+
+                } else {
+
+                    $listed = "$hours hrs ago";
+
+                }
+
+            } else if ($days <= 7){
+
+                if ($days == 1){
+
+                    $listed = "yesterday";
+
+                } else {
+
+                    $listed = "$days days ago";
+
+                }
+
+            } else if ($weeks <= 4.3){
+
+                if ($weeks == 1){
+
+                    $listed = "this week";
+
+                } else {
+
+                    $listed = "this month";
+
+                }
+
+            }
+            else
+            {
+                $listed = '';
+            }
+
+
+
+            $propertieslist[$i]->listed = $listed;
+
+            $i = $i + 1;
+
+        }
+
 		$testimonials = Testimonials::orderBy('id', 'desc')->get();
 
 		$partners = Partners::orderBy('id', 'desc')->get();
