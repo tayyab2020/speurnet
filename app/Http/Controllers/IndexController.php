@@ -129,20 +129,15 @@ class IndexController extends Controller
 
     	$city_list = City::where('status','1')->orderBy('city_name')->get();
 
-		$propertieslist = Properties::where('status','1')->orderBy('id', 'desc')->take(9)->get();
+		$propertieslist = Properties::leftjoin('users','users.id','=','properties.user_id')->where('properties.status','1')->orderBy('properties.id', 'desc')->select('properties.id','properties.property_name','properties.description','properties.property_slug','properties.available_immediately','properties.is_sold','properties.is_rented','is_negotiation','is_under_offer','properties.video','properties.property_type','properties.property_purpose','properties.sale_price','properties.rent_price','properties.address','properties.bathrooms','properties.bedrooms','properties.area','properties.featured_image','properties.property_images1','properties.property_images2','properties.property_images3','properties.property_images4','properties.property_images5','properties.first_floor','properties.second_floor','properties.ground_floor','properties.basement','properties.open_date','properties.open_timeFrom','properties.open_timeTo','properties.created_at','users.image_icon')->get();
 
 		$testimonials = Testimonials::orderBy('id', 'desc')->get();
 
 		$partners = Partners::orderBy('id', 'desc')->get();
 
-		$top_members = User::withCount('properties') ->where('users.usertype','=','Agents')->where('users.status',1)          // Count the errors
-    ->orderBy('properties_count', 'desc')   // Order by the error count
-    ->take(3)                           // Take the first 5
-    ->get();
+		$top_members = User::withCount('properties')->where('users.usertype','=','Agents')->where('users.status',1)->orderBy('properties_count', 'desc')->get();
 
-		$top_properties = Properties::orderBy('views', 'desc')   // Order by the error count
-        ->take(3)                           // Take the first 5
-        ->get();
+		$top_properties = Properties::orderBy('views', 'desc')->get();
 
 
 
