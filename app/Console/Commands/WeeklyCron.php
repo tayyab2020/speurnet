@@ -117,7 +117,7 @@ class WeeklyCron extends Command
                 array(
                     'properties' => $properties,
                     'parameters' => $propertyalert,
-                    'type' => 1,
+                    'type' => 2,
                     'id' => $encrypted_id
                 ),  function ($message) use($properties,$sender_email) {
                     $message->from(getcong('site_email'),getcong('site_name'));
