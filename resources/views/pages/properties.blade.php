@@ -36,7 +36,8 @@
                 <?php $i = 0; ?>
 
            	  @foreach($properties as $i => $property)
-             	 <div class="col-md-6 col-sm-6 col-xs-12" style="margin-bottom: 40px;">
+
+             	 <div class="col-md-6 col-sm-6 col-xs-12" style="margin-bottom: 40px;min-height: 607px;">
 
                      <div class="property-price" style="position:relative;max-width: 100%;font-size: 15px;padding: 3px 0px;margin-bottom: 6px;border-radius: 5px;">Open House <span>@if($property->open_date) {{$property->open_date}} @endif @if($property->open_timeFrom) {{$property->open_timeFrom}} @else Anytime @endif @if($property->open_timeTo) to {{$property->open_timeTo}} @else to Anytime @endif</span></div>
 
