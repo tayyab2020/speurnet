@@ -67,7 +67,7 @@
 
             </div>
 
-            <div class="col-lg-12 col-md-8 col-sm-12 col-xs-12" style="display: inline-block;margin-top: 50px;">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="display: inline-block;margin-top: 50px;">
 
                 <div class="col-md-12 col-sm-12">
                     <div class="heading-title">
@@ -75,11 +75,11 @@
                     </div>
                 </div>
 
-                <div style="display: flex;width: 100%;">
+                <div class="flex-box">
 
                 @foreach($top_properties as $temp)
 
-                        <div class="col-md-3 col-sm-12 col-xs-12" style="box-shadow: 0 0rem 1.2rem -3px #c2c2c2;margin-bottom: 30px;padding: 0;margin: 0px 15px 0px 0px;display: inline-block;margin: auto;">
+                        <div class="col-md-3 col-sm-12 col-xs-12 flex-box-div" style="box-shadow: 0 0rem 1.2rem -3px #c2c2c2;margin-bottom: 30px;padding: 0;margin: 0px 15px 0px 0px;display: inline-block;margin: auto;">
                         <div class="property-container" style="margin-bottom: 0;">
                             <div class="property-image">
 
@@ -109,7 +109,7 @@
 
             </div>
 
-            <div class="col-lg-12 col-md-2 col-sm-12 col-xs-12" style="display: inline-block;margin-top: 50px;">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="display: inline-block;margin-top: 50px;">
 
                 <div class="col-md-12 col-sm-12">
                     <div class="heading-title">
@@ -117,11 +117,11 @@
                     </div>
                 </div>
 
-                <div style="display: flex;width: 100%;">
+                <div class="flex-box">
 
                     @foreach($top_members as $temp)
 
-                        <div class="col-md-3 col-sm-12 col-xs-12" style="box-shadow: 0 0rem 1.2rem -3px #c2c2c2;margin-bottom: 30px;padding: 0;margin: 0px 15px 0px 0px;display: inline-block;margin: auto;">
+                        <div class="col-md-3 col-sm-12 col-xs-12 flex-box-div" style="box-shadow: 0 0rem 1.2rem -3px #c2c2c2;margin-bottom: 30px;padding: 0;margin: 0px 15px 0px 0px;display: inline-block;margin: auto;">
                             <div class="property-container" style="margin-bottom: 0;">
                                 <div class="property-image">
 
@@ -163,6 +163,28 @@
     <!-- end:content -->
 
 <style>
+
+    .flex-box
+    {
+        display: inline-block;
+        width: 100%;
+    }
+
+    @media (min-width: 992px)
+    {
+        .flex-box
+        {
+            display: flex;
+            width: 100%;
+        }
+    }
+
+
+    .flex-box-div
+    {
+        margin-bottom: 20px !important;
+    }
+
 
     .slick-slide
     {
