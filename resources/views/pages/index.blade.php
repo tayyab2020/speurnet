@@ -488,6 +488,99 @@
 
 <style>
 
+    .property-image
+    {
+        height: 265px;
+    }
+
+    .property-image img
+    {
+        height: 100%;
+    }
+
+    .property-status img
+    {
+        display: inline-block;
+    }
+
+    .property-status a:focus
+    {
+        outline: none;
+    }
+
+    .modal-backdrop.fade
+    {
+        opacity: 0.5;
+    }
+
+   .ekko-lightbox .modal-header
+    {
+        min-height: 0;
+        padding: 0;
+        border: 0;
+       display: none;
+
+    }
+
+    .ekko-lightbox .modal-title
+    {
+        display: none;
+    }
+
+    .ekko-lightbox .modal-header .close
+    {
+        font-size: 60px;
+        position: absolute;
+        right: -115px;
+        top: -62px;
+        opacity: 0.8;
+        text-shadow: none;
+
+    }
+
+    .ekko-lightbox .modal-body
+    {
+        padding: 0;
+    }
+
+    .ekko-lightbox .modal-content
+    {
+        border:0;
+    }
+
+    .ekko-lightbox .close{
+        position: absolute;
+        right: 43px;
+        top: -3px;
+        opacity: 0.6;
+        text-shadow: none;
+        outline: 0;
+    }
+
+    .ekko-lightbox .close span{
+        font-size: 88px;
+    }
+
+    a
+    {
+        text-decoration: none;
+    }
+
+    a:hover, a:focus
+    {
+        text-decoration: none;
+    }
+
+    .fade {
+        transform: scale(0);
+        opacity: 0;
+        transition: all .2s linear;
+
+    }
+
+    .fade.in {
+        transform: scale(1);
+    }
 
     .slick-slide
     {
@@ -527,6 +620,18 @@
 </style>
 
 <script>
+
+    $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+        event.preventDefault();
+        $(this).ekkoLightbox({
+            alwaysShowClose: true,
+            showArrows:true
+        });
+
+
+        $('.modal-header .close').appendTo(".ekko-lightbox");
+
+    });
 
     $(document).ready(function() {
 

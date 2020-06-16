@@ -38,7 +38,7 @@
                         @foreach($properties as $i => $property)
                             <div class="col-md-6 col-sm-6 col-xs-12" style="margin-bottom: 40px;">
 
-                                <div class="property-price" style="position:relative;max-width: 100%;font-size: 15px;padding: 3px 0px;margin-bottom: 6px;border-radius: 5px;">Open House <span>{{$property->open_date}} {{$property->open_timeFrom}} to {{$property->open_timeTo}}</span></div>
+                                <div class="property-price" style="position:relative;max-width: 100%;font-size: 15px;padding: 3px 0px;margin-bottom: 6px;border-radius: 5px;">Open House <span>@if($property->open_date) {{$property->open_date}} @endif @if($property->open_timeFrom) {{$property->open_timeFrom}} @else Anytime @endif @if($property->open_timeTo) to {{$property->open_timeTo}} @else to Anytime @endif</span></div>
 
                                 <div class="property-container" style="border: 1px solid #48cfad;margin-bottom: 10px">
                                     <div class="property-image">
@@ -338,9 +338,9 @@
                                     </div>--}}
 
                                     <div class="property-content" style="height: 133px;">
-                                        <h3 style="margin-bottom: 5px;margin-top: 3px;"><a href="{{URL::to('properties/'.$property->property_slug)}}">{{ Str::limit($property->property_name,35) }}</a> <small>{{ Str::limit($property->address,40) }}</small></h3>
+                                        <h3 style="margin-bottom: 5px;margin-top: 3px;"><a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;" href="{{URL::to('properties/'.$property->property_slug)}}">{{ Str::limit($property->property_name,35) }}</a> <small style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;">{{ Str::limit($property->address,40) }}</small></h3>
                                         <p>{{$property->bedrooms}} rooms - {{$property->area}}</p>
-                                        <b>@if($property->sale_price) € {{$property->sale_price}} @elseif($property->rent_price) € {{$property->rent_price}} @endif</span></b>
+                                        <b>@if($property->sale_price) € {{$property->sale_price}} @elseif($property->rent_price) € {{$property->rent_price}} @endif</b>
                                     </div>
 
                                     <div class="property-content" style="border-top:1px solid #cacaca;display: flex;padding: 0;height: 125px;align-items: center;">
@@ -363,9 +363,9 @@
 
                                 </div>
 
-
+                                @if($property->listed)
                                 <div class="property-price" style="background: #d6d63e;position:relative;max-width: 50%;margin-bottom: 12px;font-size: 15px;padding: 2px 0px;border-radius: 5px;">Listed {{$property->listed}}</div>
-
+                                    @endif
 
                             </div>
                             <!-- break -->

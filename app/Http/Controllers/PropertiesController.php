@@ -458,14 +458,7 @@ class PropertiesController extends Controller
             }
             else
             {
-                if($months == 1)
-                {
-                    $listed = "this month";
-                }
-                else
-                {
-                    $listed = "few months ago";
-                }
+                $listed = '';
 
             }
 
@@ -474,8 +467,6 @@ class PropertiesController extends Controller
             $i = $i + 1;
 
         }
-
-
 
 
         return view('pages.agent_properties',compact('properties'));
