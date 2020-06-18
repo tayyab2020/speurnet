@@ -30,7 +30,7 @@
 
             <div class="logo" href="#" align="">
 
-            <a href="{{ URL::to('/') }}"><img style="width: 100%;height: 90px;" src="{{ URL::asset('upload/'.getcong('site_logo')) }}" alt="logo"></a>
+            <a href="{{ URL::to('/') }}"><img style="max-width: 100%;height: 90px;" src="{{ URL::asset('upload/'.getcong('site_logo')) }}" alt="logo"></a>
             </div>
             <div class="panel panel-default panel-shadow">
                <!-- <div class="avatar">
