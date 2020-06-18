@@ -423,7 +423,7 @@
                     </div>
                 </div>
 
-                <div class="row" style="display: flex;">
+                <div class="row" style="display: flex;width: 100%;margin: 0;text-align: center;">
 
                     <div class="col-lg-10 col-md-12 col-sm-12 col-xs-12" style="margin: auto;">
 
@@ -471,7 +471,7 @@
                     </div>
                 </div>
 
-                <div class="row" style="display: flex;">
+                <div class="row" style="display: flex;width: 100%;margin: 0;">
 
                     <div class="col-lg-10 col-md-12 col-sm-12 col-xs-12" style="margin: auto;">
 
