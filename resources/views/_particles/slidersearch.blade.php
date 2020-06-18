@@ -142,6 +142,8 @@
                             </div>
 
                             <style>
+
+
                                 .modal-full {
                                     min-width: 100%;
                                 }

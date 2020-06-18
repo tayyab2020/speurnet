@@ -42,6 +42,8 @@
 
 					<li class="{{classActivePath('inquiries')}}"><a href="{{ URL::to('admin/inquiries') }}"><i class="fa fa-send"></i>Inquiries</a></li>
 
+                    <li class="{{classActivePath('homepage-icons')}}"><a href="{{ URL::to('admin/homepage-icons') }}"><i class="fa fa-bars"></i>While you are here content</a></li>
+
                     <li class="{{classActivePath('favourite-properties')}}"><a href="{{ URL::to('admin/favourite-properties') }}"><i class="md md-favorite"></i>Favourite Properties</a></li>
 
 	                <li class="{{classActivePath('slider')}}"><a href="{{ URL::to('admin/slider') }}"><i class="fa fa-sliders"></i>Home Slider</a></li>

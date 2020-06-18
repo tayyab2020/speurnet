@@ -15,6 +15,40 @@
         @endif
 
       <div class="container" style="width: 100%;">
+
+          @if(count($content))
+
+
+
+          <div class="row">
+
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="display: flex;">
+
+                  <div data-testid="key-services" class="css-htlmaj col-lg-9 col-md-12 col-sm-12 col-xs-12">
+                      <div>
+                      <div class="domain-home_ down is-visible">
+
+                          <h2 class="css-ce6ko1">While you're here</h2>
+
+                          <ul class="css-48sroz" style="list-style: none;padding: 0;">
+
+                              @foreach($content as $temp)
+
+                              <li><a href="@if($temp->url) {{$temp->url}} @else {{URL::to('/')}} @endif">
+
+                                      <img src="{{ URL::asset('upload/homepage_icons/'.$temp->image) }}">{{$temp->title}}</a>
+
+                              </li>
+
+                              @endforeach
+
+
+                          </ul></div></div></div>
+
+              </div></div>
+
+          @endif
+
         <!-- begin:latest -->
 
         <div class="row">
@@ -22,9 +56,14 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="display: inline-block;">
 
                 <div class="col-md-12 col-sm-12">
-                    <div class="heading-title">
+                    <div class="heading-title" style="margin-bottom: 45px;">
                         <h2>Latest Properties</h2>
                     </div>
+
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 10px;text-align: center">
+                        <a href="{{URL::to('properties')}}" style="background-color: transparent;color: black;border-width: 2px;" class="btn btn-success">Show More Properties</a>
+                    </div>
+
                 </div>
 
                 <div class="row">
@@ -39,11 +78,11 @@
                                 <div class="col-md-4 col-sm-12 col-xs-12">
 
                                     <div style="min-height: 55px;display: flex;">
-                                    <div class="property-price" style="position:relative;max-width: 100%;font-size: 15px;padding: 3px 0px;border-radius: 5px;margin: auto 0;width: 100%;">Open House <span>@if($property->open_date) {{$property->open_date}} @endif @if($property->open_timeFrom) {{$property->open_timeFrom}} @else Anytime @endif @if($property->open_timeTo) to {{$property->open_timeTo}} @else to Anytime @endif</span></div>
+                                    <div class="property-price" style="position:relative;max-width: 100%;font-size: 15px;padding: 3px 5px;border-radius: 5px;margin: auto 0;width: 100%;">Open House <span>@if($property->open_date) {{$property->open_date}} @endif @if($property->open_timeFrom) {{$property->open_timeFrom}} @else Anytime @endif @if($property->open_timeTo) to {{$property->open_timeTo}} @else to Anytime @endif</span></div>
                                     </div>
 
                                     <div class="property-container" style="border: 1px solid #48cfad;margin-bottom: 10px">
-                                        <div class="property-image">
+                                        <div class="property-image latest">
 
                                             <img src="{{ URL::asset('upload/properties/'.$property->featured_image.'-b.jpg') }}" alt="{{ $property->property_name }}">
 
@@ -365,16 +404,10 @@
 
                                     </div>
 
-                                    @if($property->listed)
-
-                                        <div class="property-price" style="background: #d6d63e;position:relative;max-width: 100%;margin-bottom: 12px;font-size: 15px;padding: 2px 0px;border-radius: 5px;">Listed {{$property->listed}}</div>
-
-                                    @endif
 
                                 </div>
-                                <!-- break -->
-                            @endforeach
 
+                            @endforeach
 
 
                         </div>
@@ -490,12 +523,54 @@
 
 <style>
 
-    .property-image
+    .css-htlmaj
+    {
+        padding:0 18px;
+        margin:0px auto 0px;
+    }
+
+    @media(min-width:1021px)
+    {
+        .css-htlmaj
+        {
+            padding:0 10px;
+            margin-bottom:50px;
+        }
+    }
+
+    .css-ce6ko1{font-size:25px;font-weight:bold;margin-bottom:18px;}
+
+    @media(min-width:624px){.css-48sroz{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;}}
+
+    @media(min-width:1021px){.css-48sroz{border-radius:3px;border:1px solid #fff;-webkit-flex-wrap:nowrap;-ms-flex-wrap:nowrap;flex-wrap:nowrap;box-shadow:0 1px 3px 0 rgba(30,41,61,0.1),0 1px 2px 0 rgba(30,41,61,0.2);}}
+
+    .css-48sroz li{font-weight:bold;margin-bottom:12px;background-color:#fff;box-shadow:0 1px 3px 0 rgba(30,41,61,0.1),0 1px 2px 0 rgba(30,41,61,0.2);}
+
+    .css-48sroz li:hover,.css-48sroz li:focus{box-shadow:0 3px 6px 0 rgba(30,41,61,0.15),0 5px 10px 0 rgba(30,41,61,0.15);-webkit-transition:box-shadow ease-in 100ms;transition:box-shadow ease-in 100ms;z-index:1;}
+
+    @media(min-width:624px){.css-48sroz li{-webkit-flex-basis:calc(50% - 6px);-ms-flex-preferred-size:calc(50% - 6px);flex-basis:calc(50% - 6px);}}
+
+    @media(min-width:1021px){.css-48sroz li{-webkit-box-flex:1;-webkit-flex-grow:1;-ms-flex-positive:1;flex-grow:1;-webkit-flex-basis:20%;-ms-flex-preferred-size:20%;flex-basis:20%;font-size:18px;text-align:center;box-shadow:none;border-right:1px solid #e6e9ed;margin-top:-1px;margin-bottom:-1px;}
+
+    .css-48sroz li:last-child{border-right-width:0;}}
+
+    .css-48sroz a{color:inherit;-webkit-text-decoration:inherit;text-decoration:inherit;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;padding:12px;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;font-size: 90%;}
+
+    @media(min-width:1021px){.css-48sroz a{display:block;padding:30px 18px;height:100%;}}
+
+    .css-48sroz img{color:#0ea800;width:30px !important;height:30px !important;margin-right:12px;}
+
+    @media(min-width:1021px){.css-48sroz img{display:block;margin:0 auto 12px auto;width:48px !important;height:48px !important;}}
+
+    .css-jeyium{stroke-linejoin:round;stroke-linecap:round;fill:none;vertical-align:middle;width:24px;height:24px;}
+
+
+    .latest
     {
         height: 265px;
     }
 
-    .property-image img
+    .latest img
     {
         height: 100%;
     }
@@ -644,21 +719,23 @@
         slidesToScroll: 1,
         responsive: [
             {
-                breakpoint: 768,
+                breakpoint: 992,
                 settings: {
-                    arrows: false,
-                    centerMode: true,
-                    centerPadding: '40px',
-                    slidesToShow: 3
+                    arrows: true,
+                    centerMode: false,
+                    centerPadding: '0px',
+                    slidesToShow: 2.1,
+                    infinite: false,
                 }
             },
             {
-                breakpoint: 480,
+                breakpoint: 720,
                 settings: {
                     arrows: false,
                     centerMode: true,
-                    centerPadding: '40px',
-                    slidesToShow: 1
+                    centerPadding: '0px',
+                    slidesToShow: 1.1,
+                    infinite: false,
                 }
             }
         ],
@@ -675,10 +752,10 @@
                 {
                     breakpoint: 768,
                     settings: {
-                        arrows: false,
-                        centerMode: true,
-                        centerPadding: '40px',
-                        slidesToShow: 3
+                        arrows: true,
+                        centerMode: false,
+                        centerPadding: '0px',
+                        slidesToShow: 2
                     }
                 },
                 {
@@ -704,10 +781,10 @@
                 {
                     breakpoint: 768,
                     settings: {
-                        arrows: false,
-                        centerMode: true,
-                        centerPadding: '40px',
-                        slidesToShow: 3
+                        arrows: true,
+                        centerMode: false,
+                        centerPadding: '0px',
+                        slidesToShow: 2
                     }
                 },
                 {

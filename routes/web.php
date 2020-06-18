@@ -110,6 +110,12 @@ Route::group(['middleware' => 'App\Http\Middleware\UserTypeMiddleware'], functio
         Route::get('types/addtypes/{id}', 'TypesController@edittypes');
         Route::get('types/delete/{id}', 'TypesController@delete');
 
+        Route::get('homepage-icons', 'SliderController@homepageIcons');
+        Route::get('homepage-icons/addcontent', 'SliderController@addeditContent');
+        Route::post('homepage-icons/addcontent', 'SliderController@addnewContent');
+        Route::get('homepage-icons/addcontent/{id}', 'SliderController@editContent');
+        Route::get('homepage-icons/delete/{id}', 'SliderController@deleteContent');
+
     });
 
     Route::get('/', 'IndexController@index');
