@@ -34,7 +34,7 @@
 
                               @foreach($content as $temp)
 
-                              <li><a href="@if($temp->url) {{$temp->url}} @else {{URL::to('/')}} @endif">
+                              <li><a href="@if($temp->url){{$temp->url}} @else {{URL::to('/')}} @endif">
 
                                       <img src="{{ URL::asset('upload/homepage_icons/'.$temp->image) }}">{{$temp->title}}</a>
 

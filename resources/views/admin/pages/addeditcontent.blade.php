@@ -71,7 +71,7 @@
                 <hr>
                 <div class="form-group">
                     <div class="col-md-offset-3 col-sm-9 ">
-                        <button type="submit" class="btn btn-primary">{{ isset($slide->id) ? 'Edit Slide' : 'Add Slide' }}</button>
+                        <button type="submit" class="btn btn-primary">{{ isset($slide->id) ? 'Edit Content' : 'Save Content' }}</button>
 
                     </div>
                 </div>
