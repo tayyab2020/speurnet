@@ -60,7 +60,7 @@
                         <h2>Latest Properties</h2>
                     </div>
 
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 10px;text-align: center">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 10px;text-align: right;">
                         <a href="{{URL::to('properties')}}" style="background-color: transparent;color: black;border-width: 2px;" class="btn btn-success">Show More Properties</a>
                     </div>
 
@@ -423,7 +423,7 @@
                     </div>
                 </div>
 
-                <div class="row" style="display: flex;width: 100%;margin: 0;text-align: center;">
+                <div class="row" style="display: flex;width: 100%;margin: 0;">
 
                     <div class="col-lg-10 col-md-12 col-sm-12 col-xs-12" style="margin: auto;">
 
