@@ -114,25 +114,27 @@ class PropertiesController extends Controller
             }
             if($filter == 'lowest_sale_price')
             {
-                $properties = $properties->orderBy('properties.sale_price', 'asc')->paginate(8);
+                $properties = $properties->orderBy('properties.sale_price', 'asc')->where('properties.property_purpose','Sale')->paginate(8);
             }
             if($filter == 'highest_sale_price')
             {
-                $properties = $properties->orderBy('properties.sale_price', 'desc')->paginate(8);
+                $properties = $properties->orderBy('properties.sale_price', 'desc')->where('properties.property_purpose','Sale')->paginate(8);
             }
             if($filter == 'lowest_rent_price')
             {
-                $properties = $properties->orderBy('properties.rent_price', 'asc')->paginate(8);
+                $properties = $properties->orderBy('properties.rent_price', 'asc')->where('properties.property_purpose','Rent')->paginate(8);
             }
             if($filter == 'highest_rent_price')
             {
-                $properties = $properties->orderBy('properties.rent_price', 'desc')->paginate(8);
+                $properties = $properties->orderBy('properties.rent_price', 'desc')->where('properties.property_purpose','Rent')->paginate(8);
             }
         }
         else
         {
             $properties = $properties->orderBy('properties.id', 'desc')->paginate(8);
         }
+
+
 
         date_default_timezone_set("Europe/Amsterdam");
 
