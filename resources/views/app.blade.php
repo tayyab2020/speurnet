@@ -37,6 +37,8 @@
     <link rel="stylesheet" href="https://cdn.plyr.io/3.5.10/plyr.css" />
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/css/slick.css') }}"/>
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/css/slick-theme.css') }}"/>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="{{ URL::asset('assets/js/html5shiv.js') }}"></script>
@@ -83,6 +85,7 @@
     <script src="https://bootstrap-tagsinput.github.io/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js"></script>
     <script type="text/javascript" src="{{ URL::asset('assets/js/slick.js') }}"></script>
     <script type="text/javascript" src="{{ URL::asset('assets/js/slick.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 
     <script type="text/javascript">
 

@@ -192,7 +192,7 @@
 
                                                         <h3 id="bulgy-radios-label">Select Gender</h3>
 
-                                                        <label style="margin-left: 5px;">
+                                                        <label style="margin-left: 5px;float: left;max-width: 80px;">
                                                             <input type="radio" name="gender" value="Mr." checked />
                                                             <span class="radio"></span>
                                                             <span class="label">Mr.</span>
@@ -1336,7 +1336,7 @@
 
                                       <h3 id="bulgy-radios-label">Select Gender</h3>
 
-                                      <label style="margin-left: 5px;">
+                                      <label style="margin-left: 5px;float: left;max-width: 80px;">
                                           <input type="radio" name="gender" value="Mr." checked />
                                           <span class="radio"></span>
                                           <span class="label">Mr.</span>

@@ -89,12 +89,50 @@ class PropertiesController extends Controller
 
     }
 
-    public function index()
+    public function index(Request $request)
     {
+
+        $filter = $request->filter_orderby;
 
         /*$prev_month = date("t", mktime(0,0,0, date("n") - 1));*/
 
-        $properties = Properties::leftjoin('users','users.id','=','properties.user_id')->where('properties.status','1')/*->whereDate('properties.created_at', '>', Carbon::now()->subDays($prev_month))*/->orderBy('properties.id', 'desc')->select('properties.id','properties.property_name','properties.description','properties.property_slug','properties.available_immediately','properties.is_sold','properties.is_rented','is_negotiation','is_under_offer','properties.video','properties.property_type','properties.property_purpose','properties.sale_price','properties.rent_price','properties.address','properties.bathrooms','properties.bedrooms','properties.area','properties.featured_image','properties.property_images1','properties.property_images2','properties.property_images3','properties.property_images4','properties.property_images5','properties.first_floor','properties.second_floor','properties.ground_floor','properties.basement','properties.open_date','properties.open_timeFrom','properties.open_timeTo','properties.created_at','users.image_icon')->paginate(9);
+        $properties = Properties::leftjoin('users','users.id','=','properties.user_id')->where('properties.status','1')/*->whereDate('properties.created_at', '>', Carbon::now()->subDays($prev_month))*/->select('properties.id','properties.property_name','properties.description','properties.property_slug','properties.available_immediately','properties.is_sold','properties.is_rented','is_negotiation','is_under_offer','properties.video','properties.property_type','properties.property_purpose','properties.sale_price','properties.rent_price','properties.address','properties.bathrooms','properties.bedrooms','properties.area','properties.featured_image','properties.property_images1','properties.property_images2','properties.property_images3','properties.property_images4','properties.property_images5','properties.first_floor','properties.second_floor','properties.ground_floor','properties.basement','properties.open_date','properties.open_timeFrom','properties.open_timeTo','properties.created_at','users.image_icon');
+
+        if($filter)
+        {
+            if($filter == 'newest')
+            {
+                $properties = $properties->orderBy('properties.id', 'desc')->paginate(8);
+            }
+            if($filter == 'oldest')
+            {
+                $properties = $properties->orderBy('properties.id', 'asc')->paginate(8);
+            }
+            if($filter == 'popularity')
+            {
+                $properties = $properties->orderBy('properties.views', 'desc')->paginate(8);
+            }
+            if($filter == 'lowest_sale_price')
+            {
+                $properties = $properties->orderBy('properties.sale_price', 'asc')->paginate(8);
+            }
+            if($filter == 'highest_sale_price')
+            {
+                $properties = $properties->orderBy('properties.sale_price', 'desc')->paginate(8);
+            }
+            if($filter == 'lowest_rent_price')
+            {
+                $properties = $properties->orderBy('properties.rent_price', 'asc')->paginate(8);
+            }
+            if($filter == 'highest_rent_price')
+            {
+                $properties = $properties->orderBy('properties.rent_price', 'desc')->paginate(8);
+            }
+        }
+        else
+        {
+            $properties = $properties->orderBy('properties.id', 'desc')->paginate(8);
+        }
 
         date_default_timezone_set("Europe/Amsterdam");
 
@@ -183,8 +221,7 @@ class PropertiesController extends Controller
         }
 
 
-
-        return view('pages.properties',compact('properties'));
+        return view('pages.properties',compact('properties','filter'));
     }
 
     public function PostRequestViewing(Request $request)

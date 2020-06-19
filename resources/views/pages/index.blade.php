@@ -404,6 +404,11 @@
 
                                     </div>
 
+                                    @if($property->listed)
+
+                                        <div class="property-price" style="background: #d6d63e;position:relative;max-width: 50%;margin-bottom: 12px;font-size: 15px;padding: 2px 0px;border-radius: 5px;">Listed {{$property->listed}}</div>
+
+                                    @endif
 
                                 </div>
 
@@ -556,11 +561,11 @@
 
     .css-48sroz a{color:inherit;-webkit-text-decoration:inherit;text-decoration:inherit;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;padding:12px;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;font-size: 90%;}
 
-    @media(min-width:1021px){.css-48sroz a{display:block;padding:30px 18px;height:100%;}}
+    @media(min-width:1021px){.css-48sroz a{display:block;padding:20px 18px;height:100%;}}
 
-    .css-48sroz img{color:#0ea800;width:30px !important;height:30px !important;margin-right:12px;}
+    .css-48sroz img{color:#0ea800;width:110px !important;height:80px !important;margin-right:12px;}
 
-    @media(min-width:1021px){.css-48sroz img{display:block;margin:0 auto 12px auto;width:48px !important;height:48px !important;}}
+    @media(min-width:1021px){.css-48sroz img{display:block;margin:0 auto 20px auto;width:100% !important;height:125px !important;}}
 
     .css-jeyium{stroke-linejoin:round;stroke-linecap:round;fill:none;vertical-align:middle;width:24px;height:24px;}
 
