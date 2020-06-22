@@ -46,9 +46,49 @@
                     <div class="row">
                       <div class="col-md-12">
                         <h2>{{$property->property_name}}</h2>
-                        <div id="slider-property" class="carousel slide" data-ride="carousel">
+
+                          @if($property->video)
+
+
+                              <div class="row" id="player-window" style="display: none;">
+
+                                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="height: 100%;">
+
+                                      <?php $ext = pathinfo($property->video, PATHINFO_EXTENSION);
+
+                                      $ext = strtolower($ext);
+
+                                      ?>
+
+                                      <video id="player" playsinline controls style="object-fit: fill;">
+                                          <source src="{{ URL::asset('upload/properties/'.$property->video) }}" type="video/{{$ext}}" />
+                                          <source src="{{ URL::asset('upload/properties/'.$property->video) }}" type="video/mp4" />
+                                          <source src="{{ URL::asset('upload/properties/'.$property->video) }}" type="video/ogv" />
+                                          <source src="{{ URL::asset('upload/properties/'.$property->video) }}" type="video/webm" />
+
+                                      </video>
+
+                                  </div></div>
+
+                          @endif
+
+                        <div id="slider-property" class="carousel slide" data-ride="carousel" style="margin-bottom: 0px;">
 
                           <div class="carousel-inner">
+
+                              @if($property->video)
+
+                              <div class="video-wrapper-inner" style="position: absolute;margin-left: 15%;margin-top: 5%;">
+                                  <a class="popup-video">
+                    <span class="popup-video-inner">
+                        <i class="flaticon-play"></i>
+                    </span>
+                                  </a>
+                              </div>
+
+                              @endif
+
+
                             @if($property->featured_image)
                             <div class="item active">
                               <img src="{{ URL::asset('upload/properties/'.$property->featured_image.'-b.jpg') }}" alt="">
@@ -91,248 +131,253 @@
                           <a class="left carousel-control" href="#slider-property" data-slide="prev">
                             <span class="glyphicon glyphicon-chevron-left"></span>
                           </a>
+
+
                           <a class="right carousel-control" href="#slider-property" data-slide="next">
                             <span class="glyphicon glyphicon-chevron-right"></span>
                           </a>
 
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 10px 0px;padding-bottom: 0px;">
 
-                                <h4 style="margin: 0;float: left;font-weight: 600;">{{$property->views}}</h4>
+                            </div>
 
-                                <span style="margin-left: 5px;margin-right: 10px;"><i class="fa fa-eye" aria-hidden="true" style="font-size: 16px;padding-left: 3px;"></i></span>
+                          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 10px 0px;padding-bottom: 0px;">
 
-                                <?php $url = "https://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; ?>
+                              <h4 style="margin: 0;float: left;font-weight: 600;">{{$property->views}}</h4>
 
-                                <span style="margin-left: 10px;"><a target="_blank" title="Share by Whatsapp" href="https://api.whatsapp.com/send?text={{$url}}"><i class="fa fa-whatsapp" aria-hidden="true" style="font-size: 16px;"></i></a></span>
+                              <span style="margin-left: 5px;margin-right: 10px;"><i class="fa fa-eye" aria-hidden="true" style="font-size: 16px;padding-left: 3px;"></i></span>
 
-                                <span style="margin-left: 10px;"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{$url}}"><i class="fa fa-facebook" aria-hidden="true" style="font-size: 16px;color: #7191d3;"></i></a></span>
+                              <?php $url = "https://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; ?>
 
-                                <span style="margin-left: 10px;"><a target="_blank" title="Share by Email" href="mailto:?subject=I wanted you to see this Property AD I just Found on zoekjehuisje.nl&amp;body=Check out this link {{$url}}"><i class="far fa-envelope" aria-hidden="true" style="font-size: 16px;color:goldenrod;"></i></a></span>
+                              <span style="margin-left: 10px;"><a target="_blank" title="Share by Whatsapp" href="https://api.whatsapp.com/send?text={{$url}}"><i class="fa fa-whatsapp" aria-hidden="true" style="font-size: 16px;"></i></a></span>
 
-                                @if( isset(Auth::user()->usertype) && Auth::user()->usertype == 'Users')
+                              <span style="margin-left: 10px;"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{$url}}"><i class="fa fa-facebook" aria-hidden="true" style="font-size: 16px;color: #7191d3;"></i></a></span>
+
+                              <span style="margin-left: 10px;"><a target="_blank" title="Share by Email" href="mailto:?subject=I wanted you to see this Property AD I just Found on zoekjehuisje.nl&amp;body=Check out this link {{$url}}"><i class="far fa-envelope" aria-hidden="true" style="font-size: 16px;color:goldenrod;"></i></a></span>
+
+                              @if( isset(Auth::user()->usertype) && Auth::user()->usertype == 'Users')
 
 
-                                    <form action="{{ URL::to('admin/save-property') }}" method="POST" id="save_property_form" style="display: inline-block;margin-left: 10px;">
+                                  <form action="{{ URL::to('admin/save-property') }}" method="POST" id="save_property_form" style="display: inline-block;margin-left: 10px;">
 
-                                    <input type="hidden" name="_token" value="{{csrf_token()}}"/>
+                                      <input type="hidden" name="_token" value="{{csrf_token()}}"/>
 
-                                    <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                                      <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
 
-                                    <input type="hidden" name="property_id" value="{{$property->id}}">
+                                      <input type="hidden" name="property_id" value="{{$property->id}}">
 
-                                    <button type="submit" @if(!$saved) title="Be First to Save this property" @endif style="padding: 0;background: transparent;border: 0;outline: 0;box-shadow: none;" class="btn btn-success" id="saveProperty">
+                                      <button type="submit" @if(!$saved) title="Be First to Save this property" @endif style="padding: 0;background: transparent;border: 0;outline: 0;box-shadow: none;" class="btn btn-success" id="saveProperty">
 
-                                    @if($saved)
+                                          @if($saved)
 
-                                        <i class="fa fa-heart" style="color: red;" id="heart" ></i>
+                                              <i class="fa fa-heart" style="color: red;" id="heart" ></i>
 
-                                    @else
+                                          @else
 
-                                        <i class="far fa-heart" style="color: red;" id="heart" ></i>
+                                              <i class="far fa-heart" style="color: red;" id="heart" ></i>
 
-                                    @endif
+                                          @endif
 
-                                        <span style="color: black;">{{ $property->saved_properties }}</span>
+                                          <span style="color: black;">{{ $property->saved_properties }}</span>
 
-                                    </button>
+                                      </button>
 
-                                    </form>
+                                  </form>
 
-                                @else
+                              @else
 
-                                    @if(!isset(Auth::user()->usertype))
+                                  @if(!isset(Auth::user()->usertype))
 
-                                    <span style="margin-left: 10px;"><a href="{{ URL::to('/login') }}" >
+                                      <span style="margin-left: 10px;"><a href="{{ URL::to('/login') }}" >
                                         <i style="color: red;" id="heart" class="far fa-heart" title="Be First to Save this property"></i>
                                         </a>{{ $property->saved_properties }}</span>
 
-                                        @endif
+                                  @endif
 
-                                @endif
+                              @endif
 
-                                <button style="float: right;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                                    <i class="far fa-calendar-check" style="margin-right: 7px;"></i> Request Viewing
-                                </button>
+                              <button style="float: right;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                  <i class="far fa-calendar-check" style="margin-right: 7px;"></i> Request Viewing
+                              </button>
 
-                                <!-- Modal -->
-                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                              <!-- Modal -->
+                              <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                  <div class="modal-dialog modal-dialog-centered" role="document">
 
-                                        <form role="form" action="{{route('request-viewing')}}" method="POST">
+                                      <form role="form" action="{{route('request-viewing')}}" method="POST">
 
-                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                          <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-                                        <input type="hidden" name="agent_id" value="{{$agent->id}}">
+                                          <input type="hidden" name="agent_id" value="{{$agent->id}}">
 
-                                        <input type="hidden" name="property_name" value="{{$property->property_name}}">
+                                          <input type="hidden" name="property_name" value="{{$property->property_name}}">
 
-                                        <div class="modal-content">
+                                          <div class="modal-content">
 
-                                            <div class="modal-header" style="border-bottom: 0;display: inline-block;width: 100%;padding: 15px 25px; 0px 25px;">
+                                              <div class="modal-header" style="border-bottom: 0;display: inline-block;width: 100%;padding: 15px 25px 0px 25px;">
 
-                                                <button style="opacity: 0.5;font-size: 30px;font-weight: 600;" type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
+                                                  <button style="opacity: 0.5;font-size: 30px;font-weight: 600;" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                      <span aria-hidden="true">&times;</span>
+                                                  </button>
 
-                                                <h4 style="margin-top: 5px;" class="modal-title" id="exampleModalLabel">REQUEST VIEWING</h4>
-                                                <p style="margin-top: 15px;width: 90%;">Physical Arrange viewings is always been attractive to property clients. Just fill out the form to arrange visualizations around our properties.</p>
+                                                  <h4 style="margin-top: 5px;" class="modal-title" id="exampleModalLabel">REQUEST VIEWING</h4>
+                                                  <p style="margin-top: 15px;width: 90%;">Physical Arrange viewings is always been attractive to property clients. Just fill out the form to arrange visualizations around our properties.</p>
 
-                                            </div>
+                                              </div>
 
 
-                                            <div class="modal-body" style="padding: 10px 25px;padding-top: 0px;">
+                                              <div class="modal-body" style="padding: 10px 25px;padding-top: 0px;">
 
-                                                    <input type="hidden" name="id" value="{{$property->id}}">
+                                                  <input type="hidden" name="id" value="{{$property->id}}">
 
-                                                <div class="form-group">
+                                                  <div class="form-group">
 
-                                                    <div style="position: relative;width: 100%;">
+                                                      <div style="position: relative;width: 100%;">
 
-                                                        <div class="bulgy-radios" role="radiogroup" aria-labelledby="bulgy-radios-label" style="width: 100%;min-height: 100px;text-align: left;">
+                                                          <div class="bulgy-radios" role="radiogroup" aria-labelledby="bulgy-radios-label" style="width: 100%;min-height: 100px;text-align: left;">
 
-                                                        <h3 id="bulgy-radios-label">Select Gender</h3>
+                                                              <h3 id="bulgy-radios-label">Select Gender</h3>
 
-                                                        <label style="margin-left: 5px;float: left;max-width: 80px;">
-                                                            <input type="radio" name="gender" value="Mr." checked />
-                                                            <span class="radio"></span>
-                                                            <span class="label">Mr.</span>
-                                                        </label>
+                                                              <label style="margin-left: 5px;float: left;max-width: 80px;">
+                                                                  <input type="radio" name="gender" value="Mr." checked />
+                                                                  <span class="radio"></span>
+                                                                  <span class="label">Mr.</span>
+                                                              </label>
 
-                                                        <label>
-                                                            <input type="radio" name="gender" value="Ms." />
-                                                            <span class="radio"></span>
-                                                            <span class="label">Ms.</span>
-                                                        </label>
+                                                              <label>
+                                                                  <input type="radio" name="gender" value="Ms." />
+                                                                  <span class="radio"></span>
+                                                                  <span class="label">Ms.</span>
+                                                              </label>
 
-                                                        </div>
+                                                          </div>
 
-                                                    </div>
+                                                      </div>
 
-                                                </div>
+                                                  </div>
 
-                                                    <div class="form-group">
+                                                  <div class="form-group">
 
-                                                        <div style="width: 100%;position: relative;">
+                                                      <div style="width: 100%;position: relative;">
 
-                                                            <label style="font-weight: 600;">Preferred Day*</label>
+                                                          <label style="font-weight: 600;">Preferred Day*</label>
 
-                                                            <i class="fas fa-calendar-alt" style="position: absolute;left: 15px;right: auto;color: #d5d5d5;font-size: 14px;top: 72%;margin:-9px 0 0;pointer-events:none;"></i>
-                                                            <i class="fas fa-chevron-down" style="position: absolute;font-size: 14px;top: 72%;right:10px;left: auto;margin: -7px 0 0;pointer-events: none;color: #767676;"></i>
+                                                          <i class="fas fa-calendar-alt" style="position: absolute;left: 15px;right: auto;color: #d5d5d5;font-size: 14px;top: 72%;margin:-9px 0 0;pointer-events:none;"></i>
+                                                          <i class="fas fa-chevron-down" style="position: absolute;font-size: 14px;top: 72%;right:10px;left: auto;margin: -7px 0 0;pointer-events: none;color: #767676;"></i>
 
-                                                            <select style="-webkit-appearance:none;-moz-appearance:none;appearance:none;padding: 0 0 0 40px;cursor: pointer;height: 42px;color:#bcbcbc;border-color:#e6e6e6;border-radius: 3px;box-shadow: none;"  placeholder="Preferred Day *" name="day" required  class="form-control" >
+                                                          <select style="-webkit-appearance:none;-moz-appearance:none;appearance:none;padding: 0 0 0 40px;cursor: pointer;height: 42px;color:#bcbcbc;border-color:#e6e6e6;border-radius: 3px;box-shadow: none;"  placeholder="Preferred Day *" name="day" required  class="form-control" >
 
-                                                                <option value="">No preference</option>
-                                                                <option value="Only on workdays">Only on workdays</option>
-                                                                <option value="Weekend">Weekend</option>
-                                                                <option value="Monday">Monday</option>
-                                                                <option value="Tuesday">Tuesday</option>
-                                                                <option value="Wednesday">Wednesday</option>
-                                                                <option value="Thursday">Thursday</option>
-                                                                <option value="Friday">Friday</option>
-                                                                <option value="Saturday">Saturday</option>
+                                                              <option value="">No preference</option>
+                                                              <option value="Only on workdays">Only on workdays</option>
+                                                              <option value="Weekend">Weekend</option>
+                                                              <option value="Monday">Monday</option>
+                                                              <option value="Tuesday">Tuesday</option>
+                                                              <option value="Wednesday">Wednesday</option>
+                                                              <option value="Thursday">Thursday</option>
+                                                              <option value="Friday">Friday</option>
+                                                              <option value="Saturday">Saturday</option>
 
-                                                            </select>
+                                                          </select>
 
-                                                        </div>
+                                                      </div>
 
-                                                    </div>
+                                                  </div>
 
-                                                    <div class="form-group">
+                                                  <div class="form-group">
 
-                                                        <div style="width: 100%;position: relative;">
+                                                      <div style="width: 100%;position: relative;">
 
-                                                            <label style="font-weight: 600;">Preferred Moment*</label>
+                                                          <label style="font-weight: 600;">Preferred Moment*</label>
 
-                                                            <i class="far fa-clock" style="position: absolute;left: 15px;right: auto;color: #d5d5d5;font-size: 14px;top: 72%;margin:-9px 0 0;pointer-events:none;"></i>
-                                                            <i class="fas fa-chevron-down" style="position: absolute;font-size: 14px;top: 72%;right:10px;left: auto;margin: -7px 0 0;pointer-events: none;color: #767676;"></i>
+                                                          <i class="far fa-clock" style="position: absolute;left: 15px;right: auto;color: #d5d5d5;font-size: 14px;top: 72%;margin:-9px 0 0;pointer-events:none;"></i>
+                                                          <i class="fas fa-chevron-down" style="position: absolute;font-size: 14px;top: 72%;right:10px;left: auto;margin: -7px 0 0;pointer-events: none;color: #767676;"></i>
 
-                                                            <select style="-webkit-appearance:none;-moz-appearance:none;appearance:none;padding: 0 0 0 40px;cursor: pointer;height: 42px;color:#bcbcbc;border-color:#e6e6e6;border-radius: 3px;box-shadow: none;"  placeholder="Preferred Moment *" name="moment" required  class="form-control" >
+                                                          <select style="-webkit-appearance:none;-moz-appearance:none;appearance:none;padding: 0 0 0 40px;cursor: pointer;height: 42px;color:#bcbcbc;border-color:#e6e6e6;border-radius: 3px;box-shadow: none;"  placeholder="Preferred Moment *" name="moment" required  class="form-control" >
 
-                                                                <option value="">No preference</option>
-                                                                <option value="in the morning">in the morning</option>
-                                                                <option value="in the afternoon">in the afternoon</option>
+                                                              <option value="">No preference</option>
+                                                              <option value="in the morning">in the morning</option>
+                                                              <option value="in the afternoon">in the afternoon</option>
 
-                                                            </select>
+                                                          </select>
 
-                                                        </div>
+                                                      </div>
 
-                                                    </div>
+                                                  </div>
 
-                                                    <div class="form-group">
+                                                  <div class="form-group">
 
-                                                        <div style="width: 100%;position: relative;">
+                                                      <div style="width: 100%;position: relative;">
 
-                                                            <i class="fas fa-user" style="position: absolute;left: 15px;right: auto;color: #d5d5d5;font-size: 14px;top: 55%;margin:-9px 0 0;pointer-events:none;"></i>
+                                                          <i class="fas fa-user" style="position: absolute;left: 15px;right: auto;color: #d5d5d5;font-size: 14px;top: 55%;margin:-9px 0 0;pointer-events:none;"></i>
 
-                                                            <input style="padding: 0 0 0 40px;height: 42px;color:#bcbcbc;border-color:#e6e6e6;border-radius: 3px;box-shadow: none;" type='text' placeholder="Your Name *" name="username" required  class="form-control" id='username' />
+                                                          <input style="padding: 0 0 0 40px;height: 42px;color:#bcbcbc;border-color:#e6e6e6;border-radius: 3px;box-shadow: none;" type='text' placeholder="Your Name *" name="username" required  class="form-control" id='username' />
 
-                                                        </div>
+                                                      </div>
 
-                                                    </div>
+                                                  </div>
 
-                                                <div class="form-group">
+                                                  <div class="form-group">
 
-                                                    <div style="width: 100%;position: relative;">
+                                                      <div style="width: 100%;position: relative;">
 
-                                                        <i class="fas fa-at" style="position: absolute;left: 15px;right: auto;color: #d5d5d5;font-size: 14px;top: 55%;margin:-9px 0 0;pointer-events:none;"></i>
+                                                          <i class="fas fa-at" style="position: absolute;left: 15px;right: auto;color: #d5d5d5;font-size: 14px;top: 55%;margin:-9px 0 0;pointer-events:none;"></i>
 
-                                                        <input style="padding: 0 0 0 40px;height: 42px;color:#bcbcbc;border-color:#e6e6e6;border-radius: 3px;box-shadow: none;" type='email' placeholder="Your Email *" name="email" required  class="form-control" id='email' />
+                                                          <input style="padding: 0 0 0 40px;height: 42px;color:#bcbcbc;border-color:#e6e6e6;border-radius: 3px;box-shadow: none;" type='email' placeholder="Your Email *" name="email" required  class="form-control" id='email' />
 
-                                                    </div>
+                                                      </div>
 
-                                                </div>
+                                                  </div>
 
-                                                <div class="form-group">
+                                                  <div class="form-group">
 
-                                                    <div style="width: 100%;position: relative;">
+                                                      <div style="width: 100%;position: relative;">
 
-                                                        <i class="fas fa-phone-alt" style="position: absolute;left: 15px;right: auto;color: #d5d5d5;font-size: 14px;top: 55%;margin:-9px 0 0;pointer-events:none;"></i>
+                                                          <i class="fas fa-phone-alt" style="position: absolute;left: 15px;right: auto;color: #d5d5d5;font-size: 14px;top: 55%;margin:-9px 0 0;pointer-events:none;"></i>
 
-                                                        <input style="padding: 0 0 0 40px;height: 42px;color:#bcbcbc;border-color:#e6e6e6;border-radius: 3px;box-shadow: none;" type='text' placeholder="Your Phone Number" name="phone" class="form-control" id='phone' />
+                                                          <input style="padding: 0 0 0 40px;height: 42px;color:#bcbcbc;border-color:#e6e6e6;border-radius: 3px;box-shadow: none;" type='text' placeholder="Your Phone Number" name="phone" class="form-control" id='phone' />
 
-                                                    </div>
+                                                      </div>
 
-                                                </div>
+                                                  </div>
 
-                                                    <div class="form-group">
+                                                  <div class="form-group">
 
-                                                        <div style="width: 100%;position: relative;">
+                                                      <div style="width: 100%;position: relative;">
 
-                                                            <i class="far fa-comment-alt" style="position: absolute;left: 15px;right: auto;color: #d5d5d5;font-size: 14px;margin:10px 0 0;pointer-events:none;"></i>
+                                                          <i class="far fa-comment-alt" style="position: absolute;left: 15px;right: auto;color: #d5d5d5;font-size: 14px;margin:10px 0 0;pointer-events:none;"></i>
 
-                                                            <textarea style="height:100px;padding-left:40px;color:#bcbcbc;border-color:#e6e6e6;border-radius: 3px;box-shadow: none;" class="form-control" id="message-text" placeholder="Message" name="message"></textarea>
+                                                          <textarea style="height:100px;padding-left:40px;color:#bcbcbc;border-color:#e6e6e6;border-radius: 3px;box-shadow: none;" class="form-control" id="message-text" placeholder="Message" name="message"></textarea>
 
 
-                                                        </div>
+                                                      </div>
 
-                                                    </div>
+                                                  </div>
 
 
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                <button type="submit" class="btn btn-primary">Send message</button>
-                                            </div>
-                                        </div>
+                                              </div>
+                                              <div class="modal-footer">
+                                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                  <button type="submit" class="btn btn-primary">Send message</button>
+                                              </div>
+                                          </div>
 
-                                    </form>
+                                      </form>
 
 
-                                    </div>
-                                </div>
+                                  </div>
+                              </div>
 
-                            </div>
+                          </div>
 
 
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 40px 0px;padding-top: 0;">
+                          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 40px 0px;padding-top: 0;">
 
-                                <?php $date = date_format($property->created_at,"F d, Y");?>
+                              <?php $date = date_format($property->created_at,"F d, Y");?>
 
-                             <span style="font-size: 12px;">Posted On {{$date}}</span>
+                              <span style="font-size: 12px;">Posted On {{$date}}</span>
 
-                            </div>
+                          </div>
 
-                            </div>
+
                         <h3>Property Overview</h3>
                         <table class="table table-bordered">
                           <tr>
@@ -712,7 +757,21 @@
 
                                   </div></div>
 
+                              <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/css/flaticon.css') }}"/>
+
                               <style>
+
+
+                                  .video-wrapper-inner .popup-video{position:relative;z-index:1;display:inline-block;width:50px;height:50px;line-height:50px;border-radius:50%;-webkit-border-radius:50%;-moz-border-radius:50%;-ms-border-radius:50%;-o-border-radius:50%;-webkit-transition:all 0.3s ease-in-out 0s;-o-transition:all 0.3s ease-in-out 0s;transition:all 0.3s ease-in-out 0s;font-size:18px;color:#fff;background:#ff5a5f;text-align:center}
+
+                                  @media (min-width: 1200px){.video-wrapper-inner .popup-video{width:70px;height:70px;line-height:70px;font-size:22px}}
+
+                                  .video-wrapper-inner .popup-video:before{-webkit-transition:all 0.3s ease-in-out 0s;-o-transition:all 0.3s ease-in-out 0s;transition:all 0.3s ease-in-out 0s;content:'';position:absolute;top:0;left:0;width:100%;height:100%;z-index:-1;background:#ff5a5f;opacity:0.3;filter:alpha(opacity=30);border-radius:50%;-webkit-border-radius:50%;-moz-border-radius:50%;-ms-border-radius:50%;-o-border-radius:50%;-webkit-animation:scaleicon 3s ease-in-out 0s infinite alternate;animation:scaleicon 3s ease-in-out 0s infinite alternate}.widget-video.style2 .popup-video{position:absolute;top:50%;left:50%;-webkit-transform:translate(-50%,-50%);-ms-transform:translate(-50%,-50%);-o-transform:translate(-50%,-50%);transform:translate(-50%,-50%)}
+
+                                  @-webkit-keyframes scaleicon{from{-ms-transform:scale(1,1);transform:scale(1,1)}50%{-ms-transform:scale(1.3,1.3);transform:scale(1.3,1.3)}}
+
+                                  @keyframes scaleicon{from{-ms-transform:scale(1,1);transform:scale(1,1)}50%{-ms-transform:scale(1.3,1.3);transform:scale(1.3,1.3)}}
+
 
                                   .travel-time-add__cta-wrapper{margin:.5rem 0 0;width:100%;text-align:right}
 
@@ -955,7 +1014,7 @@
                                   ?>
 
 
-                                  <video id="player" playsinline controls>
+                                  <video id="player1" playsinline controls>
                                       <source src="{{ URL::asset('upload/properties/'.$property->video) }}" type="video/{{$ext}}" />
                                       <source src="{{ URL::asset('upload/properties/'.$property->video) }}" type="video/mp4" />
                                       <source src="{{ URL::asset('upload/properties/'.$property->video) }}" type="video/ogv" />
@@ -1470,6 +1529,10 @@
             </div>
         </div>
 
+            @else
+
+            <h2 style="text-align: center;">No Related Properties Found...</h2>
+
         @endif
 
 
@@ -1714,10 +1777,15 @@
             border-radius:4px;-webkit-box-shadow:0 6px 12px rgba(0,0,0,.175);
             box-shadow:0 6px 12px rgba(0,0,0,.175) }
 
+
+        .carousel-inner, #player-window{
+            height: 180px;
+        }
+
         @media (min-width: 700px)
         {
 
-            .carousel-inner
+            .carousel-inner, #player-window
             {
                 height: 500px;
             }
@@ -1825,6 +1893,12 @@
     <script>
 
         $( document ).ready(function() {
+
+            $(".popup-video").click(function(){
+
+                $("#slider-property").hide();
+                $("#player-window").show();
+            });
 
             $('#cal_dist').click(function(e) {
 
@@ -2386,6 +2460,7 @@
             });
 
             const player = new Plyr('#player');
+            const player1 = new Plyr('#player1');
 
             $(".box").on('click', function() {
 

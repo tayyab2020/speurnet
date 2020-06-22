@@ -713,6 +713,18 @@
 
         $('.modal-header .close').appendTo(".ekko-lightbox");
 
+        var length = $(".ekko-lightbox > button").length;
+        length = length - 1;
+
+        if(length > 0)
+        {
+            for(var i = 0; i < length; i++)
+            {
+                $( ".ekko-lightbox" ).find("button").slice(0, 1).remove();
+            }
+
+        }
+
     });
 
     $(document).ready(function() {

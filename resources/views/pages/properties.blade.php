@@ -41,6 +41,9 @@
                           <select onchange="this.form.submit()" name="filter_orderby" class="orderby" data-placeholder="Sort by" tabindex="-1" aria-hidden="true">
                               <option value="newest" @if(isset($filter) && $filter == 'newest' || $filter == '') selected @endif>Newest</option>
                               <option value="oldest" @if(isset($filter) && $filter == 'oldest') selected @endif>Oldest</option>
+                              <option value="area" @if(isset($filter) && $filter == 'area') selected @endif>Area</option>
+                              <option value="bedrooms" @if(isset($filter) && $filter == 'bedrooms') selected @endif>Bedrooms</option>
+                              <option value="bathrooms" @if(isset($filter) && $filter == 'bathrooms') selected @endif>Bathrooms</option>
                               <option value="popularity" @if(isset($filter) && $filter == 'popularity') selected @endif>Popularity</option>
                               <option value="lowest_sale_price" @if(isset($filter) && $filter == 'lowest_sale_price') selected @endif>Lowest Sale Price</option>
                               <option value="highest_sale_price" @if(isset($filter) && $filter == 'highest_sale_price') selected @endif>Highest Sale Price</option>
@@ -406,7 +409,7 @@
 
                   @endif
             <!-- begin:pagination -->
-            @include('_particles.pagination', ['paginator' => $properties])
+          {{ $properties->appends(request()->query())->links() }}
             <!-- end:pagination -->
           </div>
           <!-- end:article -->
@@ -500,6 +503,7 @@
      .select2-container--default .select2-results>.select2-results__options
      {
          min-height: 240px;
+         max-height: fit-content;
      }
 
      .property-image
@@ -594,6 +598,8 @@
     <script>
 
         $(document).ready(function() {
+
+
             $('.orderby').select2({
                 minimumResultsForSearch: Infinity,
             });
@@ -606,8 +612,20 @@
                 showArrows:true
             });
 
-
                 $('.modal-header .close').appendTo(".ekko-lightbox");
+
+            var length = $(".ekko-lightbox > button").length;
+            length = length - 1;
+
+
+            if(length > 0)
+            {
+                for(var i = 0; i < length; i++)
+                {
+                    $( ".ekko-lightbox" ).find("button").slice(0, 1).remove();
+                }
+
+            }
 
         });
 

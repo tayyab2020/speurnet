@@ -108,6 +108,18 @@ class PropertiesController extends Controller
             {
                 $properties = $properties->orderBy('properties.id', 'asc')->paginate(8);
             }
+            if($filter == 'area')
+            {
+                $properties = $properties->orderBy('properties.area', 'asc')->paginate(8);
+            }
+            if($filter == 'bedrooms')
+            {
+                $properties = $properties->orderBy('properties.bedrooms', 'asc')->paginate(8);
+            }
+            if($filter == 'bathrooms')
+            {
+                $properties = $properties->orderBy('properties.bathrooms', 'asc')->paginate(8);
+            }
             if($filter == 'popularity')
             {
                 $properties = $properties->orderBy('properties.views', 'desc')->paginate(8);
@@ -417,11 +429,62 @@ class PropertiesController extends Controller
         return view('pages.propertysingle',compact('property','property_documents','agent','property_features','saved','properties_count','similar_properties'));
     }
 
-    public function propertiesUser($id,$id2)
+    public function propertiesUser($id,$id2,Request $request)
     {
 
+        $filter = $request->filter_orderby;
 
-        $properties = Properties::leftjoin('users','users.id','=','properties.user_id')->where('properties.status','1')->where('properties.id','!=',$id2)->where('properties.user_id',$id)->orderBy('properties.id', 'desc')->select('properties.id','properties.property_name','properties.description','properties.property_slug','properties.available_immediately','properties.is_sold','properties.is_rented','is_negotiation','is_under_offer','properties.video','properties.property_type','properties.property_purpose','properties.sale_price','properties.rent_price','properties.address','properties.bathrooms','properties.bedrooms','properties.area','properties.featured_image','properties.property_images1','properties.property_images2','properties.property_images3','properties.property_images4','properties.property_images5','properties.first_floor','properties.second_floor','properties.ground_floor','properties.basement','properties.open_date','properties.open_timeFrom','properties.open_timeTo','properties.created_at','users.image_icon')->paginate(9);
+        $properties = Properties::leftjoin('users','users.id','=','properties.user_id')->where('properties.status','1')->where('properties.id','!=',$id2)->where('properties.user_id',$id)->select('properties.id','properties.property_name','properties.description','properties.property_slug','properties.available_immediately','properties.is_sold','properties.is_rented','is_negotiation','is_under_offer','properties.video','properties.property_type','properties.property_purpose','properties.sale_price','properties.rent_price','properties.address','properties.bathrooms','properties.bedrooms','properties.area','properties.featured_image','properties.property_images1','properties.property_images2','properties.property_images3','properties.property_images4','properties.property_images5','properties.first_floor','properties.second_floor','properties.ground_floor','properties.basement','properties.open_date','properties.open_timeFrom','properties.open_timeTo','properties.created_at','users.image_icon');
+
+        if($filter)
+        {
+            if($filter == 'newest')
+            {
+                $properties = $properties->orderBy('properties.id', 'desc')->paginate(8);
+            }
+            if($filter == 'oldest')
+            {
+                $properties = $properties->orderBy('properties.id', 'asc')->paginate(8);
+            }
+            if($filter == 'area')
+            {
+                $properties = $properties->orderBy('properties.area', 'asc')->paginate(8);
+            }
+            if($filter == 'bedrooms')
+            {
+                $properties = $properties->orderBy('properties.bedrooms', 'asc')->paginate(8);
+            }
+            if($filter == 'bathrooms')
+            {
+                $properties = $properties->orderBy('properties.bathrooms', 'asc')->paginate(8);
+            }
+            if($filter == 'popularity')
+            {
+                $properties = $properties->orderBy('properties.views', 'desc')->paginate(8);
+            }
+            if($filter == 'lowest_sale_price')
+            {
+                $properties = $properties->orderBy('properties.sale_price', 'asc')->where('properties.property_purpose','Sale')->paginate(8);
+            }
+            if($filter == 'highest_sale_price')
+            {
+                $properties = $properties->orderBy('properties.sale_price', 'desc')->where('properties.property_purpose','Sale')->paginate(8);
+            }
+            if($filter == 'lowest_rent_price')
+            {
+                $properties = $properties->orderBy('properties.rent_price', 'asc')->where('properties.property_purpose','Rent')->paginate(8);
+            }
+            if($filter == 'highest_rent_price')
+            {
+                $properties = $properties->orderBy('properties.rent_price', 'desc')->where('properties.property_purpose','Rent')->paginate(8);
+            }
+        }
+        else
+        {
+            $properties = $properties->orderBy('properties.id', 'desc')->paginate(8);
+        }
+
+
 
         date_default_timezone_set("Europe/Amsterdam");
 
@@ -508,7 +571,7 @@ class PropertiesController extends Controller
         }
 
 
-        return view('pages.agent_properties',compact('properties'));
+        return view('pages.agent_properties',compact('properties','filter'));
 
     }
 

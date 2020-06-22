@@ -30,6 +30,32 @@
                 <!-- begin:article -->
                 <div class="col-md-9 col-md-push-3">
 
+                    <div class="properties-ordering-wrapper">
+                        <div class="results-count">
+                            Showing <span class="first">@if($properties->firstItem() != $properties->lastItem()) {{$properties->firstItem()}}</span> – <span class="last">{{$properties->lastItem()}}</span> of {{$properties->total()}} results @else {{$properties->firstItem()}}</span> of {{$properties->total()}} results @endif</div>
+
+                        <div class="properties-ordering">
+                            <form class="properties-ordering" method="get" action="{{URL::to('properties/')}}">
+                                <div class="label">Sort by:</div>
+
+                                <select onchange="this.form.submit()" name="filter_orderby" class="orderby" data-placeholder="Sort by" tabindex="-1" aria-hidden="true">
+                                    <option value="newest" @if(isset($filter) && $filter == 'newest' || $filter == '') selected @endif>Newest</option>
+                                    <option value="oldest" @if(isset($filter) && $filter == 'oldest') selected @endif>Oldest</option>
+                                    <option value="area" @if(isset($filter) && $filter == 'area') selected @endif>Area</option>
+                                    <option value="bedrooms" @if(isset($filter) && $filter == 'bedrooms') selected @endif>Bedrooms</option>
+                                    <option value="bathrooms" @if(isset($filter) && $filter == 'bathrooms') selected @endif>Bathrooms</option>
+                                    <option value="popularity" @if(isset($filter) && $filter == 'popularity') selected @endif>Popularity</option>
+                                    <option value="lowest_sale_price" @if(isset($filter) && $filter == 'lowest_sale_price') selected @endif>Lowest Sale Price</option>
+                                    <option value="highest_sale_price" @if(isset($filter) && $filter == 'highest_sale_price') selected @endif>Highest Sale Price</option>
+                                    <option value="lowest_rent_price" @if(isset($filter) && $filter == 'lowest_rent_price') selected @endif>Lowest Rent Price</option>
+                                    <option value="highest_rent_price" @if(isset($filter) && $filter == 'highest_rent_price') selected @endif>Highest Rent Price</option>
+                                </select>
+
+                            </form>
+                        </div></div>
+
+                @if(count($properties))
+
                     <!-- begin:product -->
                     <div class="row {{--container-realestate--}}">
 
@@ -375,8 +401,13 @@
                     </div>
                     <!-- end:product -->
 
+                    @else
+                        <h2 style="text-align: center;margin-top: 30px;margin-bottom: 30px;">No Properties found...</h2>
+
+                @endif
+
                     <!-- begin:pagination -->
-                @include('_particles.pagination', ['paginator' => $properties])
+                {{ $properties->appends(request()->query())->links() }}
                 <!-- end:pagination -->
                 </div>
                 <!-- end:article -->
@@ -390,7 +421,88 @@
     </div>
     <!-- end:content -->
 
+    <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/css/flaticon.css') }}"/>
+
     <style>
+
+        .properties-ordering-wrapper,.agencies-ordering-wrapper,.agents-ordering-wrapper{margin-bottom:20px;display:-webkit-box;display:-webkit-flex;display:-moz-flex;display:-ms-flexbox;display:flex;align-items:center;-webkit-align-items:center;background-color:#fff;border:1px
+        solid #ebebeb;padding:10px
+        20px;border-radius:6px;-webkit-border-radius:6px;-moz-border-radius:6px;-ms-border-radius:6px;-o-border-radius:6px}
+
+        @media (min-width: 1200px){.properties-ordering-wrapper,.agencies-ordering-wrapper,.agents-ordering-wrapper{padding:15px
+        30px;margin-bottom:30px}}
+
+
+        .properties-ordering-wrapper .properties-ordering, .agencies-ordering-wrapper .properties-ordering, .agents-ordering-wrapper .properties-ordering{margin-left:auto}
+
+        .my-properties-ordering .label, .sort-my-properties-form .label, .sort-properties-favorite-form .label, .properties-ordering .label{font-weight: 600;color:#484848;font-size:14px;padding:0;display:inline-block;vertical-align:middle;margin-right: 5px;}
+
+        .label{display:inline;padding: .2em .6em .3em;font-size:75%;font-weight:bold;line-height:1;color:#fff;text-align:center;white-space:nowrap;vertical-align:baseline;border-radius: .25em}
+
+        .select2-results .select2-results__option{padding:0
+        10px;white-space:nowrap}
+
+        .select2-container--default .select2-results__option--selected:before{content:"\f10a";font-family:"Flaticon";color:#fe666b;position:absolute;-webkit-transform:translateY(0%);-ms-transform:translateY(0%);-o-transform:translateY(0%);transform:translateY(0%);right:6px;display:inline-block}
+
+        .select2-results .select2-results__option{padding:5px 10px;background-color:transparent;position:relative;-webkit-transition:all 0.3s ease-in-out 0s;-o-transition:all 0.3s ease-in-out 0s;transition:all 0.3s ease-in-out 0s}
+
+        .select2-container--default .select2-results__option--selected
+        {
+            background: #f3f3f3;
+        }
+
+        .select2-container.select2-container--default .select2-results__option[aria-selected="true"]
+        {
+            background-color: #f3f3f3;
+            color: #484848;
+        }
+
+        .select2-results
+        {
+            padding: 15px 0px 10px 0px;
+        }
+
+        .select2-dropdown
+        {
+            border: 1px
+            solid #ebebeb !important;
+            -webkit-box-shadow: none;
+            box-shadow: none;
+            border-radius: 6px !important;
+            -webkit-border-radius: 6px !important;
+        }
+
+        .select2-container
+        {
+            outline: none !important;
+            text-align: left;
+        }
+
+        .select2-container--default .select2-selection--single
+        {
+            border:1px solid #d7d7d7;
+            outline: none !important;
+        }
+
+        .select2-container .select2-selection--single .select2-selection__rendered
+        {
+            padding-left: 6px;
+            padding-right: 25px;
+            position: relative;
+            top: 1px;
+        }
+
+        .select2-container--open .select2-dropdown--below
+        {
+            width: 200px !important;
+            text-align: left;
+        }
+
+        .select2-container--default .select2-results>.select2-results__options
+        {
+            min-height: 240px;
+            max-height: fit-content;
+        }
 
         .property-image
         {
@@ -483,6 +595,14 @@
 
     <script>
 
+        $(document).ready(function() {
+
+
+            $('.orderby').select2({
+                minimumResultsForSearch: Infinity,
+            });
+        });
+
         $(document).on('click', '[data-toggle="lightbox"]', function(event) {
             event.preventDefault();
             $(this).ekkoLightbox({
@@ -492,6 +612,19 @@
 
 
             $('.modal-header .close').appendTo(".ekko-lightbox");
+
+            var length = $(".ekko-lightbox > button").length;
+            length = length - 1;
+
+
+            if(length > 0)
+            {
+                for(var i = 0; i < length; i++)
+                {
+                    $( ".ekko-lightbox" ).find("button").slice(0, 1).remove();
+                }
+
+            }
 
         });
 
