@@ -79,7 +79,7 @@
                               @if($property->video)
 
                               <div class="video-wrapper-inner" style="position: absolute;margin-left: 15%;margin-top: 5%;">
-                                  <a class="popup-video">
+                                  <a class="popup-video" style="cursor: pointer;">
                     <span class="popup-video-inner">
                         <i class="flaticon-play"></i>
                     </span>
@@ -139,6 +139,157 @@
 
 
                             </div>
+
+
+                          <input type="hidden" name="map_latitude" id="map_latitude" value="{{$property->map_latitude}}">
+                          <input type="hidden" name="map_longitude" id="map_longitude" value="{{$property->map_longitude}}">
+                          <input type="hidden" name="city" id="city" value="{{$property->address}}">
+                          <input type="hidden" name="type" id="type" value="shopping_mall">
+
+
+                          <div class="row" id="map-box" style="display: none;">
+
+                              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                                  <div style="padding: 20px;border: 1px solid #e5e5e5;box-shadow: rgba(0, 0, 0, 0.3) 0px 2px 6px;">
+
+
+                                      <div class="row">
+                                          <div class="col-sm-12">
+                                              <div class="carousel box-carousel d-none d-sm-block" style="display: flex;">
+                                                  <div class="box background-active" data-type="shopping_mall">
+                                                      <a><i class="fas fa-shopping-cart" aria-hidden="true" style="font-size: 22px;margin-bottom: 10px;"></i><br>Malls</a>
+                                                  </div>
+                                                  <div class="box" data-type="school">
+                                                      <a><i class="fas fa-graduation-cap" aria-hidden="true" style="font-size: 22px;margin-bottom: 10px;"></i><br>Schools</a>
+                                                  </div>
+                                                  <div class="box" data-type="bank">
+                                                      <a><i class="fas fa-university" aria-hidden="true" style="font-size: 22px;margin-bottom: 10px;"></i><br>Banks</a>
+                                                  </div>
+                                                  <div class="box" data-type="hospital">
+                                                      <a><i class="fas fa-hospital" aria-hidden="true" style="font-size: 22px;margin-bottom: 10px;"></i><br>Hospitals</a>
+                                                  </div>
+                                                  <div class="box" data-type="bakery">
+                                                      <a><i class="fas fa-birthday-cake" aria-hidden="true" style="font-size: 22px;margin-bottom: 10px;"></i><br>Bakery</a>
+                                                  </div>
+                                                  <div class="box" data-type="pharmacy">
+                                                      <a><i class="fas fa-birthday-cake" aria-hidden="true" style="font-size: 22px;margin-bottom: 10px;"></i><br>Pharmacy</a>
+                                                  </div>
+
+
+                                              </div><!-- carousel-->
+                                          </div><!--col-->
+                                      </div><!--row-->
+
+
+
+
+                                      <div style="height: 350px;">
+
+                                          <div id="panel" style="width: 204px;height: auto;max-height: 240px;float: left;border: 1px solid rgba(190, 190, 190, 0.6);border-left: 0;overflow: auto;position: absolute;top: 35%;z-index: 1;background-color: white;">
+
+                                              <div class="accordion">
+                                                  <span style="display: block;">Malls</span>
+                                                  <span style="display: inline-block;"></span>
+                                              </div>
+
+                                              <div class="panel" style="border: 0;margin-bottom: 0px;box-shadow: none;"></div>
+
+                                          </div>
+
+                                          <style>
+                                              .accordion {
+                                                  background-color: #fff;
+                                                  color: #595959;
+                                                  cursor: pointer;
+                                                  padding: 18px;
+                                                  width: 100%;
+                                                  border: none;
+                                                  text-align: left;
+                                                  outline: none;
+                                                  font-size: 18px;
+                                                  transition: 0.4s;
+                                              }
+
+                                              .accordion span:first-child{
+                                                  font-weight: bold;
+                                              }
+
+                                              .accordion span:nth-child(2){
+                                                  font-size: 13px;
+                                              }
+
+                                              #panel .active {
+                                                  background-color: #f9f9f9;
+                                                  border-bottom: 1px solid rgba(190, 190, 190, 0.6);
+                                              }
+
+                                              .accordion:hover
+                                              {
+                                                  background-color: #f9f9f9;
+                                              }
+
+                                              .accordion:after {
+                                                  font-family: "Font Awesome 5 Free";
+                                                  content: "\f0dd";
+                                                  color: #0071b3;
+                                                  font-weight: bold;
+                                                  float: right;
+                                                  margin-left: 5px;
+                                              }
+
+                                              #panel .active:after {
+                                                  content: "\f0de";
+                                              }
+
+                                              .panel {
+                                                  padding: 0 18px;
+                                                  background-color: white;
+                                                  max-height: 0;
+                                                  overflow: hidden;
+                                                  transition: max-height 0.2s ease-out;
+                                              }
+                                          </style>
+
+                                          <div style="width: 100%;height: 100%;float: left;">
+
+                                              <div id="map"></div>
+
+                                          </div>
+
+                                      </div>
+
+
+                                  </div>
+
+                              </div>
+
+                          </div>
+
+                          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 10px 0px;padding-bottom: 0px;">
+
+                              <ul class="nav nav-tabs nav-table">
+                                  <li class="active">
+                                      <a class="popup-image" data-toggle="tab">
+                                          <i class="flaticon-photo-camera"></i>
+                                      </a>
+                                  </li>
+
+                                  <li class="">
+                                      <a class="tab-google-map"  data-toggle="tab">
+                                          <i class="flaticon-pin"></i>
+                                      </a>
+                                  </li>
+                                  <li>
+                                      <a class="tab-google-street-view-map" data-toggle="tab">
+                                          <i class="flaticon-street-view"></i>
+                                      </a>
+                                  </li>
+                              </ul>
+
+
+                          </div>
+
 
                           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 10px 0px;padding-bottom: 0px;">
 
@@ -772,6 +923,36 @@
 
                                   @keyframes scaleicon{from{-ms-transform:scale(1,1);transform:scale(1,1)}50%{-ms-transform:scale(1.3,1.3);transform:scale(1.3,1.3)}}
 
+                                  .tabs-gallery-map .nav-table{position:absolute;top:10px;z-index:4;left:15px}
+
+                                  .nav-table{border:0;padding:0;margin:0;list-style: none;}
+
+                                  @media (min-width: 1200px){.tabs-gallery-map .nav-table{top:45px}}
+
+                                  .nav:before,.nav:after{content:" ";display:table}
+
+                                  .nav>li{position:relative;display:block}
+
+                                  .nav-tabs>li{float:left;margin-bottom:-1px}
+
+                                  .nav-table>li{margin-bottom:0 !important;margin-right:8px}
+
+
+                                  .nav-table>li.active>a:hover,.nav-table>li.active>a:focus,.nav-table>li.active>a{background-color:#ff5a5f;color:#fff}
+
+                                  .nav-table>li>a:hover, .nav-table>li>a:focus{background-color:#ff5a5f;color:#fff}
+
+                                  .nav>li>a{position:relative;display:block;padding:10px
+                                  15px}
+
+                                  .nav-table>li>a{border:0
+                                  !important;display:inline-block;cursor: pointer !important;font-size: 14px !important;font-weight: 500 !important;padding:0;padding-top: 0 !important;padding-bottom: 0 !important;margin:0;text-align:center;width:35px;height:35px;line-height:35px;background-color:#515d68;color:#fff;-webkit-transition:all 0.3s ease-in-out 0s;-o-transition:all 0.3s ease-in-out 0s;transition:all 0.3s ease-in-out 0s;border-radius:6px;-webkit-border-radius:6px;-moz-border-radius:6px;-ms-border-radius:6px;-o-border-radius:6px}
+
+                                  @media (min-width: 1200px){.nav-table>li>a{width:55px;height:50px;line-height:50px;font-size:21px !important;font-weight: 500 !important;}}
+
+                                  .flaticon-photo-camera:before{content:"\f107"}
+
+                                  [class^="flaticon-"]:before,[class*=" flaticon-"]:before,[class^="flaticon-"]:after,[class*=" flaticon-"]:after{font-family:Flaticon;font-style:normal}
 
                                   .travel-time-add__cta-wrapper{margin:.5rem 0 0;width:100%;text-align:right}
 
@@ -925,77 +1106,7 @@
 
                         {!!$property->description!!}
 
-                          <input type="hidden" name="map_latitude" id="map_latitude" value="{{$property->map_latitude}}">
-                          <input type="hidden" name="map_longitude" id="map_longitude" value="{{$property->map_longitude}}">
-                          <input type="hidden" name="city" id="city" value="{{$property->address}}">
-                          <input type="hidden" name="type" id="type" value="shopping_mall">
 
-
-                          <div class="row" style="border-top:1px solid rgba(190, 190, 190, 0.6); margin-top: 55px;">
-
-                              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-
-                                  <div style="padding: 20px;">
-
-
-                                          <div class="row">
-                                              <div class="col-sm-12">
-                                                  <div class="carousel box-carousel d-none d-sm-block" style="display: flex;">
-                                                      <div class="box background-active" data-type="shopping_mall">
-                                                          <a><i class="fas fa-shopping-cart" aria-hidden="true" style="font-size: 22px;margin-bottom: 10px;"></i><br>Malls</a>
-                                                      </div>
-                                                      <div class="box" data-type="school">
-                                                          <a><i class="fas fa-graduation-cap" aria-hidden="true" style="font-size: 22px;margin-bottom: 10px;"></i><br>Schools</a>
-                                                      </div>
-                                                      <div class="box" data-type="bank">
-                                                          <a><i class="fas fa-university" aria-hidden="true" style="font-size: 22px;margin-bottom: 10px;"></i><br>Banks</a>
-                                                      </div>
-                                                      <div class="box" data-type="hospital">
-                                                          <a><i class="fas fa-hospital" aria-hidden="true" style="font-size: 22px;margin-bottom: 10px;"></i><br>Hospitals</a>
-                                                      </div>
-                                                      <div class="box" data-type="bakery">
-                                                          <a><i class="fas fa-birthday-cake" aria-hidden="true" style="font-size: 22px;margin-bottom: 10px;"></i><br>Bakery</a>
-                                                      </div>
-                                                      <div class="box" data-type="pharmacy">
-                                                          <a><i class="fas fa-birthday-cake" aria-hidden="true" style="font-size: 22px;margin-bottom: 10px;"></i><br>Pharmacy</a>
-                                                      </div>
-
-
-                                                  </div><!-- carousel-->
-                                              </div><!--col-->
-                                          </div><!--row-->
-
-
-
-
-                                      <div style="height: 350px;">
-
-                                          <div id="panel" style="width: 30%;height: 100%;float: left;border: 1px solid rgba(190, 190, 190, 0.6);overflow-y: scroll;">
-
-                                              <div style="padding: 10px;border-bottom: 1px solid rgba(190, 190, 190, 0.6);">
-                                                  <span style="display: block;">Malls</span>
-                                                  <span style="display: block;"></span>
-                                              </div>
-
-
-
-                                          </div>
-
-
-                                          <div style="width: 70%;height: 100%;float: left;">
-
-                                              <div id="map"></div>
-
-                                          </div>
-
-                                      </div>
-
-
-                                  </div>
-
-                              </div>
-
-                          </div>
 
                           @if($property->video)
 
@@ -1894,11 +2005,85 @@
 
         $( document ).ready(function() {
 
+
+            var acc = document.getElementsByClassName("accordion");
+            var i;
+
+            for (i = 0; i < acc.length; i++) {
+                acc[i].addEventListener("click", function() {
+                    this.classList.toggle("active");
+                    var panel = this.nextElementSibling;
+                    if (panel.style.maxHeight) {
+                        panel.style.maxHeight = null;
+                    } else {
+                        panel.style.maxHeight = panel.scrollHeight + "px";
+                    }
+                });
+            }
+
+            $(".popup-image").click(function(){
+
+                $("#player-window").hide();
+                $("#map-box").hide();
+                $("#slider-property").show();
+
+            });
+
             $(".popup-video").click(function(){
 
                 $("#slider-property").hide();
                 $("#player-window").show();
             });
+
+            $(".tab-google-map").click(function(){
+
+                $("#slider-property").hide();
+                $("#player-window").hide();
+                $("#map-box").show();
+
+                if(!$('.box-carousel').hasClass('slick-initialized'))
+                {
+                    $('.box-carousel').slick({
+                        dots: false,
+                        arrows: true,
+                        slidesToShow: 4,
+                        slidesToScroll: 1,
+                        prevArrow: "<button type='button' class='mission-prev-arrow'></button>",
+                        nextArrow: "<button type='button' class='mission-next-arrow'></button>"
+                    });
+                }
+
+                var toggle = panorama.getVisible();
+
+                panorama.setVisible(false);
+
+
+            });
+
+            $(".tab-google-street-view-map").click(function(){
+
+                $("#slider-property").hide();
+                $("#player-window").hide();
+                $("#map-box").show();
+
+                if(!$('.box-carousel').hasClass('slick-initialized'))
+                {
+                    $('.box-carousel').slick({
+                        dots: false,
+                        arrows: true,
+                        slidesToShow: 4,
+                        slidesToScroll: 1,
+                        prevArrow: "<button type='button' class='mission-prev-arrow'></button>",
+                        nextArrow: "<button type='button' class='mission-next-arrow'></button>"
+                    });
+                }
+
+                var toggle = panorama.getVisible();
+
+                    panorama.setVisible(true);
+
+            });
+
 
             $('#cal_dist').click(function(e) {
 
@@ -2933,7 +3118,7 @@
                 }
 
 
-                $("#panel div").not(':first').remove();
+                $(".panel").children().remove();
 
                 places.forEach(place => {
 
@@ -2997,7 +3182,7 @@
 
 
 
-                        $("#panel div:eq(0)").after('<a data-id="'+i+'" href="javascript:void(0);" class="trigger"><div style="padding: 10px 0px 0px 10px;border-bottom: 1px solid rgba(190, 190, 190, 0.6);">\n' +
+                        $(".panel").append('<a data-id="'+i+'" href="javascript:void(0);" class="trigger"><div style="padding: 10px 0px 0px 10px;border-bottom: 1px solid rgba(190, 190, 190, 0.6);">\n' +
                             '                                                  <span style="display: block;">'+place.name+'</span>\n' +
                             '                                                  <span style="display: inline-block;"><i class="fas fa-tachometer-alt" aria-hidden="true" style="font-size: 15px;margin: 10px;float: left;"></i><p style="float: left;margin-top: 6px;margin-bottom: 0;">'+response.rows[0].elements[0].distance.text+'</p></span>\n' +
                             '                                              </div></a>');
@@ -3109,14 +3294,7 @@
 
 
 
-            $('.box-carousel').slick({
-                dots: false,
-                arrows: true,
-                slidesToShow: 4,
-                slidesToScroll: 1,
-                prevArrow: "<button type='button' class='mission-prev-arrow'></button>",
-                nextArrow: "<button type='button' class='mission-next-arrow'></button>"
-            });
+
 
 
 
