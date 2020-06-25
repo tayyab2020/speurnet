@@ -276,7 +276,7 @@
 
                               <ul class="nav nav-tabs nav-table">
                                   <li class="image-tab">
-                                      <a class="new-icons" title="Add Compare" style="border-radius: 100px;position: relative;">
+                                      <a class="add-compare new-icons" title="Add Compare" style="border-radius: 100px;position: relative;">
                                           <i class="fas fa-exchange-alt" style="vertical-align: middle;"></i>
                                       </a>
                                   </li>
