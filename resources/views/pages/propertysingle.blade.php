@@ -149,14 +149,14 @@
 
                           <div class="row" id="map-box" style="display: none;">
 
-                              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="height: 100%;">
 
-                                  <div style="padding: 20px;border: 1px solid #e5e5e5;box-shadow: rgba(0, 0, 0, 0.3) 0px 2px 6px;">
+                                  <div style="border: 1px solid #e5e5e5;box-shadow: rgba(0, 0, 0, 0.3) 0px 2px 6px;height: 100%;">
 
 
-                                      <div class="row">
+                                      <div class="row" id="map-first-row">
                                           <div class="col-sm-12">
-                                              <div class="carousel box-carousel d-none d-sm-block" style="display: flex;">
+                                              <div class="carousel box-carousel d-none d-sm-block" style="display: flex;padding: 10px;">
                                                   <div class="box background-active" data-type="shopping_mall">
                                                       <a><i class="fas fa-shopping-cart" aria-hidden="true" style="font-size: 22px;margin-bottom: 10px;"></i><br>Malls</a>
                                                   </div>
@@ -184,9 +184,9 @@
 
 
 
-                                      <div style="height: 350px;">
+                                      <div id="map-second-row">
 
-                                          <div id="panel" style="width: 204px;height: auto;max-height: 240px;float: left;border: 1px solid rgba(190, 190, 190, 0.6);border-left: 0;overflow: auto;position: absolute;top: 35%;z-index: 1;background-color: white;">
+                                          <div id="panel" style="width: 204px;height: auto;max-height: 245px;float: left;border: 1px solid rgba(190, 190, 190, 0.6);border-left: 0;overflow: auto;position: absolute;top: 45%;z-index: 1;background-color: white;">
 
                                               <div class="accordion">
                                                   <span style="display: block;">Malls</span>
@@ -197,59 +197,6 @@
 
                                           </div>
 
-                                          <style>
-                                              .accordion {
-                                                  background-color: #fff;
-                                                  color: #595959;
-                                                  cursor: pointer;
-                                                  padding: 18px;
-                                                  width: 100%;
-                                                  border: none;
-                                                  text-align: left;
-                                                  outline: none;
-                                                  font-size: 18px;
-                                                  transition: 0.4s;
-                                              }
-
-                                              .accordion span:first-child{
-                                                  font-weight: bold;
-                                              }
-
-                                              .accordion span:nth-child(2){
-                                                  font-size: 13px;
-                                              }
-
-                                              #panel .active {
-                                                  background-color: #f9f9f9;
-                                                  border-bottom: 1px solid rgba(190, 190, 190, 0.6);
-                                              }
-
-                                              .accordion:hover
-                                              {
-                                                  background-color: #f9f9f9;
-                                              }
-
-                                              .accordion:after {
-                                                  font-family: "Font Awesome 5 Free";
-                                                  content: "\f0dd";
-                                                  color: #0071b3;
-                                                  font-weight: bold;
-                                                  float: right;
-                                                  margin-left: 5px;
-                                              }
-
-                                              #panel .active:after {
-                                                  content: "\f0de";
-                                              }
-
-                                              .panel {
-                                                  padding: 0 18px;
-                                                  background-color: white;
-                                                  max-height: 0;
-                                                  overflow: hidden;
-                                                  transition: max-height 0.2s ease-out;
-                                              }
-                                          </style>
 
                                           <div style="width: 100%;height: 100%;float: left;">
 
@@ -268,83 +215,214 @@
 
                           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 10px 0px;padding-bottom: 0px;">
 
+                              <span style="margin-right: 10px;float: left;"><img src="{{ URL::asset('assets/img/pin.png') }}" style="width: 15px;height: 15px;display: block;" /></span>
+
+                              <h5 style="margin: 0;float: left;">{{$property->address}}</h5>
+
+
+                              <span style="margin-left: 30px;margin-right: 10px;float: left;display: flex;"><i class="fa fa-eye" aria-hidden="true" style="font-size: 14px;padding-left: 3px;"></i></span>
+
+                              <h5 style="margin: 0;float: left;">{{$property->views}}</h5>
+
+
+
+                              <?php $date = date_format($property->created_at,"F d, Y");?>
+
+                              <span style="font-size: 12px;float: right;line-height: 1;">Posted On {{$date}}</span>
+
+                          </div>
+
+                          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 20px 0px;padding-bottom: 0px;">
+
                               <ul class="nav nav-tabs nav-table">
-                                  <li class="active">
+                                  <li class="image-tab active">
                                       <a class="popup-image" data-toggle="tab">
                                           <i class="flaticon-photo-camera"></i>
                                       </a>
                                   </li>
 
-                                  <li class="">
+                                  <li class="video-tab">
+                                      <a class="popup-video" data-toggle="tab">
+                                          <i class="flaticon-play"></i>
+                                      </a>
+                                  </li>
+
+                                  <li class="map-tab">
                                       <a class="tab-google-map"  data-toggle="tab">
                                           <i class="flaticon-pin"></i>
                                       </a>
                                   </li>
-                                  <li>
+                                  <li class="street-view-tab">
                                       <a class="tab-google-street-view-map" data-toggle="tab">
                                           <i class="flaticon-street-view"></i>
                                       </a>
                                   </li>
+
+                                  <li class="satellite-view-tab">
+                                      <a class="tab-google-satellite-view-map" data-toggle="tab">
+                                          <i class="fas fa-satellite"></i>
+                                      </a>
+                                  </li>
+
+
                               </ul>
 
 
                           </div>
 
+                          <?php $url = "https://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; ?>
 
-                          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 10px 0px;padding-bottom: 0px;">
+                          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 30px 0px;padding-bottom: 0px;">
 
-                              <h4 style="margin: 0;float: left;font-weight: 600;">{{$property->views}}</h4>
+                              <ul class="nav nav-tabs nav-table">
+                                  <li class="image-tab">
+                                      <a class="new-icons" title="Add Compare" style="border-radius: 100px;position: relative;">
+                                          <i class="fas fa-exchange-alt" style="vertical-align: middle;"></i>
+                                      </a>
+                                  </li>
 
-                              <span style="margin-left: 5px;margin-right: 10px;"><i class="fa fa-eye" aria-hidden="true" style="font-size: 16px;padding-left: 3px;"></i></span>
+                                  <li class="image-tab">
+                                      <a class="new-icons" target="_blank" title="Share by Email" href="mailto:?subject=I wanted you to see this Property AD I just Found on zoekjehuisje.nl&amp;body=Check out this link {{$url}}" style="border-radius: 100px;position: relative;">
+                                          <i class="far fa-envelope" style="vertical-align: middle;"></i>
+                                      </a>
+                                  </li>
 
-                              <?php $url = "https://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; ?>
-
-                              <span style="margin-left: 10px;"><a target="_blank" title="Share by Whatsapp" href="https://api.whatsapp.com/send?text={{$url}}"><i class="fa fa-whatsapp" aria-hidden="true" style="font-size: 16px;"></i></a></span>
-
-                              <span style="margin-left: 10px;"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{$url}}"><i class="fa fa-facebook" aria-hidden="true" style="font-size: 16px;color: #7191d3;"></i></a></span>
-
-                              <span style="margin-left: 10px;"><a target="_blank" title="Share by Email" href="mailto:?subject=I wanted you to see this Property AD I just Found on zoekjehuisje.nl&amp;body=Check out this link {{$url}}"><i class="far fa-envelope" aria-hidden="true" style="font-size: 16px;color:goldenrod;"></i></a></span>
-
-                              @if( isset(Auth::user()->usertype) && Auth::user()->usertype == 'Users')
+                                  <li class="image-tab">
+                                      <a class="new-icons" title="Share" style="border-radius: 100px;position: relative;" data-toggle="modal" data-target="#ShareModal">
+                                          <i class="fas fa-share-alt" style="vertical-align: middle;"></i>
+                                      </a>
+                                  </li>
 
 
-                                  <form action="{{ URL::to('admin/save-property') }}" method="POST" id="save_property_form" style="display: inline-block;margin-left: 10px;">
+                                  <li class="image-tab">
 
-                                      <input type="hidden" name="_token" value="{{csrf_token()}}"/>
+                                      @if( isset(Auth::user()->usertype) && Auth::user()->usertype == 'Users')
 
-                                      <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                                          <form action="{{ URL::to('admin/save-property') }}" method="POST" id="save_property_form" style="display: inline-block;">
 
-                                      <input type="hidden" name="property_id" value="{{$property->id}}">
+                                              <input type="hidden" name="_token" value="{{csrf_token()}}"/>
 
-                                      <button type="submit" @if(!$saved) title="Be First to Save this property" @endif style="padding: 0;background: transparent;border: 0;outline: 0;box-shadow: none;" class="btn btn-success" id="saveProperty">
+                                              <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+
+                                              <input type="hidden" name="property_id" value="{{$property->id}}">
+
+                                      <button type="submit" class="new-icons new-button" title="Add Favorite" style="border-radius: 100px;position: relative;outline: none;">
 
                                           @if($saved)
 
-                                              <i class="fa fa-heart" style="color: red;" id="heart" ></i>
+                                          <i class="fa fa-heart" id="heart" style="vertical-align: middle;font-size: 16px;">
+                                              <span style="display: block;">{{ $property->saved_properties }}</span>
+                                          </i>
 
                                           @else
 
-                                              <i class="far fa-heart" style="color: red;" id="heart" ></i>
+                                              <i class="far fa-heart" id="heart" style="vertical-align: middle;font-size: 16px;">
+                                                  <span style="display: block;">{{ $property->saved_properties }}</span>
+                                              </i>
 
                                           @endif
 
-                                          <span style="color: black;">{{ $property->saved_properties }}</span>
 
                                       </button>
 
-                                  </form>
+                                  @else
 
-                              @else
+                                      @if(!isset(Auth::user()->usertype))
 
-                                  @if(!isset(Auth::user()->usertype))
+                                              <a class="new-icons" href="{{ URL::to('/login') }}" title="Be First to Save this property" style="border-radius: 100px;position: relative;">
 
-                                      <span style="margin-left: 10px;"><a href="{{ URL::to('/login') }}" >
-                                        <i style="color: red;" id="heart" class="far fa-heart" title="Be First to Save this property"></i>
-                                        </a>{{ $property->saved_properties }}</span>
+                                                  <i class="far fa-heart" id="heart" style="vertical-align: middle;font-size: 16px;">
+                                                      <span style="display: block;">{{ $property->saved_properties }}</span>
+                                                  </i>
+                                              </a>
 
-                                  @endif
+                                          @endif
 
-                              @endif
+                                          @endif
+
+
+                                          </form>
+
+                                  </li>
+
+                              </ul>
+
+                              <div class="modal fade" id="ShareModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                  <div class="modal-dialog modal-dialog-centered" role="document">
+
+
+                                          <div class="modal-content" style="width: 100%;">
+
+                                              <div class="modal-header" style="border-bottom: 0;display: inline-block;width: 100%;padding: 15px 25px 20px 25px;border-bottom: 1px solid #e6e9ed;">
+
+
+                                                  <h4 style="margin-top: 5px;" class="modal-title" id="exampleModalLabel">SHARE THIS AD</h4>
+
+                                              </div>
+
+
+                                              <div class="modal-body" style="padding: 10px 25px;padding-top: 0px;">
+
+                                                  <input type="hidden" name="id" value="{{$property->id}}">
+
+                                                  <div class="form-group" style="margin-top: 15px;">
+
+                                                      <div style="position: relative;width: 100%;">
+
+                                                          <a class="share-link" style="border-bottom: 1px solid rgb(208, 211, 217);" target="_blank" title="Share by Whatsapp" href="https://api.whatsapp.com/send?text={{$url}}">
+                                                              <div style="line-height: 5;padding: 0px 20px;">
+                                                              <i class="fa fa-whatsapp" aria-hidden="true" style="font-size: 20px;color: #474646;"></i>
+
+                                                                  <span style="margin-left: 6px;font-size: 20px;color: #474646;">Share By Whatsapp</span>
+
+                                                              </div>
+                                                          </a>
+
+                                                          <a class="share-link" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{$url}}">
+
+                                                              <div style="line-height: 5;padding: 0px 20px;">
+
+                                                              <i class="fa fa-facebook" aria-hidden="true" style="font-size: 20px;color: #474646;"></i>
+
+                                                                  <span style="margin-left: 6px;font-size: 20px;color: #474646;">Share By Facebook</span>
+
+                                                              </div>
+                                                          </a>
+
+                                                          <style>
+
+                                                              .share-link
+                                                              {
+                                                                  text-decoration: none !important;
+                                                                  display: block;
+                                                                  min-height: 60px;
+                                                              }
+
+                                                              .share-link:hover
+                                                              {
+                                                                  background-color: rgb(242, 245, 247);
+                                                              }
+
+                                                          </style>
+
+                                                      </div>
+
+                                                  </div>
+
+
+                                              </div>
+                                              <div class="modal-footer">
+                                                  <button type="button" class="btn btn-success" data-dismiss="modal">Cancel</button>
+                                              </div>
+                                          </div>
+
+
+
+                                  </div>
+                              </div>
+
+
+
 
                               <button style="float: right;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                                   <i class="far fa-calendar-check" style="margin-right: 7px;"></i> Request Viewing
@@ -516,15 +594,6 @@
 
                                   </div>
                               </div>
-
-                          </div>
-
-
-                          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 40px 0px;padding-top: 0;">
-
-                              <?php $date = date_format($property->created_at,"F d, Y");?>
-
-                              <span style="font-size: 12px;">Posted On {{$date}}</span>
 
                           </div>
 
@@ -913,11 +982,70 @@
                               <style>
 
 
-                                  .video-wrapper-inner .popup-video{position:relative;z-index:1;display:inline-block;width:50px;height:50px;line-height:50px;border-radius:50%;-webkit-border-radius:50%;-moz-border-radius:50%;-ms-border-radius:50%;-o-border-radius:50%;-webkit-transition:all 0.3s ease-in-out 0s;-o-transition:all 0.3s ease-in-out 0s;transition:all 0.3s ease-in-out 0s;font-size:18px;color:#fff;background:#ff5a5f;text-align:center}
+                                  .accordion {
+                                      background-color: #fff;
+                                      color: #595959;
+                                      cursor: pointer;
+                                      padding: 18px;
+                                      width: 100%;
+                                      border: none;
+                                      text-align: left;
+                                      outline: none;
+                                      font-size: 18px;
+                                      transition: 0.4s;
+                                  }
+
+                                  @media (max-width: 645px){
+
+                                      #street_view{display: none;}
+
+                                      .accordion{padding: 5px;}
+                                  }
+
+                                  .accordion span:first-child{
+                                      font-weight: bold;
+                                  }
+
+                                  .accordion span:nth-child(2){
+                                      font-size: 13px;
+                                  }
+
+                                  #panel .active {
+                                      background-color: #f9f9f9;
+                                      /*border-bottom: 1px solid rgba(190, 190, 190, 0.6);*/
+                                  }
+
+                                  .accordion:hover
+                                  {
+                                      background-color: #f9f9f9;
+                                  }
+
+                                  .accordion:after {
+                                      font-family: "Font Awesome 5 Free";
+                                      content: "\f0dd";
+                                      color: #0071b3;
+                                      font-weight: bold;
+                                      float: right;
+                                      margin-left: 5px;
+                                  }
+
+                                  #panel .active:after {
+                                      content: "\f0de";
+                                  }
+
+                                  .panel {
+                                      padding: 0;
+                                      background-color: white;
+                                      max-height: 0;
+                                      overflow: hidden;
+                                      transition: max-height 0.2s ease-out;
+                                  }
+
+                                  .video-wrapper-inner .popup-video{position:relative;z-index:1;display:inline-block;width:50px;height:50px;line-height:50px;border-radius:50%;-webkit-border-radius:50%;-moz-border-radius:50%;-ms-border-radius:50%;-o-border-radius:50%;-webkit-transition:all 0.3s ease-in-out 0s;-o-transition:all 0.3s ease-in-out 0s;transition:all 0.3s ease-in-out 0s;font-size:18px;color:#fff;background:#28aedd;text-align:center}
 
                                   @media (min-width: 1200px){.video-wrapper-inner .popup-video{width:70px;height:70px;line-height:70px;font-size:22px}}
 
-                                  .video-wrapper-inner .popup-video:before{-webkit-transition:all 0.3s ease-in-out 0s;-o-transition:all 0.3s ease-in-out 0s;transition:all 0.3s ease-in-out 0s;content:'';position:absolute;top:0;left:0;width:100%;height:100%;z-index:-1;background:#ff5a5f;opacity:0.3;filter:alpha(opacity=30);border-radius:50%;-webkit-border-radius:50%;-moz-border-radius:50%;-ms-border-radius:50%;-o-border-radius:50%;-webkit-animation:scaleicon 3s ease-in-out 0s infinite alternate;animation:scaleicon 3s ease-in-out 0s infinite alternate}.widget-video.style2 .popup-video{position:absolute;top:50%;left:50%;-webkit-transform:translate(-50%,-50%);-ms-transform:translate(-50%,-50%);-o-transform:translate(-50%,-50%);transform:translate(-50%,-50%)}
+                                  .video-wrapper-inner .popup-video:before{-webkit-transition:all 0.3s ease-in-out 0s;-o-transition:all 0.3s ease-in-out 0s;transition:all 0.3s ease-in-out 0s;content:'';position:absolute;top:0;left:0;width:100%;height:100%;z-index:-1;background:#28aedd;opacity:0.3;filter:alpha(opacity=30);border-radius:50%;-webkit-border-radius:50%;-moz-border-radius:50%;-ms-border-radius:50%;-o-border-radius:50%;-webkit-animation:scaleicon 3s ease-in-out 0s infinite alternate;animation:scaleicon 3s ease-in-out 0s infinite alternate}.widget-video.style2 .popup-video{position:absolute;top:50%;left:50%;-webkit-transform:translate(-50%,-50%);-ms-transform:translate(-50%,-50%);-o-transform:translate(-50%,-50%);transform:translate(-50%,-50%)}
 
                                   @-webkit-keyframes scaleicon{from{-ms-transform:scale(1,1);transform:scale(1,1)}50%{-ms-transform:scale(1.3,1.3);transform:scale(1.3,1.3)}}
 
@@ -938,17 +1066,36 @@
                                   .nav-table>li{margin-bottom:0 !important;margin-right:8px}
 
 
-                                  .nav-table>li.active>a:hover,.nav-table>li.active>a:focus,.nav-table>li.active>a{background-color:#ff5a5f;color:#fff}
+                                  .nav-table>li.active>a:hover,.nav-table>li.active>a:focus,.nav-table>li.active>a{background-color:#28aedd;color:#fff}
 
-                                  .nav-table>li>a:hover, .nav-table>li>a:focus{background-color:#ff5a5f;color:#fff}
+                                  .nav-table>li>a:hover, .nav-table>li>a:focus{background-color:#28aedd;color:#fff}
 
                                   .nav>li>a{position:relative;display:block;padding:10px
                                   15px}
+
 
                                   .nav-table>li>a{border:0
                                   !important;display:inline-block;cursor: pointer !important;font-size: 14px !important;font-weight: 500 !important;padding:0;padding-top: 0 !important;padding-bottom: 0 !important;margin:0;text-align:center;width:35px;height:35px;line-height:35px;background-color:#515d68;color:#fff;-webkit-transition:all 0.3s ease-in-out 0s;-o-transition:all 0.3s ease-in-out 0s;transition:all 0.3s ease-in-out 0s;border-radius:6px;-webkit-border-radius:6px;-moz-border-radius:6px;-ms-border-radius:6px;-o-border-radius:6px}
 
                                   @media (min-width: 1200px){.nav-table>li>a{width:55px;height:50px;line-height:50px;font-size:21px !important;font-weight: 500 !important;}}
+
+
+                                  @media (min-width: 1200px){
+                                      .new-icons{width: 50px !important;height: 48px !important;line-height: 47px !important;}
+                                  }
+
+                                  .new-button:hover{background-color:#28aedd;color:#fff}
+
+                                  .new-button:hover, .new-button:focus{background-color:#28aedd;color:#fff}
+
+                                  .new-button{position:relative;display:block;padding:10px
+                                  15px}
+
+
+                                  .new-button{border:0
+                                  !important;display:inline-block;cursor: pointer !important;font-size: 14px !important;font-weight: 500 !important;padding:0;padding-top: 0 !important;padding-bottom: 0 !important;margin:0;text-align:center;width:35px;height:35px;line-height:35px;background-color:#515d68;color:#fff;-webkit-transition:all 0.3s ease-in-out 0s;-o-transition:all 0.3s ease-in-out 0s;transition:all 0.3s ease-in-out 0s;border-radius:6px;-webkit-border-radius:6px;-moz-border-radius:6px;-ms-border-radius:6px;-o-border-radius:6px}
+
+                                  @media (min-width: 1200px){.new-button{width:55px;height:50px;line-height:50px;font-size:21px !important;font-weight: 500 !important;}}
 
                                   .flaticon-photo-camera:before{content:"\f107"}
 
@@ -1592,7 +1739,7 @@
 
         @if(count($similar_properties)>0)
 
-        <div class="row" style="display: flex;margin-top: 30px;">
+        <div class="row related-properties" style="display: flex;margin-top: 30px;">
             <div class="col-lg-11 col-md-10 col-sm-10 col-xs-10" style="margin: auto;">
                 <div id="partner" style="padding: 10px 0px;">
                     <div class="container" style="width: 100%;">
@@ -1642,7 +1789,7 @@
 
             @else
 
-            <h2 style="text-align: center;">No Related Properties Found...</h2>
+            <h2 class="related-properties" style="text-align: center;">No Related Properties Found...</h2>
 
         @endif
 
@@ -1903,6 +2050,31 @@
 
         }
 
+        #map-second-row
+        {
+            height: 385px;
+        }
+
+        @media (min-width: 700px)
+        {
+
+            #map-box
+            {
+                height: 500px;
+            }
+
+            #map-first-row
+            {
+                height: 20%;
+            }
+
+            #map-second-row
+            {
+                height: 80%;
+            }
+
+        }
+
         .carousel-inner > .item
         {
             height: 100%;
@@ -1921,8 +2093,9 @@
 
         .box {
             width: 150px;
-            height: 90px;
+            height: 75px;
             background-color: transparent;
+            border-right: 1px solid #e3e3e3;
         }
         .box a {
             color: #461e52;
@@ -1931,7 +2104,7 @@
             height: 100%;
             font-size: 16px;
             font-weight: 700;
-            padding: 10% 30px 0 30px;
+            padding: 10% 0px 0 0px;
             text-align: center;
             transition: none;
             line-height: 1;
@@ -1963,7 +2136,7 @@
             background-size: contain;
             top: 50%;
             transform: translateY(-50%);
-            right: -36px;
+            right: 10px;
             height: 17px;
             width: 10px;
             border:none;
@@ -1978,7 +2151,7 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            left: -36px;
+            left: 10px;
             height: 17px;
             width: 10px;
             border:none;
@@ -1994,6 +2167,12 @@
         }
 
 
+        .slick-list
+        {
+            width: 75%;
+            margin: auto;
+            border:1px solid #e3e3e3;
+        }
 
     </style>
 
@@ -2004,7 +2183,6 @@
     <script>
 
         $( document ).ready(function() {
-
 
             var acc = document.getElementsByClassName("accordion");
             var i;
@@ -2021,6 +2199,14 @@
                 });
             }
 
+            $(".add-compare").click(function(){
+
+                $('html, body').animate({
+                    scrollTop: $(".related-properties").offset().top - 150
+                }, 2000);
+
+            });
+
             $(".popup-image").click(function(){
 
                 $("#player-window").hide();
@@ -2031,8 +2217,13 @@
 
             $(".popup-video").click(function(){
 
+                $('.nav-table').children('li').not('.video-tab').removeClass('active');
+                $('.video-tab').addClass('active');
+
                 $("#slider-property").hide();
+                $("#map-box").hide();
                 $("#player-window").show();
+
             });
 
             $(".tab-google-map").click(function(){
@@ -2048,14 +2239,28 @@
                         arrows: true,
                         slidesToShow: 4,
                         slidesToScroll: 1,
+                        responsive: [
+                            {
+                                breakpoint: 768,
+                                settings: {
+                                    slidesToShow: 3
+                                }
+                            },
+                            {
+                                breakpoint: 480,
+                                settings: {
+                                    slidesToShow: 2
+                                }
+                            }
+                        ],
                         prevArrow: "<button type='button' class='mission-prev-arrow'></button>",
                         nextArrow: "<button type='button' class='mission-next-arrow'></button>"
                     });
                 }
 
-                var toggle = panorama.getVisible();
 
                 panorama.setVisible(false);
+                map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
 
 
             });
@@ -2073,14 +2278,66 @@
                         arrows: true,
                         slidesToShow: 4,
                         slidesToScroll: 1,
+                        responsive: [
+                            {
+                                breakpoint: 768,
+                                settings: {
+                                    slidesToShow: 3
+                                }
+                            },
+                            {
+                                breakpoint: 480,
+                                settings: {
+                                    slidesToShow: 2
+                                }
+                            }
+                        ],
                         prevArrow: "<button type='button' class='mission-prev-arrow'></button>",
                         nextArrow: "<button type='button' class='mission-next-arrow'></button>"
                     });
                 }
 
-                var toggle = panorama.getVisible();
 
                     panorama.setVisible(true);
+
+            });
+
+
+            $(".tab-google-satellite-view-map").click(function(){
+
+                $("#slider-property").hide();
+                $("#player-window").hide();
+                $("#map-box").show();
+
+                if(!$('.box-carousel').hasClass('slick-initialized'))
+                {
+                    $('.box-carousel').slick({
+                        dots: false,
+                        arrows: true,
+                        slidesToShow: 4,
+                        slidesToScroll: 1,
+                        responsive: [
+                            {
+                                breakpoint: 768,
+                                settings: {
+                                    slidesToShow: 3
+                                }
+                            },
+                            {
+                                breakpoint: 480,
+                                settings: {
+                                    slidesToShow: 2
+                                }
+                            }
+                        ],
+                        prevArrow: "<button type='button' class='mission-prev-arrow'></button>",
+                        nextArrow: "<button type='button' class='mission-next-arrow'></button>"
+                    });
+                }
+
+
+                panorama.setVisible(false);
+                map.setMapTypeId(google.maps.MapTypeId.SATELLITE);
 
             });
 
@@ -2267,6 +2524,25 @@
 
                         function callback(response, status) {
 
+
+                            if(response.rows[0].elements[0].status != 'ZERO_RESULTS')
+                            {
+                                var duration = response.rows[0].elements[0].duration.text;
+                            }
+                            else
+                            {
+                                var duration = "No Results Found...";
+                            }
+
+                            if(response.rows[0].elements[0].status != 'ZERO_RESULTS')
+                            {
+                                var distance = response.rows[0].elements[0].distance.text;
+                            }
+                            else
+                            {
+                                var distance = "";
+                            }
+
                            $('#' + value).find('.active-row').removeClass('active-row');
 
 
@@ -2284,9 +2560,9 @@
                                 '\n' +
                                 '                                              </div>\n' +
                                 '\n' +
-                                '                                              <div class="travel-time-row__result"><div class="travel-time-row__duration">' + response.rows[0].elements[0].duration.text + '</div>\n' +
+                                '                                              <div class="travel-time-row__result"><div class="travel-time-row__duration">' + duration + '</div>\n' +
                                 '\n' +
-                                '                                                  <div class="travel-time-row__distance">' + response.rows[0].elements[0].distance.text + '</div>\n' +
+                                '                                                  <div class="travel-time-row__distance">' + distance + '</div>\n' +
                                 '\n' +
                                 '                                              </div>\n' +
                                 '\n' +
@@ -2774,6 +3050,7 @@
                 controlUI.style.marginTop = '10px';
                 controlUI.style.textAlign = 'center';
                 controlUI.title = 'Street View';
+                controlUI.id = 'street_view';
                 controlDiv.appendChild(controlUI);
 
                 // Set CSS for the control interior.
@@ -3003,6 +3280,12 @@
             // Handle the results (up to 20) of the Nearby Search
             function nearbyCallback(results, status) {
 
+                if($(".accordion").hasClass('active'))
+                {
+                    $(".accordion").trigger("click");
+                }
+
+
                 if (status == google.maps.places.PlacesServiceStatus.OK) {
 
                     $("#panel div:eq(0)").children().eq(1).text(results.length + ' results found');
@@ -3017,7 +3300,7 @@
 
                     $("#panel div:eq(0)").children().eq(1).text('0 results found');
 
-                    $("#panel div").not(':first').remove();
+                    $(".panel").children().remove();
 
                 }
             }
@@ -3182,7 +3465,7 @@
 
 
 
-                        $(".panel").append('<a data-id="'+i+'" href="javascript:void(0);" class="trigger"><div style="padding: 10px 0px 0px 10px;border-bottom: 1px solid rgba(190, 190, 190, 0.6);">\n' +
+                        $(".panel").append('<a data-id="'+i+'" href="javascript:void(0);" class="trigger"><div style="padding: 10px 0px 0px 10px;border-top: 1px solid rgba(190, 190, 190, 0.6);">\n' +
                             '                                                  <span style="display: block;">'+place.name+'</span>\n' +
                             '                                                  <span style="display: inline-block;"><i class="fas fa-tachometer-alt" aria-hidden="true" style="font-size: 15px;margin: 10px;float: left;"></i><p style="float: left;margin-top: 6px;margin-bottom: 0;">'+response.rows[0].elements[0].distance.text+'</p></span>\n' +
                             '                                              </div></a>');
@@ -3291,10 +3574,6 @@
                 // Open the infoPane
                 infoPane.classList.add("open");
             }
-
-
-
-
 
 
 
