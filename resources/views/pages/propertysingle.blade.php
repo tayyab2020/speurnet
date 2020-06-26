@@ -30,15 +30,20 @@
     <!-- end:header -->
 <!-- begin:content -->
     <div id="content">
-      <div class="container">
+      <div class="container" style="width: 100%;">
         <div class="row">
+
+            <!-- begin:sidebar -->
+        @include('_particles.sidebar',['class'=>'col-md-2'])
+        <!-- end:sidebar -->
+
           <!-- begin:article -->
-          <div class="col-md-9 col-md-push-3">
+          <div class="col-md-7">
             <div class="row">
               <div class="col-md-12 single-post">
                 <ul id="myTab" class="nav nav-tabs nav-justified">
-                  <li class="active"><a href="#detail" data-toggle="tab"><i class="fa fa-university"></i> Property Detail</a></li>
-                  <li><a href="#location" data-toggle="tab"><i class="fa fa-paper-plane-o"></i> Contact</a></li>
+                  <li class="active"><a href="#detail" id="left-tab" data-toggle="tab"><i class="fa fa-university"></i> Property Detail</a></li>
+                  <li><a href="#location" id="right-tab" data-toggle="tab"><i class="fa fa-paper-plane-o"></i> Contact</a></li>
                 </ul>
 
                 <div id="myTabContent" class="tab-content">
@@ -289,7 +294,7 @@
 
                                   <li class="image-tab">
                                       <a class="new-icons" title="Share" style="border-radius: 100px;position: relative;" data-toggle="modal" data-target="#ShareModal">
-                                          <i class="fas fa-share-alt" style="vertical-align: middle;"></i>
+                                          <i class="fas fa-share-alt" style="vertical-align: middle;margin-right: 2px;"></i>
                                       </a>
                                   </li>
 
@@ -1728,9 +1733,103 @@
           </div>
           <!-- end:article -->
 
-          <!-- begin:sidebar -->
-          @include('_particles.sidebar')
-          <!-- end:sidebar -->
+
+            <div class="col-xs-12 col-md-3 sidebar-property sidebar-wrapper">
+                <div class="sidebar sidebar-right">
+
+                    <aside class="widget widget_apus_property_contact_form"><h2 class="widget-title" style="margin-bottom: 40px;r"><span style="font-weight: 600;">Contact Nina Wallker</span></h2>
+
+                        <div class="contact-form-agent">
+                            <div class="agent-content-wrapper flex-middle">
+                                <div class="agent-thumbnail">
+                                    <div class="agent-logo-wrapper" style="width: 100%;height: 100%;">
+                                        <a class="agent-logo" href="https://www.demoapus-wp1.com/homeo/agent/nina-wallker/">
+                                            <div class="image-wrapper image-loaded" style="height: 100%;">
+                                                @if($agent->image_icon)
+                                                <img style="width: 100%;height: 100%;" src="{{ URL::asset('upload/members/'.$agent->image_icon.'-b.jpg') }}" class="attachment-thumbnail size-thumbnail unveil-image" alt="{{$agent->name}}" >
+                                                @else
+                                                    <img style="width: 100%;height: 100%;" src="{{ URL::asset('upload/members/user-icon.jpg') }}" class="attachment-thumbnail size-thumbnail unveil-image" alt="{{$agent->name}}" >
+                                                @endif
+                                            </div></a>
+                                    </div>				</div>
+                                <div class="agent-content">
+                                    <h3><a href="https://www.demoapus-wp1.com/homeo/agent/nina-wallker/">{{$agent->name}}</a></h3>
+                                    <div class="phone"><div class="phone-wrapper agent-phone phone-hide">
+                                            <a style="color:#484848;" class="phone" href="tel:085 456 789">{{$agent->phone}}</a>
+                                        </div></div>
+                                    <div class="email"><div class="agent-email">
+                                            <a style="color:#484848;" href="mailto:ninawalker@apus.com">{{$agent->email}}</a>
+                                        </div></div>
+                                </div>
+                            </div>
+                            {!! Form::open(array('url'=>'agentscontact','method'=>'POST', 'id'=>'agent_contact_form')) !!}
+                            <meta name="_token" content="{!! csrf_token() !!}"/>
+
+                            <input type="hidden" name="property_id" value="{{$property->id}}">
+
+                            <input type="hidden" name="agent_id" value="{{$agent->id}}">
+
+                            <input type="hidden" name="property_name" value="{{$property->property_name}}">
+
+                            <div id="ajax" style="color: #db2424"></div>
+
+
+                            <div class="row">
+
+                                <div class="col-sm-12">
+                                    <div class="form-group" style="margin: 0;">
+
+                                        <div style="position: relative;width: 100%;">
+
+                                            <div class="bulgy-radios" role="radiogroup" aria-labelledby="bulgy-radios-label" style="width: 100%;min-height: 85px;text-align: left;">
+
+                                                <h3 id="bulgy-radios-label" style="font-size: 18px;">Select Gender</h3>
+
+                                                <label style="margin-left: 5px;float: left;max-width: 80px;">
+                                                    <input type="radio" name="gender" value="Mr." checked />
+                                                    <span class="radio"></span>
+                                                    <span class="label">Mr.</span>
+                                                </label>
+
+                                                <label>
+                                                    <input type="radio" name="gender" value="Ms." />
+                                                    <span class="radio"></span>
+                                                    <span class="label">Ms.</span>
+                                                </label>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <input type="text" class="contact-control" name="name" placeholder="Name" required="required">
+                                        </div><!-- /.form-group -->
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <input type="email" class="contact-control" name="email" placeholder="E-mail" required="required" value="">
+                                        </div><!-- /.form-group -->
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <input type="text" class="contact-control style2" name="phone" placeholder="Phone Number" required="required" value="">
+                                        </div><!-- /.form-group -->
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <textarea class="contact-control" name="message" placeholder="Message" required="required"></textarea>
+                                </div><!-- /.form-group -->
+
+
+                                <button type="submit" class="button btn btn-theme btn-block" name="contact-form">Send Message</button>
+                            {!! Form::close() !!}
+                        </div>
+                    </aside>			   		</div>
+            </div>
 
         </div>
 
@@ -1842,10 +1941,70 @@
 
     <style>
 
+        .sidebar .widget, .apus-sidebar .widget{margin:0 0 30px;padding:15px;background:#fff;border:1px solid #ebebeb;border-radius:6px;-webkit-border-radius:6px;-moz-border-radius:6px;-ms-border-radius:6px;-o-border-radius:6px}
+
+        .widget .widget-title, .widget .widgettitle, .widget .widget-heading{font-size:22px;margin:0 0 15px}
+
+        .agent-content-wrapper .agent-thumbnail{width:70px;height:70px;overflow:hidden;border-radius:50%;-webkit-border-radius:50%;-moz-border-radius:50%;-ms-border-radius:50%;-o-border-radius:50%;display:-webkit-box;display:-webkit-flex;display:-moz-flex;display:-ms-flexbox;display:flex;align-items:center;-webkit-align-items:center}
+
+        .agent-content-wrapper .agent-content{padding-left: 20px;width: calc(100% - 70px);}
+
+        .agent-content-wrapper{margin-bottom: 30px;}
+
+        .button{position: relative;color: #fff;background-color: #ff5a5f;border-color: #ff5a5f;outline: none;display: block;width: 100%;margin-bottom:0;text-align:center;vertical-align:middle;cursor:pointer;background-image:none;border:1px solid transparent;white-space:nowrap;letter-spacing:0;padding:12px 30px;font-size:14px;line-height:1.75;border-radius:6px;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;-webkit-transition:all 0.3s ease-in-out 0s;-o-transition:all 0.3s ease-in-out 0s;transition:all 0.3s ease-in-out 0s}
+
+        .button:hover, .button:focus{background-color: #ff272e;border-color: #ff272e;color: white;}
+
+        #myTab li a{background-color: white;color: black;border: 1px solid lightgrey;}
+
+        #myTab > .active > a{background-color: black;color: white;}
+
+
+        @media (min-width: 1200px){
+
+            .sidebar .widget, .apus-sidebar .widget{padding:30px}
+
+            .widget .widget-title, .widget .widgettitle, .widget .widget-heading
+            {
+                margin: 0 0 25px;
+            }
+
+            .agent-content-wrapper .agent-thumbnail{width: 90px;height: 90px;}
+
+            .agent-content-wrapper .agent-content{width: calc(100% - 90px);}
+
+            .contact-form-agent .btn{font-size: 16px;padding: 10px 30px;}
+        }
+
+        aside{display: block;}
+
+        .widget{margin-bottom:30px;position:relative;padding:0px;background:transparent}
+
+        .flex-middle{display:-webkit-flex;-webkit-align-items:center;display:flex;align-items:center}
+
+        .image-wrapper{max-height: 100%;}
+
+        .agent-content-wrapper
+        h3{margin:0;font-size:16px;font-weight:700}
+
+        .agent-content-wrapper
+        h3 a{outline: none !important;color:#484848;}
+
+        .agent-content-wrapper
+        h3 a:hover{color:#48cfad;}
+
+        .agent-content-wrapper .phone-wrapper{margin: 2px 0;}
+
+        .contact-form-agent textarea.contact-control{height: 170px;resize: none;}
+
         .slick-prev:before, .slick-next:before
         {
             font-size: 35px;
         }
+
+        .contact-control{outline: none;display:block;width:100%;height:50px;padding:12px
+        30px;font-size:14px;line-height:1.75;color:#484848;background-color:#fff;background-image:none;border:1px
+        solid #d8d8d8;border-radius:6px;-webkit-transition:all 0.3s ease-in-out;-o-transition:all 0.3s ease-in-out;transition:all 0.3s ease-in-out}
 
         .slick-prev
         {

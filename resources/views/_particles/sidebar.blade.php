@@ -1,4 +1,4 @@
-<div class="col-md-3 col-md-pull-9 sidebar">
+<div class="{{$class ?? 'col-md-3 col-md-pull-9'}} sidebar">
             <div class="widget widget-white">
               <div class="widget-header">
                 <h3>Advance Search</h3>
