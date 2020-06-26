@@ -1625,7 +1625,7 @@
                             @endif
                           </div>
                           <div class="team-description">
-                            <h3>{{$agent->name}}</h3>
+                            <h3><a style="color: white;" href="{{URL::to('agents/')}}">{{$agent->name}}</a></h3>
                             <p><i class="fa fa-phone"></i> Office : {{$agent->phone}}<br></p>
                             <p><i class="fa fa-envelope"></i>&nbsp Email : {{$agent->email}}</p>
                             <p>{{$agent->about}}</p>
@@ -1749,7 +1749,7 @@
                             <div class="agent-content-wrapper flex-middle">
                                 <div class="agent-thumbnail">
                                     <div class="agent-logo-wrapper" style="width: 100%;height: 100%;">
-                                        <a class="agent-logo" href="https://www.demoapus-wp1.com/homeo/agent/nina-wallker/">
+                                        <a class="agent-logo" href="{{URL::to('agents/')}}">
                                             <div class="image-wrapper image-loaded" style="height: 100%;">
                                                 @if($agent->image_icon)
                                                 <img style="width: 100%;height: 100%;" src="{{ URL::asset('upload/members/'.$agent->image_icon.'-b.jpg') }}" class="attachment-thumbnail size-thumbnail unveil-image" alt="{{$agent->name}}" >
@@ -1759,12 +1759,12 @@
                                             </div></a>
                                     </div>				</div>
                                 <div class="agent-content">
-                                    <h3><a href="https://www.demoapus-wp1.com/homeo/agent/nina-wallker/">{{$agent->name}}</a></h3>
+                                    <h3><a href="{{URL::to('agents/')}}">{{$agent->name}}</a></h3>
                                     <div class="phone"><div class="phone-wrapper agent-phone phone-hide">
-                                            <a style="color:#484848;" class="phone" href="tel:085 456 789">{{$agent->phone}}</a>
+                                            <a style="color:#484848;" class="phone" href="tel:{{$agent->phone}}">{{$agent->phone}}</a>
                                         </div></div>
                                     <div class="email"><div class="agent-email">
-                                            <a style="color:#484848;word-break: break-all;" href="mailto:ninawalker@apus.com">{{$agent->email}}</a>
+                                            <a style="color:#484848;word-break: break-all;" href="mailto:{{$agent->email}}">{{$agent->email}}</a>
                                         </div></div>
                                 </div>
                             </div>
