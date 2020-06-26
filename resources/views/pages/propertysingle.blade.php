@@ -1945,7 +1945,7 @@
 
         .widget .widget-title, .widget .widgettitle, .widget .widget-heading{font-size:22px;margin:0 0 15px}
 
-        .agent-content-wrapper .agent-thumbnail{width:70px;height:70px;overflow:hidden;border-radius:50%;-webkit-border-radius:50%;-moz-border-radius:50%;-ms-border-radius:50%;-o-border-radius:50%;display:-webkit-box;display:-webkit-flex;display:-moz-flex;display:-ms-flexbox;display:flex;align-items:center;-webkit-align-items:center}
+        .agent-content-wrapper .agent-thumbnail{border: 1px solid lightgrey;width:70px;height:70px;overflow:hidden;border-radius:50%;-webkit-border-radius:50%;-moz-border-radius:50%;-ms-border-radius:50%;-o-border-radius:50%;display:-webkit-box;display:-webkit-flex;display:-moz-flex;display:-ms-flexbox;display:flex;align-items:center;-webkit-align-items:center}
 
         .agent-content-wrapper .agent-content{padding-left: 20px;width: calc(100% - 70px);}
 
