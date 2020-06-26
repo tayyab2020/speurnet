@@ -220,20 +220,25 @@
 
                           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 10px 0px;padding-bottom: 0px;">
 
+                                  <div>
                               <span style="margin-right: 10px;float: left;"><img src="{{ URL::asset('assets/img/pin.png') }}" style="width: 15px;height: 15px;display: block;" /></span>
 
                               <h5 style="margin: 0;float: left;">{{$property->address}}</h5>
+                                  </div>
 
-
+                                  <div class="views">
                               <span style="margin-left: 30px;margin-right: 10px;float: left;display: flex;"><i class="fa fa-eye" aria-hidden="true" style="font-size: 14px;padding-left: 3px;"></i></span>
 
                               <h5 style="margin: 0;float: left;">{{$property->views}}</h5>
+                                  </div>
 
+                                  <?php $date = date_format($property->created_at,"F d, Y");?>
 
+                                  <div class="posted" style="padding: 0;float: right;">
 
-                              <?php $date = date_format($property->created_at,"F d, Y");?>
+                                      <span style="font-size: 12px;line-height: 1;vertical-align: top;">Posted On {{$date}}</span>
 
-                              <span style="font-size: 12px;float: right;line-height: 1;">Posted On {{$date}}</span>
+                                  </div>
 
                           </div>
 
@@ -426,12 +431,13 @@
                                   </div>
                               </div>
 
+                              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 request" style="padding: 0;text-align: right;margin: 25px 0px;">
 
-
-
-                              <button style="float: right;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                                   <i class="far fa-calendar-check" style="margin-right: 7px;"></i> Request Viewing
                               </button>
+
+                              </div>
 
                               <!-- Modal -->
                               <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -1058,15 +1064,15 @@
 
                                   .tabs-gallery-map .nav-table{position:absolute;top:10px;z-index:4;left:15px}
 
-                                  .nav-table{border:0;padding:0;margin:0;list-style: none;}
+                                  .nav-table{border:0;padding:0;margin:0;list-style: none;text-align: center;}
 
                                   @media (min-width: 1200px){.tabs-gallery-map .nav-table{top:45px}}
 
                                   .nav:before,.nav:after{content:" ";display:table}
 
-                                  .nav>li{position:relative;display:block}
+                                  .nav>li{position:relative;display:inline-block}
 
-                                  .nav-tabs>li{float:left;margin-bottom:-1px}
+                                  .nav-tabs>li{float:none;margin-bottom:-1px}
 
                                   .nav-table>li{margin-bottom:0 !important;margin-right:8px}
 
@@ -1758,7 +1764,7 @@
                                             <a style="color:#484848;" class="phone" href="tel:085 456 789">{{$agent->phone}}</a>
                                         </div></div>
                                     <div class="email"><div class="agent-email">
-                                            <a style="color:#484848;" href="mailto:ninawalker@apus.com">{{$agent->email}}</a>
+                                            <a style="color:#484848;word-break: break-all;" href="mailto:ninawalker@apus.com">{{$agent->email}}</a>
                                         </div></div>
                                 </div>
                             </div>
@@ -1959,6 +1965,24 @@
 
         #myTab > .active > a{background-color: black;color: white;}
 
+        @media (max-width: 480px){
+
+            .posted{display: none}
+
+            .request{text-align: center !important;}
+
+            .request button{width: 100%;}
+
+            .views{float: right;}
+
+
+        }
+
+        @media (max-width: 1200px){
+
+            #heart{font-size: 13px !important;}
+
+        }
 
         @media (min-width: 1200px){
 
