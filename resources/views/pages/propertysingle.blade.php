@@ -1743,11 +1743,11 @@
             <div class="col-xs-12 col-md-3 sidebar-property sidebar-wrapper">
                 <div class="sidebar sidebar-right">
 
-                    <aside class="widget widget_apus_property_contact_form"><h2 class="widget-title" style="margin-bottom: 40px;r"><span style="font-weight: 600;">Contact Nina Wallker</span></h2>
+                    <aside class="widget widget_apus_property_contact_form" style="border:1px solid #e3e3e3;"><h2 class="widget-title" style="margin-bottom: 40px;r"><span style="font-weight: 600;">Contact</span></h2>
 
                         <div class="contact-form-agent">
                             <div class="agent-content-wrapper flex-middle">
-                                <div class="agent-thumbnail">
+                                <div class="agent-thumbnail" style="border-radius: 0;">
                                     <div class="agent-logo-wrapper" style="width: 100%;height: 100%;">
                                         <a class="agent-logo" href="{{URL::to('agents/')}}">
                                             <div class="image-wrapper image-loaded" style="height: 100%;">
