@@ -244,7 +244,7 @@
 
                           </div>
 
-                          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 20px 0px;padding-bottom: 0px;">
+                          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 media-icons" style="padding: 20px 0px;padding-bottom: 0px;">
 
                               <ul class="nav nav-tabs nav-table">
                                   <li class="image-tab active">
@@ -284,7 +284,7 @@
 
                           <?php $url = "https://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; ?>
 
-                          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 30px 0px;padding-bottom: 0px;">
+                          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 media-icons" style="padding: 30px 0px;padding-bottom: 0px;">
 
                               <ul class="nav nav-tabs nav-table">
                                   <li class="image-tab">
@@ -1066,31 +1066,31 @@
 
                                   .tabs-gallery-map .nav-table{position:absolute;top:10px;z-index:4;left:15px}
 
-                                  .nav-table{border:0;padding:0;margin:0;list-style: none;text-align: center;}
+                                  .media-icons .nav-table{border:0;padding:0;margin:0;list-style: none;text-align: center;}
 
                                   @media (min-width: 1200px){.tabs-gallery-map .nav-table{top:45px}}
 
-                                  .nav:before,.nav:after{content:" ";display:table}
+                                  .media-icons .nav:before,.nav:after{content:" ";display:table}
 
-                                  .nav>li{position:relative;display:inline-block}
+                                  .media-icons .nav>li{position:relative;display:inline-block}
 
-                                  .nav-tabs>li{float:none;margin-bottom:-1px}
+                                  .media-icons .nav-tabs>li{float:none;margin-bottom:-1px}
 
-                                  .nav-table>li{margin-bottom:0 !important;margin-right:8px}
+                                  .media-icons .nav-table>li{margin-bottom:0 !important;margin-right:8px}
 
 
-                                  .nav-table>li.active>a:hover,.nav-table>li.active>a:focus,.nav-table>li.active>a{background-color:#28aedd;color:#fff}
+                                  .media-icons .nav-table>li.active>a:hover,.media-icons .nav-table>li.active>a:focus,.media-icons .nav-table>li.active>a{background-color:#28aedd;color:#fff}
 
-                                  .nav-table>li>a:hover, .nav-table>li>a:focus{background-color:#28aedd;color:#fff}
+                                  .media-icons .nav-table>li>a:hover,.media-icons .nav-table>li>a:focus{background-color:#28aedd;color:#fff}
 
-                                  .nav>li>a{position:relative;display:block;padding:10px
+                                  .media-icons .nav>li>a{position:relative;display:block;padding:10px
                                   15px}
 
 
-                                  .nav-table>li>a{border:0
+                                  .media-icons .nav-table>li>a{border:0
                                   !important;display:inline-block;cursor: pointer !important;font-size: 14px !important;font-weight: 500 !important;padding:0;padding-top: 0 !important;padding-bottom: 0 !important;margin:0;text-align:center;width:35px;height:35px;line-height:35px;background-color:#515d68;color:#fff;-webkit-transition:all 0.3s ease-in-out 0s;-o-transition:all 0.3s ease-in-out 0s;transition:all 0.3s ease-in-out 0s;border-radius:6px;-webkit-border-radius:6px;-moz-border-radius:6px;-ms-border-radius:6px;-o-border-radius:6px}
 
-                                  @media (min-width: 1200px){.nav-table>li>a{width:55px;height:50px;line-height:50px;font-size:21px !important;font-weight: 500 !important;}}
+                                  @media (min-width: 1200px){.media-icons .nav-table>li>a{width:55px;height:50px;line-height:50px;font-size:21px !important;font-weight: 500 !important;}}
 
 
                                   @media (min-width: 1200px){
@@ -2481,12 +2481,14 @@
                         responsive: [
                             {
                                 breakpoint: 768,
+                                arrows: true,
                                 settings: {
                                     slidesToShow: 3
                                 }
                             },
                             {
                                 breakpoint: 480,
+                                arrows: true,
                                 settings: {
                                     slidesToShow: 3
                                 }
@@ -2520,14 +2522,16 @@
                         responsive: [
                             {
                                 breakpoint: 768,
+                                arrows: true,
                                 settings: {
                                     slidesToShow: 3
                                 }
                             },
                             {
                                 breakpoint: 480,
+                                arrows: true,
                                 settings: {
-                                    slidesToShow: 2
+                                    slidesToShow: 3
                                 }
                             }
                         ],
@@ -2558,14 +2562,16 @@
                         responsive: [
                             {
                                 breakpoint: 768,
+                                arrows: true,
                                 settings: {
                                     slidesToShow: 3
                                 }
                             },
                             {
                                 breakpoint: 480,
+                                arrows: true,
                                 settings: {
-                                    slidesToShow: 2
+                                    slidesToShow: 3
                                 }
                             }
                         ],
