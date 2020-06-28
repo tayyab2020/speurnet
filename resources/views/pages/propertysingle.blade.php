@@ -253,11 +253,15 @@
                                       </a>
                                   </li>
 
+                                  @if($property->video)
+
                                   <li class="video-tab">
                                       <a class="popup-video" data-toggle="tab">
                                           <i class="flaticon-play"></i>
                                       </a>
                                   </li>
+
+                                  @endif
 
                                   <li class="map-tab">
                                       <a class="tab-google-map"  data-toggle="tab">
@@ -1946,6 +1950,8 @@
       </div>
     </div>
     <!-- end:modal-message -->
+
+<?php $footer = 1; ?>
 
     <style>
 

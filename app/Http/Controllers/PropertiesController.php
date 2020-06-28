@@ -420,13 +420,17 @@ class PropertiesController extends Controller
             $cycling_data = "";*/
         }
 
+        $previous = Properties::where('id', '<', $property->id)->orderBy('id','desc')->first();
+
+        $next = Properties::where('id', '>', $property->id)->orderBy('id')->first();
+
 
         $similar_property=Properties::where('id','!=', $property->id)->where("property_type", "$property->property_type")->where("city_id", "$property->city_id")->get();
 
         $similar_properties=array_merge($similar_properties,json_decode($similar_property));
 
 
-        return view('pages.propertysingle',compact('property','property_documents','agent','property_features','saved','properties_count','similar_properties'));
+        return view('pages.propertysingle',compact('property','previous','next','property_documents','agent','property_features','saved','properties_count','similar_properties'));
     }
 
     public function propertiesUser($id,$id2,Request $request)
