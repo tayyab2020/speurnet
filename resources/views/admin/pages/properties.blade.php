@@ -174,10 +174,6 @@
 <script>
     $(document).ready(function(){
 
-        $('#data-table1').dataTable({
-            "order": [[ 0, "desc" ]] // Order on init. # is the column, starting at 0
-        });
-
 
         $("input:checkbox").change( function(){
 
@@ -185,18 +181,23 @@
             $(this).closest('form').submit();
         });
 
-        $('#data-table tr').click(function () {
+        $('#data-table1 tr').click(function () {
 
-            if($('#data-table tr').hasClass("bg_color"))
+            if($(this).hasClass("bg_color"))
             {
-                $('#data-table tr').removeClass("bg_color");
+                $(this).removeClass("bg_color");
             }
             else
             {
+                $('#data-table1 tr').removeClass("bg_color");
                 $(this).addClass("bg_color");
             }
 
 
+        });
+
+        $('#data-table1').dataTable({
+            "order": [[ 0, "desc" ]] // Order on init. # is the column, starting at 0
         });
 
     });

@@ -191,7 +191,7 @@
 
                                       <div id="map-second-row">
 
-                                          <div id="panel" style="width: 204px;height: auto;max-height: 245px;float: left;border: 1px solid rgba(190, 190, 190, 0.6);border-left: 0;overflow: auto;position: absolute;top: 45%;z-index: 1;background-color: white;">
+                                          <div id="panel" style="width: 204px;height: auto;max-height: 340px;float: left;border: 1px solid rgba(190, 190, 190, 0.6);border-left: 0;overflow: auto;position: absolute;top: 22%;z-index: 1;background-color: white;">
 
                                               <div class="accordion">
                                                   <span style="display: block;">Malls</span>
@@ -220,23 +220,25 @@
 
                           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 10px 0px;padding-bottom: 0px;">
 
-                                  <div>
-                              <span style="margin-right: 10px;float: left;"><img src="{{ URL::asset('assets/img/pin.png') }}" style="width: 15px;height: 15px;display: block;" /></span>
+                                  <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8" style="padding: 0;">
+                              <span style="margin-right: 10px;float: left;margin-bottom: 7px;"><img src="{{ URL::asset('assets/img/pin.png') }}" style="width: 15px;height: 15px;display: block;" /></span>
 
-                              <h5 style="margin: 0;float: left;">{{$property->address}}</h5>
+                              <h5 style="margin: 0;float: left;margin-right: 20px;margin-bottom: 15px;">{{$property->address}}</h5>
+
+                                      <div>
+                                          <span style="margin-right: 10px;float: left;display: flex;"><i class="fa fa-eye" aria-hidden="true" style="font-size: 14px;"></i></span>
+
+                                          <h5 style="margin: 0;float: left;">{{$property->views}}</h5>
+                                      </div>
+
                                   </div>
 
-                                  <div class="views">
-                              <span style="margin-left: 30px;margin-right: 10px;float: left;display: flex;"><i class="fa fa-eye" aria-hidden="true" style="font-size: 14px;padding-left: 3px;"></i></span>
-
-                              <h5 style="margin: 0;float: left;">{{$property->views}}</h5>
-                                  </div>
 
                                   <?php $date = date_format($property->created_at,"F d, Y");?>
 
-                                  <div class="posted" style="padding: 0;float: right;">
+                                  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" style="padding: 0;">
 
-                                      <span style="font-size: 12px;line-height: 1;vertical-align: top;">Posted On {{$date}}</span>
+                                      <span style="font-size: 12px;line-height: 1;vertical-align: top;float: right;">Posted On {{$date}}</span>
 
                                   </div>
 
@@ -1048,7 +1050,7 @@
                                       padding: 0;
                                       background-color: white;
                                       max-height: 0;
-                                      overflow: hidden;
+                                      overflow-y: auto;
                                       transition: max-height 0.2s ease-out;
                                   }
 
@@ -1967,14 +1969,9 @@
 
         @media (max-width: 480px){
 
-            .posted{display: none}
-
             .request{text-align: center !important;}
 
             .request button{width: 100%;}
-
-            .views{float: right;}
-
 
         }
 
@@ -1985,6 +1982,8 @@
         }
 
         @media (min-width: 1200px){
+
+            .sidebar-property{margin-top: 858px;}
 
             .sidebar .widget, .apus-sidebar .widget{padding:30px}
 
@@ -1998,6 +1997,20 @@
             .agent-content-wrapper .agent-content{width: calc(100% - 90px);}
 
             .contact-form-agent .btn{font-size: 16px;padding: 10px 30px;}
+        }
+
+        @media (max-width: 1200px) {
+
+            .sidebar-property {
+                margin-top: 830px;
+            }
+        }
+
+        @media (max-width: 991px) {
+
+            .sidebar-property {
+                margin-top: 0px;
+            }
         }
 
         aside{display: block;}
@@ -2349,12 +2362,55 @@
             background: #a89269 url(https://raw.githubusercontent.com/solodev/icon-box-slider/master/rightarrow.png) no-repeat 155px 170px;
         }
 
-
         .slick-list
         {
             width: 75%;
             margin: auto;
             border:1px solid #e3e3e3;
+        }
+
+        .similarProperties .slick-list
+        {
+            padding-top: 25px !important;
+        }
+
+        @media (max-width: 995px)
+        {
+            .similarProperties .slick-list
+            {
+                width: 100%;
+            }
+        }
+
+        .slick-slide
+        {
+            outline: none;
+        }
+
+        #myTab li{display: block;}
+
+        @media (min-width: 768px)
+        {
+            #myTab li{display: table-cell;}
+        }
+
+        @media (max-width: 479px){
+            .box{
+                height: 65px;
+            }
+
+            .box a{
+                font-size: 12px;
+                padding: 23% 0px 0 0px;
+            }
+
+            .box a i{
+                font-size: 13px !important;
+            }
+
+            #panel{
+                top: 20% !important;
+            }
         }
 
     </style>
@@ -2377,7 +2433,7 @@
                     if (panel.style.maxHeight) {
                         panel.style.maxHeight = null;
                     } else {
-                        panel.style.maxHeight = panel.scrollHeight + "px";
+                        panel.style.maxHeight = "100%";
                     }
                 });
             }
@@ -2432,7 +2488,7 @@
                             {
                                 breakpoint: 480,
                                 settings: {
-                                    slidesToShow: 2
+                                    slidesToShow: 3
                                 }
                             }
                         ],
@@ -3763,20 +3819,20 @@
             $('.similarProperties').slick({
                 dots: false,
                 arrows: true,
-                slidesToShow: 4,
+                slidesToShow: 3,
                 slidesToScroll: 1,
                 responsive: [
                     {
-                        breakpoint: 768,
+                        breakpoint: 995,
                         settings: {
                             arrows: false,
                             centerMode: true,
                             centerPadding: '40px',
-                            slidesToShow: 3
+                            slidesToShow: 2
                         }
                     },
                     {
-                        breakpoint: 480,
+                        breakpoint: 580,
                         settings: {
                             arrows: false,
                             centerMode: true,
