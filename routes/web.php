@@ -116,6 +116,9 @@ Route::group(['middleware' => 'App\Http\Middleware\UserTypeMiddleware'], functio
         Route::get('homepage-icons/addcontent/{id}', 'SliderController@editContent');
         Route::get('homepage-icons/delete/{id}', 'SliderController@deleteContent');
 
+        Route::get('homepage-icons/changeheading', 'SliderController@changeHeading');
+        Route::post('homepage-icons/changeheading', 'SliderController@SaveChangeHeading');
+
     });
 
     Route::get('/', 'IndexController@index');

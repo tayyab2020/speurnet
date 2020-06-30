@@ -5,7 +5,8 @@
         <div class="page-header">
 
             <div class="pull-right">
-                <a href="{{URL::to('admin/homepage-icons/addcontent')}}" class="btn btn-primary">Add Content <i class="fa fa-plus"></i></a>
+                <a href="{{URL::to('admin/homepage-icons/changeheading')}}" class="btn btn-success">Change Heading Text<i class="fa fa-edit" style="margin-left: 8px;"></i></a>
+                <a href="{{URL::to('admin/homepage-icons/addcontent')}}" class="btn btn-primary">Add Content <i class="fa fa-plus" style="margin-left: 8px;"></i></a>
             </div>
             <h2>While you are here content</h2>
         </div>

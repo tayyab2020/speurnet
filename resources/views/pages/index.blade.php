@@ -22,13 +22,23 @@
 
           <div class="row">
 
+              <div class="col-md-12 col-sm-12 col-xs-12" style="display: flex;margin-bottom: 20px;">
+
+                  <div class="col-md-9 col-sm-12 col-xs-12" style="margin: auto;">
+
+                  <a href="{{URL::to('properties/'.$most_viewed->property_slug)}}" style="padding: 0;margin: 0px;text-align: left;text-decoration: underline;cursor: pointer;color: black;font-size: 18px;font-weight: 600;">Most Viewed Ad >></a>
+
+                  </div>
+                  </a>
+              </div>
+
               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="display: flex;">
 
                   <div data-testid="key-services" class="css-htlmaj col-lg-9 col-md-12 col-sm-12 col-xs-12">
                       <div>
                       <div class="domain-home_ down is-visible">
 
-                          <h2 class="css-ce6ko1">While you're here</h2>
+                          <h2 class="css-ce6ko1">{{$heading->wyh_heading}}</h2>
 
                           <ul class="css-48sroz" style="list-style: none;padding: 0;">
 

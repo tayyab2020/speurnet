@@ -420,9 +420,9 @@ class PropertiesController extends Controller
             $cycling_data = "";*/
         }
 
-        $previous = Properties::where('id', '<', $property->id)->orderBy('id','desc')->first();
+        $previous = Properties::leftjoin('cities','cities.id','=','properties.city_id')->where('properties.id', '<', $property->id)->orderBy('properties.id','desc')->select('properties.id','properties.property_slug','properties.property_name','properties.featured_image','properties.sale_price','properties.rent_price','properties.address','properties.bedrooms','cities.city_name')->first();
 
-        $next = Properties::where('id', '>', $property->id)->orderBy('id')->first();
+        $next = Properties::leftjoin('cities','cities.id','=','properties.city_id')->where('properties.id', '>', $property->id)->orderBy('properties.id')->select('properties.id','properties.property_slug','properties.property_name','properties.featured_image','properties.sale_price','properties.rent_price','properties.address','properties.bedrooms','cities.city_name')->first();
 
 
         $similar_property=Properties::where('id','!=', $property->id)->where("property_type", "$property->property_type")->where("city_id", "$property->city_id")->get();
@@ -682,6 +682,14 @@ class PropertiesController extends Controller
 
 	    $inputs = $request->all();
 
+	    if($request->wheelchair)
+        {
+            $wheelchair = 1;
+        }
+	    else
+        {
+            $wheelchair = 0;
+        }
 
     	/*$properties = Properties::where(array('property_type'=>$inputs['type'],'property_purpose'=>$inputs['purpose']))
 
@@ -713,7 +721,7 @@ class PropertiesController extends Controller
         $properties_search = [];
 
 
-    	 $properties = Properties::SearchByKeyword($type,$purpose,$price,$min_price,$max_price,$min_area,$max_area,$bathrooms,$bedrooms,$type_of_construction,$keywords)->where('is_sold',0)->where('is_rented',0)->get();
+    	 $properties = Properties::SearchByKeyword($type,$purpose,$price,$min_price,$max_price,$min_area,$max_area,$bathrooms,$bedrooms,$type_of_construction,$keywords)->where('is_sold',0)->where('is_rented',0)->where('wheelchair',$wheelchair)->get();
 
 
     	 if($address && $address_latitude && $address_longitude)

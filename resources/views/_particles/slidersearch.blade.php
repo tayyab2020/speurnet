@@ -35,7 +35,7 @@
 
                                     </div>
 
-                                    <button type="button" value="Filters" href="#myModal" data-toggle="modal" class="btn btn-primary filter-button" style="position: absolute;right: 200px;top: 17px;color: black;background: white;border-color: #9f9c9c;height: 40px;padding-top: 8px;outline: none;"><span><i class="fa fa-filter" aria-hidden="true" style="margin-right: 10px;"></i> <span>Filters</span></span></button>
+                                    <button type="button" value="Filters" href="#myModal" data-toggle="modal" class="btn btn-primary filter-button" style="position: absolute;right: 200px;top: 17px;color: black;background: white;border-color: #9f9c9c;height: 40px;padding-top: 8px;outline: none;"><span><img src="{{ URL::asset('assets/img/Filter-512.png') }}" aria-hidden="true" style="margin-right: 10px;width: 20px;margin-top: -3px;" /> <span style="font-size: 16px;">Filters</span></span></button>
 
                                     <button type="submit" name="submit" value="Search" class="btn btn-primary search-button" style="padding: 0px 35px;"><span><i class="fa fa-search" aria-hidden="true" style="margin-right: 10px;"></i> <span>Search</span></span></button>
 
@@ -45,9 +45,98 @@
 
                             </div>
 
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <a style="padding: 0;margin: 0px;text-align: left;color: #2a2929;">
 
+                                    <input name="wheelchair" value="1" type="checkbox" id="wheelchair" style="position: relative;top: 2px;display: block;height: 0px;">
+
+
+                                    <label class="bg" for="wheelchair" style="margin: 0;">
+
+                                        <img src="{{ URL::asset('assets/img/signaling.png') }}" style="width: 17px;position:relative;top: -1px;margin-right: 3px;" class="icon-feature" />
+
+                                        <span style="position: relative;top: 3px;font-size: 14px;">Wheelchair friendly home for people with walking difficulties</span>
+
+                                    </label>
+
+
+                                </a>
+                            </div>
+
+                            <style>
+
+                                [type="checkbox"]:not(:checked),
+                                [type="checkbox"]:checked {
+                                    position: absolute;
+                                    left: -9999px;
+                                }
+                                [type="checkbox"]:not(:checked) + label,
+                                [type="checkbox"]:checked + label {
+                                    position: relative;
+                                    padding-left: 1.3em;
+                                    cursor: pointer;
+                                    font-weight: 600;
+                                }
+
+                                /* checkbox aspect */
+                                [type="checkbox"]:not(:checked) + label:before,
+                                [type="checkbox"]:checked + label:before {
+                                    content: '';
+                                    position: absolute;
+                                    left: 0; top: 8px;
+                                    width: 13px; height: 13px;
+                                    border: 1px solid #7e7e7e;
+                                    background: #fff;
+                                    border-radius: 4px;
+                                    box-shadow: inset 0 1px 3px rgba(0,0,0,.1);
+                                }
+                                /* checked mark aspect */
+                                [type="checkbox"]:not(:checked) + label:after,
+                                [type="checkbox"]:checked + label:after {
+                                    content: '\2713\0020';
+                                    position: absolute;
+                                    top: 8.5px; left: 0px;
+                                    font-size: 1.2em;
+                                    line-height: 0.8;
+                                    color: #00b8ef;
+                                    transition: all .2s;
+                                    font-family: 'Lucida Sans Unicode', 'Arial Unicode MS', Arial;
+                                }
+                                /* checked mark aspect changes */
+                                [type="checkbox"]:not(:checked) + label:after {
+                                    opacity: 0;
+                                    transform: scale(0);
+                                }
+                                [type="checkbox"]:checked + label:after {
+                                    opacity: 1;
+                                    transform: scale(0.7);
+                                }
+                                /* disabled checkbox */
+                                [type="checkbox"]:disabled:not(:checked) + label:before,
+                                [type="checkbox"]:disabled:checked + label:before {
+                                    box-shadow: none;
+                                    border-color: #bbb;
+                                    background-color: #ddd;
+                                }
+                                [type="checkbox"]:disabled:checked + label:after {
+                                    color: #999;
+                                }
+                                [type="checkbox"]:disabled + label {
+                                    color: #aaa;
+                                }
+                                /* accessibility */
+                                /*[type="checkbox"]:checked:focus + label:before,
+                                [type="checkbox"]:not(:checked):focus + label:before {
+                                    border: 2px dotted blue;
+                                }*/
+
+                                /* hover style just for information */
+                                label.bg:hover:before {
+                                    border: 1px solid #4778d9!important;
+                                }
+
+                            </style>
                             <!-- break -->
-
 
 
                             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
@@ -207,10 +296,15 @@
 
                                     }
 
-                                    .filter-button span i
+                                    .filter-button span img
                                     {
-                                        font-size: 11px;
+                                        width: 15px !important;
                                         margin-right: 5px !important;
+                                    }
+
+                                    .filter-button span span
+                                    {
+                                        font-size: 12px !important;
                                     }
 
                                     .search-button

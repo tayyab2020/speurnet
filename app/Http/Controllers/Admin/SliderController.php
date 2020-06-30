@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Settings;
 use Auth;
 use App\User;
 use App\Slider;
@@ -29,6 +30,42 @@ class SliderController extends MainAdminController
         $allslider = Slider::orderBy('id')->get();
 
         return view('admin.pages.slider',compact('allslider'));
+    }
+
+    public function changeHeading()
+    {
+
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        $heading = Settings::first();
+        $heading = $heading->wyh_heading;
+
+        return view('admin.pages.change_heading',compact('heading'));
+    }
+
+    public function SaveChangeHeading(Request $request)
+    {
+
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+
+        $heading = Settings::where('id',1)->update(['wyh_heading' => $request->title]);
+
+        \Session::flash('flash_message', 'Changes Saved.');
+
+        return \Redirect::back();
     }
 
     public function homepageIcons()

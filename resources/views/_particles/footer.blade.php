@@ -76,9 +76,11 @@
                                       </div>
 
                                   </div>
-                                  <div class="large-8 columns">
+                                  <div class="large-8 columns" style="font-family: monospace;">
                                       <h6 class="unitStreet" style="margin-top: 0px;text-align: left;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;">{{$previous->property_name}}</h6>
-                                      <p class="unitCity" style="color: #3c3b3b;text-align: left;">{{$previous->address}}</p>
+                                      <p class="unitCity" style="color: #3c3b3b;text-align: left;"><b>Address:</b> {{$previous->address}}</p>
+                                      <p class="unitCity" style="color: #3c3b3b;text-align: left;"><b>City:</b> {{$previous->city_name}}</p>
+                                      <p class="unitCity" style="color: #3c3b3b;text-align: left;"><b>Bedrooms:</b>{{$previous->bedrooms}}</p>
                                   </div>
 
 
@@ -118,9 +120,11 @@
                                       </div>
 
                                   </div>
-                                  <div class="large-8 columns">
+                                  <div class="large-8 columns" style="font-family: monospace;">
                                       <h6 class="unitStreet" style="margin-top: 0px;text-align: left;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;">{{$next->property_name}}</h6>
-                                      <p class="unitCity" style="color: #3c3b3b;text-align: left;">{{$next->address}}</p>
+                                      <p class="unitCity" style="color: #3c3b3b;text-align: left;"><b>Address:</b> {{$next->address}}</p>
+                                      <p class="unitCity" style="color: #3c3b3b;text-align: left;"><b>City:</b> {{$next->city_name}}</p>
+                                      <p class="unitCity" style="color: #3c3b3b;text-align: left;"><b>Bedrooms:</b>{{$next->bedrooms}}</p>
                                   </div>
 
 

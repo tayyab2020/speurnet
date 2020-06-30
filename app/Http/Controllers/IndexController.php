@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\HomepageIcons;
 use App\savedPropertyAlert;
+use App\Settings;
 use Auth;
 use App\User;
 use App\City;
@@ -142,6 +143,10 @@ class IndexController extends Controller
 
 		$content = HomepageIcons::orderBy('id','asc')->get();
 
+		$most_viewed = Properties::orderBy('views','desc')->first();
+
+		$heading = Settings::where('id',1)->first();
+
         date_default_timezone_set("Europe/Amsterdam");
 
         $i = 0;
@@ -229,7 +234,7 @@ class IndexController extends Controller
         }
 
 
-        return view('pages.index',compact('propertieslist','testimonials','partners','city_list','top_members','top_properties','content'));
+        return view('pages.index',compact('propertieslist','testimonials', 'heading', 'most_viewed', 'partners','city_list','top_members','top_properties','content'));
     }
 
     public function subscribe(Request $request)

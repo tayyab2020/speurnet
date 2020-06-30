@@ -31,19 +31,19 @@
 <!-- begin:content -->
     <div id="content">
       <div class="container" style="width: 100%;">
-        <div class="row">
+        <div class="row mobile-row">
 
             <!-- begin:sidebar -->
         @include('_particles.sidebar',['class'=>'col-md-2'])
         <!-- end:sidebar -->
 
           <!-- begin:article -->
-          <div class="col-md-7">
+          <div class="col-md-7 main-content">
             <div class="row">
               <div class="col-md-12 single-post">
                 <ul id="myTab" class="nav nav-tabs nav-justified">
-                  <li class="active"><a href="#detail" id="left-tab" data-toggle="tab"><i class="fa fa-university"></i> Property Detail</a></li>
-                  <li><a href="#location" id="right-tab" data-toggle="tab"><i class="fa fa-paper-plane-o"></i> Contact</a></li>
+                  <li class="property-tab active"><a href="#detail" id="left-tab" data-toggle="tab"><i class="fa fa-university"></i> Property Detail</a></li>
+                  <li class="contact-tab"><a href="#location" id="right-tab" data-toggle="tab"><i class="fa fa-paper-plane-o"></i> Contact</a></li>
                 </ul>
 
                 <div id="myTabContent" class="tab-content">
@@ -998,6 +998,15 @@
 
                               <style>
 
+                                  @media (max-width: 991px){
+
+                                      .mobile-row{display: flex;flex-flow: column;}
+
+                                      .mobile-row .main-content{order:0}
+
+                                      .mobile-row .sidebar{order:2}
+
+                                  }
 
                                   .accordion {
                                       background-color: #fff;
@@ -1620,9 +1629,9 @@
                         <h3>Contact </h3>
                       </div>
                     </div>
-                    <div class="row" style="display:inline-block;width: 100%;">
+                    <div class="row" style="display:inline-block;width: 100%;margin: 0;">
                       <div class="col-md-6 col-sm-6">
-                        <div class="team-container team-dark">
+                        <div class="team-container team-dark" style="border-color: transparent;">
                           <div class="team-image">
                             @if($agent->image_icon)
                             <img src="{{ URL::asset('upload/members/'.$agent->image_icon.'-b.jpg') }}" alt="{{$agent->name}}">
@@ -1716,7 +1725,7 @@
 
                             <input type="hidden" id="agent_map_check" value="1" >
 
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;">
 
                             <h3>Location of Agent:</h3>
 
@@ -1851,7 +1860,7 @@
         @if(count($similar_properties)>0)
 
         <div class="row related-properties" style="display: flex;margin-top: 30px;">
-            <div class="col-lg-11 col-md-10 col-sm-10 col-xs-10" style="margin: auto;">
+            <div class="col-lg-11 col-md-12 col-sm-12 col-xs-12" style="margin: auto;">
                 <div id="partner" style="padding: 10px 0px;">
                     <div class="container" style="width: 100%;">
                         <div class="row">
@@ -1866,7 +1875,7 @@
 
                         <div class="row">
                             <div class="col-md-12">
-                <div class="similarProperties">
+                <div class="similarProperties" style="display: inline-block;width: 100%;">
 
                         @foreach($similar_properties as $i => $property)
                             <div class="col-md-4 col-sm-6 col-xs-12">
@@ -1978,6 +1987,7 @@
             .request{text-align: center !important;}
 
             .request button{width: 100%;}
+
 
         }
 
@@ -2338,7 +2348,7 @@
             background-size: contain;
             top: 50%;
             transform: translateY(-50%);
-            right: 10px;
+            right: 10%;
             height: 17px;
             width: 10px;
             border:none;
@@ -2353,7 +2363,7 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            left: 10px;
+            left: 10%;
             height: 17px;
             width: 10px;
             border:none;
@@ -2372,7 +2382,6 @@
         {
             width: 75%;
             margin: auto;
-            border:1px solid #e3e3e3;
         }
 
         .similarProperties .slick-list
@@ -2386,6 +2395,7 @@
             {
                 width: 100%;
             }
+
         }
 
         .slick-slide
@@ -2424,10 +2434,24 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
 
 
-
     <script>
 
         $( document ).ready(function() {
+
+            $('#myTab li').on('shown.bs.tab', function(event){
+
+                var x = $(event.target).parent();         // active tab
+
+           if(x.hasClass('contact-tab'))
+           {
+            $('.sidebar-property').hide();
+           }
+           else
+           {
+               $('.sidebar-property').show();
+           }
+
+            });
 
             var acc = document.getElementsByClassName("accordion");
             var i;
@@ -2447,7 +2471,7 @@
             $(".add-compare").click(function(){
 
                 $('html, body').animate({
-                    scrollTop: $(".related-properties").offset().top - 150
+                    scrollTop: $(".related-properties").offset().top - 100
                 }, 2000);
 
             });
