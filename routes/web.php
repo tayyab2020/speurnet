@@ -146,6 +146,12 @@ Route::group(['middleware' => 'App\Http\Middleware\UserTypeMiddleware'], functio
 
     Route::get('agents', 'AgentsController@index');
 
+    Route::get('agents/details/{id}', 'AgentsController@employerDetail');
+    Route::get('agents/{id}/property', 'AgentsController@employerproperties');
+    Route::post('agents/searchbyName', 'AgentsController@searchByName');
+    Route::post('agents/searchbyCity', 'AgentsController@searchByCity');
+    Route::get('agents/filter/{alphabet}', 'AgentsController@filter');
+
     Route::get('builders', 'AgentsController@builder_list');
 
     Route::get('properties', 'PropertiesController@index');
