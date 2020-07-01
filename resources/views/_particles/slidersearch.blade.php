@@ -4,7 +4,7 @@
         <div class="container" style="margin-top: 195px;">
             <div class="row" style="display: flex;">
                 <div class="col-md-10 col-xs-12" style="margin: auto;padding: 0;">
-                    <div class="quick-search">
+                    <div class="quick-search" style="background:rgba(255, 255, 255, 0.83);">
                         <div class="row">
 
                             {!! Form::open(array('url' => array('searchproperties'),'name'=>'search_form','id'=>'search_form','role'=>'form')) !!}
