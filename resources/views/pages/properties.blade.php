@@ -41,7 +41,6 @@
                           <select onchange="this.form.submit()" name="filter_orderby" class="orderby" data-placeholder="Sort by" tabindex="-1" aria-hidden="true">
                               <option value="newest" @if(isset($filter) && $filter == 'newest' || $filter == '') selected @endif>Newest</option>
                               <option value="oldest" @if(isset($filter) && $filter == 'oldest') selected @endif>Oldest</option>
-                              <option value="area" @if(isset($filter) && $filter == 'area') selected @endif>Area</option>
                               <option value="bedrooms" @if(isset($filter) && $filter == 'bedrooms') selected @endif>Bedrooms</option>
                               <option value="bathrooms" @if(isset($filter) && $filter == 'bathrooms') selected @endif>Bathrooms</option>
                               <option value="popularity" @if(isset($filter) && $filter == 'popularity') selected @endif>Popularity</option>
@@ -49,6 +48,8 @@
                               <option value="highest_sale_price" @if(isset($filter) && $filter == 'highest_sale_price') selected @endif>Highest Sale Price</option>
                               <option value="lowest_rent_price" @if(isset($filter) && $filter == 'lowest_rent_price') selected @endif>Lowest Rent Price</option>
                               <option value="highest_rent_price" @if(isset($filter) && $filter == 'highest_rent_price') selected @endif>Highest Rent Price</option>
+                              <option value="lowest_area" @if(isset($filter) && $filter == 'lowest_area') selected @endif>Lowest Area</option>
+                              <option value="highest_area" @if(isset($filter) && $filter == 'highest_area') selected @endif>Highest Area</option>
                           </select>
 
                       </form>

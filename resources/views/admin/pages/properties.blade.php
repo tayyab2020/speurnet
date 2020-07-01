@@ -5,11 +5,18 @@
 	<div class="page-header">
 
 		<div class="pull-right">
-			<a href="{{URL::to('admin/properties/addproperty')}}" class="btn btn-primary">Add Property <i class="fa fa-plus"></i></a>
-		</div>
-		<h2>Properties</h2>
-	</div>
-	@if(Session::has('flash_message'))
+            @if(Route::currentRouteName() == 'properties')
+			<a href="{{URL::to('admin/properties/addproperty')}}" class="btn btn-primary">Add Property <i class="fa fa-plus" style="margin-left: 8px;"></i></a>
+            @else
+                <a href="{{URL::to('admin/properties/addnewconstruction')}}" class="btn btn-primary">Add New Construction <i class="fa fa-plus" style="margin-left: 8px;"></i></a>
+            @endif
+        </div>
+
+        <h2>@if(Route::currentRouteName() == 'properties') Properties @else New Constructions @endif</h2>
+
+    </div>
+
+    @if(Session::has('flash_message'))
 				    <div class="alert alert-success">
 				    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
 <span aria-hidden="true">&times;</span></button>

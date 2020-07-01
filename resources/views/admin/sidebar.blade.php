@@ -36,6 +36,8 @@
 
 	                <li class="{{classActivePath('properties')}}"><a href="{{ URL::to('admin/properties') }}"><i class="md md-pin-drop"></i>Properties</a></li>
 
+                    <li class="{{classActivePath('new_constructions')}}"><a href="{{ URL::to('admin/new_constructions') }}"><i class="md md-pin-drop"></i>New Constructions</a></li>
+
 					<li class="{{classActivePath('featuredproperties')}}"><a href="{{ URL::to('admin/featuredproperties') }}"><i class="md md-star"></i>Featured</a></li>
 
                     <li class="{{classActivePath('viewings')}}"><a href="{{ URL::to('admin/viewings') }}"><i class="md md-pin-drop"></i>Requested Viewings</a></li>

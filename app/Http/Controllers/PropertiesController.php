@@ -108,9 +108,159 @@ class PropertiesController extends Controller
             {
                 $properties = $properties->orderBy('properties.id', 'asc')->paginate(8);
             }
-            if($filter == 'area')
+            if($filter == 'bedrooms')
+            {
+                $properties = $properties->orderBy('properties.bedrooms', 'asc')->paginate(8);
+            }
+            if($filter == 'bathrooms')
+            {
+                $properties = $properties->orderBy('properties.bathrooms', 'asc')->paginate(8);
+            }
+            if($filter == 'popularity')
+            {
+                $properties = $properties->orderBy('properties.views', 'desc')->paginate(8);
+            }
+            if($filter == 'lowest_sale_price')
+            {
+                $properties = $properties->orderBy('properties.sale_price', 'asc')->where('properties.property_purpose','Sale')->paginate(8);
+            }
+            if($filter == 'highest_sale_price')
+            {
+                $properties = $properties->orderBy('properties.sale_price', 'desc')->where('properties.property_purpose','Sale')->paginate(8);
+            }
+            if($filter == 'lowest_rent_price')
+            {
+                $properties = $properties->orderBy('properties.rent_price', 'asc')->where('properties.property_purpose','Rent')->paginate(8);
+            }
+            if($filter == 'highest_rent_price')
+            {
+                $properties = $properties->orderBy('properties.rent_price', 'desc')->where('properties.property_purpose','Rent')->paginate(8);
+            }
+            if($filter == 'lowest_area')
             {
                 $properties = $properties->orderBy('properties.area', 'asc')->paginate(8);
+            }
+            if($filter == 'highest_area')
+            {
+                $properties = $properties->orderBy('properties.area', 'desc')->paginate(8);
+            }
+        }
+        else
+        {
+            $properties = $properties->orderBy('properties.id', 'desc')->paginate(8);
+        }
+
+
+
+        date_default_timezone_set("Europe/Amsterdam");
+
+        $i = 0;
+
+        foreach($properties as $key)
+        {
+
+            $time_ago        = strtotime($key->created_at);
+            $current_time    = time();
+            $time_difference = $current_time - $time_ago;
+            $seconds         = $time_difference;
+
+            $minutes = round($seconds / 60); // value 60 is seconds
+            $hours   = round($seconds / 3600); //value 3600 is 60 minutes * 60 sec
+            $days    = round($seconds / 86400); //86400 = 24 * 60 * 60;
+            $weeks   = round($seconds / 604800); // 7*24*60*60;
+            $months  = round($seconds / 2629440); //((365+365+365+365+366)/5/12)*24*60*60
+            $years   = round($seconds / 31553280); //(365+365+365+365+366)/5 * 24 * 60 * 60
+
+
+            if ($seconds <= 60){
+
+                $listed = "Just Now";
+
+            } else if ($minutes <= 60){
+
+                if ($minutes == 1){
+
+                    $listed = "one minute ago";
+
+                } else {
+
+                    $listed = "$minutes minutes ago";
+
+                }
+
+            } else if ($hours <= 24){
+
+                if ($hours == 1){
+
+                    $listed = "an hour ago";
+
+                } else {
+
+                    $listed = "$hours hrs ago";
+
+                }
+
+            } else if ($days <= 7){
+
+                if ($days == 1){
+
+                    $listed = "yesterday";
+
+                } else {
+
+                    $listed = "$days days ago";
+
+                }
+
+            } else if ($weeks <= 4.3){
+
+                if ($weeks == 1){
+
+                    $listed = "this week";
+
+                } else {
+
+                    $listed = "this month";
+
+                }
+
+            }
+            else
+            {
+                $listed = '';
+            }
+
+
+
+            $properties[$i]->listed = $listed;
+
+            $i = $i + 1;
+
+        }
+
+
+        return view('pages.properties',compact('properties','filter'));
+    }
+
+
+    public function newconstructions(Request $request)
+    {
+
+        $filter = $request->filter_orderby;
+
+        /*$prev_month = date("t", mktime(0,0,0, date("n") - 1));*/
+
+        $properties = Properties::leftjoin('users','users.id','=','properties.user_id')->where('properties.status','1')->where('properties.new_construction',1)/*->whereDate('properties.created_at', '>', Carbon::now()->subDays($prev_month))*/->select('properties.id','properties.property_name','properties.description','properties.property_slug','properties.available_immediately','properties.is_sold','properties.is_rented','is_negotiation','is_under_offer','properties.video','properties.property_type','properties.property_purpose','properties.sale_price','properties.rent_price','properties.address','properties.bathrooms','properties.bedrooms','properties.area','properties.featured_image','properties.property_images1','properties.property_images2','properties.property_images3','properties.property_images4','properties.property_images5','properties.first_floor','properties.second_floor','properties.ground_floor','properties.basement','properties.open_date','properties.open_timeFrom','properties.open_timeTo','properties.created_at','users.image_icon');
+
+        if($filter)
+        {
+            if($filter == 'newest')
+            {
+                $properties = $properties->orderBy('properties.id', 'desc')->paginate(8);
+            }
+            if($filter == 'oldest')
+            {
+                $properties = $properties->orderBy('properties.id', 'asc')->paginate(8);
             }
             if($filter == 'bedrooms')
             {
@@ -139,6 +289,14 @@ class PropertiesController extends Controller
             if($filter == 'highest_rent_price')
             {
                 $properties = $properties->orderBy('properties.rent_price', 'desc')->where('properties.property_purpose','Rent')->paginate(8);
+            }
+            if($filter == 'lowest_area')
+            {
+                $properties = $properties->orderBy('properties.area', 'asc')->paginate(8);
+            }
+            if($filter == 'highest_area')
+            {
+                $properties = $properties->orderBy('properties.area', 'desc')->paginate(8);
             }
         }
         else

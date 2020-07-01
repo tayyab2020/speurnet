@@ -142,6 +142,27 @@ class PropertiesController extends MainAdminController
         return view('admin.pages.properties',compact('propertieslist'));
     }
 
+    public function newConstructionslist()
+    {
+
+
+        if(Auth::user()->usertype=='Admin')
+        {
+            $propertieslist = Properties::orderBy('id','desc')->withCount(['enquiries'])->withCount(['viewings'])->get();
+        }
+        else
+        {
+            $user_id=Auth::user()->id;
+
+            $propertieslist = Properties::where('user_id',$user_id)->orderBy('id','desc')->withCount(['enquiries'])->withCount(['viewings'])->get();
+
+        }
+
+
+
+        return view('admin.pages.properties',compact('propertieslist'));
+    }
+
     public function favouriteProperties()
     {
 
@@ -221,6 +242,27 @@ class PropertiesController extends MainAdminController
 
     }
 
+    public function addeditnewconstruction()
+    {
+
+        if(Auth::user()->usertype=='Admin' || Auth::user()->usertype=='Agents')
+        {
+            $types = Types::orderBy('types')->get();
+
+            $city_list = City::where('status','1')->orderBy('city_name')->get();
+
+            $property_features = property_features::all();
+
+            return view('admin.pages.addeditproperty',compact('city_list','types','property_features'));
+        }
+        else
+        {
+            return redirect('/');
+        }
+
+
+    }
+
     public function addnew(Request $request)
     {
 
@@ -228,7 +270,6 @@ class PropertiesController extends MainAdminController
     	$data =  \Request::except(array('_token')) ;
 
 	    $inputs = $request->all();
-
 
 
         $rule=array(
@@ -730,9 +771,6 @@ class PropertiesController extends MainAdminController
         $property->open_timeFrom = $request->time_from;
         $property->open_timeTo = $request->time_to;
         $property->house_type = $request->house_type;
-        $property->construction_type = $request->construction_type;
-        $property->year_construction = $request->year_construction;
-        $property->building_condition = $request->building_condition;
         $property->volume = $request->volume;
         $property->floors = $request->floors;
         $property->backyard = $request->backyard;
@@ -751,6 +789,24 @@ class PropertiesController extends MainAdminController
         $property->property_furnished = $request->property_furnished;
         $property->wheelchair = $wheelchair;
         $property->available_from = $request->available_from;
+
+        if($request->route == 'property')
+        {
+            $property->construction_type = $request->construction_type;
+            $property->year_construction = $request->year_construction;
+            $property->building_condition = $request->building_condition;
+
+        }
+        else
+        {
+            $property->new_construction = 1;
+            $property->kind_of_type = $request->kind_of_type;
+            $property->realization = $request->realization;
+            $property->homes = $request->homes;
+            $property->rental_properties = $request->rental_properties;
+            $property->source = $request->source;
+
+        }
 
 
 	    $property->save();

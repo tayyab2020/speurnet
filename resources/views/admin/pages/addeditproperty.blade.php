@@ -1,6 +1,16 @@
 @extends("app")
 
+@if(Route::currentRouteName() == 'addproperty')
+
 @section('head_title', 'Add New Property | '.getcong('site_name') )
+
+@else
+
+@section('head_title', 'Add New Construction | '.getcong('site_name') )
+
+@endif
+
+
 @section('head_url', Request::url())
 
 
@@ -16,7 +26,11 @@
             <div class="row">
                 <div class="col-md-10 col-md-offset-1 col-sm-12">
                     <div class="page-title">
+                        @if(Route::currentRouteName() == 'addproperty')
                         <h2>Add New Property</h2>
+                            @else
+                            <h2>Add New Construction</h2>
+                        @endif
                     </div>
                     <ol class="breadcrumb">
                         <li><a href="{{ URL::to('/') }}">Home</a></li>
@@ -80,6 +94,16 @@
                 </ul>
 
                 {!! Form::open(array('url' => array('admin/properties/addproperty'),'class'=>'form-horizontal padding-15','name'=>'property_form','id'=>'property_form','role'=>'form','enctype' => 'multipart/form-data')) !!}
+
+                @if(Route::currentRouteName() == 'addproperty')
+
+                    <input type="hidden" name="route" value="property">
+
+                @else
+
+                    <input type="hidden" name="route" value="construction">
+
+                @endif
 
                 <input type="hidden" name="id" value="{{ isset($property->id) ? $property->id : null }}">
 
@@ -303,6 +327,7 @@
 
                                     </div>
 
+                                    @if(Route::currentRouteName() == 'addproperty')
 
                                     <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 right-div" style="display: inline-block;float: right;margin: 25px 0px;">
 
@@ -352,6 +377,97 @@
                                         </div>
 
                                     </div>
+
+                                        @else
+
+                                        <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 right-div" style="display: inline-block;float: right;margin: 25px 0px;">
+
+                                            <label class="right-label" style="float: left;">KIND OF TYPE</label>
+
+                                            <div style="width: 100%;display: inline-block;margin: auto">
+
+                                                <select name="kind_of_type" id="kind_of_type" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
+                                                    <option value="For Sale" @if(old('kind_of_type') == 'For Sale') selected @endif>For Sale</option>
+                                                    <option value="To Rent Social" @if(old('kind_of_type') == 'To Rent Social') selected @endif>To Rent Social</option>
+                                                    <option value="To Rent Free" @if(old('kind_of_type') == 'To Rent Free') selected @endif>To Rent Free</option>
+                                                </select>
+
+
+
+                                            </div>
+
+                                        </div>
+
+                                        <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 left-div" style="display: inline-block;margin: 20px 0px;">
+
+                                            <label class="left-label" style="float: left;">REALIZATION (Year)</label>
+
+                                            <div  style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;border-right: 0;margin: auto">
+
+                                                <input type="number" step="1" max="" name="realization" @if(old('realization') != '') value="{{old('realization')}}" @else value="{{ isset($property->realization) ? $property->realization : 1980 }}" @endif class="quantity-field" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+                                                <input type="button" value="+" class="button-plus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d7d7d7;margin-top: -0.1px;">
+                                                <input type="button" value="-" class="button-minus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;margin-top: -0.1px;">
+
+                                            </div>
+
+                                        </div>
+
+                                        <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 right-div" style="display: inline-block;float: right;margin: 20px 0px;">
+
+                                            <label class="left-label" style="float: left;">HOW MANY BUY HOMES?</label>
+
+                                            <div  style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;border-right: 0;margin: auto">
+
+                                                <input type="number" step="1" max="" name="homes" @if(old('homes') != '') value="{{old('homes')}}" @else value="{{ isset($property->homes) ? $property->homes : 0 }}" @endif class="quantity-field" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+                                                <input type="button" value="+" class="button-plus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d7d7d7;margin-top: -0.1px;">
+                                                <input type="button" value="-" class="button-minus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;margin-top: -0.1px;">
+
+                                            </div>
+
+                                        </div>
+
+                                        <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 left-div" style="display: inline-block;margin: 20px 0px;">
+
+                                            <label class="left-label" style="float: left;">HOW MANY RENTAL PROPERTIES?</label>
+
+                                            <div  style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;border-right: 0;margin: auto">
+
+                                                <input type="number" step="1" max="" name="rental_properties" @if(old('rental_properties') != '') value="{{old('rental_properties')}}" @else value="{{ isset($property->rental_properties) ? $property->rental_properties : 0 }}" @endif class="quantity-field" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+                                                <input type="button" value="+" class="button-plus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d7d7d7;margin-top: -0.1px;">
+                                                <input type="button" value="-" class="button-minus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;margin-top: -0.1px;">
+
+                                            </div>
+
+                                        </div>
+
+                                        <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 right-div" style="display: inline-block;float: right;margin: 25px 0px;">
+
+                                            <label class="left-label" style="float: left;">SOURCE PROJECT</label>
+
+                                            <div class="right-content" style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto;">
+
+
+                                                <input type="text"  @if(old('source') != '') value="{{old('source')}}" @else value="{{ isset($property->source) ? $property->source : null }}" @endif name="source" placeholder="Source of project" class="quantity-field" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+
+                                            </div>
+
+                                        </div>
+
+                                        <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 left-div" style="display: inline-block;margin: 25px 0px;">
+
+                                            <label class="left-label" style="float: left;">CITATION</label>
+
+                                            <div class="right-content" style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto;">
+
+
+                                                <input type="text" @if(old('citation') != '') value="{{old('citation')}}" @else value="{{ isset($property->citation) ? $property->citation : null }}" @endif name="citation" placeholder="Citation" class="quantity-field" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+
+                                            </div>
+
+                                        </div>
+
+
+                                    @endif
 
 
                                 </div>
