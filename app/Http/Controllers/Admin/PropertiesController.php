@@ -127,13 +127,13 @@ class PropertiesController extends MainAdminController
 
     	if(Auth::user()->usertype=='Admin')
         {
-        	$propertieslist = Properties::orderBy('id','desc')->withCount(['enquiries'])->withCount(['viewings'])->get();
+        	$propertieslist = Properties::orderBy('id','desc')->where('new_construction',0)->withCount(['enquiries'])->withCount(['viewings'])->get();
         }
         else
         {
         	$user_id=Auth::user()->id;
 
-			$propertieslist = Properties::where('user_id',$user_id)->orderBy('id','desc')->withCount(['enquiries'])->withCount(['viewings'])->get();
+			$propertieslist = Properties::where('user_id',$user_id)->where('new_construction',0)->orderBy('id','desc')->withCount(['enquiries'])->withCount(['viewings'])->get();
 
 		}
 
