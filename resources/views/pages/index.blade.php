@@ -26,7 +26,7 @@
 
                   <div class="col-md-9 col-sm-12 col-xs-12" style="margin: auto;">
 
-                  <a href="{{URL::to('properties/'.$most_viewed->property_slug)}}" style="padding: 0;margin: 0px;text-align: left;text-decoration: underline;cursor: pointer;color: black;font-size: 18px;font-weight: 600;"><img style="width: 20px;margin-right: 8px;margin-bottom: 4px;" src="{{ URL::asset('assets/img/eye.png') }}" />Most Viewed Ad >></a>
+                  <a href="{{URL::to('properties/'.$most_viewed->property_slug)}}" style="padding: 0;margin: 0px;text-align: left;text-decoration: underline;cursor: pointer;color: black;font-size: 18px;font-weight: 600;"><img style="width: 30px;margin-right: 15px;margin-bottom: 4px;" src="{{ URL::asset('assets/img/eye.png') }}" />Most Viewed Ad >></a>
 
                   </div>
                   </a>
@@ -77,7 +77,7 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 latest-container">
 
                         <div class="latestProperties">
 
@@ -554,6 +554,10 @@
 <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/css/flaticon.css') }}"/>
 
 <style>
+
+    @media (min-width: 1250px){
+        .latest-container{padding: 0px 120px;}
+    }
 
     .video-wrapper-inner .popup-video{position:relative;z-index:1;display:inline-block;width:50px;height:50px;line-height:50px;border-radius:50%;-webkit-border-radius:50%;-moz-border-radius:50%;-ms-border-radius:50%;-o-border-radius:50%;-webkit-transition:all 0.3s ease-in-out 0s;-o-transition:all 0.3s ease-in-out 0s;transition:all 0.3s ease-in-out 0s;font-size:18px;color:#fff;background:#28aedd;text-align:center}
 
