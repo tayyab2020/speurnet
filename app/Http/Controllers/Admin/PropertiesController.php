@@ -148,17 +148,12 @@ class PropertiesController extends MainAdminController
 
         if(Auth::user()->usertype=='Admin')
         {
-            $propertieslist = Properties::orderBy('id','desc')->withCount(['enquiries'])->withCount(['viewings'])->get();
+            $propertieslist = Properties::orderBy('id','desc')->where('new_construction',1)->withCount(['enquiries'])->withCount(['viewings'])->get();
         }
         else
         {
-            $user_id=Auth::user()->id;
-
-            $propertieslist = Properties::where('user_id',$user_id)->orderBy('id','desc')->withCount(['enquiries'])->withCount(['viewings'])->get();
-
+            return redirect('/');
         }
-
-
 
         return view('admin.pages.properties',compact('propertieslist'));
     }
@@ -187,8 +182,6 @@ class PropertiesController extends MainAdminController
                 $propertieslist = saved_properties::leftjoin('properties','properties.id','=','saved_properties.property_id')->leftjoin('users','users.id','=','saved_properties.user_id')->where('saved_properties.user_id',$user_id)->orderBy('properties.id','desc')->select('properties.id','properties.user_id','properties.property_slug','properties.property_name','properties.property_type','properties.property_purpose','users.name as client_name','saved_properties.created_at','saved_properties.id as saved_id')->get();
 
             }
-
-
 
 
         }
