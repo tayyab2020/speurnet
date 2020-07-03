@@ -22,6 +22,7 @@
 
                             @if(Route::currentRouteName() == 'searchproperties')
 
+
                             <div class="modal-body" style="display: inline-block;width: 100%;">
 
                                 <div class="form-group">
@@ -136,49 +137,59 @@
 
                                 @endif
 
+
                         </div>
                     </div>
                 </div>
 
+                @if(Route::currentRouteName() != 'newconstructions-front' && Route::currentRouteName() != 'searchnewconstructions' && Route::currentRouteName() != 'newconstruction-single')
+
               {!! Form::open(array('url' => array('searchproperties'),'class'=>'advance-search','name'=>'search_form','id'=>'search_form','role'=>'form')) !!}
+
+                @else
+
+              {!! Form::open(array('url' => array('searchnewconstructions'),'class'=>'advance-search','name'=>'search_form','id'=>'search_form','role'=>'form')) !!}
+
+                    @endif
+
                <div class="form-group">
                       <label for="city">City</label>
 
-                   <input class="form-control city-input" @if(Route::currentRouteName() == 'searchproperties') value="{{$address}}" @else value="" @endif type="text" placeholder="City, State, Address" name="city_name" id="city-input" autocomplete="off">
+                   <input class="form-control city-input" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') value="{{$address}}" @else value="" @endif type="text" placeholder="City, State, Address" name="city_name" id="city-input" autocomplete="off">
 
-                   <input type="hidden" @if(Route::currentRouteName() == 'searchproperties') value="{{$address_latitude}}" @else value="" @endif name="city_latitude" id="city-latitude"  />
-                   <input type="hidden" @if(Route::currentRouteName() == 'searchproperties') value="{{$address_longitude}}" @else value="" @endif name="city_longitude" id="city-longitude"  />
+                   <input type="hidden" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') value="{{$address_latitude}}" @else value="" @endif name="city_latitude" id="city-latitude"  />
+                   <input type="hidden" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') value="{{$address_longitude}}" @else value="" @endif name="city_longitude" id="city-longitude"  />
 
                     </div>
 
                 <div class="form-group">
                     <label for="purpose">Radius</label>
                     <select class="form-control" name="radius">
-                        <option value="0" @if(Route::currentRouteName() == 'searchproperties') @if($radius == 0) selected @endif @endif>0 KM</option>
-                        <option value="1" @if(Route::currentRouteName() == 'searchproperties') @if($radius == 1) selected @endif @endif>1 KM</option>
-                        <option value="2" @if(Route::currentRouteName() == 'searchproperties') @if($radius == 2) selected @endif @endif>2 KM</option>
-                        <option value="5" @if(Route::currentRouteName() == 'searchproperties') @if($radius == 5) selected @endif @endif>5 KM</option>
-                        <option value="10" @if(Route::currentRouteName() == 'searchproperties') @if($radius == 10) selected @endif @endif>10 KM</option>
-                        <option value="15" @if(Route::currentRouteName() == 'searchproperties') @if($radius == 15) selected @endif @endif>15 KM</option>
-                        <option value="30" @if(Route::currentRouteName() == 'searchproperties') @if($radius == 30) selected @endif @endif>30 KM</option>
-                        <option value="50" @if(Route::currentRouteName() == 'searchproperties') @if($radius == 50) selected @endif @endif>50 KM</option>
-                        <option value="100" @if(Route::currentRouteName() == 'searchproperties') @if($radius == 100) selected @endif @endif>100 KM</option>
+                        <option value="0" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') @if($radius == 0) selected @endif @endif>0 KM</option>
+                        <option value="1" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') @if($radius == 1) selected @endif @endif>1 KM</option>
+                        <option value="2" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') @if($radius == 2) selected @endif @endif>2 KM</option>
+                        <option value="5" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') @if($radius == 5) selected @endif @endif>5 KM</option>
+                        <option value="10" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') @if($radius == 10) selected @endif @endif>10 KM</option>
+                        <option value="15" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') @if($radius == 15) selected @endif @endif>15 KM</option>
+                        <option value="30" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') @if($radius == 30) selected @endif @endif>30 KM</option>
+                        <option value="50" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') @if($radius == 50) selected @endif @endif>50 KM</option>
+                        <option value="100" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') @if($radius == 100) selected @endif @endif>100 KM</option>
                     </select>
                 </div>
 
                 <div class="form-group">
                       <label for="purpose">Purpose</label>
                       <select class="form-control" name="purpose">
-                        <option value="Sale" @if(Route::currentRouteName() == 'searchproperties') @if($purpose == 'Sale') selected @endif @endif>For Sale</option>
-                        <option value="Rent" @if(Route::currentRouteName() == 'searchproperties') @if($purpose == 'Rent') selected @endif @endif>For Rent</option>
+                        <option value="Sale" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') @if($purpose == 'Sale') selected @endif @endif>For Sale</option>
+                        <option value="Rent" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') @if($purpose == 'Rent') selected @endif @endif>For Rent</option>
                       </select>
                </div>
                <div class="form-group">
-                      <label for="type">Type</label>
+                      <label for="type">Property Type</label>
                       <select class="form-control" name="type">
                           <option value="">All</option>
                         @foreach(\App\Types::orderBy('types')->get() as $type)
-                        <option value="{{$type->id}}" @if(Route::currentRouteName() == 'searchproperties') @if($property_type == $type->id) selected @endif @endif>{{$type->types}}</option>
+                        <option value="{{$type->id}}" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') @if($property_type == $type->id) selected @endif @endif>{{$type->types}}</option>
 						@endforeach
 
                       </select>
@@ -187,33 +198,35 @@
 
                 <div class="form-group">
                       <label for="minprice">Min Price</label>
-                      <input type="number" name="min_price" @if(Route::currentRouteName() == 'searchproperties') value="{{$min_price}}" @else value="" @endif class="form-control" placeholder="Min Price (number)">
+                      <input type="number" name="min_price" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') value="{{$min_price}}" @else value="" @endif class="form-control" placeholder="Min Price (number)">
                 </div>
 
                 <div class="form-group">
                       <label for="maxprice">Max Price</label>
-                      <input type="number" name="max_price" @if(Route::currentRouteName() == 'searchproperties') value="{{$max_price}}" @else value="" @endif class="form-control" placeholder="Max Price (number)">
+                      <input type="number" name="max_price" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') value="{{$max_price}}" @else value="" @endif class="form-control" placeholder="Max Price (number)">
                 </div>
 
                 <div class="form-group">
                     <label for="minprice">Bedrooms</label>
-                    <input type="number" name="bedrooms" @if(Route::currentRouteName() == 'searchproperties') value="{{$bedrooms}}" @else value="" @endif class="form-control" placeholder="No. of Bedrooms">
+                    <input type="number" name="bedrooms" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') value="{{$bedrooms}}" @else value="" @endif class="form-control" placeholder="No. of Bedrooms">
                 </div>
 
                 <div class="form-group">
                     <label for="minprice">Bathrooms</label>
-                    <input type="number" name="bathrooms" @if(Route::currentRouteName() == 'searchproperties') value="{{$bathrooms}}" @else value="" @endif class="form-control" placeholder="No. of Bathrooms">
+                    <input type="number" name="bathrooms" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') value="{{$bathrooms}}" @else value="" @endif class="form-control" placeholder="No. of Bathrooms">
                 </div>
 
                 <div class="form-group">
                     <label for="minprice">Min Area (m2)</label>
-                    <input type="number" name="min_area" @if(Route::currentRouteName() == 'searchproperties') value="{{$min_area}}" @else value="" @endif class="form-control" placeholder="Minimum SQFT Area (m2)">
+                    <input type="number" name="min_area" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') value="{{$min_area}}" @else value="" @endif class="form-control" placeholder="Minimum SQFT Area (m2)">
                 </div>
 
                 <div class="form-group">
                     <label for="minprice">Max Area (m2)</label>
-                    <input type="number" name="max_area" @if(Route::currentRouteName() == 'searchproperties') value="{{$max_area}}" @else value="" @endif class="form-control" placeholder="Maximum SQFT Area (m2)">
+                    <input type="number" name="max_area" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') value="{{$max_area}}" @else value="" @endif class="form-control" placeholder="Maximum SQFT Area (m2)">
                 </div>
+
+                @if(Route::currentRouteName() != 'newconstructions-front' && Route::currentRouteName() != 'searchnewconstructions' && Route::currentRouteName() != 'newconstruction-single')
 
                 <div class="form-group">
                     <label for="minprice">Type of Construction</label>
@@ -224,9 +237,39 @@
                     </select>
                 </div>
 
+                @else
+
+                    <div class="form-group">
+                        <label for="minprice">Kind of Type</label>
+                        <select class="form-control" name="kind_of_type">
+                            <option value="">All</option>
+                            <option value="For Sale" @if(Route::currentRouteName() == 'searchnewconstructions') @if($kind_of_type == 'For Sale') selected @endif @endif>For Sale</option>
+                            <option value="To Rent Social" @if(Route::currentRouteName() == 'searchnewconstructions') @if($kind_of_type == 'To Rent Social') selected @endif @endif>To Rent Social</option>
+                            <option value="To Rent Free" @if(Route::currentRouteName() == 'searchnewconstructions') @if($kind_of_type == 'To Rent Free') selected @endif @endif>To Rent Free</option>
+                        </select>
+                    </div>
+
+                @endif
+
                 <div class="form-group">
                     <label for="minprice">Keywords</label>
-                    <input type="text" name="keywords" @if(Route::currentRouteName() == 'searchproperties') value="{{$keywords}}" @else value="" @endif class="form-control" placeholder="Search by Keywords">
+                    <input type="text" name="keywords" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') value="{{$keywords}}" @else value="" @endif class="form-control" placeholder="Search by Keywords">
+                </div>
+
+                <div class="form-group">
+
+                    <label>Wheelchair friendly home for people with walking difficulties</label>
+
+                    <p style="margin-top: 10px;">
+                        <input type="radio" id="wh1" name="wheelchair" value="1" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') @if($wheelchair == 1) checked @endif @endif>
+                        <label for="wh1">Yes</label>
+                    </p>
+
+                    <p>
+                        <input type="radio" id="wh2" name="wheelchair" value="0" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') @if($wheelchair == 0) checked @endif @else checked @endif>
+                        <label for="wh2">No</label>
+                    </p>
+
                 </div>
 
                 <input type="submit" name="submit" value="Search" class="btn btn-primary btn-block">

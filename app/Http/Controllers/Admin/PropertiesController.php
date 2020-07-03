@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\New_Constructions;
 use Auth;
 use App\User;
 use App\City;
@@ -127,13 +128,13 @@ class PropertiesController extends MainAdminController
 
     	if(Auth::user()->usertype=='Admin')
         {
-        	$propertieslist = Properties::orderBy('id','desc')->where('new_construction',0)->withCount(['enquiries'])->withCount(['viewings'])->get();
+        	$propertieslist = Properties::orderBy('id','desc')->withCount(['enquiries'])->withCount(['viewings'])->get();
         }
         else
         {
         	$user_id=Auth::user()->id;
 
-			$propertieslist = Properties::where('user_id',$user_id)->where('new_construction',0)->orderBy('id','desc')->withCount(['enquiries'])->withCount(['viewings'])->get();
+			$propertieslist = Properties::where('user_id',$user_id)->orderBy('id','desc')->withCount(['enquiries'])->withCount(['viewings'])->get();
 
 		}
 
@@ -145,10 +146,9 @@ class PropertiesController extends MainAdminController
     public function newConstructionslist()
     {
 
-
         if(Auth::user()->usertype=='Admin')
         {
-            $propertieslist = Properties::orderBy('id','desc')->where('new_construction',1)->withCount(['enquiries'])->withCount(['viewings'])->get();
+            $propertieslist = New_Constructions::orderBy('id','desc')->withCount(['enquiries'])->withCount(['viewings'])->get();
         }
         else
         {
@@ -798,6 +798,12 @@ class PropertiesController extends MainAdminController
             $property->homes = $request->homes;
             $property->rental_properties = $request->rental_properties;
             $property->source = $request->source;
+
+            if (strpos($request->citation,'http://') === false){
+                $request->citation = 'http://'.$request->citation;
+            }
+
+            $property->citation = $request->citation;
 
         }
 

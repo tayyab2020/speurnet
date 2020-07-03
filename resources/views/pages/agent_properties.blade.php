@@ -71,6 +71,47 @@
 
                                         <img src="{{ URL::asset('upload/properties/'.$property->featured_image.'-b.jpg') }}" alt="{{ $property->property_name }}">
 
+                                        <?php
+
+                                        preg_match('/<iframe.*src=\"(.*)\".*><\/iframe>/isU', $property->description, $matches);
+                                        if(!empty($matches[1])){ $url = $matches[1];}else{ $url = '';}
+
+                                        ?>
+
+                                        @if($url)
+
+                                            <div class="video-wrapper-inner" style="position: absolute;margin-right: 5%;margin-top: 5%;top: 0;right: 0;">
+                                                <a data-width="1280" href="{{$url}}" data-gallery="videos{{$i}}" data-toggle="lightbox" class="popup-video" style="cursor: pointer;outline: none;">
+                                                    <span class="popup-video-inner">
+                                                    <i class="flaticon-play"></i>
+                                                    </span>
+                                                </a>
+                                            </div>
+
+                                            @if($property->video)
+
+                                                <div style="display: none;" data-toggle="lightbox" data-type="video" data-gallery="videos{{$i}}" data-width="1280" data-remote="{{ URL::asset('upload/properties/'.$property->video) }}"></div>
+
+                                            @endif
+
+                                        @else
+
+                                            @if($property->video)
+
+
+                                                <div class="video-wrapper-inner" style="position: absolute;margin-right: 5%;margin-top: 5%;top: 0;right: 0;">
+                                                    <a data-width="1280" href="{{ URL::asset('upload/properties/'.$property->video) }}" data-type="video" data-gallery="videos{{$i}}" data-toggle="lightbox" class="popup-video" style="cursor: pointer;outline: none;">
+                                                    <span class="popup-video-inner">
+                                                    <i class="flaticon-play"></i>
+                                                    </span>
+                                                    </a>
+                                                </div>
+
+                                            @endif
+
+                                        @endif
+
+
                                         @if($property->is_sold)
 
                                             <div class="property-price" style="top: 37px;left: -58px;border-radius: 5px;padding: 5px 10px;transform: rotate(-40deg);width: 240px;">
@@ -299,25 +340,6 @@
                                             @endif
 
 
-                                            @if($url)
-
-                                                <a data-width="1280" href="{{$url}}" data-gallery="videos{{$i}}" style="color: white;" data-toggle="lightbox"> <i class="fas fa-film" style="font-size: 18px;margin-right: 12px;"></i> </a>
-
-                                                @if($property->video)
-
-                                                    <div style="display: none;" data-toggle="lightbox" data-type="video" data-gallery="videos{{$i}}" data-width="1280" data-remote="{{ URL::asset('upload/properties/'.$property->video) }}"></div>
-
-                                                @endif
-
-                                            @else
-
-                                                @if($property->video)
-
-                                                    <a data-width="1280" href="{{ URL::asset('upload/properties/'.$property->video) }}" data-type="video" data-gallery="videos{{$i}}" style="color: white;" data-toggle="lightbox"> <i class="fas fa-film" style="font-size: 18px;margin-right: 12px;"></i> </a>
-
-                                                @endif
-
-                                            @endif
 
                                             <a data-toggle="lightbox" data-gallery="hidden-images{{$i}}" href="{{ URL::asset('upload/properties/'.$property->featured_image.'-b.jpg') }}" style="color: white;"> <i class="fas fa-camera" style="font-size: 18px;"></i><span style="padding: 0px 6px;font-weight: 700;font-size: 18px;position: relative;bottom: 1px;margin-left: 5px;">{{$x}}</span></a>
 
@@ -424,6 +446,16 @@
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/css/flaticon.css') }}"/>
 
     <style>
+
+        .video-wrapper-inner .popup-video{position:relative;z-index:1;display:inline-block;width:50px;height:50px;line-height:50px;border-radius:50%;-webkit-border-radius:50%;-moz-border-radius:50%;-ms-border-radius:50%;-o-border-radius:50%;-webkit-transition:all 0.3s ease-in-out 0s;-o-transition:all 0.3s ease-in-out 0s;transition:all 0.3s ease-in-out 0s;font-size:18px;color:#fff;background:#6ed71f;text-align:center}
+
+        @media (min-width: 1200px){.video-wrapper-inner .popup-video{width:70px;height:70px;line-height:70px;font-size:22px}}
+
+        .video-wrapper-inner .popup-video:before{-webkit-transition:all 0.3s ease-in-out 0s;-o-transition:all 0.3s ease-in-out 0s;transition:all 0.3s ease-in-out 0s;content:'';position:absolute;top:0;left:0;width:100%;height:100%;z-index:-1;background:#6ed71f;opacity:0.3;filter:alpha(opacity=30);border-radius:50%;-webkit-border-radius:50%;-moz-border-radius:50%;-ms-border-radius:50%;-o-border-radius:50%;-webkit-animation:scaleicon 3s ease-in-out 0s infinite alternate;animation:scaleicon 3s ease-in-out 0s infinite alternate}.widget-video.style2 .popup-video{position:absolute;top:50%;left:50%;-webkit-transform:translate(-50%,-50%);-ms-transform:translate(-50%,-50%);-o-transform:translate(-50%,-50%);transform:translate(-50%,-50%)}
+
+        @-webkit-keyframes scaleicon{from{-ms-transform:scale(1,1);transform:scale(1,1)}50%{-ms-transform:scale(1.3,1.3);transform:scale(1.3,1.3)}}
+
+        @keyframes scaleicon{from{-ms-transform:scale(1,1);transform:scale(1,1)}50%{-ms-transform:scale(1.3,1.3);transform:scale(1.3,1.3)}}
 
         .properties-ordering-wrapper,.agencies-ordering-wrapper,.agents-ordering-wrapper{margin-bottom:20px;display:-webkit-box;display:-webkit-flex;display:-moz-flex;display:-ms-flexbox;display:flex;align-items:center;-webkit-align-items:center;background-color:#fff;border:1px
         solid #ebebeb;padding:10px

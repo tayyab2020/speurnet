@@ -66,7 +66,7 @@
 
                                 #header
                                 {
-                                    height: 600px;
+                                    height: 650px;
                                 }
 
                                 .quick-search

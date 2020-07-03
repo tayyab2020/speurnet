@@ -43,7 +43,10 @@
               <div class="col-md-12 single-post">
                 <ul id="myTab" class="nav nav-tabs nav-justified">
                   <li class="property-tab active"><a href="#detail" id="left-tab" data-toggle="tab"><i class="fa fa-university"></i> Property Detail</a></li>
-                  <li class="contact-tab"><a href="#location" id="right-tab" data-toggle="tab"><i class="fa fa-paper-plane-o"></i> Contact</a></li>
+
+                    @if($property->new_construction != 1)
+                    <li class="contact-tab"><a href="#location" id="right-tab" data-toggle="tab"><i class="fa fa-paper-plane-o"></i> Contact</a></li>
+                        @endif
                 </ul>
 
                 <div id="myTabContent" class="tab-content">
@@ -133,15 +136,37 @@
 
 
                           </div>
-                          <a class="left carousel-control" href="#slider-property" data-slide="prev">
-                            <span class="glyphicon glyphicon-chevron-left"></span>
-                          </a>
 
+                            <button type="button" href="#slider-property" data-slide="prev" class="carousel-prev arrow" aria-disabled="false" style="display: block;"><i class="flaticon-left-arrow-1" aria-hidden="true"></i></button>
 
-                          <a class="right carousel-control" href="#slider-property" data-slide="next">
-                            <span class="glyphicon glyphicon-chevron-right"></span>
-                          </a>
+                            <button type="button" href="#slider-property" data-slide="next" class="carousel-next arrow" style="display: block;" aria-disabled="true"><i class="flaticon-right-arrow" aria-hidden="true"></i></button>
 
+                            <style>
+
+                                .carousel-prev{left:15px}
+
+                                .carousel-next{right:15px}
+
+                                button{outline: none;}
+
+                                .arrow{background:#fff;padding:0;display:inline-block;font-size:18px;width:40px;height:40px;line-height:40px;color:#006c70;-webkit-transition:all 0.3s ease-in-out 0s;-o-transition:all 0.3s ease-in-out 0s;transition:all 0.3s ease-in-out 0s;position:absolute;top:50%;-webkit-transform:translate(0, -50%);-ms-transform:translate(0, -50%);-o-transform:translate(0, -50%);transform:translate(0, -50%);z-index:2;border:none;border-radius:50%;-webkit-border-radius:50%;-moz-border-radius:50%;-ms-border-radius:50%;-o-border-radius:50%;-webkit-box-shadow:0 0 50px 0 rgba(0, 0, 0, 0.15);box-shadow:0 0 50px 0 rgba(0, 0, 0, 0.15)}
+
+                                .arrow{width:30px;height:40px;line-height:38px;border:1px
+                                solid #fff;border-radius:6px;-webkit-border-radius:6px;-moz-border-radius:6px;-ms-border-radius:6px;-o-border-radius:6px;background:transparent;color:#ffff}
+
+                                .arrow:hover, .arrow:active{color:#006a70;background-color:#fff;border-color:#fff}
+
+                                @media (min-width: 1200px){
+
+                                    .carousel-prev{left:30px}
+
+                                    .carousel-next{right:30px}
+
+                                    .arrow{width:40px;height:80px;line-height:78px}
+
+                                }
+
+                            </style>
 
                             </div>
 
@@ -439,9 +464,19 @@
 
                               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 request" style="padding: 0;text-align: right;margin: 25px 0px;">
 
-                              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                  @if($property->new_construction != 1)
+
+                              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="outline: none;">
                                   <i class="far fa-calendar-check" style="margin-right: 7px;"></i> Request Viewing
                               </button>
+
+                                      @else
+
+                                      <a class="btn btn-primary" href="{{$property->citation}}" style="outline: none;">
+                                          <i class="fas fa-globe" style="margin-right: 7px;"></i> Contact Page Source
+                                      </a>
+
+                                  @endif
 
                               </div>
 
@@ -616,33 +651,45 @@
 
 
                         <h3>Property Overview</h3>
+
+                          <div class="row" style="margin: 30px 0px;">
+                              <div class="col-lg-12 col-md-12 col-sm-12 col-sm-12" style="padding: 0;">
+                                  <label class="head-label" style="color: #434343;font-weight: 600;">Bedroom<img src="{{ URL::asset('assets/img/bed.png') }}" style="width: 25px;margin: 0px 13px;" /><span style="font-size: 20px;color: #4d4b4b;">{{$property->bedrooms}}</span></label>
+                                  <label class="mid-label" style="color: #434343;font-weight: 600;margin: 0px 65px;">Bedroom<img src="{{ URL::asset('assets/img/bathroom.png') }}" style="width: 25px;margin: 0px 13px;margin-bottom: 3px;" /><span style="font-size: 20px;color: #4d4b4b;">{{$property->bathrooms}}</span></label>
+                                  <label class="head-label" style="color: #434343;font-weight: 600;">Area<img src="{{ URL::asset('assets/img/browser.png') }}" style="width: 20px;margin: 0px 13px;margin-bottom: 3px;" /><span style="font-size: 17px;color: #4d4b4b;">{{$property->area}} <small>m2</small></span></label>
+                              </div>
+                          </div>
+
+                          <table class="table table-bordered">
+                              <tr>
+                                  <td width="20%"><strong>Type</strong> <img src="{{ URL::asset('assets/img/house.png') }}" style="width: 18px;float: right;" /></td>
+                                  <td>{{ getPropertyTypeName($property->property_type)->types }}</td>
+                              </tr>
+                          </table>
+
                         <table class="table table-bordered">
-                          <tr>
+                          {{--<tr>
                             <td width="20%"><strong>ID</strong></td>
                             <td>#{{$property->id}}</td>
-                          </tr>
+                          </tr>--}}
                           <tr>
-                            <td><strong>Price</strong></td>
+                            <td width="20%"><strong>Price</strong> <img src="{{ URL::asset('assets/img/tag.png') }}" style="width: 18px;float: right;" /></td>
                             <td>{{getcong('currency_sign')}}@if($property->sale_price) {{$property->sale_price}} @else {{$property->rent_price}} @endif</td>
                           </tr>
                           <tr>
-                            <td><strong>Type</strong></td>
-                            <td>{{ getPropertyTypeName($property->property_type)->types }}</td>
-                          </tr>
-                          <tr>
-                            <td><strong>Contract</strong></td>
+                            <td><strong>Contract</strong> <img src="{{ URL::asset('assets/img/communications.png') }}" style="width: 18px;float: right;" /></td>
                             <td>{{$property->property_purpose}}</td>
                           </tr>
                           <tr>
-                            <td><strong>Location</strong></td>
+                            <td><strong>Location</strong> <img src="{{ URL::asset('assets/img/pin.png') }}" style="width: 18px;float: right;" /></td>
                             <td>{{$property->address}}</td>
                           </tr>
                           <tr>
-                            <td><strong>Bathrooms</strong></td>
+                            <td><strong>Bathrooms</strong> <img src="{{ URL::asset('assets/img/bathroom.png') }}" style="width: 18px;float: right;" /></td>
                             <td>{{$property->bathrooms}}</td>
                           </tr>
                           <tr>
-                            <td><strong>Bedrooms</strong></td>
+                            <td><strong>Bedrooms</strong> <img src="{{ URL::asset('assets/img/bed.png') }}" style="width: 18px;float: right;" /></td>
                             <td>{{$property->bedrooms}}</td>
                           </tr>
                           <tr>
@@ -650,9 +697,65 @@
                             <td>{{$property->area}} m2</sup> </td>
                           </tr>
 
+                        </table>
+
+                          <table class="table table-bordered">
+
+                              @if($property->kind_of_type)
+                                  <tr>
+                                      <td width="20%"><strong>Kind of Type</strong></td>
+                                      <td>{{$property->kind_of_type}}</sup> </td>
+                                  </tr>
+                              @endif
+
+                                  @if($property->realization)
+
+                                      <tr>
+                                          <td width="20%"><strong>Realization</strong></td>
+                                          <td>{{$property->realization}}</sup> </td>
+                                      </tr>
+
+                                  @endif
+
+                                  @if($property->homes)
+
+                                      <tr>
+                                          <td width="20%"><strong>Homes</strong></td>
+                                          <td>{{$property->homes}}</sup> </td>
+                                      </tr>
+
+                                  @endif
+
+                                  @if($property->rental_properties)
+
+                                      <tr>
+                                          <td width="20%"><strong>Rental Properties</strong></td>
+                                          <td>{{$property->rental_properties}}</sup> </td>
+                                      </tr>
+
+                                  @endif
+
+                                  @if($property->source)
+
+                                      <tr>
+                                          <td width="20%"><strong>Source</strong></td>
+                                          <td>{{$property->source}}</sup> </td>
+                                      </tr>
+
+                                  @endif
+
+                                  @if($property->citation)
+
+                                      <tr>
+                                          <td width="20%"><strong>Citation</strong></td>
+                                          <td>{{$property->Citation}}</sup> </td>
+                                      </tr>
+
+                                  @endif
+
                             @if($property->garage)
                                 <tr>
-                                    <td><strong>Garage <small>(m2)</small></strong></td>
+                                    <td width="20%"><strong>Garage <small>(m2)</small></strong></td>
                                     <td>{{$property->garage}} m2</sup> </td>
                                 </tr>
                             @endif
@@ -660,7 +763,7 @@
                             @if($property->house_type)
 
                                 <tr>
-                                    <td><strong>House Type</strong></td>
+                                    <td width="20%"><strong>House Type</strong></td>
                                     <td>{{$property->house_type}}</sup> </td>
                                 </tr>
 
@@ -669,7 +772,7 @@
                             @if($property->construction_type)
 
                                 <tr>
-                                    <td><strong>Construction Type</strong></td>
+                                    <td width="20%"><strong>Construction Type</strong></td>
                                     <td>{{$property->construction_type}}</sup> </td>
                                 </tr>
 
@@ -678,7 +781,7 @@
                             @if($property->year_construction)
 
                                 <tr>
-                                    <td><strong>Construction Year</strong></td>
+                                    <td width="20%"><strong>Construction Year</strong></td>
                                     <td>{{$property->year_construction}}</sup> </td>
                                 </tr>
 
@@ -687,7 +790,7 @@
                             @if($property->building_condition)
 
                                 <tr>
-                                    <td><strong>Building Condition</strong></td>
+                                    <td width="20%"><strong>Building Condition</strong></td>
                                     <td>{{$property->building_condition}}</sup> </td>
                                 </tr>
 
@@ -696,7 +799,7 @@
                             @if($property->volume)
 
                                 <tr>
-                                    <td><strong>Volume <small>(m3)</small></strong></td>
+                                    <td width="20%"><strong>Volume <small>(m3)</small></strong></td>
                                     <td>{{$property->volume}} m3</sup> </td>
                                 </tr>
 
@@ -705,7 +808,7 @@
                             @if($property->floors)
 
                                 <tr>
-                                    <td><strong>Floors</strong></td>
+                                    <td width="20%"><strong>Floors</strong></td>
                                     <td>{{$property->floors}}</sup> </td>
                                 </tr>
 
@@ -714,7 +817,7 @@
                             @if($property->backyard)
 
                                 <tr>
-                                    <td><strong>Backyard <small>(m2)</small></strong></td>
+                                    <td width="20%"><strong>Backyard <small>(m2)</small></strong></td>
                                     <td>{{$property->backyard}}</sup> </td>
                                 </tr>
 
@@ -723,7 +826,7 @@
                             @if($property->frontyard)
 
                                 <tr>
-                                    <td><strong>Frontyard <small>(m2)</small></strong></td>
+                                    <td width="20%"><strong>Frontyard <small>(m2)</small></strong></td>
                                     <td>{{$property->frontyard}} m2</sup> </td>
                                 </tr>
 
@@ -732,7 +835,7 @@
                             @if($property->terrace)
 
                                 <tr>
-                                    <td><strong>Terrace <small>(m2)</small></strong></td>
+                                    <td width="20%"><strong>Terrace <small>(m2)</small></strong></td>
                                     <td>{{$property->terrace}} m2</sup> </td>
                                 </tr>
 
@@ -741,7 +844,7 @@
                             @if($property->garage_type)
 
                                 <tr>
-                                    <td><strong>Garage Type</strong></td>
+                                    <td width="20%"><strong>Garage Type</strong></td>
                                     <td>{{$property->garage_type}}</sup> </td>
                                 </tr>
 
@@ -750,7 +853,7 @@
                             @if($property->energy_rating)
 
                                 <tr>
-                                    <td><strong>Energy Rating</strong></td>
+                                    <td width="20%"><strong>Energy Rating</strong> <img src="{{ URL::asset('assets/img/green-house.png') }}" style="width: 18px;float: right;" /></td>
                                     <td>{{$property->energy_rating}}</sup> </td>
                                 </tr>
 
@@ -759,7 +862,7 @@
                             @if($property->solar_panel)
 
                                 <tr>
-                                    <td><strong>Solar Panel</strong></td>
+                                    <td width="20%"><strong>Solar Panel</strong></td>
                                     <td>{{$property->solar_panel}}</sup> </td>
                                 </tr>
 
@@ -768,7 +871,7 @@
                             @if($property->floor_option)
 
                                 <tr>
-                                    <td><strong>Floors Availability</strong></td>
+                                    <td width="20%"><strong>Floors Availability</strong></td>
                                     <td>{{$property->floor_option}}</sup> </td>
                                 </tr>
 
@@ -777,7 +880,7 @@
                             @if($property->walls)
 
                                 <tr>
-                                    <td><strong>Walls Availability</strong></td>
+                                    <td width="20%"><strong>Walls Availability</strong></td>
                                     <td>{{$property->walls}}</sup> </td>
                                 </tr>
 
@@ -786,7 +889,7 @@
                             @if($property->roof_insulation)
 
                                 <tr>
-                                    <td><strong>Roof Insulation</strong></td>
+                                    <td width="20%"><strong>Roof Insulation</strong></td>
                                     <td>{{$property->roof_insulation}}</sup> </td>
                                 </tr>
 
@@ -795,7 +898,7 @@
                             @if($property->cook)
 
                                 <tr>
-                                    <td><strong>Cook</strong></td>
+                                    <td width="20%"><strong>Cook</strong> <img src="{{ URL::asset('assets/img/cook.png') }}" style="width: 18px;float: right;" /></td>
                                     <td>{{$property->cook}}</sup> </td>
                                 </tr>
 
@@ -804,7 +907,7 @@
                             @if($property->type_of_boiler)
 
                                 <tr>
-                                    <td><strong>Boiler Type</strong></td>
+                                    <td width="20%"><strong>Boiler Type</strong></td>
                                     <td>{{$property->type_of_boiler}}</sup> </td>
                                 </tr>
 
@@ -813,7 +916,7 @@
                             @if($property->agreement_type)
 
                                 <tr>
-                                    <td><strong>Agreement Type</strong></td>
+                                    <td width="20%"><strong>Agreement Type</strong></td>
                                     <td>{{$property->agreement_type}}</sup> </td>
                                 </tr>
 
@@ -822,7 +925,7 @@
                             @if($property->year_boiler)
 
                                 <tr>
-                                    <td><strong>Boiler Year</strong></td>
+                                    <td width="20%"><strong>Boiler Year</strong></td>
                                     <td>{{$property->year_boiler}}</sup> </td>
                                 </tr>
 
@@ -831,7 +934,7 @@
                             @if($property->property_furnished)
 
                                 <tr>
-                                    <td><strong>Property Furnished</strong></td>
+                                    <td width="20%"><strong>Property Furnished</strong></td>
                                     <td>{{$property->property_furnished}}</sup> </td>
                                 </tr>
 
@@ -840,7 +943,7 @@
                             @if($property->available_from)
 
                                 <tr>
-                                    <td><strong>Available From</strong></td>
+                                    <td width="20%"><strong>Available From</strong> <img src="{{ URL::asset('assets/img/calendar.png') }}" style="width: 18px;float: right;" /></td>
                                     <td>{{$property->available_from}}</sup> </td>
                                 </tr>
 
@@ -998,6 +1101,19 @@
 
                               <style>
 
+                                  @media (max-width: 680px){
+
+                                      .head-label{width: 100%;}
+
+                                      .mid-label{margin: 20px 0px !important;width: 100%;}
+
+                                  }
+
+                                  .table-bordered > thead > tr > th, .table-bordered > tbody > tr > th, .table-bordered > tfoot > tr > th, .table-bordered > thead > tr > td, .table-bordered > tbody > tr > td, .table-bordered > tfoot > tr > td
+                                  {
+                                      border: 1px solid #3fd4eb;
+                                  }
+
                                   @media (max-width: 991px){
 
                                       .mobile-row{display: flex;flex-flow: column;}
@@ -1067,11 +1183,11 @@
                                       transition: max-height 0.2s ease-out;
                                   }
 
-                                  .video-wrapper-inner .popup-video{position:relative;z-index:1;display:inline-block;width:50px;height:50px;line-height:50px;border-radius:50%;-webkit-border-radius:50%;-moz-border-radius:50%;-ms-border-radius:50%;-o-border-radius:50%;-webkit-transition:all 0.3s ease-in-out 0s;-o-transition:all 0.3s ease-in-out 0s;transition:all 0.3s ease-in-out 0s;font-size:18px;color:#fff;background:#28aedd;text-align:center}
+                                  .video-wrapper-inner .popup-video{position:relative;z-index:1;display:inline-block;width:50px;height:50px;line-height:50px;border-radius:50%;-webkit-border-radius:50%;-moz-border-radius:50%;-ms-border-radius:50%;-o-border-radius:50%;-webkit-transition:all 0.3s ease-in-out 0s;-o-transition:all 0.3s ease-in-out 0s;transition:all 0.3s ease-in-out 0s;font-size:18px;color:#fff;background:#6ed71f;text-align:center}
 
                                   @media (min-width: 1200px){.video-wrapper-inner .popup-video{width:70px;height:70px;line-height:70px;font-size:22px}}
 
-                                  .video-wrapper-inner .popup-video:before{-webkit-transition:all 0.3s ease-in-out 0s;-o-transition:all 0.3s ease-in-out 0s;transition:all 0.3s ease-in-out 0s;content:'';position:absolute;top:0;left:0;width:100%;height:100%;z-index:-1;background:#28aedd;opacity:0.3;filter:alpha(opacity=30);border-radius:50%;-webkit-border-radius:50%;-moz-border-radius:50%;-ms-border-radius:50%;-o-border-radius:50%;-webkit-animation:scaleicon 3s ease-in-out 0s infinite alternate;animation:scaleicon 3s ease-in-out 0s infinite alternate}.widget-video.style2 .popup-video{position:absolute;top:50%;left:50%;-webkit-transform:translate(-50%,-50%);-ms-transform:translate(-50%,-50%);-o-transform:translate(-50%,-50%);transform:translate(-50%,-50%)}
+                                  .video-wrapper-inner .popup-video:before{-webkit-transition:all 0.3s ease-in-out 0s;-o-transition:all 0.3s ease-in-out 0s;transition:all 0.3s ease-in-out 0s;content:'';position:absolute;top:0;left:0;width:100%;height:100%;z-index:-1;background:#6ed71f;opacity:0.3;filter:alpha(opacity=30);border-radius:50%;-webkit-border-radius:50%;-moz-border-radius:50%;-ms-border-radius:50%;-o-border-radius:50%;-webkit-animation:scaleicon 3s ease-in-out 0s infinite alternate;animation:scaleicon 3s ease-in-out 0s infinite alternate}.widget-video.style2 .popup-video{position:absolute;top:50%;left:50%;-webkit-transform:translate(-50%,-50%);-ms-transform:translate(-50%,-50%);-o-transform:translate(-50%,-50%);transform:translate(-50%,-50%)}
 
                                   @-webkit-keyframes scaleicon{from{-ms-transform:scale(1,1);transform:scale(1,1)}50%{-ms-transform:scale(1.3,1.3);transform:scale(1.3,1.3)}}
 
@@ -1754,6 +1870,7 @@
           </div>
           <!-- end:article -->
 
+            @if($property->new_construction != 1)
 
             <div class="col-xs-12 col-md-3 sidebar-property sidebar-wrapper">
                 <div class="sidebar sidebar-right">
@@ -1851,6 +1968,8 @@
                         </div>
                     </aside>			   		</div>
             </div>
+
+                @endif
 
         </div>
 

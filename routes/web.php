@@ -156,9 +156,9 @@ Route::group(['middleware' => 'App\Http\Middleware\UserTypeMiddleware'], functio
 
     Route::get('builders', 'AgentsController@builder_list');
 
-    Route::get('properties', 'PropertiesController@index');
+    Route::get('properties', 'PropertiesController@index')->name('properties-front');
 
-    Route::get('new-constructions', 'PropertiesController@newconstructions');
+    Route::get('new-constructions', 'PropertiesController@newconstructions')->name('newconstructions-front');
 
     Route::get('featured', 'PropertiesController@featuredproperties');
 
@@ -166,7 +166,9 @@ Route::group(['middleware' => 'App\Http\Middleware\UserTypeMiddleware'], functio
 
     Route::get('rent', 'PropertiesController@rentproperties');
 
-    Route::get('properties/{slug}', 'PropertiesController@propertysingle');
+    Route::get('properties/{slug}', 'PropertiesController@propertysingle')->name('property-single');
+
+    Route::get('new-constructions/{slug}', 'PropertiesController@newconstructionsingle')->name('newconstruction-single');
 
     Route::get('similar-properties/user/{id}/{property_id}', 'PropertiesController@propertiesUser');
 
@@ -181,6 +183,8 @@ Route::group(['middleware' => 'App\Http\Middleware\UserTypeMiddleware'], functio
     Route::post('agentscontact', 'PropertiesController@agentscontact');
 
     Route::post('searchproperties', 'PropertiesController@searchproperties')->name('searchproperties');
+
+    Route::post('searchnewconstructions', 'PropertiesController@searchnewconstructions')->name('searchnewconstructions');
 
     Route::post('search', 'PropertiesController@searchkeywordproperties');
 
