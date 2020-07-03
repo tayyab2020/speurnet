@@ -327,7 +327,7 @@
                                     .quick-search
                                     {
                                         padding: 15px;
-                                        background: rgba(255, 255, 255, 0.82) !important;
+                                        background: rgba(255, 255, 255, 0.91) !important;
                                     }
 
                                     .search-bar
