@@ -555,6 +555,7 @@
 
 <style>
 
+
     @media (min-width: 1250px){
         .latest-container{padding: 0px 120px;}
     }

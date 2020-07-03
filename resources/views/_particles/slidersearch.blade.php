@@ -1,10 +1,10 @@
 <!-- begin:header -->
     <div id="header" class="header-slide">
 
-        <div class="container" style="margin-top: 195px;">
+        <div class="container" style="margin-top: 210px;">
             <div class="row" style="display: flex;">
-                <div class="col-md-10 col-xs-12" style="margin: auto;padding: 0;">
-                    <div class="quick-search" style="background:rgba(255, 255, 255, 0.83);">
+                <div class="col-md-9 col-xs-12" style="margin: auto;padding: 0;">
+                    <div class="quick-search" style="background:rgba(255, 255, 255, 0.59);">
                         <div class="row">
 
                             {!! Form::open(array('url' => array('searchproperties'),'name'=>'search_form','id'=>'search_form','role'=>'form')) !!}
@@ -12,18 +12,18 @@
 
                             <div class="col-md-12 col-sm-12 col-xs-12">
                                         <span style="display: inline-block;min-width: 75px;">
-                                            <input type="radio" id="buy" name="purpose" value="Sale" style="width: 16px;height: 16px;position: relative;top: 1px;cursor: pointer;" checked>
-                                            <label for="buy" style="margin-left: 2px;font-size: 18px;cursor: pointer;">Buy</label>
+                                            <input class="search-input" type="radio" id="buy" name="purpose" value="Sale" style="width: 16px;height: 16px;position: relative;top: 1px;cursor: pointer;" checked>
+                                            <label class="search-label" for="buy" style="margin-left: 2px;font-size: 18px;cursor: pointer;">Buy</label>
                                         </span>
 
                                         <span style="display: inline-block;min-width: 75px;">
-                                            <input type="radio" id="rent" name="purpose" value="Rent" style="width: 16px;height: 16px;position: relative;top: 1px;cursor: pointer;">
-                                            <label for="rent" style="margin-left: 2px;font-size: 18px;cursor: pointer;">Rent</label>
+                                            <input class="search-input" type="radio" id="rent" name="purpose" value="Rent" style="width: 16px;height: 16px;position: relative;top: 1px;cursor: pointer;">
+                                            <label class="search-label" for="rent" style="margin-left: 2px;font-size: 18px;cursor: pointer;">Rent</label>
                                         </span>
                             </div>
 
                             <div class="col-md-12 col-sm-12 col-xs-12">
-                                <div class="form-group search-bar" style="display: flex;flex-direction: row;height: 75px;">
+                                <div class="form-group search-bar" style="display: flex;flex-direction: row;height: 55px;margin-bottom: 0;">
 
                                     {{--<label for="address">Address</label>--}}
 
@@ -35,17 +35,16 @@
 
                                     </div>
 
-                                    <button type="button" value="Filters" href="#myModal" data-toggle="modal" class="btn btn-primary filter-button" style="position: absolute;right: 200px;top: 17px;color: black;background: white;border-color: #9f9c9c;height: 40px;padding-top: 8px;outline: none;"><span><img src="{{ URL::asset('assets/img/Filter-512.png') }}" aria-hidden="true" style="margin-right: 10px;width: 20px;margin-top: -3px;" /> <span style="font-size: 16px;">Filters</span></span></button>
+                                    <button type="button" value="Filters" href="#myModal" data-toggle="modal" class="btn btn-primary filter-button" style="position: absolute;right: 185px;top: 8px;color: black;background: white;border-color: #9f9c9c;height: 40px;padding-top: 7px;outline: none;"><span><img src="{{ URL::asset('assets/img/Filter-512.png') }}" aria-hidden="true" style="margin-right: 10px;width: 20px;margin-top: -3px;" /> <span style="font-size: 16px;">Filters</span></span></button>
 
-                                    <button type="submit" name="submit" value="Search" class="btn btn-primary search-button" style="padding: 0px 35px;"><span><i class="fa fa-search" aria-hidden="true" style="margin-right: 10px;"></i> <span>Search</span></span></button>
+                                    <button type="submit" name="submit" value="Search" class="btn btn-primary search-button" style="padding: 0px 28px;font-size: 16px;"><span><i class="fa fa-search" aria-hidden="true" style="margin-right: 10px;"></i> <span>Search</span></span></button>
 
                                 </div>
 
 
-
                             </div>
 
-                            <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="col-md-12 col-sm-12 col-xs-12" style="margin-top: 5px;">
                                 <a style="padding: 0;margin: 0px;text-align: left;color: #2a2929;">
 
                                     <input name="wheelchair" value="1" type="checkbox" id="wheelchair" style="position: relative;top: 2px;display: block;height: 0px;">
@@ -55,7 +54,7 @@
 
                                         <img src="{{ URL::asset('assets/img/signaling.png') }}" style="width: 17px;position:relative;top: -1px;margin-right: 3px;" class="icon-feature" />
 
-                                        <span style="position: relative;top: 3px;font-size: 14px;">Wheelchair friendly home for people with walking difficulties</span>
+                                        <span class="search-span" style="position: relative;top: 3px;font-size: 14px;color: #4b4848;">Wheelchair friendly home for people with walking difficulties</span>
 
                                     </label>
 
@@ -64,6 +63,16 @@
                             </div>
 
                             <style>
+
+                                #header
+                                {
+                                    height: 600px;
+                                }
+
+                                .quick-search
+                                {
+                                    padding: 20px 20px;
+                                }
 
                                 [type="checkbox"]:not(:checked),
                                 [type="checkbox"]:checked {
@@ -276,6 +285,45 @@
 
                                 @media (max-width: 768px)
                                 {
+                                    .search-label
+                                    {
+                                        font-size: 14px !important;
+                                    }
+
+                                    .search-input
+                                    {
+                                        width: 12px !important;
+                                        height: 12px !important;
+                                    }
+
+                                    [type="checkbox"]:not(:checked) + label:before, [type="checkbox"]:checked + label:before
+                                    {
+                                        width: 10px !important;
+                                        height: 10px !important;
+                                    }
+
+                                    .icon-feature{
+                                        width: 12px !important;
+                                    }
+
+                                    .search-span
+                                    {
+                                        top: 0px !important;
+                                        font-size: 10px !important;
+                                    }
+
+                                    #header
+                                    {
+                                        height: 400px !important;
+                                    }
+
+                                    #header .container
+                                    {
+                                        margin-top: 0px !important;
+                                        position: absolute;
+                                        bottom:0px;
+                                    }
+
                                     .quick-search
                                     {
                                         padding: 15px;
