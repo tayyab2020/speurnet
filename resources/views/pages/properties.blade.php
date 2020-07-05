@@ -427,7 +427,7 @@
               </div>--}}
 
               <div class="property-content" style="height: 133px;">
-                  @if(Route::currentRouteName() == 'properties-front')
+                  @if(Route::currentRouteName() != 'newconstructions-front')
 
                       <h3 style="margin-bottom: 5px;margin-top: 3px;"><a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;" href="{{URL::to('properties/'.$property->property_slug)}}">{{ Str::limit($property->property_name,35) }}</a> <small style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;">{{ Str::limit($property->address,40) }}</small></h3>
 
