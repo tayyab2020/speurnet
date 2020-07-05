@@ -35,6 +35,12 @@
             <div class="col-md-9 col-md-push-3 main-content">
 
                 <style>
+
+                    .widget-sidebar
+                    {
+                        display: none;
+                    }
+
                     @media (max-width: 991px){
                         .mobile-row
                         {
@@ -427,6 +433,8 @@
                   <b>@if($property->sale_price) € {{$property->sale_price}} @elseif($property->rent_price) € {{$property->rent_price}} @endif</b>
               </div>
 
+                @if(Route::currentRouteName() != 'newconstructions-front')
+
                 <div class="property-content" style="border-top:1px solid #cacaca;display: flex;padding: 0;height: 125px;align-items: center;">
 
                 <div style="width: 40%;padding-left: 3px;">
@@ -445,8 +453,10 @@
 
                 </div>
 
+                    @endif
+
             </div>
-                         @if(Route::currentRouteName() == 'properties-front')
+                         @if(Route::currentRouteName() != 'newconstructions-front')
 
                      @if($property->listed)
 
