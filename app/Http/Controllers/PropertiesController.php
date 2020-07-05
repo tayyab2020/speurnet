@@ -934,18 +934,19 @@ class PropertiesController extends Controller
         /*$properties = Properties::where(array('property_type'=>$inputs['type'],'property_purpose'=>$inputs['purpose']))
 
                                 ->orderBy('id', 'desc')->paginate(9);*/
-        if($request->purpose=='Rent')
-        {
-            $price='rent_price';
-
-        }
-        else
+        if($request->kind_of_type=='For Sale')
         {
             $price='sale_price';
+
+        }
+        else if($request->kind_of_type=='To Rent Social' || $request->kind_of_type=='To Rent Free')
+        {
+            $price='rent_price';
         }
 
+
         $type=$request->type;
-        $purpose=$request->purpose;
+        $purpose='Sale';
         $min_price=$request->min_price;
         $max_price=$request->max_price;
         $min_area=$request->min_area;

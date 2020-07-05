@@ -70,26 +70,63 @@
 
             <div class="stepper">
                 <ul class="nav nav-tabs" role="tablist">
-                    <li role="presentation" class="active">
-                        <a class="persistant-disabled" data-content="stepper-step-1"  data-toggle="tab" aria-controls="stepper-step-1" role="tab" title="Step 1">
-                            <span class="round-tab">1</span>
-                        </a>
-                    </li>
-                    <li role="presentation" class="disabled">
-                        <a class="persistant-disabled" data-content="stepper-step-2"  data-toggle="tab" aria-controls="stepper-step-2" role="tab" title="Step 2">
-                            <span class="round-tab">2</span>
-                        </a>
-                    </li>
-                    <li role="presentation" class="disabled">
-                        <a class="persistant-disabled" data-content="stepper-step-3"  data-toggle="tab" aria-controls="stepper-step-3" role="tab" title="Step 3">
-                            <span class="round-tab">3</span>
-                        </a>
-                    </li>
-                    <li role="presentation" class="disabled">
-                        <a class="persistant-disabled" data-content="stepper-step-4"  data-toggle="tab" aria-controls="stepper-step-4" role="tab" title="Step 4">
-                            <span class="round-tab">4</span>
-                        </a>
-                    </li>
+                    @if(Route::currentRouteName() == 'addnewconstruction')
+
+                        <li role="presentation" class="active">
+                            <a class="persistant-disabled" data-content="stepper-step-2"  data-toggle="tab" aria-controls="stepper-step-2" role="tab" title="Step 1">
+                                <span class="round-tab">1</span>
+                            </a>
+                        </li>
+                        <li role="presentation" class="disabled">
+                            <a class="persistant-disabled" data-content="stepper-step-3"  data-toggle="tab" aria-controls="stepper-step-3" role="tab" title="Step 2">
+                                <span class="round-tab">2</span>
+                            </a>
+                        </li>
+                        <li role="presentation" class="disabled">
+                            <a class="persistant-disabled" data-content="stepper-step-4"  data-toggle="tab" aria-controls="stepper-step-4" role="tab" title="Step 3">
+                                <span class="round-tab">3</span>
+                            </a>
+                        </li>
+
+                        <style>
+
+                            .stepper .nav-tabs > li
+                            {
+                                width: 33% !important;
+                            }
+
+                            .stepper .nav-tabs > li:nth-child(3)::after
+                            {
+                                background: transparent;
+                            }
+
+                        </style>
+
+                        @else
+
+                        <li role="presentation" class="active">
+                            <a class="persistant-disabled" data-content="stepper-step-1"  data-toggle="tab" aria-controls="stepper-step-1" role="tab" title="Step 1">
+                                <span class="round-tab">1</span>
+                            </a>
+                        </li>
+                        <li role="presentation" class="disabled">
+                            <a class="persistant-disabled" data-content="stepper-step-2"  data-toggle="tab" aria-controls="stepper-step-2" role="tab" title="Step 2">
+                                <span class="round-tab">2</span>
+                            </a>
+                        </li>
+                        <li role="presentation" class="disabled">
+                            <a class="persistant-disabled" data-content="stepper-step-3"  data-toggle="tab" aria-controls="stepper-step-3" role="tab" title="Step 3">
+                                <span class="round-tab">3</span>
+                            </a>
+                        </li>
+                        <li role="presentation" class="disabled">
+                            <a class="persistant-disabled" data-content="stepper-step-4"  data-toggle="tab" aria-controls="stepper-step-4" role="tab" title="Step 4">
+                                <span class="round-tab">4</span>
+                            </a>
+                        </li>
+
+                    @endif
+
 
                 </ul>
 
@@ -109,7 +146,7 @@
 
                     <div class="tab-content">
 
-                        <div class="tab-pane fade in active" role="tabpanel" id="stepper-step-1">
+                        <div @if(Route::currentRouteName() == 'addnewconstruction') class="tab-pane fade" @else class="tab-pane fade in active" @endif role="tabpanel" id="stepper-step-1">
 
                             <div class="form-group" style="width: 90%;margin: auto;text-align: left;">
 
@@ -216,12 +253,21 @@
                         </div>
 
 
-                        <div class="tab-pane fade" role="tabpanel" id="stepper-step-2">
+                        <div @if(Route::currentRouteName() == 'addnewconstruction') class="tab-pane fade in active" @else class="tab-pane fade" @endif role="tabpanel" id="stepper-step-2">
 
 
                             <div class="form-group main-div" style="width: 90%;margin: auto;">
 
-                                <h2>Step 2: What type of property are you marketing?</h2>
+                                @if(Route::currentRouteName() == 'addnewconstruction')
+
+                                    <h2>Step 1: What type of property are you marketing?</h2>
+
+                                    @else
+
+                                    <h2>Step 2: What type of property are you marketing?</h2>
+
+                                    @endif
+
 
                                 <ul class="property-radios" style="padding: 0;margin-top: 40px;">
 
@@ -1073,9 +1119,13 @@
 
 
                             <ul class="list-inline pull-right">
+
+                                @if(Route::currentRouteName() != 'addnewconstruction')
                                 <li>
                                     <a class="btn btn-default prev-step">Back</a>
                                 </li>
+                                @endif
+
                                 <li>
                                     <a class="btn btn-primary next-step" data-id="stepper-step-2">Next</a>
                                 </li>
@@ -1087,7 +1137,16 @@
 
                             <div class="form-group main-div" style="width: 90%;margin: auto;">
 
-                                <h2>Step 3: Property Description & Price</h2>
+                                @if(Route::currentRouteName() == 'addnewconstruction')
+
+                                    <h2>Step 2: Property Description & Price</h2>
+
+                                    @else
+
+                                    <h2>Step 3: Property Description & Price</h2>
+
+                                    @endif
+
 
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;margin-top: 40px;">
 
@@ -1300,10 +1359,6 @@
 
 
 
-
-
-
-
                             <ul class="list-inline pull-right">
                                 <li>
                                     <a class="btn btn-default prev-step">Back</a>
@@ -1319,7 +1374,15 @@
 
                             <div class="form-group main-div" style="width: 90%;margin: auto;">
 
-                                <h2>Step 4: Address/Location & Photos</h2>
+                                @if(Route::currentRouteName() == 'addnewconstruction')
+
+                                    <h2>Step 3: Address/Location & Photos</h2>
+
+                                    @else
+
+                                    <h2>Step 4: Address/Location & Photos</h2>
+
+                                    @endif
 
 
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;margin-top: 40px;">
@@ -2672,6 +2735,26 @@
 
             });
 
+            $('#kind_of_type').change(function(){
+
+                if( $(this).val() == "For Sale" )
+                {
+                    $('#rent_price_box').hide();
+                    $('#rent_price_field').removeClass('stepper-step-3-validate');
+                    $('#sale_price_box').show();
+                    $('#sale_price_field').addClass('stepper-step-3-validate');
+                }
+                else if( $(this).val() == "To Rent Social" || $(this).val() == "To Rent Free" )
+                {
+                    $('#sale_price_box').hide();
+                    $('#sale_price_field').removeClass('stepper-step-3-validate');
+                    $('#rent_price_box').show();
+                    $('#rent_price_field').addClass('stepper-step-3-validate');
+
+                }
+
+            });
+
 
             $('input[name=property_type]').change(function(){
 
@@ -2799,15 +2882,22 @@
 
                 var $target = $tab_next;
 
+                if($target.length)
+                {
+                    if (!$target.parent().hasClass('active, disabled')) {
+                        $target.parent().prev().removeClass('active');
+                        $target.parent().prev().addClass('disabled');
+                    }
 
-                if (!$target.parent().hasClass('active, disabled')) {
-                    $target.parent().prev().removeClass('active');
-                    $target.parent().prev().addClass('disabled');
+                    if ($target.parent().hasClass('disabled')) {
+                        return false;
+                    }
                 }
-                if ($target.parent().hasClass('disabled')) {
-                    return false;
+                else
+                {
+                    $tab_active.removeClass('active');
+                    $tab_active.addClass('disabled');
                 }
-
 
             });
         });

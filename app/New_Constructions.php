@@ -76,6 +76,7 @@ class New_Constructions extends Model
         }
 
 
+
         return $query;
     }
 

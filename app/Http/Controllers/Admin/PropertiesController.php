@@ -711,22 +711,16 @@ class PropertiesController extends MainAdminController
             $features = '';
         }
 
-		if($request->sale_price)
-        {
-            $sale_price = $request->sale_price;
-        }
-		else
-        {
-            $sale_price = 0;
-        }
 
-        if($request->rent_price)
+        if($request->property_purpose == "Sale" || $request->kind_of_type == "For Sale")
         {
-            $rent_price = $request->rent_price;
+            $rent_price = 0;
+            $sale_price = $request->sale_price;
         }
         else
         {
-            $rent_price = 0;
+            $sale_price = 0;
+            $rent_price = $request->rent_price;
         }
 
 
@@ -740,6 +734,13 @@ class PropertiesController extends MainAdminController
         }
 
 		$user_id=Auth::user()->id;
+
+
+		if(!$request->property_purpose)
+        {
+            $request->property_purpose = 'Sale';
+        }
+
 
 		$property->user_id = $user_id;
 		$property->available_immediately = $request->available_immediately;

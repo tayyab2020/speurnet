@@ -662,7 +662,7 @@
 
                           <table class="table table-bordered">
                               <tr>
-                                  <td width="20%"><strong>Type</strong> <img src="{{ URL::asset('assets/img/house.png') }}" style="width: 18px;float: right;" /></td>
+                                  <td><strong>Type</strong> <img src="{{ URL::asset('assets/img/house.png') }}" style="width: 18px;float: right;" /></td>
                                   <td>{{ getPropertyTypeName($property->property_type)->types }}</td>
                               </tr>
                           </table>
@@ -673,7 +673,7 @@
                             <td>#{{$property->id}}</td>
                           </tr>--}}
                           <tr>
-                            <td width="20%"><strong>Price</strong> <img src="{{ URL::asset('assets/img/tag.png') }}" style="width: 18px;float: right;" /></td>
+                            <td><strong>Price</strong> <img src="{{ URL::asset('assets/img/tag.png') }}" style="width: 18px;float: right;" /></td>
                             <td>{{getcong('currency_sign')}}@if($property->sale_price) {{$property->sale_price}} @else {{$property->rent_price}} @endif</td>
                           </tr>
                           <tr>
@@ -703,7 +703,7 @@
 
                               @if($property->kind_of_type)
                                   <tr>
-                                      <td width="20%"><strong>Kind of Type</strong></td>
+                                      <td><strong>Kind of Type</strong></td>
                                       <td>{{$property->kind_of_type}}</sup> </td>
                                   </tr>
                               @endif
@@ -711,7 +711,7 @@
                                   @if($property->realization)
 
                                       <tr>
-                                          <td width="20%"><strong>Realization</strong></td>
+                                          <td><strong>Realization</strong></td>
                                           <td>{{$property->realization}}</sup> </td>
                                       </tr>
 
@@ -720,7 +720,7 @@
                                   @if($property->homes)
 
                                       <tr>
-                                          <td width="20%"><strong>Homes</strong></td>
+                                          <td><strong>Homes</strong></td>
                                           <td>{{$property->homes}}</sup> </td>
                                       </tr>
 
@@ -729,7 +729,7 @@
                                   @if($property->rental_properties)
 
                                       <tr>
-                                          <td width="20%"><strong>Rental Properties</strong></td>
+                                          <td><strong>Rental Properties</strong></td>
                                           <td>{{$property->rental_properties}}</sup> </td>
                                       </tr>
 
@@ -738,7 +738,7 @@
                                   @if($property->source)
 
                                       <tr>
-                                          <td width="20%"><strong>Source</strong></td>
+                                          <td><strong>Source</strong></td>
                                           <td>{{$property->source}}</sup> </td>
                                       </tr>
 
@@ -747,7 +747,7 @@
                                   @if($property->citation)
 
                                       <tr>
-                                          <td width="20%"><strong>Citation</strong></td>
+                                          <td><strong>Citation</strong></td>
                                           <td>{{$property->Citation}}</sup> </td>
                                       </tr>
 
@@ -755,7 +755,7 @@
 
                             @if($property->garage)
                                 <tr>
-                                    <td width="20%"><strong>Garage <small>(m2)</small></strong></td>
+                                    <td><strong>Garage <small>(m2)</small></strong></td>
                                     <td>{{$property->garage}} m2</sup> </td>
                                 </tr>
                             @endif
@@ -763,7 +763,7 @@
                             @if($property->house_type)
 
                                 <tr>
-                                    <td width="20%"><strong>House Type</strong></td>
+                                    <td><strong>House Type</strong></td>
                                     <td>{{$property->house_type}}</sup> </td>
                                 </tr>
 
@@ -772,7 +772,7 @@
                             @if($property->construction_type)
 
                                 <tr>
-                                    <td width="20%"><strong>Construction Type</strong></td>
+                                    <td><strong>Construction Type</strong></td>
                                     <td>{{$property->construction_type}}</sup> </td>
                                 </tr>
 
@@ -781,7 +781,7 @@
                             @if($property->year_construction)
 
                                 <tr>
-                                    <td width="20%"><strong>Construction Year</strong></td>
+                                    <td><strong>Construction Year</strong></td>
                                     <td>{{$property->year_construction}}</sup> </td>
                                 </tr>
 
@@ -790,7 +790,7 @@
                             @if($property->building_condition)
 
                                 <tr>
-                                    <td width="20%"><strong>Building Condition</strong></td>
+                                    <td><strong>Building Condition</strong></td>
                                     <td>{{$property->building_condition}}</sup> </td>
                                 </tr>
 
@@ -799,7 +799,7 @@
                             @if($property->volume)
 
                                 <tr>
-                                    <td width="20%"><strong>Volume <small>(m3)</small></strong></td>
+                                    <td><strong>Volume <small>(m3)</small></strong></td>
                                     <td>{{$property->volume}} m3</sup> </td>
                                 </tr>
 
@@ -808,7 +808,7 @@
                             @if($property->floors)
 
                                 <tr>
-                                    <td width="20%"><strong>Floors</strong></td>
+                                    <td><strong>Floors</strong></td>
                                     <td>{{$property->floors}}</sup> </td>
                                 </tr>
 
@@ -817,7 +817,7 @@
                             @if($property->backyard)
 
                                 <tr>
-                                    <td width="20%"><strong>Backyard <small>(m2)</small></strong></td>
+                                    <td><strong>Backyard <small>(m2)</small></strong></td>
                                     <td>{{$property->backyard}}</sup> </td>
                                 </tr>
 
@@ -826,7 +826,7 @@
                             @if($property->frontyard)
 
                                 <tr>
-                                    <td width="20%"><strong>Frontyard <small>(m2)</small></strong></td>
+                                    <td><strong>Frontyard <small>(m2)</small></strong></td>
                                     <td>{{$property->frontyard}} m2</sup> </td>
                                 </tr>
 
@@ -835,7 +835,7 @@
                             @if($property->terrace)
 
                                 <tr>
-                                    <td width="20%"><strong>Terrace <small>(m2)</small></strong></td>
+                                    <td><strong>Terrace <small>(m2)</small></strong></td>
                                     <td>{{$property->terrace}} m2</sup> </td>
                                 </tr>
 
@@ -844,7 +844,7 @@
                             @if($property->garage_type)
 
                                 <tr>
-                                    <td width="20%"><strong>Garage Type</strong></td>
+                                    <td><strong>Garage Type</strong></td>
                                     <td>{{$property->garage_type}}</sup> </td>
                                 </tr>
 
@@ -853,7 +853,7 @@
                             @if($property->energy_rating)
 
                                 <tr>
-                                    <td width="20%"><strong>Energy Rating</strong> <img src="{{ URL::asset('assets/img/green-house.png') }}" style="width: 18px;float: right;" /></td>
+                                    <td><strong>Energy Rating</strong> <img src="{{ URL::asset('assets/img/green-house.png') }}" style="width: 18px;float: right;" /></td>
                                     <td>{{$property->energy_rating}}</sup> </td>
                                 </tr>
 
@@ -862,7 +862,7 @@
                             @if($property->solar_panel)
 
                                 <tr>
-                                    <td width="20%"><strong>Solar Panel</strong></td>
+                                    <td><strong>Solar Panel</strong></td>
                                     <td>{{$property->solar_panel}}</sup> </td>
                                 </tr>
 
@@ -871,7 +871,7 @@
                             @if($property->floor_option)
 
                                 <tr>
-                                    <td width="20%"><strong>Floors Availability</strong></td>
+                                    <td><strong>Floors Availability</strong></td>
                                     <td>{{$property->floor_option}}</sup> </td>
                                 </tr>
 
@@ -880,7 +880,7 @@
                             @if($property->walls)
 
                                 <tr>
-                                    <td width="20%"><strong>Walls Availability</strong></td>
+                                    <td><strong>Walls Availability</strong></td>
                                     <td>{{$property->walls}}</sup> </td>
                                 </tr>
 
@@ -889,7 +889,7 @@
                             @if($property->roof_insulation)
 
                                 <tr>
-                                    <td width="20%"><strong>Roof Insulation</strong></td>
+                                    <td><strong>Roof Insulation</strong></td>
                                     <td>{{$property->roof_insulation}}</sup> </td>
                                 </tr>
 
@@ -898,7 +898,7 @@
                             @if($property->cook)
 
                                 <tr>
-                                    <td width="20%"><strong>Cook</strong> <img src="{{ URL::asset('assets/img/cook.png') }}" style="width: 18px;float: right;" /></td>
+                                    <td><strong>Cook</strong> <img src="{{ URL::asset('assets/img/cook.png') }}" style="width: 18px;float: right;" /></td>
                                     <td>{{$property->cook}}</sup> </td>
                                 </tr>
 
@@ -907,7 +907,7 @@
                             @if($property->type_of_boiler)
 
                                 <tr>
-                                    <td width="20%"><strong>Boiler Type</strong></td>
+                                    <td><strong>Boiler Type</strong></td>
                                     <td>{{$property->type_of_boiler}}</sup> </td>
                                 </tr>
 
@@ -916,7 +916,7 @@
                             @if($property->agreement_type)
 
                                 <tr>
-                                    <td width="20%"><strong>Agreement Type</strong></td>
+                                    <td><strong>Agreement Type</strong></td>
                                     <td>{{$property->agreement_type}}</sup> </td>
                                 </tr>
 
@@ -925,7 +925,7 @@
                             @if($property->year_boiler)
 
                                 <tr>
-                                    <td width="20%"><strong>Boiler Year</strong></td>
+                                    <td><strong>Boiler Year</strong></td>
                                     <td>{{$property->year_boiler}}</sup> </td>
                                 </tr>
 
@@ -934,7 +934,7 @@
                             @if($property->property_furnished)
 
                                 <tr>
-                                    <td width="20%"><strong>Property Furnished</strong></td>
+                                    <td><strong>Property Furnished</strong></td>
                                     <td>{{$property->property_furnished}}</sup> </td>
                                 </tr>
 
@@ -943,7 +943,7 @@
                             @if($property->available_from)
 
                                 <tr>
-                                    <td width="20%"><strong>Available From</strong> <img src="{{ URL::asset('assets/img/calendar.png') }}" style="width: 18px;float: right;" /></td>
+                                    <td><strong>Available From</strong> <img src="{{ URL::asset('assets/img/calendar.png') }}" style="width: 18px;float: right;" /></td>
                                     <td>{{$property->available_from}}</sup> </td>
                                 </tr>
 
@@ -951,6 +951,7 @@
 
 
                         </table>
+
 
                           @if($property->wheelchair)
 
@@ -1101,7 +1102,17 @@
 
                               <style>
 
+                                  td:nth-child(1)
+                                  {
+                                      width: 25%;
+                                  }
+
                                   @media (max-width: 680px){
+
+                                      td:nth-child(1)
+                                      {
+                                          width: 40%;
+                                      }
 
                                       .head-label{width: 100%;}
 

@@ -177,13 +177,29 @@
                     </select>
                 </div>
 
+                @if(Route::currentRouteName() != 'newconstructions-front' && Route::currentRouteName() != 'searchnewconstructions' && Route::currentRouteName() != 'newconstruction-single')
+
                 <div class="form-group">
                       <label for="purpose">Purpose</label>
                       <select class="form-control" name="purpose">
-                        <option value="Sale" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') @if($purpose == 'Sale') selected @endif @endif>For Sale</option>
-                        <option value="Rent" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') @if($purpose == 'Rent') selected @endif @endif>For Rent</option>
+                        <option value="Sale" @if(Route::currentRouteName() == 'searchproperties') @if($purpose == 'Sale') selected @endif @endif>For Sale</option>
+                        <option value="Rent" @if(Route::currentRouteName() == 'searchproperties') @if($purpose == 'Rent') selected @endif @endif>For Rent</option>
                       </select>
                </div>
+
+                    @else
+
+                    <div class="form-group">
+                        <label for="minprice">Kind of Type</label>
+                        <select class="form-control" name="kind_of_type">
+                            <option value="For Sale" @if(Route::currentRouteName() == 'searchnewconstructions') @if($kind_of_type == 'For Sale') selected @endif @endif>For Sale</option>
+                            <option value="To Rent Social" @if(Route::currentRouteName() == 'searchnewconstructions') @if($kind_of_type == 'To Rent Social') selected @endif @endif>To Rent Social</option>
+                            <option value="To Rent Free" @if(Route::currentRouteName() == 'searchnewconstructions') @if($kind_of_type == 'To Rent Free') selected @endif @endif>To Rent Free</option>
+                        </select>
+                    </div>
+
+                @endif
+
                <div class="form-group">
                       <label for="type">Property Type</label>
                       <select class="form-control" name="type">
@@ -236,18 +252,6 @@
                         <option value="Old" @if(Route::currentRouteName() == 'searchproperties') @if($type_of_construction == 'Old') selected @endif @endif>Old</option>
                     </select>
                 </div>
-
-                @else
-
-                    <div class="form-group">
-                        <label for="minprice">Kind of Type</label>
-                        <select class="form-control" name="kind_of_type">
-                            <option value="">All</option>
-                            <option value="For Sale" @if(Route::currentRouteName() == 'searchnewconstructions') @if($kind_of_type == 'For Sale') selected @endif @endif>For Sale</option>
-                            <option value="To Rent Social" @if(Route::currentRouteName() == 'searchnewconstructions') @if($kind_of_type == 'To Rent Social') selected @endif @endif>To Rent Social</option>
-                            <option value="To Rent Free" @if(Route::currentRouteName() == 'searchnewconstructions') @if($kind_of_type == 'To Rent Free') selected @endif @endif>To Rent Free</option>
-                        </select>
-                    </div>
 
                 @endif
 
