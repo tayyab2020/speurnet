@@ -74,8 +74,8 @@ class New_Constructions extends Model
             });
 
         }
+        
 
-dd($query->get());
 
         return $query;
     }
