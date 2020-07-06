@@ -2664,6 +2664,26 @@
 
             $('#datetimepicker4').datetimepicker({format: 'DD/MM/YYYY'});
 
+            $('#datetimepicker4').on('dp.change', function(e){
+
+                if($(this).val()){
+
+                    $('#datetimepicker2').addClass('stepper-step-2-validate');
+                    $('#datetimepicker3').addClass('stepper-step-2-validate');
+
+            }
+                else
+                {
+
+                    $('#datetimepicker2').parent().removeClass('validate-error');
+                    $('#datetimepicker3').parent().removeClass('validate-error');
+
+                    $('#datetimepicker2').removeClass('stepper-step-2-validate');
+                    $('#datetimepicker3').removeClass('stepper-step-2-validate');
+                }
+
+            });
+
             $('#datetimepicker5').datetimepicker({format: 'DD/MM/YYYY'});
 
             $('#datetimepicker3').datetimepicker({

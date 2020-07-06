@@ -94,7 +94,12 @@
                                 <div class="col-md-4 col-sm-12 col-xs-12">
 
                                     <div style="min-height: 55px;display: flex;">
-                                    <div class="property-price" style="position:relative;max-width: 100%;font-size: 15px;padding: 3px 5px;border-radius: 5px;margin: auto 0;width: 100%;">Open House <span>@if($property->open_date) {{$property->open_date}} @endif @if($property->open_timeFrom) {{$property->open_timeFrom}} @else Anytime @endif @if($property->open_timeTo) to {{$property->open_timeTo}} @else to Anytime @endif</span></div>
+                                        @if($property->open_date)
+                                            <div class="property-price" style="min-height: 28px;position:relative;max-width: 100%;font-size: 15px;padding: 3px 5px;margin: auto 0;width: 100%;border-radius: 5px;"><span>Open House {{$property->open_date}} {{$property->open_timeFrom}} to {{$property->open_timeTo}}</span></div>
+                                        @else
+                                            <div class="property-price" style="background: transparent;min-height: 28px;position:relative;max-width: 100%;font-size: 15px;padding: 3px 5px;margin: auto 0;width: 100%;border-radius: 5px;"></div>
+                                        @endif
+
                                     </div>
 
                                     <div class="property-container" style="border: 1px solid #48cfad;margin-bottom: 10px">
@@ -181,7 +186,7 @@
 
                                             @if($property->available_immediately)
 
-                                                <div class="property-status" style="background:#48cfad;width:170px;bottom: 12px;left: 12px;border-radius: 5px;padding: 0px;text-align: center;">
+                                                <div class="property-status status-responsive" style="background:#48cfad;width:170px;bottom: 12px;left: 12px;border-radius: 5px;padding: 0px;text-align: center;">
                                                     <span>Available Immediately</span>
                                                 </div>
 
@@ -557,6 +562,12 @@
 
 <style>
 
+    @media (max-width: 400px) {
+        .status-responsive {
+            width: 120px !important;
+            font-size: 10px !important;
+        }
+    }
 
     @media (min-width: 1250px){
         .latest-container{padding: 0px 120px;}
