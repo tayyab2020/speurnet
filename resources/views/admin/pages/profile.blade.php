@@ -84,25 +84,421 @@
                             <input type="text" name="fax" value="{{ Auth::user()->fax }}" class="form-control" value="">
                         </div>
                     </div>
-                    <div class="form-group">
-                        <div class="row">
-                            <label class="col-sm-3 control-label">I am here for (Optional)</label>
+
+                    @if(Auth::user()->usertype != 'Admin' && Auth::user()->usertype != 'Users')
+
+                        <div class="form-group herefor" style="display: flex;margin: 25px 0px;">
+                            <label class="col-sm-3 col-xs-12 control-label" style="padding: 0;padding-top: 30px;">People can come to us for</label>
+                            <div class="col-sm-9 col-xs-12">
+                                <ul class="property-radios" style="padding: 0;margin-top: 30px;">
+
+                                    <li class="pt" style="width: 145px;">
+
+                                                <div class="type-holder-main">
+
+                                                    <label style="padding: 13px;">
+
+                                                        <input type="checkbox" name="services" value="1">
+
+                                                        <span style="padding-top: 0;"><img style="display: block;width: 50px;margin: auto;margin-bottom: 10px;" src="https://image.flaticon.com/icons/svg/1452/1452601.svg" />I am looking for a sales broker</span>
+
+                                                    </label>
+
+                                                </div>
+                                            </li>
+
+                                    <li class="pt" style="width: 145px;">
+
+                                        <div class="type-holder-main">
+
+                                            <label style="padding: 13px;">
+
+                                                <input type="checkbox" name="services" value="1">
+
+                                                <span style="padding-top: 0;"><img style="display: block;width: 50px;margin: auto;margin-bottom: 10px;" src="https://image.flaticon.com/icons/svg/948/948711.svg" />I am looking for a rental agent</span>
+
+                                            </label>
+
+                                        </div>
+                                    </li>
+
+                                    <li class="pt" style="width: 145px;">
+
+                                        <div class="type-holder-main">
+
+                                            <label style="padding: 13px;">
+
+                                                <input type="checkbox" name="services" value="1">
+
+                                                <span style="padding-top: 0;"><img style="display: block;width: 50px;margin: auto;margin-bottom: 10px;" src="https://image.flaticon.com/icons/svg/2959/2959610.svg" />I am looking for a hiring broker</span>
+
+                                            </label>
+
+                                        </div>
+                                    </li>
+
+                                    <li class="pt" style="width: 145px;">
+
+                                        <div class="type-holder-main">
+
+                                            <label style="padding: 13px;">
+
+                                                <input type="checkbox" name="services" value="1">
+
+                                                <span style="padding-top: 0;"><img style="display: block;width: 50px;margin: auto;margin-bottom: 10px;" src="https://image.flaticon.com/icons/svg/2172/2172298.svg" />I am looking for a purchase broker</span>
+
+                                            </label>
+
+                                        </div>
+                                    </li>
+
+                                    <li class="pt" style="width: 145px;">
+
+                                        <div class="type-holder-main">
+
+                                            <label style="padding: 13px;">
+
+                                                <input type="checkbox" name="services" value="1">
+
+                                                <span style="padding-top: 0;"><img style="display: block;width: 50px;margin: auto;margin-bottom: 10px;" src="https://image.flaticon.com/icons/svg/1452/1452601.svg" />Appraise House</span>
+
+                                            </label>
+
+                                        </div>
+                                    </li>
+
+                                </ul>
+                            </div>
                         </div>
-                        <div class="row">
-                            <div class="col-sm-4 col-sm-offset-3">
-                                <label>
+
+                    <div class="form-group herefor" style="display: flex;margin: 10px 0px;text-align: center;padding-top: 40px;border-top: 1px solid #dddddd;">
+                            <label class="col-sm-3 col-xs-12 control-label" style="align-self: center;padding: 0;">I am here for (Optional)</label>
+                        <div class="col-sm-9 col-xs-12" style="margin: 20px 0px;">
+                                <label class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="margin: 20px 0px;padding: 0;">
                                     <input type="radio" name="herefor" value="1" <?=Auth::user()->herefor==1?'checked':'' ?>>
-                                    <img width="150px" height="100px"  src="{{ URL::asset('upload/herefor1.png')}}" >
+                                    <img class="herefor-img" style="width: 60%;height: 70px;" height="100px"  src="{{ URL::asset('upload/herefor1.png')}}" >
                                 </label>
-                            </div>
-                            <div class="col-sm-4">
-                                <label>
+
+                                <label class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="margin: 20px 0px;padding: 0;">
                                     <input type="radio" name="herefor" value="2" <?=Auth::user()->herefor==2?'checked':'' ?>>
-                                    <img  width="150px" height="100px" src="{{ URL::asset('upload/herefor2.png') }}">
+                                    <img class="herefor-img" style="width: 60%;height: 70px;" height="100px" src="{{ URL::asset('upload/herefor2.png') }}">
                                 </label>
                             </div>
                         </div>
-                    </div>
+
+                        <div class="form-group" style="margin: 30px 0px;padding-top: 40px;border-top: 1px solid #dddddd;">
+                            <label class="col-sm-3 col-xs-12 control-label open-label" style="padding: 0;margin-bottom: 30px;">Opening Hours</label>
+
+                            <div class="col-sm-9 col-xs-12" style="padding: 0px;">
+
+
+                                <div style="display: inline-block;width: 100%;margin-bottom: 30px;position: relative;">
+                                <label style="width: 100%;margin-bottom: 10px;">Monday</label>
+                                <input type="text" name="monday_timeFrom" id="monday_timeFrom" placeholder="Time From" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5" style="margin-right: 20px;" value="">
+                                <input type="text" name="monday_timeTo" id="monday_timeTo" placeholder="Time To" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5 r-fl" value="">
+                                <input type="text" name="monday_description" placeholder="Additional Info" class="form-control1 col-lg-5 col-md-5 col-sm-5 col-xs-12 r-t" style="float: right;" value="">
+                                </div>
+
+                                <div style="display: inline-block;width: 100%;margin-bottom: 30px;position: relative;">
+                                    <label style="width: 100%;margin-bottom: 10px;">Tuesday</label>
+                                    <input type="text" name="tuesday_timeFrom" id="tuesday_timeFrom" placeholder="Time From" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5" style="margin-right: 20px;" value="">
+                                    <input type="text" name="tuesday_timeTo" id="tuesday_timeTo" placeholder="Time To" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5 r-fl" value="">
+                                    <input type="text" name="tuesday_description" placeholder="Additional Info" class="form-control1 col-lg-5 col-md-5 col-sm-5 col-xs-12 r-t" style="float: right;" value="">
+                                </div>
+
+                                <div style="display: inline-block;width: 100%;margin-bottom: 30px;position: relative;">
+                                    <label style="width: 100%;margin-bottom: 10px;">Wednesday</label>
+                                    <input type="text" name="wednesday_timeFrom" id="wednesday_timeFrom" placeholder="Time From" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5" style="margin-right: 20px;" value="">
+                                    <input type="text" name="wednesday_timeTo" id="wednesday_timeTo" placeholder="Time To" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5 r-fl" value="">
+                                    <input type="text" name="wednesday_description" placeholder="Additional Info" class="form-control1 col-lg-5 col-md-5 col-sm-5 col-xs-12 r-t" style="float: right;" value="">
+                                </div>
+
+                                <div style="display: inline-block;width: 100%;margin-bottom: 30px;position: relative;">
+                                    <label style="width: 100%;margin-bottom: 10px;">Thursday</label>
+                                    <input type="text" name="thursday_timeFrom" id="thursday_timeFrom" placeholder="Time From" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5" style="margin-right: 20px;" value="">
+                                    <input type="text" name="thursday_timeTo" id="thursday_timeTo" placeholder="Time To" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5 r-fl" value="">
+                                    <input type="text" name="thursday_description" placeholder="Additional Info" class="form-control1 col-lg-5 col-md-5 col-sm-5 col-xs-12 r-t" style="float: right;" value="">
+                                </div>
+
+                                <div style="display: inline-block;width: 100%;margin-bottom: 30px;position: relative;">
+                                    <label style="width: 100%;margin-bottom: 10px;">Friday</label>
+                                    <input type="text" name="friday_timeFrom" id="friday_timeFrom" placeholder="Time From" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5" style="margin-right: 20px;" value="">
+                                    <input type="text" name="friday_timeTo" id="friday_timeTo" placeholder="Time To" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5 r-fl" value="">
+                                    <input type="text" name="friday_description" placeholder="Additional Info" class="form-control1 col-lg-5 col-md-5 col-sm-5 col-xs-12 r-t" style="float: right;" value="">
+                                </div>
+
+                                <div style="display: inline-block;width: 100%;margin-bottom: 30px;position: relative;">
+                                    <label style="width: 100%;margin-bottom: 10px;">Saturday</label>
+                                    <input type="text" name="saturday_timeFrom" id="saturday_timeFrom" placeholder="Time From" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5" style="margin-right: 20px;" value="">
+                                    <input type="text" name="saturday_timeTo" id="saturday_timeTo" placeholder="Time To" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5 r-fl" value="">
+                                    <input type="text" name="saturday_description" placeholder="Additional Info" class="form-control1 col-lg-5 col-md-5 col-sm-5 col-xs-12 r-t" style="float: right;" value="">
+                                </div>
+
+                                <div style="display: inline-block;width: 100%;margin-bottom: 30px;position: relative;">
+                                    <label style="width: 100%;margin-bottom: 10px;">Sunday</label>
+                                    <input type="text" name="sunday_timeFrom" id="sunday_timeFrom" placeholder="Time From" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5" style="margin-right: 20px;" value="">
+                                    <input type="text" name="sunday_timeTo" id="sunday_timeTo" placeholder="Time To" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5 r-fl" value="">
+                                    <input type="text" name="sunday_description" placeholder="Additional Info" class="form-control1 col-lg-5 col-md-5 col-sm-5 col-xs-12 r-t" style="float: right;" value="">
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-group" style="margin: 30px 0px 55px 0px;padding-top: 40px;border-top: 1px solid #dddddd;">
+
+                            <label class="col-sm-3 col-xs-12 control-label open-label" style="padding: 0;margin-bottom: 30px;"></label>
+
+                            <div class="col-sm-9 col-xs-12" style="padding: 0px;">
+
+                                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" style="padding: 0;">
+
+                                    <label style="width: 100%;margin-bottom: 25px;font-size: 23px;">Sales Results</label>
+
+                                    <div style="display:inline-block;width: 100%;margin-bottom: 20px;">
+                                    <span class="col-lg-5 col-md-12 col-sm-12 col-xs-12" style="float: left;padding: 0;padding-top: 5px;">Total Sold 2019: </span>
+                                    <input style="float: right;" type="number" name="sold_prev" placeholder="Total Sold 2019" class="col-lg-7 col-md-12 col-sm-12 col-xs-12 form-control1" value="">
+                                    </div>
+
+                                    <div style="display:inline-block;width: 100%;margin-bottom: 20px;">
+                                        <span class="col-lg-5 col-md-12 col-sm-12 col-xs-12" style="float: left;padding: 0;padding-top: 5px;">Total Sold 2018: </span>
+                                        <input style="float: right;" type="number" name="sold_prev_prev" placeholder="Total Sold 2018" class="col-lg-7 col-md-12 col-sm-12 col-xs-12 form-control1" value="">
+                                    </div>
+
+                                </div>
+
+
+                                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" style="padding: 0;float: right;">
+
+                                    <label style="width: 100%;margin-bottom: 25px;font-size: 23px;">Rental Results</label>
+
+                                    <div style="display:inline-block;width: 100%;margin-bottom: 20px;">
+                                        <span class="col-lg-5 col-md-12 col-sm-12 col-xs-12" style="float: left;padding: 0;padding-top: 5px;">Total Rentout 2019: </span>
+                                        <input style="float: right;" type="number" name="rentout_prev" placeholder="Total Rentout 2019" class="col-lg-7 col-md-12 col-sm-12 col-xs-12 form-control1" value="">
+                                    </div>
+
+                                    <div style="display:inline-block;width: 100%;margin-bottom: 20px;">
+                                        <span class="col-lg-5 col-md-12 col-sm-12 col-xs-12" style="float: left;padding: 0;padding-top: 5px;">Total Rentout 2018: </span>
+                                        <input style="float: right;" type="number" name="rentout_prev_prev" placeholder="Total Rentout 2018" class="col-lg-7 col-md-12 col-sm-12 col-xs-12 form-control1" value="">
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
+
+                    <style>
+
+                        .form-control1 {
+                            display: block;
+                            height: 36px;
+                            padding: 6px 12px;
+                            font-size: 16px;
+                            line-height: 1.42857143;
+                            color: #555555;
+                            background-color: #ffffff;
+                            background-image: none;
+                            border: 1px solid #dddddd;
+                            border-radius: 4px;
+                            -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+                            -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+                            box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+                            -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+                            -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+                            transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+                            -webkit-transition: all border-color ease-in-out .15s, box-shadow ease-in-out .15s ease-out;
+                            -moz-transition: all border-color ease-in-out .15s, box-shadow ease-in-out .15s ease-out;
+                            -o-transition: all border-color ease-in-out .15s, box-shadow ease-in-out .15s ease-out;
+                            transition: all border-color ease-in-out .15s, box-shadow ease-in-out .15s ease-out;
+                        }
+                        .form-control1:focus {
+                            border-color: #448aff;
+                            outline: 0;
+                            -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(68, 138, 255, 0.6);
+                            -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(68, 138, 255, 0.6);
+                            box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(68, 138, 255, 0.6);
+                        }
+                        .form-control1::-moz-placeholder {
+                            color: #999999;
+                            opacity: 1;
+                        }
+                        .form-control1:-ms-input-placeholder {
+                            color: #999999;
+                        }
+                        .form-control1::-webkit-input-placeholder {
+                            color: #999999;
+                        }
+                        .form-control1[disabled],
+                        .form-control1[readonly],
+                        fieldset[disabled] .form-control1 {
+                            background-color: #eeeeee;
+                            opacity: 1;
+                        }
+                        .form-control1[disabled],
+                        fieldset[disabled] .form-control1 {
+                            cursor: not-allowed;
+                        }
+                        textarea.form-control1 {
+                            height: auto;
+                        }
+
+
+                        ul.property-radios li{
+                            display: inline-block; margin: 5px 20px 5px 0px; padding: 0; vertical-align: top;
+                        }
+
+                        li{ list-style: none; }
+
+                        .type-holder-main{ position: relative; }
+
+                        ul.property-radios li input{ display: none; }
+
+                        ul.property-radios li label {  width: 100%;min-height: 125px;-webkit-transition: all .5s ease-in-out; transition: all .5s ease-in-out ;overflow: hidden; padding: 20px; cursor: pointer; border: solid 1px #dddddd; -webkit-border-radius: 2px; -moz-border-radius: 2px; border-radius: 2px; background-color: #fff;text-align: center; }
+
+                        .user-holder.create-property-holder ul.property-radios li label { display: block; min-height: 55px; }
+
+
+                        ul.property-radios li label span { padding-top: 15px;font-size: 13px; font-weight: 700; line-height: 19px; display: block; width: 100%; text-align: center; color: #5a2e8a !important; }
+
+
+                        li.active1 > div > label, label:hover{
+
+                            border-color: #5a2e8a !important;
+
+                        }
+
+                        @media (max-width: 991px)
+                        {
+                            .herefor
+                            {
+                                text-align: center;
+                            }
+
+                            ul.property-radios li
+                            {
+                                margin: 10px;
+                            }
+                        }
+
+                        @media (max-width: 768px)
+                        {
+
+                            .herefor label, .open-label{
+                                font-size: 22px;
+                                text-align: center;
+                            }
+
+                            .r-fl
+                            {
+                                float: right;
+                            }
+
+                            .r-t
+                            {
+                                margin-top: 20px;
+                                height: 65px;
+                            }
+
+                            .herefor
+                            {
+                                display: block !important;
+                            }
+
+                            .herefor-img
+                            {
+                                width: 40% !important;
+                            }
+                        }
+
+
+                        @media (max-width: 460px)
+                        {
+                            .herefor-img
+                            {
+                                width: 60% !important;
+                            }
+                        }
+
+                    </style>
+
+                    <script>
+
+                        $('#monday_timeFrom').datetimepicker({
+                            format: 'LT'
+                        });
+
+                        $('#monday_timeTo').datetimepicker({
+                            format: 'LT'
+                        });
+
+                        $('#tuesday_timeFrom').datetimepicker({
+                            format: 'LT'
+                        });
+
+                        $('#tuesday_timeTo').datetimepicker({
+                            format: 'LT'
+                        });
+
+                        $('#wednesday_timeFrom').datetimepicker({
+                            format: 'LT'
+                        });
+
+                        $('#wednesday_timeTo').datetimepicker({
+                            format: 'LT'
+                        });
+
+                        $('#thursday_timeFrom').datetimepicker({
+                            format: 'LT'
+                        });
+
+                        $('#thursday_timeTo').datetimepicker({
+                            format: 'LT'
+                        });
+
+                        $('#friday_timeFrom').datetimepicker({
+                            format: 'LT'
+                        });
+
+                        $('#friday_timeTo').datetimepicker({
+                            format: 'LT'
+                        });
+
+                        $('#saturday_timeFrom').datetimepicker({
+                            format: 'LT'
+                        });
+
+                        $('#saturday_timeTo').datetimepicker({
+                            format: 'LT'
+                        });
+
+                        $('#sunday_timeFrom').datetimepicker({
+                            format: 'LT'
+                        });
+
+                        $('#sunday_timeTo').datetimepicker({
+                            format: 'LT'
+                        });
+
+                        $('input[name=services]').change(function(){
+
+                            if($(this).is(":checked"))
+                            {
+                                $(this).parent().closest('li').addClass('active1');
+
+                            }
+                            else
+                            {
+                                $(this).parent().closest('li').removeClass('active1');
+                            }
+
+                        });
+
+                    </script>
+
                     <div class="form-group">
                         <label for="" class="col-sm-3 control-label">Address</label>
                         <div class="col-sm-9">
@@ -118,7 +514,7 @@
 
                     <div class="form-group">
 
-                        <div class="col-sm-9" style="float: right">
+                        <div class="col-sm-9 col-xs-12" style="float: right">
 
                             <div id="address-map-container" style="width:100%;height:400px; ">
                                 <div style="width: 100%; height: 100%" id="address-map"></div>
@@ -136,6 +532,9 @@
 
                         </div>
                     </div>
+
+                    @endif
+
                     <div class="form-group">
                         <label for="" class="col-sm-3 control-label">About</label>
                         <div class="col-sm-9">
