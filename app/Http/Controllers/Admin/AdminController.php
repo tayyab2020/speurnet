@@ -38,6 +38,15 @@ class AdminController extends MainAdminController
 
         $data =  \Request::except(array('_token')) ;
 
+        if($request->services)
+        {
+            $services = implode(',', $request->services);
+        }
+        else
+        {
+            $services = '';
+        }
+
 
         $rule=array(
             'name' => 'required',
@@ -93,6 +102,32 @@ class AdminController extends MainAdminController
         $user->twitter = $inputs['twitter'];
         $user->gplus = $inputs['gplus'];
         $user->linkedin = $inputs['linkedin'];
+
+        if(Auth::user()->usertype != 'Admin' && Auth::user()->usertype != 'Users')
+        {
+            $user->services = $services;
+            $user->monday_timeFrom = $request->monday_timeFrom;
+            $user->monday_timeTo = $request->monday_timeTo;
+            $user->monday_description = $request->monday_description;
+            $user->tuesday_timeFrom = $request->tuesday_timeFrom;
+            $user->tuesday_timeTo = $request->tuesday_timeTo;
+            $user->tuesday_description = $request->tuesday_description;
+            $user->wednesday_timeFrom = $request->wednesday_timeFrom;
+            $user->wednesday_timeTo = $request->wednesday_timeTo;
+            $user->wednesday_description = $request->wednesday_description;
+            $user->thursday_timeFrom = $request->thursday_timeFrom;
+            $user->thursday_timeTo = $request->thursday_timeTo;
+            $user->thursday_description = $request->thursday_description;
+            $user->friday_timeFrom = $request->friday_timeFrom;
+            $user->friday_timeTo = $request->friday_timeTo;
+            $user->friday_description = $request->friday_description;
+            $user->saturday_timeFrom = $request->saturday_timeFrom;
+            $user->saturday_timeTo = $request->saturday_timeTo;
+            $user->saturday_description = $request->saturday_description;
+            $user->sunday_timeFrom = $request->sunday_timeFrom;
+            $user->sunday_timeTo = $request->sunday_timeTo;
+            $user->sunday_description = $request->sunday_description;
+        }
 
 
         $user->save();

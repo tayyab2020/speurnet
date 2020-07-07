@@ -105,7 +105,7 @@
 
                             @else
 
-                            <div class="col-md-6 col-sm-6 col-xs-12" style="margin-bottom: 40px;min-height: 607px;">
+                            <div class="col-md-6 col-sm-6 col-xs-12" style="margin-bottom: 40px;min-height: 615px;">
 
                             @endif
 

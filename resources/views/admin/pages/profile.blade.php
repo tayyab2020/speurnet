@@ -98,7 +98,7 @@
 
                                                     <label style="padding: 13px;">
 
-                                                        <input type="checkbox" name="services" value="1">
+                                                        <input class="services" type="checkbox" name="services[]" value="1">
 
                                                         <span style="padding-top: 0;"><img style="display: block;width: 50px;margin: auto;margin-bottom: 10px;" src="https://image.flaticon.com/icons/svg/1452/1452601.svg" />I am looking for a sales broker</span>
 
@@ -113,7 +113,7 @@
 
                                             <label style="padding: 13px;">
 
-                                                <input type="checkbox" name="services" value="1">
+                                                <input class="services" type="checkbox" name="services[]" value="2">
 
                                                 <span style="padding-top: 0;"><img style="display: block;width: 50px;margin: auto;margin-bottom: 10px;" src="https://image.flaticon.com/icons/svg/948/948711.svg" />I am looking for a rental agent</span>
 
@@ -128,7 +128,7 @@
 
                                             <label style="padding: 13px;">
 
-                                                <input type="checkbox" name="services" value="1">
+                                                <input class="services" type="checkbox" name="services[]" value="3">
 
                                                 <span style="padding-top: 0;"><img style="display: block;width: 50px;margin: auto;margin-bottom: 10px;" src="https://image.flaticon.com/icons/svg/2959/2959610.svg" />I am looking for a hiring broker</span>
 
@@ -143,7 +143,7 @@
 
                                             <label style="padding: 13px;">
 
-                                                <input type="checkbox" name="services" value="1">
+                                                <input class="services" type="checkbox" name="services[]" value="4">
 
                                                 <span style="padding-top: 0;"><img style="display: block;width: 50px;margin: auto;margin-bottom: 10px;" src="https://image.flaticon.com/icons/svg/2172/2172298.svg" />I am looking for a purchase broker</span>
 
@@ -158,7 +158,7 @@
 
                                             <label style="padding: 13px;">
 
-                                                <input type="checkbox" name="services" value="1">
+                                                <input class="services" type="checkbox" name="services[]" value="5">
 
                                                 <span style="padding-top: 0;"><img style="display: block;width: 50px;margin: auto;margin-bottom: 10px;" src="https://image.flaticon.com/icons/svg/1452/1452601.svg" />Appraise House</span>
 
@@ -194,50 +194,50 @@
 
                                 <div style="display: inline-block;width: 100%;margin-bottom: 30px;position: relative;">
                                 <label style="width: 100%;margin-bottom: 10px;">Monday</label>
-                                <input type="text" name="monday_timeFrom" id="monday_timeFrom" placeholder="Time From" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5" style="margin-right: 20px;" value="">
-                                <input type="text" name="monday_timeTo" id="monday_timeTo" placeholder="Time To" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5 r-fl" value="">
+                                <input type="text" name="monday_timeFrom" id="monday_timeFrom" placeholder="Time From" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5 monday_time" style="margin-right: 20px;" value="">
+                                <input type="text" name="monday_timeTo" id="monday_timeTo" placeholder="Time To" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5 r-fl monday_time1" value="">
                                 <input type="text" name="monday_description" placeholder="Additional Info" class="form-control1 col-lg-5 col-md-5 col-sm-5 col-xs-12 r-t" style="float: right;" value="">
                                 </div>
 
                                 <div style="display: inline-block;width: 100%;margin-bottom: 30px;position: relative;">
                                     <label style="width: 100%;margin-bottom: 10px;">Tuesday</label>
-                                    <input type="text" name="tuesday_timeFrom" id="tuesday_timeFrom" placeholder="Time From" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5" style="margin-right: 20px;" value="">
-                                    <input type="text" name="tuesday_timeTo" id="tuesday_timeTo" placeholder="Time To" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5 r-fl" value="">
+                                    <input type="text" name="tuesday_timeFrom" id="tuesday_timeFrom" placeholder="Time From" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5 tuesday_time" style="margin-right: 20px;" value="">
+                                    <input type="text" name="tuesday_timeTo" id="tuesday_timeTo" placeholder="Time To" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5 r-fl tuesday_time1" value="">
                                     <input type="text" name="tuesday_description" placeholder="Additional Info" class="form-control1 col-lg-5 col-md-5 col-sm-5 col-xs-12 r-t" style="float: right;" value="">
                                 </div>
 
                                 <div style="display: inline-block;width: 100%;margin-bottom: 30px;position: relative;">
                                     <label style="width: 100%;margin-bottom: 10px;">Wednesday</label>
-                                    <input type="text" name="wednesday_timeFrom" id="wednesday_timeFrom" placeholder="Time From" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5" style="margin-right: 20px;" value="">
-                                    <input type="text" name="wednesday_timeTo" id="wednesday_timeTo" placeholder="Time To" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5 r-fl" value="">
+                                    <input type="text" name="wednesday_timeFrom" id="wednesday_timeFrom" placeholder="Time From" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5 wednesday_time" style="margin-right: 20px;" value="">
+                                    <input type="text" name="wednesday_timeTo" id="wednesday_timeTo" placeholder="Time To" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5 r-fl wednesday_time1" value="">
                                     <input type="text" name="wednesday_description" placeholder="Additional Info" class="form-control1 col-lg-5 col-md-5 col-sm-5 col-xs-12 r-t" style="float: right;" value="">
                                 </div>
 
                                 <div style="display: inline-block;width: 100%;margin-bottom: 30px;position: relative;">
                                     <label style="width: 100%;margin-bottom: 10px;">Thursday</label>
-                                    <input type="text" name="thursday_timeFrom" id="thursday_timeFrom" placeholder="Time From" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5" style="margin-right: 20px;" value="">
-                                    <input type="text" name="thursday_timeTo" id="thursday_timeTo" placeholder="Time To" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5 r-fl" value="">
+                                    <input type="text" name="thursday_timeFrom" id="thursday_timeFrom" placeholder="Time From" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5 thursday_time" style="margin-right: 20px;" value="">
+                                    <input type="text" name="thursday_timeTo" id="thursday_timeTo" placeholder="Time To" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5 r-fl thursday_time1" value="">
                                     <input type="text" name="thursday_description" placeholder="Additional Info" class="form-control1 col-lg-5 col-md-5 col-sm-5 col-xs-12 r-t" style="float: right;" value="">
                                 </div>
 
                                 <div style="display: inline-block;width: 100%;margin-bottom: 30px;position: relative;">
                                     <label style="width: 100%;margin-bottom: 10px;">Friday</label>
-                                    <input type="text" name="friday_timeFrom" id="friday_timeFrom" placeholder="Time From" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5" style="margin-right: 20px;" value="">
-                                    <input type="text" name="friday_timeTo" id="friday_timeTo" placeholder="Time To" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5 r-fl" value="">
+                                    <input type="text" name="friday_timeFrom" id="friday_timeFrom" placeholder="Time From" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5 friday_time" style="margin-right: 20px;" value="">
+                                    <input type="text" name="friday_timeTo" id="friday_timeTo" placeholder="Time To" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5 r-fl friday_time1" value="">
                                     <input type="text" name="friday_description" placeholder="Additional Info" class="form-control1 col-lg-5 col-md-5 col-sm-5 col-xs-12 r-t" style="float: right;" value="">
                                 </div>
 
                                 <div style="display: inline-block;width: 100%;margin-bottom: 30px;position: relative;">
                                     <label style="width: 100%;margin-bottom: 10px;">Saturday</label>
-                                    <input type="text" name="saturday_timeFrom" id="saturday_timeFrom" placeholder="Time From" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5" style="margin-right: 20px;" value="">
-                                    <input type="text" name="saturday_timeTo" id="saturday_timeTo" placeholder="Time To" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5 r-fl" value="">
+                                    <input type="text" name="saturday_timeFrom" id="saturday_timeFrom" placeholder="Time From" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5 saturday_time" style="margin-right: 20px;" value="">
+                                    <input type="text" name="saturday_timeTo" id="saturday_timeTo" placeholder="Time To" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5 r-fl saturday_time1" value="">
                                     <input type="text" name="saturday_description" placeholder="Additional Info" class="form-control1 col-lg-5 col-md-5 col-sm-5 col-xs-12 r-t" style="float: right;" value="">
                                 </div>
 
                                 <div style="display: inline-block;width: 100%;margin-bottom: 30px;position: relative;">
                                     <label style="width: 100%;margin-bottom: 10px;">Sunday</label>
-                                    <input type="text" name="sunday_timeFrom" id="sunday_timeFrom" placeholder="Time From" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5" style="margin-right: 20px;" value="">
-                                    <input type="text" name="sunday_timeTo" id="sunday_timeTo" placeholder="Time To" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5 r-fl" value="">
+                                    <input type="text" name="sunday_timeFrom" id="sunday_timeFrom" placeholder="Time From" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5 sunday_time" style="margin-right: 20px;" value="">
+                                    <input type="text" name="sunday_timeTo" id="sunday_timeTo" placeholder="Time To" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5 r-fl sunday_time1" value="">
                                     <input type="text" name="sunday_description" placeholder="Additional Info" class="form-control1 col-lg-5 col-md-5 col-sm-5 col-xs-12 r-t" style="float: right;" value="">
                                 </div>
 
@@ -246,41 +246,41 @@
                         </div>
 
 
-                        <div class="form-group" style="margin: 30px 0px 55px 0px;padding-top: 40px;border-top: 1px solid #dddddd;">
+                        <div class="form-group" style="padding-top: 40px;border-top: 1px solid #dddddd;">
 
-                            <label class="col-sm-3 col-xs-12 control-label open-label" style="padding: 0;margin-bottom: 30px;"></label>
+                            <label class="col-sm-3 col-xs-12 control-label open-label" style="padding: 0;"></label>
 
                             <div class="col-sm-9 col-xs-12" style="padding: 0px;">
 
-                                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" style="padding: 0;">
+                                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12" style="padding: 0;margin-bottom: 30px;">
 
                                     <label style="width: 100%;margin-bottom: 25px;font-size: 23px;">Sales Results</label>
 
-                                    <div style="display:inline-block;width: 100%;margin-bottom: 20px;">
-                                    <span class="col-lg-5 col-md-12 col-sm-12 col-xs-12" style="float: left;padding: 0;padding-top: 5px;">Total Sold 2019: </span>
-                                    <input style="float: right;" type="number" name="sold_prev" placeholder="Total Sold 2019" class="col-lg-7 col-md-12 col-sm-12 col-xs-12 form-control1" value="">
+                                    <div style="display:inline-block;width: 100%;margin-bottom: 20px;min-height: 70px;">
+                                    <span class="col-lg-5 col-md-12 col-sm-12 col-xs-12" style="float: left;padding: 0;padding-top: 5px;padding-bottom: 10px;">Total Sold 2019: </span>
+                                    <input style="float: right;" type="number" name="sold_prev" placeholder="Enter Number" class="col-lg-7 col-md-12 col-sm-12 col-xs-12 form-control1" value="">
                                     </div>
 
-                                    <div style="display:inline-block;width: 100%;margin-bottom: 20px;">
-                                        <span class="col-lg-5 col-md-12 col-sm-12 col-xs-12" style="float: left;padding: 0;padding-top: 5px;">Total Sold 2018: </span>
-                                        <input style="float: right;" type="number" name="sold_prev_prev" placeholder="Total Sold 2018" class="col-lg-7 col-md-12 col-sm-12 col-xs-12 form-control1" value="">
+                                    <div style="display:inline-block;width: 100%;margin-bottom: 20px;min-height: 70px;">
+                                        <span class="col-lg-5 col-md-12 col-sm-12 col-xs-12" style="float: left;padding: 0;padding-top: 5px;padding-bottom: 10px;">Total Sold 2018: </span>
+                                        <input style="float: right;" type="number" name="sold_prev_prev" placeholder="Enter Number" class="col-lg-7 col-md-12 col-sm-12 col-xs-12 form-control1" value="">
                                     </div>
 
                                 </div>
 
 
-                                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" style="padding: 0;float: right;">
+                                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12" style="padding: 0;float: right;">
 
                                     <label style="width: 100%;margin-bottom: 25px;font-size: 23px;">Rental Results</label>
 
-                                    <div style="display:inline-block;width: 100%;margin-bottom: 20px;">
-                                        <span class="col-lg-5 col-md-12 col-sm-12 col-xs-12" style="float: left;padding: 0;padding-top: 5px;">Total Rentout 2019: </span>
-                                        <input style="float: right;" type="number" name="rentout_prev" placeholder="Total Rentout 2019" class="col-lg-7 col-md-12 col-sm-12 col-xs-12 form-control1" value="">
+                                    <div style="display:inline-block;width: 100%;margin-bottom: 20px;min-height: 70px;">
+                                        <span class="col-lg-5 col-md-12 col-sm-12 col-xs-12" style="float: left;padding: 0;padding-top: 5px;padding-bottom: 10px;">Total Rentout 2019: </span>
+                                        <input style="float: right;" type="number" name="rentout_prev" placeholder="Enter Number" class="col-lg-7 col-md-12 col-sm-12 col-xs-12 form-control1" value="">
                                     </div>
 
-                                    <div style="display:inline-block;width: 100%;margin-bottom: 20px;">
-                                        <span class="col-lg-5 col-md-12 col-sm-12 col-xs-12" style="float: left;padding: 0;padding-top: 5px;">Total Rentout 2018: </span>
-                                        <input style="float: right;" type="number" name="rentout_prev_prev" placeholder="Total Rentout 2018" class="col-lg-7 col-md-12 col-sm-12 col-xs-12 form-control1" value="">
+                                    <div style="display:inline-block;width: 100%;margin-bottom: 20px;min-height: 70px;">
+                                        <span class="col-lg-5 col-md-12 col-sm-12 col-xs-12" style="float: left;padding: 0;padding-top: 5px;padding-bottom: 10px;">Total Rentout 2018: </span>
+                                        <input style="float: right;" type="number" name="rentout_prev_prev" placeholder="Enter Number" class="col-lg-7 col-md-12 col-sm-12 col-xs-12 form-control1" value="">
                                     </div>
 
                                 </div>
@@ -423,6 +423,11 @@
                             }
                         }
 
+                        .validate-error
+                        {
+                            border-color: red;
+                        }
+
                     </style>
 
                     <script>
@@ -483,7 +488,65 @@
                             format: 'LT'
                         });
 
-                        $('input[name=services]').change(function(){
+                        $('#monday_timeFrom').on('dp.change', function(e){
+                            $(this).removeClass('validate-error');
+                        });
+
+                        $('#monday_timeTo').on('dp.change', function(e){
+                            $(this).removeClass('validate-error');
+                        });
+
+                        $('#tuesday_timeFrom').on('dp.change', function(e){
+                            $(this).removeClass('validate-error');
+                        });
+
+                        $('#tuesday_timeTo').on('dp.change', function(e){
+                            $(this).removeClass('validate-error');
+                        });
+
+                        $('#wednesday_timeFrom').on('dp.change', function(e){
+                            $(this).removeClass('validate-error');
+                        });
+
+                        $('#wednesday_timeTo').on('dp.change', function(e){
+                            $(this).removeClass('validate-error');
+                        });
+
+                        $('#thursday_timeFrom').on('dp.change', function(e){
+                            $(this).removeClass('validate-error');
+                        });
+
+                        $('#thursday_timeTo').on('dp.change', function(e){
+                            $(this).removeClass('validate-error');
+                        });
+
+                        $('#friday_timeFrom').on('dp.change', function(e){
+                            $(this).removeClass('validate-error');
+                        });
+
+                        $('#friday_timeTo').on('dp.change', function(e){
+                            $(this).removeClass('validate-error');
+                        });
+
+                        $('#saturday_timeFrom').on('dp.change', function(e){
+                            $(this).removeClass('validate-error');
+                        });
+
+                        $('#saturday_timeTo').on('dp.change', function(e){
+                            $(this).removeClass('validate-error');
+                        });
+
+                        $('#sunday_timeFrom').on('dp.change', function(e){
+                            $(this).removeClass('validate-error');
+                        });
+
+                        $('#sunday_timeTo').on('dp.change', function(e){
+                            $(this).removeClass('validate-error');
+                        });
+
+
+
+                        $('input[class=services]').change(function(){
 
                             if($(this).is(":checked"))
                             {
@@ -497,9 +560,10 @@
 
                         });
 
+
                     </script>
 
-                    <div class="form-group">
+                    <div class="form-group" style="border-top: 1px solid #dddddd;padding-top: 50px;">
                         <label for="" class="col-sm-3 control-label">Address</label>
                         <div class="col-sm-9">
 
@@ -569,8 +633,14 @@
                     <hr>
                     <div class="form-group">
                         <div class="col-md-offset-3 col-sm-9 ">
-                            <button type="submit" class="btn btn-primary">Save Changes <i class="md md-lock-open"></i></button>
+                            @if(Auth::user()->usertype != 'Admin' && Auth::user()->usertype != 'Users')
 
+                                <button type="button" class="btn btn-primary custom-save">Save Changes <i class="md md-lock-open"></i></button>
+                            @else
+
+                                <button type="submit" class="btn btn-primary">Save Changes <i class="md md-lock-open"></i></button>
+
+                            @endif
                         </div>
                     </div>
 
@@ -596,7 +666,7 @@
                     <hr>
                     <div class="form-group">
                         <div class="col-md-offset-3 col-sm-9 ">
-                            <button type="submit" class="btn btn-primary">Save Changes <i class="md md-lock-open"></i></button>
+                                <button type="submit" class="btn btn-primary">Save Changes <i class="md md-lock-open"></i></button>
                         </div>
                     </div>
 
@@ -610,6 +680,124 @@
     <script>
 
         $(document).ready(function() {
+
+
+            $('.custom-save').click(function(){
+
+                var validate = 0;
+
+                if( $('.monday_time').val() || $('.monday_time1').val() )
+                {
+                    if($('.monday_time').val() == '')
+                    {
+                        $('.monday_time').addClass('validate-error');
+                        validate = 1;
+                    }
+                    if($('.monday_time1').val() == '')
+                    {
+                        $('.monday_time1').addClass('validate-error');
+                        validate = 1;
+                    }
+
+                }
+
+                if( $('.tuesday_time').val() || $('.tuesday_time1').val() )
+                {
+                    if($('.tuesday_time').val() == '')
+                    {
+                        $('.tuesday_time').addClass('validate-error');
+                        validate = 1;
+                    }
+                    if($('.tuesday_time1').val() == '')
+                    {
+                        $('.tuesday_time1').addClass('validate-error');
+                        validate = 1;
+                    }
+
+                }
+
+                if( $('.wednesday_time').val() || $('.wednesday_time1').val() )
+                {
+                    if($('.wednesday_time').val() == '')
+                    {
+                        $('.wednesday_time').addClass('validate-error');
+                        validate = 1;
+                    }
+                    if($('.wednesday_time1').val() == '')
+                    {
+                        $('.wednesday_time1').addClass('validate-error');
+                        validate = 1;
+                    }
+
+                }
+
+                if( $('.thursday_time').val() || $('.thursday_time1').val() )
+                {
+                    if($('.thursday_time').val() == '')
+                    {
+                        $('.thursday_time').addClass('validate-error');
+                        validate = 1;
+                    }
+                    if($('.thursday_time1').val() == '')
+                    {
+                        $('.monday_time1').addClass('validate-error');
+                        validate = 1;
+                    }
+
+                }
+
+                if( $('.friday_time').val() || $('.friday_time1').val() )
+                {
+                    if($('.friday_time').val() == '')
+                    {
+                        $('.friday_time').addClass('validate-error');
+                        validate = 1;
+                    }
+                    if($('.friday_time1').val() == '')
+                    {
+                        $('.friday_time1').addClass('validate-error');
+                        validate = 1;
+                    }
+
+                }
+
+                if( $('.saturday_time').val() || $('.saturday_time1').val() )
+                {
+                    if($('.saturday_time').val() == '')
+                    {
+                        $('.saturday_time').addClass('validate-error');
+                        validate = 1;
+                    }
+                    if($('.saturday_time1').val() == '')
+                    {
+                        $('.saturday_time1').addClass('validate-error');
+                        validate = 1;
+                    }
+
+                }
+
+                if( $('.sunday_time').val() || $('.sunday_time1').val() )
+                {
+                    if($('.sunday_time').val() == '')
+                    {
+                        $('.sunday_time').addClass('validate-error');
+                        validate = 1;
+                    }
+                    if($('.sunday_time1').val() == '')
+                    {
+                        $('.sunday_time1').addClass('validate-error');
+                        validate = 1;
+                    }
+
+                }
+
+                if(!validate)
+                {
+                    $('#account_form').submit();
+                }
+
+
+            });
 
             initialize();
 

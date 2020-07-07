@@ -62,7 +62,7 @@
                         <?php $i = 0; ?>
 
                         @foreach($properties as $i => $property)
-                            <div class="col-md-6 col-sm-6 col-xs-12" style="margin-bottom: 40px;min-height: 607px;">
+                            <div class="col-md-6 col-sm-6 col-xs-12" style="margin-bottom: 40px;min-height: 615px;">
 
                                 @if($property->open_date)
                                     <div class="property-price" style="min-height: 28px;position:relative;max-width: 100%;font-size: 15px;padding: 3px 0px;margin-bottom: 6px;border-radius: 5px;"><span>Open House {{$property->open_date}} {{$property->open_timeFrom}} to {{$property->open_timeTo}}</span></div>
