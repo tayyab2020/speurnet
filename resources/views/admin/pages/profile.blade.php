@@ -92,13 +92,13 @@
                             <div class="col-sm-9 col-xs-12">
                                 <ul class="property-radios" style="padding: 0;margin-top: 30px;">
 
-                                    <li class="pt" style="width: 145px;">
+                                    <li class="pt @if(in_array(1, $services_ids)) active1 @endif" style="width: 145px;">
 
                                                 <div class="type-holder-main">
 
                                                     <label style="padding: 13px;">
 
-                                                        <input class="services" type="checkbox" name="services[]" value="1">
+                                                        <input class="services" @if(in_array(1, $services_ids)) checked @endif type="checkbox" name="services[]" value="1">
 
                                                         <span style="padding-top: 0;"><img style="display: block;width: 50px;margin: auto;margin-bottom: 10px;" src="https://image.flaticon.com/icons/svg/1452/1452601.svg" />I am looking for a sales broker</span>
 
@@ -107,13 +107,13 @@
                                                 </div>
                                             </li>
 
-                                    <li class="pt" style="width: 145px;">
+                                    <li class="pt @if(in_array(2, $services_ids)) active1 @endif" style="width: 145px;">
 
                                         <div class="type-holder-main">
 
                                             <label style="padding: 13px;">
 
-                                                <input class="services" type="checkbox" name="services[]" value="2">
+                                                <input class="services" @if(in_array(2, $services_ids)) checked @endif type="checkbox" name="services[]" value="2">
 
                                                 <span style="padding-top: 0;"><img style="display: block;width: 50px;margin: auto;margin-bottom: 10px;" src="https://image.flaticon.com/icons/svg/948/948711.svg" />I am looking for a rental agent</span>
 
@@ -122,13 +122,13 @@
                                         </div>
                                     </li>
 
-                                    <li class="pt" style="width: 145px;">
+                                    <li class="pt @if(in_array(3, $services_ids)) active1 @endif" style="width: 145px;">
 
                                         <div class="type-holder-main">
 
                                             <label style="padding: 13px;">
 
-                                                <input class="services" type="checkbox" name="services[]" value="3">
+                                                <input class="services" @if(in_array(3, $services_ids)) checked @endif type="checkbox" name="services[]" value="3">
 
                                                 <span style="padding-top: 0;"><img style="display: block;width: 50px;margin: auto;margin-bottom: 10px;" src="https://image.flaticon.com/icons/svg/2959/2959610.svg" />I am looking for a hiring broker</span>
 
@@ -137,13 +137,13 @@
                                         </div>
                                     </li>
 
-                                    <li class="pt" style="width: 145px;">
+                                    <li class="pt @if(in_array(4, $services_ids)) active1 @endif" style="width: 145px;">
 
                                         <div class="type-holder-main">
 
                                             <label style="padding: 13px;">
 
-                                                <input class="services" type="checkbox" name="services[]" value="4">
+                                                <input class="services" @if(in_array(4, $services_ids)) checked @endif type="checkbox" name="services[]" value="4">
 
                                                 <span style="padding-top: 0;"><img style="display: block;width: 50px;margin: auto;margin-bottom: 10px;" src="https://image.flaticon.com/icons/svg/2172/2172298.svg" />I am looking for a purchase broker</span>
 
@@ -152,13 +152,13 @@
                                         </div>
                                     </li>
 
-                                    <li class="pt" style="width: 145px;">
+                                    <li class="pt @if(in_array(5, $services_ids)) active1 @endif" style="width: 145px;">
 
                                         <div class="type-holder-main">
 
                                             <label style="padding: 13px;">
 
-                                                <input class="services" type="checkbox" name="services[]" value="5">
+                                                <input class="services" @if(in_array(5, $services_ids)) checked @endif type="checkbox" name="services[]" value="5">
 
                                                 <span style="padding-top: 0;"><img style="display: block;width: 50px;margin: auto;margin-bottom: 10px;" src="https://image.flaticon.com/icons/svg/1452/1452601.svg" />Appraise House</span>
 
@@ -194,51 +194,51 @@
 
                                 <div style="display: inline-block;width: 100%;margin-bottom: 30px;position: relative;">
                                 <label style="width: 100%;margin-bottom: 10px;">Monday</label>
-                                <input type="text" name="monday_timeFrom" id="monday_timeFrom" placeholder="Time From" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5 monday_time" style="margin-right: 20px;" value="">
-                                <input type="text" name="monday_timeTo" id="monday_timeTo" placeholder="Time To" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5 r-fl monday_time1" value="">
-                                <input type="text" name="monday_description" placeholder="Additional Info" class="form-control1 col-lg-5 col-md-5 col-sm-5 col-xs-12 r-t" style="float: right;" value="">
+                                <input type="text" name="monday_timeFrom" id="monday_timeFrom" value="{{Auth::user()->monday_timeFrom}}" placeholder="Time From" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5 monday_time" style="margin-right: 20px;">
+                                <input type="text" name="monday_timeTo" id="monday_timeTo" value="{{Auth::user()->monday_timeTo}}" placeholder="Time To" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5 r-fl monday_time1">
+                                <input type="text" name="monday_description" value="{{Auth::user()->monday_description}}" placeholder="Additional Info" class="form-control1 col-lg-5 col-md-5 col-sm-5 col-xs-12 r-t" style="float: right;">
                                 </div>
 
                                 <div style="display: inline-block;width: 100%;margin-bottom: 30px;position: relative;">
                                     <label style="width: 100%;margin-bottom: 10px;">Tuesday</label>
-                                    <input type="text" name="tuesday_timeFrom" id="tuesday_timeFrom" placeholder="Time From" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5 tuesday_time" style="margin-right: 20px;" value="">
-                                    <input type="text" name="tuesday_timeTo" id="tuesday_timeTo" placeholder="Time To" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5 r-fl tuesday_time1" value="">
-                                    <input type="text" name="tuesday_description" placeholder="Additional Info" class="form-control1 col-lg-5 col-md-5 col-sm-5 col-xs-12 r-t" style="float: right;" value="">
+                                    <input type="text" name="tuesday_timeFrom" id="tuesday_timeFrom" value="{{Auth::user()->tuesday_timeFrom}}" placeholder="Time From" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5 tuesday_time" style="margin-right: 20px;">
+                                    <input type="text" name="tuesday_timeTo" id="tuesday_timeTo" value="{{Auth::user()->tuesday_timeTo}}" placeholder="Time To" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5 r-fl tuesday_time1">
+                                    <input type="text" name="tuesday_description" value="{{Auth::user()->tuesday_description}}" placeholder="Additional Info" class="form-control1 col-lg-5 col-md-5 col-sm-5 col-xs-12 r-t" style="float: right;">
                                 </div>
 
                                 <div style="display: inline-block;width: 100%;margin-bottom: 30px;position: relative;">
                                     <label style="width: 100%;margin-bottom: 10px;">Wednesday</label>
-                                    <input type="text" name="wednesday_timeFrom" id="wednesday_timeFrom" placeholder="Time From" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5 wednesday_time" style="margin-right: 20px;" value="">
-                                    <input type="text" name="wednesday_timeTo" id="wednesday_timeTo" placeholder="Time To" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5 r-fl wednesday_time1" value="">
-                                    <input type="text" name="wednesday_description" placeholder="Additional Info" class="form-control1 col-lg-5 col-md-5 col-sm-5 col-xs-12 r-t" style="float: right;" value="">
+                                    <input type="text" name="wednesday_timeFrom" id="wednesday_timeFrom" value="{{Auth::user()->wednesday_timeFrom}}" placeholder="Time From" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5 wednesday_time" style="margin-right: 20px;">
+                                    <input type="text" name="wednesday_timeTo" id="wednesday_timeTo" value="{{Auth::user()->wednesday_timeTo}}" placeholder="Time To" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5 r-fl wednesday_time1">
+                                    <input type="text" name="wednesday_description" value="{{Auth::user()->wednesday_description}}" placeholder="Additional Info" class="form-control1 col-lg-5 col-md-5 col-sm-5 col-xs-12 r-t" style="float: right;">
                                 </div>
 
                                 <div style="display: inline-block;width: 100%;margin-bottom: 30px;position: relative;">
                                     <label style="width: 100%;margin-bottom: 10px;">Thursday</label>
-                                    <input type="text" name="thursday_timeFrom" id="thursday_timeFrom" placeholder="Time From" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5 thursday_time" style="margin-right: 20px;" value="">
-                                    <input type="text" name="thursday_timeTo" id="thursday_timeTo" placeholder="Time To" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5 r-fl thursday_time1" value="">
-                                    <input type="text" name="thursday_description" placeholder="Additional Info" class="form-control1 col-lg-5 col-md-5 col-sm-5 col-xs-12 r-t" style="float: right;" value="">
+                                    <input type="text" name="thursday_timeFrom" id="thursday_timeFrom" value="{{Auth::user()->thursday_timeFrom}}" placeholder="Time From" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5 thursday_time" style="margin-right: 20px;">
+                                    <input type="text" name="thursday_timeTo" id="thursday_timeTo" value="{{Auth::user()->thursday_timeTo}}" placeholder="Time To" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5 r-fl thursday_time1">
+                                    <input type="text" name="thursday_description" value="{{Auth::user()->thursday_description}}" placeholder="Additional Info" class="form-control1 col-lg-5 col-md-5 col-sm-5 col-xs-12 r-t" style="float: right;">
                                 </div>
 
                                 <div style="display: inline-block;width: 100%;margin-bottom: 30px;position: relative;">
                                     <label style="width: 100%;margin-bottom: 10px;">Friday</label>
-                                    <input type="text" name="friday_timeFrom" id="friday_timeFrom" placeholder="Time From" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5 friday_time" style="margin-right: 20px;" value="">
-                                    <input type="text" name="friday_timeTo" id="friday_timeTo" placeholder="Time To" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5 r-fl friday_time1" value="">
-                                    <input type="text" name="friday_description" placeholder="Additional Info" class="form-control1 col-lg-5 col-md-5 col-sm-5 col-xs-12 r-t" style="float: right;" value="">
+                                    <input type="text" name="friday_timeFrom" id="friday_timeFrom" value="{{Auth::user()->friday_timeFrom}}" placeholder="Time From" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5 friday_time" style="margin-right: 20px;">
+                                    <input type="text" name="friday_timeTo" id="friday_timeTo" value="{{Auth::user()->friday_timeTo}}" placeholder="Time To" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5 r-fl friday_time1">
+                                    <input type="text" name="friday_description" value="{{Auth::user()->friday_description}}" placeholder="Additional Info" class="form-control1 col-lg-5 col-md-5 col-sm-5 col-xs-12 r-t" style="float: right;">
                                 </div>
 
                                 <div style="display: inline-block;width: 100%;margin-bottom: 30px;position: relative;">
                                     <label style="width: 100%;margin-bottom: 10px;">Saturday</label>
-                                    <input type="text" name="saturday_timeFrom" id="saturday_timeFrom" placeholder="Time From" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5 saturday_time" style="margin-right: 20px;" value="">
-                                    <input type="text" name="saturday_timeTo" id="saturday_timeTo" placeholder="Time To" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5 r-fl saturday_time1" value="">
-                                    <input type="text" name="saturday_description" placeholder="Additional Info" class="form-control1 col-lg-5 col-md-5 col-sm-5 col-xs-12 r-t" style="float: right;" value="">
+                                    <input type="text" name="saturday_timeFrom" id="saturday_timeFrom" value="{{Auth::user()->saturday_timeFrom}}" placeholder="Time From" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5 saturday_time" style="margin-right: 20px;">
+                                    <input type="text" name="saturday_timeTo" id="saturday_timeTo" value="{{Auth::user()->saturday_timeTo}}" placeholder="Time To" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5 r-fl saturday_time1">
+                                    <input type="text" name="saturday_description" value="{{Auth::user()->saturday_description}}" placeholder="Additional Info" class="form-control1 col-lg-5 col-md-5 col-sm-5 col-xs-12 r-t" style="float: right;">
                                 </div>
 
                                 <div style="display: inline-block;width: 100%;margin-bottom: 30px;position: relative;">
                                     <label style="width: 100%;margin-bottom: 10px;">Sunday</label>
-                                    <input type="text" name="sunday_timeFrom" id="sunday_timeFrom" placeholder="Time From" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5 sunday_time" style="margin-right: 20px;" value="">
-                                    <input type="text" name="sunday_timeTo" id="sunday_timeTo" placeholder="Time To" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5 r-fl sunday_time1" value="">
-                                    <input type="text" name="sunday_description" placeholder="Additional Info" class="form-control1 col-lg-5 col-md-5 col-sm-5 col-xs-12 r-t" style="float: right;" value="">
+                                    <input type="text" name="sunday_timeFrom" id="sunday_timeFrom" value="{{Auth::user()->sunday_timeFrom}}" placeholder="Time From" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5 sunday_time" style="margin-right: 20px;">
+                                    <input type="text" name="sunday_timeTo" id="sunday_timeTo" value="{{Auth::user()->sunday_timeTo}}" placeholder="Time To" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5 r-fl sunday_time1">
+                                    <input type="text" name="sunday_description" value="{{Auth::user()->sunday_description}}" placeholder="Additional Info" class="form-control1 col-lg-5 col-md-5 col-sm-5 col-xs-12 r-t" style="float: right;">
                                 </div>
 
                             </div>
@@ -250,6 +250,9 @@
 
                             <label class="col-sm-3 col-xs-12 control-label open-label" style="padding: 0;"></label>
 
+                            <input type="hidden" value="{{date("Y",strtotime("-1 year"))}}" name="prev_year">
+                            <input type="hidden" value="{{date("Y",strtotime("-2 year"))}}" name="prev_prev_year">
+
                             <div class="col-sm-9 col-xs-12" style="padding: 0px;">
 
                                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12" style="padding: 0;margin-bottom: 30px;">
@@ -257,13 +260,13 @@
                                     <label style="width: 100%;margin-bottom: 25px;font-size: 23px;">Sales Results</label>
 
                                     <div style="display:inline-block;width: 100%;margin-bottom: 20px;min-height: 70px;">
-                                    <span class="col-lg-5 col-md-12 col-sm-12 col-xs-12" style="float: left;padding: 0;padding-top: 5px;padding-bottom: 10px;">Total Sold 2019: </span>
-                                    <input style="float: right;" type="number" name="sold_prev" placeholder="Enter Number" class="col-lg-7 col-md-12 col-sm-12 col-xs-12 form-control1" value="">
+                                    <span class="col-lg-5 col-md-12 col-sm-12 col-xs-12" style="float: left;padding: 0;padding-top: 5px;padding-bottom: 10px;">Total Sold {{date("Y",strtotime("-1 year"))}}: </span>
+                                    <input style="float: right;" type="number" name="sold_prev" placeholder="Enter Number" class="col-lg-7 col-md-12 col-sm-12 col-xs-12 form-control1" @if(Auth::user()->prev_year != date("Y",strtotime("-1 year"))) value="" @else value="{{Auth::user()->sold_prev}}" @endif>
                                     </div>
 
                                     <div style="display:inline-block;width: 100%;margin-bottom: 20px;min-height: 70px;">
-                                        <span class="col-lg-5 col-md-12 col-sm-12 col-xs-12" style="float: left;padding: 0;padding-top: 5px;padding-bottom: 10px;">Total Sold 2018: </span>
-                                        <input style="float: right;" type="number" name="sold_prev_prev" placeholder="Enter Number" class="col-lg-7 col-md-12 col-sm-12 col-xs-12 form-control1" value="">
+                                        <span class="col-lg-5 col-md-12 col-sm-12 col-xs-12" style="float: left;padding: 0;padding-top: 5px;padding-bottom: 10px;">Total Sold {{date("Y",strtotime("-2 year"))}}: </span>
+                                        <input style="float: right;" type="number" name="sold_prev_prev" placeholder="Enter Number" class="col-lg-7 col-md-12 col-sm-12 col-xs-12 form-control1" @if(Auth::user()->prev_prev_year != date("Y",strtotime("-2 year"))) value="" @else value="{{Auth::user()->sold_prev_prev}}" @endif>
                                     </div>
 
                                 </div>
@@ -274,13 +277,13 @@
                                     <label style="width: 100%;margin-bottom: 25px;font-size: 23px;">Rental Results</label>
 
                                     <div style="display:inline-block;width: 100%;margin-bottom: 20px;min-height: 70px;">
-                                        <span class="col-lg-5 col-md-12 col-sm-12 col-xs-12" style="float: left;padding: 0;padding-top: 5px;padding-bottom: 10px;">Total Rentout 2019: </span>
-                                        <input style="float: right;" type="number" name="rentout_prev" placeholder="Enter Number" class="col-lg-7 col-md-12 col-sm-12 col-xs-12 form-control1" value="">
+                                        <span class="col-lg-5 col-md-12 col-sm-12 col-xs-12" style="float: left;padding: 0;padding-top: 5px;padding-bottom: 10px;">Total Rentout {{date("Y",strtotime("-1 year"))}}: </span>
+                                        <input style="float: right;" type="number" name="rentout_prev" placeholder="Enter Number" class="col-lg-7 col-md-12 col-sm-12 col-xs-12 form-control1" @if(Auth::user()->prev_year != date("Y",strtotime("-1 year"))) value="" @else value="{{Auth::user()->rentout_prev}}" @endif>
                                     </div>
 
                                     <div style="display:inline-block;width: 100%;margin-bottom: 20px;min-height: 70px;">
-                                        <span class="col-lg-5 col-md-12 col-sm-12 col-xs-12" style="float: left;padding: 0;padding-top: 5px;padding-bottom: 10px;">Total Rentout 2018: </span>
-                                        <input style="float: right;" type="number" name="rentout_prev_prev" placeholder="Enter Number" class="col-lg-7 col-md-12 col-sm-12 col-xs-12 form-control1" value="">
+                                        <span class="col-lg-5 col-md-12 col-sm-12 col-xs-12" style="float: left;padding: 0;padding-top: 5px;padding-bottom: 10px;">Total Rentout {{date("Y",strtotime("-2 year"))}}: </span>
+                                        <input style="float: right;" type="number" name="rentout_prev_prev" placeholder="Enter Number" class="col-lg-7 col-md-12 col-sm-12 col-xs-12 form-control1" @if(Auth::user()->prev_prev_year != date("Y",strtotime("-2 year"))) value="" @else value="{{Auth::user()->rentout_prev_prev}}" @endif>
                                     </div>
 
                                 </div>

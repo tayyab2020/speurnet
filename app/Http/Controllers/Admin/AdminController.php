@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\property_features;
 use Auth;
 use App\User;
 use App\City;
@@ -27,7 +28,24 @@ class AdminController extends MainAdminController
     {
         $city_list = City::orderBy('city_name')->get();
 
-        return view('admin.pages.profile',compact('city_list'));
+        if(Auth::user()->services)
+        {
+
+            $services = explode(',', Auth::user()->services);
+
+            foreach($services as $key){
+
+                $services_ids[] = $key;
+
+            }
+        }
+        else
+        {
+            $services_ids = [];
+        }
+
+
+        return view('admin.pages.profile',compact('city_list','services_ids'));
     }
 
     public function updateProfile(Request $request)
@@ -87,12 +105,20 @@ class AdminController extends MainAdminController
             $user->image_icon = $hardPath;
         }
 
+if($request->herefor)
+{
+    $herefor = $request->herefor;
+}
+else
+{
+    $herefor = null;
+}
 
         $user->name = $inputs['name'];
         $user->email = $inputs['email'];
         $user->phone = $inputs['phone'];
         $user->fax = $inputs['fax'];
-        $user->herefor = isset($inputs['herefor']) && $inputs['herefor']!=''?$inputs['herefor']:'';
+        $user->herefor = $herefor;
         $user->address = $inputs['address'];
         $user->address_latitude = $inputs['address_latitude'];
         $user->address_longitude = $inputs['address_longitude'];
@@ -127,6 +153,12 @@ class AdminController extends MainAdminController
             $user->sunday_timeFrom = $request->sunday_timeFrom;
             $user->sunday_timeTo = $request->sunday_timeTo;
             $user->sunday_description = $request->sunday_description;
+            $user->sold_prev = $request->sold_prev;
+            $user->rentout_prev = $request->rentout_prev;
+            $user->sold_prev_prev = $request->sold_prev_prev;
+            $user->rentout_prev_prev = $request->rentout_prev_prev;
+            $user->prev_year = $request->prev_year;
+            $user->prev_prev_year = $request->prev_prev_year;
         }
 
 

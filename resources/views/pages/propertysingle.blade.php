@@ -1763,7 +1763,7 @@
                             @if($agent->image_icon)
                             <img src="{{ URL::asset('upload/members/'.$agent->image_icon.'-b.jpg') }}" alt="{{$agent->name}}">
                             @else
-                            <img src="{{ URL::asset('upload/members/user-icon.jpg') }}" alt="{{$agent->name}}">
+                            <img src="{{ URL::asset('assets/img/team03.jpg') }}" alt="{{$agent->name}}">
                             @endif
                           </div>
                           <div class="team-description">
