@@ -802,7 +802,10 @@
 
             });
 
-            initialize();
+            $(window).load(function(){
+                initialize();
+            });
+            
 
             function initialize() {
 
