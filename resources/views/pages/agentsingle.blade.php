@@ -26,6 +26,58 @@
         </div>
     </div>
     <!-- end:header -->
+
+    <div class="row" style="margin: 0;margin-top: 11px;">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 top-container" style="padding: 25px 80px;">
+            <div class="team-container team-dark" style="border-color: transparent;background-color: white;color: #7a7878;">
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12 team-image">
+                    @if($agent->image_icon)
+                        <img style="min-height: 200px;" src="{{ URL::asset('upload/members/'.$agent->image_icon.'-b.jpg') }}" alt="{{$agent->name}}">
+                    @else
+                        <img style="min-height: 200px;" src="{{ URL::asset('assets/img/team03.jpg') }}" alt="{{$agent->name}}">
+                    @endif
+
+                        <div class="team-social">
+                            <span><a href="{{$agent->twitter}}" title="Twitter" rel="tooltip" data-placement="top"><i style="color: #448fed;" class="fa fa-twitter"></i></a></span>
+                            <span><a href="{{$agent->facebook}}" title="Facebook" rel="tooltip" data-placement="top"><i style="color: #4545b2;" class="fa fa-facebook"></i></a></span>
+                            <span><a href="{{$agent->gplus}}" title="Google Plus" rel="tooltip" data-placement="top"><i style="color: #cc3636;" class="fa fa-google-plus"></i></a></span>
+                            <span><a href="{{$agent->linkedin}}" title="LinkedIn" rel="tooltip" data-placement="top"><i style="color: #4e4e99;" class="fa fa-linkedin"></i></a></span>
+                        </div>
+
+                </div>
+                <div class="team-description" style="display: inline-block;">
+                    <h3><a style="color: black;" href="{{URL::to('agents/')}}">{{$agent->name}}</a></h3>
+                    <p><i class="fa fa-phone"></i>&nbsp {{$agent->phone}}<br></p>
+                    <p><i class="fa fa-envelope"></i>&nbsp {{$agent->email}}</p>
+                    <p><i class="fa fa-map-marker-alt"></i>&nbsp {{$agent->address}}</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+
+        @media (min-width: 600px)
+        {
+            .team-image
+            {
+                width: 250px;
+            }
+        }
+
+        @media (max-width: 1024px)
+        {
+            .top-container
+            {
+                padding: 10px 40px !important;
+            }
+
+
+        }
+
+    </style>
+
     <!-- begin:content -->
     <div id="content">
         <div class="container" style="width: 100%;">
@@ -36,52 +88,291 @@
                     <div class="row">
                         <div class="col-md-12 single-post">
                             <ul id="myTab" class="nav nav-tabs nav-justified">
-                                <li class="property-tab active"><a href="#detail" id="left-tab" data-toggle="tab"><i class="fa fa-university"></i> Property Detail</a></li>
+                                <li class="property-tab active"><a href="#detail" id="left-tab" data-toggle="tab">Overview</a></li>
 
-                                <li class="contact-tab"><a href="#location" id="right-tab" data-toggle="tab"><i class="fa fa-paper-plane-o"></i> Contact</a></li>
+                                <li class="contact-tab"><a href="#location" id="right-tab" data-toggle="tab">Find On Map</a></li>
 
                             </ul>
+
+                            <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/css/flaticon.css') }}"/>
+
+                            <style>
+
+                                .tab-content > .active
+                                {
+                                    display: inline-block;
+                                    width: 100%;
+                                }
+
+                                [type="checkbox"]:not(:checked),
+                                [type="checkbox"]:checked {
+                                    position: absolute;
+                                    left: -9999px;
+                                }
+                                [type="checkbox"]:not(:checked) + label,
+                                [type="checkbox"]:checked + label {
+                                    position: relative;
+                                    padding-left: 1.3em;
+                                    cursor: pointer;
+                                    font-weight: 600;
+                                }
+
+                                /* checkbox aspect */
+                                [type="checkbox"]:not(:checked) + label:before,
+                                [type="checkbox"]:checked + label:before {
+                                    content: '';
+                                    position: absolute;
+                                    left: 0; top: 8px;
+                                    width: 13px; height: 13px;
+                                    border: 1px solid #7e7e7e;
+                                    background: #fff;
+                                    border-radius: 4px;
+                                    box-shadow: inset 0 1px 3px rgba(0,0,0,.1);
+                                }
+                                /* checked mark aspect */
+                                [type="checkbox"]:not(:checked) + label:after,
+                                [type="checkbox"]:checked + label:after {
+                                    content: '\2713\0020';
+                                    position: absolute;
+                                    top: 8.5px; left: 0px;
+                                    font-size: 1.2em;
+                                    line-height: 0.8;
+                                    color: #00b8ef;
+                                    transition: all .2s;
+                                    font-family: 'Lucida Sans Unicode', 'Arial Unicode MS', Arial;
+                                }
+                                /* checked mark aspect changes */
+                                [type="checkbox"]:not(:checked) + label:after {
+                                    opacity: 0;
+                                    transform: scale(0);
+                                }
+                                [type="checkbox"]:checked + label:after {
+                                    opacity: 1;
+                                    transform: scale(0.7);
+                                }
+                                /* disabled checkbox */
+                                [type="checkbox"]:disabled:not(:checked) + label:before,
+                                [type="checkbox"]:disabled:checked + label:before {
+                                    box-shadow: none;
+                                    border-color: #bbb;
+                                    background-color: #ddd;
+                                }
+                                [type="checkbox"]:disabled:checked + label:after {
+                                    color: #999;
+                                }
+                                [type="checkbox"]:disabled + label {
+                                    color: #aaa;
+                                }
+                                /* accessibility */
+                                /*[type="checkbox"]:checked:focus + label:before,
+                                [type="checkbox"]:not(:checked):focus + label:before {
+                                    border: 2px dotted blue;
+                                }*/
+
+                                /* hover style just for information */
+                                label.bg:hover:before {
+                                    border: 1px solid #4778d9!important;
+                                }
+
+                            </style>
 
                             <div id="myTabContent" class="tab-content">
                                 <div class="tab-pane fade in active" id="detail">
 
-                                    <div class="row">
-                                        <div class="col-md-6 col-sm-6">
-                                            <div class="team-container team-dark" style="border-color: transparent;">
-                                                <div class="team-image">
-                                                    @if($agent->image_icon)
-                                                        <img src="{{ URL::asset('upload/members/'.$agent->image_icon.'-b.jpg') }}" alt="{{$agent->name}}">
-                                                    @else
-                                                        <img src="{{ URL::asset('assets/img/team03.jpg') }}" alt="{{$agent->name}}">
-                                                    @endif
-                                                </div>
-                                                <div class="team-description">
-                                                    <h3><a style="color: white;" href="{{URL::to('agents/')}}">{{$agent->name}}</a></h3>
-                                                    <p><i class="fa fa-phone"></i> Office : {{$agent->phone}}<br></p>
-                                                    <p><i class="fa fa-envelope"></i>&nbsp Email : {{$agent->email}}</p>
-                                                    <p>{{$agent->about}}</p>
+                                    <h5 style="font-weight: 100;color: gray;margin-bottom: 50px;text-align: center;">{{$agent->about}}</h5>
+
+                                    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12" style="margin-bottom: 60px;">
+                                        <h3 style="text-align: center;">Total Sold & Rentout {{$agent->prev_year}}</h3>
+                                    <canvas id="myChart" width="400" height="400"></canvas>
+                                    </div>
+
+                                    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12" style="float: right;">
+                                        <h3 style="text-align: center;">Total Sold & Rentout {{$agent->prev_prev_year}}</h3>
+                                        <canvas id="myChart1" width="400" height="400"></canvas>
+                                    </div>
+
+                                    <div class="form-group" style="display: inline-block;width: 100%;">
+
+                                        <div style="width: 100%;position: relative;">
+
+                                            <i class="far fa-comment-alt" style="position: absolute;left: 15px;right: auto;color: #d5d5d5;font-size: 14px;margin:10px 0 0;pointer-events:none;" aria-hidden="true"></i>
+
+                                            <textarea style="height:150px;padding-left:40px;color:#bcbcbc;border-color:#e6e6e6;border-radius: 3px;box-shadow: none;" class="form-control" id="message-text" placeholder="Message" name="message"></textarea>
 
 
-                                                    <div class="team-social">
-                                                        <span><a href="{{$agent->twitter}}" title="Twitter" rel="tooltip" data-placement="top"><i class="fa fa-twitter"></i></a></span>
-                                                        <span><a href="{{$agent->facebook}}" title="Facebook" rel="tooltip" data-placement="top"><i class="fa fa-facebook"></i></a></span>
-                                                        <span><a href="{{$agent->gplus}}" title="Google Plus" rel="tooltip" data-placement="top"><i class="fa fa-google-plus"></i></a></span>
-                                                        <span><a href="{{$agent->linkedin}}" title="LinkedIn" rel="tooltip" data-placement="top"><i class="fa fa-linkedin"></i></a></span>
-                                                    </div>
-                                                </div>
-                                            </div>
                                         </div>
+
+                                        <div class="row" style="margin: 0;margin-top: 30px;">
+
+                                            <div class="col-md-6 col-sm-12 col-xs-12">
+
+                                                <a style="padding: 0;margin: 0px;text-align: left;color: #2a2929;">
+
+                                                    <input name="selling" value="1" type="checkbox" id="selling" style="position: relative;top: 2px;display: block;height: 0px;">
+
+                                                    <label class="bg" for="selling" style="margin: 0;margin-bottom: 5px;">
+
+                                                        <span class="search-span" style="position: relative;top: 3px;font-size: 14px;color: #4b4848;">Selling my property</span>
+
+                                                    </label>
+
+                                                </a>
+
+                                                <a style="padding: 0;margin: 0px;text-align: left;color: #2a2929;">
+
+                                                    <input name="leasing" value="1" type="checkbox" id="leasing" style="position: relative;top: 2px;display: block;height: 0px;">
+
+                                                    <label class="bg" for="leasing" style="margin: 0;margin-bottom: 5px;">
+
+                                                        <span class="search-span" style="position: relative;top: 3px;font-size: 14px;color: #4b4848;">Leasing My Property</span>
+
+                                                    </label>
+
+                                                </a>
+
+                                                <a style="padding: 0;margin: 0px;text-align: left;color: #2a2929;">
+
+                                                    <input name="rent_property" value="1" type="checkbox" id="rent_property" style="position: relative;top: 2px;display: block;height: 0px;">
+
+                                                    <label class="bg" for="rent_property" style="margin: 0;margin-bottom: 5px;">
+
+                                                        <span class="search-span" style="position: relative;top: 3px;font-size: 14px;color: #4b4848;">Looking to rent a property</span>
+
+                                                    </label>
+
+                                                </a>
+
+
+                                            </div>
+
+                                            <div class="col-md-6 col-sm-12 col-xs-12">
+
+                                                <a style="padding: 0;margin: 0px;text-align: left;color: #2a2929;">
+
+                                                    <input name="property_appraisal" value="1" type="checkbox" id="property_appraisal" style="position: relative;top: 2px;display: block;height: 0px;">
+
+                                                    <label class="bg" for="property_appraisal" style="margin: 0;margin-bottom: 5px;">
+
+                                                        <span class="search-span" style="position: relative;top: 3px;font-size: 14px;color: #4b4848;">Property Appraisal</span>
+
+                                                    </label>
+
+                                                </a>
+
+                                                <a style="padding: 0;margin: 0px;text-align: left;color: #2a2929;">
+
+                                                    <input name="buy_property" value="1" type="checkbox" id="buy_property" style="position: relative;top: 2px;display: block;height: 0px;">
+
+                                                    <label class="bg" for="buy_property" style="margin: 0;margin-bottom: 5px;">
+
+                                                        <span class="search-span" style="position: relative;top: 3px;font-size: 14px;color: #4b4848;">Looking to buy a property</span>
+
+                                                    </label>
+
+                                                </a>
+
+                                            </div>
+
+                                        </div>
+
+                                        <div class="row" style="margin: 0;margin-top: 45px;">
+
+                                            <h3 style="margin: 0px 10px;border-bottom: 1px solid #dddddd;padding-bottom: 10px;color: #3a3a3a;font-weight: 600;">Contact Details</h3>
+
+                                            <div class="col-md-6 col-sm-12 col-xs-12" style="margin-top: 25px;padding: 0px 10px;">
+
+                                                <div class="form-group">
+
+                                                    <div style="width: 100%;position: relative;">
+
+                                                        <i class="fas fa-user" style="position: absolute;left: 15px;right: auto;color: #d5d5d5;font-size: 14px;top: 55%;margin:-9px 0 0;pointer-events:none;" aria-hidden="true"></i>
+
+                                                        <input style="padding: 0 0 0 40px;height: 42px;color:#bcbcbc;border-color:#e6e6e6;border-radius: 3px;box-shadow: none;" type="text" placeholder="First Name *" name="first_name" required="" class="form-control" id="first_name">
+
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="form-group">
+
+                                                    <div style="width: 100%;position: relative;">
+
+                                                        <i class="fas fa-at" style="position: absolute;left: 15px;right: auto;color: #d5d5d5;font-size: 14px;top: 55%;margin:-9px 0 0;pointer-events:none;" aria-hidden="true"></i>
+
+                                                        <input style="padding: 0 0 0 40px;height: 42px;color:#bcbcbc;border-color:#e6e6e6;border-radius: 3px;box-shadow: none;" type="email" placeholder="Email *" name="email" required="" class="form-control" id="email">
+
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="form-group">
+
+                                                    <div style="width: 100%;position: relative;">
+
+                                                        <i class="fas fa-phone-alt" style="position: absolute;left: 15px;right: auto;color: #d5d5d5;font-size: 14px;top: 55%;margin:-9px 0 0;pointer-events:none;" aria-hidden="true"></i>
+
+                                                        <input style="padding: 0 0 0 40px;height: 42px;color:#bcbcbc;border-color:#e6e6e6;border-radius: 3px;box-shadow: none;" type="text" placeholder="Phone Number" name="phone" class="form-control" id="phone">
+
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+                                            <div class="col-md-6 col-sm-12 col-xs-12" style="margin-top: 25px;padding: 0px 10px;">
+
+                                                <div class="form-group">
+
+                                                    <div style="width: 100%;position: relative;">
+
+                                                        <i class="fas fa-user" style="position: absolute;left: 15px;right: auto;color: #d5d5d5;font-size: 14px;top: 55%;margin:-9px 0 0;pointer-events:none;" aria-hidden="true"></i>
+
+                                                        <input style="padding: 0 0 0 40px;height: 42px;color:#bcbcbc;border-color:#e6e6e6;border-radius: 3px;box-shadow: none;" type="text" placeholder="Last Name *" name="last_name" required="" class="form-control" id="last_name">
+
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="form-group">
+
+                                                    <div style="width: 100%;position: relative;">
+
+                                                        <i class="fas fa-map-marker-alt" style="position: absolute;left: 15px;right: auto;color: #d5d5d5;font-size: 14px;top: 55%;margin:-9px 0 0;pointer-events:none;" aria-hidden="true"></i>
+
+                                                        <input style="padding: 0 0 0 40px;height: 42px;color:#bcbcbc;border-color:#e6e6e6;border-radius: 3px;box-shadow: none;" type="text" placeholder="Postcode" name="postcode" class="form-control" id="postcode">
+
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                        <div class="col-md-12 col-sm-12 col-xs-12" style="margin-top: 25px;padding: 0px 10px;">
+
+                                            <a style="padding: 0;margin: 0px;text-align: left;color: #2a2929;">
+
+                                                <input name="agree" value="1" required type="checkbox" id="agree" style="position: relative;top: 2px;display: block;height: 0px;">
+
+                                                <label class="bg" for="agree" style="margin: 0;margin-bottom: 5px;">
+
+                                                    <span class="search-span" style="position: relative;top: 3px;font-size: 14px;color: #807f7f;">I agree to my data being collected in order to provide a response to my enquiries and to receive communications about similar properties from this website and the agent.</span>
+
+                                                </label>
+
+                                            </a>
+
+                                            <button style="margin-top: 25px;border:0;font-size: 14px;padding: 12px 20px;" type="button" class="btn btn-success"><i class="fas fa-envelope" style="margin-right: 5px;" aria-hidden="true"></i> Send Enquiry</button>
+
+                                        </div>
+
                                     </div>
 
                                 </div>
                                 <!-- break -->
                                 <div class="tab-pane fade" id="location">
 
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <h3>Contact </h3>
-                                        </div>
-                                    </div>
                                     <div class="row" style="display:inline-block;width: 100%;margin: 0;">
                                         @if($agent->address_latitude != '' && $agent->address_longitude != '' && $agent->address != '')
 
@@ -109,12 +400,59 @@
 
 
                                     </div>
+
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <!-- end:article -->
+
+                <div class="col-md-3">
+
+                    <div class="sidebar sidebar-right">
+
+                        <aside class="widget widget_apus_property_contact_form" style="border:1px solid #e3e3e3;"><h2 class="widget-title" style="margin-bottom: 40px;"><span style="font-weight: 600;">Opening Time</span></h2>
+
+                            <table>
+
+                                <tbody></tbody>
+                                <tr>
+                                    <td width="100">Monday</td>
+                                    <td>{{$agent->monday_timeFrom}} - {{$agent->monday_timeTo}} {{$agent->monday_description}}</td>
+                                </tr>
+                                <tr>
+                                    <td width="100">Tuesday</td>
+                                    <td>{{$agent->tuesday_timeFrom}} - {{$agent->tuesday_timeTo}} {{$agent->tuesday_description}}</td>
+                                </tr>
+                                <tr>
+                                    <td width="100">Wednesday</td>
+                                    <td>{{$agent->wednesday_timeFrom}} - {{$agent->wednesday_timeTo}} {{$agent->wednesday_description}}</td>
+                                </tr>
+                                <tr>
+                                    <td width="100">Thursday</td>
+                                    <td>{{$agent->thursday_timeFrom}} - {{$agent->thursday_timeTo}} {{$agent->thursday_description}}</td>
+                                </tr>
+                                <tr>
+                                    <td width="100">Friday</td>
+                                    <td>{{$agent->friday_timeFrom}} - {{$agent->friday_timeTo}} {{$agent->friday_description}}</td>
+                                </tr>
+                                <tr>
+                                    <td width="100">Saturday</td>
+                                    <td>{{$agent->saturday_timeFrom}} - {{$agent->saturday_timeTo}} {{$agent->saturday_description}}</td>
+                                </tr>
+                                <tr>
+                                    <td width="100">Sunday</td>
+                                    <td>{{$agent->sunday_timeFrom}} - {{$agent->sunday_timeTo}} {{$agent->sunday_description}}</td>
+                                </tr>
+
+                            </table>
+
+                        </aside>
+
+                    </div>
+
+                </div>
 
             </div>
 
@@ -612,6 +950,67 @@
     <script>
 
         $( document ).ready(function() {
+
+            Chart.Legend.prototype.afterFit = function() {
+                this.height = this.height + 40;
+            };
+
+            var ctx = document.getElementById('myChart').getContext('2d');
+
+            var myDoughnutChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ["<?php echo $agent->sold_prev ?> Properties Sold","<?php echo $agent->rentout_prev ?> Properties Rentout"],
+                    datasets: [{
+                        data: [<?php echo $agent->sold_prev ?>,<?php echo $agent->rentout_prev ?>],
+                        backgroundColor: [
+                            'rgb(255,67,54)',
+                            'rgb(95,104,255)',
+
+                        ],
+                        borderWidth: 1,
+                    }]
+                },
+                options: {
+                    legend: {
+                        labels: {
+                            fontSize: 12,
+                            boxWidth: 20,
+                            padding: 20
+                        },
+                    }
+                },
+
+            });
+
+            var ctx = document.getElementById('myChart1').getContext('2d');
+
+            var myDoughnutChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ["<?php echo $agent->sold_prev_prev ?> Properties Sold","<?php echo $agent->rentout_prev_prev ?> Properties Rentout"],
+                    datasets: [{
+                        data: [<?php echo $agent->sold_prev_prev ?>,<?php echo $agent->rentout_prev_prev ?>],
+                        backgroundColor: [
+                            'rgb(255,67,54)',
+                            'rgb(95,104,255)',
+
+                        ],
+                        borderWidth: 1,
+                    }]
+                },
+                options: {
+                    legend: {
+                        labels: {
+                            fontSize: 12,
+                            boxWidth: 20,
+                            padding: 20
+                        },
+                    }
+                },
+
+            });
+
 
 
             let pos;
