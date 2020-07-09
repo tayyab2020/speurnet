@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\property_features;
+use App\user_services;
 use Auth;
 use App\User;
 use App\City;
@@ -28,22 +29,7 @@ class AdminController extends MainAdminController
     {
         $city_list = City::orderBy('city_name')->get();
 
-        if(Auth::user()->services)
-        {
-
-            $services = explode(',', Auth::user()->services);
-
-            foreach($services as $key){
-
-                $services_ids[] = $key;
-
-            }
-        }
-        else
-        {
-            $services_ids = [];
-        }
-
+        $services_ids = user_services::where('user_id',Auth::user()->id)->pluck('service_id')->toArray();;
 
         return view('admin.pages.profile',compact('city_list','services_ids'));
     }
@@ -54,11 +40,12 @@ class AdminController extends MainAdminController
         $user = User::findOrFail(Auth::user()->id);
 
 
-        $data =  \Request::except(array('_token')) ;
+        $data =  \Request::except(array('_token'));
+
 
         if($request->services)
         {
-            $services = implode(',', $request->services);
+            $services = $request->services;
         }
         else
         {
@@ -131,7 +118,20 @@ else
 
         if(Auth::user()->usertype != 'Admin' && Auth::user()->usertype != 'Users')
         {
-            $user->services = $services;
+            if($services)
+            {
+                $post = user_services::where('user_id',Auth::user()->id)->delete();
+
+                foreach($services as $temp)
+                {
+                    $new_service = new user_services();
+                    $new_service->user_id =  Auth::user()->id;
+                    $new_service->service_id = $temp;
+                    $new_service->save();
+                }
+
+            }
+
             $user->monday_timeFrom = $request->monday_timeFrom;
             $user->monday_timeTo = $request->monday_timeTo;
             $user->monday_description = $request->monday_description;

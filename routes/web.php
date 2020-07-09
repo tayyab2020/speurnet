@@ -147,6 +147,7 @@ Route::group(['middleware' => 'App\Http\Middleware\UserTypeMiddleware'], functio
     Route::post('subscribe', 'IndexController@subscribe');
 
     Route::get('agents', 'AgentsController@index');
+    Route::post('agents', 'AgentsController@SearchAgents');
 
     Route::get('agents/details/{id}', 'AgentsController@employerDetail');
     Route::get('agents/{id}/property', 'AgentsController@employerproperties');

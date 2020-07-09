@@ -2395,7 +2395,9 @@
                 tagClass: 'label label-danger'
             });
 
-            initialize();
+            $(window).load(function() {
+                initialize();
+            });
 
             function initialize() {
 

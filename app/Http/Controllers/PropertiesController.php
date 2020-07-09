@@ -871,41 +871,44 @@ class PropertiesController extends Controller
         $properties_search = [];
 
 
-    	 $properties = Properties::SearchByKeyword($type,$purpose,$price,$min_price,$max_price,$min_area,$max_area,$bathrooms,$bedrooms,$type_of_construction,$keywords)->where('is_sold',0)->where('is_rented',0)->where('wheelchair',$wheelchair)->get();
+    	 $properties = Properties::SearchByKeyword($type,$purpose,$price,$min_price,$max_price,$min_area,$max_area,$bathrooms,$bedrooms,$type_of_construction,$keywords)->leftjoin('cities','cities.id','=','properties.city_id')->where('cities.city_name', 'like', '%' . $address . '%')->where('is_sold',0)->where('is_rented',0)->where('wheelchair',$wheelchair)->select('properties.*')->get();
 
 
     	 if($address && $address_latitude && $address_longitude)
          {
-             foreach ($properties as $key)
+             if($radius != 0)
              {
-                 $property_latitude = $key->map_latitude;
-                 $property_longitude = $key->map_longitude;
-
-
-                 $url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=".urlencode($address_latitude).",".urlencode($address_longitude)."&destinations=".urlencode($property_latitude).",".urlencode($property_longitude)."&key=AIzaSyDFPa3LVeBRpaGafuUtk4znrty6IIqtMUw";
-
-                 $result_string = file_get_contents($url);
-                 $result = json_decode($result_string, true);
-
-                 if($result['rows'][0]['elements'][0]['status'] == 'OK')
+                 foreach ($properties as $key)
                  {
-                     $property_radius = $result['rows'][0]['elements'][0]['distance']['value'];
-                     $property_radius = $property_radius / 1000;
-
-                     $property_radius = round($property_radius);
+                     $property_latitude = $key->map_latitude;
+                     $property_longitude = $key->map_longitude;
 
 
-                     if($property_radius <= $radius)
+                     $url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=".urlencode($address_latitude).",".urlencode($address_longitude)."&destinations=".urlencode($property_latitude).",".urlencode($property_longitude)."&key=AIzaSyDFPa3LVeBRpaGafuUtk4znrty6IIqtMUw";
+
+                     $result_string = file_get_contents($url);
+                     $result = json_decode($result_string, true);
+
+                     if($result['rows'][0]['elements'][0]['status'] == 'OK')
                      {
-                         array_push($properties_search,$key);
+                         $property_radius = $result['rows'][0]['elements'][0]['distance']['value'];
+                         $property_radius = $property_radius / 1000;
+
+                         $property_radius = round($property_radius);
+
+
+                         if($property_radius <= $radius)
+                         {
+                             array_push($properties_search,$key);
+                         }
                      }
+
+
                  }
 
-
+                 $properties = $properties_search;
              }
 
-
-             $properties = $properties_search;
 
          }
 
@@ -962,41 +965,44 @@ class PropertiesController extends Controller
         $properties_search = [];
 
 
-        $properties = New_Constructions::SearchByKeyword($type,$purpose,$price,$min_price,$max_price,$min_area,$max_area,$bathrooms,$bedrooms,$kind_of_type,$keywords)->where('is_sold',0)->where('is_rented',0)->where('wheelchair',$wheelchair)->get();
+        $properties = New_Constructions::SearchByKeyword($type,$purpose,$price,$min_price,$max_price,$min_area,$max_area,$bathrooms,$bedrooms,$kind_of_type,$keywords)->leftjoin('cities','cities.id','=','properties.city_id')->where('cities.city_name', 'like', '%' . $address . '%')->where('is_sold',0)->where('is_rented',0)->where('wheelchair',$wheelchair)->select('properties.*')->get();
 
 
         if($address && $address_latitude && $address_longitude)
         {
-            foreach ($properties as $key)
+            if($radius != 0)
             {
-                $property_latitude = $key->map_latitude;
-                $property_longitude = $key->map_longitude;
-
-
-                $url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=".urlencode($address_latitude).",".urlencode($address_longitude)."&destinations=".urlencode($property_latitude).",".urlencode($property_longitude)."&key=AIzaSyDFPa3LVeBRpaGafuUtk4znrty6IIqtMUw";
-
-                $result_string = file_get_contents($url);
-                $result = json_decode($result_string, true);
-
-                if($result['rows'][0]['elements'][0]['status'] == 'OK')
+                foreach ($properties as $key)
                 {
-                    $property_radius = $result['rows'][0]['elements'][0]['distance']['value'];
-                    $property_radius = $property_radius / 1000;
-
-                    $property_radius = round($property_radius);
+                    $property_latitude = $key->map_latitude;
+                    $property_longitude = $key->map_longitude;
 
 
-                    if($property_radius <= $radius)
+                    $url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=".urlencode($address_latitude).",".urlencode($address_longitude)."&destinations=".urlencode($property_latitude).",".urlencode($property_longitude)."&key=AIzaSyDFPa3LVeBRpaGafuUtk4znrty6IIqtMUw";
+
+                    $result_string = file_get_contents($url);
+                    $result = json_decode($result_string, true);
+
+                    if($result['rows'][0]['elements'][0]['status'] == 'OK')
                     {
-                        array_push($properties_search,$key);
+                        $property_radius = $result['rows'][0]['elements'][0]['distance']['value'];
+                        $property_radius = $property_radius / 1000;
+
+                        $property_radius = round($property_radius);
+
+
+                        if($property_radius <= $radius)
+                        {
+                            array_push($properties_search,$key);
+                        }
                     }
+
+
                 }
 
-
+                $properties = $properties_search;
             }
 
-
-            $properties = $properties_search;
 
         }
 

@@ -2787,8 +2787,6 @@
 
                 $(this).addClass('travel-time-transport-modes--active');
 
-
-
             });
 
 
@@ -3249,8 +3247,6 @@
                                     $(".rui-button-brand").attr('disabled',false);
 
 
-
-
                                 }
                                 else
                                 {
@@ -3268,8 +3264,6 @@
                             input.value = "";
                             return;
                         }
-
-
 
                     });
                 }
@@ -3432,16 +3426,22 @@
                 travel_handleLocationError(false, infoWindow2,type);
             }
 
-            initMap();
+            $(window).load(function() {
+                initMap();
+            });
 
             var agent_map_check = $('#agent_map_check').val();
 
             if(agent_map_check == 1)
             {
-                agent_initMap();
+                $(window).load(function() {
+                    agent_initMap();
+                });
             }
 
-            travel_initMap();
+            $(window).load(function() {
+                travel_initMap();
+            });
 
             function CenterControl(controlDiv, map) {
 
@@ -3505,7 +3505,6 @@
                     heading: 265,
                     pitch: 0
                 }));
-
 
 
 

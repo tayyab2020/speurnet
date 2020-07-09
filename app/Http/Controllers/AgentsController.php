@@ -6,6 +6,7 @@ use App\User;
 use app\Properties;
 
 
+use App\user_services;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -19,10 +20,85 @@ class AgentsController extends Controller
 
     public function index()
     {
-        $agents = User::where('usertype','Agents')->orderBy('id', 'desc')->paginate(9);;
+        $agents = User::where('usertype','Agents')->where('status',1)->orderBy('id', 'desc')->paginate(9);
         $usertype='Agent';
         return view('pages.agents',compact('agents','usertype'));
     }
+
+    public function SearchAgents(Request $request)
+    {
+        $agent_name = $request->agent_name;
+        $address = $request->address;
+        $address_latitude = $request->city_latitude;
+        $address_longitude = $request->city_longitude;
+        $radius = $request->radius;
+        $service = $request->services;
+        $to_remove = [];
+
+
+        if($service)
+        {
+            $agents = user::leftjoin('user_services','user_services.user_id','=','users.id')->where('users.city', 'like', '%' . $address . '%')->where('users.usertype','Agents')->where('users.status',1)->where('user_services.service_id',$service)->where('users.name', 'like', '%' . $agent_name . '%')->select('users.*')->paginate(9);
+        }
+        else
+        {
+            $agents = user::where('users.city', 'like', '%' . $address . '%')->where('users.usertype','Agents')->where('users.status',1)->where('users.name', 'like', '%' . $agent_name . '%')->paginate(9);
+        }
+
+
+        if($address && $address_latitude && $address_longitude)
+        {
+            if($radius != 0)
+            {
+                foreach ($agents as $index => $key)
+                {
+                    $agent_latitude = $key->address_latitude;
+                    $agent_longitude = $key->address_longitude;
+
+                    $url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=".urlencode($address_latitude).",".urlencode($address_longitude)."&destinations=".urlencode($agent_latitude).",".urlencode($agent_longitude)."&key=AIzaSyDFPa3LVeBRpaGafuUtk4znrty6IIqtMUw";
+
+                    $result_string = file_get_contents($url);
+                    $result = json_decode($result_string, true);
+
+
+                    if($result['rows'][0]['elements'][0]['status'] == 'OK')
+                    {
+                        $agent_radius = $result['rows'][0]['elements'][0]['distance']['value'];
+                        $agent_radius = $agent_radius / 1000;
+
+                        $agent_radius = round($agent_radius);
+
+
+                        if($agent_radius >= $radius)
+                        {
+                            array_push($to_remove,$index);
+                        }
+                    }
+                    else
+                    {
+                        array_push($to_remove,$index);
+                    }
+
+
+                }
+
+                if(count($to_remove) > 0)
+                {
+                    foreach ($to_remove as $key)
+                    {
+                        $agents->forget($key);
+                    }
+                }
+
+
+            }
+
+        }
+
+
+        return view('pages.agents',compact('agents','service','agent_name','address','address_longitude','address_latitude','radius'));
+    }
+
     public function filter($alphabet)
     {
         if(strtolower($alphabet)=='all'){

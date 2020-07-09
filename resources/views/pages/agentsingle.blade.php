@@ -1058,7 +1058,9 @@
 
             if(agent_map_check == 1)
             {
-                agent_initMap();
+                $(window).load(function() {
+                    agent_initMap();
+                });
             }
 
 
