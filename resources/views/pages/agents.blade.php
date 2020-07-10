@@ -387,7 +387,7 @@
 {{--                          </form>--}}
 
                    @foreach($agents as $i => $agent)
-                      <div class="row" style="margin: 0;">
+                      <div class="row" style="margin: 20px 0px;">
                           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="row" style="background-color: white;padding: 20px;">
                             <div class="col-sm-3">
