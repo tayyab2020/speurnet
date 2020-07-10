@@ -871,14 +871,14 @@ class PropertiesController extends Controller
         $properties_search = [];
 
 
-    	 $properties = Properties::SearchByKeyword($type,$purpose,$price,$min_price,$max_price,$min_area,$max_area,$bathrooms,$bedrooms,$type_of_construction,$keywords)->leftjoin('cities','cities.id','=','properties.city_id')->where('cities.city_name', 'like', '%' . $address . '%')->where('is_sold',0)->where('is_rented',0)->where('wheelchair',$wheelchair)->select('properties.*')->get();
+    	 $properties = Properties::SearchByKeyword($type,$purpose,$price,$min_price,$max_price,$min_area,$max_area,$bathrooms,$bedrooms,$type_of_construction,$keywords)->where('is_sold',0)->where('is_rented',0)->where('wheelchair',$wheelchair)->select('properties.*');
 
 
     	 if($address && $address_latitude && $address_longitude)
          {
              if($radius != 0)
              {
-                 foreach ($properties as $key)
+                 foreach ($properties->get() as $key)
                  {
                      $property_latitude = $key->map_latitude;
                      $property_longitude = $key->map_longitude;
@@ -907,6 +907,10 @@ class PropertiesController extends Controller
                  }
 
                  $properties = $properties_search;
+             }
+             else
+             {
+                 $properties = $properties->leftjoin('cities','cities.id','=','properties.city_id')->where('cities.city_name', 'like', '%' . $address . '%')->get();
              }
 
 
@@ -965,14 +969,14 @@ class PropertiesController extends Controller
         $properties_search = [];
 
 
-        $properties = New_Constructions::SearchByKeyword($type,$purpose,$price,$min_price,$max_price,$min_area,$max_area,$bathrooms,$bedrooms,$kind_of_type,$keywords)->leftjoin('cities','cities.id','=','properties.city_id')->where('cities.city_name', 'like', '%' . $address . '%')->where('is_sold',0)->where('is_rented',0)->where('wheelchair',$wheelchair)->select('properties.*')->get();
+        $properties = New_Constructions::SearchByKeyword($type,$purpose,$price,$min_price,$max_price,$min_area,$max_area,$bathrooms,$bedrooms,$kind_of_type,$keywords)->where('is_sold',0)->where('is_rented',0)->where('wheelchair',$wheelchair)->select('properties.*');
 
 
         if($address && $address_latitude && $address_longitude)
         {
             if($radius != 0)
             {
-                foreach ($properties as $key)
+                foreach ($properties->get() as $key)
                 {
                     $property_latitude = $key->map_latitude;
                     $property_longitude = $key->map_longitude;
@@ -1001,6 +1005,10 @@ class PropertiesController extends Controller
                 }
 
                 $properties = $properties_search;
+            }
+            else
+            {
+                $properties = $properties->leftjoin('cities','cities.id','=','properties.city_id')->where('cities.city_name', 'like', '%' . $address . '%')->get();
             }
 
 

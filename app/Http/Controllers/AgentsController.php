@@ -38,13 +38,13 @@ class AgentsController extends Controller
 
         if($service)
         {
-            $agents = user::leftjoin('user_services','user_services.user_id','=','users.id')->where('users.city', 'like', '%' . $address . '%')->where('users.usertype','Agents')->where('users.status',1)->where('user_services.service_id',$service)->where('users.name', 'like', '%' . $agent_name . '%')->select('users.*');
+            $agents = user::leftjoin('user_services','user_services.user_id','=','users.id')->where('users.usertype','Agents')->where('users.status',1)->where('user_services.service_id',$service)->where('users.name', 'like', '%' . $agent_name . '%')->select('users.*');
         }
         else
         {
             $agents = user::where('users.usertype','Agents')->where('users.status',1)->where('users.name', 'like', '%' . $agent_name . '%');
         }
-        
+
         if($address && $address_latitude && $address_longitude)
         {
             if($radius != 0)
@@ -82,7 +82,10 @@ class AgentsController extends Controller
 
                 $agents = $agents->paginate(9);
 
-
+            }
+            else
+            {
+                $agents = $agents->where('users.city', 'like', '%' . $address . '%')->paginate(9);
             }
 
         }
