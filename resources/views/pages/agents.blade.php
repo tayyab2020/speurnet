@@ -30,7 +30,7 @@
               <div class="blog-content" style="padding-top: 0;">
                 <!--<div class="the-team">-->
 
-                  <form id="search_form" method="POST" action="{{ URL::to('/agents') }}">
+                  <form id="search_form" method="GET" action="{{ URL::to('/agents') }}">
 
                       @csrf
 
@@ -362,9 +362,9 @@
 
                   </script>
 
-                          @if(count($agents)>0)
+                          @if($agents->total() > 0)
                               <div class="row" style="margin: 0;">
-                                  <p style="font-weight: 600;color: black;">@php echo count($agents); @endphp Member(s) Found</p>
+                                  <p style="font-weight: 600;color: black;">@php echo $agents->total(); @endphp Member(s) Found</p>
                               </div>
                               @else
                       <div class="row" style="margin: 0;">
@@ -452,7 +452,7 @@
                       </div>
                       <!-- break -->
                    @endforeach
-                  @include('_particles.pagination', ['paginator' => $agents])
+                  {{$agents->appends(request()->input())->links()}}
                 <!--</div>-->
 
               </div>
