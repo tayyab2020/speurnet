@@ -44,9 +44,7 @@ class AgentsController extends Controller
         {
             $agents = user::where('users.usertype','Agents')->where('users.status',1)->where('users.name', 'like', '%' . $agent_name . '%');
         }
-
-dd($agents->get());
-
+        
         if($address && $address_latitude && $address_longitude)
         {
             if($radius != 0)
