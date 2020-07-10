@@ -42,7 +42,7 @@ class AgentsController extends Controller
         }
         else
         {
-            $agents = user::where('users.city', 'like', '%' . $address . '%')->where('users.usertype','Agents')->where('users.status',1)->where('users.name', 'like', '%' . $agent_name . '%');
+            $agents = user::where('users.usertype','Agents')->where('users.status',1)->where('users.name', 'like', '%' . $agent_name . '%');
         }
 
 dd($agents->get());
