@@ -38,19 +38,20 @@ class AgentsController extends Controller
 
         if($service)
         {
-            $agents = user::leftjoin('user_services','user_services.user_id','=','users.id')->where('users.city', 'like', '%' . $address . '%')->where('users.usertype','Agents')->where('users.status',1)->where('user_services.service_id',$service)->where('users.name', 'like', '%' . $agent_name . '%')->select('users.*')->paginate(9);
+            $agents = user::leftjoin('user_services','user_services.user_id','=','users.id')->where('users.city', 'like', '%' . $address . '%')->where('users.usertype','Agents')->where('users.status',1)->where('user_services.service_id',$service)->where('users.name', 'like', '%' . $agent_name . '%')->select('users.*');
         }
         else
         {
-            $agents = user::where('users.city', 'like', '%' . $address . '%')->where('users.usertype','Agents')->where('users.status',1)->where('users.name', 'like', '%' . $agent_name . '%')->paginate(9);
+            $agents = user::where('users.city', 'like', '%' . $address . '%')->where('users.usertype','Agents')->where('users.status',1)->where('users.name', 'like', '%' . $agent_name . '%');
         }
 
+dd($agents->get());
 
         if($address && $address_latitude && $address_longitude)
         {
             if($radius != 0)
             {
-                foreach ($agents as $index => $key)
+                foreach ($agents->get() as $index => $key)
                 {
                     $agent_latitude = $key->address_latitude;
                     $agent_longitude = $key->address_longitude;
@@ -71,24 +72,17 @@ class AgentsController extends Controller
 
                         if($agent_radius >= $radius)
                         {
-                            array_push($to_remove,$index);
+                            $agents->where('users.id','!=',$key->id);
                         }
                     }
                     else
                     {
-                        array_push($to_remove,$index);
+                        $agents->where('users.id','!=',$key->id);
                     }
-
 
                 }
 
-                if(count($to_remove) > 0)
-                {
-                    foreach ($to_remove as $key)
-                    {
-                        $agents->forget($key);
-                    }
-                }
+                $agents = $agents->paginate(9);
 
 
             }
