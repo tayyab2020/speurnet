@@ -915,6 +915,14 @@ class PropertiesController extends Controller
 
 
          }
+    	 else if($address)
+         {
+             $properties = $properties->leftjoin('cities','cities.id','=','properties.city_id')->where('cities.city_name', 'like', '%' . $address . '%')->get();
+         }
+    	 else
+         {
+             $properties = $properties->get();
+         }
 
         $property_type = $type;
 
@@ -1012,6 +1020,14 @@ class PropertiesController extends Controller
             }
 
 
+        }
+        else if($address)
+        {
+            $properties = $properties->leftjoin('cities','cities.id','=','properties.city_id')->where('cities.city_name', 'like', '%' . $address . '%')->get();
+        }
+        else
+        {
+            $properties = $properties->get();
         }
 
         $property_type = $type;

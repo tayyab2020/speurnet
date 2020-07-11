@@ -84,6 +84,14 @@ class AgentsController extends Controller
                 }
 
             }
+            else if($address)
+            {
+                $agents = $agents->where('users.city', 'like', '%' . $address . '%')->paginate(9);
+            }
+            else
+            {
+                $agents = $agents->paginate(9);
+            }
         }
         else
         {
