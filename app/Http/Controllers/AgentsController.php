@@ -89,6 +89,12 @@ class AgentsController extends Controller
         {
             $agents = User::where('usertype','Agents')->where('status',1)->orderBy('id', 'desc')->paginate(9);
             $usertype='Agent';
+            $service = '';
+            $agent_name = '';
+            $address = '';
+            $address_latitude = '';
+            $address_longitude = '';
+            $radius = '';
         }
 
         return view('pages.agents',compact('agents','service','agent_name','address','address_longitude','address_latitude','radius'));
