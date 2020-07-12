@@ -156,7 +156,6 @@ class AgentsController extends Controller
                     ->subject('Enquiry request posted by ' . $parameters->first_name . " " . $parameters->last_name);
             });
 
-        exit();
 
         Session::flash('flash_message', 'Your Enquiry has been submitted successfully!');
 
