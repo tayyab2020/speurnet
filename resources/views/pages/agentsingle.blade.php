@@ -1100,9 +1100,9 @@
 
             if(agent_map_check == 1)
             {
-
+                $(window).load(function() {
                     agent_initMap();
-                
+                });
             }
 
 
