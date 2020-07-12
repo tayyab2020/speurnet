@@ -3432,14 +3432,11 @@
 
             if(agent_map_check == 1)
             {
-                $(window).load(function() {
                     agent_initMap();
-                });
             }
 
-            $(window).load(function() {
                 travel_initMap();
-            });
+          
 
             function CenterControl(controlDiv, map) {
 
