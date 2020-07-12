@@ -3426,9 +3426,7 @@
                 travel_handleLocationError(false, infoWindow2,type);
             }
 
-            $(window).load(function() {
                 initMap();
-            });
 
             var agent_map_check = $('#agent_map_check').val();
 
