@@ -67,7 +67,7 @@
 
                           </div>
 
-                          <div class="form-group col-lg-3 col-md-3 col-sm-4 col-xs-12" style="padding: 0;padding-right: 10px;">
+                          <div class="form-group col-lg-3 col-md-3 col-sm-4 col-xs-12 address-box" style="padding: 0;padding-right: 10px;">
 
                               <div style="width: 100%;position: relative;">
 
@@ -218,7 +218,7 @@
 
                       @media (max-width: 768px){
 
-                          .address-box{ padding: 0; }
+                          .address-box{ padding: 0 !important; }
 
                       }
 

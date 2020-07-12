@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\agent_enquiry;
 use App\User;
 use app\Properties;
 
 
 use App\user_services;
 use Illuminate\Http\Request;
+use Session;
+use Mail;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -106,6 +109,58 @@ class AgentsController extends Controller
         }
 
         return view('pages.agents',compact('agents','service','agent_name','address','address_longitude','address_latitude','radius'));
+
+    }
+
+    public function SendEnquiry(Request $request)
+    {
+        $post = new agent_enquiry();
+        $post->agent_id = $request->agent_id;
+        $post->message = $request->message;
+        if($request->selling)
+        {
+            $post->selling = 1;
+        }
+        if($request->leasing)
+        {
+            $post->leasing = 1;
+        }
+        if($request->rent_property)
+        {
+            $post->rent_property = 1;
+        }
+        if($request->property_appraisal)
+        {
+            $post->property_appraisal = 1;
+        }
+        if($request->buy_property)
+        {
+            $post->buy_property = 1;
+        }
+        $post->first_name= $request->first_name;
+        $post->last_name = $request->last_name;
+        $post->email = $request->email;
+        $post->phone = $request->phone;
+        $post->postcode = $request->postcode;
+
+        $post->save();
+
+        $parameters = $request;
+
+        Mail::send('emails.profileEnquiry',
+            array(
+                'parameters' => $parameters,
+            ),  function ($message) use($parameters) {
+                $message->from(getcong('site_email'),getcong('site_name'));
+                $message->to($parameters->agent_email)
+                    ->subject('Enquiry request posted by ' . $parameters->first_name . " " . $parameters->last_name);
+            });
+
+        exit();
+
+        Session::flash('flash_message', 'Your Enquiry has been submitted successfully!');
+
+        return redirect()->back();
 
     }
 

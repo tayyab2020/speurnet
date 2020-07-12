@@ -27,6 +27,14 @@
     </div>
     <!-- end:header -->
 
+    @if(Session::has('flash_message'))
+        <div class="alert alert-success" style="text-align: center;font-size: 16px;color: black;">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span style="font-size: 36px;font-weight: 600;line-height: 0.6;" aria-hidden="true">&times;</span></button>
+            {{ Session::get('flash_message') }}
+        </div>
+    @endif
+
     <div class="row" style="margin: 0;margin-top: 11px;">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 top-container" style="padding: 25px 80px;">
             <div class="team-container team-dark" style="border-color: transparent;background-color: white;color: #7a7878;">
@@ -191,183 +199,200 @@
                                         <canvas id="myChart1" width="400" height="400"></canvas>
                                     </div>
 
-                                    <div class="form-group" style="display: inline-block;width: 100%;">
+                                    <form action="{{ URL::to('/agents/send-enquiry') }}" method="POST">
 
-                                        <div style="width: 100%;position: relative;">
+                                        @csrf
 
-                                            <i class="far fa-comment-alt" style="position: absolute;left: 15px;right: auto;color: #d5d5d5;font-size: 14px;margin:10px 0 0;pointer-events:none;" aria-hidden="true"></i>
+                                        <input type="hidden" name="agent_id" value="{{$agent->id}}">
+                                        <input type="hidden" name="agent_email" value="{{$agent->email}}">
+                                        <input type="hidden" name="agent_name" value="{{$agent->name}}">
 
-                                            <textarea style="resize: vertical;height:150px;padding-left:40px;color:#bcbcbc;border-color:#e6e6e6;border-radius: 3px;box-shadow: none;" class="form-control" id="message-text" placeholder="Message" name="message"></textarea>
+                                        <div class="form-group" style="display: inline-block;width: 100%;margin-top: 20px;">
 
+                                            <div style="width: 100%;position: relative;">
 
-                                        </div>
+                                                <i class="far fa-comment-alt" style="position: absolute;left: 15px;right: auto;color: #d5d5d5;font-size: 14px;margin:10px 0 0;pointer-events:none;" aria-hidden="true"></i>
 
-                                        <div class="row" style="margin: 0;margin-top: 30px;">
-
-                                            <div class="col-md-6 col-sm-12 col-xs-12">
-
-                                                <a style="padding: 0;margin: 0px;text-align: left;color: #2a2929;">
-
-                                                    <input name="selling" value="1" type="checkbox" id="selling" style="position: relative;top: 2px;display: block;height: 0px;">
-
-                                                    <label class="bg" for="selling" style="margin: 0;margin-bottom: 5px;">
-
-                                                        <span class="search-span" style="position: relative;top: 3px;font-size: 14px;color: #4b4848;">Selling my property</span>
-
-                                                    </label>
-
-                                                </a>
-
-                                                <a style="padding: 0;margin: 0px;text-align: left;color: #2a2929;">
-
-                                                    <input name="leasing" value="1" type="checkbox" id="leasing" style="position: relative;top: 2px;display: block;height: 0px;">
-
-                                                    <label class="bg" for="leasing" style="margin: 0;margin-bottom: 5px;">
-
-                                                        <span class="search-span" style="position: relative;top: 3px;font-size: 14px;color: #4b4848;">Leasing My Property</span>
-
-                                                    </label>
-
-                                                </a>
-
-                                                <a style="padding: 0;margin: 0px;text-align: left;color: #2a2929;">
-
-                                                    <input name="rent_property" value="1" type="checkbox" id="rent_property" style="position: relative;top: 2px;display: block;height: 0px;">
-
-                                                    <label class="bg" for="rent_property" style="margin: 0;margin-bottom: 5px;">
-
-                                                        <span class="search-span" style="position: relative;top: 3px;font-size: 14px;color: #4b4848;">Looking to rent a property</span>
-
-                                                    </label>
-
-                                                </a>
+                                                <textarea style="resize: vertical;height:150px;padding-left:40px;color:#bcbcbc;border-color:#e6e6e6;border-radius: 3px;box-shadow: none;" class="form-control" id="message-text" placeholder="Message" name="message"></textarea>
 
 
                                             </div>
 
-                                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                            <div class="row" style="margin: 0;margin-top: 30px;">
 
-                                                <a style="padding: 0;margin: 0px;text-align: left;color: #2a2929;">
+                                                <div class="col-md-6 col-sm-12 col-xs-12">
 
-                                                    <input name="property_appraisal" value="1" type="checkbox" id="property_appraisal" style="position: relative;top: 2px;display: block;height: 0px;">
+                                                    <a style="padding: 0;margin: 0px;text-align: left;color: #2a2929;">
 
-                                                    <label class="bg" for="property_appraisal" style="margin: 0;margin-bottom: 5px;">
+                                                        <input name="selling" value="1" type="checkbox" id="selling" style="position: relative;top: 2px;display: block;height: 0px;">
 
-                                                        <span class="search-span" style="position: relative;top: 3px;font-size: 14px;color: #4b4848;">Property Appraisal</span>
+                                                        <label class="bg" for="selling" style="margin: 0;margin-bottom: 5px;">
 
-                                                    </label>
+                                                            <span class="search-span" style="position: relative;top: 3px;font-size: 14px;color: #4b4848;">Selling my property</span>
 
-                                                </a>
+                                                        </label>
 
-                                                <a style="padding: 0;margin: 0px;text-align: left;color: #2a2929;">
+                                                    </a>
 
-                                                    <input name="buy_property" value="1" type="checkbox" id="buy_property" style="position: relative;top: 2px;display: block;height: 0px;">
+                                                    <a style="padding: 0;margin: 0px;text-align: left;color: #2a2929;">
 
-                                                    <label class="bg" for="buy_property" style="margin: 0;margin-bottom: 5px;">
+                                                        <input name="leasing" value="1" type="checkbox" id="leasing" style="position: relative;top: 2px;display: block;height: 0px;">
 
-                                                        <span class="search-span" style="position: relative;top: 3px;font-size: 14px;color: #4b4848;">Looking to buy a property</span>
+                                                        <label class="bg" for="leasing" style="margin: 0;margin-bottom: 5px;">
 
-                                                    </label>
+                                                            <span class="search-span" style="position: relative;top: 3px;font-size: 14px;color: #4b4848;">Leasing my property</span>
 
-                                                </a>
+                                                        </label>
 
-                                            </div>
+                                                    </a>
 
-                                        </div>
+                                                    <a style="padding: 0;margin: 0px;text-align: left;color: #2a2929;">
 
-                                        <div class="row" style="margin: 0;margin-top: 45px;">
+                                                        <input name="rent_property" value="1" type="checkbox" id="rent_property" style="position: relative;top: 2px;display: block;height: 0px;">
 
-                                            <h3 style="margin: 0px 10px;border-bottom: 1px solid #dddddd;padding-bottom: 10px;color: #3a3a3a;font-weight: 600;">Contact Details</h3>
+                                                        <label class="bg" for="rent_property" style="margin: 0;margin-bottom: 5px;">
 
-                                            <div class="col-md-6 col-sm-12 col-xs-12" style="margin-top: 25px;padding: 0px 10px;">
+                                                            <span class="search-span" style="position: relative;top: 3px;font-size: 14px;color: #4b4848;">Looking to rent a property</span>
 
-                                                <div class="form-group">
+                                                        </label>
 
-                                                    <div style="width: 100%;position: relative;">
+                                                    </a>
 
-                                                        <i class="fas fa-user" style="position: absolute;left: 15px;right: auto;color: #d5d5d5;font-size: 14px;top: 55%;margin:-9px 0 0;pointer-events:none;" aria-hidden="true"></i>
-
-                                                        <input style="padding: 0 0 0 40px;height: 42px;color:#bcbcbc;border-color:#e6e6e6;border-radius: 3px;box-shadow: none;" type="text" placeholder="First Name *" name="first_name" required="" class="form-control" id="first_name">
-
-                                                    </div>
 
                                                 </div>
 
-                                                <div class="form-group">
+                                                <div class="col-md-6 col-sm-12 col-xs-12">
 
-                                                    <div style="width: 100%;position: relative;">
+                                                    <a style="padding: 0;margin: 0px;text-align: left;color: #2a2929;">
 
-                                                        <i class="fas fa-at" style="position: absolute;left: 15px;right: auto;color: #d5d5d5;font-size: 14px;top: 55%;margin:-9px 0 0;pointer-events:none;" aria-hidden="true"></i>
+                                                        <input name="property_appraisal" value="1" type="checkbox" id="property_appraisal" style="position: relative;top: 2px;display: block;height: 0px;">
 
-                                                        <input style="padding: 0 0 0 40px;height: 42px;color:#bcbcbc;border-color:#e6e6e6;border-radius: 3px;box-shadow: none;" type="email" placeholder="Email *" name="email" required="" class="form-control" id="email">
+                                                        <label class="bg" for="property_appraisal" style="margin: 0;margin-bottom: 5px;">
 
-                                                    </div>
+                                                            <span class="search-span" style="position: relative;top: 3px;font-size: 14px;color: #4b4848;">Property Appraisal</span>
 
-                                                </div>
+                                                        </label>
 
-                                                <div class="form-group">
+                                                    </a>
 
-                                                    <div style="width: 100%;position: relative;">
+                                                    <a style="padding: 0;margin: 0px;text-align: left;color: #2a2929;">
 
-                                                        <i class="fas fa-phone-alt" style="position: absolute;left: 15px;right: auto;color: #d5d5d5;font-size: 14px;top: 55%;margin:-9px 0 0;pointer-events:none;" aria-hidden="true"></i>
+                                                        <input name="buy_property" value="1" type="checkbox" id="buy_property" style="position: relative;top: 2px;display: block;height: 0px;">
 
-                                                        <input style="padding: 0 0 0 40px;height: 42px;color:#bcbcbc;border-color:#e6e6e6;border-radius: 3px;box-shadow: none;" type="text" placeholder="Phone Number" name="phone" class="form-control" id="phone">
+                                                        <label class="bg" for="buy_property" style="margin: 0;margin-bottom: 5px;">
 
-                                                    </div>
+                                                            <span class="search-span" style="position: relative;top: 3px;font-size: 14px;color: #4b4848;">Looking to buy a property</span>
+
+                                                        </label>
+
+                                                    </a>
 
                                                 </div>
 
                                             </div>
 
-                                            <div class="col-md-6 col-sm-12 col-xs-12" style="margin-top: 25px;padding: 0px 10px;">
+                                            <div class="row" style="margin: 0;margin-top: 45px;">
 
-                                                <div class="form-group">
+                                                <h3 style="margin: 0px 10px;border-bottom: 1px solid #dddddd;padding-bottom: 10px;color: #3a3a3a;font-weight: 600;">Contact Details</h3>
 
-                                                    <div style="width: 100%;position: relative;">
+                                                <div class="row" style="margin: 0;margin-top: 25px;">
 
-                                                        <i class="fas fa-user" style="position: absolute;left: 15px;right: auto;color: #d5d5d5;font-size: 14px;top: 55%;margin:-9px 0 0;pointer-events:none;" aria-hidden="true"></i>
+                                                    <div class="col-md-6 col-sm-12 col-xs-12" style="padding: 0px 10px;">
 
-                                                        <input style="padding: 0 0 0 40px;height: 42px;color:#bcbcbc;border-color:#e6e6e6;border-radius: 3px;box-shadow: none;" type="text" placeholder="Last Name *" name="last_name" required="" class="form-control" id="last_name">
+                                                        <div class="form-group">
+
+                                                            <div style="width: 100%;position: relative;">
+
+                                                                <i class="fas fa-user" style="position: absolute;left: 15px;right: auto;color: #d5d5d5;font-size: 14px;top: 55%;margin:-9px 0 0;pointer-events:none;" aria-hidden="true"></i>
+
+                                                                <input style="padding: 0 0 0 40px;height: 42px;color:#bcbcbc;border-color:#e6e6e6;border-radius: 3px;box-shadow: none;" type="text" placeholder="First Name *" name="first_name" required="" class="form-control" id="first_name">
+
+                                                            </div>
+
+                                                        </div>
+
+                                                        <div class="form-group">
+
+                                                            <div style="width: 100%;position: relative;">
+
+                                                                <i class="fas fa-user" style="position: absolute;left: 15px;right: auto;color: #d5d5d5;font-size: 14px;top: 55%;margin:-9px 0 0;pointer-events:none;" aria-hidden="true"></i>
+
+                                                                <input style="padding: 0 0 0 40px;height: 42px;color:#bcbcbc;border-color:#e6e6e6;border-radius: 3px;box-shadow: none;" type="text" placeholder="Last Name *" name="last_name" required="" class="form-control" id="last_name">
+
+                                                            </div>
+
+                                                        </div>
+
+
+                                                        <div class="form-group">
+
+                                                            <div style="width: 100%;position: relative;">
+
+                                                                <i class="fas fa-phone-alt" style="position: absolute;left: 15px;right: auto;color: #d5d5d5;font-size: 14px;top: 55%;margin:-9px 0 0;pointer-events:none;" aria-hidden="true"></i>
+
+                                                                <input style="padding: 0 0 0 40px;height: 42px;color:#bcbcbc;border-color:#e6e6e6;border-radius: 3px;box-shadow: none;" type="text" placeholder="Phone Number" name="phone" class="form-control" id="phone">
+
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+
+                                                    <div class="col-md-6 col-sm-12 col-xs-12" style="padding: 0px 10px;">
+
+                                                        <div class="form-group">
+
+                                                            <div style="width: 100%;position: relative;">
+
+                                                                <i class="fas fa-at" style="position: absolute;left: 15px;right: auto;color: #d5d5d5;font-size: 14px;top: 55%;margin:-9px 0 0;pointer-events:none;" aria-hidden="true"></i>
+
+                                                                <input style="padding: 0 0 0 40px;height: 42px;color:#bcbcbc;border-color:#e6e6e6;border-radius: 3px;box-shadow: none;" type="email" placeholder="Email *" name="email" required="" class="form-control" id="email">
+
+                                                            </div>
+
+                                                        </div>
+
+                                                        <div class="form-group">
+
+                                                            <div style="width: 100%;position: relative;">
+
+                                                                <i class="fas fa-map-marker-alt" style="position: absolute;left: 15px;right: auto;color: #d5d5d5;font-size: 14px;top: 55%;margin:-9px 0 0;pointer-events:none;" aria-hidden="true"></i>
+
+                                                                <input style="padding: 0 0 0 40px;height: 42px;color:#bcbcbc;border-color:#e6e6e6;border-radius: 3px;box-shadow: none;" type="text" placeholder="Postcode" name="postcode" class="form-control" id="postcode">
+
+                                                            </div>
+
+                                                        </div>
 
                                                     </div>
 
                                                 </div>
 
-                                                <div class="form-group">
 
-                                                    <div style="width: 100%;position: relative;">
+                                            </div>
 
-                                                        <i class="fas fa-map-marker-alt" style="position: absolute;left: 15px;right: auto;color: #d5d5d5;font-size: 14px;top: 55%;margin:-9px 0 0;pointer-events:none;" aria-hidden="true"></i>
+                                            <div class="col-md-12 col-sm-12 col-xs-12" style="margin-top: 25px;padding: 0px 10px;">
 
-                                                        <input style="padding: 0 0 0 40px;height: 42px;color:#bcbcbc;border-color:#e6e6e6;border-radius: 3px;box-shadow: none;" type="text" placeholder="Postcode" name="postcode" class="form-control" id="postcode">
+                                                <a style="padding: 0;margin: 0px;text-align: left;color: #2a2929;">
 
-                                                    </div>
+                                                    <input name="agree" value="1" required type="checkbox" id="agree" style="position: relative;top: 2px;display: block;height: 0px;">
 
-                                                </div>
+                                                    <label class="bg" for="agree" style="margin: 0;margin-bottom: 5px;">
+
+                                                        <span class="search-span" style="position: relative;top: 3px;font-size: 14px;color: #807f7f;">I agree to my data being collected in order to provide a response to my enquiries and to receive communications about similar properties from this website and the agent.</span>
+
+                                                    </label>
+
+                                                </a>
+
+                                                <button style="margin-top: 25px;border:0;font-size: 14px;padding: 12px 20px;" type="submit" class="btn btn-success"><i class="fas fa-envelope" style="margin-right: 5px;" aria-hidden="true"></i> Send Enquiry</button>
 
                                             </div>
 
                                         </div>
 
-                                        <div class="col-md-12 col-sm-12 col-xs-12" style="margin-top: 25px;padding: 0px 10px;">
+                                    </form>
 
-                                            <a style="padding: 0;margin: 0px;text-align: left;color: #2a2929;">
-
-                                                <input name="agree" value="1" required type="checkbox" id="agree" style="position: relative;top: 2px;display: block;height: 0px;">
-
-                                                <label class="bg" for="agree" style="margin: 0;margin-bottom: 5px;">
-
-                                                    <span class="search-span" style="position: relative;top: 3px;font-size: 14px;color: #807f7f;">I agree to my data being collected in order to provide a response to my enquiries and to receive communications about similar properties from this website and the agent.</span>
-
-                                                </label>
-
-                                            </a>
-
-                                            <button style="margin-top: 25px;border:0;font-size: 14px;padding: 12px 20px;" type="button" class="btn btn-success"><i class="fas fa-envelope" style="margin-right: 5px;" aria-hidden="true"></i> Send Enquiry</button>
-
-                                        </div>
-
-                                    </div>
 
                                 </div>
                                 <!-- break -->
@@ -462,13 +487,13 @@
     </div>
     <!-- end:content -->
 
-    @if (count($errors) > 0 or Session::has('flash_message'))
+    @if (Session::has('flash_message'))
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 
 
         <script type="text/javascript">
             $(window).load(function(){
-                $('#modal-error').modal('show');
+                $('.alert-success').delay(4000).fadeOut(400)
             });
 
 
