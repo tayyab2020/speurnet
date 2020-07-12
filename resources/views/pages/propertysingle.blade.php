@@ -3436,7 +3436,7 @@
             }
 
                 travel_initMap();
-          
+
 
             function CenterControl(controlDiv, map) {
 

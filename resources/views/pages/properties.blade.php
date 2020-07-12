@@ -30,7 +30,7 @@
     <!-- begin:content -->
     <div id="content">
       <div class="container">
-          @if(Route::currentRouteName() == 'newconstructions-front')
+
         <div class="row mobile-row">
             <div class="col-md-9 col-md-push-3 main-content">
 
@@ -55,11 +55,7 @@
 
                     }
                 </style>
-
-            @else
-                <div class="row">
-                    <div class="col-md-9 col-md-push-3">
-                    @endif
+                
           <!-- begin:article -->
               <div class="properties-ordering-wrapper">
                   <div class="results-count">

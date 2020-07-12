@@ -1099,7 +1099,6 @@
             var agent_map_check = $('#agent_map_check').val();
 
                     if(agent_map_check == 1) {
-                        console.log('here');
                         agent_initMap();
                     }
 
