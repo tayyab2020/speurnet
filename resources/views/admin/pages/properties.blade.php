@@ -60,11 +60,23 @@
                    @if(Auth::user()->usertype=='Admin')
 				<td>{{ getUserInfo($property->user_id)->name }}</td>
                    @endif
-                <td><a href="{{URL::to('properties/'.$property->property_slug)}}">{{ $property->property_name }}</a>
+
+                   @if(Route::currentRouteName() == 'properties')
+
+                       <td><a href="{{URL::to('properties/'.$property->property_slug)}}">{{ $property->property_name }}</a>
+
+                       @else
+
+                       <td><a href="{{URL::to('new-constructions/'.$property->property_slug)}}">{{ $property->property_name }}</a>
+
+                       @endif
+
 
                 <form method="POST" action="{{URL::to('admin/checkboxes')}}" role="form" id="form">
 
                     <input type="hidden" name="id" value="{{$property->id}}">
+
+                    <input type="hidden" name="route" value="{{Route::currentRouteName()}}">
 
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 

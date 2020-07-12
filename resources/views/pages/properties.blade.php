@@ -55,7 +55,7 @@
 
                     }
                 </style>
-                
+
           <!-- begin:article -->
               <div class="properties-ordering-wrapper">
                   <div class="results-count">
