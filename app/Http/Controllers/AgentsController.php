@@ -156,6 +156,15 @@ class AgentsController extends Controller
                     ->subject('Enquiry request posted by ' . $parameters->first_name . " " . $parameters->last_name);
             });
 
+        Mail::send('emails.profileEnquiryCopy',
+            array(
+                'parameters' => $parameters,
+            ),  function ($message) use($parameters) {
+                $message->from(getcong('site_email'),getcong('site_name'));
+                $message->to($parameters->email)
+                    ->subject('Enquiry request posted to Agent Mr/Mrs, ' . $parameters->agent_name);
+            });
+
 
         Session::flash('flash_message', 'Your Enquiry has been submitted successfully!');
 

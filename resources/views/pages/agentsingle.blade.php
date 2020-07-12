@@ -187,17 +187,29 @@
                             <div id="myTabContent" class="tab-content">
                                 <div class="tab-pane fade in active" id="detail">
 
-                                    <h5 style="font-weight: 100;color: gray;margin-bottom: 50px;text-align: center;">{{$agent->about}}</h5>
+                                    @if($agent->about)
+
+                                        <h5 style="font-weight: 100;color: gray;margin-bottom: 50px;text-align: center;">{{$agent->about}}</h5>
+
+                                        @endif
+
+                                    @if($agent->sold_prev || $agent->rentout_prev)
 
                                     <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12" style="margin-bottom: 60px;">
                                         <h3 style="text-align: center;">Total Sold & Rentout {{$agent->prev_year}}</h3>
                                     <canvas id="myChart" width="400" height="400"></canvas>
                                     </div>
 
+                                        @endif
+
+                                        @if($agent->sold_prev_prev || $agent->rentout_prev_prev)
+
                                     <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12" style="float: right;">
                                         <h3 style="text-align: center;">Total Sold & Rentout {{$agent->prev_prev_year}}</h3>
                                         <canvas id="myChart1" width="400" height="400"></canvas>
                                     </div>
+
+                                        @endif
 
                                     <form action="{{ URL::to('/agents/send-enquiry') }}" method="POST">
 
@@ -980,62 +992,67 @@
                 this.height = this.height + 40;
             };
 
-            var ctx = document.getElementById('myChart').getContext('2d');
+            if(document.getElementById('myChart'))
+            {
+                var ctx = document.getElementById('myChart').getContext('2d');
 
-            var myDoughnutChart = new Chart(ctx, {
-                type: 'doughnut',
-                data: {
-                    labels: ["<?php echo $agent->sold_prev ?> Properties Sold","<?php echo $agent->rentout_prev ?> Properties Rentout"],
-                    datasets: [{
-                        data: [<?php echo $agent->sold_prev ?>,<?php echo $agent->rentout_prev ?>],
-                        backgroundColor: [
-                            'rgb(255,67,54)',
-                            'rgb(95,104,255)',
+                var myDoughnutChart = new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ["<?php echo $agent->sold_prev ?> Properties Sold","<?php echo $agent->rentout_prev ?> Properties Rentout"],
+                        datasets: [{
+                            data: [<?php echo $agent->sold_prev ?>,<?php echo $agent->rentout_prev ?>],
+                            backgroundColor: [
+                                'rgb(255,67,54)',
+                                'rgb(95,104,255)',
 
-                        ],
-                        borderWidth: 1,
-                    }]
-                },
-                options: {
-                    legend: {
-                        labels: {
-                            fontSize: 12,
-                            boxWidth: 20,
-                            padding: 20
-                        },
-                    }
-                },
+                            ],
+                            borderWidth: 1,
+                        }]
+                    },
+                    options: {
+                        legend: {
+                            labels: {
+                                fontSize: 12,
+                                boxWidth: 20,
+                                padding: 20
+                            },
+                        }
+                    },
 
-            });
+                });
+            }
 
-            var ctx = document.getElementById('myChart1').getContext('2d');
+            if(document.getElementById('myChart1'))
+            {
+                var ctx = document.getElementById('myChart1').getContext('2d');
 
-            var myDoughnutChart = new Chart(ctx, {
-                type: 'doughnut',
-                data: {
-                    labels: ["<?php echo $agent->sold_prev_prev ?> Properties Sold","<?php echo $agent->rentout_prev_prev ?> Properties Rentout"],
-                    datasets: [{
-                        data: [<?php echo $agent->sold_prev_prev ?>,<?php echo $agent->rentout_prev_prev ?>],
-                        backgroundColor: [
-                            'rgb(255,67,54)',
-                            'rgb(95,104,255)',
+                var myDoughnutChart = new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ["<?php echo $agent->sold_prev_prev ?> Properties Sold","<?php echo $agent->rentout_prev_prev ?> Properties Rentout"],
+                        datasets: [{
+                            data: [<?php echo $agent->sold_prev_prev ?>,<?php echo $agent->rentout_prev_prev ?>],
+                            backgroundColor: [
+                                'rgb(255,67,54)',
+                                'rgb(95,104,255)',
 
-                        ],
-                        borderWidth: 1,
-                    }]
-                },
-                options: {
-                    legend: {
-                        labels: {
-                            fontSize: 12,
-                            boxWidth: 20,
-                            padding: 20
-                        },
-                    }
-                },
+                            ],
+                            borderWidth: 1,
+                        }]
+                    },
+                    options: {
+                        legend: {
+                            labels: {
+                                fontSize: 12,
+                                boxWidth: 20,
+                                padding: 20
+                            },
+                        }
+                    },
 
-            });
-
+                });
+            }
 
 
             let pos;
@@ -1083,9 +1100,9 @@
 
             if(agent_map_check == 1)
             {
-                $(window).load(function() {
+
                     agent_initMap();
-                });
+                
             }
 
 
