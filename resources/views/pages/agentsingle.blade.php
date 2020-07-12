@@ -1100,11 +1100,12 @@
 
             if(agent_map_check == 1)
             {
+                console.log('here');
                 $(window).load(function() {
+                    console.log('here');
                     agent_initMap();
                 });
             }
-
 
 
             function agent_handleLocationError(browserHasGeolocation1, infoWindow1, type1) {
