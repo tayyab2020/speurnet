@@ -1100,7 +1100,7 @@
 
             if(agent_map_check == 1)
             {
-                console.log('here');
+                
                 $(window).load(function() {
                     console.log('here');
                     agent_initMap();
