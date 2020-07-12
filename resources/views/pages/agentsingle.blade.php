@@ -1098,14 +1098,11 @@
 
             var agent_map_check = $('#agent_map_check').val();
 
-                $(window).load(function() {
                     if(agent_map_check == 1) {
                         console.log('here');
                         agent_initMap();
                     }
-                });
-
-
+               
 
             function agent_handleLocationError(browserHasGeolocation1, infoWindow1, type1) {
 
