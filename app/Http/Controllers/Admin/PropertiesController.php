@@ -124,7 +124,6 @@ class PropertiesController extends MainAdminController
         }
 
 
-
         \Session::flash('flash_message', 'Status updated successfully!');
 
         return \Redirect::back();

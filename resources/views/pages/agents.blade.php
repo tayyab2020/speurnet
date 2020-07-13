@@ -409,7 +409,7 @@
                                         </div>
 
                                         <div class="col-sm-3" style="float: right;">
-                                            <p style="color: red">1 Property(s)</p>
+                                            <p style="color: red"><a style="text-decoration: none;color: red;" href="{{ URL::to('/similar-properties/user/'.$agent->id.'/0') }}" target="_blank">{{$agent->properties_count}} Property (s)</a></p>
                                         </div>
                                     </div>
                                     @if($agent->address)
