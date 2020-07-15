@@ -38,6 +38,8 @@
 
                     <li class="{{classActivePath('new_constructions')}}"><a href="{{ URL::to('admin/new_constructions') }}"><i class="md md-pin-drop"></i>New Constructions</a></li>
 
+                    <li class="{{classActivePath('home_exchange')}}"><a href="{{ URL::to('admin/home_exchange') }}"><i class="md md-pin-drop"></i>Home Exchange Properties</a></li>
+
 					<li class="{{classActivePath('featuredproperties')}}"><a href="{{ URL::to('admin/featuredproperties') }}"><i class="md md-star"></i>Featured</a></li>
 
                     <li class="{{classActivePath('viewings')}}"><a href="{{ URL::to('admin/viewings') }}"><i class="md md-pin-drop"></i>Requested Viewings</a></li>
@@ -52,9 +54,7 @@
 
 					<li class="{{classActivePath('testimonials')}}"><a href="{{ URL::to('admin/testimonials') }}"><i class="fa fa-list"></i>Testimonials</a></li>
 
-
 					<li class="{{classActivePath('partners')}}"><a href="{{ URL::to('admin/partners') }}"><i class="fa fa-bookmark-o"></i>Partners</a></li>
-
 
 					<li class="{{classActivePath('subscriber')}}"><a href="{{ URL::to('admin/subscriber') }}"><i class="md md-email"></i>Subscribers</a></li>
 
@@ -62,12 +62,17 @@
 
 					<li class="{{classActivePath('users')}}"><a href="{{ URL::to('admin/users') }}"><i class="fa fa-users"></i>Users</a></li>
 
-
 	                <li class="{{classActivePath('settings')}}"><a href="{{ URL::to('admin/settings') }}"><i class="md md-settings"></i>Settings</a></li>
                 @else
                		 <li class="{{classActivePath('dashboard')}}"><a href="{{ URL::to('admin/dashboard') }}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
 
                		 <li class="{{classActivePath('properties')}}"><a href="{{ URL::to('admin/properties') }}"><i class="md md-pin-drop"></i>My Properties</a></li>
+
+                    @if(Auth::user()->usertype =='Users')
+
+                     <li class="{{classActivePath('home_exchange')}}"><a href="{{ URL::to('admin/home_exchange') }}"><i class="md md-pin-drop"></i>Home Exchange Properties</a></li>
+
+                    @endif
 
                		 <li class="{{classActivePath('favourite-properties')}}"><a href="{{ URL::to('admin/favourite-properties') }}"><i class="md md-favorite"></i>Favourite Properties</a></li>
 

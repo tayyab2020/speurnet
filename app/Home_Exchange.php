@@ -3,10 +3,10 @@
 namespace App;
 
 use App\Enquire;
-use Illuminate\Database\Eloquent\Model;
 use App\request_viewings;
+use Illuminate\Database\Eloquent\Model;
 
-class Properties extends Model
+class Home_Exchange extends Model
 {
     protected $table = 'properties';
 
@@ -20,10 +20,10 @@ class Properties extends Model
 
     public function newQuery($excludeDeleted = true) {
         return parent::newQuery($excludeDeleted)
-            ->where('new_construction', '=', 0)->where('home_exchange', '=', 0);
+            ->where('new_construction', '=', 0)->where('home_exchange', '=', 1);
     }
 
-    public function scopeSearchByKeyword($query,$type,$purpose,$price,$min_price,$max_price,$min_area,$max_area,$bathrooms,$bedrooms,$type_of_construction,$keywords)
+    public function scopeSearchByKeyword($query,$type,$purpose,$price,$min_price,$max_price,$min_area,$max_area,$bathrooms,$bedrooms,$kind_of_type,$keywords)
     {
 
         $query = $query->where("property_purpose", "$purpose");
@@ -60,9 +60,9 @@ class Properties extends Model
         {
             $query->where("bedrooms", "$bedrooms");
         }
-        if($type_of_construction)
+        if($kind_of_type)
         {
-            $query->where("construction_type", "$type_of_construction");
+            $query->where("kind_of_type", "$kind_of_type");
         }
         if($keywords)
         {
@@ -74,6 +74,7 @@ class Properties extends Model
             });
 
         }
+
 
 
         return $query;

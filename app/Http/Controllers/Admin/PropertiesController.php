@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Home_Exchange;
 use App\New_Constructions;
 use Auth;
 use App\User;
@@ -118,9 +119,13 @@ class PropertiesController extends MainAdminController
         {
             $property = Properties::where('id',$request->id)->update(["is_sold"=>$sold,"is_rented"=>$rented,"available_immediately"=>$available,"is_negotiation"=>$negotiation,"is_under_offer"=>$under_offer]);
         }
-        else
+        elseif($request->route == 'new_constructions')
         {
             $property = New_Constructions::where('id',$request->id)->update(["is_sold"=>$sold,"is_rented"=>$rented,"available_immediately"=>$available,"is_negotiation"=>$negotiation,"is_under_offer"=>$under_offer]);
+        }
+        else
+        {
+            $property = Home_Exchange::where('id',$request->id)->update(["is_sold"=>$sold,"is_rented"=>$rented,"available_immediately"=>$available,"is_negotiation"=>$negotiation,"is_under_offer"=>$under_offer]);
         }
 
 
@@ -164,6 +169,22 @@ class PropertiesController extends MainAdminController
         }
 
         return view('admin.pages.properties',compact('propertieslist'));
+    }
+
+    public function homeexchangelist()
+    {
+
+        if(Auth::user()->usertype=='Admin' || Auth::user()->usertype=='Users')
+        {
+            $propertieslist = Home_Exchange::orderBy('id','desc')->withCount(['enquiries'])->withCount(['viewings'])->get();
+
+            return view('admin.pages.properties',compact('propertieslist'));
+        }
+        else
+        {
+            return redirect('/');
+        }
+
     }
 
     public function favouriteProperties()
@@ -246,7 +267,28 @@ class PropertiesController extends MainAdminController
     public function addeditnewconstruction()
     {
 
-        if(Auth::user()->usertype=='Admin' || Auth::user()->usertype=='Agents')
+        if(Auth::user()->usertype=='Admin')
+        {
+            $types = Types::orderBy('types')->get();
+
+            $city_list = City::where('status','1')->orderBy('city_name')->get();
+
+            $property_features = property_features::all();
+
+            return view('admin.pages.addeditproperty',compact('city_list','types','property_features'));
+        }
+        else
+        {
+            return redirect('/');
+        }
+
+
+    }
+
+    public function addedithomeexchange()
+    {
+
+        if(Auth::user()->usertype=='Users')
         {
             $types = Types::orderBy('types')->get();
 
@@ -275,6 +317,7 @@ class PropertiesController extends MainAdminController
 
         $rule=array(
             'property_name' => 'required',
+            'property_slug' => 'required|unique:properties',
             'description' => 'required',
             'featured_image' => 'mimes:jpg,jpeg,gif,png|max:5000',
             'property_images1' => 'mimes:jpg,jpeg,gif,png|max:3000',
@@ -292,6 +335,8 @@ class PropertiesController extends MainAdminController
 
         $messages = [
             'property_name.required' => 'Property Name is required.',
+            'property_slug.required' => 'Property Slug is required.',
+            'property_slug.unique' => 'Property Slug is already been taken.',
             'description.required' => 'Description is required.',
             'featured_image.mimes' => 'Featured Image must be a file of type: jpg, jpeg, gif, png.',
             'featured_image.max' => 'Featured Image may not be greater than 5mb.',

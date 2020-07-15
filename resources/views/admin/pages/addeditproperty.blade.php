@@ -2,11 +2,15 @@
 
 @if(Route::currentRouteName() == 'addproperty')
 
-@section('head_title', 'Add New Property | '.getcong('site_name') )
+    @section('head_title', 'Add New Property | '.getcong('site_name') )
+
+@elseif(Route::currentRouteName() == 'addnewconstruction')
+
+    @section('head_title', 'Add New Construction | '.getcong('site_name') )
 
 @else
 
-@section('head_title', 'Add New Construction | '.getcong('site_name') )
+    @section('head_title', 'Add Home Exchange | '.getcong('site_name') )
 
 @endif
 
@@ -26,11 +30,7 @@
             <div class="row">
                 <div class="col-md-10 col-md-offset-1 col-sm-12">
                     <div class="page-title">
-                        @if(Route::currentRouteName() == 'addproperty')
-                        <h2>Add New Property</h2>
-                            @else
-                            <h2>Add New Construction</h2>
-                        @endif
+                        <h2>Add Your Property</h2>
                     </div>
                     <ol class="breadcrumb">
                         <li><a href="{{ URL::to('/') }}">Home</a></li>
@@ -102,7 +102,7 @@
 
                         </style>
 
-                        @else
+                        @elseif(Route::currentRouteName() == 'addproperty')
 
                         <li role="presentation" class="active">
                             <a class="persistant-disabled" data-content="stepper-step-1"  data-toggle="tab" aria-controls="stepper-step-1" role="tab" title="Step 1">
@@ -125,6 +125,54 @@
                             </a>
                         </li>
 
+                        @else
+
+                        <li role="presentation" class="active">
+                            <a class="persistant-disabled" data-content="stepper-step-2"  data-toggle="tab" aria-controls="stepper-step-2" role="tab" title="Step 1">
+                                <span class="round-tab">1</span>
+                            </a>
+                        </li>
+                        <li role="presentation" class="disabled">
+                            <a class="persistant-disabled" data-content="stepper-step-3"  data-toggle="tab" aria-controls="stepper-step-3" role="tab" title="Step 2">
+                                <span class="round-tab">2</span>
+                            </a>
+                        </li>
+                        <li role="presentation" class="disabled">
+                            <a class="persistant-disabled" data-content="stepper-step-4"  data-toggle="tab" aria-controls="stepper-step-4" role="tab" title="Step 3">
+                                <span class="round-tab">3</span>
+                            </a>
+                        </li>
+
+                        <li role="presentation" class="disabled">
+                            <a class="persistant-disabled" data-content="stepper-step-5"  data-toggle="tab" aria-controls="stepper-step-5" role="tab" title="Step 4">
+                                <span class="round-tab">4</span>
+                            </a>
+                        </li>
+                        <li role="presentation" class="disabled">
+                            <a class="persistant-disabled" data-content="stepper-step-6"  data-toggle="tab" aria-controls="stepper-step-6" role="tab" title="Step 5">
+                                <span class="round-tab">5</span>
+                            </a>
+                        </li>
+                        <li role="presentation" class="disabled">
+                            <a class="persistant-disabled" data-content="stepper-step-7"  data-toggle="tab" aria-controls="stepper-step-7" role="tab" title="Step 6">
+                                <span class="round-tab">6</span>
+                            </a>
+                        </li>
+
+                        <style>
+
+                            .stepper .nav-tabs > li
+                            {
+                                width: 16% !important;
+                            }
+
+                            .stepper .nav-tabs > li:nth-child(6)::after
+                            {
+                                background: transparent;
+                            }
+
+                        </style>
+
                     @endif
 
 
@@ -136,9 +184,13 @@
 
                     <input type="hidden" name="route" value="property">
 
-                @else
+                @elseif(Route::currentRouteName() == 'addnewconstruction')
 
                     <input type="hidden" name="route" value="construction">
+
+                    @else
+
+                    <input type="hidden" name="route" value="home_exchange">
 
                 @endif
 
@@ -146,7 +198,7 @@
 
                     <div class="tab-content">
 
-                        <div @if(Route::currentRouteName() == 'addnewconstruction') class="tab-pane fade" @else class="tab-pane fade in active" @endif role="tabpanel" id="stepper-step-1">
+                        <div @if(Route::currentRouteName() == 'addnewconstruction' || Route::currentRouteName() == 'addhomeexchange') class="tab-pane fade" @else class="tab-pane fade in active" @endif role="tabpanel" id="stepper-step-1">
 
                             <div class="form-group" style="width: 90%;margin: auto;text-align: left;">
 
@@ -156,7 +208,6 @@
                                 <ul class="property-radios" style="padding: 0;margin-top: 40px;display: inline-block;width: 100%;">
 
                                 @if(isset($property->property_purpose))
-
 
 
                                         <li @if($property->property_purpose=='Sale') class="active1 pp col-md-3 col-sm-4 col-xs-12" @else class="pp col-md-3 col-sm-4 col-xs-12" @endif >
@@ -194,9 +245,7 @@
                                         </li>
 
 
-
                                 @else
-
 
                                         <li @if(old('property_purpose') == 'Sale') class="active1 pp col-md-3 col-sm-4 col-xs-12" @elseif(old('property_purpose') == '') class="active1 pp col-md-3 col-sm-4 col-xs-12" @else class="pp col-md-3 col-sm-4 col-xs-12"  @endif >
 
@@ -232,16 +281,12 @@
                                             </div>
                                         </li>
 
-
                                 @endif
 
                                 </ul>
 
 
-
                             </div>
-
-
 
                             <ul class="list-inline pull-right">
 
@@ -253,7 +298,7 @@
                         </div>
 
 
-                        <div @if(Route::currentRouteName() == 'addnewconstruction') class="tab-pane fade in active" @else class="tab-pane fade" @endif role="tabpanel" id="stepper-step-2">
+                        <div @if(Route::currentRouteName() == 'addnewconstruction' || Route::currentRouteName() == 'addhomeexchange') class="tab-pane fade in active" @else class="tab-pane fade" @endif role="tabpanel" id="stepper-step-2">
 
 
                             <div class="form-group main-div" style="width: 90%;margin: auto;">
@@ -262,9 +307,13 @@
 
                                     <h2>Step 1: What type of property are you marketing?</h2>
 
-                                    @else
+                                    @elseif(Route::currentRouteName() == 'addproperty')
 
                                     <h2>Step 2: What type of property are you marketing?</h2>
+
+                                    @else
+
+                                    <h2>Step 1: What kind of home do you have?</h2>
 
                                     @endif
 
@@ -346,6 +395,8 @@
 
                                 </ul>
 
+                                    @if(Route::currentRouteName() != 'addhomeexchange')
+
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="border:1px solid #e6e6e6;padding: 20px;margin: 25px 0px;">
 
                                     <h3>House Features</h3>
@@ -385,8 +436,6 @@
                                                 <option value="New" @if(old('construction_type') == 'New') selected @endif>New</option>
                                                 <option value="Old" @if(old('construction_type') == 'Old') selected @endif>Old</option>
                                             </select>
-
-
 
                                         </div>
 
@@ -518,7 +567,7 @@
 
                                 </div>
 
-
+                                    @endif
 
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;">
 
@@ -617,7 +666,25 @@
 
                                     </div>
 
+                                    @if(Route::currentRouteName() == 'addhomeexchange')
+
+                                        <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 right-div" style="display: inline-block;float: right;">
+
+                                            <label class="left-label" style="float: left;">Owner</label>
+
+                                            <div class="right-content" style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto;">
+
+                                                <input type="text"  @if(old('owner') != '') value="{{old('owner')}}" @else value="{{ isset($property->owner) ? $property->owner : null }}" @endif name="owner" placeholder="Owner" class="quantity-field stepper-step-2-validate" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+
+                                            </div>
+
+                                        </div>
+
+                                        @endif
+
                                 </div>
+
+                                    @if(Route::currentRouteName() != 'addhomeexchange')
 
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="border:1px solid #e6e6e6;padding: 20px;margin: 25px 0px;">
 
@@ -698,7 +765,6 @@
 
 
                                 </div>
-
 
 
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="border:1px solid #e6e6e6;padding: 20px;margin: 25px 0px;">
@@ -1015,6 +1081,8 @@
 
                                 </div>
 
+                                    @endif
+
 
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;margin-top: 20px;">
 
@@ -1120,7 +1188,7 @@
 
                             <ul class="list-inline pull-right">
 
-                                @if(Route::currentRouteName() != 'addnewconstruction')
+                                @if(Route::currentRouteName() == 'addproperty')
                                 <li>
                                     <a class="btn btn-default prev-step">Back</a>
                                 </li>
@@ -1137,7 +1205,7 @@
 
                             <div class="form-group main-div" style="width: 90%;margin: auto;">
 
-                                @if(Route::currentRouteName() == 'addnewconstruction')
+                                @if(Route::currentRouteName() == 'addnewconstruction' || Route::currentRouteName() == 'addhomeexchange')
 
                                     <h2>Step 2: Property Description & Price</h2>
 
@@ -1168,8 +1236,6 @@
                                 </div>
 
 
-
-
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;">
 
                                     <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
@@ -1180,7 +1246,7 @@
                                         <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
 
 
-                                            <input type="text" placeholder="Property Slug" name="property_slug" @if(old('property_slug')) value="{{old('property_slug')}}" @else value="{{ isset($property->property_slug) ? $property->property_slug : null }}" @endif style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control"  >
+                                            <input type="text" placeholder="Property Slug" name="property_slug" @if(old('property_slug')) value="{{old('property_slug')}}" @else value="{{ isset($property->property_slug) ? $property->property_slug : null }}" @endif style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control stepper-step-3-validate"  >
 
 
                                         </div>
@@ -1188,6 +1254,8 @@
                                     </div>
 
                                 </div>
+
+                                    @if(Route::currentRouteName() != 'addhomeexchange')
 
                                 @if(old('property_purpose') == 'Sale')
 
@@ -1314,7 +1382,42 @@
 
                                     @endif
 
+                                    @else
 
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;">
+
+                                            <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
+
+
+                                                <label class="left-label" style="float: left;">Rent Per Month €</label>
+
+                                                <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
+
+                                                    <input type="number" id="rent_per_month" name="rent_per_month" @if(old('rent_per_month')) value="{{old('rent_per_month')}}" @else value="{{ isset($property->rent_per_month) ? $property->rent_per_month : null }}" @endif placeholder="500" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control stepper-step-3-validate">
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;">
+
+                                            <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
+
+                                                <label class="left-label" style="float: left;">Any Service Costs €</label>
+
+                                                <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
+
+                                                    <input type="number" id="service_costs" name="service_costs" @if(old('service_costs')) value="{{old('service_costs')}}" @else value="{{ isset($property->service_costs) ? $property->service_costs : null }}" @endif placeholder="500" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control">
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                        @endif
 
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;">
 
@@ -1358,7 +1461,6 @@
                             </div>
 
 
-
                             <ul class="list-inline pull-right">
                                 <li>
                                     <a class="btn btn-default prev-step">Back</a>
@@ -1374,7 +1476,7 @@
 
                             <div class="form-group main-div" style="width: 90%;margin: auto;">
 
-                                @if(Route::currentRouteName() == 'addnewconstruction')
+                                @if(Route::currentRouteName() == 'addnewconstruction' || Route::currentRouteName() == 'addhomeexchange')
 
                                     <h2>Step 3: Address/Location & Photos</h2>
 
@@ -1916,13 +2018,268 @@
                                 <li>
                                     <a class="btn btn-default prev-step">Back</a>
                                 </li>
+
+                                @if(Route::currentRouteName() != 'addhomeexchange')
                                 <li>
                                     <button type="button" data-id="stepper-step-4" class="btn btn-primary submit-form">{{ isset($property->property_name) ? 'Edit Property' : 'Add Property' }}</button>
                                 </li>
+                                    @else
+
+                                    <li>
+                                        <a class="btn btn-primary next-step" data-id="stepper-step-4">Next</a>
+                                    </li>
+
+                                @endif
                             </ul>
 
                         </div>
 
+                        <div class="tab-pane fade" role="tabpanel" id="stepper-step-5">
+
+                            <div class="form-group main-div" style="width: 90%;margin: auto;">
+
+                                    <h2>Step 4: What kind of home are you looking for?</h2>
+
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;margin-top: 40px;">
+
+                                    <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
+
+                                        <label class="left-label" style="float: left;">I'm looking for</label>
+
+                                        <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
+
+                                            <select style="border: 0;" class="form-control" name="preferred_kind">
+
+                                                @foreach($types as $type)
+
+                                                    <option @if(old('preferred_kind') == $type->id) selected @endif value="{{$type->id}}">{{$type->types}}</option>
+
+                                                    @endforeach
+
+                                            </select>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 right-div" style="display: inline-block;float: right;">
+
+                                        <label class="right-label" style="float: left;">SQFT <small>(m2)</small></label>
+
+                                        <div class="right-content" style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto;">
+
+                                            <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-crop-alt"></i></div>
+
+                                            <input type="number" step="1" max="" name="preferred_area" @if(old('preferred_area') != '') value="{{old('preferred_area')}}" @else value="{{ isset($property->preferred_area) ? $property->preferred_area : null }}" @endif placeholder="800m2" class="quantity-field stepper-step-5-validate" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+                                            <input type="button" value="+" class="button-plus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d7d7d7;margin-top: -0.1px;">
+                                            <input type="button" value="-" class="button-minus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;margin-top: -0.1px;">
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;">
+
+                                    <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
+
+                                        <label class="left-label" style="float: left;">BEDROOMS</label>
+
+                                        <div  style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;border-right: 0;margin: auto">
+
+                                            <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-bed"></i></div>
+
+                                            <input type="number" step="1" max="" name="preferred_bedrooms" @if(old('preferred_bedrooms') != '') value="{{old('preferred_bedrooms')}}" @else value="{{ isset($property->preferred_bedrooms) ? $property->preferred_bedrooms : 1 }}" @endif class="quantity-field stepper-step-5-validate" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+                                            <input type="button" value="+" class="button-plus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d7d7d7;margin-top: -0.1px;">
+                                            <input type="button" value="-" class="button-minus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;margin-top: -0.1px;">
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 right-div" style="display: inline-block;float: right">
+
+                                        <label class="right-label" style="float: left;">BATHROOMS</label>
+
+                                        <div class="right-content" style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;border-right: 0;margin: auto;">
+
+                                            <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-restroom"></i></div>
+
+                                            <input type="number" step="1" max="" name="preferred_bathrooms" @if(old('preferred_bathrooms') != '') value="{{old('preferred_bathrooms')}}"  @else value="{{ isset($property->preferred_bathrooms) ? $property->preferred_bathrooms : 1 }}" @endif class="quantity-field stepper-step-5-validate" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+                                            <input type="button" value="+" class="button-plus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d7d7d7;margin-top: -0.1px;">
+                                            <input type="button" value="-" class="button-minus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;margin-top: -0.1px;">
+
+                                        </div>
+
+                                    </div>
+
+
+                                </div>
+
+
+                            </div>
+
+                            <hr>
+
+
+                            <ul class="list-inline pull-right">
+                                <li>
+                                    <a class="btn btn-default prev-step">Back</a>
+                                </li>
+
+                                    <li>
+                                        <a class="btn btn-primary next-step" data-id="stepper-step-5">Next</a>
+                                    </li>
+
+                            </ul>
+
+                        </div>
+
+                        <div class="tab-pane fade" role="tabpanel" id="stepper-step-6">
+
+                            <div class="form-group main-div" style="width: 90%;margin: auto;">
+
+                                <h2>Step 5: Preferred Location</h2>
+
+                                <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12" style="padding: 0;margin-top: 40px;">
+
+                                    <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
+
+                                        <label class="left-label" style="float: left;">Preferred Place of Residence</label>
+
+                                        <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
+
+                                            <input type="text" id="looking-input" placeholder="Preferred Place of Residence" name="preferred_place" @if(old('preferred_place')) value="{{old('preferred_place')}}" @else value="{{ isset($property->preferred_place) ? $property->preferred_place : null }}" @endif style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control looking-input stepper-step-6-validate">
+                                            <input type="hidden" name="preferred_latitude" id="looking-latitude" @if(old('preferred_latitude')) value="{{old('preferred_latitude')}}" @else value="52.3666969" @endif />
+                                            <input type="hidden" name="preferred_longitude" id="looking-longitude" @if(old('preferred_longitude')) value="{{old('preferred_longitude')}}" @else value="4.8945398" @endif  />
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12" style="padding: 0;margin-top: 40px;float: right;">
+
+                                    <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
+
+                                        <label class="left-label" style="float: left;">Radius</label>
+
+                                        <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
+
+                                            <select style="border: 0;" class="form-control" name="preferred_radius">
+                                                <option @if(old('preferred_radius') == 0) selected @endif value="0">0 KM</option>
+                                                <option @if(old('preferred_radius') == 1) selected @endif value="1">1 KM</option>
+                                                <option @if(old('preferred_radius') == 2) selected @endif value="2">2 KM</option>
+                                                <option @if(old('preferred_radius') == 5) selected @endif value="5">5 KM</option>
+                                                <option @if(old('preferred_radius') == 10) selected @endif value="10">10 KM</option>
+                                                <option @if(old('preferred_radius') == 15) selected @endif value="15">15 KM</option>
+                                                <option @if(old('preferred_radius') == 30) selected @endif value="30">30 KM</option>
+                                                <option @if(old('preferred_radius') == 50) selected @endif value="50">50 KM</option>
+                                                <option @if(old('preferred_radius') == 100) selected @endif value="100">100 KM</option>
+                                            </select>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;margin-top: 20px;">
+
+                                    <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
+
+                                        <label class="left-label" style="float: left;">Neighbourhood</label>
+
+                                        <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
+
+                                            <input type="text" placeholder="Neighbourhood" name="neighbourhood" @if(old('neighbourhood')) value="{{old('neighbourhood')}}" @else value="{{ isset($property->neighbourhood) ? $property->neighbourhood : null }}" @endif style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control">
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <hr>
+
+
+                            <ul class="list-inline pull-right">
+                                <li>
+                                    <a class="btn btn-default prev-step">Back</a>
+                                </li>
+
+                                <li>
+                                    <a class="btn btn-primary next-step" data-id="stepper-step-6">Next</a>
+                                </li>
+
+                            </ul>
+
+                        </div>
+
+                        <div class="tab-pane fade" role="tabpanel" id="stepper-step-7">
+
+                            <div class="form-group main-div" style="width: 90%;margin: auto;">
+
+                                <h2>Step 6: Price & Details</h2>
+
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;margin-top: 40px;">
+
+                                    <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
+
+
+                                        <label class="left-label" style="float: left;">Maximum Rent Per Month €</label>
+
+                                        <div  style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;border-right: 0;margin: auto">
+
+                                            <input type="number" step="1" max="" placeholder="Preferred Maximum Rent per month €" name="preferred_rent_max" @if(old('preferred_rent_max') != '') value="{{old('preferred_rent_max')}}" @else value="{{ isset($property->preferred_rent_max) ? $property->preferred_rent_max : null }}" @endif class="quantity-field stepper-step-7-validate" style="border: 0;margin: 0;float: left;width: 70%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+                                            <input type="button" value="+" class="button-plus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d7d7d7;margin-top: 0px;">
+                                            <input type="button" value="-" class="button-minus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;margin-top: 0px;">
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;">
+
+                                    <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
+
+                                        <label class="left-label" style="float: left;">Description</label>
+
+                                        <div style="width: 100%;display: inline-block;margin: auto">
+
+                                            <textarea name="preferred_description" rows="10" class="form-control summernote">@if(old('preferred_description')) {{old('preferred_description')}} @else {{ isset($property->preferred_description) ? $property->preferred_description : null }} @endif</textarea>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <hr>
+
+
+                            <ul class="list-inline pull-right">
+                                <li>
+                                    <a class="btn btn-default prev-step">Back</a>
+                                </li>
+
+                                <li>
+                                    <button type="button" data-id="stepper-step-7" class="btn btn-primary submit-form">{{ isset($property->property_name) ? 'Edit Property' : 'Add Property' }}</button>
+                                </li>
+
+                            </ul>
+
+                        </div>
 
 
                     </div>
@@ -2340,6 +2697,88 @@
         $(document).ready(function() {
 
 
+            $('.looking-input').on('keyup keypress', function(e) {
+
+                var keyCode = e.keyCode || e.which;
+
+                if (keyCode === 13) {
+                    e.preventDefault();
+                    return false;
+                }
+
+                const locationInputs = $(this);
+
+                var options = {
+
+                    componentRestrictions: {country: "nl"}
+
+                };
+
+                const autocompletes = [];
+                const geocoder = new google.maps.Geocoder;
+
+                for (let i = 0; i < locationInputs.length; i++) {
+
+                    const input = locationInputs[i];
+                    const fieldKey = input.id.replace("-input", "");
+
+                    const autocomplete = new google.maps.places.Autocomplete(input,options);
+                    autocomplete.key = fieldKey;
+                    autocompletes.push({input: input, autocomplete: autocomplete});
+                }
+
+                for (let i = 0; i < autocompletes.length; i++) {
+
+                    const input = autocompletes[i].input;
+                    const autocomplete = autocompletes[i].autocomplete;
+
+
+                    google.maps.event.addListener(autocomplete, 'place_changed', function () {
+
+                        const place = autocomplete.getPlace();
+
+                        geocoder.geocode({'placeId': place.place_id}, function (results, status) {
+
+
+
+                            if (status === google.maps.GeocoderStatus.OK) {
+
+                                if (results[0]) {
+
+                                    const lat = results[0].geometry.location.lat();
+                                    const lng = results[0].geometry.location.lng();
+
+
+                                    $(input).parent().children('#looking-latitude').val(lat);
+                                    $(input).parent().children('#looking-longitude').val(lng);
+
+                                    var value = $(input).val();
+
+                                }
+                                else
+                                {
+
+                                    alert("No results found!");
+
+                                }
+
+                            }
+
+                        });
+
+                        if (!place.geometry) {
+                            window.alert("No details available for input: '" + place.name + "'");
+                            input.value = "";
+                            return;
+                        }
+
+
+
+                    });
+                }
+
+
+            });
 
             $(".remove-btn").on('click', function() {
 

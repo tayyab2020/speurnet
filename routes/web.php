@@ -54,11 +54,13 @@ Route::group(['middleware' => 'App\Http\Middleware\UserTypeMiddleware'], functio
 
         Route::get('properties', 'PropertiesController@propertieslist')->name('properties');
         Route::get('new_constructions', 'PropertiesController@newconstructionslist')->name('new_constructions');
+        Route::get('home_exchange', 'PropertiesController@homeexchangelist')->name('home_exchange_list');
         Route::post('checkboxes', 'PropertiesController@Checkboxes');
         Route::get('properties/addproperty', 'PropertiesController@addeditproperty')->name('addproperty');
         Route::post('properties/addproperty', 'PropertiesController@addnew');
         Route::get('properties/addproperty/{id}', 'PropertiesController@editproperty');
         Route::get('properties/addnewconstruction', 'PropertiesController@addeditnewconstruction')->name('addnewconstruction');
+        Route::get('properties/addhomeexchange', 'PropertiesController@addedithomeexchange')->name('addhomeexchange');
         Route::get('properties/status/{id}', 'PropertiesController@status');
 
         Route::post('save-property', 'PropertiesController@saveProperty');

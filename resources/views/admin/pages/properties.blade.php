@@ -7,12 +7,16 @@
 		<div class="pull-right">
             @if(Route::currentRouteName() == 'properties')
 			<a href="{{URL::to('admin/properties/addproperty')}}" class="btn btn-primary">Add Property <i class="fa fa-plus" style="margin-left: 8px;"></i></a>
-            @else
-                <a href="{{URL::to('admin/properties/addnewconstruction')}}" class="btn btn-primary">Add New Construction <i class="fa fa-plus" style="margin-left: 8px;"></i></a>
+            @elseif(Route::currentRouteName() == 'new_constructions')
+                <a href="{{URL::to('admin/properties/addnewconstruction')}}" class="btn btn-primary">Add Property<i class="fa fa-plus" style="margin-left: 8px;"></i></a>
+                @else
+                @if(Auth::user()->usertype =='Users')
+                <a href="{{URL::to('admin/properties/addhomeexchange')}}" class="btn btn-primary">Add Property <i class="fa fa-plus" style="margin-left: 8px;"></i></a>
             @endif
+                @endif
         </div>
 
-        <h2>@if(Route::currentRouteName() == 'properties') Properties @else New Constructions @endif</h2>
+        <h2>@if(Route::currentRouteName() == 'properties') Properties @elseif(Route::currentRouteName() == 'new_constructions') New Construction Properties @else Home Exchange Properties @endif</h2>
 
     </div>
 
@@ -65,9 +69,13 @@
 
                        <td><a href="{{URL::to('properties/'.$property->property_slug)}}">{{ $property->property_name }}</a>
 
-                       @else
+                   @elseif(Route::currentRouteName() == 'new_constructions')
 
                        <td><a href="{{URL::to('new-constructions/'.$property->property_slug)}}">{{ $property->property_name }}</a>
+
+                           @else
+
+                       <td><a href="{{URL::to('home-exchange/'.$property->property_slug)}}">{{ $property->property_name }}</a>
 
                        @endif
 
