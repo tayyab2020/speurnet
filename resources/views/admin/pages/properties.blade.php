@@ -5,14 +5,27 @@
 	<div class="page-header">
 
 		<div class="pull-right">
+
             @if(Route::currentRouteName() == 'properties')
-			<a href="{{URL::to('admin/properties/addproperty')}}" class="btn btn-primary">Add Property <i class="fa fa-plus" style="margin-left: 8px;"></i></a>
+
+                @if(Auth::user()->usertype !='Users')
+
+                <a href="{{URL::to('admin/properties/addproperty')}}" class="btn btn-primary">Add Property <i class="fa fa-plus" style="margin-left: 8px;"></i></a>
+
+                    @endif
+
+
             @elseif(Route::currentRouteName() == 'new_constructions')
+
                 <a href="{{URL::to('admin/properties/addnewconstruction')}}" class="btn btn-primary">Add Property<i class="fa fa-plus" style="margin-left: 8px;"></i></a>
-                @else
+
+            @else
+
+
                 @if(Auth::user()->usertype =='Users')
                 <a href="{{URL::to('admin/properties/addhomeexchange')}}" class="btn btn-primary">Add Property <i class="fa fa-plus" style="margin-left: 8px;"></i></a>
             @endif
+
                 @endif
         </div>
 

@@ -90,7 +90,6 @@ Route::group(['middleware' => 'App\Http\Middleware\UserTypeMiddleware'], functio
         Route::get('cities/status/{id}', 'CityController@status');
 
 
-
         Route::get('subscriber', 'SubscriberController@subscriberlist');
         Route::get('subscriber/delete/{id}', 'SubscriberController@delete');
 
