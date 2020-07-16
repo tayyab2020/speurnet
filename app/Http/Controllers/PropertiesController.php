@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\City;
+use App\Home_Exchange;
 use App\New_Constructions;
 use App\User;
 use App\Properties;
@@ -426,6 +427,61 @@ class PropertiesController extends Controller
     	$type=$slug;
 
         return view('pages.propertiesbytype',compact('properties','type'));
+    }
+
+    public function addeditproperty()
+    {
+        if(Auth::user())
+        {
+            if(Auth::user()->usertype=='Agents')
+            {
+                $types = Types::orderBy('types')->get();
+
+                $city_list = City::where('status','1')->orderBy('city_name')->get();
+
+                $property_features = property_features::all();
+
+                return view('admin.pages.addeditproperty',compact('city_list','types','property_features'));
+            }
+            else
+            {
+                return redirect('/');
+            }
+        }
+        else
+        {
+            return redirect('login');
+        }
+
+
+    }
+
+    public function addedithomeexchange()
+    {
+
+        if(Auth::user())
+        {
+            if(Auth::user()->usertype=='Users')
+            {
+                $types = Types::orderBy('types')->get();
+
+                $city_list = City::where('status','1')->orderBy('city_name')->get();
+
+                $property_features = property_features::all();
+
+                return view('admin.pages.addeditproperty',compact('city_list','types','property_features'));
+            }
+            else
+            {
+                return redirect('/');
+            }
+        }
+        else
+        {
+            return redirect('login');
+        }
+
+
     }
 
     public function propertysingle($slug)

@@ -8,9 +8,13 @@
 
             @if(Route::currentRouteName() == 'properties')
 
-                @if(Auth::user()->usertype !='Users')
+                @if(Auth::user()->usertype =='Admin')
 
                 <a href="{{URL::to('admin/properties/addproperty')}}" class="btn btn-primary">Add Property <i class="fa fa-plus" style="margin-left: 8px;"></i></a>
+
+                    @elseif(Auth::user()->usertype =='Agents')
+
+                    <a href="{{URL::to('addproperty')}}" class="btn btn-primary">Add Property <i class="fa fa-plus" style="margin-left: 8px;"></i></a>
 
                     @endif
 

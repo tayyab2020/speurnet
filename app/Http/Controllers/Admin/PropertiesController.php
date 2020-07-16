@@ -246,7 +246,7 @@ class PropertiesController extends MainAdminController
 	 public function addeditproperty()
 	 {
 
-         if(Auth::user()->usertype=='Admin' || Auth::user()->usertype=='Agents')
+         if(Auth::user()->usertype=='Admin')
          {
              $types = Types::orderBy('types')->get();
 
@@ -764,17 +764,27 @@ class PropertiesController extends MainAdminController
             $features = '';
         }
 
-
-        if($request->property_purpose == "Sale" || $request->kind_of_type == "For Sale")
+        if($request->route != 'home_exchange')
         {
-            $rent_price = 0;
-            $sale_price = $request->sale_price;
+            if($request->property_purpose == "Sale" || $request->kind_of_type == "For Sale")
+            {
+                $rent_price = 0;
+                $sale_price = $request->sale_price;
+            }
+            else
+            {
+                $sale_price = 0;
+                $rent_price = $request->rent_price;
+            }
         }
         else
         {
             $sale_price = 0;
-            $rent_price = $request->rent_price;
+            $rent_price = 0;
+            $request->available_immediately = 0;
+            $request->garage = 0;
         }
+
 
 
 		if($request->wheelchair)
@@ -844,7 +854,7 @@ class PropertiesController extends MainAdminController
             $property->building_condition = $request->building_condition;
 
         }
-        else
+        elseif($request->route == 'construction')
         {
             $property->new_construction = 1;
             $property->kind_of_type = $request->kind_of_type;
@@ -858,6 +868,25 @@ class PropertiesController extends MainAdminController
             }
 
             $property->citation = $request->citation;
+
+        }
+        else
+        {
+            $property->home_exchange = 1;
+            $property->owner = $request->owner;
+            $property->rent_per_month = $request->rent_per_month;
+            $property->service_costs = $request->service_costs;
+            $property->preferred_kind = $request->preferred_kind;
+            $property->preferred_area = $request->preferred_area;
+            $property->preferred_bedrooms = $request->preferred_bedrooms;
+            $property->preferred_bathrooms = $request->preferred_bathrooms;
+            $property->preferred_place = $request->preferred_place;
+            $property->preferred_latitude = $request->preferred_latitude;
+            $property->preferred_longitude = $request->preferred_longitude;
+            $property->preferred_radius = $request->preferred_radius;
+            $property->neighbourhood = $request->neighbourhood;
+            $property->preferred_rent_max = $request->preferred_rent_max;
+            $property->preferred_description = $request->preferred_description;
 
         }
 

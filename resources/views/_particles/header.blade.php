@@ -27,7 +27,7 @@
             <li class="{{classActivePathPublic('rent')}}"><a href="{{ URL::to('rent/') }}">Rent</a></li>--}}
             <li class="{{classActivePathPublic('agents')}}"><a href="{{ URL::to('agents/') }}">Agents</a></li>
             <li class="{{classActivePathPublic('new-constructions')}}"><a href="{{ URL::to('new-constructions/') }}">New Constructions</a></li>
-            <li class="{{classActivePathPublic('admin')}}"><a href="{{ URL::to('admin/properties/addhomeexchange') }}">Home Exchange</a></li>
+            <li class="{{classActivePathPublic('addhomeexchange')}}"><a href="{{ URL::to('addhomeexchange') }}">Home Exchange</a></li>
             <li class="{{classActivePathPublic('moving-tips')}}"><a href="{{ URL::to('moving-tips/') }}">Moving Tips</a></li>
             <li class="{{classActivePathPublic('expats')}}"><a href="{{ URL::to('expats/') }}">Expats</a></li>
 
@@ -43,7 +43,7 @@
               </ul>
             </li>
 
-             	<li><a href="{{ URL::to('admin/properties/addproperty') }}" class="signup col-lg-12 col-md-3 col-sm-6 col-xs-6">Post your Property</a></li>
+             	<li><a href="{{ URL::to('addproperty') }}" class="signup col-lg-12 col-md-3 col-sm-6 col-xs-6">Post your Property</a></li>
              @else
                   <li>
                       <i style="font-size: 18px;border-left: 1px solid #a5a1a1;padding-left: 15px;" class="fas fa-user"></i>
