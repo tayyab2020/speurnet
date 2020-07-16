@@ -44,7 +44,7 @@
             <div class="col-md-12">
                 <div class="section over-hide z-bigger">
 
-                    <input class="checkbox" type="checkbox" name="general" id="general">
+                    <input class="checkbox" type="checkbox" name="general" id="general" checked>
                     <label class="for-checkbox" for="general"></label>
                     <div class="background-color"></div>
                     <div class="section over-hide z-bigger">

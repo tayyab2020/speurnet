@@ -92,7 +92,7 @@
 
                            @else
 
-                       <td><a href="{{URL::to('home-exchange/'.$property->property_slug)}}">{{ $property->property_name }}</a>
+                       <td><a href="#">{{ $property->property_name }}</a>
 
                        @endif
 
