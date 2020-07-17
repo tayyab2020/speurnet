@@ -92,7 +92,7 @@
 
                            @else
 
-                       <td><a href="#">{{ $property->property_name }}</a>
+                       <td><a href="{{ url('admin/properties/addhomeexchange/'.$property->id) }}">{{ $property->property_name }}</a>
 
                        @endif
 
@@ -172,27 +172,83 @@
 									Actions <span class="caret"></span>
 								</button>
 								<ul class="dropdown-menu dropdown-menu-right" role="menu">
-									<li><a href="{{ url('admin/properties/addproperty/'.$property->id) }}"><i class="md md-edit"></i> Edit Editor</a></li>
+
+                                    @if(Route::currentRouteName() == 'properties')
 
 
-									<li>
-										@if($property->featured_property==0)
-					                	<a href="{{ url('admin/properties/featuredproperty/'.$property->id) }}"><i class="md md-star"></i> Set as Featured</a>
-					                	@else
-					                	<a href="{{ url('admin/properties/featuredproperty/'.$property->id) }}"><i class="md md-check"></i> Unset from Featured</a>
-					                	@endif
-									</li>
+                                        <li><a href="{{ url('admin/properties/addproperty/'.$property->id) }}"><i class="md md-edit"></i> Edit Editor</a></li>
+
+                                        <li>
+                                            @if($property->featured_property==0)
+                                                <a href="{{ url('admin/properties/featuredproperty/'.$property->id) }}"><i class="md md-star"></i> Set as Featured</a>
+                                            @else
+                                                <a href="{{ url('admin/properties/featuredproperty/'.$property->id) }}"><i class="md md-check"></i> Unset from Featured</a>
+                                            @endif
+                                        </li>
 
 
-									<li>
-										@if($property->status==1)
-					                	<a href="{{ url('admin/properties/status/'.$property->id) }}"><i class="md md-close"></i> Unpublish</a>
-					                	@else
-					                	<a href="{{ url('admin/properties/status/'.$property->id) }}"><i class="md md-check"></i> Publish</a>
-					                	@endif
-									</li>
-									<li><a href="{{ url('admin/properties/delete/'.$property->id) }}" onclick="return confirm('Are you sure? You will not be able to recover this.')"><i class="md md-delete"></i> Delete</a></li>
-								</ul>
+                                        <li>
+                                            @if($property->status==1)
+                                                <a href="{{ url('admin/properties/status/'.$property->id) }}"><i class="md md-close"></i> Unpublish</a>
+                                            @else
+                                                <a href="{{ url('admin/properties/status/'.$property->id) }}"><i class="md md-check"></i> Publish</a>
+                                            @endif
+                                        </li>
+                                        <li><a href="{{ url('admin/properties/delete/'.$property->id) }}" onclick="return confirm('Are you sure? You will not be able to recover this.')"><i class="md md-delete"></i> Delete</a></li>
+
+
+                                    @elseif(Route::currentRouteName() == 'new_constructions')
+
+
+                                        <li><a href="{{ url('admin/properties/addnewconstruction/'.$property->id) }}"><i class="md md-edit"></i> Edit Editor</a></li>
+
+                                        <li>
+                                            @if($property->featured_property==0)
+                                                <a href="{{ url('admin/properties/featurednewconstruction/'.$property->id) }}"><i class="md md-star"></i> Set as Featured</a>
+                                            @else
+                                                <a href="{{ url('admin/properties/featurednewconstruction/'.$property->id) }}"><i class="md md-check"></i> Unset from Featured</a>
+                                            @endif
+                                        </li>
+
+
+                                        <li>
+                                            @if($property->status==1)
+                                                <a href="{{ url('admin/properties/statusnewconstruction/'.$property->id) }}"><i class="md md-close"></i> Unpublish</a>
+                                            @else
+                                                <a href="{{ url('admin/properties/statusnewconstruction/'.$property->id) }}"><i class="md md-check"></i> Publish</a>
+                                            @endif
+                                        </li>
+                                        <li><a href="{{ url('admin/properties/deletenewconstruction/'.$property->id) }}" onclick="return confirm('Are you sure? You will not be able to recover this.')"><i class="md md-delete"></i> Delete</a></li>
+
+
+                                    @else
+
+
+                                        <li><a href="{{ url('admin/properties/addhomeexchange/'.$property->id) }}"><i class="md md-edit"></i> Edit Editor</a></li>
+
+                                        <li>
+                                            @if($property->featured_property==0)
+                                                <a href="{{ url('admin/properties/featuredhomeexchange/'.$property->id) }}"><i class="md md-star"></i> Set as Featured</a>
+                                            @else
+                                                <a href="{{ url('admin/properties/featuredhomeexchange/'.$property->id) }}"><i class="md md-check"></i> Unset from Featured</a>
+                                            @endif
+                                        </li>
+
+
+                                        <li>
+                                            @if($property->status==1)
+                                                <a href="{{ url('admin/properties/statushomeexchange/'.$property->id) }}"><i class="md md-close"></i> Unpublish</a>
+                                            @else
+                                                <a href="{{ url('admin/properties/statushomeexchange/'.$property->id) }}"><i class="md md-check"></i> Publish</a>
+                                            @endif
+                                        </li>
+                                        <li><a href="{{ url('admin/properties/deletehomeexchange/'.$property->id) }}" onclick="return confirm('Are you sure? You will not be able to recover this.')"><i class="md md-delete"></i> Delete</a></li>
+
+
+                                        @endif
+
+
+                                </ul>
 							</div>
 
             </td>

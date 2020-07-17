@@ -407,18 +407,33 @@
 
                                         <div style="width: 100%;display: inline-block;margin: auto">
 
-                                            <select name="house_type" id="house_type" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
-                                                <option value="Apartment" @if(old('house_type') == 'Apartment') selected @endif>Apartment</option>
-                                                <option value="Penthouse" @if(old('house_type') == 'Penthouse') selected @endif>Penthouse</option>
-                                                <option value="Room" @if(old('house_type') == 'Room') selected @endif>Room</option>
-                                                <option value="Senior Residence" @if(old('house_type') == 'Senior Residence') selected @endif>Senior Residence</option>
-                                                <option value="Villa" @if(old('house_type') == 'Villa') selected @endif>Villa</option>
-                                                <option value="Semi-Detached" @if(old('house_type') == 'Semi-Detached') selected @endif>Semi-Detached</option>
-                                                <option value="Single Family House (Middle House)" @if(old('house_type') == 'Single Family House (Middle House)') selected @endif>Single Family House (Middle House)</option>
-                                                <option value="Single Family House (Corner House)" @if(old('house_type') == 'Single Family House (Corner House)') selected @endif>Single Family House (Corner House)</option>
-                                            </select>
+                                            @if(isset($property->house_type))
 
+                                                <select name="house_type" id="house_type" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
+                                                    <option value="Apartment" @if($property->house_type == 'Apartment') selected @endif>Apartment</option>
+                                                    <option value="Penthouse" @if($property->house_type == 'Penthouse') selected @endif>Penthouse</option>
+                                                    <option value="Room" @if($property->house_type == 'Room') selected @endif>Room</option>
+                                                    <option value="Senior Residence" @if($property->house_type == 'Senior Residence') selected @endif>Senior Residence</option>
+                                                    <option value="Villa" @if($property->house_type == 'Villa') selected @endif>Villa</option>
+                                                    <option value="Semi-Detached" @if($property->house_type == 'Semi-Detached') selected @endif>Semi-Detached</option>
+                                                    <option value="Single Family House (Middle House)" @if($property->house_type == 'Single Family House (Middle House)') selected @endif>Single Family House (Middle House)</option>
+                                                    <option value="Single Family House (Corner House)" @if($property->house_type == 'Single Family House (Corner House)') selected @endif>Single Family House (Corner House)</option>
+                                                </select>
 
+                                                @else
+
+                                                <select name="house_type" id="house_type" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
+                                                    <option value="Apartment" @if(old('house_type') == 'Apartment') selected @endif>Apartment</option>
+                                                    <option value="Penthouse" @if(old('house_type') == 'Penthouse') selected @endif>Penthouse</option>
+                                                    <option value="Room" @if(old('house_type') == 'Room') selected @endif>Room</option>
+                                                    <option value="Senior Residence" @if(old('house_type') == 'Senior Residence') selected @endif>Senior Residence</option>
+                                                    <option value="Villa" @if(old('house_type') == 'Villa') selected @endif>Villa</option>
+                                                    <option value="Semi-Detached" @if(old('house_type') == 'Semi-Detached') selected @endif>Semi-Detached</option>
+                                                    <option value="Single Family House (Middle House)" @if(old('house_type') == 'Single Family House (Middle House)') selected @endif>Single Family House (Middle House)</option>
+                                                    <option value="Single Family House (Corner House)" @if(old('house_type') == 'Single Family House (Corner House)') selected @endif>Single Family House (Corner House)</option>
+                                                </select>
+
+                                                @endif
 
                                         </div>
 
@@ -432,10 +447,21 @@
 
                                         <div style="width: 100%;display: inline-block;margin: auto">
 
-                                            <select name="construction_type" id="construction_type" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
-                                                <option value="New" @if(old('construction_type') == 'New') selected @endif>New</option>
-                                                <option value="Old" @if(old('construction_type') == 'Old') selected @endif>Old</option>
-                                            </select>
+                                            @if(isset($property->construction_type))
+
+                                                <select name="construction_type" id="construction_type" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
+                                                    <option value="New" @if($property->construction_type == 'New') selected @endif>New</option>
+                                                    <option value="Old" @if($property->construction_type == 'Old') selected @endif>Old</option>
+                                                </select>
+
+                                                @else
+
+                                                <select name="construction_type" id="construction_type" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
+                                                    <option value="New" @if(old('construction_type') == 'New') selected @endif>New</option>
+                                                    <option value="Old" @if(old('construction_type') == 'Old') selected @endif>Old</option>
+                                                </select>
+
+                                                @endif
 
                                         </div>
 
@@ -463,11 +489,23 @@
 
                                         <div style="width: 100%;display: inline-block;margin: auto">
 
-                                            <select name="building_condition" id="building_condition" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
-                                                <option value="Very Good Condition" @if(old('building_condition') == 'Very Good Condition') selected @endif>Very Good Condition</option>
-                                                <option value="Good Condition" @if(old('building_condition') == 'Good Condition') selected @endif>Good Condition</option>
-                                                <option value="Needs Some Maintenance" @if(old('building_condition') == 'Needs Some Maintenance') selected @endif>Needs Some Maintenance</option>
-                                            </select>
+                                            @if(isset($property->building_condition))
+
+                                                <select name="building_condition" id="building_condition" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
+                                                    <option value="Very Good Condition" @if($property->building_condition == 'Very Good Condition') selected @endif>Very Good Condition</option>
+                                                    <option value="Good Condition" @if($property->building_condition == 'Good Condition') selected @endif>Good Condition</option>
+                                                    <option value="Needs Some Maintenance" @if($property->building_condition == 'Needs Some Maintenance') selected @endif>Needs Some Maintenance</option>
+                                                </select>
+
+                                                @else
+
+                                                <select name="building_condition" id="building_condition" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
+                                                    <option value="Very Good Condition" @if(old('building_condition') == 'Very Good Condition') selected @endif>Very Good Condition</option>
+                                                    <option value="Good Condition" @if(old('building_condition') == 'Good Condition') selected @endif>Good Condition</option>
+                                                    <option value="Needs Some Maintenance" @if(old('building_condition') == 'Needs Some Maintenance') selected @endif>Needs Some Maintenance</option>
+                                                </select>
+
+                                                @endif
 
                                         </div>
 
@@ -481,13 +519,23 @@
 
                                             <div style="width: 100%;display: inline-block;margin: auto">
 
-                                                <select name="kind_of_type" id="kind_of_type" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
-                                                    <option value="For Sale" @if(old('kind_of_type') == 'For Sale') selected @endif>For Sale</option>
-                                                    <option value="To Rent Social" @if(old('kind_of_type') == 'To Rent Social') selected @endif>To Rent Social</option>
-                                                    <option value="To Rent Free" @if(old('kind_of_type') == 'To Rent Free') selected @endif>To Rent Free</option>
-                                                </select>
+                                                @if(isset($property->kind_of_type))
 
+                                                    <select name="kind_of_type" id="kind_of_type" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
+                                                        <option value="For Sale" @if($property->kind_of_type == 'For Sale') selected @endif>For Sale</option>
+                                                        <option value="To Rent Social" @if($property->kind_of_type == 'To Rent Social') selected @endif>To Rent Social</option>
+                                                        <option value="To Rent Free" @if($property->kind_of_type == 'To Rent Free') selected @endif>To Rent Free</option>
+                                                    </select>
 
+                                                    @else
+
+                                                    <select name="kind_of_type" id="kind_of_type" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
+                                                        <option value="For Sale" @if(old('kind_of_type') == 'For Sale') selected @endif>For Sale</option>
+                                                        <option value="To Rent Social" @if(old('kind_of_type') == 'To Rent Social') selected @endif>To Rent Social</option>
+                                                        <option value="To Rent Free" @if(old('kind_of_type') == 'To Rent Free') selected @endif>To Rent Free</option>
+                                                    </select>
+
+                                                    @endif
 
                                             </div>
 
@@ -777,16 +825,33 @@
 
                                         <div style="width: 100%;display: inline-block;margin: auto">
 
-                                            <select name="energy_rating" id="energy_rating" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
-                                                <option value="A+" @if(old('energy_rating') == 'A+') selected @endif>A+</option>
-                                                <option value="A" @if(old('energy_rating') == 'A') selected @endif>A</option>
-                                                <option value="B" @if(old('energy_rating') == 'B') selected @endif>B</option>
-                                                <option value="C" @if(old('energy_rating') == 'C') selected @endif>C</option>
-                                                <option value="D" @if(old('energy_rating') == 'D') selected @endif>D</option>
-                                                <option value="E" @if(old('energy_rating') == 'E') selected @endif>E</option>
-                                                <option value="F" @if(old('energy_rating') == 'F') selected @endif>F</option>
-                                                <option value="G" @if(old('energy_rating') == 'G') selected @endif>G</option>
-                                            </select>
+                                            @if(isset($property->energy_rating))
+
+                                                <select name="energy_rating" id="energy_rating" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
+                                                    <option value="A+" @if($property->energy_rating == 'A+') selected @endif>A+</option>
+                                                    <option value="A" @if($property->energy_rating == 'A') selected @endif>A</option>
+                                                    <option value="B" @if($property->energy_rating == 'B') selected @endif>B</option>
+                                                    <option value="C" @if($property->energy_rating == 'C') selected @endif>C</option>
+                                                    <option value="D" @if($property->energy_rating == 'D') selected @endif>D</option>
+                                                    <option value="E" @if($property->energy_rating == 'E') selected @endif>E</option>
+                                                    <option value="F" @if($property->energy_rating == 'F') selected @endif>F</option>
+                                                    <option value="G" @if($property->energy_rating == 'G') selected @endif>G</option>
+                                                </select>
+
+                                                @else
+
+                                                <select name="energy_rating" id="energy_rating" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
+                                                    <option value="A+" @if(old('energy_rating') == 'A+') selected @endif>A+</option>
+                                                    <option value="A" @if(old('energy_rating') == 'A') selected @endif>A</option>
+                                                    <option value="B" @if(old('energy_rating') == 'B') selected @endif>B</option>
+                                                    <option value="C" @if(old('energy_rating') == 'C') selected @endif>C</option>
+                                                    <option value="D" @if(old('energy_rating') == 'D') selected @endif>D</option>
+                                                    <option value="E" @if(old('energy_rating') == 'E') selected @endif>E</option>
+                                                    <option value="F" @if(old('energy_rating') == 'F') selected @endif>F</option>
+                                                    <option value="G" @if(old('energy_rating') == 'G') selected @endif>G</option>
+                                                </select>
+
+                                                @endif
 
                                         </div>
 
@@ -815,11 +880,23 @@
 
                                         <div style="width: 100%;display: inline-block;margin: auto">
 
-                                            <select name="floor_option" id="floor_option" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
-                                                <option value="Yes" @if(old('floor') == 'Yes') selected @endif>Yes</option>
-                                                <option value="No" @if(old('floor') == 'No') selected @endif>No</option>
-                                                <option value="Partly" @if(old('floor') == 'Partly') selected @endif>Partly</option>
-                                            </select>
+                                            @if(isset($property->floor))
+
+                                                <select name="floor_option" id="floor_option" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
+                                                    <option value="Yes" @if($property->floor == 'Yes') selected @endif>Yes</option>
+                                                    <option value="No" @if($property->floor == 'No') selected @endif>No</option>
+                                                    <option value="Partly" @if($property->floor == 'Partly') selected @endif>Partly</option>
+                                                </select>
+
+                                                @else
+
+                                                <select name="floor_option" id="floor_option" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
+                                                    <option value="Yes" @if(old('floor') == 'Yes') selected @endif>Yes</option>
+                                                    <option value="No" @if(old('floor') == 'No') selected @endif>No</option>
+                                                    <option value="Partly" @if(old('floor') == 'Partly') selected @endif>Partly</option>
+                                                </select>
+
+                                                @endif
 
                                         </div>
 
@@ -831,11 +908,23 @@
 
                                         <div style="width: 100%;display: inline-block;margin: auto">
 
-                                            <select name="walls" id="walls" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
-                                                <option value="Yes" @if(old('walls') == 'Yes') selected @endif>Yes</option>
-                                                <option value="No" @if(old('walls') == 'No') selected @endif>No</option>
-                                                <option value="Partly" @if(old('walls') == 'Partly') selected @endif>Partly</option>
-                                            </select>
+                                            @if(isset($property->walls))
+
+                                                <select name="walls" id="walls" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
+                                                    <option value="Yes" @if($property->walls == 'Yes') selected @endif>Yes</option>
+                                                    <option value="No" @if($property->walls == 'No') selected @endif>No</option>
+                                                    <option value="Partly" @if($property->walls == 'Partly') selected @endif>Partly</option>
+                                                </select>
+
+                                                @else
+
+                                                <select name="walls" id="walls" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
+                                                    <option value="Yes" @if(old('walls') == 'Yes') selected @endif>Yes</option>
+                                                    <option value="No" @if(old('walls') == 'No') selected @endif>No</option>
+                                                    <option value="Partly" @if(old('walls') == 'Partly') selected @endif>Partly</option>
+                                                </select>
+
+                                                @endif
 
                                         </div>
 
@@ -847,11 +936,23 @@
 
                                         <div style="width: 100%;display: inline-block;margin: auto">
 
-                                            <select name="roof_insulation" id="roof_insulation" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
-                                                <option value="Yes" @if(old('roof_insulation') == 'Yes') selected @endif>Yes</option>
-                                                <option value="No" @if(old('roof_insulation') == 'No') selected @endif>No</option>
-                                                <option value="Partly" @if(old('roof_insulation') == 'Partly') selected @endif>Partly</option>
-                                            </select>
+                                            @if(isset($property->roof_insulation))
+
+                                                <select name="roof_insulation" id="roof_insulation" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
+                                                    <option value="Yes" @if($property->roof_insulation == 'Yes') selected @endif>Yes</option>
+                                                    <option value="No" @if($property->roof_insulation == 'No') selected @endif>No</option>
+                                                    <option value="Partly" @if($property->roof_insulation == 'Partly') selected @endif>Partly</option>
+                                                </select>
+
+                                                @else
+
+                                                <select name="roof_insulation" id="roof_insulation" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
+                                                    <option value="Yes" @if(old('roof_insulation') == 'Yes') selected @endif>Yes</option>
+                                                    <option value="No" @if(old('roof_insulation') == 'No') selected @endif>No</option>
+                                                    <option value="Partly" @if(old('roof_insulation') == 'Partly') selected @endif>Partly</option>
+                                                </select>
+
+                                                @endif
 
                                         </div>
 
@@ -866,10 +967,21 @@
 
                                         <div style="width: 100%;display: inline-block;margin: auto">
 
-                                            <select name="cook" id="cook" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
-                                                <option value="Gas" @if(old('cook') == 'Gas') selected @endif>Gas</option>
-                                                <option value="Electricity" @if(old('cook') == 'Electricity') selected @endif>Electricity</option>
-                                            </select>
+                                            @if(isset($property->cook))
+
+                                                <select name="cook" id="cook" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
+                                                    <option value="Gas" @if($property->cook == 'Gas') selected @endif>Gas</option>
+                                                    <option value="Electricity" @if($property->cook == 'Electricity') selected @endif>Electricity</option>
+                                                </select>
+
+                                                @else
+
+                                                <select name="cook" id="cook" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
+                                                    <option value="Gas" @if(old('cook') == 'Gas') selected @endif>Gas</option>
+                                                    <option value="Electricity" @if(old('cook') == 'Electricity') selected @endif>Electricity</option>
+                                                </select>
+
+                                                @endif
 
                                         </div>
 
@@ -894,10 +1006,21 @@
 
                                         <div style="width: 100%;display: inline-block;margin: auto">
 
-                                            <select name="agreement_type" id="agreement_type" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
-                                                <option value="Temporarily" @if(old('agreement_type') == 'Temporarily') selected @endif>Temporarily</option>
-                                                <option value="Indefinitely" @if(old('agreement_type') == 'Indefinitely') selected @endif>Indefinitely</option>
-                                            </select>
+                                            @if(isset($property->agreement_type))
+
+                                                <select name="agreement_type" id="agreement_type" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
+                                                    <option value="Temporarily" @if($property->agreement_type == 'Temporarily') selected @endif>Temporarily</option>
+                                                    <option value="Indefinitely" @if($property->agreement_type == 'Indefinitely') selected @endif>Indefinitely</option>
+                                                </select>
+
+                                                @else
+
+                                                <select name="agreement_type" id="agreement_type" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
+                                                    <option value="Temporarily" @if(old('agreement_type') == 'Temporarily') selected @endif>Temporarily</option>
+                                                    <option value="Indefinitely" @if(old('agreement_type') == 'Indefinitely') selected @endif>Indefinitely</option>
+                                                </select>
+
+                                                @endif
 
                                         </div>
 
@@ -926,11 +1049,23 @@
 
                                         <div style="width: 100%;display: inline-block;margin: auto">
 
-                                            <select name="property_furnished" id="property_furnished" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
-                                                <option value="Unfurnished" @if(old('property_furnished') == 'Unfurnished') selected @endif>Unfurnished</option>
-                                                <option value="Bare" @if(old('property_furnished') == 'Bare') selected @endif>Bare</option>
-                                                <option value="Furnished" @if(old('property_furnished') == 'Furnished') selected @endif>Furnished</option>
-                                            </select>
+                                            @if(isset($property->property_furnished))
+
+                                                <select name="property_furnished" id="property_furnished" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
+                                                    <option value="Unfurnished" @if($property->property_furnished == 'Unfurnished') selected @endif>Unfurnished</option>
+                                                    <option value="Bare" @if($property->property_furnished == 'Bare') selected @endif>Bare</option>
+                                                    <option value="Furnished" @if($property->property_furnished == 'Furnished') selected @endif>Furnished</option>
+                                                </select>
+
+                                                @else
+
+                                                <select name="property_furnished" id="property_furnished" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
+                                                    <option value="Unfurnished" @if(old('property_furnished') == 'Unfurnished') selected @endif>Unfurnished</option>
+                                                    <option value="Bare" @if(old('property_furnished') == 'Bare') selected @endif>Bare</option>
+                                                    <option value="Furnished" @if(old('property_furnished') == 'Furnished') selected @endif>Furnished</option>
+                                                </select>
+
+                                                @endif
 
                                         </div>
 
@@ -948,7 +1083,7 @@
 
                                                 <li class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;margin: 20px 0px;text-align: left;">
 
-                                                    <input name="wheelchair" @if(old('wheelchair') == 1) checked @endif value="1" type="checkbox" id="wheelchair" style="position: relative;top: 2px;">
+                                                    <input name="wheelchair" @if(old('wheelchair') == 1) checked @else @if(isset($property->wheelchair)) checked @endif @endif value="1" type="checkbox" id="wheelchair" style="position: relative;top: 2px;">
 
 
                                                     <label class="bg" for="wheelchair">
@@ -987,7 +1122,7 @@
                                             <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-calendar-alt"></i></div>
 
 
-                                        <input type='text' placeholder="Select Date" name="date" style="box-shadow: none;border: 0;margin: 0;float: left;width: 80%;left: 0;height: 37.5px;text-align: left;padding-left: 0px;" class="form-control" value="{{old('date')}}" id='datetimepicker4' />
+                                        <input type='text' placeholder="Select Date" name="date" style="box-shadow: none;border: 0;margin: 0;float: left;width: 80%;left: 0;height: 37.5px;text-align: left;padding-left: 0px;" class="form-control" @if(old('date')) value="{{old('date')}}" @else @if(isset($property->date)) value="{{$property->date}}" @else value="" @endif @endif id='datetimepicker4' />
 
 
                                         </div>
@@ -1009,7 +1144,7 @@
                                             <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-calendar-alt"></i></div>
 
 
-                                            <input type='text' placeholder="Time From" name="time_from" style="box-shadow: none;border: 0;margin: 0;float: left;width: 80%;left: 0;height: 37.5px;text-align: left;padding-left: 8px;padding-bottom: 5px;" value="{{old('time_from')}}" class="form-control" id='datetimepicker3' />
+                                            <input type='text' placeholder="Time From" name="time_from" style="box-shadow: none;border: 0;margin: 0;float: left;width: 80%;left: 0;height: 37.5px;text-align: left;padding-left: 8px;padding-bottom: 5px;" @if(old('time_from')) value="{{old('time_from')}}" @else @if(isset($property->time_from)) value="{{$property->time_from}}" @else value="" @endif @endif class="form-control" id='datetimepicker3' />
 
 
                                         </div>
@@ -1026,7 +1161,7 @@
                                             <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-calendar-alt"></i></div>
 
 
-                                            <input type='text' placeholder="Time To" name="time_to" style="box-shadow: none;border: 0;margin: 0;float: left;width: 80%;left: 0;height: 37.5px;text-align: left;padding-left: 8px;padding-bottom: 5px;" value="{{old('time_to')}}" class="form-control" id='datetimepicker2' />
+                                            <input type='text' placeholder="Time To" name="time_to" style="box-shadow: none;border: 0;margin: 0;float: left;width: 80%;left: 0;height: 37.5px;text-align: left;padding-left: 8px;padding-bottom: 5px;" @if(old('time_to')) value="{{old('time_to')}}" @else @if(isset($property->time_to)) value="{{$property->time_to}}" @else value="" @endif @endif class="form-control" id='datetimepicker2' />
 
 
                                         </div>
@@ -1046,11 +1181,21 @@
 
                                         <div style="width: 100%;display: inline-block;margin: auto">
 
-                                            <select name="available_immediately" id="basic" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
-                                               <option value="1" @if(old('available_immediately') == 1) selected @endif>Yes</option>
-                                                <option value="0" @if(old('available_immediately') == 0) selected @endif>No</option>
-                                            </select>
+                                            @if(isset($property->available_immediately))
 
+                                                <select name="available_immediately" id="basic" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
+                                                    <option value="1" @if($property->available_immediately == 1) selected @endif>Yes</option>
+                                                    <option value="0" @if($property->available_immediately == 0) selected @endif>No</option>
+                                                </select>
+
+                                                @else
+
+                                                <select name="available_immediately" id="basic" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
+                                                    <option value="1" @if(old('available_immediately') == 1) selected @endif>Yes</option>
+                                                    <option value="0" @if(old('available_immediately') == 0) selected @endif>No</option>
+                                                </select>
+
+                                                @endif
 
 
                                         </div>
@@ -1072,7 +1217,7 @@
                                             <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-calendar-alt"></i></div>
 
 
-                                            <input type='text' placeholder="Select Date" name="available_from" style="box-shadow: none;border: 0;margin: 0;float: left;width: 80%;left: 0;height: 37.5px;text-align: left;padding-left: 0px;" class="form-control" value="{{old('available_from')}}" id='datetimepicker5' />
+                                            <input type='text' placeholder="Select Date" name="available_from" style="box-shadow: none;border: 0;margin: 0;float: left;width: 80%;left: 0;height: 37.5px;text-align: left;padding-left: 0px;" class="form-control" @if(old('available_from')) value="{{old('available_from')}}" @else @if(isset($property->available_from)) value="{{$property->available_from}}" @else value="" @endif @endif id='datetimepicker5' />
 
 
                                         </div>
@@ -1097,14 +1242,13 @@
 
                                         <ul style="list-style: none;display: inline-block;width: 100%;padding: 0;padding-top: 30px;">
 
-                                            <?php $i = 0; ?>
+                                            <?php $i = 0; if(isset($property->property_features)) { $selected_features = explode(',', $property->property_features); } ?>
 
                                             @foreach($property_features as $key)
 
                                                 <li class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="padding: 0;margin: 20px 0px;text-align: left;">
 
-                                                    <input name="property_features[]" value="{{$key->id}}" type="checkbox" id="property_features{{$i}}" style="position: relative;top: 2px;">
-
+                                                    <input name="property_features[]" @if(old('property_features')) @if(in_array($key->id, old('property_features'))) checked @endif @else @if(isset($property->property_features)) @if(in_array($key->id, $selected_features)) checked @endif @endif @endif value="{{$key->id}}" type="checkbox" id="property_features{{$i}}" style="position: relative;top: 2px;">
 
                                                     <label class="bg" for="property_features{{$i}}">
 
@@ -1185,6 +1329,7 @@
                             </div>--}}
 
 
+                            <hr>
 
                             <ul class="list-inline pull-right">
 
@@ -1203,7 +1348,7 @@
 
                         <div class="tab-pane fade" role="tabpanel" id="stepper-step-3">
 
-                            <div class="form-group main-div" style="width: 90%;margin: auto;">
+                            <div class="form-group main-div" style="width: 90%;margin: auto;margin-bottom: 40px;">
 
                                 @if(Route::currentRouteName() == 'addnewconstruction' || Route::currentRouteName() == 'addhomeexchange')
 
@@ -1245,8 +1390,15 @@
 
                                         <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
 
+                                            @if(Route::currentRouteName() != 'addhomeexchange')
 
-                                            <input type="text" placeholder="Property Slug" name="property_slug" @if(old('property_slug')) value="{{old('property_slug')}}" @else value="{{ isset($property->property_slug) ? $property->property_slug : null }}" @endif style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control stepper-step-3-validate"  >
+                                            <input type="text" placeholder="Property Slug" name="property_slug" @if(old('property_slug')) value="{{old('property_slug')}}" @else value="{{ isset($property->property_slug) ? $property->property_slug : null }}" @endif style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control stepper-step-3-validate">
+
+                                                @else
+
+                                                <input type="text" placeholder="Property Slug" name="property_slug" @if(old('property_slug')) value="{{old('property_slug')}}" @else value="{{ isset($property->property_slug) ? $property->property_slug : null }}" @endif style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control">
+
+                                                @endif
 
 
                                         </div>
@@ -1341,46 +1493,137 @@
 
                                     @else
 
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;" id="sale_price_box">
+                                            @if(isset($property->property_purpose))
 
-                                        <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
+                                                @if($property->property_purpose == 'Sale')
 
+                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;" id="sale_price_box">
 
-                                            <label class="left-label" style="float: left;">Sale Price</label>
-
-                                            <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
-
-
-                                                <input type="number" id="sale_price_field" name="sale_price" @if(old('sale_price')) value="{{old('sale_price')}}" @else value="{{ isset($property->sale_price) ? $property->sale_price : null }}" @endif placeholder="800000" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control stepper-step-3-validate"  >
+                                                        <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
 
 
-                                            </div>
+                                                            <label class="left-label" style="float: left;">Sale Price</label>
 
-                                        </div>
-
-                                    </div>
+                                                            <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
 
 
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;display: none;" id="rent_price_box">
-
-                                        <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
+                                                                <input type="number" id="sale_price_field" name="sale_price" @if(old('sale_price')) value="{{old('sale_price')}}" @else value="{{ isset($property->sale_price) ? $property->sale_price : null }}" @endif placeholder="800000" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control stepper-step-3-validate"  >
 
 
-                                            <label class="left-label" style="float: left;">Rent Price</label>
+                                                            </div>
 
-                                            <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
+                                                        </div>
+
+                                                    </div>
 
 
-                                                <input type="number" id="rent_price_field" name="rent_price" @if(old('rent_price')) value="{{old('rent_price')}}" @else value="{{ isset($property->rent_price) ? $property->rent_price : null }}" @endif placeholder="10000" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control"  >
+                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;display: none;" id="rent_price_box">
+
+                                                        <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
 
 
-                                            </div>
+                                                            <label class="left-label" style="float: left;">Rent Price</label>
 
-                                        </div>
+                                                            <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
 
-                                    </div>
 
-                                    @endif
+                                                                <input type="number" id="rent_price_field" name="rent_price" @if(old('rent_price')) value="{{old('rent_price')}}" @else value="{{ isset($property->rent_price) ? $property->rent_price : null }}" @endif placeholder="10000" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control"  >
+
+
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+
+                                                @elseif($property->property_purpose == 'Rent')
+
+                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;display: none;" id="sale_price_box">
+
+                                                        <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
+
+
+                                                            <label class="left-label" style="float: left;">Sale Price</label>
+
+                                                            <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
+
+
+                                                                <input type="number" id="sale_price_field" name="sale_price" @if(old('sale_price')) value="{{old('sale_price')}}" @else value="{{ isset($property->sale_price) ? $property->sale_price : null }}" @endif placeholder="800000" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control"  >
+
+
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+
+
+                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;" id="rent_price_box">
+
+                                                        <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
+
+
+                                                            <label class="left-label" style="float: left;">Rent Price</label>
+
+                                                            <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
+
+
+                                                                <input type="number" id="rent_price_field" name="rent_price" @if(old('rent_price')) value="{{old('rent_price')}}" @else value="{{ isset($property->rent_price) ? $property->rent_price : null }}" @endif placeholder="10000" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control stepper-step-3-validate"  >
+
+
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+
+                                                    @endif
+
+                                            @else
+
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;" id="sale_price_box">
+
+                                                    <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
+
+
+                                                        <label class="left-label" style="float: left;">Sale Price</label>
+
+                                                        <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
+
+
+                                                            <input type="number" id="sale_price_field" name="sale_price" @if(old('sale_price')) value="{{old('sale_price')}}" @else value="{{ isset($property->sale_price) ? $property->sale_price : null }}" @endif placeholder="800000" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control stepper-step-3-validate"  >
+
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+
+
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;display: none;" id="rent_price_box">
+
+                                                    <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
+
+
+                                                        <label class="left-label" style="float: left;">Rent Price</label>
+
+                                                        <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
+
+
+                                                            <input type="number" id="rent_price_field" name="rent_price" @if(old('rent_price')) value="{{old('rent_price')}}" @else value="{{ isset($property->rent_price) ? $property->rent_price : null }}" @endif placeholder="10000" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control"  >
+
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+
+                                            @endif
+
+
+                                        @endif
 
                                     @else
 
@@ -1445,10 +1688,11 @@
 
                                         <label class="left-label" style="float: left;">KEYWORDS/TAGS</label>
 
+
                                         <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
 
 
-                                            <input type="text" name="property_keywords" @if(old('property_keywords')) value="{{old('property_keywords')}}" @endif placeholder="Keywords" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;" data-role="tagsinput tag-primary" class="form-control">
+                                            <input type="text" name="property_keywords" @if(old('property_keywords')) value="{{old('property_keywords')}}" @else @if(isset($property->keywords)) value="{{$property->keywords}}" @endif @endif placeholder="Keywords" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;" data-role="tagsinput tag-primary" class="form-control">
 
 
                                         </div>
@@ -1460,6 +1704,7 @@
 
                             </div>
 
+                            <hr>
 
                             <ul class="list-inline pull-right">
                                 <li>
@@ -1474,7 +1719,7 @@
 
                         <div class="tab-pane fade" role="tabpanel" id="stepper-step-4">
 
-                            <div class="form-group main-div" style="width: 90%;margin: auto;">
+                            <div class="form-group main-div" style="width: 90%;margin: auto;margin-bottom: 40px;">
 
                                 @if(Route::currentRouteName() == 'addnewconstruction' || Route::currentRouteName() == 'addhomeexchange')
 
@@ -1579,7 +1824,24 @@
 
                                                 </div>
                                                 <div class="media-body media-middle">
+
+                                                    @if(isset($property->featured_image))
+
+                                                        <input type="file" name="featured_image" class="filestyle" style="width: 50%;border: none;float: left;">
+
+                                                    @else
+
+                                                    @if(Route::currentRouteName() != 'addhomeexchange')
+
                                                     <input type="file" name="featured_image"  class="filestyle stepper-step-4-validate" style="width: 50%;border: none;float: left;">
+
+                                                        @else
+
+                                                        <input type="file" name="featured_image"  class="filestyle" style="width: 50%;border: none;float: left;">
+
+                                                        @endif
+
+                                                    @endif
 
                                                     <button type="button" class="remove-btn" style="outline: none;border: 0;color: red;float: right;font-size: 21px;background: transparent;padding: 10px 5px;margin-right: 5px;">
 
@@ -1751,7 +2013,6 @@
                                     </div>
 
                                 </div>
-
 
 
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;">
@@ -2048,15 +2309,32 @@
 
                                         <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
 
-                                            <select style="border: 0;" class="form-control" name="preferred_kind">
+                                            @if(isset($property->preferred_kind))
 
-                                                @foreach($types as $type)
+                                                <select style="border: 0;" class="form-control" name="preferred_kind">
 
-                                                    <option @if(old('preferred_kind') == $type->id) selected @endif value="{{$type->id}}">{{$type->types}}</option>
+                                                    @foreach($types as $type)
+
+                                                        <option @if($property->preferred_kind == $type->id) selected @endif value="{{$type->id}}">{{$type->types}}</option>
 
                                                     @endforeach
 
-                                            </select>
+                                                </select>
+
+                                                @else
+
+                                                <select style="border: 0;" class="form-control" name="preferred_kind">
+
+                                                    @foreach($types as $type)
+
+                                                        <option @if(old('preferred_kind') == $type->id) selected @endif value="{{$type->id}}">{{$type->types}}</option>
+
+                                                    @endforeach
+
+                                                </select>
+
+                                                @endif
+
 
                                         </div>
 
@@ -2152,8 +2430,8 @@
                                         <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
 
                                             <input type="text" id="looking-input" placeholder="Preferred Place of Residence" name="preferred_place" @if(old('preferred_place')) value="{{old('preferred_place')}}" @else value="{{ isset($property->preferred_place) ? $property->preferred_place : null }}" @endif style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control looking-input stepper-step-6-validate">
-                                            <input type="hidden" name="preferred_latitude" id="looking-latitude" @if(old('preferred_latitude')) value="{{old('preferred_latitude')}}" @else value="52.3666969" @endif />
-                                            <input type="hidden" name="preferred_longitude" id="looking-longitude" @if(old('preferred_longitude')) value="{{old('preferred_longitude')}}" @else value="4.8945398" @endif  />
+                                            <input type="hidden" name="preferred_latitude" id="looking-latitude" @if(old('preferred_latitude')) value="{{old('preferred_latitude')}}" @else value="{{ isset($property->preferred_latitude) ? $property->preferred_latitude : 52.3666969 }}" @endif />
+                                            <input type="hidden" name="preferred_longitude" id="looking-longitude" @if(old('preferred_longitude')) value="{{old('preferred_longitude')}}" @else value="{{ isset($property->preferred_longitude) ? $property->preferred_longitude : 4.8945398 }}" @endif  />
 
                                         </div>
 
@@ -2170,17 +2448,35 @@
 
                                         <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
 
-                                            <select style="border: 0;" class="form-control" name="preferred_radius">
-                                                <option @if(old('preferred_radius') == 0) selected @endif value="0">0 KM</option>
-                                                <option @if(old('preferred_radius') == 1) selected @endif value="1">1 KM</option>
-                                                <option @if(old('preferred_radius') == 2) selected @endif value="2">2 KM</option>
-                                                <option @if(old('preferred_radius') == 5) selected @endif value="5">5 KM</option>
-                                                <option @if(old('preferred_radius') == 10) selected @endif value="10">10 KM</option>
-                                                <option @if(old('preferred_radius') == 15) selected @endif value="15">15 KM</option>
-                                                <option @if(old('preferred_radius') == 30) selected @endif value="30">30 KM</option>
-                                                <option @if(old('preferred_radius') == 50) selected @endif value="50">50 KM</option>
-                                                <option @if(old('preferred_radius') == 100) selected @endif value="100">100 KM</option>
-                                            </select>
+                                            @if(isset($property->preferred_radius))
+
+                                                <select style="border: 0;" class="form-control" name="preferred_radius">
+                                                    <option @if($property->preferred_radius == 0) selected @endif value="0">0 KM</option>
+                                                    <option @if($property->preferred_radius == 1) selected @endif value="1">1 KM</option>
+                                                    <option @if($property->preferred_radius == 2) selected @endif value="2">2 KM</option>
+                                                    <option @if($property->preferred_radius == 5) selected @endif value="5">5 KM</option>
+                                                    <option @if($property->preferred_radius == 10) selected @endif value="10">10 KM</option>
+                                                    <option @if($property->preferred_radius == 15) selected @endif value="15">15 KM</option>
+                                                    <option @if($property->preferred_radius == 30) selected @endif value="30">30 KM</option>
+                                                    <option @if($property->preferred_radius == 50) selected @endif value="50">50 KM</option>
+                                                    <option @if($property->preferred_radius == 100) selected @endif value="100">100 KM</option>
+                                                </select>
+
+                                                @else
+
+                                                <select style="border: 0;" class="form-control" name="preferred_radius">
+                                                    <option @if(old('preferred_radius') == 0) selected @endif value="0">0 KM</option>
+                                                    <option @if(old('preferred_radius') == 1) selected @endif value="1">1 KM</option>
+                                                    <option @if(old('preferred_radius') == 2) selected @endif value="2">2 KM</option>
+                                                    <option @if(old('preferred_radius') == 5) selected @endif value="5">5 KM</option>
+                                                    <option @if(old('preferred_radius') == 10) selected @endif value="10">10 KM</option>
+                                                    <option @if(old('preferred_radius') == 15) selected @endif value="15">15 KM</option>
+                                                    <option @if(old('preferred_radius') == 30) selected @endif value="30">30 KM</option>
+                                                    <option @if(old('preferred_radius') == 50) selected @endif value="50">50 KM</option>
+                                                    <option @if(old('preferred_radius') == 100) selected @endif value="100">100 KM</option>
+                                                </select>
+
+                                                @endif
 
                                         </div>
 

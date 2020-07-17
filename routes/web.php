@@ -58,10 +58,14 @@ Route::group(['middleware' => 'App\Http\Middleware\UserTypeMiddleware'], functio
         Route::post('checkboxes', 'PropertiesController@Checkboxes');
         Route::get('properties/addproperty', 'PropertiesController@addeditproperty')->name('addproperty');
         Route::post('properties/addproperty', 'PropertiesController@addnew');
-        Route::get('properties/addproperty/{id}', 'PropertiesController@editproperty');
+        Route::get('properties/addproperty/{id}', 'PropertiesController@editproperty')->name('addproperty');
         Route::get('properties/addnewconstruction', 'PropertiesController@addeditnewconstruction')->name('addnewconstruction');
+        Route::get('properties/addnewconstruction/{id}', 'PropertiesController@editnewconstruction')->name('addnewconstruction');
         Route::get('properties/addhomeexchange', 'PropertiesController@addedithomeexchange')->name('addhomeexchange');
+        Route::get('properties/addhomeexchange/{id}', 'PropertiesController@edithomeexchange')->name('addhomeexchange');
         Route::get('properties/status/{id}', 'PropertiesController@status');
+        Route::get('properties/statusnewconstruction/{id}', 'PropertiesController@statusNewConstruction');
+        Route::get('properties/statushomeexchange/{id}', 'PropertiesController@statusHomeExchange');
 
         Route::post('save-property', 'PropertiesController@saveProperty');
         Route::get('favourite-properties', 'PropertiesController@favouriteProperties');
@@ -70,7 +74,11 @@ Route::group(['middleware' => 'App\Http\Middleware\UserTypeMiddleware'], functio
 
 
         Route::get('properties/featuredproperty/{id}', 'PropertiesController@featuredproperty');
+        Route::get('properties/featurednewconstruction/{id}', 'PropertiesController@featuredNewConstruction');
+        Route::get('properties/featuredhomeexchange/{id}', 'PropertiesController@featuredHomeExchange');
         Route::get('properties/delete/{id}', 'PropertiesController@delete');
+        Route::get('properties/deletenewconstruction/{id}', 'PropertiesController@deleteNewConstruction');
+        Route::get('properties/deletehomeexchange/{id}', 'PropertiesController@deleteHomeExchange');
         Route::get('featuredproperties', 'FeaturedPropertiesController@propertieslist');
 
 

@@ -314,29 +314,52 @@ class PropertiesController extends MainAdminController
 
 	    $inputs = $request->all();
 
+	    if($inputs['id'])
+        {
+            $rule=array(
+                'property_name' => 'required',
+                'property_slug' => 'unique:properties,property_slug,'.$inputs['id'],
+                'description' => 'required',
+                'featured_image' => 'mimes:jpg,jpeg,gif,png|max:5000',
+                'property_images1' => 'mimes:jpg,jpeg,gif,png|max:3000',
+                'property_images2' => 'mimes:jpg,jpeg,gif,png|max:3000',
+                'property_images3' => 'mimes:jpg,jpeg,gif,png|max:3000',
+                'property_images4' => 'mimes:jpg,jpeg,gif,png|max:3000',
+                'property_images5' => 'mimes:jpg,jpeg,gif,png|max:3000',
+                'video' => 'mimetypes:video/x-ms-asf,video/x-flv,video/mp4,application/x-mpegURL,video/MP2T,video/3gpp,video/quicktime,video/x-msvideo,video/x-ms-wmv,video/avi|max:20000',
+                'documents.*' => 'mimes:pdf,doc,docx,txt,rtf,wpd,ppt,pptx',
+                'first_floor' => 'mimes:jpg,jpeg,gif,png,pdf|max:5000',
+                'second_floor' => 'mimes:jpg,jpeg,gif,png,pdf|max:5000',
+                'ground_floor' => 'mimes:jpg,jpeg,gif,png,pdf|max:5000',
+                'basement' => 'mimes:jpg,jpeg,gif,png,pdf|max:5000',
+            );
 
-        $rule=array(
-            'property_name' => 'required',
-            'property_slug' => 'required|unique:properties',
-            'description' => 'required',
-            'featured_image' => 'mimes:jpg,jpeg,gif,png|max:5000',
-            'property_images1' => 'mimes:jpg,jpeg,gif,png|max:3000',
-            'property_images2' => 'mimes:jpg,jpeg,gif,png|max:3000',
-            'property_images3' => 'mimes:jpg,jpeg,gif,png|max:3000',
-            'property_images4' => 'mimes:jpg,jpeg,gif,png|max:3000',
-            'property_images5' => 'mimes:jpg,jpeg,gif,png|max:3000',
-            'video' => 'mimetypes:video/x-ms-asf,video/x-flv,video/mp4,application/x-mpegURL,video/MP2T,video/3gpp,video/quicktime,video/x-msvideo,video/x-ms-wmv,video/avi|max:20000',
-            'documents.*' => 'mimes:pdf,doc,docx,txt,rtf,wpd,ppt,pptx',
-            'first_floor' => 'mimes:jpg,jpeg,gif,png,pdf|max:5000',
-            'second_floor' => 'mimes:jpg,jpeg,gif,png,pdf|max:5000',
-            'ground_floor' => 'mimes:jpg,jpeg,gif,png,pdf|max:5000',
-            'basement' => 'mimes:jpg,jpeg,gif,png,pdf|max:5000',
-        );
+        }
+	    else
+        {
+            $rule=array(
+                'property_name' => 'required',
+                'property_slug' => 'unique:properties',
+                'description' => 'required',
+                'featured_image' => 'mimes:jpg,jpeg,gif,png|max:5000',
+                'property_images1' => 'mimes:jpg,jpeg,gif,png|max:3000',
+                'property_images2' => 'mimes:jpg,jpeg,gif,png|max:3000',
+                'property_images3' => 'mimes:jpg,jpeg,gif,png|max:3000',
+                'property_images4' => 'mimes:jpg,jpeg,gif,png|max:3000',
+                'property_images5' => 'mimes:jpg,jpeg,gif,png|max:3000',
+                'video' => 'mimetypes:video/x-ms-asf,video/x-flv,video/mp4,application/x-mpegURL,video/MP2T,video/3gpp,video/quicktime,video/x-msvideo,video/x-ms-wmv,video/avi|max:20000',
+                'documents.*' => 'mimes:pdf,doc,docx,txt,rtf,wpd,ppt,pptx',
+                'first_floor' => 'mimes:jpg,jpeg,gif,png,pdf|max:5000',
+                'second_floor' => 'mimes:jpg,jpeg,gif,png,pdf|max:5000',
+                'ground_floor' => 'mimes:jpg,jpeg,gif,png,pdf|max:5000',
+                'basement' => 'mimes:jpg,jpeg,gif,png,pdf|max:5000',
+            );
+        }
+
 
         $messages = [
             'property_name.required' => 'Property Name is required.',
-            'property_slug.required' => 'Property Slug is required.',
-            'property_slug.unique' => 'Property Slug is already been taken.',
+            'property_slug.unique' => 'This Property Slug is already been taken.',
             'description.required' => 'Description is required.',
             'featured_image.mimes' => 'Featured Image must be a file of type: jpg, jpeg, gif, png.',
             'featured_image.max' => 'Featured Image may not be greater than 5mb.',
@@ -385,6 +408,7 @@ class PropertiesController extends MainAdminController
 
 		//property featured image
 		$featured_image = $request->file('featured_image');
+
 
         if($featured_image){
 
@@ -736,7 +760,7 @@ class PropertiesController extends MainAdminController
 		}
 		else
 		{
-			$property_slug =Str::slug($inputs['property_slug'], "-");
+			$property_slug = Str::slug($inputs['property_slug'], "-");
 		}
 
 		$city = City::where('city_name', 'like', '%' . $request->city_name)->first();
@@ -927,13 +951,44 @@ class PropertiesController extends MainAdminController
 
     public function editproperty($id)
     {
+
           $property = Properties::findOrFail($id);
 
           $types = Types::orderBy('types')->get();
 
           $city_list = City::where('status','1')->orderBy('city_name')->get();
 
-          return view('admin.pages.addeditproperty',compact('property','city_list','types'));
+        $property_features = property_features::all();
+
+          return view('admin.pages.addeditproperty',compact('property','city_list','types','property_features'));
+
+    }
+
+    public function editnewconstruction($id)
+    {
+        $property = New_Constructions::findOrFail($id);
+
+        $types = Types::orderBy('types')->get();
+
+        $city_list = City::where('status','1')->orderBy('city_name')->get();
+
+        $property_features = property_features::all();
+
+        return view('admin.pages.addeditproperty',compact('property','city_list','types','property_features'));
+
+    }
+
+    public function edithomeexchange($id)
+    {
+        $property = Home_Exchange::findOrFail($id);
+
+        $types = Types::orderBy('types')->get();
+
+        $city_list = City::where('status','1')->orderBy('city_name')->get();
+
+        $property_features = property_features::all();
+
+        return view('admin.pages.addeditproperty',compact('property','city_list','types','property_features'));
 
     }
 
@@ -954,6 +1009,50 @@ class PropertiesController extends MainAdminController
 		\File::delete(public_path() .'/upload/properties/'.$property->property_images5.'-b.jpg');
 
 		$property->delete();
+
+        \Session::flash('flash_message', 'Property Deleted');
+
+        return redirect()->back();
+
+    }
+
+    public function deleteNewConstruction($id)
+    {
+
+        $property = New_Constructions::findOrFail($id);
+
+        \File::delete(public_path() .'/upload/properties/'.$property->featured_image.'-b.jpg');
+        \File::delete(public_path() .'/upload/properties/'.$property->featured_image.'-s.jpg');
+
+        \File::delete(public_path() .'/upload/properties/'.$property->property_images1.'-b.jpg');
+        \File::delete(public_path() .'/upload/properties/'.$property->property_images2.'-b.jpg');
+        \File::delete(public_path() .'/upload/properties/'.$property->property_images3.'-b.jpg');
+        \File::delete(public_path() .'/upload/properties/'.$property->property_images4.'-b.jpg');
+        \File::delete(public_path() .'/upload/properties/'.$property->property_images5.'-b.jpg');
+
+        $property->delete();
+
+        \Session::flash('flash_message', 'Property Deleted');
+
+        return redirect()->back();
+
+    }
+
+    public function deleteHomeExchange($id)
+    {
+
+        $property = Home_Exchange::findOrFail($id);
+
+        \File::delete(public_path() .'/upload/properties/'.$property->featured_image.'-b.jpg');
+        \File::delete(public_path() .'/upload/properties/'.$property->featured_image.'-s.jpg');
+
+        \File::delete(public_path() .'/upload/properties/'.$property->property_images1.'-b.jpg');
+        \File::delete(public_path() .'/upload/properties/'.$property->property_images2.'-b.jpg');
+        \File::delete(public_path() .'/upload/properties/'.$property->property_images3.'-b.jpg');
+        \File::delete(public_path() .'/upload/properties/'.$property->property_images4.'-b.jpg');
+        \File::delete(public_path() .'/upload/properties/'.$property->property_images5.'-b.jpg');
+
+        $property->delete();
 
         \Session::flash('flash_message', 'Property Deleted');
 
@@ -994,6 +1093,70 @@ class PropertiesController extends MainAdminController
 
     }
 
+    public function statusNewConstruction($id)
+    {
+        $property = New_Constructions::findOrFail($id);
+
+        if(Auth::User()->id!=$property->user_id and Auth::User()->usertype!="Admin")
+        {
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        if($property->status==1)
+        {
+            $property->status='0';
+            $property->save();
+
+            \Session::flash('flash_message', 'Unpublished');
+        }
+        else
+        {
+            $property->status='1';
+            $property->save();
+
+            \Session::flash('flash_message', 'Published');
+        }
+
+        return redirect()->back();
+
+    }
+
+    public function statusHomeExchange($id)
+    {
+        $property = Home_Exchange::findOrFail($id);
+
+        if(Auth::User()->id!=$property->user_id and Auth::User()->usertype!="Admin")
+        {
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        if($property->status==1)
+        {
+            $property->status='0';
+            $property->save();
+
+            \Session::flash('flash_message', 'Unpublished');
+        }
+        else
+        {
+            $property->status='1';
+            $property->save();
+
+            \Session::flash('flash_message', 'Published');
+        }
+
+        return redirect()->back();
+
+    }
+
 	public function featuredproperty($id)
     {
     	if(Auth::User()->usertype!="Admin"){
@@ -1020,6 +1183,71 @@ class PropertiesController extends MainAdminController
 
 	   		\Session::flash('flash_message', 'Property set as featured');
 		}
+
+
+        return redirect()->back();
+
+    }
+
+    public function featuredNewConstruction($id)
+    {
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        $property = New_Constructions::findOrFail($id);
+
+        if($property->featured_property==1)
+        {
+            $property->featured_property='0';
+            $property->save();
+
+            \Session::flash('flash_message', 'Property unset from featured');
+        }
+        else
+        {
+            $property->featured_property='1';
+            $property->save();
+
+            \Session::flash('flash_message', 'Property set as featured');
+        }
+
+
+        return redirect()->back();
+
+    }
+
+    public function featuredHomeExchange($id)
+    {
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        $property = Home_Exchange::findOrFail($id);
+
+        if($property->featured_property==1)
+        {
+            $property->featured_property='0';
+            $property->save();
+
+            \Session::flash('flash_message', 'Property unset from featured');
+        }
+        else
+        {
+            $property->featured_property='1';
+            $property->save();
+
+            \Session::flash('flash_message', 'Property set as featured');
+        }
+
 
         return redirect()->back();
 
