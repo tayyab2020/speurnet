@@ -366,6 +366,8 @@
 
                                       </button>
 
+                                          </form>
+
                                   @else
 
                                       @if(!isset(Auth::user()->usertype))
@@ -381,8 +383,6 @@
 
                                           @endif
 
-
-                                          </form>
 
                                   </li>
 

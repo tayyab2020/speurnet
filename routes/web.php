@@ -135,6 +135,8 @@ Route::group(['middleware' => 'App\Http\Middleware\UserTypeMiddleware'], functio
 
     Route::get('/', 'IndexController@index');
 
+    Route::get('homeexchange', 'PropertiesController@homeexchange');
+
     Route::get('addproperty', 'PropertiesController@addeditproperty')->name('addproperty');
 
     Route::get('addhomeexchange', 'PropertiesController@addedithomeexchange')->name('addhomeexchange');

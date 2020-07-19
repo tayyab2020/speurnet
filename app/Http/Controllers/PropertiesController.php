@@ -456,6 +456,13 @@ class PropertiesController extends Controller
 
     }
 
+    public function homeexchange()
+    {
+        $types = Types::orderBy('types')->get();
+
+        return view('pages.home_exchange',compact('types'));
+    }
+
     public function addedithomeexchange()
     {
 

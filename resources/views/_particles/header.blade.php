@@ -27,7 +27,7 @@
             <li class="{{classActivePathPublic('rent')}}"><a href="{{ URL::to('rent/') }}">Rent</a></li>--}}
             <li class="{{classActivePathPublic('agents')}}"><a href="{{ URL::to('agents/') }}">Agents</a></li>
             <li class="{{classActivePathPublic('new-constructions')}}"><a href="{{ URL::to('new-constructions/') }}">New Constructions</a></li>
-            <li class="{{classActivePathPublic('addhomeexchange')}}"><a href="{{ URL::to('addhomeexchange') }}">Home Exchange</a></li>
+            <li class="{{classActivePathPublic('homeexchange')}}"><a href="{{ URL::to('homeexchange') }}">Home Exchange</a></li>
             <li class="{{classActivePathPublic('moving-tips')}}"><a href="{{ URL::to('moving-tips/') }}">Moving Tips</a></li>
             <li class="{{classActivePathPublic('expats')}}"><a href="{{ URL::to('expats/') }}">Expats</a></li>
 
