@@ -31,7 +31,7 @@
 
             <div class="row mobile-row">
 
-                <form action="{{ URL::to('homeexchange/home-exchange-search') }}" method="POST">
+                <form action="{{ URL::to('homeexchange/home-exchange-search') }}" method="GET">
 
                     @csrf
 
@@ -673,12 +673,16 @@
 
                 </script>
 
+                @if(isset($properties))
+
+                    @if(count($properties) >= 1)
+
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
                     <!-- begin:article -->
                     <div class="properties-ordering-wrapper">
                         <div class="results-count">
-                            Showing <span class="first">10</span> – <span class="last">20</span> of 20 results</div>
+                            Showing <?php $count = count($properties); echo $count; if($count > 1) { echo " results"; } else{ echo " result"; } ?></div>
 
                         <div class="properties-ordering">
 
@@ -708,18 +712,28 @@
 
                     <!-- begin:product -->
 
-                    @if(isset($properties))
 
                         <div class="row">
 
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
+                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8" style="padding: 0;">
+
+                                            <h3 style="float: left;color: white;display: inline-block;background: #34c4be;padding: 10px;border: 1px solid #d5d5d5;font-weight: 600;font-size: 13px;">Offered Home Exchange House</h3>
+
+                                        </div>
+
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" style="padding: 0;">
+
+                                            <h3 style="float: left;color: white;display: inline-block;background: #34c4be;padding: 10px;border: 1px solid #d5d5d5;font-weight: 600;font-size: 13px;margin-left: 10px;">Requested Home Exchange House</h3>
+
+                                        </div>
+
+                                        @foreach($properties as $key)
+
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;margin-bottom: 20px;">
+
                                                 <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8" style="padding: 0;float: left;">
-
-                                                    <h3 style="float: left;color: white;display: inline-block;background: #34c4be;padding: 10px;border: 1px solid #d5d5d5;font-weight: 600;font-size: 13px;">Offered Home Exchange House</h3>
-
-
-                                                        @foreach($properties as $key)
 
                                                             <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12" style="display: inline-block;border: 1.5px solid #82e1dd;margin: 0;">
 
@@ -769,6 +783,8 @@
                                                                                     <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
 
                                                                                     <input type="hidden" name="property_id" value="{{$key->id}}">
+
+                                                                                    <input type="hidden" name="type" value="exchange">
 
                                                                                     <a onclick="$('#save_property_form').submit()" class="new-icons" title="Add Favorite" style="border-radius: 100px;position: relative;">
 
@@ -918,15 +934,10 @@
 
                                                             </div>
 
-                                                        @endforeach
-
-
                                                 </div>
 
 
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" style="padding: 0;float: right;">
-
-                                            <h3 style="float: left;color: white;display: inline-block;background: #34c4be;padding: 10px;border: 1px solid #d5d5d5;font-weight: 600;font-size: 13px;margin-left: 10px;">Requested Home Exchange House</h3>
 
                                             <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12" style="display: inline-block;border: 1.5px solid #82e1dd;margin: 0;min-height: 203px;margin-left: 10px;">
 
@@ -969,17 +980,23 @@
 
                                         </div>
 
+                                            </div>
+
+                                            @endforeach
+
                                     </div>
 
 
                                     </div>
 
-                    @endif
                                     <!-- end:product -->
 
 
                         </div>
                         <!-- end:article -->
+
+                    @endif
+                    @endif
 
                 </div>
 

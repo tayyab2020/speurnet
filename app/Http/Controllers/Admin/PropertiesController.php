@@ -40,9 +40,28 @@ class PropertiesController extends MainAdminController
 
             $existingProperties->delete();
 
-            $property = Properties::where('id',$request->property_id)->first();
-            $property->saved_properties = $property->saved_properties-1;
-            $property->save();
+            if($request->type == 'standard')
+            {
+                $property = Properties::where('id',$request->property_id)->first();
+                $property->saved_properties = $property->saved_properties-1;
+                $property->save();
+
+            }
+            elseif($request->type == 'construction')
+            {
+                $property = New_Constructions::where('id',$request->property_id)->first();
+                $property->saved_properties = $property->saved_properties-1;
+                $property->save();
+
+            }
+            else
+            {
+                $property = Home_Exchange::where('id',$request->property_id)->first();
+                $property->saved_properties = $property->saved_properties-1;
+                $property->save();
+
+            }
+
 
             Session::flash('flash_message', 'Property Removed from Your Saved Properties List!');
 
@@ -50,14 +69,32 @@ class PropertiesController extends MainAdminController
 
         else{
 
+
             $property = new saved_properties();
             $property->property_id = $request->property_id;
             $property->user_id = $request->user_id;
             $property->save();
 
-            $property = Properties::where('id',$request->property_id)->first();
-            $property->saved_properties = $property->saved_properties+1;
-            $property->save();
+            if($request->type == 'standard')
+            {
+                $property = Properties::where('id',$request->property_id)->first();
+                $property->saved_properties = $property->saved_properties+1;
+                $property->save();
+            }
+            elseif($request->type == 'construction')
+            {
+                $property = New_Constructions::where('id',$request->property_id)->first();
+                $property->saved_properties = $property->saved_properties+1;
+                $property->save();
+
+            }
+            else
+            {
+                $property = Home_Exchange::where('id',$request->property_id)->first();
+                $property->saved_properties = $property->saved_properties+1;
+                $property->save();
+
+            }
 
             /*$user=User::where('id',$request->user_id)->first();
             $user->views=$user->views+1;

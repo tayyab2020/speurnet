@@ -347,6 +347,16 @@
 
                                               <input type="hidden" name="property_id" value="{{$property->id}}">
 
+                                              @if($property->new_construction != 1)
+
+                                                  <input type="hidden" name="type" value="standard">
+
+                                                  @else
+
+                                                  <input type="hidden" name="type" value="construction">
+
+                                                  @endif
+
                                       <button type="submit" class="new-icons new-button" title="Add Favorite" style="border-radius: 100px;position: relative;outline: none;">
 
                                           @if($saved)
