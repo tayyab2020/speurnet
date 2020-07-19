@@ -31,15 +31,19 @@
 
             <div class="row mobile-row">
 
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 60px;">
+                <form action="{{ URL::to('homeexchange/home-exchange-search') }}" method="POST">
+
+                    @csrf
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-10" style="display: table;margin: auto;float: none;margin-bottom: 60px;">
 
                     <h1 style="margin-bottom: 30px;color: #575757;text-align: center;">Find Your Match</h1>
 
-                    <div id="wrapper_1" class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="padding: 0;">
+                    <div id="wrapper_1" class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="padding: 0;">
 
-                        <h3 class="col-lg-10 col-md-10 col-sm-10 col-xs-10" style="margin-bottom: 30px;float: left;text-align: center;color: white;display: inline-block;background: black;padding: 10px;border: 1px solid #d5d5d5;font-weight: 600;font-size: 20px;">Your House</h3>
+                        <h3 class="col-lg-10 col-md-10 col-sm-10 col-xs-12" style="margin-bottom: 30px;float: left;text-align: center;color: white;display: inline-block;background: black;padding: 10px;border: 1px solid #d5d5d5;font-weight: 600;font-size: 20px;">Your House</h3>
 
-                        <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-10" style="display: inline-block;float: left;">
+                        <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-12" style="display: inline-block;float: left;">
 
                             <label style="float: left;">Where do you live?</label>
 
@@ -47,18 +51,18 @@
 
                                 <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-map-marker-alt" aria-hidden="true"></i></div>
 
-                                <input type="text" id="address-input" autocomplete="off" required placeholder="Enter Address" name="address" @if(old('address')) value="{{old('address')}}" @endif style="border: 0;margin: 0;float: left;width: 80%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control map-input">
-                                <input type="hidden" name="address_latitude" id="address-latitude" @if(old('address_latitude')) value="{{old('address_latitude')}}" @endif />
-                                <input type="hidden" name="address_longitude" id="address-longitude" @if(old('address_longitude')) value="{{old('address_longitude')}}" @endif  />
+                                <input type="text" id="address-input" autocomplete="off" required placeholder="Enter Address" name="address" @if(isset($address)) value="{{$address}}" @endif style="border: 0;margin: 0;float: left;width: 80%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control map-input">
+                                <input type="hidden" name="address_latitude" id="address-latitude" @if(isset($address_latitude)) value="{{$address_latitude}}" @endif />
+                                <input type="hidden" name="address_longitude" id="address-longitude" @if(isset($address_longitude)) value="{{$address_longitude}}" @endif  />
 
                             </div>
 
                         </div>
 
 
-                        <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-10" style="display: inline-block;float: left;">
+                        <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-12" style="display: inline-block;float: left;">
 
-                            <label style="float: left;">Where kind of home do you have?</label>
+                            <label style="float: left;">What kind of home do you have?</label>
 
                             <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto;background: white;">
 
@@ -68,7 +72,16 @@
 
                                     @foreach($types as $type)
 
-                                        <option value="{{$type->id}}">{{$type->types}}</option>
+                                        @if(isset($house_kind))
+
+                                            <option @if($house_kind == $type->id) selected @endif value="{{$type->id}}">{{$type->types}}</option>
+
+                                            @else
+
+                                            <option value="{{$type->id}}">{{$type->types}}</option>
+
+                                            @endif
+
 
                                     @endforeach
 
@@ -78,7 +91,7 @@
 
                         </div>
 
-                        <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-10" style="display: inline-block;float: left;">
+                        <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-12" style="display: inline-block;float: left;">
 
                             <label style="float: left;">Type of Property</label>
 
@@ -96,7 +109,7 @@
 
                         </div>
 
-                        <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-10" style="display: inline-block;float: left;">
+                        <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-12" style="display: inline-block;float: left;">
 
                             <label style="float: left;">BEDROOMS</label>
 
@@ -104,7 +117,7 @@
 
                                 <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-bed" aria-hidden="true"></i></div>
 
-                                <input type="number" step="1" max="" placeholder="No. of Bedroom(s)" name="bedrooms" required value="1" class="quantity-field" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+                                <input type="number" step="1" max="" placeholder="No. of Bedroom(s)" name="bedrooms" required  @if(isset($bedrooms)) value="{{$bedrooms}}" @else value="1" @endif class="quantity-field" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
                                 <input type="button" value="+" class="button-plus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d7d7d7;margin-top: -0.1px;">
                                 <input type="button" value="-" class="button-minus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;margin-top: -0.1px;">
 
@@ -112,7 +125,8 @@
 
                         </div>
 
-                        <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-10" style="display: inline-block;float: left;">
+
+                        <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-12" style="display: inline-block;float: left;">
 
                             <label style="float: left;">BATHROOMS</label>
 
@@ -120,7 +134,7 @@
 
                                 <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-restroom" aria-hidden="true"></i></div>
 
-                                <input type="number" step="1" max="" placeholder="No. of Bathroom(s)" name="bathrooms" required value="1" class="quantity-field" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+                                <input type="number" step="1" max="" placeholder="No. of Bathroom(s)" name="bathrooms" required @if(isset($bathrooms)) value="{{$bathrooms}}" @else value="1" @endif class="quantity-field" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
                                 <input type="button" value="+" class="button-plus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d7d7d7;margin-top: -0.1px;">
                                 <input type="button" value="-" class="button-minus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;margin-top: -0.1px;">
 
@@ -128,7 +142,7 @@
 
                         </div>
 
-                        <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-10" style="display: inline-block;float: left;">
+                        <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-12" style="display: inline-block;float: left;">
 
                             <label style="float: left;">Area <small>(m2)</small></label>
 
@@ -136,7 +150,7 @@
 
                                 <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-crop-alt" aria-hidden="true"></i></div>
 
-                                <input type="number" name="area" placeholder="Area" required class="quantity-field" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+                                <input type="number" @if(isset($area)) value="{{$area}}" @else value="" @endif name="area" placeholder="Area" required class="quantity-field" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
                                 <input type="button" value="+" class="button-plus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d7d7d7;margin-top: -0.1px;">
                                 <input type="button" value="-" class="button-minus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;margin-top: -0.1px;">
 
@@ -144,7 +158,7 @@
 
                         </div>
 
-                        <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-10" style="display: inline-block;float: left;">
+                        <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-12" style="display: inline-block;float: left;">
 
                             <label style="float: left;">Rent Per Month <small>(€)</small></label>
 
@@ -152,7 +166,7 @@
 
                                 <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-tag" aria-hidden="true"></i></div>
 
-                                <input type="number" name="rent" placeholder="Rent Per Month" required class="quantity-field" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+                                <input type="number" @if(isset($rent)) value="{{$rent}}" @else value="" @endif name="rent" placeholder="Rent Per Month" required class="quantity-field" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
                                 <input type="button" value="+" class="button-plus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d7d7d7;margin-top: -0.1px;">
                                 <input type="button" value="-" class="button-minus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;margin-top: -0.1px;">
 
@@ -162,12 +176,11 @@
 
                     </div>
 
+                    <div id="wrapper_2" class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="padding: 0;">
 
-                    <div id="wrapper_2" class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="padding: 0;">
+                        <h3 class="col-lg-10 col-md-10 col-sm-10 col-xs-12" style="margin-bottom: 30px;float: right;text-align: center;color: white;display: inline-block;background: black;padding: 10px;border: 1px solid #d5d5d5;font-weight: 600;font-size: 20px;">You are looking for?</h3>
 
-                        <h3 class="col-lg-10 col-md-10 col-sm-10 col-xs-10" style="margin-bottom: 30px;float: right;text-align: center;color: white;display: inline-block;background: black;padding: 10px;border: 1px solid #d5d5d5;font-weight: 600;font-size: 20px;">You are looking for?</h3>
-
-                        <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-10" style="display: inline-block;float: right;">
+                        <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-12" style="display: inline-block;float: right;">
 
                             <label style="float: left;">Where do you want to live?</label>
 
@@ -175,16 +188,16 @@
 
                                 <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-map-marker-alt" aria-hidden="true"></i></div>
 
-                                <input type="text" id="preferred-address-input" autocomplete="off" required placeholder="Enter Address" name="preferred_address" @if(old('preferred_address')) value="{{old('preferred_address')}}" @endif style="border: 0;margin: 0;float: left;width: 80%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control map-input">
-                                <input type="hidden" name="address_latitude" id="preferred-address-latitude" @if(old('preferred_address_latitude')) value="{{old('preferred_address_latitude')}}" @endif />
-                                <input type="hidden" name="address_longitude" id="preferred-address-longitude" @if(old('preferred_address_longitude')) value="{{old('preferred_address_longitude')}}" @endif  />
+                                <input type="text" id="preferred-address-input" autocomplete="off" required placeholder="Enter Address" name="preferred_address" @if(isset($preferred_address)) value="{{$preferred_address}}" @endif style="border: 0;margin: 0;float: left;width: 80%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control map-input">
+                                <input type="hidden" name="preferred_address_latitude" id="preferred-address-latitude" @if(isset($preferred_address_latitude)) value="{{$preferred_address_latitude}}" @endif />
+                                <input type="hidden" name="preferred_address_longitude" id="preferred-address-longitude" @if(isset($preferred_address_longitude)) value="{{$preferred_address_longitude}}" @endif  />
 
                             </div>
 
                         </div>
 
 
-                        <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-10" style="display: inline-block;float: right;">
+                        <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-12" style="display: inline-block;float: right;">
 
                             <label style="float: left;">Within Radius of?</label>
 
@@ -194,15 +207,31 @@
 
                                 <select name="preferred_radius" id="preferred_radius" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 75%;border: 0;">
 
-                                    <option value="0">0 KM</option>
-                                    <option value="1">1 KM</option>
-                                    <option value="2">2 KM</option>
-                                    <option value="5">5 KM</option>
-                                    <option value="10">10 KM</option>
-                                    <option value="15">15 KM</option>
-                                    <option value="30">30 KM</option>
-                                    <option value="50">50 KM</option>
-                                    <option value="100">100 KM</option>
+                                    @if(isset($preferred_radius))
+
+                                        <option @if($preferred_radius == 0) selected @endif value="0">0 KM</option>
+                                        <option @if($preferred_radius == 1) selected @endif value="1">1 KM</option>
+                                        <option @if($preferred_radius == 2) selected @endif value="2">2 KM</option>
+                                        <option @if($preferred_radius == 5) selected @endif value="5">5 KM</option>
+                                        <option @if($preferred_radius == 10) selected @endif value="10">10 KM</option>
+                                        <option @if($preferred_radius == 15) selected @endif value="15">15 KM</option>
+                                        <option @if($preferred_radius == 30) selected @endif value="30">30 KM</option>
+                                        <option @if($preferred_radius == 50) selected @endif value="50">50 KM</option>
+                                        <option @if($preferred_radius == 100) selected @endif value="100">100 KM</option>
+
+                                    @else
+
+                                        <option value="0">0 KM</option>
+                                        <option value="1">1 KM</option>
+                                        <option value="2">2 KM</option>
+                                        <option value="5">5 KM</option>
+                                        <option value="10">10 KM</option>
+                                        <option value="15">15 KM</option>
+                                        <option value="30">30 KM</option>
+                                        <option value="50">50 KM</option>
+                                        <option value="100">100 KM</option>
+
+                                    @endif
 
                                 </select>
 
@@ -210,9 +239,9 @@
 
                         </div>
 
-                        <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-10" style="display: inline-block;float: right;">
+                        <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-12" style="display: inline-block;float: right;">
 
-                            <label style="float: left;">Where kind of home do you have?</label>
+                            <label style="float: left;">What type of home are you looking for?</label>
 
                             <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto;background: white;">
 
@@ -222,7 +251,16 @@
 
                                     @foreach($types as $type)
 
-                                        <option value="{{$type->id}}">{{$type->types}}</option>
+                                        @if(isset($preferred_house_kind))
+
+                                            <option @if($preferred_house_kind == $type->id) selected @endif value="{{$type->id}}">{{$type->types}}</option>
+
+                                        @else
+
+                                            <option value="{{$type->id}}">{{$type->types}}</option>
+
+                                        @endif
+
 
                                     @endforeach
 
@@ -232,7 +270,7 @@
 
                         </div>
 
-                        <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-10" style="display: inline-block;float: right;">
+                        <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-12" style="display: inline-block;float: right;">
 
                             <label style="float: left;">Type of Property</label>
 
@@ -250,7 +288,7 @@
 
                         </div>
 
-                        <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-10" style="display: inline-block;float: right;">
+                        <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-12" style="display: inline-block;float: right;">
 
                             <label style="float: left;">Minimum Bedrooms</label>
 
@@ -258,7 +296,7 @@
 
                                 <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-bed" aria-hidden="true"></i></div>
 
-                                <input type="number" step="1" max="" placeholder="No. of Bedroom(s)" name="preferred_bedrooms" required value="1" class="quantity-field" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+                                <input type="number" step="1" max="" placeholder="No. of Bedroom(s)" name="preferred_bedrooms" required @if(isset($preferred_bedrooms)) value="{{$preferred_bedrooms}}" @else value="1" @endif class="quantity-field" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
                                 <input type="button" value="+" class="button-plus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d7d7d7;margin-top: -0.1px;">
                                 <input type="button" value="-" class="button-minus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;margin-top: -0.1px;">
 
@@ -266,7 +304,7 @@
 
                         </div>
 
-                        <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-10" style="display: inline-block;float: right;">
+                        <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-12" style="display: inline-block;float: right;">
 
                             <label style="float: left;">Minimum Bathrooms</label>
 
@@ -274,7 +312,7 @@
 
                                 <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-restroom" aria-hidden="true"></i></div>
 
-                                <input type="number" step="1" max="" placeholder="No. of Bathroom(s)" name="preferred_bathrooms" required value="1" class="quantity-field" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+                                <input type="number" step="1" max="" placeholder="No. of Bathroom(s)" name="preferred_bathrooms" required @if(isset($preferred_bathrooms)) value="{{$preferred_bathrooms}}" @else value="1" @endif class="quantity-field" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
                                 <input type="button" value="+" class="button-plus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d7d7d7;margin-top: -0.1px;">
                                 <input type="button" value="-" class="button-minus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;margin-top: -0.1px;">
 
@@ -282,7 +320,7 @@
 
                         </div>
 
-                        <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-10" style="display: inline-block;float: right;">
+                        <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-12" style="display: inline-block;float: right;">
 
                             <label style="float: left;">Minimum Area <small>(m2)</small></label>
 
@@ -290,7 +328,7 @@
 
                                 <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-crop-alt" aria-hidden="true"></i></div>
 
-                                <input type="number" name="preferred_area" placeholder="Area" required class="quantity-field" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+                                <input type="number" name="preferred_area" @if(isset($preferred_area)) value="{{$preferred_area}}" @else value="" @endif placeholder="Area" required class="quantity-field" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
                                 <input type="button" value="+" class="button-plus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d7d7d7;margin-top: -0.1px;">
                                 <input type="button" value="-" class="button-minus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;margin-top: -0.1px;">
 
@@ -298,7 +336,7 @@
 
                         </div>
 
-                        <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-10" style="display: inline-block;float: right;">
+                        <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-12" style="display: inline-block;float: right;">
 
                             <label style="float: left;">Maximum Rent Per Month <small>(€)</small></label>
 
@@ -306,7 +344,7 @@
 
                                 <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-tag" aria-hidden="true"></i></div>
 
-                                <input type="number" name="preferred_rent" placeholder="Maximum Rent" required class="quantity-field" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+                                <input type="number" name="preferred_rent" @if(isset($preferred_rent)) value="{{$preferred_rent}}" @else value="" @endif placeholder="Maximum Rent" required class="quantity-field" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
                                 <input type="button" value="+" class="button-plus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d7d7d7;margin-top: -0.1px;">
                                 <input type="button" value="-" class="button-minus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;margin-top: -0.1px;">
 
@@ -316,19 +354,29 @@
 
                     </div>
 
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="text-align: center;margin-top: 20px;">
+                        <button type="submit" class="btn btn-success" style="font-size: 20px;"><i class="fas fa-search" style="margin-right: 5px;font-size: 17px;" aria-hidden="true"></i> Search</button>
+                    </div>
+
+
                 </div>
+
+            </form>
 
                 <style>
 
-                    #wrapper_2:before {
-                        content: "";
-                        background-color: #000;
-                        position: absolute;
-                        width: 2px;
-                        height: 97%;
-                        top: 10px;
-                        right: 100%;
-                        display: block;
+                    @media (min-width: 768px)
+                    {
+                        #wrapper_2:before {
+                            content: "";
+                            background-color: #000;
+                            position: absolute;
+                            width: 2px;
+                            height: 97%;
+                            top: 10px;
+                            right: 100%;
+                            display: block;
+                        }
                     }
 
                     input,
@@ -659,6 +707,9 @@
 
 
                     <!-- begin:product -->
+
+                    @if(isset($properties))
+
                         <div class="row">
 
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -667,180 +718,208 @@
 
                                                     <h3 style="float: left;color: white;display: inline-block;background: #34c4be;padding: 10px;border: 1px solid #d5d5d5;font-weight: 600;font-size: 13px;">Offered Home Exchange House</h3>
 
-                                                    <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12" style="display: inline-block;border: 1.5px solid #82e1dd;margin: 0;">
 
-                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" style="padding: 0;">
-                                                            <img src="{{ URL::asset('upload/properties/az-31b3b31a1c2f8a370206f111127c0dbd-b.jpg') }}" style="width: 100%;height: 200px;">
-                                                        </div>
+                                                        @foreach($properties as $key)
 
-                                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                                            <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12" style="display: inline-block;border: 1.5px solid #82e1dd;margin: 0;">
 
-                                                            <h3 style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;width: 65%;float: left;">{{ Str::limit("Property Name",35) }}</h3>
+                                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" style="padding: 0;">
 
-                                                            <?php $url = "https://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; ?>
+                                                                    @if($key->featured_image)
 
-                                                            <ul class="nav nav-tabs nav-table" style="float: right;border-bottom: 0;margin: 10px 0px;width: 35%;margin-bottom: 0px;">
-
-                                                                <li class="image-tab" style="float: right;">
-                                                                    <a class="new-icons" target="_blank" title="Share by Email" href="mailto:?subject=I wanted you to see this Property AD I just Found on zoekjehuisje.nl&amp;body=Check out this link https://localhost:8000/properties/az" style="border-radius: 100px;position: relative;">
-                                                                        <i class="far fa-envelope" style="vertical-align: middle;" aria-hidden="true"></i>
-                                                                    </a>
-                                                                </li>
-
-                                                                <li class="image-tab" style="float: right;">
-                                                                    <a class="new-icons" title="Share" style="border-radius: 100px;position: relative;" data-toggle="modal" data-target="#ShareModal">
-                                                                        <i class="fas fa-share-alt" style="vertical-align: middle;margin-right: 2px;" aria-hidden="true"></i>
-                                                                    </a>
-                                                                </li>
-
-
-                                                                <li class="image-tab" style="float: right;">
-
-                                                                    @if( isset(Auth::user()->usertype) && Auth::user()->usertype == 'Users')
-
-                                                                        <form action="{{ URL::to('admin/save-property') }}" method="POST" id="save_property_form" style="display: inline-block;">
-
-                                                                            <input type="hidden" name="_token" value="{{csrf_token()}}"/>
-
-                                                                            <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
-
-                                                                            <input type="hidden" name="property_id" value="1">
-
-                                                                            <a onclick="$('#save_property_form').submit()" class="new-icons" title="Add Favorite" style="border-radius: 100px;position: relative;">
-
-                                                                                <i class="far fa-heart" id="heart" style="vertical-align: middle;font-size: 16px;">
-                                                                                </i>
-                                                                            </a>
-
-                                                                        </form>
+                                                                        <img src="{{ URL::asset('upload/properties/'.$key->featured_image.'-b.jpg') }}" style="width: 100%;height: 200px;">
 
                                                                     @else
 
-                                                                        @if(!isset(Auth::user()->usertype))
-
-                                                                            <a class="new-icons" href="{{ URL::to('/login') }}" title="Be First to Save this property" style="border-radius: 100px;position: relative;">
-
-                                                                                <i class="far fa-heart" id="heart" style="vertical-align: middle;font-size: 16px;">
-                                                                                </i>
-                                                                            </a>
-
-                                                                        @endif
+                                                                        <img src="{{ URL::asset('upload/noImage.png') }}" style="width: 100%;height: 200px;">
 
                                                                     @endif
 
-                                                                </li>
+                                                                </div>
 
-                                                            </ul>
+                                                                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
 
-                                                            <div class="modal fade" id="ShareModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                                    <h3 style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;width: 45%;float: left;">{{ Str::limit($key->property_name,35) }}</h3>
+
+                                                                    <?php $url = "https://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; ?>
+
+                                                                    <ul class="nav nav-tabs nav-table" style="float: right;border-bottom: 0;margin: 10px 0px;width: 55%;margin-bottom: 0px;">
+
+                                                                        <li class="image-tab" style="float: right;">
+                                                                            <a class="new-icons" target="_blank" title="Share by Email" href="mailto:?subject=I wanted you to see this Property AD I just Found on zoekjehuisje.nl&amp;body=Check out this link {{$url}}" style="border-radius: 100px;position: relative;">
+                                                                                <i class="far fa-envelope" style="vertical-align: middle;" aria-hidden="true"></i>
+                                                                            </a>
+                                                                        </li>
+
+                                                                        <li class="image-tab" style="float: right;">
+                                                                            <a class="new-icons" title="Share" style="border-radius: 100px;position: relative;" data-toggle="modal" data-target="#ShareModal">
+                                                                                <i class="fas fa-share-alt" style="vertical-align: middle;margin-right: 2px;" aria-hidden="true"></i>
+                                                                            </a>
+                                                                        </li>
 
 
-                                                                    <div class="modal-content" style="width: 100%;">
+                                                                        <li class="image-tab" style="float: right;">
 
-                                                                        <div class="modal-header" style="border-bottom: 0;display: inline-block;width: 100%;padding: 15px 25px 20px 25px;border-bottom: 1px solid #e6e9ed;">
+                                                                            @if( isset(Auth::user()->usertype) && Auth::user()->usertype == 'Users')
 
+                                                                                <form action="{{ URL::to('admin/save-property') }}" method="POST" id="save_property_form" style="display: inline-block;">
 
-                                                                            <h4 style="margin-top: 5px;" class="modal-title" id="exampleModalLabel">SHARE THIS AD</h4>
+                                                                                    <input type="hidden" name="_token" value="{{csrf_token()}}"/>
 
-                                                                        </div>
+                                                                                    <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
 
+                                                                                    <input type="hidden" name="property_id" value="{{$key->id}}">
 
-                                                                        <div class="modal-body" style="padding: 10px 25px;padding-top: 0px;">
+                                                                                    <a onclick="$('#save_property_form').submit()" class="new-icons" title="Add Favorite" style="border-radius: 100px;position: relative;">
 
-                                                                            <input type="hidden" name="id" value="1">
+                                                                                        @if($key->saved_count)
 
-                                                                            <div class="form-group" style="margin-top: 15px;">
+                                                                                            <i class="fa fa-heart" id="heart" style="vertical-align: middle;font-size: 16px;">
 
-                                                                                <div style="position: relative;width: 100%;">
+                                                                                            </i>
 
-                                                                                    <a class="share-link" style="border-bottom: 1px solid rgb(208, 211, 217);" target="_blank" title="Share by Whatsapp" href="https://api.whatsapp.com/send?text={{$url}}">
-                                                                                        <div style="line-height: 5;padding: 0px 20px;">
-                                                                                            <i class="fa fa-whatsapp" aria-hidden="true" style="font-size: 20px;color: #474646;"></i>
+                                                                                        @else
 
-                                                                                            <span style="margin-left: 6px;font-size: 20px;color: #474646;">Share By Whatsapp</span>
+                                                                                            <i class="far fa-heart" id="heart" style="vertical-align: middle;font-size: 16px;">
 
-                                                                                        </div>
+                                                                                            </i>
+
+                                                                                        @endif
+
                                                                                     </a>
 
-                                                                                    <a class="share-link" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{$url}}">
+                                                                                </form>
 
-                                                                                        <div style="line-height: 5;padding: 0px 20px;">
+                                                                            @else
 
-                                                                                            <i class="fa fa-facebook" aria-hidden="true" style="font-size: 20px;color: #474646;"></i>
+                                                                                @if(!isset(Auth::user()->usertype))
 
-                                                                                            <span style="margin-left: 6px;font-size: 20px;color: #474646;">Share By Facebook</span>
+                                                                                    <a class="new-icons" href="{{ URL::to('/login') }}" title="Be First to Save this property" style="border-radius: 100px;position: relative;">
 
-                                                                                        </div>
+                                                                                        <i class="far fa-heart" id="heart" style="vertical-align: middle;font-size: 16px;">
+                                                                                        </i>
                                                                                     </a>
 
-                                                                                    <style>
+                                                                                @endif
 
-                                                                                        .share-link
-                                                                                        {
-                                                                                            text-decoration: none !important;
-                                                                                            display: block;
-                                                                                            min-height: 60px;
-                                                                                        }
+                                                                            @endif
 
-                                                                                        .share-link:hover
-                                                                                        {
-                                                                                            background-color: rgb(242, 245, 247);
-                                                                                        }
+                                                                        </li>
 
-                                                                                    </style>
+                                                                    </ul>
+
+                                                                    <div class="modal fade" id="ShareModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                        <div class="modal-dialog modal-dialog-centered" role="document">
+
+
+                                                                            <div class="modal-content" style="width: 100%;">
+
+                                                                                <div class="modal-header" style="border-bottom: 0;display: inline-block;width: 100%;padding: 15px 25px 20px 25px;border-bottom: 1px solid #e6e9ed;">
+
+
+                                                                                    <h4 style="margin-top: 5px;" class="modal-title" id="exampleModalLabel">SHARE THIS AD</h4>
 
                                                                                 </div>
 
+
+                                                                                <div class="modal-body" style="padding: 10px 25px;padding-top: 0px;">
+
+                                                                                    <input type="hidden" name="id" value="1">
+
+                                                                                    <div class="form-group" style="margin-top: 15px;">
+
+                                                                                        <div style="position: relative;width: 100%;">
+
+                                                                                            <a class="share-link" style="border-bottom: 1px solid rgb(208, 211, 217);" target="_blank" title="Share by Whatsapp" href="https://api.whatsapp.com/send?text={{$url}}">
+                                                                                                <div style="line-height: 5;padding: 0px 20px;">
+                                                                                                    <i class="fa fa-whatsapp" aria-hidden="true" style="font-size: 20px;color: #474646;"></i>
+
+                                                                                                    <span style="margin-left: 6px;font-size: 20px;color: #474646;">Share By Whatsapp</span>
+
+                                                                                                </div>
+                                                                                            </a>
+
+                                                                                            <a class="share-link" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{$url}}">
+
+                                                                                                <div style="line-height: 5;padding: 0px 20px;">
+
+                                                                                                    <i class="fa fa-facebook" aria-hidden="true" style="font-size: 20px;color: #474646;"></i>
+
+                                                                                                    <span style="margin-left: 6px;font-size: 20px;color: #474646;">Share By Facebook</span>
+
+                                                                                                </div>
+                                                                                            </a>
+
+                                                                                            <style>
+
+                                                                                                .share-link
+                                                                                                {
+                                                                                                    text-decoration: none !important;
+                                                                                                    display: block;
+                                                                                                    min-height: 60px;
+                                                                                                }
+
+                                                                                                .share-link:hover
+                                                                                                {
+                                                                                                    background-color: rgb(242, 245, 247);
+                                                                                                }
+
+                                                                                            </style>
+
+                                                                                        </div>
+
+                                                                                    </div>
+
+
+                                                                                </div>
+                                                                                <div class="modal-footer">
+                                                                                    <button type="button" class="btn btn-success" data-dismiss="modal">Cancel</button>
+                                                                                </div>
                                                                             </div>
 
 
-                                                                        </div>
-                                                                        <div class="modal-footer">
-                                                                            <button type="button" class="btn btn-success" data-dismiss="modal">Cancel</button>
+
                                                                         </div>
                                                                     </div>
 
+                                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding-left: 2px;margin-bottom: 15px;margin-top: 10px;">
 
+                                                                        <small style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;width: 55%;float: left;font-weight: 600;"><i style="color: #9b9b9b;margin-right: 5px;" class="fas fa-map-marker-alt" aria-hidden="true"></i> {{ Str::limit($key->address,40) }}</small>
+
+                                                                        <small style="width: 45%;float: right;font-weight: 600;text-align: right;">€ {{$key->rent_per_month}} Rent</small>
+
+                                                                    </div>
+
+                                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0px;min-height: 40px;display: flex;flex-direction: row;">
+
+                                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" style="text-align: center;display: flex;justify-content: center;flex-direction: column;border-right: 1px solid #cccccc;min-height: 40px;">
+                                                                            @if($key->bedrooms > 1) {{$key->bedrooms}} Bedrooms @else {{$key->bedrooms}} Bedroom @endif
+                                                                        </div>
+
+                                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" style="text-align: center;display: flex;justify-content: center;flex-direction: column;border-right: 1px solid #cccccc;min-height: 40px;">
+                                                                            {{$key->area}} m2
+                                                                        </div>
+
+                                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" style="text-align: center;display: flex;justify-content: center;flex-direction: column;min-height: 40px;">
+                                                                            @if($key->bathrooms > 1) {{$key->bathrooms}} Bathrooms @else {{$key->bathrooms}} Bathroom @endif
+                                                                        </div>
+
+                                                                    </div>
+
+
+                                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top: 20px;">
+
+                                                                        <small style="float: left;font-weight: bold;"><?php foreach($types as $type) { if($key->property_type == $type->id){ echo $type->types; }} ?></small>
+                                                                        <small style="float: right;font-weight: 600;color: #0a94be;"><i class="fa fa-calendar-o" aria-hidden="true" style="margin-right: 5px;"></i> 0 Weeks Ago</small>
+
+                                                                    </div>
 
                                                                 </div>
-                                                            </div>
-
-                                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding-left: 2px;margin-bottom: 15px;margin-top: 10px;">
-
-                                                                <small style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;width: 55%;float: left;font-weight: 600;"><i style="color: #9b9b9b;margin-right: 5px;" class="fas fa-map-marker-alt" aria-hidden="true"></i> {{ Str::limit("76 street, Hilversum",40) }}</small>
-
-                                                                <small style="width: 45%;float: right;font-weight: 600;text-align: right;">€ 500 Rent</small>
 
                                                             </div>
 
-                                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0px;min-height: 40px;display: flex;flex-direction: row;">
+                                                        @endforeach
 
-                                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" style="text-align: center;display: flex;justify-content: center;flex-direction: column;border-right: 1px solid #cccccc;min-height: 40px;">
-                                                                    2 Bedrooms
-                                                                </div>
-
-                                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" style="text-align: center;display: flex;justify-content: center;flex-direction: column;border-right: 1px solid #cccccc;min-height: 40px;">
-                                                                    150 m2
-                                                                </div>
-
-                                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" style="text-align: center;display: flex;justify-content: center;flex-direction: column;min-height: 40px;">
-                                                                    2 Bathrooms
-                                                                </div>
-
-                                                            </div>
-
-
-                                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top: 20px;">
-
-                                                                <small style="float: left;font-weight: bold;">Appartment</small>
-                                                                <small style="float: right;font-weight: 600;color: #0a94be;"><i class="fa fa-calendar-o" aria-hidden="true" style="margin-right: 5px;"></i> 4 Weeks Ago</small>
-
-                                                            </div>
-
-                                                        </div>
-
-                                                    </div>
 
                                                 </div>
 
@@ -853,26 +932,26 @@
 
                                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
-                                                    <h3 style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;width: 100%;float: left;">{{ Str::limit("76 street, Hilversum",40) }}</h3>
+                                                    <h3 style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;width: 100%;float: left;">{{ Str::limit($preferred_address,40) }}</h3>
 
                                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding-left: 2px;margin-bottom: 15px;margin-top: 10px;">
 
-                                                        <small style="width: 100%;float: left;font-weight: 600;text-align: left;">€ 500 Rent</small>
+                                                        <small style="width: 100%;float: left;font-weight: 600;text-align: left;">€ {{$preferred_rent}} Rent</small>
 
                                                     </div>
 
                                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0px;min-height: 40px;display: flex;flex-direction: row;">
 
                                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" style="text-align: center;display: flex;justify-content: center;flex-direction: column;border-right: 1px solid #cccccc;min-height: 40px;">
-                                                            2 Bedrooms
+                                                            @if($preferred_bedrooms > 1) {{$preferred_bedrooms}} Bedrooms @else {{$preferred_bedrooms}} Bedroom @endif
                                                         </div>
 
                                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" style="text-align: center;display: flex;justify-content: center;flex-direction: column;border-right: 1px solid #cccccc;min-height: 40px;">
-                                                            150 m2
+                                                            {{$preferred_area}} m2
                                                         </div>
 
                                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" style="text-align: center;display: flex;justify-content: center;flex-direction: column;min-height: 40px;">
-                                                            2 Bathrooms
+                                                            @if($preferred_bathrooms > 1) {{$preferred_bathrooms}} Bathrooms @else {{$preferred_bathrooms}} Bathroom @endif
                                                         </div>
 
                                                     </div>
@@ -880,7 +959,7 @@
 
                                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top: 20px;padding: 0;">
 
-                                                        <small style="float: left;font-weight: bold;">Appartment</small>
+                                                        <small style="float: left;font-weight: bold;"><?php foreach($types as $type) { if($preferred_house_kind == $type->id){ echo $type->types; }} ?></small>
 
                                                     </div>
 
@@ -894,6 +973,8 @@
 
 
                                     </div>
+
+                    @endif
                                     <!-- end:product -->
 
 
@@ -901,6 +982,7 @@
                         <!-- end:article -->
 
                 </div>
+
             </div>
         </div>
         <!-- end:content -->

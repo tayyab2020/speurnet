@@ -463,6 +463,124 @@ class PropertiesController extends Controller
         return view('pages.home_exchange',compact('types'));
     }
 
+    public function HomeExchangeSearch(Request $request)
+    {
+
+        $types = Types::orderBy('types')->get();
+
+        $house_kind = $request->house_kind;
+        $property_type = $request->property_type;
+        $bedrooms = $request->bedrooms;
+        $bathrooms = $request->bathrooms;
+        $area = $request->area;
+        $rent = $request->rent;
+        $address = $request->address;
+        $address_latitude = $request->address_latitude;
+        $address_longitude = $request->address_longitude;
+        $preferred_address = $request->preferred_address;
+        $preferred_address_latitude = $request->preferred_address_latitude;
+        $preferred_address_longitude = $request->preferred_address_longitude;
+        $preferred_radius = $request->preferred_radius;
+        $preferred_house_kind = $request->preferred_house_kind;
+        $preferred_property_type = $request->preferred_property_type;
+        $preferred_bedrooms = $request->preferred_bedrooms;
+        $preferred_bathrooms = $request->preferred_bathrooms;
+        $preferred_area = $request->preferred_area;
+        $preferred_rent = $request->preferred_rent;
+
+        $properties_search = [];
+        $final_results = [];
+
+
+            $properties = Home_Exchange::SearchByKeyword($house_kind,$bedrooms,$bathrooms,$area,$rent,$preferred_house_kind,$preferred_bedrooms,$preferred_bathrooms,$preferred_area,$preferred_rent)->where('is_sold',0)->where('is_rented',0)->select('properties.*')->get();
+
+
+                foreach ($properties as $key)
+                {
+                    $property_latitude = $key->map_latitude;
+                    $property_longitude = $key->map_longitude;
+
+                    $url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=".urlencode($preferred_address_latitude).",".urlencode($preferred_address_longitude)."&destinations=".urlencode($property_latitude).",".urlencode($property_longitude)."&key=AIzaSyDFPa3LVeBRpaGafuUtk4znrty6IIqtMUw";
+
+                    $result_string = file_get_contents($url);
+                    $result = json_decode($result_string, true);
+
+                    if($result['rows'][0]['elements'][0]['status'] == 'OK')
+                    {
+                        $property_radius = $result['rows'][0]['elements'][0]['distance']['value'];
+                        $property_radius = $property_radius / 1000;
+
+                        $property_radius = round($property_radius);
+
+                        if($property_radius <= $preferred_radius)
+                        {
+                            array_push($properties_search,$key);
+                        }
+                    }
+
+                }
+
+
+                $properties = $properties_search;
+
+                if(count($properties) >= 1)
+                {
+
+                    foreach ($properties as $key)
+                    {
+
+                        $property_latitude = $key->preferred_latitude;
+                        $property_longitude = $key->preferred_longitude;
+                        $property_preferred_radius = $key->preferred_radius;
+
+                        $url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=".urlencode($address_latitude).",".urlencode($address_longitude)."&destinations=".urlencode($property_latitude).",".urlencode($property_longitude)."&key=AIzaSyDFPa3LVeBRpaGafuUtk4znrty6IIqtMUw";
+
+                        $result_string = file_get_contents($url);
+                        $result = json_decode($result_string, true);
+
+
+                        if($result['rows'][0]['elements'][0]['status'] == 'OK')
+                        {
+                            $property_radius = $result['rows'][0]['elements'][0]['distance']['value'];
+                            $property_radius = $property_radius / 1000;
+
+                            $property_radius = round($property_radius);
+
+                            if($property_radius <= $property_preferred_radius)
+                            {
+                                if(Auth::user())
+                                {
+
+                                    $saved = saved_properties::where('property_id',$key->id)->where('user_id',Auth::user()->id)->first();
+                                    if($saved)
+                                    {
+                                        $saved_count = 1;
+                                    }
+                                    else
+                                    {
+                                        $saved_count = 0;
+                                    }
+                                    $key->saved_count = $saved_count;
+                                }
+                                else
+                                {
+                                    $key->saved_count = 0;
+                                }
+                                array_push($final_results,$key);
+                            }
+                        }
+
+                    }
+
+                }
+
+        $properties = $final_results;
+
+
+        return view('pages.home_exchange',compact('house_kind','property_type','address','address_latitude','address_longitude','bedrooms','bathrooms','area','rent','preferred_house_kind','preferred_address','preferred_address_latitude','preferred_address_longitude','preferred_radius','preferred_bedrooms','preferred_bathrooms','preferred_area','preferred_rent','properties','types'));
+
+    }
+
     public function addedithomeexchange()
     {
 

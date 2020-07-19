@@ -23,59 +23,28 @@ class Home_Exchange extends Model
             ->where('new_construction', '=', 0)->where('home_exchange', '=', 1);
     }
 
-    public function scopeSearchByKeyword($query,$type,$purpose,$price,$min_price,$max_price,$min_area,$max_area,$bathrooms,$bedrooms,$kind_of_type,$keywords)
+    public function scopeSearchByKeyword($query,$house_kind,$bedrooms,$bathrooms,$area,$rent,$preferred_house_kind,$preferred_bedrooms,$preferred_bathrooms,$preferred_area,$preferred_rent)
     {
 
-        $query = $query->where("property_purpose", "$purpose");
+        $query = $query->where("property_type", "$preferred_house_kind");
 
+        $query->where("bedrooms", '>=', $preferred_bedrooms);
 
-        if($type)
-        {
-            $query->where("property_type", "$type");
-        }
+        $query->where("bathrooms", '>=', $preferred_bathrooms);
 
+        $query->where("area" ,'>=', $preferred_area);
 
-        if($min_price)
-        {
-            $query->whereRaw("$price >= $min_price");
-        }
-        if($max_price)
-        {
+        $query->where("rent_per_month" ,'<=', $preferred_rent);
 
-            $query->whereRaw("$price <= $max_price");
-        }
-        if($min_area)
-        {
-            $query->where("area" ,'>=', $min_area);
-        }
-        if($max_area)
-        {
-            $query->where("area" ,'<=', $max_area);
-        }
-        if($bathrooms)
-        {
-            $query->where("bathrooms", "$bathrooms");
-        }
-        if($bedrooms)
-        {
-            $query->where("bedrooms", "$bedrooms");
-        }
-        if($kind_of_type)
-        {
-            $query->where("kind_of_type", "$kind_of_type");
-        }
-        if($keywords)
-        {
-            $query->where(function($query) use($keywords) {
-                $query->where("keywords",'LIKE', "%$keywords%")
-                    ->orWhere("property_slug",'LIKE', "%$keywords%")
-                    ->orWhere("property_name",'LIKE', "%$keywords%")
-                    ->orWhere("description",'LIKE', "%$keywords%");
-            });
+        $query->where("preferred_kind", "$house_kind");
 
-        }
+        $query->where("preferred_bedrooms", '<=', $bedrooms);
 
+        $query->where("preferred_bathrooms", '<=', $bathrooms);
 
+        $query->where("preferred_area" ,'<=', $area);
+
+        $query->where("preferred_rent_max" ,'>=', $rent);
 
         return $query;
     }
