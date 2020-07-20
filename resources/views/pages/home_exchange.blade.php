@@ -27,6 +27,18 @@
 
     <!-- begin:content -->
     <div id="content">
+
+        <div class="row" style="margin: 0;margin-bottom: 20px;">
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0px 40px;">
+
+                <a href="{{ URL::to('addhomeexchange') }}" class="btn btn-success" style="float: right">Add Property</a>
+
+            </div>
+
+        </div>
+
+
         <div class="container">
 
             <div class="row mobile-row">
