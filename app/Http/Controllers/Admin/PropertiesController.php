@@ -346,7 +346,6 @@ class PropertiesController extends MainAdminController
     public function addnew(Request $request)
     {
 
-
     	$data =  \Request::except(array('_token')) ;
 
 	    $inputs = $request->all();
@@ -425,23 +424,45 @@ class PropertiesController extends MainAdminController
 
 	   	 $validator = \Validator::make($data,$rule,$messages);
 
+
         if ($validator->fails())
         {
                 return redirect()->back()->withErrors($validator->messages())->withInput();
         }
 
 
-
 		if(!empty($inputs['id'])){
 
-            $property = Properties::findOrFail($inputs['id']);
+            if($request->route == 'property')
+            {
+                $property = Properties::findOrFail($inputs['id']);
+            }
+            elseif($request->route == 'construction')
+            {
+                $property = New_Constructions::findOrFail($inputs['id']);
+            }
+            else
+            {
+                $property = Home_Exchange::findOrFail($inputs['id']);
+            }
 
         }else{
 
-            $property = new Properties;
+            if($request->route == 'property')
+            {
+                $property = new Properties;
+            }
+            elseif($request->route == 'construction')
+            {
+                $property = new New_Constructions();
+            }
+            else
+            {
+                $property = new Home_Exchange();
+            }
+
 
         }
-
 
 		//property featured image
 		$featured_image = $request->file('featured_image');
@@ -967,7 +988,6 @@ class PropertiesController extends MainAdminController
             }
 
         }
-
 
 
 		if(!empty($inputs['id'])){
