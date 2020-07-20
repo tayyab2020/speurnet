@@ -32,7 +32,7 @@
 
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0px 40px;">
 
-                <a href="{{ URL::to('addhomeexchange') }}" class="btn btn-success" style="float: right">Add Property</a>
+                <a href="{{ URL::to('addhomeexchange') }}" class="btn btn-success" style="float: right;font-size: 20px;">Add Property</a>
 
             </div>
 
