@@ -41,7 +41,7 @@
 
         <div class="container">
 
-            <div class="row mobile-row">
+            <div class="row mobile-row" style="background-color: white;padding: 0px 20px;border-radius: 10px;box-shadow: 1px 1px 14px 2px #e7e7e7;">
 
                 <form action="{{ URL::to('homeexchange/home-exchange-search') }}" method="GET">
 
@@ -692,7 +692,7 @@
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
                     <!-- begin:article -->
-                    <div class="properties-ordering-wrapper">
+                    <div class="properties-ordering-wrapper" style="background: #f6f6f6;box-shadow: 5px 7px 8px -7px #868686;">
                         <div class="results-count">
                             Showing <?php $count = count($properties); echo $count; if($count > 1) { echo " results"; } else{ echo " result"; } ?></div>
 
