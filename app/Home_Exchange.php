@@ -46,6 +46,8 @@ class Home_Exchange extends Model
 
         $query->where("preferred_rent_max" ,'>=', $rent);
 
+        dd($query->get());
+        
         return $query;
     }
 

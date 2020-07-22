@@ -49,11 +49,11 @@
 
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-10" style="display: table;margin: auto;float: none;margin-bottom: 60px;">
 
-                    <h1 style="margin-bottom: 30px;color: #575757;text-align: center;">Find Your Match</h1>
+                    <h1 style="margin-bottom: 30px;color: #303030;text-align: center;">Find Your Match</h1>
 
                     <div id="wrapper_1" class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="padding: 0;">
 
-                        <h3 class="col-lg-10 col-md-10 col-sm-10 col-xs-12" style="margin-bottom: 30px;float: left;text-align: center;color: white;display: inline-block;background: black;padding: 10px;border: 1px solid #d5d5d5;font-weight: 600;font-size: 20px;">Your House</h3>
+                        <h3 class="col-lg-10 col-md-10 col-sm-10 col-xs-12" style="margin-bottom: 30px;float: left;text-align: center;color: white;display: inline-block;background: linear-gradient(to right, #494949 0, #434343 100%);padding: 10px;border: 1px solid #d5d5d5;font-weight: 600;font-size: 20px;">Your House</h3>
 
                         <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-12" style="display: inline-block;float: left;">
 
@@ -190,7 +190,7 @@
 
                     <div id="wrapper_2" class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="padding: 0;">
 
-                        <h3 class="col-lg-10 col-md-10 col-sm-10 col-xs-12" style="margin-bottom: 30px;float: right;text-align: center;color: white;display: inline-block;background: black;padding: 10px;border: 1px solid #d5d5d5;font-weight: 600;font-size: 20px;">You are looking for?</h3>
+                        <h3 class="col-lg-10 col-md-10 col-sm-10 col-xs-12" style="margin-bottom: 30px;float: right;text-align: center;color: white;display: inline-block;background: linear-gradient(to right, #494949 0, #434343 100%);padding: 10px;border: 1px solid #d5d5d5;font-weight: 600;font-size: 20px;">You are looking for?</h3>
 
                         <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-12" style="display: inline-block;float: right;">
 
@@ -381,11 +381,11 @@
                     {
                         #wrapper_2:before {
                             content: "";
-                            background-color: #000;
+                            background-color: #bebebe;
                             position: absolute;
                             width: 2px;
-                            height: 97%;
-                            top: 10px;
+                            height: 95%;
+                            top: 22px;
                             right: 100%;
                             display: block;
                         }
@@ -457,8 +457,8 @@
                         display: table-cell !important;
                         padding: 0px !important;
                         margin: 0px !important;
-                        background: #34c4be;
-                        color: white;
+                        background: transparent;
+                        color: black;
                         width: 35px;
                         height: 35px;
                         text-align: center;
@@ -467,7 +467,7 @@
 
                     .new-icons:hover
                     {
-                        background-color: #eee;
+                        background-color: #ffffff !important;
                         border-color: #eee #eee #ddd;
                     }
 
@@ -692,7 +692,7 @@
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
                     <!-- begin:article -->
-                    <div class="properties-ordering-wrapper" style="background: #f6f6f6;box-shadow: 5px 7px 8px -7px #868686;">
+                    <div class="properties-ordering-wrapper" style="box-shadow: 5px 7px 8px -7px #868686;background: linear-gradient(to right, #494949 0, #434343 100%);color: white;border: 0;">
                         <div class="results-count">
                             Showing <?php $count = count($properties); echo $count; if($count > 1) { echo " results"; } else{ echo " result"; } ?></div>
 
@@ -700,7 +700,7 @@
 
                                 <form class="properties-ordering" method="get" action="{{URL::to('properties/')}}">
 
-                                            <div class="label">Sort by:</div>
+                                            <div class="label" style="color: white;">Sort by:</div>
 
                                             <select onchange="this.form.submit()" name="filter_orderby" class="orderby" data-placeholder="Sort by" tabindex="-1" aria-hidden="true">
 
@@ -724,52 +724,135 @@
 
                     <!-- begin:product -->
 
+                    <style>
+
+                        @media (min-width: 992px)
+                        {
+                            .mobile-res
+                            {
+                                display: none;
+                            }
+                        }
+
+                        @media (max-width: 992px)
+                        {
+                            .mobile-res1
+                            {
+                                display: none;
+                            }
+                        }
+
+                        @media (max-width: 600px)
+                        {
+                            .res-img
+                            {
+                                width: 100% !important;
+                            }
+
+                            .res-foot
+                            {
+                                margin-bottom: 10px;
+                            }
+
+                        }
+
+                    </style>
 
                         <div class="row">
 
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
-                                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8" style="padding: 0;">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mobile-res" style="padding: 0;float: right;">
 
-                                            <h3 style="float: left;color: white;display: inline-block;background: #34c4be;padding: 10px;border: 1px solid #d5d5d5;font-weight: 600;font-size: 13px;">Offered Home Exchange House</h3>
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;">
+
+                                                <h3 style="float: left;color: white;display: inline-block;background: linear-gradient(to right, #5b5b5b 0, #898989 100%);padding: 10px;border: 0;font-weight: 600;font-size: 13px;border-radius: 5px;box-shadow: 5px 7px 8px -7px #868686;">Requested Home Exchange House</h3>
+
+                                            </div>
+
+                                            <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12" style="display: inline-block;margin: 0;min-height: 203px;border-radius: 7px;background: linear-gradient(to right, #f6f6f6 0, #e9e9e9 100%);box-shadow: 5px 7px 8px -4px #ededed;border: 1px solid #e5e5e5;">
+
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                                                    <h3 style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;width: 100%;float: left;">{{ Str::limit($preferred_address,40) }}</h3>
+
+                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding-left: 2px;margin-bottom: 15px;margin-top: 10px;">
+
+                                                        <small style="width: 100%;float: left;font-weight: 600;text-align: left;">€ {{$preferred_rent}} Rent</small>
+
+                                                    </div>
+
+                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0px;min-height: 40px;display: flex;flex-direction: row;">
+
+                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" style="text-align: center;display: flex;justify-content: center;flex-direction: column;border-right: 1px solid #cccccc;min-height: 40px;">
+                                                            @if($preferred_bedrooms > 1) {{$preferred_bedrooms}} Bedrooms @else {{$preferred_bedrooms}} Bedroom @endif
+                                                        </div>
+
+                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" style="text-align: center;display: flex;justify-content: center;flex-direction: column;border-right: 1px solid #cccccc;min-height: 40px;">
+                                                            {{$preferred_area}} m2
+                                                        </div>
+
+                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" style="text-align: center;display: flex;justify-content: center;flex-direction: column;min-height: 40px;">
+                                                            @if($preferred_bathrooms > 1) {{$preferred_bathrooms}} Bathrooms @else {{$preferred_bathrooms}} Bathroom @endif
+                                                        </div>
+
+                                                    </div>
+
+
+                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top: 20px;padding: 0;">
+
+                                                        <small style="float: left;font-weight: bold;"><?php foreach($types as $type) { if($preferred_house_kind == $type->id){ echo $type->types; }} ?></small>
+
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
 
                                         </div>
 
-                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" style="padding: 0;">
+                                        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12" style="padding: 0;">
 
-                                            <h3 style="float: left;color: white;display: inline-block;background: #34c4be;padding: 10px;border: 1px solid #d5d5d5;font-weight: 600;font-size: 13px;margin-left: 10px;">Requested Home Exchange House</h3>
+                                            <h3 style="float: left;color: white;display: inline-block;background: linear-gradient(to right, #5b5b5b 0, #898989 100%);padding: 10px;border: 0;font-weight: 600;font-size: 13px;border-radius: 5px;box-shadow: 5px 7px 8px -7px #868686;">Offered Home Exchange House</h3>
 
                                         </div>
+
+                                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mobile-res1" style="padding: 0;">
+
+                                            <h3 style="float: left;color: white;display: inline-block;background: linear-gradient(to right, #5b5b5b 0, #898989 100%);padding: 10px;border: 0;font-weight: 600;font-size: 13px;margin-left: 10px;border-radius: 5px;box-shadow: 5px 7px 8px -7px #868686;">Requested Home Exchange House</h3>
+
+                                        </div>
+
 
                                         @foreach($properties as $key)
 
                                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;margin-bottom: 20px;">
 
-                                                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8" style="padding: 0;float: left;">
+                                                <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12" style="padding: 0;float: left;margin-bottom: 20px;">
 
-                                                            <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12" style="display: inline-block;border: 1.5px solid #82e1dd;margin: 0;">
+                                                            <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12" style="display: inline-block;margin: 0;border-radius: 7px;background: linear-gradient(to right, #ffffff 0, #efefef 100%);box-shadow: 5px 7px 8px -4px #ededed;border: 1px solid #e5e5e5;">
 
-                                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" style="padding: 0;">
+                                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 res-img" style="padding: 0;">
 
                                                                     @if($key->featured_image)
 
-                                                                        <img src="{{ URL::asset('upload/properties/'.$key->featured_image.'-b.jpg') }}" style="width: 100%;height: 200px;">
+                                                                        <img src="{{ URL::asset('upload/properties/'.$key->featured_image.'-b.jpg') }}" style="width: 100%;height: 200px;border-top-left-radius: 7px;border-bottom-left-radius: 7px;">
 
                                                                     @else
 
-                                                                        <img src="{{ URL::asset('upload/noImage.png') }}" style="width: 100%;height: 200px;">
+                                                                        <img src="{{ URL::asset('upload/noImage.png') }}" style="width: 100%;height: 200px;border-top-left-radius: 7px;border-bottom-left-radius: 7px;">
 
                                                                     @endif
 
                                                                 </div>
 
-                                                                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                                                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 res-img">
 
-                                                                    <h3 style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;width: 45%;float: left;">{{ Str::limit($key->property_name,35) }}</h3>
+                                                                    <h3 style="float: left;">{{ Str::limit($key->property_name,15) }}</h3>
 
                                                                     <?php $url = "https://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; ?>
 
-                                                                    <ul class="nav nav-tabs nav-table" style="float: right;border-bottom: 0;margin: 10px 0px;width: 55%;margin-bottom: 0px;">
+                                                                    <ul class="nav nav-tabs nav-table" style="float: right;border-bottom: 0;margin: 10px 0px;margin-bottom: 0px;">
 
                                                                         <li class="image-tab" style="float: right;">
                                                                             <a class="new-icons" target="_blank" title="Share by Email" href="mailto:?subject=I wanted you to see this Property AD I just Found on zoekjehuisje.nl&amp;body=Check out this link {{$url}}" style="border-radius: 100px;position: relative;">
@@ -935,10 +1018,10 @@
                                                                     </div>
 
 
-                                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top: 20px;">
+                                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 res-foot" style="margin-top: 20px;">
 
                                                                         <small style="float: left;font-weight: bold;"><?php foreach($types as $type) { if($key->property_type == $type->id){ echo $type->types; }} ?></small>
-                                                                        <small style="float: right;font-weight: 600;color: #0a94be;"><i class="fa fa-calendar-o" aria-hidden="true" style="margin-right: 5px;"></i> 0 Weeks Ago</small>
+                                                                        {{--<small style="float: right;font-weight: 600;color: #1db3e1;"><i class="fa fa-calendar-o" aria-hidden="true" style="margin-right: 5px;"></i> 0 Weeks Ago</small>--}}
 
                                                                     </div>
 
@@ -949,9 +1032,9 @@
                                                 </div>
 
 
-                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" style="padding: 0;float: right;">
+                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 mobile-res1" style="padding: 0;float: right;">
 
-                                            <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12" style="display: inline-block;border: 1.5px solid #82e1dd;margin: 0;min-height: 203px;margin-left: 10px;">
+                                            <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12" style="display: inline-block;margin: 0;min-height: 203px;margin-left: 10px;border-radius: 7px;background: linear-gradient(to right, #f6f6f6 0, #e9e9e9 100%);box-shadow: 5px 7px 8px -4px #ededed;border: 1px solid #e5e5e5;">
 
                                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
