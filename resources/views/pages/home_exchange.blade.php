@@ -754,6 +754,26 @@
                                 margin-bottom: 10px;
                             }
 
+                            .res-row
+                            {
+                                display: block !important;
+                            }
+
+                            .res-inner
+                            {
+                                width: 100% !important;
+                                border-right: 0 !important;
+                                text-align: left !important;
+                            }
+
+                        }
+
+                        @media (min-width: 600px)
+                        {
+                            .res-icons
+                            {
+                                display: none !important;
+                            }
                         }
 
                     </style>
@@ -1001,18 +1021,18 @@
 
                                                                     </div>
 
-                                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0px;min-height: 40px;display: flex;flex-direction: row;">
+                                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 res-row" style="padding: 0px;min-height: 40px;display: flex;flex-direction: row;">
 
-                                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" style="text-align: center;display: flex;justify-content: center;flex-direction: column;border-right: 1px solid #cccccc;min-height: 40px;">
-                                                                            @if($key->bedrooms > 1) {{$key->bedrooms}} Bedrooms @else {{$key->bedrooms}} Bedroom @endif
+                                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 res-inner" style="text-align: center;display: flex;justify-content: center;flex-direction: column;border-right: 1px solid #cccccc;min-height: 40px;">
+                                                                            <span><i style="color: #c3c3c3;margin-right: 5px;" class="fas fa-bed res-icons" aria-hidden="true"></i> @if($key->bedrooms > 1) {{$key->bedrooms}} Bedrooms @else {{$key->bedrooms}} Bedroom @endif </span>
                                                                         </div>
 
-                                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" style="text-align: center;display: flex;justify-content: center;flex-direction: column;border-right: 1px solid #cccccc;min-height: 40px;">
-                                                                            {{$key->area}} m2
+                                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 res-inner" style="text-align: center;display: flex;justify-content: center;flex-direction: column;border-right: 1px solid #cccccc;min-height: 40px;">
+                                                                            <span><i style="color: #c3c3c3;margin-right: 5px;" class="fas fa-crop-alt res-icons" aria-hidden="true"></i> {{$key->area}} m2 </span>
                                                                         </div>
 
-                                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" style="text-align: center;display: flex;justify-content: center;flex-direction: column;min-height: 40px;">
-                                                                            @if($key->bathrooms > 1) {{$key->bathrooms}} Bathrooms @else {{$key->bathrooms}} Bathroom @endif
+                                                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 res-inner" style="text-align: center;display: flex;justify-content: center;flex-direction: column;min-height: 40px;">
+                                                                            <span><i style="color: #c3c3c3;margin-right: 5px;" class="fas fa-bath res-icons" aria-hidden="true"></i> @if($key->bathrooms > 1) {{$key->bathrooms}} Bathrooms @else {{$key->bathrooms}} Bathroom @endif </span>
                                                                         </div>
 
                                                                     </div>
