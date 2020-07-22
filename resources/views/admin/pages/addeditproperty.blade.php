@@ -1742,8 +1742,8 @@
                                         <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
 
                                             <input type="text" id="address-input" placeholder="Enter Address" name="address" @if(old('address')) value="{{old('address')}}" @else value="{{ isset($property->address) ? $property->address : null }}" @endif style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control map-input stepper-step-4-validate">
-                                            <input type="hidden" name="address_latitude" id="address-latitude" @if(old('address_latitude')) value="{{old('address_latitude')}}" @else value="52.3666969" @endif />
-                                            <input type="hidden" name="address_longitude" id="address-longitude" @if(old('address_longitude')) value="{{old('address_longitude')}}" @else value="4.8945398" @endif  />
+                                            <input type="hidden" name="address_latitude" id="address-latitude" @if(old('address_latitude')) value="{{old('address_latitude')}}" @else value="{{ isset($property->map_latitude) ? $property->map_latitude : 52.3666969 }}" @endif />
+                                            <input type="hidden" name="address_longitude" id="address-longitude" @if(old('address_longitude')) value="{{old('address_longitude')}}" @else value="{{ isset($property->map_longitude) ? $property->map_longitude : 4.8945398 }}" @endif  />
 
                                         </div>
 
@@ -1857,7 +1857,6 @@
                                     </div>
 
                                 </div>
-
 
 
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;">
