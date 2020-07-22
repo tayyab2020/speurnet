@@ -514,8 +514,6 @@ class PropertiesController extends Controller
 
                         $property_radius = round($property_radius);
 
-                        dd($property_radius);
-
                         if ($property_radius <= $preferred_radius) {
                             array_push($properties_search, $key);
                         }
