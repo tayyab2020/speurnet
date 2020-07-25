@@ -727,6 +727,11 @@
                                 border-right: 0 !important;
                             }
 
+                            .res-pad
+                            {
+                                padding: 0 !important;
+                            }
+
                         }
 
                         @media (min-width: 600px)
@@ -744,7 +749,7 @@
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;">
 
 
-                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="padding: 0;">
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="padding-left: 0;">
 
                                             <h3 style="float: left;color: white;display: inline-block;background: linear-gradient(to right, #5b5b5b 0, #898989 100%);padding: 10px;border: 0;font-weight: 600;font-size: 13px;border-radius: 5px;box-shadow: 5px 7px 8px -7px #868686;">Offered Home Exchange House</h3>
 
@@ -761,7 +766,7 @@
 
                                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 res-con" style="padding: 0;margin-bottom: 20px;">
 
-                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="padding: 0;float: left;margin-bottom: 20px;">
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="padding-left: 0;float: left;margin-bottom: 20px;">
 
                                                             <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12" style="display: inline-block;min-height: 203px;margin: 0;border-radius: 7px;background: linear-gradient(to right, #ffffff 0, #efefef 100%);box-shadow: 5px 7px 8px -4px #ededed;border: 1px solid #e5e5e5;">
 
@@ -926,7 +931,7 @@
                                                                         </div>
                                                                     </div>
 
-                                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding-left: 2px;margin-bottom: 15px;margin-top: 10px;">
+                                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 res-pad" style="padding-left: 2px;margin-bottom: 15px;margin-top: 10px;">
 
                                                                         <small style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;width: 55%;float: left;font-weight: 600;"><i style="color: #9b9b9b;margin-right: 5px;" class="fas fa-map-marker-alt" aria-hidden="true"></i> {{ Str::limit($key->address,40) }}</small>
 
@@ -969,7 +974,7 @@
 
                                                     <h3 style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;width: 100%;float: left;">{{ Str::limit($preferred_address,40) }}</h3>
 
-                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding-left: 2px;margin-bottom: 15px;margin-top: 10px;">
+                                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 res-pad" style="padding-left: 2px;margin-bottom: 15px;margin-top: 10px;">
 
                                                         <small style="float: left;font-weight: 600;">{{$preferred_radius}} KM</small>
 
