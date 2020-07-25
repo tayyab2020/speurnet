@@ -727,6 +727,15 @@
                             <td>#{{$property->id}}</td>
                           </tr>--}}
 
+                            @if($property->home_exchange == 1)
+
+                                <tr>
+                                    <td><strong>Owner</strong></td>
+                                    <td>{{$property->owner}}</td>
+                                </tr>
+
+                                @endif
+
                             @if($property->home_exchange != 1)
                           <tr>
                             <td><strong>Price</strong> <img src="{{ URL::asset('assets/img/tag.png') }}" style="width: 18px;float: right;" /></td>
@@ -1934,6 +1943,71 @@
                   </div>
                 </div>
               </div>
+                @if($property->home_exchange == 1)
+
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                        <div style="background-color: #fff;border: 1px solid #ddd;padding: 30px;">
+
+                            <h4 style="text-align: center;">Requested Home Exchange House</h4>
+
+                            <div class="row" style="margin: 0;margin-top: 50px;">
+
+                                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" style="float: left;text-align: left;">
+                                    <label>Preferred Place</label>
+                                    <p>{{$property->preferred_place}}</p>
+                                </div>
+
+                                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" style="float: right;text-align: right;">
+                                    <label>Preferred Radius</label>
+                                    <p>{{$property->preferred_radius}} KM</p>
+                                </div>
+
+                            </div>
+
+                            <div class="row" style="margin: 0;margin-top: 50px;">
+
+                                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" style="float: left;text-align: left;">
+                                    <label>Minimum Rooms</label>
+                                    <p>{{$property->preferred_bedrooms}}</p>
+                                </div>
+
+                                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" style="float: right;text-align: right;">
+                                    <label>Preferred House Type</label>
+                                    <p>{{getPropertyTypeName($property->preferred_kind)->types}}</p>
+                                </div>
+
+                            </div>
+
+                            <div class="row" style="margin: 0;margin-top: 50px;">
+
+                                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" style="float: left;text-align: left;">
+                                    <label>Preferred Maximum Rent</label>
+                                    <p>{{getcong('currency_sign')}} {{$property->preferred_rent_max}}</p>
+                                </div>
+
+                                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" style="float: right;text-align: right;">
+                                    <label>Preferred Area</label>
+                                    <p>{{$property->preferred_area}}</p>
+                                </div>
+
+                            </div>
+
+
+                            <div class="row" style="margin: 0;margin-top: 50px;">
+
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="float: left;text-align: left;">
+                                    <label>Description</label>
+                                    <p>{{$property->preferred_description}}</p>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                @endif
             </div>
           </div>
           <!-- end:article -->
