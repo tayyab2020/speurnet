@@ -395,7 +395,7 @@
                                     @if($agent->image_icon)
                                         <img src="{{ URL::asset('upload/members/'.$agent->image_icon.'-b.jpg') }}" style="padding-top: 5px" alt="{{ $agent->name }}">
                                     @else
-                                        <img src="{{ URL::asset('assets/img/team03.jpg') }}"  style="padding-top: 5px" alt="{{ $agent->name }}">
+                                        <img src="{{ URL::asset('upload/members/user-icon.jpg') }}"  style="padding-top: 5px" alt="{{ $agent->name }}">
                                     @endif
                                 </div>
                             </div>

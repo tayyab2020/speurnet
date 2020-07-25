@@ -725,6 +725,7 @@
                                 width: 100% !important;
                                 text-align: left !important;
                                 border-right: 0 !important;
+                                padding: 0 !important;
                             }
 
                             .res-pad
@@ -786,9 +787,9 @@
 
                                                                 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
 
-                                                                    <h3 style="float: left;">{{ Str::limit($key->property_name,15) }}</h3>
+                                                                    <h3 style="float: left;"><a href="{{URL::to('home-exchange/'.$key->property_slug)}}">{{ Str::limit($key->property_name,15) }}</a></h3>
 
-                                                                    <?php $url = "https://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; ?>
+                                                                    <?php $url = "https://" . $_SERVER['HTTP_HOST'] . '/home-exchange/' . $key->property_slug; ?>
 
                                                                     <ul class="nav nav-tabs nav-table res-nav" style="float: right;border-bottom: 0;margin: 10px 0px;margin-bottom: 0px;">
 

@@ -841,6 +841,84 @@ class PropertiesController extends Controller
         return view('pages.propertysingle',compact('property','previous','next','property_documents','agent','property_features','saved','properties_count','similar_properties'));
     }
 
+
+    public function homeexchangesingle($slug)
+    {
+        $property = Home_Exchange::where("property_slug", $slug)->first();
+        $similar_properties = [];
+
+
+        $property->views =$property->views + 1;
+        $property->save();
+
+        $property = Home_Exchange::where("property_slug", $slug)->first();
+
+        $property_documents = property_documents::where('property_id',$property->id)->get();
+
+        if(!$property){
+            abort('404');
+        }
+
+        $agent = User::findOrFail($property->user_id);
+
+        $properties_count = New_Constructions::where('user_id',$property->user_id)->get();
+        $properties_count = $properties_count->count();
+
+
+        if($property->property_features)
+        {
+
+            $features = explode(',', $property->property_features);
+
+
+            foreach($features as $key){
+
+                $get = property_features::where('id',$key)->first();
+                $feature_texts[] = $get->text;
+                $feature_icons[] = $get->icon;
+
+                $property_features = array_combine($feature_texts, $feature_icons);
+
+            }
+
+        }
+        else
+        {
+            $property_features = "";
+        }
+
+        if(Auth::user())
+        {
+
+            $saved = saved_properties::where('property_id',$property->id)->where('user_id',Auth::user()->id)->first();
+            /*$driving_data = travel_data_results::leftjoin('driving_data','driving_data.data_id','=','travel_data_results.id')->where('travel_data_results.property_id',$property->id)->where('travel_data_results.user_id',Auth::user()->id)->select('travel_data_results.id','travel_data_results.destination_address','travel_data_results.destination_name','driving_data.duration as driving_duration','driving_data.distance as driving_distance')->get();
+            $transit_data = travel_data_results::leftjoin('transit_data','transit_data.data_id','=','travel_data_results.id')->where('travel_data_results.property_id',$property->id)->where('travel_data_results.user_id',Auth::user()->id)->select('travel_data_results.id','travel_data_results.destination_address','travel_data_results.destination_name','transit_data.duration as transit_duration','transit_data.distance as transit_distance')->get();
+            $walking_data = travel_data_results::leftjoin('walking_data','walking_data.data_id','=','travel_data_results.id')->where('travel_data_results.property_id',$property->id)->where('travel_data_results.user_id',Auth::user()->id)->select('travel_data_results.id','travel_data_results.destination_address','travel_data_results.destination_name','walking_data.duration as walking_duration','walking_data.distance as walking_distance')->get();
+            $cycling_data = travel_data_results::leftjoin('cycling_data','cycling_data.data_id','=','travel_data_results.id')->where('travel_data_results.property_id',$property->id)->where('travel_data_results.user_id',Auth::user()->id)->select('travel_data_results.id','travel_data_results.destination_address','travel_data_results.destination_name','cycling_data.duration as cycling_duration','cycling_data.distance as cycling_distance')->get();*/
+
+        }
+        else
+        {
+            $saved = "";
+            /*$driving_data = "";
+            $transit_data = "";
+            $walking_data = "";
+            $cycling_data = "";*/
+        }
+
+        $previous = Home_Exchange::leftjoin('cities','cities.id','=','properties.city_id')->where('properties.id', '<', $property->id)->orderBy('properties.id','desc')->select('properties.id','properties.property_slug','properties.property_name','properties.featured_image','properties.sale_price','properties.rent_price','properties.address','properties.bedrooms','cities.city_name')->first();
+
+        $next = Home_Exchange::leftjoin('cities','cities.id','=','properties.city_id')->where('properties.id', '>', $property->id)->orderBy('properties.id')->select('properties.id','properties.property_slug','properties.property_name','properties.featured_image','properties.sale_price','properties.rent_price','properties.address','properties.bedrooms','cities.city_name')->first();
+
+
+        $similar_property = Home_Exchange::where('id','!=', $property->id)->where("property_type", "$property->property_type")->where("city_id", "$property->city_id")->get();
+
+        $similar_properties = array_merge($similar_properties,json_decode($similar_property));
+
+
+        return view('pages.propertysingle',compact('property','previous','next','property_documents','agent','property_features','saved','properties_count','similar_properties'));
+    }
+
     public function propertiesUser($id,$id2,Request $request)
     {
 

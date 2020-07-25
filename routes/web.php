@@ -189,6 +189,8 @@ Route::group(['middleware' => 'App\Http\Middleware\UserTypeMiddleware'], functio
 
     Route::get('new-constructions/{slug}', 'PropertiesController@newconstructionsingle')->name('newconstruction-single');
 
+    Route::get('home-exchange/{slug}', 'PropertiesController@homeexchangesingle')->name('homeexchange-single');
+
     Route::get('similar-properties/user/{id}/{property_id}', 'PropertiesController@propertiesUser');
 
     Route::post('properties/store-travel-data', 'PropertiesController@storeTravelData');

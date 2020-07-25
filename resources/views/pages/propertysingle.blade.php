@@ -2,7 +2,11 @@
 
 @section('head_title', $property->property_name .' | '.getcong('site_name') )
 @section('head_description', substr(strip_tags($property->description),0,200))
+
+@if($property->featured_image)
 @section('head_image', asset('/upload/properties/'.$property->featured_image.'-b.jpg'))
+@endif
+
 @section('head_url', Request::url())
 
 @section("content")
@@ -20,7 +24,21 @@
             </div>
             <ol class="breadcrumb">
               <li><a href="{{ URL::to('/') }}">Home</a></li>
-              <li><a href="{{ URL::to('properties/') }}">Properties</a></li>
+
+                @if($property->new_construction == 1)
+
+                    <li><a href="{{ URL::to('new-constructions/') }}">New Constructions</a></li>
+
+                    @elseif($property->home_exchange == 1)
+
+                    <li><a href="{{ URL::to('homeexchange/') }}">Home Exchange</a></li>
+
+                             @else
+
+                    <li><a href="{{ URL::to('properties/') }}">Properties</a></li>
+
+                             @endif
+
               <li class="active">{{$property->property_name}}</li>
             </ol>
           </div>
@@ -33,12 +51,25 @@
       <div class="container" style="width: 100%;">
         <div class="row mobile-row">
 
+        @if($property->home_exchange != 1)
+
             <!-- begin:sidebar -->
         @include('_particles.sidebar',['class'=>'col-md-2'])
         <!-- end:sidebar -->
 
+            @endif
+
           <!-- begin:article -->
-          <div class="col-md-7 main-content">
+            @if($property->new_construction == 1 || $property->home_exchange == 1)
+
+                <div class="col-md-9 main-content">
+
+                @else
+
+                <div class="col-md-7 main-content">
+
+                @endif
+
             <div class="row">
               <div class="col-md-12 single-post">
                 <ul id="myTab" class="nav nav-tabs nav-justified">
@@ -97,11 +128,15 @@
                               @endif
 
 
-                            @if($property->featured_image)
+
                             <div class="item active">
+                                @if($property->featured_image)
                               <img src="{{ URL::asset('upload/properties/'.$property->featured_image.'-b.jpg') }}" alt="">
+                                @else
+                                    <img src="{{ URL::asset('upload/noFeatured.jpg') }}" alt="">
+                                @endif
                             </div>
-                            @endif
+
 
                             @if($property->property_images1)
                             <div class="item">
@@ -316,11 +351,16 @@
                           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 media-icons" style="padding: 30px 0px;padding-bottom: 0px;">
 
                               <ul class="nav nav-tabs nav-table">
+
+                                  @if($property->home_exchange != 1)
+
                                   <li class="image-tab">
                                       <a class="add-compare new-icons" title="Add Compare" style="border-radius: 100px;position: relative;">
                                           <i class="fas fa-exchange-alt" style="vertical-align: middle;"></i>
                                       </a>
                                   </li>
+
+                                  @endif
 
                                   <li class="image-tab">
                                       <a class="new-icons" target="_blank" title="Share by Email" href="mailto:?subject=I wanted you to see this Property AD I just Found on zoekjehuisje.nl&amp;body=Check out this link {{$url}}" style="border-radius: 100px;position: relative;">
@@ -347,13 +387,17 @@
 
                                               <input type="hidden" name="property_id" value="{{$property->id}}">
 
-                                              @if($property->new_construction != 1)
+                                              @if($property->new_construction != 1 && $property->home_exchange != 1)
 
                                                   <input type="hidden" name="type" value="standard">
 
-                                                  @else
+                                                  @elseif($property->new_construction == 1)
 
                                                   <input type="hidden" name="type" value="construction">
+
+                                                  @else
+
+                                                  <input type="hidden" name="type" value="exchange">
 
                                                   @endif
 
@@ -474,13 +518,13 @@
 
                               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 request" style="padding: 0;text-align: right;margin: 25px 0px;">
 
-                                  @if($property->new_construction != 1)
+                                  @if($property->new_construction != 1 && $property->home_exchange != 1)
 
                               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="outline: none;">
                                   <i class="far fa-calendar-check" style="margin-right: 7px;"></i> Request Viewing
                               </button>
 
-                                      @else
+                                      @elseif($property->new_construction == 1)
 
                                       <a class="btn btn-primary" href="{{$property->citation}}" style="outline: none;">
                                           <i class="fas fa-globe" style="margin-right: 7px;"></i> Contact Page Source
@@ -682,6 +726,8 @@
                             <td width="20%"><strong>ID</strong></td>
                             <td>#{{$property->id}}</td>
                           </tr>--}}
+
+                            @if($property->home_exchange != 1)
                           <tr>
                             <td><strong>Price</strong> <img src="{{ URL::asset('assets/img/tag.png') }}" style="width: 18px;float: right;" /></td>
                             <td>{{getcong('currency_sign')}}@if($property->sale_price) {{$property->sale_price}} @else {{$property->rent_price}} @endif</td>
@@ -690,6 +736,7 @@
                             <td><strong>Contract</strong> <img src="{{ URL::asset('assets/img/communications.png') }}" style="width: 18px;float: right;" /></td>
                             <td>{{$property->property_purpose}}</td>
                           </tr>
+                            @endif
                           <tr>
                             <td><strong>Location</strong> <img src="{{ URL::asset('assets/img/pin.png') }}" style="width: 18px;float: right;" /></td>
                             <td>{{$property->address}}</td>
@@ -1768,12 +1815,12 @@
                     </div>
                     <div class="row" style="display:inline-block;width: 100%;margin: 0;">
                       <div class="col-md-6 col-sm-6">
-                        <div class="team-container team-dark" style="border-color: transparent;">
-                          <div class="team-image">
+                        <div class="team-container team-dark">
+                          <div class="team-image" style="margin-left: -1px;">
                             @if($agent->image_icon)
                             <img src="{{ URL::asset('upload/members/'.$agent->image_icon.'-b.jpg') }}" alt="{{$agent->name}}">
                             @else
-                            <img src="{{ URL::asset('assets/img/team03.jpg') }}" alt="{{$agent->name}}">
+                            <img src="{{ URL::asset('upload/members/user-icon.jpg') }}" alt="{{$agent->name}}">
                             @endif
                           </div>
                           <div class="team-description">
@@ -1896,7 +1943,7 @@
             <div class="col-xs-12 col-md-3 sidebar-property sidebar-wrapper">
                 <div class="sidebar sidebar-right">
 
-                    <aside class="widget widget_apus_property_contact_form" style="border:1px solid #e3e3e3;"><h2 class="widget-title" style="margin-bottom: 40px;r"><span style="font-weight: 600;">Contact</span></h2>
+                    <aside class="widget widget_apus_property_contact_form" style="border:1px solid #e3e3e3;"><h2 class="widget-title" style="margin-bottom: 40px;"><span style="font-weight: 600;">Contact</span></h2>
 
                         <div class="contact-form-agent">
                             <div class="agent-content-wrapper flex-middle">
@@ -1994,64 +2041,67 @@
 
         </div>
 
+                @if($property->home_exchange != 1)
+
+                @if(count($similar_properties)>0)
+
+                    <div class="row related-properties" style="display: flex;margin-top: 30px;">
+                        <div class="col-lg-10 col-md-12 col-sm-12 col-xs-12" style="margin: auto;">
+                            <div id="partner" style="padding: 10px 0px;">
+                                <div class="container" style="width: 100%;">
+                                    <div class="row">
+                                        <div class="col-md-12">
+
+                                            <div class="heading-title bg-white">
+                                                <h2>Related Properties</h2>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- break -->
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="similarProperties" style="display: inline-block;width: 100%;">
+
+                                                @foreach($similar_properties as $i => $property)
+                                                    <div class="col-md-4 col-sm-6 col-xs-12">
+                                                        <div class="property-container">
+                                                            <div class="property-image">
+                                                                <img src="{{ URL::asset('upload/properties/'.$property->featured_image.'-s.jpg') }}" alt="{{ $property->property_name }}">
+                                                                <div class="property-price">
+                                                                    <h4>{{ getPropertyTypeName($property->property_type)->types }}</h4>
+                                                                    <span>{{getcong('currency_sign')}}@if($property->sale_price) {{$property->sale_price}} @else {{$property->rent_price}} @endif</span>
+                                                                </div>
+                                                                <div class="property-status">
+                                                                    <span>For {{$property->property_purpose}}</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="property-features">
+                                                                <span><i class="fa fa-home"></i> {{$property->area}}</span>
+                                                                <span><i class="fa fa-hdd-o"></i> {{$property->bedrooms}}</span>
+                                                                <span><i class="fa fa-male"></i> {{$property->bathrooms}}</span>
+                                                            </div>
+                                                            <div class="property-content">
+                                                                <h3><a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;" href="{{URL::to('properties/'.$property->property_slug)}}">{{ Str::limit($property->property_name,35) }}</a> <small style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;">{{ Str::limit($property->address,40) }}</small></h3>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+
+                                            </div>
+                                        </div></div></div></div>
+                        </div>
+                    </div>
+
+                @else
+
+                    <h2 class="related-properties" style="text-align: center;">No Related Properties Found...</h2>
+
+                @endif
+
+                @endif
 
       </div>
-
-        @if(count($similar_properties)>0)
-
-        <div class="row related-properties" style="display: flex;margin-top: 30px;">
-            <div class="col-lg-11 col-md-12 col-sm-12 col-xs-12" style="margin: auto;">
-                <div id="partner" style="padding: 10px 0px;">
-                    <div class="container" style="width: 100%;">
-                        <div class="row">
-                            <div class="col-md-12">
-
-                                <div class="heading-title bg-white">
-                                    <h2>Related Properties</h2>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- break -->
-
-                        <div class="row">
-                            <div class="col-md-12">
-                <div class="similarProperties" style="display: inline-block;width: 100%;">
-
-                        @foreach($similar_properties as $i => $property)
-                            <div class="col-md-4 col-sm-6 col-xs-12">
-                                <div class="property-container">
-                                    <div class="property-image">
-                                        <img src="{{ URL::asset('upload/properties/'.$property->featured_image.'-s.jpg') }}" alt="{{ $property->property_name }}">
-                                        <div class="property-price">
-                                            <h4>{{ getPropertyTypeName($property->property_type)->types }}</h4>
-                                            <span>{{getcong('currency_sign')}}@if($property->sale_price) {{$property->sale_price}} @else {{$property->rent_price}} @endif</span>
-                                        </div>
-                                        <div class="property-status">
-                                            <span>For {{$property->property_purpose}}</span>
-                                        </div>
-                                    </div>
-                                    <div class="property-features">
-                                        <span><i class="fa fa-home"></i> {{$property->area}}</span>
-                                        <span><i class="fa fa-hdd-o"></i> {{$property->bedrooms}}</span>
-                                        <span><i class="fa fa-male"></i> {{$property->bathrooms}}</span>
-                                    </div>
-                                    <div class="property-content">
-                                        <h3><a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;" href="{{URL::to('properties/'.$property->property_slug)}}">{{ Str::limit($property->property_name,35) }}</a> <small style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;">{{ Str::limit($property->address,40) }}</small></h3>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-
-                </div>
-                            </div></div></div></div>
-            </div>
-        </div>
-
-            @else
-
-            <h2 class="related-properties" style="text-align: center;">No Related Properties Found...</h2>
-
-        @endif
 
 
     </div>
