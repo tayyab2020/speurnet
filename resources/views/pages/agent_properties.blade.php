@@ -41,7 +41,6 @@
                                 <select onchange="this.form.submit()" name="filter_orderby" class="orderby" data-placeholder="Sort by" tabindex="-1" aria-hidden="true">
                                     <option value="newest" @if(isset($filter) && $filter == 'newest' || $filter == '') selected @endif>Newest</option>
                                     <option value="oldest" @if(isset($filter) && $filter == 'oldest') selected @endif>Oldest</option>
-                                    <option value="area" @if(isset($filter) && $filter == 'area') selected @endif>Area</option>
                                     <option value="bedrooms" @if(isset($filter) && $filter == 'bedrooms') selected @endif>Bedrooms</option>
                                     <option value="bathrooms" @if(isset($filter) && $filter == 'bathrooms') selected @endif>Bathrooms</option>
                                     <option value="popularity" @if(isset($filter) && $filter == 'popularity') selected @endif>Popularity</option>

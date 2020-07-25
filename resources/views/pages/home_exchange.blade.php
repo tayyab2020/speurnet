@@ -46,7 +46,7 @@
 
             <div class="row mobile-row" style="background-color: white;padding: 0px 20px;border-radius: 10px;box-shadow: 1px 1px 14px 2px #e7e7e7;">
 
-                <form action="{{ URL::to('homeexchange/home-exchange-search') }}" method="GET">
+                <form id="form" action="{{ URL::to('homeexchange/home-exchange-search') }}" method="GET">
 
                     @csrf
 
@@ -355,8 +355,10 @@
                     </div>
 
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="text-align: center;margin-top: 20px;">
-                        <button type="submit" class="btn btn-success" style="font-size: 20px;"><i class="fas fa-search" style="margin-right: 5px;font-size: 17px;" aria-hidden="true"></i> Search</button>
+                        <button type="submit" class="btn btn-success" style="font-size: 20px;outline: none;"><i class="fas fa-search" style="margin-right: 5px;font-size: 17px;" aria-hidden="true"></i> Search</button>
                     </div>
+
+                    <input type="hidden" value="newest" name="filter" id="filter_orderby">
 
 
                 </div>
@@ -541,7 +543,6 @@
                 <script>
 
                     $(document).ready(function() {
-
 
                         $('#address-input').on('keyup keypress', function (e) {
 
@@ -756,24 +757,21 @@
 
                         <div class="properties-ordering">
 
-                                <form class="properties-ordering" method="get" action="{{URL::to('properties/')}}">
-
                                             <div class="label" style="color: white;">Sort by:</div>
 
-                                            <select onchange="this.form.submit()" name="filter_orderby" class="orderby" data-placeholder="Sort by" tabindex="-1" aria-hidden="true">
+                                            <select name="filter_orderby" id="filter" class="orderby" data-placeholder="Sort by" tabindex="-1" aria-hidden="true">
 
-                                                <option value="newest">Newest</option>
-                                                <option value="oldest">Oldest</option>
-                                                <option value="bedrooms">Bedrooms</option>
-                                                <option value="popularity">Popularity</option>
-                                                <option value="lowest_rent_price">Lowest Rent Price</option>
-                                                <option value="highest_rent_price">Highest Rent Price</option>
-                                                <option value="lowest_area">Lowest Area</option>
-                                                <option value="highest_area">Highest Area</option>
+                                                <option @if(isset($filter)) @if($filter == "newest") selected @endif @endif value="newest">Newest</option>
+                                                <option @if(isset($filter)) @if($filter == "oldest") selected @endif @endif value="oldest">Oldest</option>
+                                                <option @if(isset($filter)) @if($filter == "bedrooms") selected @endif @endif value="bedrooms">Bedrooms</option>
+                                                <option @if(isset($filter)) @if($filter == "popularity") selected @endif @endif value="popularity">Popularity</option>
+                                                <option @if(isset($filter)) @if($filter == "lowest_rent_price") selected @endif @endif value="lowest_rent_price">Lowest Rent</option>
+                                                <option @if(isset($filter)) @if($filter == "highest_rent_price") selected @endif @endif value="highest_rent_price">Highest Rent</option>
+                                                <option @if(isset($filter)) @if($filter == "lowest_area") selected @endif @endif value="lowest_area">Lowest Area</option>
+                                                <option @if(isset($filter)) @if($filter == "highest_area") selected @endif @endif value="highest_area">Highest Area</option>
 
                                             </select>
 
-                                        </form>
                         </div></div>
 
 
@@ -1301,12 +1299,20 @@
 
         </style>
 
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
 
         <script>
 
             $(document).ready(function() {
 
+                $('#filter').change(function(){
+
+                    var value = $(this).val();
+
+                    $('#filter_orderby').val(value);
+
+                    $('#form').submit();
+
+                });
 
                 $('.orderby').select2({
                     minimumResultsForSearch: Infinity,

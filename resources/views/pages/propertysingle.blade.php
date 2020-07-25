@@ -1015,6 +1015,15 @@
 
                             @endif
 
+                                  @if($property->service_costs)
+
+                                      <tr>
+                                          <td><strong>Service Costs</strong></td>
+                                          <td>{{$property->service_costs}}</sup> </td>
+                                      </tr>
+
+                                  @endif
+
 
                         </table>
 

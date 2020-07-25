@@ -487,12 +487,49 @@ class PropertiesController extends Controller
         $preferred_area = $request->preferred_area;
         $preferred_rent = $request->preferred_rent;
         $media = $request->media;
+        $filter = $request->filter;
+
 
         $properties_search = [];
         $final_results = [];
 
+            if($filter == 'newest')
+            {
+                $properties = Home_Exchange::SearchByKeyword($house_kind,$bedrooms,$area,$rent,$preferred_house_kind,$preferred_bedrooms,$preferred_area,$preferred_rent,$media)->where('is_sold',0)->where('is_rented',0)->orderBy('properties.id', 'desc')->select('properties.*');
+            }
+            if($filter == 'oldest')
+            {
+                $properties = Home_Exchange::SearchByKeyword($house_kind,$bedrooms,$area,$rent,$preferred_house_kind,$preferred_bedrooms,$preferred_area,$preferred_rent,$media)->where('is_sold',0)->where('is_rented',0)->orderBy('properties.id', 'asc')->select('properties.*');
+            }
+            if($filter == 'bedrooms')
+            {
+                $properties = Home_Exchange::SearchByKeyword($house_kind,$bedrooms,$area,$rent,$preferred_house_kind,$preferred_bedrooms,$preferred_area,$preferred_rent,$media)->where('is_sold',0)->where('is_rented',0)->orderBy('properties.bedrooms', 'asc')->select('properties.*');
+            }
+            if($filter == 'bathrooms')
+            {
+                $properties = Home_Exchange::SearchByKeyword($house_kind,$bedrooms,$area,$rent,$preferred_house_kind,$preferred_bedrooms,$preferred_area,$preferred_rent,$media)->where('is_sold',0)->where('is_rented',0)->orderBy('properties.bathrooms', 'asc')->select('properties.*');
+            }
+            if($filter == 'popularity')
+            {
+                $properties = Home_Exchange::SearchByKeyword($house_kind,$bedrooms,$area,$rent,$preferred_house_kind,$preferred_bedrooms,$preferred_area,$preferred_rent,$media)->where('is_sold',0)->where('is_rented',0)->orderBy('properties.views', 'desc')->select('properties.*');
+            }
+            if($filter == 'lowest_rent_price')
+            {
+                $properties = Home_Exchange::SearchByKeyword($house_kind,$bedrooms,$area,$rent,$preferred_house_kind,$preferred_bedrooms,$preferred_area,$preferred_rent,$media)->where('is_sold',0)->where('is_rented',0)->orderBy('properties.rent_per_month', 'asc')->select('properties.*');
+            }
+            if($filter == 'highest_rent_price')
+            {
+                $properties = Home_Exchange::SearchByKeyword($house_kind,$bedrooms,$area,$rent,$preferred_house_kind,$preferred_bedrooms,$preferred_area,$preferred_rent,$media)->where('is_sold',0)->where('is_rented',0)->orderBy('properties.rent_per_month', 'desc')->select('properties.*');
+            }
+            if($filter == 'lowest_area')
+            {
+                $properties = Home_Exchange::SearchByKeyword($house_kind,$bedrooms,$area,$rent,$preferred_house_kind,$preferred_bedrooms,$preferred_area,$preferred_rent,$media)->where('is_sold',0)->where('is_rented',0)->orderBy('properties.area', 'asc')->select('properties.*');
+            }
+            if($filter == 'highest_area')
+            {
+                $properties = Home_Exchange::SearchByKeyword($house_kind,$bedrooms,$area,$rent,$preferred_house_kind,$preferred_bedrooms,$preferred_area,$preferred_rent,$media)->where('is_sold',0)->where('is_rented',0)->orderBy('properties.area', 'desc')->select('properties.*');
+            }
 
-            $properties = Home_Exchange::SearchByKeyword($house_kind,$bedrooms,$area,$rent,$preferred_house_kind,$preferred_bedrooms,$preferred_area,$preferred_rent,$media)->where('is_sold',0)->where('is_rented',0)->select('properties.*');
 
         if($preferred_address && $preferred_address_latitude && $preferred_address_longitude) {
 
@@ -656,7 +693,7 @@ class PropertiesController extends Controller
 
                 }
 
-        return view('pages.home_exchange',compact('house_kind','property_type','address','address_latitude','address_longitude','bedrooms','area','rent','preferred_house_kind','preferred_address','preferred_address_latitude','preferred_address_longitude','preferred_radius','preferred_bedrooms','preferred_area','preferred_rent','properties','types','media'));
+        return view('pages.home_exchange',compact('house_kind','property_type','address','address_latitude','address_longitude','bedrooms','area','rent','preferred_house_kind','preferred_address','preferred_address_latitude','preferred_address_longitude','preferred_radius','preferred_bedrooms','preferred_area','preferred_rent','properties','types','media','filter'));
 
     }
 
@@ -945,10 +982,6 @@ class PropertiesController extends Controller
             if($filter == 'oldest')
             {
                 $properties = $properties->orderBy('properties.id', 'asc')->paginate(8);
-            }
-            if($filter == 'area')
-            {
-                $properties = $properties->orderBy('properties.area', 'asc')->paginate(8);
             }
             if($filter == 'bedrooms')
             {
