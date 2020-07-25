@@ -42,7 +42,7 @@
                     @if($agent->image_icon)
                         <img style="min-height: 200px;" src="{{ URL::asset('upload/members/'.$agent->image_icon.'-b.jpg') }}" alt="{{$agent->name}}">
                     @else
-                        <img style="min-height: 200px;" src="{{ URL::asset('assets/img/team03.jpg') }}" alt="{{$agent->name}}">
+                        <img style="min-height: 200px;" src="{{ URL::asset('upload/members/user-icon.jpg') }}" alt="{{$agent->name}}">
                     @endif
 
                         <div class="team-social">
@@ -58,6 +58,15 @@
                     <p><i class="fa fa-phone"></i>&nbsp {{$agent->phone}}<br></p>
                     <p><i class="fa fa-envelope"></i>&nbsp {{$agent->email}}</p>
                     <p><i class="fa fa-map-marker-alt"></i>&nbsp {{$agent->address}}</p>
+                    @if($agent->herefor == 1)
+
+                        <p><img style="width: 80px;" src="{{ URL::asset('upload/herefor1.png') }}"></p>
+
+                        @else
+
+                        <p><img style="width: 80px;" src="{{ URL::asset('upload/herefor2.png') }}"></p>
+
+                        @endif
 
                 </div>
             </div>
