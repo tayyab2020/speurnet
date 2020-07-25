@@ -335,6 +335,23 @@
 
                         </div>
 
+                        <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-12" style="display: inline-block;float: right;">
+
+                            <a style="padding: 0;margin: 0px;text-align: left;color: #2a2929;">
+
+                                <input name="media" @if(isset($media)) @if($media == 1) checked @endif @endif value="1" type="checkbox" id="media" style="position: relative;top: 2px;display: block;height: 0px;">
+
+                                <label class="bg" for="media" style="margin: 0;">
+
+                                    <span class="search-span" style="position: relative;top: 3px;font-size: 14px;color: #4b4848;">Only show me homes with photos or videos</span>
+
+                                </label>
+
+
+                            </a>
+
+                        </div>
+
                     </div>
 
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="text-align: center;margin-top: 20px;">
@@ -347,6 +364,76 @@
             </form>
 
                 <style>
+
+                    [type="checkbox"]:not(:checked),
+                    [type="checkbox"]:checked {
+                        position: absolute;
+                        left: -9999px;
+                    }
+                    [type="checkbox"]:not(:checked) + label,
+                    [type="checkbox"]:checked + label {
+                        position: relative;
+                        padding-left: 1.3em;
+                        cursor: pointer;
+                        font-weight: 600;
+                    }
+
+                    /* checkbox aspect */
+                    [type="checkbox"]:not(:checked) + label:before,
+                    [type="checkbox"]:checked + label:before {
+                        content: '';
+                        position: absolute;
+                        left: 0; top: 8px;
+                        width: 13px; height: 13px;
+                        border: 1px solid #7e7e7e;
+                        background: #fff;
+                        border-radius: 4px;
+                        box-shadow: inset 0 1px 3px rgba(0,0,0,.1);
+                    }
+                    /* checked mark aspect */
+                    [type="checkbox"]:not(:checked) + label:after,
+                    [type="checkbox"]:checked + label:after {
+                        content: '\2713\0020';
+                        position: absolute;
+                        top: 8.5px; left: 0px;
+                        font-size: 1.2em;
+                        line-height: 0.8;
+                        color: #00b8ef;
+                        transition: all .2s;
+                        font-family: 'Lucida Sans Unicode', 'Arial Unicode MS', Arial;
+                    }
+                    /* checked mark aspect changes */
+                    [type="checkbox"]:not(:checked) + label:after {
+                        opacity: 0;
+                        transform: scale(0);
+                    }
+                    [type="checkbox"]:checked + label:after {
+                        opacity: 1;
+                        transform: scale(0.7);
+                    }
+                    /* disabled checkbox */
+                    [type="checkbox"]:disabled:not(:checked) + label:before,
+                    [type="checkbox"]:disabled:checked + label:before {
+                        box-shadow: none;
+                        border-color: #bbb;
+                        background-color: #ddd;
+                    }
+                    [type="checkbox"]:disabled:checked + label:after {
+                        color: #999;
+                    }
+                    [type="checkbox"]:disabled + label {
+                        color: #aaa;
+                    }
+                    /* accessibility */
+                    /*[type="checkbox"]:checked:focus + label:before,
+                    [type="checkbox"]:not(:checked):focus + label:before {
+                        border: 2px dotted blue;
+                    }*/
+
+                    /* hover style just for information */
+                    label.bg:hover:before {
+                        border: 1px solid #4778d9!important;
+                    }
 
                     @media (min-width: 768px)
                     {

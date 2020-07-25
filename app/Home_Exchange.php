@@ -23,7 +23,7 @@ class Home_Exchange extends Model
             ->where('new_construction', '=', 0)->where('home_exchange', '=', 1);
     }
 
-    public function scopeSearchByKeyword($query,$house_kind,$bedrooms,$area,$rent,$preferred_house_kind,$preferred_bedrooms,$preferred_area,$preferred_rent)
+    public function scopeSearchByKeyword($query,$house_kind,$bedrooms,$area,$rent,$preferred_house_kind,$preferred_bedrooms,$preferred_area,$preferred_rent,$media)
     {
 
         $query = $query->where("property_type", "$preferred_house_kind");
@@ -41,6 +41,11 @@ class Home_Exchange extends Model
         $query->where("preferred_area" ,'<=', $area);
 
         $query->where("preferred_rent_max" ,'>=', $rent);
+
+        if($media)
+        {
+            $query->where("featured_image",'!=',NULL)->orWhere('property_images1','!=',NULL)->orWhere('property_images2','!=',NULL)->orWhere('property_images3','!=',NULL)->orWhere('property_images4','!=',NULL)->orWhere('property_images5','!=',NULL)->orWhere('video','!=',NULL);
+        }
 
         return $query;
     }

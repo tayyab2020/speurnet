@@ -466,6 +466,7 @@ class PropertiesController extends Controller
     public function HomeExchangeSearch(Request $request)
     {
 
+
         $types = Types::orderBy('types')->get();
 
         $house_kind = $request->house_kind;
@@ -485,12 +486,13 @@ class PropertiesController extends Controller
         $preferred_bedrooms = $request->preferred_bedrooms;
         $preferred_area = $request->preferred_area;
         $preferred_rent = $request->preferred_rent;
+        $media = $request->media;
 
         $properties_search = [];
         $final_results = [];
 
 
-            $properties = Home_Exchange::SearchByKeyword($house_kind,$bedrooms,$area,$rent,$preferred_house_kind,$preferred_bedrooms,$preferred_area,$preferred_rent)->where('is_sold',0)->where('is_rented',0)->select('properties.*');
+            $properties = Home_Exchange::SearchByKeyword($house_kind,$bedrooms,$area,$rent,$preferred_house_kind,$preferred_bedrooms,$preferred_area,$preferred_rent,$media)->where('is_sold',0)->where('is_rented',0)->select('properties.*');
 
         if($preferred_address && $preferred_address_latitude && $preferred_address_longitude) {
 
@@ -654,7 +656,7 @@ class PropertiesController extends Controller
 
                 }
 
-        return view('pages.home_exchange',compact('house_kind','property_type','address','address_latitude','address_longitude','bedrooms','area','rent','preferred_house_kind','preferred_address','preferred_address_latitude','preferred_address_longitude','preferred_radius','preferred_bedrooms','preferred_area','preferred_rent','properties','types'));
+        return view('pages.home_exchange',compact('house_kind','property_type','address','address_latitude','address_longitude','bedrooms','area','rent','preferred_house_kind','preferred_address','preferred_address_latitude','preferred_address_longitude','preferred_radius','preferred_bedrooms','preferred_area','preferred_rent','properties','types','media'));
 
     }
 
