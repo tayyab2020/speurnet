@@ -818,6 +818,28 @@
                                 padding: 0 !important;
                             }
 
+                            .res-title
+                            {
+                                display: none;
+                            }
+
+                            .res-heading
+                            {
+                                width: 100%;
+                                font-size: 18px;
+                            }
+
+                            .res-address
+                            {
+                                display: none !important;
+                            }
+
+                            .res-rent
+                            {
+                                width: 100% !important;
+                                text-align: left !important;
+                            }
+
                         }
 
                         @media (min-width: 600px)
@@ -825,6 +847,11 @@
                             .res-icons
                             {
                                 display: none !important;
+                            }
+
+                            .res-title1
+                            {
+                                display: none;
                             }
                         }
 
@@ -872,7 +899,12 @@
 
                                                                 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
 
-                                                                    <h3 style="float: left;"><a href="{{URL::to('home-exchange/'.$key->property_slug)}}">{{ Str::limit($key->property_name,15) }}</a></h3>
+                                                                    <h3 class="res-heading" style="float: left;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;float: left;font-weight: 600;color: #48cfad;">
+
+                                                                        <a class="res-title" href="{{URL::to('home-exchange/'.$key->property_slug)}}">{{ Str::limit($key->property_name,15) }}</a>
+                                                                        <a class="res-title1" href="{{URL::to('home-exchange/'.$key->property_slug)}}">{{ Str::limit($key->address,15) }}</a>
+
+                                                                    </h3>
 
                                                                     <?php $url = "https://" . $_SERVER['HTTP_HOST'] . '/home-exchange/' . $key->property_slug; ?>
 
@@ -1019,9 +1051,9 @@
 
                                                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 res-pad" style="padding-left: 2px;margin-bottom: 15px;margin-top: 10px;">
 
-                                                                        <small style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;width: 55%;float: left;font-weight: 600;"><i style="color: #9b9b9b;margin-right: 5px;" class="fas fa-map-marker-alt" aria-hidden="true"></i> {{ Str::limit($key->address,40) }}</small>
+                                                                        <small class="res-address" style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;width: 55%;float: left;font-weight: 600;"><i style="color: #9b9b9b;margin-right: 5px;" class="fas fa-map-marker-alt" aria-hidden="true"></i> {{ Str::limit($key->address,40) }}</small>
 
-                                                                        <small style="width: 45%;float: right;font-weight: 600;text-align: right;">€ {{$key->rent_per_month}} Rent</small>
+                                                                        <small class="res-rent" style="width: 45%;float: right;font-weight: 600;text-align: right;">€ {{$key->rent_per_month}} Rent</small>
 
                                                                     </div>
 
@@ -1058,7 +1090,7 @@
 
                                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
-                                                    <h3 style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;width: 100%;float: left;">{{ Str::limit($preferred_address,40) }}</h3>
+                                                    <h3 class="res-heading" style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;width: 100%;float: left;">{{ Str::limit($preferred_address,40) }}</h3>
 
                                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 res-pad" style="padding-left: 2px;margin-bottom: 15px;margin-top: 10px;">
 

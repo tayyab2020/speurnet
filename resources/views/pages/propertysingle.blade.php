@@ -734,6 +734,12 @@
                                     <td>{{$property->owner}}</td>
                                 </tr>
 
+                                    <tr>
+                                        <td><strong>Rent</strong></td>
+                                        <td>{{getcong('currency_sign')}} {{$property->rent_per_month}}</sup> </td>
+                                    </tr>
+
+
                                 @endif
 
                             @if($property->home_exchange != 1)
@@ -1014,6 +1020,7 @@
                                 </tr>
 
                             @endif
+
 
                                   @if($property->service_costs)
 
