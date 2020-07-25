@@ -53,20 +53,22 @@
                         </div>
 
                 </div>
-                <div class="team-description" style="display: inline-block;">
-                    <h3><a style="color: black;" href="{{URL::to('agents/')}}">{{$agent->name}}</a></h3>
+                <div class="team-description" style="display: inline-block;padding-top: 0;">
+                    <h3 style="margin-top: 0px;"><a style="color: black;" href="{{URL::to('agents/')}}">{{$agent->name}}</a></h3>
                     <p><i class="fa fa-phone"></i>&nbsp {{$agent->phone}}<br></p>
                     <p><i class="fa fa-envelope"></i>&nbsp {{$agent->email}}</p>
                     <p><i class="fa fa-map-marker-alt"></i>&nbsp {{$agent->address}}</p>
+                    <p style="margin-top: 25px;">
                     @if($agent->herefor == 1)
 
-                        <p><img style="width: 80px;" src="{{ URL::asset('upload/herefor1.png') }}"></p>
+                        <img style="width: 80px;" src="{{ URL::asset('upload/herefor1.png') }}">
 
                         @else
 
-                        <p><img style="width: 80px;" src="{{ URL::asset('upload/herefor2.png') }}"></p>
+                        <img style="width: 80px;" src="{{ URL::asset('upload/herefor2.png') }}">
 
                         @endif
+                    </p>
 
                 </div>
             </div>
@@ -80,6 +82,14 @@
             .team-image
             {
                 width: 250px;
+            }
+        }
+
+        @media (max-width: 600px)
+        {
+            .team-description
+            {
+                padding-top: 20px !important;
             }
         }
 
