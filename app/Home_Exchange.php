@@ -23,14 +23,12 @@ class Home_Exchange extends Model
             ->where('new_construction', '=', 0)->where('home_exchange', '=', 1);
     }
 
-    public function scopeSearchByKeyword($query,$house_kind,$bedrooms,$bathrooms,$area,$rent,$preferred_house_kind,$preferred_bedrooms,$preferred_bathrooms,$preferred_area,$preferred_rent)
+    public function scopeSearchByKeyword($query,$house_kind,$bedrooms,$area,$rent,$preferred_house_kind,$preferred_bedrooms,$preferred_area,$preferred_rent)
     {
 
         $query = $query->where("property_type", "$preferred_house_kind");
 
         $query->where("bedrooms", '>=', $preferred_bedrooms);
-
-        $query->where("bathrooms", '>=', $preferred_bathrooms);
 
         $query->where("area" ,'>=', $preferred_area);
 
@@ -39,8 +37,6 @@ class Home_Exchange extends Model
         $query->where("preferred_kind", "$house_kind");
 
         $query->where("preferred_bedrooms", '<=', $bedrooms);
-
-        $query->where("preferred_bathrooms", '<=', $bathrooms);
 
         $query->where("preferred_area" ,'<=', $area);
 

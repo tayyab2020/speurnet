@@ -471,7 +471,6 @@ class PropertiesController extends Controller
         $house_kind = $request->house_kind;
         $property_type = $request->property_type;
         $bedrooms = $request->bedrooms;
-        $bathrooms = $request->bathrooms;
         $area = $request->area;
         $rent = $request->rent;
         $address = $request->address;
@@ -484,7 +483,6 @@ class PropertiesController extends Controller
         $preferred_house_kind = $request->preferred_house_kind;
         $preferred_property_type = $request->preferred_property_type;
         $preferred_bedrooms = $request->preferred_bedrooms;
-        $preferred_bathrooms = $request->preferred_bathrooms;
         $preferred_area = $request->preferred_area;
         $preferred_rent = $request->preferred_rent;
 
@@ -492,7 +490,7 @@ class PropertiesController extends Controller
         $final_results = [];
 
 
-            $properties = Home_Exchange::SearchByKeyword($house_kind,$bedrooms,$bathrooms,$area,$rent,$preferred_house_kind,$preferred_bedrooms,$preferred_bathrooms,$preferred_area,$preferred_rent)->where('is_sold',0)->where('is_rented',0)->select('properties.*');
+            $properties = Home_Exchange::SearchByKeyword($house_kind,$bedrooms,$area,$rent,$preferred_house_kind,$preferred_bedrooms,$preferred_area,$preferred_rent)->where('is_sold',0)->where('is_rented',0)->select('properties.*');
 
         if($preferred_address && $preferred_address_latitude && $preferred_address_longitude) {
 
@@ -656,7 +654,7 @@ class PropertiesController extends Controller
 
                 }
 
-        return view('pages.home_exchange',compact('house_kind','property_type','address','address_latitude','address_longitude','bedrooms','bathrooms','area','rent','preferred_house_kind','preferred_address','preferred_address_latitude','preferred_address_longitude','preferred_radius','preferred_bedrooms','preferred_bathrooms','preferred_area','preferred_rent','properties','types'));
+        return view('pages.home_exchange',compact('house_kind','property_type','address','address_latitude','address_longitude','bedrooms','area','rent','preferred_house_kind','preferred_address','preferred_address_latitude','preferred_address_longitude','preferred_radius','preferred_bedrooms','preferred_area','preferred_rent','properties','types'));
 
     }
 
