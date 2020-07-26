@@ -75,6 +75,8 @@ class Properties extends Model
 
         }
 
+        dd($query->get());
+
 
         return $query;
     }
