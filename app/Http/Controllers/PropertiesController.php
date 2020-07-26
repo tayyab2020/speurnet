@@ -1258,6 +1258,7 @@ class PropertiesController extends Controller
          {
              if($radius != 0)
              {
+                 dd($properties->get());
                  foreach ($properties->get() as $key)
                  {
                      $property_latitude = $key->map_latitude;
@@ -1275,8 +1276,6 @@ class PropertiesController extends Controller
                          $property_radius = $property_radius / 1000;
 
                          $property_radius = round($property_radius);
-
-                         dd($property_radius);
 
                          if($property_radius <= $radius)
                          {

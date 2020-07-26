@@ -89,6 +89,8 @@ class DailyCron extends Command
 
                     if($radius != 0)
                     {
+                        dd($properties->get());
+                        
                         foreach ($properties->get() as $key)
                         {
                             $property_latitude = $key->map_latitude;
@@ -106,8 +108,6 @@ class DailyCron extends Command
                                 $property_radius = $property_radius / 1000;
 
                                 $property_radius = round($property_radius);
-
-                                var_dump($property_radius);
 
                                 if($property_radius <= $radius)
                                 {
