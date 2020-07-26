@@ -1160,6 +1160,7 @@ class PropertiesController extends Controller
                 'gender' => $request->gender,
                 'username' => $request->name,
                 'email' => $request->email,
+                'inquiry' => $request->message,
                 'phone' => $request->phone,
                 'property_name' => $request->property_name,
             ),  function ($message) use($request,$customer_email) {
