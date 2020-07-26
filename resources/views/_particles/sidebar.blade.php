@@ -281,7 +281,7 @@
 
                 </div>
 
-                <input type="submit" name="submit" value="Search" class="btn btn-primary btn-block">
+                <input type="submit" name="submit" value="Search" class="btn btn-primary btn-block" style="outline: none;">
               {!! Form::close() !!}
             </div>
             <!-- break -->
