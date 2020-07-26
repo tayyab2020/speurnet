@@ -2009,6 +2009,7 @@
 
                             </div>
 
+                            @if($property->preferred_description)
 
                             <div class="row" style="margin: 0;margin-top: 50px;">
 
@@ -2018,6 +2019,8 @@
                                 </div>
 
                             </div>
+
+                                @endif
 
                         </div>
 

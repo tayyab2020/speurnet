@@ -901,8 +901,11 @@
 
                                                                     <h3 class="res-heading" style="float: left;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;float: left;font-weight: 600;color: #48cfad;">
 
+                                                                        <?php $city = strrpos($key->address, ',');
+                                                                        $city = $city === false ? $key->address : substr($key->address, $city + 1); ?>
+
                                                                         <a class="res-title" href="{{URL::to('home-exchange/'.$key->property_slug)}}">{{ Str::limit($key->property_name,15) }}</a>
-                                                                        <a class="res-title1" href="{{URL::to('home-exchange/'.$key->property_slug)}}">{{ Str::limit($key->address,15) }}</a>
+                                                                        <a class="res-title1" href="{{URL::to('home-exchange/'.$key->property_slug)}}">{{ Str::limit($city,15) }}</a>
 
                                                                     </h3>
 
@@ -1090,7 +1093,15 @@
 
                                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
-                                                    <h3 class="res-heading" style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;width: 100%;float: left;">{{ Str::limit($preferred_address,40) }}</h3>
+                                                    <?php $preferred_city = strrpos($preferred_address, ',');
+                                                    $preferred_city = $preferred_city === false ? $preferred_address : substr($preferred_address, $preferred_city + 1); ?>
+
+                                                    <h3 class="res-heading" style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;width: 100%;float: left;font-weight: 600;">
+
+                                                        <a href="" class="res-title">{{ Str::limit($preferred_address,15) }}</a>
+                                                        <a href="" class="res-title1">{{ Str::limit($preferred_city,15) }}</a>
+
+                                                    </h3>
 
                                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 res-pad" style="padding-left: 2px;margin-bottom: 15px;margin-top: 10px;">
 
