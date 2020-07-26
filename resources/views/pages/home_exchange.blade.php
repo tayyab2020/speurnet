@@ -825,7 +825,7 @@
 
                             .res-heading
                             {
-                                width: 100%;
+                                width: 100% !important;
                                 font-size: 18px;
                             }
 
@@ -899,7 +899,7 @@
 
                                                                 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
 
-                                                                    <h3 class="res-heading" style="float: left;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;float: left;font-weight: 600;color: #48cfad;">
+                                                                    <h3 class="res-heading" style="float: left;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;float: left;font-weight: 600;color: #48cfad;width: 40%;">
 
                                                                         <?php $city = strrpos($key->address, ',');
                                                                         $city = $city === false ? $key->address : substr($key->address, $city + 1); ?>
@@ -911,7 +911,7 @@
 
                                                                     <?php $url = "https://" . $_SERVER['HTTP_HOST'] . '/home-exchange/' . $key->property_slug; ?>
 
-                                                                    <ul class="nav nav-tabs nav-table res-nav" style="float: right;border-bottom: 0;margin: 10px 0px;margin-bottom: 0px;">
+                                                                    <ul class="nav nav-tabs nav-table res-nav" style="float: right;border-bottom: 0;margin: 10px 0px;margin-bottom: 0px;width: 60%;">
 
                                                                         <li class="image-tab" style="float: right;">
                                                                             <a class="new-icons" target="_blank" title="Share by Email" href="mailto:?subject=I wanted you to see this Property AD I just Found on zoekjehuisje.nl&amp;body=Check out this link {{$url}}" style="border-radius: 100px;position: relative;">
@@ -1096,9 +1096,9 @@
                                                     <?php $preferred_city = strrpos($preferred_address, ',');
                                                     $preferred_city = $preferred_city === false ? $preferred_address : substr($preferred_address, $preferred_city + 1); ?>
 
-                                                    <h3 class="res-heading" style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;width: 100%;float: left;font-weight: 600;">
+                                                    <h3 class="res-heading" style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;width: 100%;float: left;font-weight: 600;color: #48cfad;">
 
-                                                        <a href="" class="res-title">{{ Str::limit($preferred_address,15) }}</a>
+                                                        <a href="" class="res-title">{{ Str::limit($preferred_address,30) }}</a>
                                                         <a href="" class="res-title1">{{ Str::limit($preferred_city,15) }}</a>
 
                                                     </h3>
