@@ -626,6 +626,7 @@ class PropertiesController extends Controller
                                 }
                                 else
                                 {
+
                                     if(str_contains($key->preferred_place, $address))
                                     {
                                         if (Auth::user()) {

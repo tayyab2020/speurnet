@@ -1093,19 +1093,19 @@
 
                                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
-                                                    <?php $preferred_city = strrpos($preferred_address, ',');
-                                                    $preferred_city = $preferred_city === false ? $preferred_address : substr($preferred_address, $preferred_city + 1); ?>
+                                                    <?php $preferred_city = strrpos($key->preferred_place, ',');
+                                                    $preferred_city = $preferred_city === false ? $key->preferred_place : substr($key->preferred_place, $preferred_city + 1); ?>
 
                                                     <h3 class="res-heading" style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;width: 100%;float: left;font-weight: 600;color: #48cfad;">
 
-                                                        <a href="" class="res-title">{{ Str::limit($preferred_address,30) }}</a>
+                                                        <a href="" class="res-title">{{ Str::limit($key->preferred_place,30) }}</a>
                                                         <a href="" class="res-title1">{{ Str::limit($preferred_city,15) }}</a>
 
                                                     </h3>
 
                                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 res-pad" style="padding-left: 2px;margin-bottom: 15px;margin-top: 10px;">
 
-                                                        <small style="float: left;font-weight: 600;">+ {{$preferred_radius}} KM</small>
+                                                        <small style="float: left;font-weight: 600;">+ {{$key->preferred_radius}} KM</small>
 
                                                         <small style="float: right;font-weight: 600;">€ {{$preferred_rent}} Rent</small>
 
