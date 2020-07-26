@@ -84,6 +84,8 @@ class DailyCron extends Command
 
                 $properties = Properties::SearchByKeyword($type,$purpose,$price,$min_price,$max_price,$min_area,$max_area,$bathrooms,$bedrooms,$type_of_construction,$keywords)->where('is_sold',0)->where('is_rented',0)->where('wheelchair',$wheelchair)->select('properties.*');
 
+                dd($properties->get());
+
                 if($address && $address_latitude && $address_longitude)
                 {
 
@@ -99,16 +101,12 @@ class DailyCron extends Command
                             $result_string = file_get_contents($url);
                             $result = json_decode($result_string, true);
 
-                            var_dump($result);
-
                             if($result['rows'][0]['elements'][0]['status'] == 'OK')
                             {
                                 $property_radius = $result['rows'][0]['elements'][0]['distance']['value'];
                                 $property_radius = $property_radius / 1000;
 
                                 $property_radius = round($property_radius);
-
-                                var_dump($property_radius);
 
                                 if($property_radius <= $radius)
                                 {
