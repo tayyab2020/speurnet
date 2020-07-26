@@ -2115,7 +2115,7 @@
                                     </div>
                                     <div class="col-sm-12">
                                         <div class="form-group">
-                                            <input type="text" class="contact-control style2" name="phone" placeholder="Phone Number" required="required" value="">
+                                            <input type="text" class="contact-control style2" name="phone" placeholder="Phone Number" value="">
                                         </div><!-- /.form-group -->
                                     </div>
                                 </div>
