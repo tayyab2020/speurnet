@@ -120,6 +120,10 @@
                             <span class="button-applied-filter span-heading">{{$parameters->keywords}}</span>
                         @endif
 
+                        @if($parameters->wheelchair)
+                            <span class="button-applied-filter span-heading">Wheelchair Friendly</span>
+                        @endif
+
                     </td></tr>
 
                 <tr><td style="padding:10px 0 0 0">

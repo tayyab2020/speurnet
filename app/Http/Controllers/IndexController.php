@@ -95,6 +95,7 @@ class IndexController extends Controller
             ->where('max_area',$request->max_area)->where('min_area',$request->min_area)
             ->where('type_of_construction',$request->type_of_construction)
             ->where('keywords',$request->keywords)
+            ->where('wheelchair',$request->wheelchair)
             ->first();
         if($existingProperties){
             return redirect('/')->with('flash_message', 'Your have already created Property Alert for this Search');
@@ -117,6 +118,7 @@ class IndexController extends Controller
             $property->min_area = $request->min_area;
             $property->type_of_construction = $request->type_of_construction;
             $property->keywords = $request->keywords;
+            $property->wheelchair = $request->wheelchair;
             $property->save();
             return redirect('/')->with('flash_message', 'Property Alert Created Successfully, You will now receive Emails for Similar Properties');;
         }

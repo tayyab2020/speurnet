@@ -59,7 +59,16 @@ class WeeklyCron extends Command
             $bathrooms = $propertyalert->bathrooms;
             $type_of_construction = $propertyalert->type_of_construction;
             $keywords = $propertyalert->keywords;
+            $wheelchair = $propertyalert->wheelchair;
+            $properties_ids = $propertyalert->properties_ids;
             $properties_search = [];
+            $ids = [];
+
+            if($properties_ids != '0')
+            {
+                $properties_ids = json_decode($properties_ids);
+            }
+
 
             if($purpose=='Rent')
             {
@@ -71,59 +80,87 @@ class WeeklyCron extends Command
                 $price='sale_price';
             }
 
-            $properties = Properties::SearchByKeyword($type,$purpose,$price,$min_price,$max_price,$min_area,$max_area,$bathrooms,$bedrooms,$type_of_construction,$keywords)->where('is_sold',0)->where('is_rented',0)->get();
+            $properties = Properties::SearchByKeyword($type,$purpose,$price,$min_price,$max_price,$min_area,$max_area,$bathrooms,$bedrooms,$type_of_construction,$keywords)->where('is_sold',0)->where('is_rented',0)->where('wheelchair',$wheelchair)->select('properties.*');
 
 
             if($address && $address_latitude && $address_longitude)
             {
-                foreach ($properties as $key)
+
+                if($radius != 0)
                 {
-                    $property_latitude = $key->map_latitude;
-                    $property_longitude = $key->map_longitude;
-
-
-                    $url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=".urlencode($address_latitude).",".urlencode($address_longitude)."&destinations=".urlencode($property_latitude).",".urlencode($property_longitude)."&key=AIzaSyDFPa3LVeBRpaGafuUtk4znrty6IIqtMUw";
-
-                    $result_string = file_get_contents($url);
-                    $result = json_decode($result_string, true);
-
-                    if($result['rows'][0]['elements'][0]['status'] == 'OK')
+                    foreach ($properties->get() as $key)
                     {
-                        $property_radius = $result['rows'][0]['elements'][0]['distance']['value'];
-                        $property_radius = $property_radius / 1000;
-
-                        $property_radius = round($property_radius);
+                        $property_latitude = $key->map_latitude;
+                        $property_longitude = $key->map_longitude;
 
 
-                        if($property_radius <= $radius)
+                        $url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=".urlencode($address_latitude).",".urlencode($address_longitude)."&destinations=".urlencode($property_latitude).",".urlencode($property_longitude)."&key=AIzaSyDFPa3LVeBRpaGafuUtk4znrty6IIqtMUw";
+
+                        $result_string = file_get_contents($url);
+                        $result = json_decode($result_string, true);
+
+                        if($result['rows'][0]['elements'][0]['status'] == 'OK')
                         {
-                            array_push($properties_search,$key);
+                            $property_radius = $result['rows'][0]['elements'][0]['distance']['value'];
+                            $property_radius = $property_radius / 1000;
+
+                            $property_radius = round($property_radius);
+
+
+                            if($property_radius <= $radius)
+                            {
+                                array_push($properties_search,$key);
+                                array_push($ids,$key->id);
+                            }
                         }
+
+
                     }
 
+                    $properties = $properties_search;
 
                 }
+                else
+                {
+                    $properties = $properties->leftjoin('cities','cities.id','=','properties.city_id')->where('cities.city_name', 'like', '%' . $address . '%')->get();
+                    foreach ($properties as $key){ array_push($ids,$key->id); }
+                }
 
-                $properties = $properties_search;
+            }
+            else if($address)
+            {
+                $properties = $properties->leftjoin('cities','cities.id','=','properties.city_id')->where('cities.city_name', 'like', '%' . $address . '%')->get();
+                foreach ($properties as $key){ array_push($ids,$key->id); }
+            }
+            else
+            {
+                $properties = $properties->get();
+                foreach ($properties as $key){ array_push($ids,$key->id); }
+            }
+
+            if(($properties_ids == '0') || !($ids === array_intersect($ids, $properties_ids) && $properties_ids === array_intersect($properties_ids, $ids)))
+            {
+                $propertyalert->properties_ids = $ids;
+                $propertyalert->save();
+
+                $sender_email = $propertyalert->user_email;
+                $id = $propertyalert->id;
+                $encrypted_id = Crypt::encrypt($id);
+
+                Mail::send('emails.propertiesAlert',
+                    array(
+                        'properties' => $properties,
+                        'parameters' => $propertyalert,
+                        'type' => 2,
+                        'id' => $encrypted_id
+                    ),  function ($message) use($properties,$sender_email) {
+                        $message->from(getcong('site_email'),getcong('site_name'));
+                        $message->to($sender_email)
+                            ->subject('Weekly Properties Alert based on your saved search by ' . getcong('site_name'));
+                    });
 
             }
 
-
-            $sender_email = $propertyalert->user_email;
-            $id = $propertyalert->id;
-            $encrypted_id = Crypt::encrypt($id);
-
-            Mail::send('emails.propertiesAlert',
-                array(
-                    'properties' => $properties,
-                    'parameters' => $propertyalert,
-                    'type' => 2,
-                    'id' => $encrypted_id
-                ),  function ($message) use($properties,$sender_email) {
-                    $message->from(getcong('site_email'),getcong('site_name'));
-                    $message->to($sender_email)
-                        ->subject('Weekly Properties Alert based on your saved search by ' . getcong('site_name'));
-                });
         }
 
 

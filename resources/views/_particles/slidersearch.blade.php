@@ -37,7 +37,7 @@
 
                                     <button type="button" value="Filters" href="#myModal" data-toggle="modal" class="btn btn-primary filter-button" style="position: absolute;right: 185px;top: 8px;color: black;background: white;border-color: #9f9c9c;height: 40px;padding-top: 7px;outline: none;"><span><img src="{{ URL::asset('assets/img/Filter-512.png') }}" aria-hidden="true" style="margin-right: 10px;width: 20px;margin-top: -3px;" /> <span style="font-size: 16px;">Filters</span></span></button>
 
-                                    <button type="submit" name="submit" value="Search" class="btn btn-primary search-button" style="padding: 0px 28px;font-size: 16px;"><span><i class="fa fa-search" aria-hidden="true" style="margin-right: 10px;"></i> <span>Search</span></span></button>
+                                    <button type="submit" name="submit" value="Search" class="btn btn-primary search-button" style="padding: 0px 28px;font-size: 16px;outline: none;"><span><i class="fa fa-search" aria-hidden="true" style="margin-right: 10px;"></i> <span>Search</span></span></button>
 
                                 </div>
 

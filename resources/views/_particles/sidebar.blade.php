@@ -89,6 +89,10 @@
                                         <span class="button-applied-filter span-heading">{{$keywords}}</span>
                                     @endif
 
+                                    @if($wheelchair)
+                                        <span class="button-applied-filter span-heading">Wheelchair Friendly</span>
+                                    @endif
+
                                 </div>
 
                                 {!! Form::open(array('url' => array('savepropertyalert'),'class'=>'form-horizontal padding-15','name'=>'job_form','id'=>'job_form','role'=>'form','enctype' => 'multipart/form-data')) !!}
@@ -108,6 +112,7 @@
                                 <input name="max_area" type="hidden" value="{{$max_area}}">
                                 <input name="type_of_construction" type="hidden" value="{{$type_of_construction}}">
                                 <input name="keywords" type="hidden" value="{{$keywords}}">
+                                <input name="wheelchair" type="hidden" value="{{$wheelchair}}">
 
                                 <br>
 
@@ -131,7 +136,7 @@
                                 </div>
 
 
-                                <button class="btn btn-success" type="submit" style="float: right">Create Property Alert</button>
+                                <button class="btn btn-success" type="submit" style="float: right;outline: none;">Create Property Alert</button>
                                 {!! Form::close() !!}
                             </div>
 
