@@ -1285,7 +1285,7 @@ class PropertiesController extends Controller
 
 
                  }
-                 
+
 
                  $properties = $properties_search;
              }

@@ -84,8 +84,6 @@ class DailyCron extends Command
 
                 $properties = Properties::SearchByKeyword($type,$purpose,$price,$min_price,$max_price,$min_area,$max_area,$bathrooms,$bedrooms,$type_of_construction,$keywords)->where('is_sold',0)->where('is_rented',0)->where('wheelchair',$wheelchair)->select('properties.*');
 
-                dd($properties->get());
-
                 if($address && $address_latitude && $address_longitude)
                 {
 
