@@ -1258,7 +1258,7 @@ class PropertiesController extends Controller
          {
              if($radius != 0)
              {
-                 dd($properties->get());
+
                  foreach ($properties->get() as $key)
                  {
                      $property_latitude = $key->map_latitude;
@@ -1277,6 +1277,8 @@ class PropertiesController extends Controller
 
                          $property_radius = round($property_radius);
 
+                         var_dump($property_radius);
+
                          if($property_radius <= $radius)
                          {
                              array_push($properties_search,$key);
@@ -1285,6 +1287,7 @@ class PropertiesController extends Controller
 
 
                  }
+                 exit();
 
                  $properties = $properties_search;
              }
