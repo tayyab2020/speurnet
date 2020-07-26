@@ -1105,7 +1105,7 @@
 
                                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 res-pad" style="padding-left: 2px;margin-bottom: 15px;margin-top: 10px;">
 
-                                                        <small style="float: left;font-weight: 600;">{{$preferred_radius}} KM</small>
+                                                        <small style="float: left;font-weight: 600;">+ {{$preferred_radius}} KM</small>
 
                                                         <small style="float: right;font-weight: 600;">€ {{$preferred_rent}} Rent</small>
 
