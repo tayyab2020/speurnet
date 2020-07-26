@@ -48,7 +48,7 @@ class DailyCron extends Command
 
         foreach ($propertiesalerts as $key=>$propertyalert){
 
-            $type = $propertyalert->type;
+            $type = $propertyalert->property_type;
             $purpose = $propertyalert->property_purpose;
             $min_price = $propertyalert->min_price;
             $max_price = $propertyalert->max_price;

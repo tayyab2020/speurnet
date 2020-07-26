@@ -28,7 +28,6 @@ class Properties extends Model
 
         $query = $query->where("property_purpose", "$purpose");
 
-        dd($type);
 
         if($type)
         {
