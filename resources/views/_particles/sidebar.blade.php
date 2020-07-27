@@ -5,7 +5,7 @@
               </div>
 
 
-                @if(Route::currentRouteName() == 'searchproperties')
+                @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions')
 
                 <button type="button" class="btn btn-warning btn-info btn-lg" data-toggle="modal" data-target="#myModal" style="width: 100%;font-size: 14px;margin-bottom: 20px;white-space: break-spaces;padding: 10px 0px;outline: none;"><i class="fa fa-bullhorn" aria-hidden="true"></i>&nbsp;Create Alert for this Result</button>
 
@@ -20,8 +20,7 @@
                                 <h4 class="modal-title">Property Alert Creation</h4>
                             </div>
 
-                            @if(Route::currentRouteName() == 'searchproperties')
-
+                            @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions')
 
                             <div class="modal-body" style="display: inline-block;width: 100%;">
 
@@ -38,19 +37,41 @@
 
                                     @endif
 
+
                                     @if($property_type)
                                             <span class="button-applied-filter span-heading">{{ getPropertyTypeName($property_type)->types }}</span>
                                         @else
                                             <span class="button-applied-filter span-heading">All Property Types</span>
                                     @endif
 
+
+
+                                    @if(Route::currentRouteName() == 'searchproperties')
+
                                     @if($purpose)
                                             <span class="button-applied-filter span-heading">For {{$purpose}}</span>
                                     @endif
 
+                                    @endif
+
+
+                                    @if(Route::currentRouteName() == 'searchnewconstructions')
+
+                                    @if($kind_of_type)
+                                        <span class="button-applied-filter span-heading">{{$kind_of_type}}</span>
+                                    @endif
+
+                                    @endif
+
+
+                                    @if(Route::currentRouteName() == 'searchproperties')
+
                                     @if($type_of_construction)
                                         <span class="button-applied-filter span-heading">{{$type_of_construction}} Property</span>
                                     @endif
+
+                                    @endif
+
 
 
                                     @if($min_price != '' || $max_price != '')
@@ -65,13 +86,19 @@
 
                                     @endif
 
+
+
                                     @if($bedrooms)
                                         <span class="button-applied-filter span-heading">{{$bedrooms}}@if($bedrooms!=1) Bedrooms @else Bedroom @endif</span>
                                     @endif
 
+
+
                                     @if($bathrooms)
                                         <span class="button-applied-filter span-heading">{{$bathrooms}}@if($bathrooms!=1) Bathrooms @else Bathrooms @endif</span>
                                     @endif
+
+
 
                                     @if($min_area != '' || $max_area != '')
 
@@ -85,9 +112,13 @@
 
                                     @endif
 
+
+
                                     @if($keywords)
                                         <span class="button-applied-filter span-heading">{{$keywords}}</span>
                                     @endif
+
+
 
                                     @if($wheelchair)
                                         <span class="button-applied-filter span-heading">Wheelchair Friendly</span>
@@ -99,7 +130,9 @@
                                 <label>Email Address: </label>
                                 <input class="form-control" name="email" title="You will receive Emails on this Address" type="email" required placeholder="Enter Email for Job Alert Receiving" value="{{isset(Auth::user()->email)?Auth::user()->email:''}}">
                                 <input name="property_type" type="hidden" value="{{$property_type}}">
+                                @if(Route::currentRouteName() == 'searchproperties')
                                 <input name="property_purpose" type="hidden" value="{{$purpose}}">
+                                @endif
                                 <input name="radius" type="hidden" value="{{$radius}}">
                                 <input name="address" type="hidden" value="{{$address}}">
                                 <input name="longitude" type="hidden" value="{{$address_longitude}}">
@@ -110,9 +143,16 @@
                                 <input name="bathrooms" type="hidden" value="{{$bathrooms}}">
                                 <input name="min_area" type="hidden" value="{{$min_area}}">
                                 <input name="max_area" type="hidden" value="{{$max_area}}">
+                                @if(Route::currentRouteName() == 'searchproperties')
+                                <input type="hidden" name="search_type" value="standard">
                                 <input name="type_of_construction" type="hidden" value="{{$type_of_construction}}">
+                                @endif
                                 <input name="keywords" type="hidden" value="{{$keywords}}">
                                 <input name="wheelchair" type="hidden" value="{{$wheelchair}}">
+                                @if(Route::currentRouteName() == 'searchnewconstructions')
+                                <input type="hidden" name="search_type" value="construction">
+                                <input name="kind_of_type" type="hidden" value="{{$kind_of_type}}">
+                                @endif
 
                                 <br>
 

@@ -83,45 +83,93 @@ class IndexController extends Controller
     public function savepropertyalert(Request $request)
     {
 
-        $existingProperties=savedPropertyAlert::where('user_email',$request->email)
-            ->where('radius',$request->radius)
-            ->where('address',$request->address)->where('longitude',$request->longitude)->where('latitude',$request->latitude)
-            ->where('property_type',$request->property_type)
-            ->where('type',$request->type)
-            ->where('property_purpose',$request->property_purpose)
-            ->where('bedrooms',$request->bedrooms)
-            ->where('bathrooms',$request->bathrooms)
-            ->where('max_price',$request->max_price)->where('min_price',$request->min_price)
-            ->where('max_area',$request->max_area)->where('min_area',$request->min_area)
-            ->where('type_of_construction',$request->type_of_construction)
-            ->where('keywords',$request->keywords)
-            ->where('wheelchair',$request->wheelchair)
-            ->first();
-        if($existingProperties){
-            return redirect('/')->with('flash_message', 'Your have already created Property Alert for this Search');
+        if($request->search_type == "standard")
+        {
+            $existingProperties=savedPropertyAlert::where('user_email',$request->email)
+                ->where('radius',$request->radius)
+                ->where('address',$request->address)->where('longitude',$request->longitude)->where('latitude',$request->latitude)
+                ->where('property_type',$request->property_type)
+                ->where('type',$request->type)
+                ->where('property_purpose',$request->property_purpose)
+                ->where('bedrooms',$request->bedrooms)
+                ->where('bathrooms',$request->bathrooms)
+                ->where('max_price',$request->max_price)->where('min_price',$request->min_price)
+                ->where('max_area',$request->max_area)->where('min_area',$request->min_area)
+                ->where('type_of_construction',$request->type_of_construction)
+                ->where('keywords',$request->keywords)
+                ->where('wheelchair',$request->wheelchair)
+                ->where('search_type',1)
+                ->first();
+            if($existingProperties){
+                return redirect('/')->with('flash_message', 'Your have already created Property Alert for this Search');
+            }
+            else{
+                $property = new savedPropertyAlert;
+                $property->user_email = $request->email;
+                $property->radius = $request->radius;
+                $property->property_type = $request->property_type;
+                $property->type = $request->type;
+                $property->bedrooms = $request->bedrooms;
+                $property->bathrooms = $request->bathrooms;
+                $property->address = $request->address;
+                $property->longitude = $request->longitude;
+                $property->latitude = $request->latitude;
+                $property->property_purpose = $request->property_purpose;
+                $property->max_price = $request->max_price;
+                $property->min_price = $request->min_price;
+                $property->max_area = $request->max_area;
+                $property->min_area = $request->min_area;
+                $property->type_of_construction = $request->type_of_construction;
+                $property->keywords = $request->keywords;
+                $property->wheelchair = $request->wheelchair;
+                $property->search_type = 1;
+                $property->save();
+                return redirect('/')->with('flash_message', 'Property Alert Created Successfully, You will now receive Emails for Similar Properties');;
+            }
         }
-        else{
-            $property = new savedPropertyAlert;
-            $property->user_email = $request->email;
-            $property->radius = $request->radius;
-            $property->property_type = $request->property_type;
-            $property->type = $request->type;
-            $property->bedrooms = $request->bedrooms;
-            $property->bathrooms = $request->bathrooms;
-            $property->address = $request->address;
-            $property->longitude = $request->longitude;
-            $property->latitude = $request->latitude;
-            $property->property_purpose = $request->property_purpose;
-            $property->max_price = $request->max_price;
-            $property->min_price = $request->min_price;
-            $property->max_area = $request->max_area;
-            $property->min_area = $request->min_area;
-            $property->type_of_construction = $request->type_of_construction;
-            $property->keywords = $request->keywords;
-            $property->wheelchair = $request->wheelchair;
-            $property->save();
-            return redirect('/')->with('flash_message', 'Property Alert Created Successfully, You will now receive Emails for Similar Properties');;
+        else
+        {
+            $existingProperties=savedPropertyAlert::where('user_email',$request->email)
+                ->where('radius',$request->radius)
+                ->where('address',$request->address)->where('longitude',$request->longitude)->where('latitude',$request->latitude)
+                ->where('property_type',$request->property_type)
+                ->where('type',$request->type)
+                ->where('bedrooms',$request->bedrooms)
+                ->where('bathrooms',$request->bathrooms)
+                ->where('max_price',$request->max_price)->where('min_price',$request->min_price)
+                ->where('max_area',$request->max_area)->where('min_area',$request->min_area)
+                ->where('kind_of_type',$request->kind_of_type)
+                ->where('keywords',$request->keywords)
+                ->where('wheelchair',$request->wheelchair)
+                ->where('search_type',2)
+                ->first();
+            if($existingProperties){
+                return redirect('/')->with('flash_message', 'Your have already created Property Alert for this Search');
+            }
+            else{
+                $property = new savedPropertyAlert;
+                $property->user_email = $request->email;
+                $property->radius = $request->radius;
+                $property->property_type = $request->property_type;
+                $property->type = $request->type;
+                $property->bedrooms = $request->bedrooms;
+                $property->bathrooms = $request->bathrooms;
+                $property->address = $request->address;
+                $property->longitude = $request->longitude;
+                $property->latitude = $request->latitude;
+                $property->max_price = $request->max_price;
+                $property->min_price = $request->min_price;
+                $property->max_area = $request->max_area;
+                $property->min_area = $request->min_area;
+                $property->kind_of_type = $request->kind_of_type;
+                $property->keywords = $request->keywords;
+                $property->wheelchair = $request->wheelchair;
+                $property->search_type = 2;
+                $property->save();
+                return redirect('/')->with('flash_message', 'Property Alert Created Successfully, You will now receive Emails for Similar Properties');;
+            }
         }
+
     }
 
     public function index()

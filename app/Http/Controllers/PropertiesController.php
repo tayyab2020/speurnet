@@ -1334,7 +1334,6 @@ class PropertiesController extends Controller
         if($request->kind_of_type=='For Sale')
         {
             $price='sale_price';
-
         }
         else if($request->kind_of_type=='To Rent Social' || $request->kind_of_type=='To Rent Free')
         {

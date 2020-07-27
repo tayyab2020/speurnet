@@ -58,7 +58,16 @@
             <tbody>
 
             @if(count($properties))
+
+                @if($parameters->search_type == 1)
+
                 <tr><td>Hello! Following are the properties for which you have subscribed at {{getcong('site_name')}}</td></tr>
+
+                @else
+
+                <tr><td>Hello! Following are the New Construction properties for which you have subscribed at {{getcong('site_name')}}</td></tr>
+
+                @endif
 
                 <tr><td style="padding:10px 0 0 0"><p>Property Alert Parameters: </p>
 
@@ -75,12 +84,25 @@
                             <span class="button-applied-filter span-heading">All Property Types</span>
                         @endif
 
-                        @if($parameters->property_purpose)
-                            <span class="button-applied-filter span-heading">For {{$parameters->property_purpose}}</span>
-                        @endif
 
-                        @if($parameters->type_of_construction)
-                            <span class="button-applied-filter span-heading">{{$parameters->type_of_construction}} Property</span>
+                        @if($parameters->search_type == 1)
+
+
+                            @if($parameters->property_purpose)
+                                <span class="button-applied-filter span-heading">For {{$parameters->property_purpose}}</span>
+                            @endif
+
+
+                                @if($parameters->type_of_construction)
+                                    <span class="button-applied-filter span-heading">{{$parameters->type_of_construction}} Property</span>
+                                @endif
+
+                        @else
+
+                            @if($parameters->kind_of_type)
+                                <span class="button-applied-filter span-heading">{{$parameters->kind_of_type}}</span>
+                            @endif
+
                         @endif
 
 
@@ -134,7 +156,23 @@
 
                 @foreach($properties as $i => $property)
 
-                                <tr><td style="padding:5px 0 0 0"><a href="{{URL::to('properties/'.$property->property_slug)}}" target="_blank">{{$property->property_name}}</a></td></tr>
+                    @if($parameters->search_type == 1)
+
+                    <tr>
+                        <td style="padding:5px 0 0 0">
+                            <a href="{{URL::to('properties/'.$property->property_slug)}}" target="_blank">{{$property->property_name}}</a>
+                        </td>
+                    </tr>
+
+                    @else
+
+                        <tr>
+                            <td style="padding:5px 0 0 0">
+                                <a href="{{URL::to('new-constructions/'.$property->property_slug)}}" target="_blank">{{$property->property_name}}</a>
+                            </td>
+                        </tr>
+
+                    @endif
 
                 @endforeach
 
