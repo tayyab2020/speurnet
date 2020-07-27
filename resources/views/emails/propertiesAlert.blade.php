@@ -187,7 +187,15 @@
                 <tr><td style="padding:10px 0 0 0">To unsubscribe property alert: <a href="{{URL::to('properties/alerts/delete/'.$id)}}" target="_blank">Unsubscribe</a></td></tr>
 
             @else
-                <tr><td><p>Hi User, We couldn't find any property for your Saved Property Alert with Parameters: </p>
+                <tr><td>
+
+                        @if($parameters->search_type == 1)
+                        <p>Hi User, We couldn't find any property for your Saved Property Alert with Parameters: </p>
+                        @else
+                        <p>Hi User, We couldn't find any new construction property for your Saved Property Alert with Parameters: </p>
+                        @endif
+
+
                         @if($parameters->address)
                             <span class="button-applied-filter span-heading">{{$parameters->address}}</span>
 
@@ -201,13 +209,25 @@
                             <span class="button-applied-filter span-heading">All Property Types</span>
                         @endif
 
-                        @if($parameters->property_purpose)
-                            <span class="button-applied-filter span-heading">For {{$parameters->property_purpose}}</span>
-                        @endif
+                            @if($parameters->search_type == 1)
 
-                        @if($parameters->type_of_construction)
-                            <span class="button-applied-filter span-heading">{{$parameters->type_of_construction}} Property</span>
-                        @endif
+
+                                @if($parameters->property_purpose)
+                                    <span class="button-applied-filter span-heading">For {{$parameters->property_purpose}}</span>
+                                @endif
+
+
+                                    @if($parameters->type_of_construction)
+                                        <span class="button-applied-filter span-heading">{{$parameters->type_of_construction}} Property</span>
+                                    @endif
+
+                            @else
+
+                                @if($parameters->kind_of_type)
+                                    <span class="button-applied-filter span-heading">{{$parameters->kind_of_type}}</span>
+                                @endif
+
+                            @endif
 
 
                         @if($parameters->min_price != '' || $parameters->max_price != '')
