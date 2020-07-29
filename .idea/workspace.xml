@@ -1,26 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7fe7f36f-c82f-4504-8c0a-7874522d22c9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/BlogsController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/blogs.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/upload/blogs/test-blog-2-13097666cdf6c5db0a2dfdc944fb6739.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/upload/blogs/test-blog-2-e27581a3df041edb9d94d664e96fd886.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/upload/blogs/test-blog-57a69fe5b066cdc83363a06e44f43e59.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/upload/blogs/test-blog-78f6422c7177ceb5d565959abf3d149a.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/pages/addeditblog.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/pages/blogs.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/PropertiesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/PropertiesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/IndexController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/IndexController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin_assets/js/plugins.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin_assets/js/plugins.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin_assets/js/plugins.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin_assets/js/plugins.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/admin_assets/js/scripts.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin_assets/js/scripts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/admin_app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/admin_app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/sidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/pages/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-    </list>
+    <list default="true" id="7fe7f36f-c82f-4504-8c0a-7874522d22c9" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -252,7 +233,7 @@
       <workItem from="1594754831169" duration="76604000" />
       <workItem from="1595264081462" duration="27197000" />
       <workItem from="1595598119317" duration="1507000" />
-      <workItem from="1595671064739" duration="59410000" />
+      <workItem from="1595671064739" duration="60178000" />
     </task>
     <servers />
   </component>
