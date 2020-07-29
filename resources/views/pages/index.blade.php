@@ -880,9 +880,6 @@
 
 </script>
 
-    @include("_particles.testimonials")
-
-    @include("_particles.partners")
 
 @if(count($blogs) >= 1)
 
@@ -942,10 +939,13 @@
                                 </div>
 
                                 <div class="property-content description-content">
+
                                     <h3><a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;" href="{{ url('blogs/'.$blog->id) }}">{{$blog->title}}</a>
-                                    <small>{{$date}}</small>
+                                    <small style="color: #acacac;font-style: normal;">{{$date}}</small>
                                     </h3>
+
                                     <p style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;line-height: 2;font-size: 15px;margin-top: 15px;">{{$description}}</p>
+
                                 </div>
                             </div>
                         </div>
@@ -962,6 +962,8 @@
 <!-- end:blog -->
 
 @endif
+
+@include("_particles.partners")
 
 	@include("_particles.subscribe")
 
