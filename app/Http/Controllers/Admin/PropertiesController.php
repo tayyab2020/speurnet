@@ -648,8 +648,6 @@ class PropertiesController extends MainAdminController
 
             for($i=0;$i<$countfiles;$i++) {
 
-
-
                 $filename = $_FILES['documents']['name'][$i];
 
                 $ext = pathinfo($filename, PATHINFO_EXTENSION);

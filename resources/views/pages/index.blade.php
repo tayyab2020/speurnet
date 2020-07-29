@@ -884,6 +884,55 @@
 
     @include("_particles.partners")
 
+@if(count($blogs) >= 1)
+
+<!-- begin:blog -->
+<div id="partner">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="heading-title bg-white">
+                    <h2>Our Blogs</h2>
+                </div>
+            </div>
+        </div>
+        <!-- break -->
+
+        <div class="row" style="display: flex;width: 100%;margin: 0;">
+
+            <div class="col-lg-10 col-md-12 col-sm-12 col-xs-12" style="margin: auto;">
+
+                <div class="topMembers">
+
+                    @foreach($blogs as $blog)
+
+                        <div class="col-md-3 col-sm-12 col-xs-12 flex-box-div">
+                            <div class="property-container" style="margin: 10px auto;">
+                                <div class="property-image">
+
+                                        <img src="{{ URL::asset('upload/blogs/'.$blog->image) }}" style="width: 100%;height: 200px;" >
+
+                                </div>
+
+                                <div class="property-content">
+                                    <h3><a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;" href="{{ url('blogs/'.$blog->id) }}">{{$blog->title}}</a> <small style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;">{!! $blog->description !!}</small></h3>
+                                </div>
+                            </div>
+                        </div>
+
+                    @endforeach
+
+                </div>
+            </div></div>
+
+
+    </div>
+</div>
+<!-- end:blog -->
+
+@endif
+
 	@include("_particles.subscribe")
 
 

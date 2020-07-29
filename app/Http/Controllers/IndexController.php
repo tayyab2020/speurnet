@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Blogs;
 use App\HomepageIcons;
 use App\savedPropertyAlert;
 use App\Settings;
@@ -187,6 +188,8 @@ class IndexController extends Controller
 
 		$partners = Partners::orderBy('id', 'desc')->get();
 
+        $blogs = Blogs::orderBy('id', 'desc')->get();
+
 		$top_members = User::withCount('properties')->where('users.usertype','=','Agents')->where('users.status',1)->orderBy('properties_count', 'desc')->get();
 
 		$top_properties = Properties::orderBy('views', 'desc')->get();
@@ -284,7 +287,7 @@ class IndexController extends Controller
         }
 
 
-        return view('pages.index',compact('propertieslist','testimonials', 'heading', 'most_viewed', 'partners','city_list','top_members','top_properties','content'));
+        return view('pages.index',compact('propertieslist','testimonials', 'blogs', 'heading', 'most_viewed', 'partners','city_list','top_members','top_properties','content'));
     }
 
     public function subscribe(Request $request)

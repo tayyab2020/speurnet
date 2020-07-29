@@ -9,6 +9,7 @@
 	<link href="{{ URL::asset('upload/'.getcong('site_favicon')) }}" type="image/x-icon" rel="icon" />
 	<link rel="stylesheet" href="{{ URL::asset('admin_assets/css/style.css') }}">
     <link href="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/build/css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.css" rel="stylesheet">
 
 	<script src="{{ URL::asset('admin_assets/js/jquery.js') }}"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
@@ -58,6 +59,7 @@
   <!-- Plugins -->
   <script src="{{ URL::asset('admin_assets/js/plugins.min.js') }}"></script>
 
+  <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.js"></script>
 
   <!-- Loaded only in index.html for demographic vector map-->
   <script src="{{ URL::asset('admin_assets/js/jvectormap.js') }}"></script>
