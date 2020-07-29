@@ -46,8 +46,18 @@
                     </div>
                 </div>
 
-                <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+                <style>
 
+                    .checkbox input[type="checkbox"]
+                    {
+                        opacity: 1;
+                    }
+
+                    .checkbox label::before {
+                        display: none;
+                    }
+
+                </style>
 
                 <div class="form-group">
                     <label for="avatar" class="col-sm-3 control-label">Image</label>

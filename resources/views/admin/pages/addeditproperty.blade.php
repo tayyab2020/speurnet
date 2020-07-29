@@ -2604,6 +2604,39 @@
 
     <style>
 
+        .checkbox
+        {
+            padding-top: 12px;
+            padding-left: 20px;
+        }
+
+        .checkbox label
+        {
+            padding-left: 5px;
+        }
+
+        .checkbox input[type="checkbox"]
+        {
+            opacity: 1;
+            margin-right: 10px;
+            position: relative;
+            left: 0;
+        }
+
+        .checkbox label::before {
+            display: none;
+        }
+
+        .note-modal .modal-dialog .modal-content .modal-body .form-group
+        {
+            margin-bottom: 15px;
+        }
+
+        .note-btn-primary
+        {
+            background-color: green !important;
+        }
+
         .icon-feature
         {
             width: 30px;

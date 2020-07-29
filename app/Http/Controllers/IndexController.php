@@ -290,6 +290,13 @@ class IndexController extends Controller
         return view('pages.index',compact('propertieslist','testimonials', 'blogs', 'heading', 'most_viewed', 'partners','city_list','top_members','top_properties','content'));
     }
 
+    public function Blog($id)
+    {
+        $blog = Blogs::where('id',$id)->first();
+
+        return view('pages.blog',compact('blog'));
+    }
+
     public function subscribe(Request $request)
     {
 

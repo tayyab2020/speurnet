@@ -141,6 +141,8 @@ Route::group(['middleware' => 'App\Http\Middleware\UserTypeMiddleware'], functio
 
     Route::get('/', 'IndexController@index');
 
+    Route::get('blogs/{id}', 'IndexController@Blog');
+
     Route::get('homeexchange', 'PropertiesController@homeexchange');
 
     Route::get('homeexchange/home-exchange-search', 'PropertiesController@HomeExchangeSearch');

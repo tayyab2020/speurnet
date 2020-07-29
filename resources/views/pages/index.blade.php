@@ -886,9 +886,27 @@
 
 @if(count($blogs) >= 1)
 
+    <style>
+
+        .description-content blockquote:before
+        {
+            content: '\f10d';
+            font-family: 'FontAwesome';
+            position: relative;
+            left: -1em;
+            top: 0;
+            display: block;
+            width: 20px;
+            height: 20px;
+            color: black;
+            font-size: 10px;
+        }
+
+    </style>
+
 <!-- begin:blog -->
 <div id="partner">
-    <div class="container">
+    <div class="container" style="width: 100%;">
         <div class="row">
             <div class="col-md-12">
 
@@ -907,21 +925,32 @@
 
                     @foreach($blogs as $blog)
 
+                        <?php $description = $blog->description;
+
+                        $description = preg_replace(array('#<[^>]+>#','#&nbsp;#'), ' ', $description);
+
+                        $date = $blog->created_at;
+                        $date = date("M d, Y", strtotime($date));
+                        ?>
+
                         <div class="col-md-3 col-sm-12 col-xs-12 flex-box-div">
-                            <div class="property-container" style="margin: 10px auto;">
+                            <div class="property-container" style="margin: 10px auto;min-height: 433px;">
                                 <div class="property-image">
 
-                                        <img src="{{ URL::asset('upload/blogs/'.$blog->image) }}" style="width: 100%;height: 200px;" >
+                                        <img src="{{ URL::asset('upload/blogs/'.$blog->image) }}" style="width: 100%;height: 250px;" >
 
                                 </div>
 
-                                <div class="property-content">
-                                    <h3><a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;" href="{{ url('blogs/'.$blog->id) }}">{{$blog->title}}</a> <small style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;">{!! $blog->description !!}</small></h3>
+                                <div class="property-content description-content">
+                                    <h3><a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;" href="{{ url('blogs/'.$blog->id) }}">{{$blog->title}}</a>
+                                    <small>{{$date}}</small>
+                                        <p style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;line-height: 2;font-size: 15px;margin-top: 15px;">{{$description}}</p></h3>
                                 </div>
                             </div>
                         </div>
 
                     @endforeach
+
 
                 </div>
             </div></div>
