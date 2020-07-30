@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Expats;
+use App\moving_tips;
 use Auth;
 use App\User;
 use App\Blogs;
@@ -13,6 +15,7 @@ use Session;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use Route;
 
 class BlogsController extends MainAdminController
 {
@@ -25,12 +28,23 @@ class BlogsController extends MainAdminController
     }
     public function blogslist()
     {
-        $allblogs = Blogs::orderBy('id')->get();
+        if(Route::currentRouteName() == 'blogs')
+        {
+            $allblogs = Blogs::orderBy('id', 'desc')->get();
+        }
+        elseif(Route::currentRouteName() == 'moving-tips')
+        {
+            $allblogs = moving_tips::orderBy('id', 'desc')->get();
+        }
+        else
+        {
+            $allblogs = Expats::orderBy('id', 'desc')->get();
+        }
 
         return view('admin.pages.blogs',compact('allblogs'));
     }
 
-    public function addediblogs()    {
+    public function addeditblogs()    {
 
         if(Auth::User()->usertype!="Admin"){
 
@@ -63,13 +77,45 @@ class BlogsController extends MainAdminController
             return redirect()->back()->withErrors($validator->messages());
         }
 
-        if(!empty($inputs['id'])){
+        if(Route::currentRouteName() == 'post-blog')
+        {
 
-            $blog = Blogs::findOrFail($inputs['id']);
+            if(!empty($inputs['id'])){
 
-        }else{
+                $blog = Blogs::findOrFail($inputs['id']);
 
-            $blog = new Blogs;
+            }else{
+
+                $blog = new Blogs;
+
+            }
+
+        }
+        elseif(Route::currentRouteName() == 'post-moving-tip')
+        {
+
+            if(!empty($inputs['id'])){
+
+                $blog = moving_tips::findOrFail($inputs['id']);
+
+            }else{
+
+                $blog = new moving_tips;
+
+            }
+
+        }
+        else
+        {
+            if(!empty($inputs['id'])){
+
+                $blog = Expats::findOrFail($inputs['id']);
+
+            }else{
+
+                $blog = new Expats;
+
+            }
 
         }
 
@@ -79,7 +125,25 @@ class BlogsController extends MainAdminController
 
         if($t_user_image){
 
-            \File::delete(public_path() .'/upload/blogs/'.$blog->image);
+            if(Route::currentRouteName() == 'post-blog')
+            {
+                \File::delete(public_path() .'/upload/blogs/'.$blog->image);
+
+                $tmpFilePath = 'upload/blogs/';
+            }
+            elseif(Route::currentRouteName() == 'post-moving-tip')
+            {
+                \File::delete(public_path() .'/upload/moving-tips/'.$blog->image);
+
+                $tmpFilePath = 'upload/moving-tips/';
+            }
+            else
+            {
+                \File::delete(public_path() .'/upload/expats/'.$blog->image);
+
+                $tmpFilePath = 'upload/expats/';
+            }
+
 
             $filename = $_FILES['image']['name'];
 
@@ -88,8 +152,6 @@ class BlogsController extends MainAdminController
             $hardPath =  Str::slug($inputs['title'], '-').'-'.md5(time());
 
             $image_file = $hardPath . '.' . $ext;
-
-            $tmpFilePath = 'upload/blogs/';
 
             $target_file = $tmpFilePath . $image_file;
 
@@ -125,6 +187,7 @@ class BlogsController extends MainAdminController
 
     public function editblog($id)
     {
+
         if(Auth::User()->usertype!="Admin"){
 
             \Session::flash('flash_message', 'Access denied!');
@@ -133,7 +196,18 @@ class BlogsController extends MainAdminController
 
         }
 
-        $blog = Blogs::findOrFail($id);
+        if(Route::currentRouteName() == 'edit-blog')
+        {
+            $blog = Blogs::findOrFail($id);
+        }
+        elseif(Route::currentRouteName() == 'edit-moving-tip')
+        {
+            $blog = moving_tips::findOrFail($id);
+        }
+        else
+        {
+            $blog = Expats::findOrFail($id);
+        }
 
         return view('admin.pages.addeditblog',compact('blog'));
 
@@ -150,9 +224,24 @@ class BlogsController extends MainAdminController
 
         }
 
-        $blog = Blogs::findOrFail($id);
+        if(Route::currentRouteName() == 'delete-blog')
+        {
+            $blog = Blogs::findOrFail($id);
 
-        \File::delete(public_path() .'/upload/blogs/'.$blog->image.'.jpg');
+            \File::delete(public_path() .'/upload/blogs/'.$blog->image);
+        }
+        elseif(Route::currentRouteName() == 'delete-moving-tip')
+        {
+            $blog = moving_tips::findOrFail($id);
+
+            \File::delete(public_path() .'/upload/moving-tips/'.$blog->image);
+        }
+        else
+        {
+            $blog = Expats::findOrFail($id);
+
+            \File::delete(public_path() .'/upload/expats/'.$blog->image);
+        }
 
         $blog->delete();
 

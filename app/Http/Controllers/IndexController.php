@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Blogs;
+use App\Expats;
 use App\HomepageIcons;
+use App\moving_tips;
 use App\savedPropertyAlert;
 use App\Settings;
 use Auth;
@@ -290,9 +292,44 @@ class IndexController extends Controller
         return view('pages.index',compact('propertieslist','blogs', 'heading', 'most_viewed', 'partners','city_list','top_members','top_properties','content'));
     }
 
+    public function Blogs()
+    {
+        $blogs = Blogs::orderBy('id', 'desc')->paginate(9);
+
+        return view('pages.blogs',compact('blogs'));
+    }
+
     public function Blog($id)
     {
         $blog = Blogs::where('id',$id)->first();
+
+        return view('pages.blog',compact('blog'));
+    }
+
+    public function MovingTips()
+    {
+        $blogs = moving_tips::orderBy('id', 'desc')->paginate(9);
+
+        return view('pages.blogs',compact('blogs'));
+    }
+
+    public function MovingTip($id)
+    {
+        $blog = moving_tips::where('id',$id)->first();
+
+        return view('pages.blog',compact('blog'));
+    }
+
+    public function Expats()
+    {
+        $blogs = Expats::orderBy('id', 'desc')->paginate(9);
+
+        return view('pages.blogs',compact('blogs'));
+    }
+
+    public function Expat($id)
+    {
+        $blog = Expats::where('id',$id)->first();
 
         return view('pages.blog',compact('blog'));
     }

@@ -56,6 +56,10 @@
 
                     <li class="{{classActivePath('blogs')}}"><a href="{{ URL::to('admin/blogs') }}"><i class="fa fa-list"></i>Blogs</a></li>
 
+                    <li class="{{classActivePath('moving-tips')}}"><a href="{{ URL::to('admin/moving-tips') }}"><i class="fa fa-list"></i>Moving Tips</a></li>
+
+                    <li class="{{classActivePath('expats')}}"><a href="{{ URL::to('admin/expats') }}"><i class="fa fa-list"></i>Expats</a></li>
+
 					<li class="{{classActivePath('partners')}}"><a href="{{ URL::to('admin/partners') }}"><i class="fa fa-bookmark-o"></i>Partners</a></li>
 
 					<li class="{{classActivePath('subscriber')}}"><a href="{{ URL::to('admin/subscriber') }}"><i class="md md-email"></i>Subscribers</a></li>

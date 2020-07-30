@@ -18,7 +18,21 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="post_img">
-                                <img src="{{ URL::asset('upload/blogs/'.$blog->image) }}" style="width: 100%;" alt="{{$blog->title}}">
+
+                                @if(Route::currentRouteName() == 'front-blog')
+
+                                    <img src="{{ URL::asset('upload/blogs/'.$blog->image) }}" style="width: 100%;" alt="{{$blog->title}}">
+
+                                @elseif(Route::currentRouteName() == 'front-moving-tip')
+
+                                    <img src="{{ URL::asset('upload/moving-tips/'.$blog->image) }}" style="width: 100%;" alt="{{$blog->title}}">
+
+                                @else
+
+                                    <img src="{{ URL::asset('upload/expats/'.$blog->image) }}" style="width: 100%;" alt="{{$blog->title}}">
+
+                                @endif
+
                             </div>
                         </div>
                     </div>

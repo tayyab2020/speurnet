@@ -51,11 +51,23 @@ Route::group(['middleware' => 'App\Http\Middleware\UserTypeMiddleware'], functio
         Route::get('testimonials/addtestimonial/{id}', 'TestimonialsController@edittestimonial');
         Route::get('testimonials/delete/{id}', 'TestimonialsController@delete');
 
-        Route::get('blogs', 'BlogsController@blogslist');
-        Route::get('blogs/addblog', 'BlogsController@addediblogs');
-        Route::post('blogs/addblog', 'BlogsController@addnew');
-        Route::get('blogs/addblog/{id}', 'BlogsController@editblog');
-        Route::get('blogs/delete/{id}', 'BlogsController@delete');
+        Route::get('blogs', 'BlogsController@blogslist')->name('blogs');
+        Route::get('blogs/addblog', 'BlogsController@addeditblogs')->name('add-blog');
+        Route::post('blogs/addblog', 'BlogsController@addnew')->name('post-blog');
+        Route::get('blogs/addblog/{id}', 'BlogsController@editblog')->name('edit-blog');
+        Route::get('blogs/delete/{id}', 'BlogsController@delete')->name('delete-blog');
+
+        Route::get('moving-tips', 'BlogsController@blogslist')->name('moving-tips');
+        Route::get('moving-tips/addmovingtip', 'BlogsController@addeditblogs')->name('add-moving-tip');
+        Route::post('moving-tips/addmovingtip', 'BlogsController@addnew')->name('post-moving-tip');
+        Route::get('moving-tips/addmovingtip/{id}', 'BlogsController@editblog')->name('edit-moving-tip');
+        Route::get('moving-tips/delete/{id}', 'BlogsController@delete')->name('delete-moving-tip');
+
+        Route::get('expats', 'BlogsController@blogslist')->name('expats');
+        Route::get('expats/addexpat', 'BlogsController@addeditblogs')->name('add-expat');
+        Route::post('expats/addexpat', 'BlogsController@addnew')->name('post-expat');
+        Route::get('expats/addexpat/{id}', 'BlogsController@editblog')->name('edit-expat');
+        Route::get('expats/delete/{id}', 'BlogsController@delete')->name('delete-expat');
 
 
         Route::get('properties', 'PropertiesController@propertieslist')->name('properties');
@@ -141,7 +153,17 @@ Route::group(['middleware' => 'App\Http\Middleware\UserTypeMiddleware'], functio
 
     Route::get('/', 'IndexController@index');
 
-    Route::get('blogs/{id}', 'IndexController@Blog');
+    Route::get('blogs', 'IndexController@Blogs')->name('front-blogs');
+
+    Route::get('blogs/{id}', 'IndexController@Blog')->name('front-blog');
+
+    Route::get('moving-tips', 'IndexController@MovingTips')->name('front-moving-tips');
+
+    Route::get('moving-tips/{id}', 'IndexController@MovingTip')->name('front-moving-tip');
+
+    Route::get('expats', 'IndexController@Expats')->name('front-expats');
+
+    Route::get('expats/{id}', 'IndexController@Expat')->name('front-expat');
 
     Route::get('homeexchange', 'PropertiesController@homeexchange');
 
