@@ -61,7 +61,7 @@
                     <div class="col-md-8 col-sm-7">
                       {!! Form::open(array('url' => 'register','class'=>'','id'=>'registerform','role'=>'form')) !!}
 
-                        <div class="form-group">
+                        <div class="form-group" style="margin-top: 30px;">
 
                             <label for="email">Profile Type</label>
 

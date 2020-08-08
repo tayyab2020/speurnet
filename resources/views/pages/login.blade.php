@@ -10,7 +10,7 @@
         <div class="row">
           <div class="col-md-10 col-md-offset-1 col-sm-12">
             <div class="page-title">
-              <h2>Sign in</p>
+              <p>Sign in</p>
             </div>
             <ol class="breadcrumb">
               <li><a href="{{ URL::to('/') }}">Home</a></li>
@@ -59,49 +59,91 @@
 
 							                    </div>
                     <div class="col-md-8 col-sm-7">
+
+                        <div class="form-group checkbox" style="margin-top: 50px;">
+
+                            <p style="margin-left: 3px;margin-bottom: 0;">Already have account ? <a href="{{ URL::to('login') }}">Sign in here</a></p>
+
+                            <a href="redirect/facebook" class="social-button" id="facebook-connect"> <span>Sign in with Facebook</span></a>
+
+
+                            <a href="redirect/google" class="social-button" id="google-connect"> <span>Sign in with Google</span></a>
+
+
+                        </div>
+
+                        <h4><span>Or</span></h4>
+
                       {!! Form::open(array('url' => 'login','class'=>'','id'=>'loginform','role'=>'form')) !!}
-                         <div class="form-group">
-                            <label for="email">Email address</label>
-                            <input type="email" class="form-control" name="email" id="email" placeholder="Enter email">
-                        </div>
+
+
                         <div class="form-group">
-                            <label for="password">Password</label>
-                            <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+
+
+                            <div style="width: 100%;display: flex;border: 1px solid #d7d7d7;margin: auto;background: white;">
+
+                                <div style="width:15%;float: left;text-align: center;vertical-align: middle;border-right: 1px solid #dbdbdb;display: flex;">
+
+                                    <span style="width: 100%;display: flex;justify-content: center;flex-direction: column;">
+
+                                        <i class="far fa-envelope" aria-hidden="true"></i>
+
+                                    </span>
+
+                                </div>
+
+                                <input type="email" class="form-control" name="email" id="email" placeholder="Enter email" style="box-shadow: none;border: 0;margin: 0;float: left;width: 85%;left: 0;height: 37.5px;text-align: left;">
+
+                            </div>
+
                         </div>
 
 
-                        <div class="form-group checkbox">
-		                <label style="width: 100%;margin-left: 3px;">
-		                  <input type="checkbox" name="remember" id="checkbox1" /> Remember Me
+                        <div class="form-group">
+
+                            <label for="password">Password</label>
+
+                            <div style="width: 100%;display: flex;border: 1px solid #d7d7d7;margin: auto;background: white;">
+
+                                <div style="width:15%;float: left;text-align: center;vertical-align: middle;border-right: 1px solid #dbdbdb;display: flex;">
+
+                                    <span style="width: 100%;display: flex;justify-content: center;flex-direction: column;">
+
+                                        <i class="fas fa-unlock-alt" aria-hidden="true"></i>
+
+                                    </span>
+
+                                </div>
+
+                                <input type="password" class="form-control" name="password" id="password" placeholder="Enter password" style="box-shadow: none;border: 0;margin: 0;float: left;width: 85%;left: 0;height: 37.5px;text-align: left;">
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-group checkbox" style="margin: 30px 0px;">
+
+		                <label style="margin-left: 3px;">
+		                  <input style="position: relative;top: 1.5px;" type="checkbox" name="remember" id="checkbox1" /> Keep me signed in
 		                </label>
 
-                            <a href="redirect/facebook">
-                                <button type="button" class="loginBtn loginBtn--facebook">
-                                    Login with Facebook
-                                </button>
-                            </a>
+                            <a style="float: right;" href="{{ URL::to('admin/password/email') }}">Forgot password?</a>
 
-
-                            <a href="redirect/google">
-
-                                <button type="button" class="loginBtn loginBtn--google" href="redirect/google">
-                                    Login with Google
-                                </button>
-
-                            </a>
 
 		              </div>
 
 
-
                         <div class="form-group">
-                          <button type="submit" name="submit" class="btn btn-warning"><i class="fa fa-unlock-alt"></i> Sign in</button>
+                          <button style="width: 100%;background-color: #3f9dca;border-color: #3f9dca;" type="submit" name="submit" class="btn btn-warning">Login</button>
                         </div>
+
                       {!! Form::close() !!}
 
                       <div class="form-group checkbox">
-                              <p>Don't have account ? <a href="{{ URL::to('register') }}">Sign up here.</a>                <br/>
-                             <a href="{{ URL::to('admin/password/email') }}">Forgot password?</a></p>
+                              <p style="text-align: center;">Don't have account ? <a href="{{ URL::to('register') }}">Sign up here.</a>                <br/>
+                                  <span class="search-span" style="position: relative;top: 3px;font-size: 14px;color: #575454;"><a href="{{ URL::asset('assets/terms-and-conditions-template.pdf') }}" target="_blank" style="font-weight: 100;">Terms of Services</a>&nbsp;and&nbsp;<a href="{{ URL::asset('assets/privacy_policy.pdf') }}" target="_blank" style="font-weight: 100;">Privacy Policy</a> apply</span>
+                              </p>
                         </div>
                     </div>
 
@@ -119,6 +161,141 @@
     <!-- end:content -->
 
 <style>
+
+    h4 {
+        overflow: hidden;
+        text-align: center;
+        font-weight: 500;
+        margin: 30px 0px;
+    }
+
+    h4:before,
+    h4:after {
+        background-color: #cecece;
+        content: "";
+        display: inline-block;
+        height: 1px;
+        position: relative;
+        vertical-align: middle;
+        width: 50%;
+    }
+
+    h4:before {
+        right: 0.5em;
+        margin-left: -50%;
+    }
+
+    h4:after {
+        left: 0.5em;
+        margin-right: -50%;
+    }
+
+    .social-button {
+        background-position: 25px 0px;
+        box-sizing: border-box;
+        color: rgb(255, 255, 255);
+        cursor: pointer;
+        display: inline-block;
+        height: 50px;
+        line-height: 50px;
+        text-align: left;
+        text-decoration: none;
+        text-transform: uppercase;
+        vertical-align: middle;
+        width: 100%;
+        border-radius: 3px;
+        margin: 10px auto;
+        outline: rgb(255, 255, 255) none 0px;
+        padding-left: 35%;
+        transition: all 0.2s cubic-bezier(0.72, 0.01, 0.56, 1) 0s;
+        -webkit-transition: all .3s ease;
+        -moz-transition: all .3s ease;
+        -ms-transition: all .3s ease;
+        -o-transition: all .3s ease;
+        transition: all .3s ease;
+    }
+
+    #facebook-connect {
+        background: rgb(255, 255, 255) url('https://raw.githubusercontent.com/eswarasai/social-login/master/img/facebook.svg?sanitize=true') no-repeat scroll 5px 0px / 30px 50px padding-box border-box;
+        border: 1px solid rgb(60, 90, 154);
+    }
+
+    #facebook-connect:hover {
+        border-color: rgb(60, 90, 154);
+        background: rgb(60, 90, 154) url('https://raw.githubusercontent.com/eswarasai/social-login/master/img/facebook-white.svg?sanitize=true') no-repeat scroll 5px 0px / 30px 50px padding-box border-box;
+        -webkit-transition: all .8s ease-out;
+        -moz-transition: all .3s ease;
+        -ms-transition: all .3s ease;
+        -o-transition: all .3s ease;
+        transition: all .3s ease-out;
+    }
+
+    #facebook-connect span {
+        box-sizing: border-box;
+        color: rgb(60, 90, 154);
+        cursor: pointer;
+        text-align: center;
+        text-transform: uppercase;
+        border: 0px none rgb(255, 255, 255);
+        outline: rgb(255, 255, 255) none 0px;
+        -webkit-transition: all .3s ease;
+        -moz-transition: all .3s ease;
+        -ms-transition: all .3s ease;
+        -o-transition: all .3s ease;
+        transition: all .3s ease;
+    }
+
+    #facebook-connect:hover span {
+        color: #FFF;
+        -webkit-transition: all .3s ease;
+        -moz-transition: all .3s ease;
+        -ms-transition: all .3s ease;
+        -o-transition: all .3s ease;
+        transition: all .3s ease;
+    }
+
+    #google-connect {
+        background: rgb(255, 255, 255) url('https://i.pinimg.com/originals/39/21/6d/39216d73519bca962bd4a01f3e8f4a4b.png') no-repeat scroll 5px 0px / 30px 50px padding-box border-box;
+        border: 1px solid rgb(60, 90, 154);
+        background-size: 35px;
+        background-position-y: 7px;
+    }
+
+    #google-connect:hover {
+        border-color: #dddddd;
+        background: #fcfcfc url('https://i.pinimg.com/originals/39/21/6d/39216d73519bca962bd4a01f3e8f4a4b.png') no-repeat scroll 5px 0px / 30px 50px padding-box border-box;
+        background-size: 35px;
+        background-position-y: 7px;
+        -webkit-transition: all .8s ease-out;
+        -moz-transition: all .3s ease;
+        -ms-transition: all .3s ease;
+        -o-transition: all .3s ease;
+        transition: all .3s ease-out;
+    }
+
+    #google-connect span {
+        box-sizing: border-box;
+        color: rgb(60, 90, 154);
+        cursor: pointer;
+        text-align: center;
+        text-transform: uppercase;
+        border: 0px none rgb(255, 255, 255);
+        outline: rgb(255, 255, 255) none 0px;
+        -webkit-transition: all .3s ease;
+        -moz-transition: all .3s ease;
+        -ms-transition: all .3s ease;
+        -o-transition: all .3s ease;
+        transition: all .3s ease;
+    }
+
+    #google-connect:hover span {
+        color: #010101;
+        -webkit-transition: all .3s ease;
+        -moz-transition: all .3s ease;
+        -ms-transition: all .3s ease;
+        -o-transition: all .3s ease;
+        transition: all .3s ease;
+    }
 
     /* Shared */
     .loginBtn {
