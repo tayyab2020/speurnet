@@ -26,8 +26,8 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12 col-md-offset-1">
-            <div class="blog-container">
-              <div class="blog-content" style="padding-top:0px;">
+            <div class="blog-container" style="margin-bottom: 0;">
+              <div class="blog-content" style="padding-top:0px;padding-bottom: 0;">
                   <div class="blog-title">
                   <h3>Access to your account</h3>
 
@@ -60,9 +60,7 @@
 							                    </div>
                     <div class="col-md-8 col-sm-7">
 
-                        <div class="form-group checkbox" style="margin-top: 50px;">
-
-                            <p style="margin-left: 3px;margin-bottom: 0;">Already have account ? <a href="{{ URL::to('login') }}">Sign in here</a></p>
+                        <div class="form-group checkbox">
 
                             <a href="redirect/facebook" class="social-button" id="facebook-connect"> <span>Sign in with Facebook</span></a>
 
@@ -140,7 +138,7 @@
 
                       {!! Form::close() !!}
 
-                      <div class="form-group checkbox">
+                      <div class="form-group checkbox" style="margin-top: 30px;">
                               <p style="text-align: center;">Don't have account ? <a href="{{ URL::to('register') }}">Sign up here.</a>                <br/>
                                   <span class="search-span" style="position: relative;top: 3px;font-size: 14px;color: #575454;"><a href="{{ URL::asset('assets/terms-and-conditions-template.pdf') }}" target="_blank" style="font-weight: 100;">Terms of Services</a>&nbsp;and&nbsp;<a href="{{ URL::asset('assets/privacy_policy.pdf') }}" target="_blank" style="font-weight: 100;">Privacy Policy</a> apply</span>
                               </p>
