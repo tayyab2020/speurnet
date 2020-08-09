@@ -84,7 +84,6 @@
 
                         <div class="form-group">
 
-                            <label for="email">Name</label>
 
                             <div style="width: 100%;display: flex;border: 1px solid #d7d7d7;margin: auto;background: white;">
 
@@ -107,7 +106,6 @@
 
                         <div class="form-group company_name">
 
-                            <label for="email">Company Name</label>
 
                             <div style="width: 100%;display: flex;border: 1px solid #d7d7d7;margin: auto;background: white;">
 
@@ -131,8 +129,6 @@
 
                         <div class="form-group">
 
-                            <label for="email">Email</label>
-
                             <div style="width: 100%;display: flex;border: 1px solid #d7d7d7;margin: auto;background: white;">
 
                                 <div class="icon-con" style="width:15%;float: left;text-align: center;vertical-align: middle;border-right: 1px solid #dbdbdb;display: flex;">
@@ -154,7 +150,6 @@
 
                         <div class="form-group">
 
-                            <label for="password">Password</label>
 
                             <div style="width: 100%;display: flex;border: 1px solid #d7d7d7;margin: auto;background: white;">
 
@@ -175,8 +170,6 @@
                         </div>
 
                         <div class="form-group">
-
-                            <label for="password_confirmation">Confirm Password</label>
 
                             <div style="width: 100%;display: flex;border: 1px solid #d7d7d7;margin: auto;background: white;">
 
@@ -199,7 +192,6 @@
 
                          <div class="form-group">
 
-                            <label for="email">Mobile No</label>
 
                              <div style="width: 100%;display: flex;border: 1px solid #d7d7d7;margin: auto;background: white;">
 
@@ -221,8 +213,7 @@
 
 
                         <div class="form-group">
-
-		                    <label for="usertype">City</label>
+                            
 
                             <div style="width: 100%;display: flex;border: 1px solid #d7d7d7;margin: auto;background: white;">
 
