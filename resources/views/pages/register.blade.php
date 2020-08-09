@@ -314,6 +314,11 @@
             {
                 width: 80% !important;
             }
+
+            .blog-content
+            {
+                padding: 30px 30px 30px 30px !important;
+            }
         }
 
         .social-button {
