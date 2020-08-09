@@ -137,7 +137,7 @@
 
                       <div class="form-group checkbox" style="margin-top: 30px;">
                               <p style="text-align: center;">Don't have account ? <a href="{{ URL::to('register') }}">Sign up here.</a>                <br/>
-                                  <span class="search-span" style="position: relative;top: 3px;font-size: 14px;color: #575454;"><a href="{{ URL::asset('assets/terms-and-conditions-template.pdf') }}" target="_blank" style="font-weight: 100;">Terms of Services</a>&nbsp;and&nbsp;<a href="{{ URL::asset('assets/privacy_policy.pdf') }}" target="_blank" style="font-weight: 100;">Privacy Policy</a> apply</span>
+                                  <span class="search-span" style="position: relative;top: 3px;font-size: 14px;color: #575454;"><a href="{{ URL::asset('assets/terms-and-conditions-template.pdf') }}" target="_blank">Terms of Services</a>&nbsp;and&nbsp;<a href="{{ URL::asset('assets/privacy_policy.pdf') }}" target="_blank">Privacy Policy</a> apply</span>
                               </p>
                         </div>
                     </div>

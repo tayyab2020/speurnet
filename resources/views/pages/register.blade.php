@@ -256,7 +256,7 @@
 
                                 <label class="bg" for="terms" style="margin: 0;font-weight: 600;">
 
-                                    <span class="search-span" style="position: relative;top: 3px;font-size: 14px;color: #575454;">I agree <a href="{{ URL::asset('assets/terms-and-conditions-template.pdf') }}" target="_blank" style="font-weight: 100;">Terms of Services</a>&nbsp;and&nbsp;<a href="{{ URL::asset('assets/privacy_policy.pdf') }}" target="_blank" style="font-weight: 100;">Privacy Policy</a></span>
+                                    <span class="search-span" style="position: relative;top: 3px;font-size: 14px;color: #575454;">I agree <a href="{{ URL::asset('assets/terms-and-conditions-template.pdf') }}" target="_blank">Terms of Services</a>&nbsp;and&nbsp;<a href="{{ URL::asset('assets/privacy_policy.pdf') }}" target="_blank">Privacy Policy</a></span>
 
                                 </label>
 
