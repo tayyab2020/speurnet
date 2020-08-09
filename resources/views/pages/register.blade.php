@@ -25,15 +25,15 @@
     <div id="content" style="padding-bottom: 0;">
       <div class="container">
         <div class="row">
-          <div class="col-md-12 col-md-offset-1">
-            <div class="blog-container" style="margin-bottom: 0px;">
-              <div class="blog-content" style="padding-top:0px;padding-bottom: 0;">
-                  <div class="blog-title">
-                  <h3>Register an account for free</h3>
+          <div class="col-md-12">
+            <div class="blog-container" style="margin-bottom: 0;display: flex;">
+              <div class="blog-content col-lg-6 col-md-8 col-sm-8 col-xs-12" style="background: #fff;margin: 40px auto;padding: 30px 45px 30px 45px;font-family: 'Roboto', sans-serif;border-radius: 8px;box-shadow: 0px 0px 7px 5px #efefef;">
+                  <div class="blog-title" style="text-align: center;padding: 0;">
+                  <h3 style="font-family: 'Roboto', sans-serif;font-weight: 600;">Register an account for free</h3>
 
                 </div>
 
-                <div class="blog-text contact" style="margin-top: -40px;">
+                <div class="blog-text contact" style="padding: 0;">
                   <div class="row">
 
                   	@if(Session::has('flash_message'))
@@ -58,7 +58,7 @@
 											@endif
 
 							                    </div>
-                    <div class="col-md-8 col-sm-7">
+                    <div class="col-md-12">
                       {!! Form::open(array('url' => 'register','class'=>'','id'=>'registerform','role'=>'form')) !!}
 
                         <div class="form-group" style="margin-top: 30px;">
@@ -88,17 +88,17 @@
 
                             <div style="width: 100%;display: flex;border: 1px solid #d7d7d7;margin: auto;background: white;">
 
-                                <div style="width:15%;float: left;text-align: center;vertical-align: middle;border-right: 1px solid #dbdbdb;display: flex;">
+                                <div class="icon-con" style="width:15%;float: left;text-align: center;vertical-align: middle;border-right: 1px solid #dbdbdb;display: flex;">
 
                                     <span style="width: 100%;display: flex;justify-content: center;flex-direction: column;">
 
-                                        <i class="fas fa-user" aria-hidden="true"></i>
+                                        <i class="fas fa-user res-icon" style="font-size: 20px;" aria-hidden="true"></i>
 
                                     </span>
 
                                 </div>
 
-                                <input type="text" name="name" id="name" placeholder="Enter name" style="box-shadow: none;border: 0;margin: 0;float: left;width: 85%;left: 0;height: 37.5px;text-align: left;" class="form-control">
+                                <input type="text" name="name" id="name" placeholder="Enter name" style="box-shadow: none;border: 0;margin: 0;float: left;width: 85%;left: 0;height: 50px;text-align: left;" class="form-control res-inp">
 
 
                             </div>
@@ -111,17 +111,17 @@
 
                             <div style="width: 100%;display: flex;border: 1px solid #d7d7d7;margin: auto;background: white;">
 
-                                <div style="width:15%;float: left;text-align: center;vertical-align: middle;border-right: 1px solid #dbdbdb;display: flex;">
+                                <div class="icon-con" style="width:15%;float: left;text-align: center;vertical-align: middle;border-right: 1px solid #dbdbdb;display: flex;">
 
                                     <span style="width: 100%;display: flex;justify-content: center;flex-direction: column;">
 
-                                        <i class="fas fa-id-badge" aria-hidden="true"></i>
+                                        <i class="fas fa-id-badge res-icon" style="font-size: 20px;" aria-hidden="true"></i>
 
                                     </span>
 
                                 </div>
 
-                                <input type="text" name="company_name" placeholder="Enter Company name" style="box-shadow: none;border: 0;margin: 0;float: left;width: 85%;left: 0;height: 37.5px;text-align: left;" class="form-control">
+                                <input type="text" name="company_name" placeholder="Enter Company name" style="box-shadow: none;border: 0;margin: 0;float: left;width: 85%;left: 0;height: 50px;text-align: left;" class="form-control res-inp">
 
 
                             </div>
@@ -135,17 +135,17 @@
 
                             <div style="width: 100%;display: flex;border: 1px solid #d7d7d7;margin: auto;background: white;">
 
-                                <div style="width:15%;float: left;text-align: center;vertical-align: middle;border-right: 1px solid #dbdbdb;display: flex;">
+                                <div class="icon-con" style="width:15%;float: left;text-align: center;vertical-align: middle;border-right: 1px solid #dbdbdb;display: flex;">
 
                                     <span style="width: 100%;display: flex;justify-content: center;flex-direction: column;">
 
-                                        <i class="far fa-envelope" aria-hidden="true"></i>
+                                        <i class="far fa-envelope res-icon" style="font-size: 20px;" aria-hidden="true"></i>
 
                                     </span>
 
                                 </div>
 
-                                <input type="email" class="form-control" name="email" id="email" placeholder="Enter email" style="box-shadow: none;border: 0;margin: 0;float: left;width: 85%;left: 0;height: 37.5px;text-align: left;">
+                                <input type="email" class="form-control res-inp" name="email" id="email" placeholder="Enter email" style="box-shadow: none;border: 0;margin: 0;float: left;width: 85%;left: 0;height: 50px;text-align: left;">
 
                             </div>
 
@@ -158,17 +158,17 @@
 
                             <div style="width: 100%;display: flex;border: 1px solid #d7d7d7;margin: auto;background: white;">
 
-                                <div style="width:15%;float: left;text-align: center;vertical-align: middle;border-right: 1px solid #dbdbdb;display: flex;">
+                                <div class="icon-con" style="width:15%;float: left;text-align: center;vertical-align: middle;border-right: 1px solid #dbdbdb;display: flex;">
 
                                     <span style="width: 100%;display: flex;justify-content: center;flex-direction: column;">
 
-                                        <i class="fas fa-unlock-alt" aria-hidden="true"></i>
+                                        <i class="fas fa-unlock-alt res-icon" style="font-size: 20px;" aria-hidden="true"></i>
 
                                     </span>
 
                                 </div>
 
-                                <input type="password" class="form-control" name="password" id="password" placeholder="Enter password" style="box-shadow: none;border: 0;margin: 0;float: left;width: 85%;left: 0;height: 37.5px;text-align: left;">
+                                <input type="password" class="form-control res-inp" name="password" id="password" placeholder="Enter password" style="box-shadow: none;border: 0;margin: 0;float: left;width: 85%;left: 0;height: 50px;text-align: left;">
 
                             </div>
 
@@ -180,17 +180,17 @@
 
                             <div style="width: 100%;display: flex;border: 1px solid #d7d7d7;margin: auto;background: white;">
 
-                                <div style="width:15%;float: left;text-align: center;vertical-align: middle;border-right: 1px solid #dbdbdb;display: flex;">
+                                <div class="icon-con" style="width:15%;float: left;text-align: center;vertical-align: middle;border-right: 1px solid #dbdbdb;display: flex;">
 
                                     <span style="width: 100%;display: flex;justify-content: center;flex-direction: column;">
 
-                                        <i class="fas fa-unlock-alt" aria-hidden="true"></i>
+                                        <i class="fas fa-unlock-alt res-icon" style="font-size: 20px;" aria-hidden="true"></i>
 
                                     </span>
 
                                 </div>
 
-                                <input type="password" class="form-control" name="password_confirmation" id="password_confirmation" placeholder="Confirm Password" style="box-shadow: none;border: 0;margin: 0;float: left;width: 85%;left: 0;height: 37.5px;text-align: left;">
+                                <input type="password" class="form-control res-inp" name="password_confirmation" id="password_confirmation" placeholder="Confirm Password" style="box-shadow: none;border: 0;margin: 0;float: left;width: 85%;left: 0;height: 50px;text-align: left;">
 
                             </div>
 
@@ -203,17 +203,17 @@
 
                              <div style="width: 100%;display: flex;border: 1px solid #d7d7d7;margin: auto;background: white;">
 
-                                 <div style="width:15%;float: left;text-align: center;vertical-align: middle;border-right: 1px solid #dbdbdb;display: flex;">
+                                 <div class="icon-con" style="width:15%;float: left;text-align: center;vertical-align: middle;border-right: 1px solid #dbdbdb;display: flex;">
 
                                     <span style="width: 100%;display: flex;justify-content: center;flex-direction: column;">
 
-                                        <i class="fas fa-phone" aria-hidden="true"></i>
+                                        <i class="fas fa-phone res-icon" style="font-size: 20px;" aria-hidden="true"></i>
 
                                     </span>
 
                                  </div>
 
-                                 <input type="text" class="form-control" name="phone" id="phone" placeholder="Enter Mobile No" style="box-shadow: none;border: 0;margin: 0;float: left;width: 85%;left: 0;height: 37.5px;text-align: left;">
+                                 <input type="text" class="form-control res-inp" name="phone" id="phone" placeholder="Enter Mobile No" style="box-shadow: none;border: 0;margin: 0;float: left;width: 85%;left: 0;height: 50px;text-align: left;">
 
                              </div>
 
@@ -226,17 +226,17 @@
 
                             <div style="width: 100%;display: flex;border: 1px solid #d7d7d7;margin: auto;background: white;">
 
-                                <div style="width:15%;float: left;text-align: center;vertical-align: middle;border-right: 1px solid #dbdbdb;display: flex;">
+                                <div class="icon-con" style="width:15%;float: left;text-align: center;vertical-align: middle;border-right: 1px solid #dbdbdb;display: flex;">
 
                                     <span style="width: 100%;display: flex;justify-content: center;flex-direction: column;">
 
-                                        <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                                        <i class="fas fa-map-marker-alt res-icon" style="font-size: 20px;" aria-hidden="true"></i>
 
                                     </span>
 
                                 </div>
 
-                                <select style="box-shadow: none;border: 0;margin: 0;float: left;width: 85%;left: 0;height: 37.5px;text-align: left;" name="city" id="basic" class="selectpicker show-tick form-control" data-live-search="true">
+                                <select style="box-shadow: none;border: 0;margin: 0;float: left;width: 85%;left: 0;height: 50px;text-align: left;" name="city" id="basic" class="selectpicker show-tick form-control res-inp" data-live-search="true">
                                     @foreach($city_list as $city)
                                         <option value="{{$city->city_name}}">{{$city->city_name}}</option>
 
@@ -251,10 +251,10 @@
                         <div class="form-group" style="margin: 30px 0px 30px 5px;">
 
 
-                                <input name="wheelchair" value="1" type="checkbox" id="wheelchair" style="position: relative;top: 2px;display: block;height: 0px;">
+                                <input name="terms" value="1" type="checkbox" id="terms" style="position: relative;top: 2px;display: block;height: 0px;">
 
 
-                                <label class="bg" for="wheelchair" style="margin: 0;font-weight: 600;">
+                                <label class="bg" for="terms" style="margin: 0;font-weight: 600;">
 
                                     <span class="search-span" style="position: relative;top: 3px;font-size: 14px;color: #575454;">I agree <a href="{{ URL::asset('assets/terms-and-conditions-template.pdf') }}" target="_blank" style="font-weight: 100;">Terms of Services</a>&nbsp;and&nbsp;<a href="{{ URL::asset('assets/privacy_policy.pdf') }}" target="_blank" style="font-weight: 100;">Privacy Policy</a></span>
 
@@ -276,7 +276,7 @@
 
 
                         <div class="form-group" style="margin: 30px 0px;">
-                            <button type="submit" name="submit" class="btn btn-warning" style="background-color: transparent;border-color: #8d8d8d;color: #323232;border-radius: 50px;font-size: 18px;padding: 15px;"><i class="fa fa-lock" aria-hidden="true" style="margin-right: 15px;"></i> Sign up</button>
+                            <button style="width: 100%;background-color: #3f9dca;border-color: #3f9dca;outline: none;font-size: 18px;" type="submit" name="submit" class="btn btn-warning">Sign Up</button>
                         </div>
 
 
@@ -298,6 +298,24 @@
 
     <style>
 
+        @media (max-width: 500px)
+        {
+            .res-icon
+            {
+                font-size: 17px !important;
+            }
+
+            .icon-con
+            {
+                width: 20% !important;
+            }
+
+            .res-inp
+            {
+                width: 80% !important;
+            }
+        }
+
         .social-button {
             background-position: 25px 0px;
             box-sizing: border-box;
@@ -310,11 +328,11 @@
             text-decoration: none;
             text-transform: uppercase;
             vertical-align: middle;
-            width: 315px;
+            width: 100%;
             border-radius: 3px;
             margin: 10px auto;
             outline: rgb(255, 255, 255) none 0px;
-            padding-left: 20%;
+            padding-left: 33%;
             transition: all 0.2s cubic-bezier(0.72, 0.01, 0.56, 1) 0s;
             -webkit-transition: all .3s ease;
             -moz-transition: all .3s ease;
@@ -364,7 +382,7 @@
 
         #google-connect {
             background: rgb(255, 255, 255) url('https://i.pinimg.com/originals/39/21/6d/39216d73519bca962bd4a01f3e8f4a4b.png') no-repeat scroll 5px 0px / 30px 50px padding-box border-box;
-            border: 1px solid rgb(60, 90, 154);
+            border: 1px solid #a30d0d;
             background-size: 35px;
             background-position-y: 7px;
         }
@@ -383,7 +401,7 @@
 
         #google-connect span {
             box-sizing: border-box;
-            color: rgb(60, 90, 154);
+            color: #a30d0d;
             cursor: pointer;
             text-align: center;
             text-transform: uppercase;
