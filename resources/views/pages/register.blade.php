@@ -8,11 +8,11 @@
 <!-- begin:content -->
     <div id="content" style="display: flex;padding: 0;">
 
-        <div class="col-lg-7 col-md-7 col-sm-7" style="background-image: url('https://colorlib.com/preview/theme/homeland/images/hero_bg_1.jpg');background-repeat: no-repeat;background-size: cover;background-position: center;position: relative;padding: 0;"></div>
-        <div class="col-lg-5 col-md-5 col-sm-5" style="padding: 0;">
+        <div class="col-lg-7 col-md-6 col-sm-6" style="background-image: url('https://colorlib.com/preview/theme/homeland/images/hero_bg_1.jpg');background-repeat: no-repeat;background-size: cover;background-position: center;position: relative;padding: 0;"></div>
+        <div class="col-lg-5 col-md-6 col-sm-6 col-xs-12" style="padding: 0;">
 
             <div class="blog-container" style="margin-bottom: 0;display: flex;">
-                <div class="blog-content col-lg-10 col-md-10 col-sm-10 col-xs-12" style="background: #fff;margin: 40px auto;padding: 30px 45px 30px 45px;font-family: 'Roboto', sans-serif;border-radius: 8px;box-shadow: 0px 0px 7px 5px #efefef;">
+                <div class="blog-content col-lg-10 col-md-11 col-sm-11 col-xs-10" style="background: #fff;margin: 40px auto;padding: 30px 45px 30px 45px;font-family: 'Roboto', sans-serif;border-radius: 8px;box-shadow: 0px 0px 7px 5px #efefef;">
                     <div class="blog-title" style="text-align: center;padding: 0;">
                         <h3 style="font-family: 'Roboto', sans-serif;font-weight: 600;">Register an account for free</h3>
 
