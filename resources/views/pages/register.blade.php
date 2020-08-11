@@ -8,7 +8,7 @@
 <!-- begin:content -->
     <div id="content" style="display: flex;padding: 0;">
 
-        <div class="col-lg-7 col-md-6 col-sm-6" style="background-image: url('https://colorlib.com/preview/theme/homeland/images/hero_bg_1.jpg');background-repeat: no-repeat;background-size: cover;background-position: center;position: relative;padding: 0;"></div>
+        <div class="col-lg-7 col-md-6 col-sm-6" style="background-image: url('{{ URL::asset('assets/img/hero_bg_1.jpg') }}');background-repeat: no-repeat;background-size: cover;background-position: center;position: relative;padding: 0;"></div>
         <div class="col-lg-5 col-md-6 col-sm-6 col-xs-12" style="padding: 0;">
 
             <div class="blog-container" style="margin-bottom: 0;display: flex;">
