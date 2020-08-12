@@ -424,9 +424,9 @@
                                             <div style="width: 60%;height: 100%;padding: 8px;padding-bottom: 2px;">
 
                                                 @if($property->image_icon)
-                                                    <img style="width: 100%;height: 100%;" src="{{ URL::asset('upload/members/'.$property->image_icon.'-b.jpg') }}">
+                                                    <img style="width: 75%;height: 95%;float: right;" src="{{ URL::asset('upload/members/'.$property->image_icon.'-b.jpg') }}">
                                                 @else
-                                                    <img style="width: 100%;height: 100%;" src="{{ URL::asset('assets/img/team03.jpg') }}" >
+                                                    <img style="width: 75%;height: 95%;float: right;" src="{{ URL::asset('assets/img/team03.jpg') }}" >
                                                 @endif
 
                                             </div>
@@ -627,7 +627,7 @@
 
     .latest
     {
-        height: 265px;
+        height: 190px;
     }
 
     .latest img
@@ -722,6 +722,15 @@
     .slick-slide
     {
         outline: none;
+    }
+
+    @media (min-width: 1200px){
+
+        .slick-slide
+        {
+            padding: 0px 30px;
+        }
+
     }
 
     .property-container

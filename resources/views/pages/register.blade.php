@@ -212,13 +212,7 @@
 
                                         </div>
 
-                                        <select style="box-shadow: none;border: 0;margin: 0;float: left;width: 85%;left: 0;height: 50px;text-align: left;" name="city" id="basic" class="selectpicker show-tick form-control res-inp" data-live-search="true">
-                                            @foreach($city_list as $city)
-                                                <option value="{{$city->city_name}}">{{$city->city_name}}</option>
-
-                                            @endforeach
-
-                                        </select>
+                                        <input type="text" class="form-control res-inp" autocomplete="off" name="city" id="city-input" placeholder="Enter City" style="box-shadow: none;border: 0;margin: 0;float: left;width: 85%;left: 0;height: 50px;text-align: left;">
 
                                     </div>
 
@@ -227,7 +221,7 @@
                                 <div class="form-group" style="margin: 30px 0px 30px 5px;">
 
 
-                                    <input name="terms" value="1" type="checkbox" id="terms" style="position: relative;top: 2px;display: block;height: 0px;">
+                                    <input name="terms" value="1" type="checkbox" required id="terms" style="position: relative;top: 2px;display: block;height: 0px;">
 
 
                                     <label class="bg" for="terms" style="margin: 0;font-weight: 600;">
@@ -693,24 +687,112 @@
 
     <script>
 
-        $('.usertype').change(function() {
+        $( document ).ready(function() {
 
-            if (this.value == 'Users') {
-                $('.company_name').hide();
-            }
-            else if (this.value == 'Agents') {
-                $('.company_name').show();
-            }
-        });
+            $('#city-input').on('keyup keypress', function(e) {
 
-        const labels = document.querySelectorAll('.label');
-        labels.forEach(label => {
-            const chars = label.textContent.split('');
-            label.innerHTML = '';
-            chars.forEach(char => {
-                label.innerHTML += `<span>${char === ' ' ? '&nbsp' : char}</span>`;
+                var keyCode = e.keyCode || e.which;
+
+                if (keyCode === 13) {
+                    e.preventDefault();
+                    return false;
+                }
+
+
+
+                const locationInputs = $(this);
+
+
+                var options = {
+
+                    componentRestrictions: {country: "nl"}
+
+                };
+
+                const autocompletes = [];
+                const geocoder = new google.maps.Geocoder;
+
+                for (let i = 0; i < locationInputs.length; i++) {
+
+                    const input = locationInputs[i];
+                    const fieldKey = input.id.replace("-input", "");
+
+
+
+                    const autocomplete = new google.maps.places.Autocomplete(input,options);
+                    autocomplete.key = fieldKey;
+                    autocompletes.push({input: input, autocomplete: autocomplete});
+                }
+
+                for (let i = 0; i < autocompletes.length; i++) {
+
+                    const input = autocompletes[i].input;
+                    const autocomplete = autocompletes[i].autocomplete;
+
+
+                    google.maps.event.addListener(autocomplete, 'place_changed', function () {
+
+                        const place = autocomplete.getPlace();
+
+                        geocoder.geocode({'placeId': place.place_id}, function (results, status) {
+
+
+
+                            if (status === google.maps.GeocoderStatus.OK) {
+
+                                if (results[0]) {
+
+                                    const lat = results[0].geometry.location.lat();
+                                    const lng = results[0].geometry.location.lng();
+
+
+                                }
+                                else
+                                {
+
+                                    alert("No results found!");
+
+                                }
+
+                            }
+
+                        });
+
+                        if (!place.geometry) {
+                            window.alert("No details available for input: '" + place.name + "'");
+                            input.value = "";
+                            return;
+                        }
+
+
+
+                    });
+                }
+
+
             });
+
+            $('.usertype').change(function() {
+
+                if (this.value == 'Users') {
+                    $('.company_name').hide();
+                }
+                else if (this.value == 'Agents') {
+                    $('.company_name').show();
+                }
+            });
+
+            const labels = document.querySelectorAll('.label');
+            labels.forEach(label => {
+                const chars = label.textContent.split('');
+                label.innerHTML = '';
+                chars.forEach(char => {
+                    label.innerHTML += `<span>${char === ' ' ? '&nbsp' : char}</span>`;
+                });
+            });
+
         });
+
 
     </script>
 

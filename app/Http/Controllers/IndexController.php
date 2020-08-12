@@ -522,9 +522,7 @@ class IndexController extends Controller
             return redirect('admin/dashboard');
         }
 
-        $city_list = City::where('status','1')->orderBy('city_name')->get();
-
-        return view('pages.register',compact('city_list'));
+        return view('pages.register');
     }
 
     public function postRegister(Request $request)
@@ -558,6 +556,7 @@ class IndexController extends Controller
 
 		$user->usertype = $request->usertype;
 		$user->name = $user_name;
+		$user->company_name = $request->company_name;
 		$user->email = $user_email;
 		$user->password= bcrypt($request->password);
 		$user->phone= $request->phone;
