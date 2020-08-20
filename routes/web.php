@@ -15,7 +15,7 @@
     return view('welcome');
 });*/
 
-Route::goup(['middleware' => 'App\Http\Middleware\UserTypeMiddleware'], function()
+Route::group(['middleware' => 'App\Http\Middleware\UserTypeMiddleware'], function()
 {
     Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
 
