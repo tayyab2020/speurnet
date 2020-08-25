@@ -50,6 +50,8 @@
                         $date = date_format($date,"d-F-Y");
                         ?>
 
+                        @if($property->id)
+
                         <tr>
 
                             <td style="padding-left: 20px;">{{ $property->id }}</td>
@@ -82,6 +84,8 @@
                             @endif
 
                         </tr>
+
+                        @endif
 
                         <?php $i = $i + 1; ?>
 

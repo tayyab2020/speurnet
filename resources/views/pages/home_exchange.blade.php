@@ -83,7 +83,7 @@
 
                                 <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-home" aria-hidden="true"></i></div>
 
-                                <select name="house_kind" id="house_kind" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 75%;border: 0;">
+                                <select name="house_kind" id="house_kind" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 80%;border: 0;">
 
                                     @foreach($types as $type)
 
@@ -114,7 +114,7 @@
 
                                 <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-home" aria-hidden="true"></i></div>
 
-                                <select name="property_type" id="property_type" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 75%;border: 0;">
+                                <select name="property_type" id="property_type" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 80%;border: 0;">
 
                                         <option value="Rent">Rental</option>
 
@@ -204,7 +204,7 @@
 
                                 <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-arrows-alt-h" aria-hidden="true"></i></div>
 
-                                <select name="preferred_radius" id="preferred_radius" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 75%;border: 0;">
+                                <select name="preferred_radius" id="preferred_radius" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 80%;border: 0;">
 
                                     @if(isset($preferred_radius))
 
@@ -246,7 +246,7 @@
 
                                 <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-home" aria-hidden="true"></i></div>
 
-                                <select name="preferred_house_kind" id="preferred_house_kind" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 75%;border: 0;">
+                                <select name="preferred_house_kind" id="preferred_house_kind" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 80%;border: 0;">
 
                                     @foreach($types as $type)
 
@@ -277,7 +277,7 @@
 
                                 <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-home" aria-hidden="true"></i></div>
 
-                                <select name="preferred_property_type" id="preferred_property_type" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 75%;border: 0;">
+                                <select name="preferred_property_type" id="preferred_property_type" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 80%;border: 0;">
 
                                     <option value="Rent">Rental</option>
 
@@ -1164,6 +1164,16 @@
         <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/css/flaticon.css') }}"/>
 
         <style>
+
+            input[type=number]::-webkit-outer-spin-button,
+            input[type=number]::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
+
+            input[type=number] {
+                -moz-appearance:textfield;
+            }
 
             .video-wrapper-inner .popup-video{position:relative;z-index:1;display:inline-block;width:50px;height:50px;line-height:50px;border-radius:50%;-webkit-border-radius:50%;-moz-border-radius:50%;-ms-border-radius:50%;-o-border-radius:50%;-webkit-transition:all 0.3s ease-in-out 0s;-o-transition:all 0.3s ease-in-out 0s;transition:all 0.3s ease-in-out 0s;font-size:18px;color:#fff;background:#dfc615;text-align:center}
 
