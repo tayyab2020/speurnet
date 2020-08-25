@@ -81,15 +81,39 @@
 
                                                     @if(Route::currentRouteName() == 'front-blogs')
 
-                                                        <img src="{{ URL::asset('upload/blogs/'.$blog->image) }}" style="width: 100%;height: 250px;border-top-left-radius: 3px;border-top-right-radius: 3px;" >
+                                                        @if($blog->image)
+
+                                                            <img src="{{ URL::asset('upload/blogs/'.$blog->image) }}" style="width: 100%;height: 250px;border-top-left-radius: 3px;border-top-right-radius: 3px;">
+
+                                                            @else
+
+                                                            <img src="{{ URL::asset('upload/noImage.png') }}" style="width: 100%;height: 250px;border-top-left-radius: 3px;border-top-right-radius: 3px;">
+
+                                                        @endif
 
                                                     @elseif(Route::currentRouteName() == 'front-moving-tips')
 
-                                                        <img src="{{ URL::asset('upload/moving-tips/'.$blog->image) }}" style="width: 100%;height: 250px;border-top-left-radius: 3px;border-top-right-radius: 3px;" >
+                                                        @if($blog->image)
+
+                                                            <img src="{{ URL::asset('upload/moving-tips/'.$blog->image) }}" style="width: 100%;height: 250px;border-top-left-radius: 3px;border-top-right-radius: 3px;" >
+
+                                                            @else
+
+                                                            <img src="{{ URL::asset('upload/noImage.png') }}" style="width: 100%;height: 250px;border-top-left-radius: 3px;border-top-right-radius: 3px;">
+
+                                                        @endif
 
                                                     @else
 
-                                                        <img src="{{ URL::asset('upload/expats/'.$blog->image) }}" style="width: 100%;height: 250px;border-top-left-radius: 3px;border-top-right-radius: 3px;" >
+                                                        @if($blog->image)
+
+                                                            <img src="{{ URL::asset('upload/expats/'.$blog->image) }}" style="width: 100%;height: 250px;border-top-left-radius: 3px;border-top-right-radius: 3px;" >
+
+                                                            @else
+
+                                                            <img src="{{ URL::asset('upload/noImage.png') }}" style="width: 100%;height: 250px;border-top-left-radius: 3px;border-top-right-radius: 3px;">
+
+                                                        @endif
 
                                                     @endif
 

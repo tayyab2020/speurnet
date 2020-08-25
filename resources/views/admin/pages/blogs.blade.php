@@ -60,15 +60,39 @@
 
                                 @if(Route::currentRouteName() == 'blogs')
 
-                                    <img src="{{ URL::asset('upload/blogs/'.$blog->image) }}" width="80" alt="">
+                                    @if($blog->image)
+
+                                        <img src="{{ URL::asset('upload/blogs/'.$blog->image) }}" width="80" alt="">
+
+                                    @else
+
+                                        <img src="{{ URL::asset('upload/noImage.png') }}" width="80" alt="">
+
+                                    @endif
 
                                 @elseif(Route::currentRouteName() == 'moving-tips')
 
-                                    <img src="{{ URL::asset('upload/moving-tips/'.$blog->image) }}" width="80" alt="">
+                                    @if($blog->image)
+
+                                        <img src="{{ URL::asset('upload/moving-tips/'.$blog->image) }}" width="80" alt="">
+
+                                        @else
+
+                                        <img src="{{ URL::asset('upload/noImage.png') }}" width="80" alt="">
+
+                                    @endif
 
                                 @else
 
-                                    <img src="{{ URL::asset('upload/expats/'.$blog->image) }}" width="80" alt="">
+                                    @if($blog->image)
+
+                                        <img src="{{ URL::asset('upload/expats/'.$blog->image) }}" width="80" alt="">
+
+                                        @else
+
+                                        <img src="{{ URL::asset('upload/noImage.png') }}" width="80" alt="">
+
+                                    @endif
 
                                 @endif
 

@@ -21,15 +21,40 @@
 
                                 @if(Route::currentRouteName() == 'front-blog')
 
-                                    <img src="{{ URL::asset('upload/blogs/'.$blog->image) }}" style="width: 100%;" alt="{{$blog->title}}">
+                                    @if($blog->image)
+
+                                        <img src="{{ URL::asset('upload/blogs/'.$blog->image) }}" style="width: 100%;" alt="{{$blog->title}}">
+
+                                    @else
+
+                                        <img src="{{ URL::asset('upload/noImage.png') }}" style="width: 100%;" alt="{{$blog->title}}">
+
+                                    @endif
 
                                 @elseif(Route::currentRouteName() == 'front-moving-tip')
 
-                                    <img src="{{ URL::asset('upload/moving-tips/'.$blog->image) }}" style="width: 100%;" alt="{{$blog->title}}">
+                                    @if($blog->image)
+
+                                        <img src="{{ URL::asset('upload/moving-tips/'.$blog->image) }}" style="width: 100%;" alt="{{$blog->title}}">
+
+                                        @else
+
+                                        <img src="{{ URL::asset('upload/noImage.png') }}" style="width: 100%;" alt="{{$blog->title}}">
+
+                                    @endif
+
 
                                 @else
 
-                                    <img src="{{ URL::asset('upload/expats/'.$blog->image) }}" style="width: 100%;" alt="{{$blog->title}}">
+                                    @if($blog->image)
+
+                                        <img src="{{ URL::asset('upload/expats/'.$blog->image) }}" style="width: 100%;" alt="{{$blog->title}}">
+
+                                        @else
+
+                                        <img src="{{ URL::asset('upload/noImage.png') }}" style="width: 100%;" alt="{{$blog->title}}">
+
+                                        @endif
 
                                 @endif
 

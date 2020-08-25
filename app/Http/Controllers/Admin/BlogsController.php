@@ -162,6 +162,10 @@ class BlogsController extends MainAdminController
             $blog->image = $image_file;
 
         }
+        else
+        {
+            $blog->image = '';
+        }
 
 
         $blog->title = $inputs['title'];

@@ -942,8 +942,11 @@
                         <div class="col-md-3 col-sm-12 col-xs-12 flex-box-div">
                             <div class="property-container" style="margin: 10px auto;min-height: 433px;">
                                 <div class="property-image">
-
-                                        <img src="{{ URL::asset('upload/blogs/'.$blog->image) }}" style="width: 100%;height: 250px;" >
+                                    @if($blog->image)
+                                        <img src="{{ URL::asset('upload/blogs/'.$blog->image) }}" style="width: 100%;height: 250px;">
+                                        @else
+                                        <img src="{{ URL::asset('upload/noImage.png') }}" style="width: 100%;height: 250px;" >
+                                        @endif
 
                                 </div>
 

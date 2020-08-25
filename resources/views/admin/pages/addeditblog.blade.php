@@ -105,15 +105,39 @@
 
                                 @if(Route::currentRouteName() == 'add-blog' || Route::currentRouteName() == 'edit-blog')
 
-                                    <img src="{{ URL::asset('upload/blogs/'.$blog->image) }}" width="100">
+                                        @if($blog->image)
+
+                                            <img src="{{ URL::asset('upload/blogs/'.$blog->image) }}" width="100">
+
+                                        @else
+
+                                            <img src="{{ URL::asset('upload/noImage.png') }}" width="100">
+
+                                        @endif
 
                                 @elseif(Route::currentRouteName() == 'add-moving-tip' || Route::currentRouteName() == 'edit-moving-tip')
 
-                                    <img src="{{ URL::asset('upload/moving-tips/'.$blog->image) }}" width="100">
+                                        @if($blog->image)
+
+                                            <img src="{{ URL::asset('upload/moving-tips/'.$blog->image) }}" width="100">
+
+                                        @else
+
+                                            <img src="{{ URL::asset('upload/noImage.png') }}" width="100">
+
+                                        @endif
 
                                 @else
 
-                                    <img src="{{ URL::asset('upload/expats/'.$blog->image) }}" width="100">
+                                        @if($blog->image)
+
+                                            <img src="{{ URL::asset('upload/expats/'.$blog->image) }}" width="100">
+
+                                        @else
+
+                                            <img src="{{ URL::asset('upload/noImage.png') }}" width="100">
+
+                                        @endif
 
                                 @endif
 
