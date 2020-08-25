@@ -89,10 +89,28 @@
                       </div>
                   </div>
 
-              <a href="{{URL::to('properties/'.$previous->property_slug)}}" class="btn btn-primary footer-button prev-property" style="left: 0px;margin-left: 0px;">
-                  <i class="fa fa-angle-left" aria-hidden="true" style="margin-right: 10px;"></i>
-                  <span>Previous House</span>
-              </a>
+                      @if($property->new_construction == 0 && $property->home_exchange == 0)
+
+                          <a href="{{URL::to('properties/'.$previous->property_slug)}}" class="btn btn-primary footer-button prev-property" style="left: 0px;margin-left: 0px;">
+                              <i class="fa fa-angle-left" aria-hidden="true" style="margin-right: 10px;"></i>
+                              <span>Previous House</span>
+                          </a>
+
+                          @elseif($property->new_construction == 1)
+
+                          <a href="{{URL::to('new-constructions/'.$previous->property_slug)}}" class="btn btn-primary footer-button prev-property" style="left: 0px;margin-left: 0px;">
+                              <i class="fa fa-angle-left" aria-hidden="true" style="margin-right: 10px;"></i>
+                              <span>Previous House</span>
+                          </a>
+
+                          @else
+
+                          <a href="{{URL::to('home-exchange/'.$previous->property_slug)}}" class="btn btn-primary footer-button prev-property" style="left: 0px;margin-left: 0px;">
+                              <i class="fa fa-angle-left" aria-hidden="true" style="margin-right: 10px;"></i>
+                              <span>Previous House</span>
+                          </a>
+
+                      @endif
 
                   @endif
 

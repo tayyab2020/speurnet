@@ -2186,9 +2186,6 @@
                         </div>
                     </div>
 
-                @else
-
-                    <h2 class="related-properties" style="text-align: center;">No Related Properties Found...</h2>
 
                 @endif
 
