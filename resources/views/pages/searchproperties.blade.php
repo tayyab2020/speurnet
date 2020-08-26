@@ -88,9 +88,9 @@
 
               <div class="properties-ordering-wrapper">
 
-                  <div class="results-count">{{count($properties)}} results found</div>
+                  <div class="results-count" style="font-size: 18px;display: inline-block;padding-top: 5px;">{{count($properties)}} results found</div>
 
-                  <button type="button" value="Filters" href="#myModal1" data-toggle="modal" class="btn btn-primary filter-button" style="float: right;color: black;background: white;border-color: #9f9c9c;outline: none;margin-top: 20px;display: none;">
+                  <button type="button" value="Filters" href="#myModal1" data-toggle="modal" class="btn btn-primary filter-button" style="float: right;color: black;background: white;border-color: #9f9c9c;outline: none;display: none;">
                       <span>
                           <img src="{{ URL::asset('assets/img/Filter-512.png') }}" aria-hidden="true" style="margin-right: 5px;width: 15px;margin-top: -1px;">
                           <span style="font-size: 13px;">Filters</span>
