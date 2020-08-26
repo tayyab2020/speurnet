@@ -1397,7 +1397,8 @@ class PropertiesController extends Controller
             }
             else
             {
-                dd($address);
+                $properties = $properties->where('properties.address', 'like', '%' . $address . '%');
+                dd($properties->get());
                 $properties = $properties->leftjoin('cities','cities.id','=','properties.city_id')->where('cities.city_name', 'like', '%' . $address . '%')->get();
             }
 
