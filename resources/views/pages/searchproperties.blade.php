@@ -104,7 +104,11 @@
                                           <span>{{getcong('currency_sign')}}@if($property->sale_price) {{$property->sale_price}} @else {{$property->rent_price}} @endif</span>
                                       </div>
                                       <div class="property-status">
-                                          <span>For {{$property->property_purpose}}</span>
+                                          @if(Route::currentRouteName() != 'searchnewconstructions')
+                                              <span>For {{$property->property_purpose}}</span>
+                                          @else
+                                              <span>{{$property->kind_of_type}}</span>
+                                          @endif
                                       </div>
                                   </div>
                                   <div class="property-features">

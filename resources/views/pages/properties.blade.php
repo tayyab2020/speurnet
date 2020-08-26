@@ -191,11 +191,24 @@
 
                   @else
 
-                      <div class="property-price" style="top: 12px;left: 12px;border-radius: 5px;padding: 5px 10px;">
-                          <span>For {{$property->property_purpose}}</span>
-                          {{--<h4>{{ getPropertyTypeName($property->property_type)->types }}</h4>
-                          <span>{{getcong('currency_sign')}}@if($property->sale_price) {{$property->sale_price}} @else {{$property->rent_price}} @endif</span>--}}
-                      </div>
+                      @if(Route::currentRouteName() != 'newconstructions-front')
+
+
+                          <div class="property-price" style="top: 12px;left: 12px;border-radius: 5px;padding: 5px 10px;">
+                              <span>For {{$property->property_purpose}}</span>
+                              {{--<h4>{{ getPropertyTypeName($property->property_type)->types }}</h4>
+                              <span>{{getcong('currency_sign')}}@if($property->sale_price) {{$property->sale_price}} @else {{$property->rent_price}} @endif</span>--}}
+                          </div>
+
+                      @else
+
+                          <div class="property-price" style="top: 12px;left: 12px;border-radius: 5px;padding: 5px 10px;">
+                              <span>{{$property->kind_of_type}}</span>
+                              {{--<h4>{{ getPropertyTypeName($property->property_type)->types }}</h4>
+                              <span>{{getcong('currency_sign')}}@if($property->sale_price) {{$property->sale_price}} @else {{$property->rent_price}} @endif</span>--}}
+                          </div>
+
+                      @endif
 
                   @endif
 
