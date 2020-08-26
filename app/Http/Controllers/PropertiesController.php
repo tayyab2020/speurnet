@@ -1397,9 +1397,10 @@ class PropertiesController extends Controller
             }
             else
             {
-                $properties = $properties->where('properties.address', 'like', '%' . $address . '%');
-                dd($properties->get());
-                $properties = $properties->leftjoin('cities','cities.id','=','properties.city_id')->where('cities.city_name', 'like', '%' . $address . '%')->get();
+                $properties = $properties->leftjoin('cities','cities.id','=','properties.city_id')->where(function($query) use($address) {
+                    $query->where('cities.city_name', 'like', '%' . $address . '%')->orWhere('properties.address', 'like', '%' . $address . '%');
+                })->get();
+                dd($properties);
             }
 
 
