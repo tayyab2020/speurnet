@@ -1360,7 +1360,6 @@ class PropertiesController extends Controller
 
         $properties = New_Constructions::SearchByKeyword($type,$purpose,$price,$min_price,$max_price,$min_area,$max_area,$bathrooms,$bedrooms,$kind_of_type,$keywords)->where('is_sold',0)->where('is_rented',0)->where('wheelchair',$wheelchair)->select('properties.*');
 
-        dd($properties->get());
 
         if($address && $address_latitude && $address_longitude)
         {
@@ -1398,6 +1397,7 @@ class PropertiesController extends Controller
             }
             else
             {
+                dd($address);
                 $properties = $properties->leftjoin('cities','cities.id','=','properties.city_id')->where('cities.city_name', 'like', '%' . $address . '%')->get();
             }
 
