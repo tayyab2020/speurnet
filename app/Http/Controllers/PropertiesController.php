@@ -1400,14 +1400,15 @@ class PropertiesController extends Controller
                 $properties = $properties->leftjoin('cities','cities.id','=','properties.city_id')->where(function($query) use($address) {
                     $query->where('cities.city_name', 'like', '%' . $address . '%')->orWhere('properties.address', 'like', '%' . $address . '%');
                 })->get();
-                dd($properties);
             }
 
 
         }
         else if($address)
         {
-            $properties = $properties->leftjoin('cities','cities.id','=','properties.city_id')->where('cities.city_name', 'like', '%' . $address . '%')->get();
+            $properties = $properties->leftjoin('cities','cities.id','=','properties.city_id')->where(function($query) use($address) {
+                $query->where('cities.city_name', 'like', '%' . $address . '%')->orWhere('properties.address', 'like', '%' . $address . '%');
+            })->get();
         }
         else
         {
