@@ -564,7 +564,9 @@ class PropertiesController extends Controller
 
             else {
 
-                $properties = $properties->leftjoin('cities', 'cities.id', '=', 'properties.city_id')->where('cities.city_name', 'like', '%' . $preferred_address . '%')->get();
+                $properties = $properties->leftjoin('cities','cities.id','=','properties.city_id')->where(function($query) use($preferred_address) {
+                    $query->where('cities.city_name', 'like', '%' . $preferred_address . '%')->orWhere('properties.address', 'like', '%' . $preferred_address . '%');
+                })->get();
 
             }
 
@@ -572,7 +574,9 @@ class PropertiesController extends Controller
 
             else
             {
-                $properties = $properties->leftjoin('cities','cities.id','=','properties.city_id')->where('cities.city_name', 'like', '%' . $preferred_address . '%')->get();
+                $properties = $properties->leftjoin('cities','cities.id','=','properties.city_id')->where(function($query) use($preferred_address) {
+                    $query->where('cities.city_name', 'like', '%' . $preferred_address . '%')->orWhere('properties.address', 'like', '%' . $preferred_address . '%');
+                })->get();
             }
 
 
@@ -1292,14 +1296,18 @@ class PropertiesController extends Controller
              }
              else
              {
-                 $properties = $properties->leftjoin('cities','cities.id','=','properties.city_id')->where('cities.city_name', 'like', '%' . $address . '%')->get();
+                 $properties = $properties->leftjoin('cities','cities.id','=','properties.city_id')->where(function($query) use($address) {
+                     $query->where('cities.city_name', 'like', '%' . $address . '%')->orWhere('properties.address', 'like', '%' . $address . '%');
+                 })->get();
              }
 
 
          }
     	 else if($address)
          {
-             $properties = $properties->leftjoin('cities','cities.id','=','properties.city_id')->where('cities.city_name', 'like', '%' . $address . '%')->get();
+             $properties = $properties->leftjoin('cities','cities.id','=','properties.city_id')->where(function($query) use($address) {
+                 $query->where('cities.city_name', 'like', '%' . $address . '%')->orWhere('properties.address', 'like', '%' . $address . '%');
+             })->get();
          }
     	 else
          {
