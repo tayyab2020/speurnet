@@ -1016,13 +1016,19 @@ class PropertiesController extends Controller
             {
                 $properties = $properties->orderBy('properties.rent_price', 'desc')->where('properties.property_purpose','Rent')->paginate(8);
             }
+            if($filter == 'lowest_area')
+            {
+                $properties = $properties->orderBy('properties.area', 'asc')->paginate(8);
+            }
+            if($filter == 'highest_area')
+            {
+                $properties = $properties->orderBy('properties.area', 'desc')->paginate(8);
+            }
         }
         else
         {
             $properties = $properties->orderBy('properties.id', 'desc')->paginate(8);
         }
-
-
 
         date_default_timezone_set("Europe/Amsterdam");
 
@@ -1091,7 +1097,7 @@ class PropertiesController extends Controller
 
                 } else {
 
-                    $listed = "few weeks ago";
+                    $listed = "this month";
 
                 }
 
@@ -1109,7 +1115,7 @@ class PropertiesController extends Controller
         }
 
 
-        return view('pages.agent_properties',compact('properties','filter'));
+        return view('pages.properties',compact('properties','filter'));
 
     }
 

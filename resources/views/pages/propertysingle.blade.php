@@ -743,15 +743,23 @@
                                 @endif
 
                             @if($property->home_exchange != 1)
-                          <tr>
-                            <td><strong>Price</strong> <img src="{{ URL::asset('assets/img/tag.png') }}" style="width: 18px;float: right;" /></td>
-                            <td>{{getcong('currency_sign')}}@if($property->sale_price) {{$property->sale_price}} @else {{$property->rent_price}} @endif</td>
-                          </tr>
-                          <tr>
-                            <td><strong>Contract</strong> <img src="{{ URL::asset('assets/img/communications.png') }}" style="width: 18px;float: right;" /></td>
-                            <td>{{$property->property_purpose}}</td>
-                          </tr>
+
+                                <tr>
+                                    <td><strong>Price</strong> <img src="{{ URL::asset('assets/img/tag.png') }}" style="width: 18px;float: right;" /></td>
+                                    <td>{{getcong('currency_sign')}}@if($property->sale_price) {{$property->sale_price}} @else {{$property->rent_price}} @endif</td>
+                                </tr>
+
+                                @if($property->new_construction != 1)
+
+                                    <tr>
+                                        <td><strong>Contract</strong> <img src="{{ URL::asset('assets/img/communications.png') }}" style="width: 18px;float: right;" /></td>
+                                        <td>{{$property->property_purpose}}</td>
+                                    </tr>
+
+                                  @endif
+
                             @endif
+
                           <tr>
                             <td><strong>Location</strong> <img src="{{ URL::asset('assets/img/pin.png') }}" style="width: 18px;float: right;" /></td>
                             <td>{{$property->address}}</td>
@@ -1855,7 +1863,7 @@
                             <p>{{$agent->about}}</p>
 
                               @if($properties_count>1)
-                                  <p><a style="color: white" href="{{ URL::to('/similar-properties/user/'.$agent->id.'/'.$property->id) }}" target="_blank">See Other {{$properties_count-1}} Properties posted by this Broker</a></p>
+                                  <p><a style="color: white" href="{{ URL::to('/agent-properties/user/'.$agent->id.'/'.$property->id) }}" target="_blank">See Other {{$properties_count-1}} Properties posted by this Broker</a></p>
                               @endif
 
                             <div class="team-social">

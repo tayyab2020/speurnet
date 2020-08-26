@@ -12,14 +12,22 @@
           <div class="col-md-10 col-md-offset-1 col-sm-12">
             <div class="page-title">
                 @if(Route::currentRouteName() == 'properties-front')
-              <h2>All Properties</h2>
-                    @else
-              <h2>New Constructions</h2>
+
+                    <h2>All Properties</h2>
+
+                @elseif(Route::currentRouteName() == 'agent-properties')
+
+                    <h2>Agent Properties</h2>
+
+                @else
+
+                    <h2>New Constructions</h2>
+
                 @endif
             </div>
             <ol class="breadcrumb">
               <li><a href="{{ URL::to('/') }}">Home</a></li>
-              <li class="active">@if(Route::currentRouteName() == 'properties-front')All Properties @else New Constructions @endif</li>
+              <li class="active">@if(Route::currentRouteName() == 'properties-front')All Properties @elseif(Route::currentRouteName() == 'agent-properties') Agent Properties @else New Constructions @endif</li>
             </ol>
           </div>
         </div>
@@ -58,15 +66,25 @@
 
           <!-- begin:article -->
               <div class="properties-ordering-wrapper">
-                  <div class="results-count">
-                      Showing <span class="first">@if($properties->firstItem() != $properties->lastItem()) {{$properties->firstItem()}}</span> – <span class="last">{{$properties->lastItem()}}</span> of {{$properties->total()}} results @else {{$properties->firstItem()}}</span> of {{$properties->total()}} results @endif</div>
+
+                  <div class="results-count">Showing <span class="first">@if($properties->firstItem() != $properties->lastItem()) {{$properties->firstItem()}}</span> – <span class="last">{{$properties->lastItem()}}</span> of {{$properties->total()}} results @else {{$properties->firstItem()}}</span> of {{$properties->total()}} results @endif</div>
 
                   <div class="properties-ordering">
+
                       @if(Route::currentRouteName() == 'properties-front')
-                      <form class="properties-ordering" method="get" action="{{URL::to('properties/')}}">
-                          @else
-                              <form class="properties-ordering" method="get" action="{{URL::to('new-constructions/')}}">
-                                  @endif
+
+                          <form method="get" action="{{URL::to('properties/')}}">
+
+                              @elseif(Route::currentRouteName() == 'agent-properties')
+
+                                  <form method="get" action="{{\Request::getRequestUri()}}">
+
+                                      @else
+
+                                          <form method="get" action="{{URL::to('new-constructions/')}}">
+
+                                              @endif
+
                           <div class="label">Sort by:</div>
 
                           <select onchange="this.form.submit()" name="filter_orderby" class="orderby" data-placeholder="Sort by" tabindex="-1" aria-hidden="true">
@@ -84,11 +102,22 @@
                           </select>
 
                       </form>
-                  </div></div>
+
+                  </div>
+
+                  <button type="button" value="Filters" href="#myModal1" data-toggle="modal" class="btn btn-primary filter-button" style="float: right;color: black;background: white;border-color: #9f9c9c;outline: none;margin-top: 20px;display: none;">
+                      <span>
+                          <img src="{{ URL::asset('assets/img/Filter-512.png') }}" aria-hidden="true" style="margin-right: 5px;width: 15px;margin-top: -1px;">
+                          <span style="font-size: 13px;">Filters</span>
+                      </span>
+                  </button>
+
+              </div>
 
               @if(count($properties))
 
             <!-- begin:product -->
+
             <div class="row {{--container-realestate--}}">
 
                 <?php $i = 0; ?>
@@ -101,19 +130,26 @@
 
                             @else
 
-                            <div class="col-md-6 col-sm-6 col-xs-12" style="margin-bottom: 40px;min-height: 615px;">
+                            <div class="col-md-6 col-sm-6 col-xs-12" style="margin-bottom: 10px;min-height: 590px;">
 
                             @endif
 
-                     @if(Route::currentRouteName() == 'properties-front')
+                     @if(Route::currentRouteName() == 'properties-front' || Route::currentRouteName() == 'agent-properties')
+
                                     @if($property->open_date)
-                                    <div class="property-price" style="min-height: 28px;position:relative;max-width: 100%;font-size: 15px;padding: 3px 0px;margin-bottom: 6px;border-radius: 5px;"><span>Open House {{$property->open_date}} {{$property->open_timeFrom}} to {{$property->open_timeTo}}</span></div>
-                                @else
+
+                                        <div class="property-price" style="min-height: 28px;position:relative;max-width: 100%;font-size: 15px;padding: 3px 0px;margin-bottom: 6px;border-radius: 5px;"><span>Open House {{$property->open_date}} {{$property->open_timeFrom}} to {{$property->open_timeTo}}</span></div>
+
+                                    @else
+
                                         <div class="property-price" style="background: transparent;min-height: 28px;position:relative;max-width: 100%;font-size: 15px;padding: 3px 0px;margin-bottom: 6px;border-radius: 5px;"></div>
+
                                     @endif
                      @endif
+
             <div class="property-container" style="border: 1px solid #48cfad;margin-bottom: 10px">
-              <div class="property-image">
+
+                <div class="property-image">
 
                 <img src="{{ URL::asset('upload/properties/'.$property->featured_image.'-b.jpg') }}" alt="{{ $property->property_name }}">
 
@@ -128,9 +164,9 @@
 
                       <div class="video-wrapper-inner" style="position: absolute;margin-right: 5%;margin-top: 5%;top: 0;right: 0;">
                           <a data-width="1280" href="{{$url}}" data-gallery="videos{{$i}}" data-toggle="lightbox" class="popup-video" style="cursor: pointer;outline: none;">
-                                                    <span class="popup-video-inner">
-                                                    <i class="flaticon-play"></i>
-                                                    </span>
+                              <span class="popup-video-inner">
+                                  <i class="flaticon-play"></i>
+                              </span>
                           </a>
                       </div>
 
@@ -147,9 +183,9 @@
 
                           <div class="video-wrapper-inner" style="position: absolute;margin-right: 5%;margin-top: 5%;top: 0;right: 0;">
                               <a data-width="1280" href="{{ URL::asset('upload/properties/'.$property->video) }}" data-type="video" data-gallery="videos{{$i}}" data-toggle="lightbox" class="popup-video" style="cursor: pointer;outline: none;">
-                                                    <span class="popup-video-inner">
-                                                    <i class="flaticon-play"></i>
-                                                    </span>
+                                  <span class="popup-video-inner">
+                                      <i class="flaticon-play"></i>
+                                  </span>
                               </a>
                           </div>
 
@@ -477,15 +513,15 @@
                     @endif
 
             </div>
-                         @if(Route::currentRouteName() != 'newconstructions-front')
+                                @if(Route::currentRouteName() != 'newconstructions-front')
 
-                     @if($property->listed)
+                                    @if($property->listed)
 
-        <div class="property-price" style="background: #d6d63e;position:relative;max-width: 50%;margin-bottom: 12px;font-size: 15px;padding: 2px 0px;border-radius: 5px;">Listed {{$property->listed}}</div>
+                                        <div class="property-price" style="background: #d6d63e;position:relative;max-width: 50%;margin-bottom: 12px;font-size: 15px;padding: 2px 0px;border-radius: 5px;">Listed {{$property->listed}}</div>
 
-                         @endif
+                                    @endif
 
-                             @endif
+                                @endif
 
           </div>
               <!-- break -->
@@ -496,6 +532,7 @@
             <!-- end:product -->
 
             @else
+
                   <h2 style="text-align: center;margin-top: 30px;margin-bottom: 30px;">No Properties found...</h2>
 
                   @endif
@@ -517,6 +554,14 @@
  <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/css/flaticon.css') }}"/>
 
  <style>
+
+     @media (max-width: 991px){
+
+         .filter-button{display: block !important;}
+         .properties-ordering-wrapper{float: left !important;display: block !important;width: 100% !important;}
+         .properties-ordering{margin-top: 20px !important;float: left !important;}
+         .sidebar{display: none;}
+     }
 
      .video-wrapper-inner .popup-video{position:relative;z-index:1;display:inline-block;width:50px;height:50px;line-height:50px;border-radius:50%;-webkit-border-radius:50%;-moz-border-radius:50%;-ms-border-radius:50%;-o-border-radius:50%;-webkit-transition:all 0.3s ease-in-out 0s;-o-transition:all 0.3s ease-in-out 0s;transition:all 0.3s ease-in-out 0s;font-size:18px;color:#fff;background:#dfc615;text-align:center}
 
@@ -593,7 +638,17 @@
          padding-left: 6px;
          padding-right: 25px;
          position: relative;
-         top: 1px;
+         top: 3px;
+     }
+
+     .select2-container--default .select2-selection--single .select2-selection__arrow
+     {
+         top: 5px;
+     }
+
+     .select2-container .select2-selection--single
+     {
+         height: 34px;
      }
 
      .select2-container--open .select2-dropdown--below
