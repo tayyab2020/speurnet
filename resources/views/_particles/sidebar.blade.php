@@ -1,8 +1,9 @@
 <div class="{{$class ?? 'col-md-3 col-md-pull-9'}} sidebar">
-            <div class="widget widget-white">
-              <div class="widget-header">
-                <h3>Advance Search</h3>
-              </div>
+
+    <div class="widget widget-white">
+        <div class="widget-header">
+            <h3>Advance Search</h3>
+        </div>
 
 
                 @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions')
@@ -11,181 +12,6 @@
 
                 @endif
 
-                <div class="modal fade" id="myModal" role="dialog">
-                    <div class="modal-dialog">
-                        <!-- Modal content-->
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h4 class="modal-title">Property Alert Creation</h4>
-                            </div>
-
-                            @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions')
-
-                            <div class="modal-body" style="display: inline-block;width: 100%;">
-
-                                <div class="form-group">
-
-                                    <p>
-                                        By saving your search you will receive notifications based on the following search criteria:
-                                    </p>
-
-                                    @if($address)
-                                            <span class="button-applied-filter span-heading">{{$address}}</span>
-
-                                            <span class="button-applied-filter span-heading">{{$radius}} KM</span>
-
-                                    @endif
-
-
-                                    @if($property_type)
-                                            <span class="button-applied-filter span-heading">{{ getPropertyTypeName($property_type)->types }}</span>
-                                        @else
-                                            <span class="button-applied-filter span-heading">All Property Types</span>
-                                    @endif
-
-
-
-                                    @if(Route::currentRouteName() == 'searchproperties')
-
-                                    @if($purpose)
-                                            <span class="button-applied-filter span-heading">For {{$purpose}}</span>
-                                    @endif
-
-                                    @endif
-
-
-                                    @if(Route::currentRouteName() == 'searchnewconstructions')
-
-                                    @if($kind_of_type)
-                                        <span class="button-applied-filter span-heading">{{$kind_of_type}}</span>
-                                    @endif
-
-                                    @endif
-
-
-                                    @if(Route::currentRouteName() == 'searchproperties')
-
-                                    @if($type_of_construction)
-                                        <span class="button-applied-filter span-heading">{{$type_of_construction}} Property</span>
-                                    @endif
-
-                                    @endif
-
-
-
-                                    @if($min_price != '' || $max_price != '')
-
-                                        @if($min_price != '' && $max_price != '')
-                                        <span class="button-applied-filter span-heading">€ {{$min_price}} - € {{$max_price}}</span>
-                                        @elseif($min_price != '')
-                                        <span class="button-applied-filter span-heading">€ {{$min_price}}+</span>
-                                        @elseif($max_price != '')
-                                        <span class="button-applied-filter span-heading">€ 0 - € {{$max_price}}</span>
-                                        @endif
-
-                                    @endif
-
-
-
-                                    @if($bedrooms)
-                                        <span class="button-applied-filter span-heading">{{$bedrooms}}@if($bedrooms!=1) Bedrooms @else Bedroom @endif</span>
-                                    @endif
-
-
-
-                                    @if($bathrooms)
-                                        <span class="button-applied-filter span-heading">{{$bathrooms}}@if($bathrooms!=1) Bathrooms @else Bathrooms @endif</span>
-                                    @endif
-
-
-
-                                    @if($min_area != '' || $max_area != '')
-
-                                        @if($min_area != '' && $max_area != '')
-                                            <span class="button-applied-filter span-heading">{{$min_area}} m² - {{$max_area}} m² (Plot Area)</span>
-                                        @elseif($min_area != '')
-                                            <span class="button-applied-filter span-heading">{{$min_area}}+ m² (Plot Area)</span>
-                                        @elseif($max_area != '')
-                                            <span class="button-applied-filter span-heading">0 m² - {{$max_area}} m² (Plot Area)</span>
-                                        @endif
-
-                                    @endif
-
-
-
-                                    @if($keywords)
-                                        <span class="button-applied-filter span-heading">{{$keywords}}</span>
-                                    @endif
-
-
-
-                                    @if($wheelchair)
-                                        <span class="button-applied-filter span-heading">Wheelchair Friendly</span>
-                                    @endif
-
-                                </div>
-
-                                {!! Form::open(array('url' => array('savepropertyalert'),'class'=>'form-horizontal padding-15','name'=>'job_form','id'=>'job_form','role'=>'form','enctype' => 'multipart/form-data')) !!}
-                                <label>Email Address: </label>
-                                <input class="form-control" name="email" title="You will receive Emails on this Address" type="email" required placeholder="Enter Email for Job Alert Receiving" value="{{isset(Auth::user()->email)?Auth::user()->email:''}}">
-                                <input name="property_type" type="hidden" value="{{$property_type}}">
-                                @if(Route::currentRouteName() == 'searchproperties')
-                                <input name="property_purpose" type="hidden" value="{{$purpose}}">
-                                @endif
-                                <input name="radius" type="hidden" value="{{$radius}}">
-                                <input name="address" type="hidden" value="{{$address}}">
-                                <input name="longitude" type="hidden" value="{{$address_longitude}}">
-                                <input name="latitude" type="hidden" value="{{$address_latitude}}">
-                                <input name="max_price" type="hidden" value="{{$max_price}}">
-                                <input name="min_price" type="hidden" value="{{$min_price}}">
-                                <input name="bedrooms" type="hidden" value="{{$bedrooms}}">
-                                <input name="bathrooms" type="hidden" value="{{$bathrooms}}">
-                                <input name="min_area" type="hidden" value="{{$min_area}}">
-                                <input name="max_area" type="hidden" value="{{$max_area}}">
-                                @if(Route::currentRouteName() == 'searchproperties')
-                                <input type="hidden" name="search_type" value="standard">
-                                <input name="type_of_construction" type="hidden" value="{{$type_of_construction}}">
-                                @endif
-                                <input name="keywords" type="hidden" value="{{$keywords}}">
-                                <input name="wheelchair" type="hidden" value="{{$wheelchair}}">
-                                @if(Route::currentRouteName() == 'searchnewconstructions')
-                                <input type="hidden" name="search_type" value="construction">
-                                <input name="kind_of_type" type="hidden" value="{{$kind_of_type}}">
-                                @endif
-
-                                <br>
-
-
-                                <br>
-
-                                <div>
-
-                                <label>Property Alert Type: &nbsp</label>
-
-                                <p style="margin-top: 10px;">
-                                    <input type="radio" id="test1" name="type" value="1" checked>
-                                    <label for="test1">Daily</label>
-                                </p>
-
-                                <p>
-                                    <input type="radio" id="test2" name="type" value="2">
-                                    <label for="test2">Weekly</label>
-                                </p>
-
-                                </div>
-
-
-                                <button class="btn btn-success" type="submit" style="float: right;outline: none;">Create Property Alert</button>
-                                {!! Form::close() !!}
-                            </div>
-
-                                @endif
-
-
-                        </div>
-                    </div>
-                </div>
 
                 @if(Route::currentRouteName() != 'newconstructions-front' && Route::currentRouteName() != 'searchnewconstructions' && Route::currentRouteName() != 'newconstruction-single')
 
@@ -325,7 +151,7 @@
               {!! Form::close() !!}
             </div>
             <!-- break -->
-            <div class="widget widget-sidebar widget-white">
+            {{--<div class="widget widget-sidebar widget-white">
               <div class="widget-header">
                 <h3>Property Type</h3>
               </div>
@@ -338,11 +164,187 @@
 
 
               </ul>
-            </div>
+            </div>--}}
 
             <!-- break -->
           </div>
 
+
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Property Alert Creation</h4>
+            </div>
+
+            @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions')
+
+                <div class="modal-body" style="display: inline-block;width: 100%;">
+
+                    <div class="form-group">
+
+                        <p>
+                            By saving your search you will receive notifications based on the following search criteria:
+                        </p>
+
+                        @if($address)
+                            <span class="button-applied-filter span-heading">{{$address}}</span>
+
+                            <span class="button-applied-filter span-heading">{{$radius}} KM</span>
+
+                        @endif
+
+
+                        @if($property_type)
+                            <span class="button-applied-filter span-heading">{{ getPropertyTypeName($property_type)->types }}</span>
+                        @else
+                            <span class="button-applied-filter span-heading">All Property Types</span>
+                        @endif
+
+
+
+                        @if(Route::currentRouteName() == 'searchproperties')
+
+                            @if($purpose)
+                                <span class="button-applied-filter span-heading">For {{$purpose}}</span>
+                            @endif
+
+                        @endif
+
+
+                        @if(Route::currentRouteName() == 'searchnewconstructions')
+
+                            @if($kind_of_type)
+                                <span class="button-applied-filter span-heading">{{$kind_of_type}}</span>
+                            @endif
+
+                        @endif
+
+
+                        @if(Route::currentRouteName() == 'searchproperties')
+
+                            @if($type_of_construction)
+                                <span class="button-applied-filter span-heading">{{$type_of_construction}} Property</span>
+                            @endif
+
+                        @endif
+
+
+
+                        @if($min_price != '' || $max_price != '')
+
+                            @if($min_price != '' && $max_price != '')
+                                <span class="button-applied-filter span-heading">€ {{$min_price}} - € {{$max_price}}</span>
+                            @elseif($min_price != '')
+                                <span class="button-applied-filter span-heading">€ {{$min_price}}+</span>
+                            @elseif($max_price != '')
+                                <span class="button-applied-filter span-heading">€ 0 - € {{$max_price}}</span>
+                            @endif
+
+                        @endif
+
+
+
+                        @if($bedrooms)
+                            <span class="button-applied-filter span-heading">{{$bedrooms}}@if($bedrooms!=1) Bedrooms @else Bedroom @endif</span>
+                        @endif
+
+
+
+                        @if($bathrooms)
+                            <span class="button-applied-filter span-heading">{{$bathrooms}}@if($bathrooms!=1) Bathrooms @else Bathrooms @endif</span>
+                        @endif
+
+
+
+                        @if($min_area != '' || $max_area != '')
+
+                            @if($min_area != '' && $max_area != '')
+                                <span class="button-applied-filter span-heading">{{$min_area}} m² - {{$max_area}} m² (Plot Area)</span>
+                            @elseif($min_area != '')
+                                <span class="button-applied-filter span-heading">{{$min_area}}+ m² (Plot Area)</span>
+                            @elseif($max_area != '')
+                                <span class="button-applied-filter span-heading">0 m² - {{$max_area}} m² (Plot Area)</span>
+                            @endif
+
+                        @endif
+
+
+
+                        @if($keywords)
+                            <span class="button-applied-filter span-heading">{{$keywords}}</span>
+                        @endif
+
+
+
+                        @if($wheelchair)
+                            <span class="button-applied-filter span-heading">Wheelchair Friendly</span>
+                        @endif
+
+                    </div>
+
+                    {!! Form::open(array('url' => array('savepropertyalert'),'class'=>'form-horizontal padding-15','name'=>'job_form','id'=>'job_form','role'=>'form','enctype' => 'multipart/form-data')) !!}
+                    <label>Email Address: </label>
+                    <input class="form-control" name="email" title="You will receive Emails on this Address" type="email" required placeholder="Enter Email for Job Alert Receiving" value="{{isset(Auth::user()->email)?Auth::user()->email:''}}">
+                    <input name="property_type" type="hidden" value="{{$property_type}}">
+                    @if(Route::currentRouteName() == 'searchproperties')
+                        <input name="property_purpose" type="hidden" value="{{$purpose}}">
+                    @endif
+                    <input name="radius" type="hidden" value="{{$radius}}">
+                    <input name="address" type="hidden" value="{{$address}}">
+                    <input name="longitude" type="hidden" value="{{$address_longitude}}">
+                    <input name="latitude" type="hidden" value="{{$address_latitude}}">
+                    <input name="max_price" type="hidden" value="{{$max_price}}">
+                    <input name="min_price" type="hidden" value="{{$min_price}}">
+                    <input name="bedrooms" type="hidden" value="{{$bedrooms}}">
+                    <input name="bathrooms" type="hidden" value="{{$bathrooms}}">
+                    <input name="min_area" type="hidden" value="{{$min_area}}">
+                    <input name="max_area" type="hidden" value="{{$max_area}}">
+                    @if(Route::currentRouteName() == 'searchproperties')
+                        <input type="hidden" name="search_type" value="standard">
+                        <input name="type_of_construction" type="hidden" value="{{$type_of_construction}}">
+                    @endif
+                    <input name="keywords" type="hidden" value="{{$keywords}}">
+                    <input name="wheelchair" type="hidden" value="{{$wheelchair}}">
+                    @if(Route::currentRouteName() == 'searchnewconstructions')
+                        <input type="hidden" name="search_type" value="construction">
+                        <input name="kind_of_type" type="hidden" value="{{$kind_of_type}}">
+                    @endif
+
+                    <br>
+
+
+                    <br>
+
+                    <div>
+
+                        <label>Property Alert Type: &nbsp</label>
+
+                        <p style="margin-top: 10px;">
+                            <input type="radio" id="test1" name="type" value="1" checked>
+                            <label for="test1">Daily</label>
+                        </p>
+
+                        <p>
+                            <input type="radio" id="test2" name="type" value="2">
+                            <label for="test2">Weekly</label>
+                        </p>
+
+                    </div>
+
+
+                    <button class="btn btn-success" type="submit" style="float: right;outline: none;">Create Property Alert</button>
+                    {!! Form::close() !!}
+                </div>
+
+            @endif
+
+
+        </div>
+    </div>
+</div>
 
 <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog1 modal-full" role="document">
