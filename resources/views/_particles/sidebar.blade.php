@@ -523,8 +523,6 @@
                     </div>
                 </div>
 
-
-
             </div>
 
         </div>
@@ -532,6 +530,11 @@
 </div>
 
 <style>
+
+    #myModal1
+    {
+        padding: 0 !important;
+    }
 
     .modal-full {
         min-width: 100%;

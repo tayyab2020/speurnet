@@ -241,6 +241,10 @@
 
                             <style>
 
+                                #myModal
+                                {
+                                    padding: 0 !important;
+                                }
 
                                 .modal-full {
                                     min-width: 100%;
