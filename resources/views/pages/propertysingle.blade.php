@@ -57,6 +57,18 @@
         @include('_particles.sidebar',['class'=>'col-md-2'])
         <!-- end:sidebar -->
 
+                <div class="properties-ordering-wrapper col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                    <button type="button" value="Filters" href="#myModal1" data-toggle="modal" class="btn btn-primary filter-button" style="float: left;color: black;background: white;border-color: #9f9c9c;outline: none;display: none;">
+                      <span>
+                          <img src="{{ URL::asset('assets/img/Filter-512.png') }}" aria-hidden="true" style="margin-right: 5px;width: 15px;margin-top: -1px;">
+                          <span style="font-size: 13px;">Filters</span>
+                      </span>
+                    </button>
+
+                </div>
+
+
             @endif
 
           <!-- begin:article -->
@@ -177,6 +189,28 @@
                             <button type="button" href="#slider-property" data-slide="next" class="carousel-next arrow" style="display: block;" aria-disabled="true"><i class="flaticon-right-arrow" aria-hidden="true"></i></button>
 
                             <style>
+
+                                @media (max-width: 991px){
+
+                                    .filter-button{display: block !important;}
+                                    .properties-ordering-wrapper{float: left !important;display: block !important;width: 100% !important;}
+                                    .properties-ordering{margin-top: 20px !important;float: left !important;}
+                                    .sidebar{display: none;}
+                                }
+
+                                .properties-ordering-wrapper,.agencies-ordering-wrapper,.agents-ordering-wrapper{margin-bottom:20px;display:-webkit-box;display:-webkit-flex;display:-moz-flex;display:-ms-flexbox;display:flex;align-items:center;-webkit-align-items:center;background-color:#fff;border:1px
+                                solid #ebebeb;padding:10px
+                                20px;border-radius:6px;-webkit-border-radius:6px;-moz-border-radius:6px;-ms-border-radius:6px;-o-border-radius:6px}
+
+                                @media (min-width: 1200px){.properties-ordering-wrapper,.agencies-ordering-wrapper,.agents-ordering-wrapper{padding:15px
+                                30px;margin-bottom:30px}}
+
+
+                                .properties-ordering-wrapper .properties-ordering, .agencies-ordering-wrapper .properties-ordering, .agents-ordering-wrapper .properties-ordering{margin-left:auto}
+
+                                .my-properties-ordering .label, .sort-my-properties-form .label, .sort-properties-favorite-form .label, .properties-ordering .label{font-weight: 600;color:#484848;font-size:14px;padding:0;display:inline-block;vertical-align:middle;margin-right: 5px;}
+
+                                .properties-ordering-wrapper{display: none;}
 
                                 .carousel-prev{left:15px}
 
@@ -1071,7 +1105,7 @@
 
                           <div class="row" style="margin: 40px 0px;">
 
-                                      <img src="{{ URL::asset('assets/img/travel-time-logo.svg') }}" style="width: 150px;display: block;" />
+                                      <img src="{{ URL::asset('assets/img/travel-time-logo.png') }}" style="width: 250px;display: block;" />
 
                                       <p style="font-size: 19px;font-weight: 600;margin-top: 30px;">See how long it takes you to travel from this house to for example your work or family.</p>
 

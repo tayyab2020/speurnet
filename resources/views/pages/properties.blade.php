@@ -151,7 +151,19 @@
 
                 <div class="property-image">
 
+                    @if(Route::currentRouteName() != 'newconstructions-front')
+
+                        <a href="{{URL::to('properties/'.$property->property_slug)}}">
+
+                    @else
+
+                        <a href="{{URL::to('new-constructions/'.$property->property_slug)}}">
+
+                    @endif
+
                 <img src="{{ URL::asset('upload/properties/'.$property->featured_image.'-b.jpg') }}" alt="{{ $property->property_name }}">
+
+                        </a>
 
                   <?php
 

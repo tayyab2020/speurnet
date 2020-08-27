@@ -111,19 +111,34 @@
                               <div class="property-container">
                                   <div class="property-image">
 
+                                      @if(Route::currentRouteName() != 'searchnewconstructions')
+
+                                          <a href="{{URL::to('properties/'.$property->property_slug)}}">
+
+                                      @else
+
+                                          <a href="{{URL::to('new-constructions/'.$property->property_slug)}}">
+
+                                      @endif
+
                                       <img src="{{ URL::asset('upload/properties/'.$property->featured_image.'-s.jpg') }}" alt="{{ $property->property_name }}">
-                                      <div class="property-price">
-                                          <h4>{{ getPropertyTypeName($property->property_type)->types }}</h4>
-                                          <span>{{getcong('currency_sign')}}@if($property->sale_price) {{$property->sale_price}} @else {{$property->rent_price}} @endif</span>
-                                      </div>
-                                      <div class="property-status">
-                                          @if(Route::currentRouteName() != 'searchnewconstructions')
-                                              <span>For {{$property->property_purpose}}</span>
-                                          @else
-                                              <span>{{$property->kind_of_type}}</span>
-                                          @endif
-                                      </div>
-                                  </div>
+
+                                  </a>
+
+                                          <div class="property-price">
+                                              <h4>{{ getPropertyTypeName($property->property_type)->types }}</h4>
+                                              <span>{{getcong('currency_sign')}}@if($property->sale_price) {{$property->sale_price}} @else {{$property->rent_price}} @endif</span>
+                                          </div>
+
+                                          <div class="property-status">
+                                              @if(Route::currentRouteName() != 'searchnewconstructions')
+                                                  <span>For {{$property->property_purpose}}</span>
+                                              @else
+                                                  <span>{{$property->kind_of_type}}</span>
+                                              @endif
+                                          </div>
+                              </div>
+
                                   <div class="property-features">
                                       <span><i class="fa fa-home"></i> {{$property->area}}</span>
                                       <span><i class="fa fa-hdd-o"></i> {{$property->bedrooms}}</span>

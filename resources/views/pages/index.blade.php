@@ -104,7 +104,11 @@
                                     <div class="property-container" style="border: 1px solid #48cfad;margin-bottom: 10px">
                                         <div class="property-image latest">
 
+                                            <a style="outline: none;" href="{{URL::to('properties/'.$property->property_slug)}}">
+
                                             <img src="{{ URL::asset('upload/properties/'.$property->featured_image.'-b.jpg') }}" alt="{{ $property->property_name }}">
+
+                                            </a>
 
                                             @if($url)
 
@@ -472,23 +476,32 @@
                         <div class="property-container" style="margin: 10px auto;">
                             <div class="property-image">
 
-                                <img src="{{ URL::asset('upload/properties/'.$temp->featured_image.'-s.jpg') }}" alt="{{ $temp->property_name }}" style="width: 100%;height: 200px;">
+                                <a style="outline: none;" href="{{URL::to('properties/'.$temp->property_slug)}}">
+
+                                    <img src="{{ URL::asset('upload/properties/'.$temp->featured_image.'-s.jpg') }}" alt="{{ $temp->property_name }}" style="width: 100%;height: 200px;">
+
+                                </a>
+
                                 <div class="property-price">
                                     <h4>{{ getPropertyTypeName($temp->property_type)->types }}</h4>
                                     <span>{{getcong('currency_sign')}}@if($temp->sale_price) {{$temp->sale_price}} @else {{$temp->rent_price}} @endif</span>
                                 </div>
+
                                 <div class="property-status">
                                     <span>For {{$temp->property_purpose}}</span>
                                 </div>
                             </div>
+
                             <div class="property-features">
                                 <span><i class="fa fa-home"></i> {{$temp->area}}</span>
                                 <span><i class="fa fa-hdd-o"></i> {{$temp->bedrooms}}</span>
                                 <span><i class="fa fa-male"></i> {{$temp->bathrooms}}</span>
                             </div>
+
                             <div class="property-content">
                                 <h3><a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;" href="{{URL::to('properties/'.$temp->property_slug)}}">{{ Str::limit($temp->property_name,35) }}</a> <small style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;">{{ Str::limit($temp->address,40) }}</small></h3>
                             </div>
+
                         </div>
                     </div>
 
@@ -519,6 +532,8 @@
                             <div class="property-container" style="margin: 10px auto;">
                                 <div class="property-image">
 
+                                    <a style="outline: none;" href="{{URL::to('agents/details/'.$temp->id)}}">
+
                                     @if($temp->image_icon)
 
                                         <img src="{{ URL::asset('upload/members/'.$temp->image_icon.'-b.jpg') }}" style="width: 100%;height: 200px;" >
@@ -528,6 +543,8 @@
                                         <img src="{{ URL::asset('assets/img/user.png') }}" style="width: 100%;height: 200px;" >
 
                                     @endif
+
+                                    </a>
 
                                 </div>
 
@@ -942,11 +959,16 @@
                         <div class="col-md-3 col-sm-12 col-xs-12 flex-box-div">
                             <div class="property-container" style="margin: 10px auto;min-height: 433px;">
                                 <div class="property-image">
+
+                                    <a style="outline: none;" href="{{ url('blogs/'.$blog->id) }}">
+
                                     @if($blog->image)
                                         <img src="{{ URL::asset('upload/blogs/'.$blog->image) }}" style="width: 100%;height: 250px;">
                                         @else
                                         <img src="{{ URL::asset('upload/noImage.png') }}" style="width: 100%;height: 250px;" >
-                                        @endif
+                                    @endif
+
+                                    </a>
 
                                 </div>
 
