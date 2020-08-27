@@ -308,9 +308,9 @@ class IndexController extends Controller
 
     public function MovingTips()
     {
-        $blogs = moving_tips::orderBy('id', 'desc')->paginate(9);
+        $m_e = moving_tips::orderBy('id', 'desc')->get();
 
-        return view('pages.blogs',compact('blogs'));
+        return view('pages.m_e_page',compact('m_e'));
     }
 
     public function MovingTip($id)
@@ -322,9 +322,9 @@ class IndexController extends Controller
 
     public function Expats()
     {
-        $blogs = Expats::orderBy('id', 'desc')->paginate(9);
+        $m_e = Expats::orderBy('id', 'desc')->paginate(9);
 
-        return view('pages.blogs',compact('blogs'));
+        return view('pages.m_e_page',compact('m_e'));
     }
 
     public function Expat($id)
