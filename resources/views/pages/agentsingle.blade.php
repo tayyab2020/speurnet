@@ -998,6 +998,17 @@
             }
         }
 
+        @media (min-width: 768px){
+            canvas{
+
+                width:300px !important;
+                height:300px !important;
+                margin: auto;
+
+            }
+        }
+
+
     </style>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
@@ -1022,17 +1033,18 @@
                         datasets: [{
                             data: [<?php echo $agent->sold_prev ?>,<?php echo $agent->rentout_prev ?>],
                             backgroundColor: [
-                                'rgb(255,67,54)',
-                                'rgb(95,104,255)',
+                                'rgb(255,86,68)',
+                                'rgb(30,181,204)',
 
                             ],
                             borderWidth: 1,
                         }]
                     },
                     options: {
+                        responsive: true,
                         legend: {
                             labels: {
-                                fontSize: 12,
+                                fontSize: 15,
                                 boxWidth: 20,
                                 padding: 20
                             },
@@ -1053,17 +1065,18 @@
                         datasets: [{
                             data: [<?php echo $agent->sold_prev_prev ?>,<?php echo $agent->rentout_prev_prev ?>],
                             backgroundColor: [
-                                'rgb(255,67,54)',
-                                'rgb(95,104,255)',
+                                'rgb(255,86,68)',
+                                'rgb(30,181,204)',
 
                             ],
                             borderWidth: 1,
                         }]
                     },
                     options: {
+                        responsive: true,
                         legend: {
                             labels: {
-                                fontSize: 12,
+                                fontSize: 15,
                                 boxWidth: 20,
                                 padding: 20
                             },
