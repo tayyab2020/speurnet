@@ -325,7 +325,7 @@
                                     {
                                         margin-top: 0px !important;
                                         position: absolute;
-                                        bottom:0px;
+                                        top: 125px;
                                     }
 
                                     .quick-search
