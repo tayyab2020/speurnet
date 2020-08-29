@@ -874,14 +874,6 @@
                                 </tr>
                             @endif
 
-                            @if($property->house_type)
-
-                                <tr>
-                                    <td><strong>House Type</strong></td>
-                                    <td>{{$property->house_type}}</sup> </td>
-                                </tr>
-
-                            @endif
 
                             @if($property->construction_type)
 

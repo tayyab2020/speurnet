@@ -907,7 +907,6 @@ class PropertiesController extends MainAdminController
         $property->open_date = $request->date;
         $property->open_timeFrom = $request->time_from;
         $property->open_timeTo = $request->time_to;
-        $property->house_type = $request->house_type;
         $property->volume = $request->volume;
         $property->floors = $request->floors;
         $property->backyard = $request->backyard;
