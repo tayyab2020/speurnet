@@ -62,6 +62,8 @@
 
 <style>
 
+    a{outline: none !important;}
+
     .signup
     {
         text-align: center;

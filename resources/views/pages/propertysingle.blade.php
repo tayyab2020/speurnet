@@ -85,10 +85,10 @@
             <div class="row">
               <div class="col-md-12 single-post">
                 <ul id="myTab" class="nav nav-tabs nav-justified">
-                  <li class="property-tab active"><a href="#detail" id="left-tab" data-toggle="tab"><i class="fa fa-university"></i> Property Detail</a></li>
+                  <li class="property-tab active"><a href="#detail" style="outline: none;" id="left-tab" data-toggle="tab"><i class="fa fa-university"></i> Property Detail</a></li>
 
                     @if($property->new_construction != 1)
-                    <li class="contact-tab"><a href="#location" id="right-tab" data-toggle="tab"><i class="fa fa-paper-plane-o"></i> Contact</a></li>
+                    <li class="contact-tab"><a href="#location" style="outline: none;" id="right-tab" data-toggle="tab"><i class="fa fa-paper-plane-o"></i> Contact</a></li>
                         @endif
                 </ul>
 
@@ -1876,20 +1876,22 @@
                       <div class="col-md-6 col-sm-6">
                         <div class="team-container team-dark">
                           <div class="team-image" style="margin-left: -1px;">
+                              <a style="outline: none;" href="{{URL::to('agents/details/'.$agent->id)}}">
                             @if($agent->image_icon)
                             <img src="{{ URL::asset('upload/members/'.$agent->image_icon.'-b.jpg') }}" alt="{{$agent->name}}">
                             @else
                             <img src="{{ URL::asset('upload/members/user-icon.jpg') }}" alt="{{$agent->name}}">
                             @endif
+                              </a>
                           </div>
                           <div class="team-description">
-                            <h3><a style="color: white;" href="{{URL::to('agents/')}}">{{$agent->name}}</a></h3>
+                            <h3><a style="color: white;" href="{{URL::to('agents/details/'.$agent->id)}}">{{$agent->name}}</a></h3>
                             <p><i class="fa fa-phone"></i> Office : {{$agent->phone}}<br></p>
                             <p><i class="fa fa-envelope"></i>&nbsp Email : {{$agent->email}}</p>
                             <p>{{$agent->about}}</p>
 
                               @if($properties_count>1)
-                                  <p><a style="color: white" href="{{ URL::to('/agent-properties/user/'.$agent->id.'/'.$property->id) }}" target="_blank">See Other {{$properties_count-1}} Properties posted by this Broker</a></p>
+                                  <p><a style="color: white;font-weight: 600;text-shadow: 0px 0px 4px #5d5d5d;" href="{{ URL::to('/agent-properties/user/'.$agent->id.'/'.$property->id) }}" target="_blank">See Other {{$properties_count-1}} Properties posted by this Broker</a></p>
                               @endif
 
                             <div class="team-social">

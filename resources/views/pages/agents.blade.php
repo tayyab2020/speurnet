@@ -392,11 +392,13 @@
                             <div class="row" style="background-color: white;padding: 20px;">
                             <div class="col-sm-3">
                                 <div class="team-image">
+                                    <a style="outline: none;" href="{{ URL::to('/agents/details/'.$agent->id) }}">
                                     @if($agent->image_icon)
                                         <img src="{{ URL::asset('upload/members/'.$agent->image_icon.'-b.jpg') }}" style="padding-top: 5px" alt="{{ $agent->name }}">
                                     @else
                                         <img src="{{ URL::asset('upload/members/user-icon.jpg') }}"  style="padding-top: 5px" alt="{{ $agent->name }}">
                                     @endif
+                                    </a>
                                 </div>
                             </div>
                             <div class="col-sm-9">

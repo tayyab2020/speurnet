@@ -427,11 +427,15 @@
 
                                             <div style="width: 60%;height: 100%;padding: 8px;padding-bottom: 2px;">
 
+                                                <a style="outline: none;" href="{{URL::to('agents/details/'.$property->user_id)}}">
+
                                                 @if($property->image_icon)
                                                     <img style="width: 75%;height: 95%;float: right;" src="{{ URL::asset('upload/members/'.$property->image_icon.'-b.jpg') }}">
                                                 @else
                                                     <img style="width: 75%;height: 95%;float: right;" src="{{ URL::asset('assets/img/team03.jpg') }}" >
                                                 @endif
+
+                                                </a>
 
                                             </div>
 
