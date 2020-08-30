@@ -73,7 +73,7 @@
 
                                   <i class="fas fa-arrows-alt" style="position: absolute;left: 15px;right: auto;color: #d5d5d5;font-size: 14px;top: 55%;margin:-9px 0 0;pointer-events:none;" aria-hidden="true"></i>
 
-                                  <select class="form-control" style="padding: 0 0 0 40px;height: 42px;color:#bcbcbc;border-color:#e6e6e6;border-radius: 3px;box-shadow: none;" name="radius">
+                                  <select class="form-control" style="text-indent: 40px;height: 42px;color:#bcbcbc;border-color:#e6e6e6;border-radius: 3px;box-shadow: none;" name="radius">
                                       <option @if(isset($radius)) @if($radius == 0) selected @endif @endif value="0">0 KM</option>
                                       <option @if(isset($radius)) @if($radius == 1) selected @endif @endif value="1">1 KM</option>
                                       <option @if(isset($radius)) @if($radius == 2) selected @endif @endif value="2">2 KM</option>
