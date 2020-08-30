@@ -28,344 +28,439 @@
     <!-- begin:content -->
     <div id="content">
 
-        <div class="container">
+        <div class="container" style="width: 100%;">
 
-            <div class="row" style="margin: 0;margin-bottom: 20px;">
+            <div class="row mobile-row">
 
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0px">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" style="margin-top: 65px;">
 
-                    <a href="{{ URL::to('addhomeexchange') }}" class="btn btn-success" style="float: right;font-size: 20px;">Add Property</a>
+                    <div style="background: white;padding: 20px;border-radius: 10px;box-shadow: 1px 1px 14px 2px #e7e7e7;">
+
+                        <h2 style="margin-bottom: 30px;color: #303030;text-align: center;margin-top: 0px;">FAQ's</h2>
+
+                        <section class="cd-faq js-cd-faq container max-width-md margin-top-lg margin-bottom-lg" style="padding: 0;margin: 0;width: 100%;">
+                            <div class="cd-faq__items" style="padding: 0;">
+
+                                <ul id="basics" class="cd-faq__group" style="padding: 0;">
+                                    <li class="cd-faq__item">
+                                        <a class="cd-faq__trigger" href="#0"><span>How do I change my password?</span></a>
+                                        <div class="cd-faq__content">
+                                            <div class="text-component">
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae quidem blanditiis delectus corporis, possimus officia sint sequi ex tenetur id impedit est pariatur iure animi non a ratione reiciendis nihil sed consequatur atque repellendus fugit perspiciatis rerum et. Dolorum consequuntur fugit deleniti, soluta fuga nobis. Ducimus blanditiis velit sit iste delectus obcaecati debitis omnis, assumenda accusamus cumque perferendis eos aut quidem! Aut, totam rerum, cupiditate quae aperiam voluptas rem inventore quas, ex maxime culpa nam soluta labore at amet nihil laborum? Explicabo numquam, sit fugit, voluptatem autem atque quis quam voluptate fugiat earum rem hic, reprehenderit quaerat tempore at. Aperiam.</p>
+                                            </div>
+                                        </div> <!-- cd-faq__content -->
+                                    </li>
+
+                                    <li class="cd-faq__item">
+                                        <a class="cd-faq__trigger" href="#0"><span>How do I sign up?</span></a>
+                                        <div class="cd-faq__content">
+                                            <div class="text-component">
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi cupiditate et laudantium esse adipisci consequatur modi possimus accusantium vero atque excepturi nobis in doloremque repudiandae soluta non minus dolore voluptatem enim reiciendis officia voluptates, fuga ullam? Voluptas reiciendis cumque molestiae unde numquam similique quas doloremque non, perferendis doloribus necessitatibus itaque dolorem quam officia atque perspiciatis dolore laudantium dolor voluptatem eligendi? Aliquam nulla unde voluptatum molestiae, eos fugit ullam, consequuntur, saepe voluptas quaerat deleniti. Repellendus magni sint temporibus, accusantium rem commodi?</p>
+                                            </div>
+                                        </div> <!-- cd-faq__content -->
+                                    </li>
+
+                                    <li class="cd-faq__item">
+                                        <a class="cd-faq__trigger" href="#0"><span>Can I remove a post?</span></a>
+                                        <div class="cd-faq__content">
+                                            <div class="text-component">
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis provident officiis, reprehenderit numquam. Praesentium veritatis eos tenetur magni debitis inventore fugit, magnam, reiciendis, saepe obcaecati ex vero quaerat distinctio velit.</p>
+                                            </div>
+                                        </div> <!-- cd-faq__content -->
+                                    </li>
+
+                                    <li class="cd-faq__item">
+                                        <a class="cd-faq__trigger" href="#0"><span>How do reviews work?</span></a>
+                                        <div class="cd-faq__content">
+                                            <div class="text-component">
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis provident officiis, reprehenderit numquam. Praesentium veritatis eos tenetur magni debitis inventore fugit, magnam, reiciendis, saepe obcaecati ex vero quaerat distinctio velit.</p>
+                                            </div>
+                                        </div> <!-- cd-faq__content -->
+                                    </li>
+                                </ul> <!-- cd-faq__group -->
+
+                            </div> <!-- cd-faq__items -->
+
+                            <a href="#0" class="cd-faq__close-panel text-replace">Close</a>
+
+                            <div class="cd-faq__overlay" aria-hidden="true"></div>
+                        </section> <!-- cd-faq -->
+
+                    </div>
 
                 </div>
 
-            </div>
+                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
 
-        </div>
+                    <a href="{{ URL::to('addhomeexchange') }}" class="btn btn-success" style="float: right;font-size: 18px;margin-bottom: 20px;">Add Property</a>
 
-        <div class="container">
+                    <div style="background-color: white;border-radius: 10px;box-shadow: 1px 1px 14px 2px #e7e7e7;display: inline-block;">
 
-            <div class="row mobile-row" style="background-color: white;padding: 0px 20px;border-radius: 10px;box-shadow: 1px 1px 14px 2px #e7e7e7;">
+                        <form id="form" action="{{ URL::to('homeexchange/home-exchange-search') }}" method="GET">
 
-                <form id="form" action="{{ URL::to('homeexchange/home-exchange-search') }}" method="GET">
+                            @csrf
 
-                    @csrf
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-10" style="display: table;margin: auto;float: none;margin-bottom: 60px;">
 
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-10" style="display: table;margin: auto;float: none;margin-bottom: 60px;">
+                                <h2 style="margin-bottom: 30px;color: #303030;text-align: center;">Find Your Match</h2>
 
-                    <h1 style="margin-bottom: 30px;color: #303030;text-align: center;">Find Your Match</h1>
+                                <div id="wrapper_1" class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="padding: 0;">
 
-                    <div id="wrapper_1" class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="padding: 0;">
+                                    <h5 class="col-lg-10 col-md-10 col-sm-10 col-xs-12" style="margin-bottom: 30px;float: left;text-align: center;color: white;display: inline-block;background: linear-gradient(to right, #494949 0, #434343 100%);padding: 10px;border: 1px solid #d5d5d5;font-weight: 600;">Your House</h5>
 
-                        <h3 class="col-lg-10 col-md-10 col-sm-10 col-xs-12" style="margin-bottom: 30px;float: left;text-align: center;color: white;display: inline-block;background: linear-gradient(to right, #494949 0, #434343 100%);padding: 10px;border: 1px solid #d5d5d5;font-weight: 600;font-size: 20px;">Your House</h3>
+                                    <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-12" style="display: inline-block;float: left;">
 
-                        <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-12" style="display: inline-block;float: left;">
+                                        <label style="float: left;">Where do you live?</label>
 
-                            <label style="float: left;">Where do you live?</label>
+                                        <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto;background: white;">
 
-                            <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto;background: white;">
+                                            <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-map-marker-alt" aria-hidden="true"></i></div>
 
-                                <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-map-marker-alt" aria-hidden="true"></i></div>
+                                            <input type="text" id="address-input" autocomplete="off" required placeholder="Enter Address" name="address" @if(isset($address)) value="{{$address}}" @endif style="border: 0;margin: 0;float: left;width: 80%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control map-input">
+                                            <input type="hidden" name="address_latitude" id="address-latitude" @if(isset($address_latitude)) value="{{$address_latitude}}" @endif />
+                                            <input type="hidden" name="address_longitude" id="address-longitude" @if(isset($address_longitude)) value="{{$address_longitude}}" @endif  />
 
-                                <input type="text" id="address-input" autocomplete="off" required placeholder="Enter Address" name="address" @if(isset($address)) value="{{$address}}" @endif style="border: 0;margin: 0;float: left;width: 80%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control map-input">
-                                <input type="hidden" name="address_latitude" id="address-latitude" @if(isset($address_latitude)) value="{{$address_latitude}}" @endif />
-                                <input type="hidden" name="address_longitude" id="address-longitude" @if(isset($address_longitude)) value="{{$address_longitude}}" @endif  />
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-12" style="display: inline-block;float: left;">
+
+                                        <label style="float: left;">What kind of home do you have?</label>
+
+                                        <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto;background: white;">
+
+                                            <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-home" aria-hidden="true"></i></div>
+
+                                            <select name="house_kind" id="house_kind" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 80%;border: 0;">
+
+                                                @foreach($types as $type)
+
+                                                    @if(isset($house_kind))
+
+                                                        <option @if($house_kind == $type->id) selected @endif value="{{$type->id}}">{{$type->types}}</option>
+
+                                                    @else
+
+                                                        <option value="{{$type->id}}">{{$type->types}}</option>
+
+                                                    @endif
+
+
+                                                @endforeach
+
+                                            </select>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-12" style="display: inline-block;float: left;">
+
+                                        <label style="float: left;">Type of Property</label>
+
+                                        <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto;background: white;">
+
+                                            <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-home" aria-hidden="true"></i></div>
+
+                                            <select name="property_type" id="property_type" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 80%;border: 0;">
+
+                                                <option value="Rent">Rental</option>
+
+                                            </select>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-12" style="display: inline-block;float: left;">
+
+                                        <label style="float: left;">BEDROOMS</label>
+
+                                        <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;border-right: 0;margin: auto;background: white;">
+
+                                            <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-bed" aria-hidden="true"></i></div>
+
+                                            <input type="number" step="1" max="" placeholder="No. of Bedroom(s)" name="bedrooms" required  @if(isset($bedrooms)) value="{{$bedrooms}}" @else value="1" @endif class="quantity-field" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+                                            <input type="button" value="+" class="button-plus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d7d7d7;margin-top: -0.1px;">
+                                            <input type="button" value="-" class="button-minus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;margin-top: -0.1px;">
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-12" style="display: inline-block;float: left;">
+
+                                        <label style="float: left;">Area <small>(m2)</small></label>
+
+                                        <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;border-right: 0;margin: auto;background: white;">
+
+                                            <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-crop-alt" aria-hidden="true"></i></div>
+
+                                            <input type="number" @if(isset($area)) value="{{$area}}" @else value="" @endif name="area" placeholder="Area" required class="quantity-field" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+                                            <input type="button" value="+" class="button-plus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d7d7d7;margin-top: -0.1px;">
+                                            <input type="button" value="-" class="button-minus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;margin-top: -0.1px;">
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-12" style="display: inline-block;float: left;">
+
+                                        <label style="float: left;">Rent Per Month <small>(€)</small></label>
+
+                                        <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;border-right: 0;margin: auto;background: white;">
+
+                                            <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-tag" aria-hidden="true"></i></div>
+
+                                            <input type="number" @if(isset($rent)) value="{{$rent}}" @else value="" @endif name="rent" placeholder="Rent Per Month" required class="quantity-field" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+                                            <input type="button" value="+" class="button-plus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d7d7d7;margin-top: -0.1px;">
+                                            <input type="button" value="-" class="button-minus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;margin-top: -0.1px;">
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <div id="wrapper_2" class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="padding: 0;">
+
+                                    <h5 class="col-lg-10 col-md-10 col-sm-10 col-xs-12" style="margin-bottom: 30px;float: right;text-align: center;color: white;display: inline-block;background: linear-gradient(to right, #494949 0, #434343 100%);padding: 10px;border: 1px solid #d5d5d5;font-weight: 600;">You are looking for?</h5>
+
+                                    <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-12" style="display: inline-block;float: right;">
+
+                                        <label style="float: left;">Where do you want to live?</label>
+
+                                        <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto;background: white;">
+
+                                            <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-map-marker-alt" aria-hidden="true"></i></div>
+
+                                            <input type="text" id="preferred-address-input" autocomplete="off" required placeholder="Enter Address" name="preferred_address" @if(isset($preferred_address)) value="{{$preferred_address}}" @endif style="border: 0;margin: 0;float: left;width: 80%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control map-input">
+                                            <input type="hidden" name="preferred_address_latitude" id="preferred-address-latitude" @if(isset($preferred_address_latitude)) value="{{$preferred_address_latitude}}" @endif />
+                                            <input type="hidden" name="preferred_address_longitude" id="preferred-address-longitude" @if(isset($preferred_address_longitude)) value="{{$preferred_address_longitude}}" @endif  />
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-12" style="display: inline-block;float: right;">
+
+                                        <label style="float: left;">Within Radius of?</label>
+
+                                        <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto;background: white;">
+
+                                            <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-arrows-alt-h" aria-hidden="true"></i></div>
+
+                                            <select name="preferred_radius" id="preferred_radius" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 80%;border: 0;">
+
+                                                @if(isset($preferred_radius))
+
+                                                    <option @if($preferred_radius == 0) selected @endif value="0">0 KM</option>
+                                                    <option @if($preferred_radius == 1) selected @endif value="1">1 KM</option>
+                                                    <option @if($preferred_radius == 2) selected @endif value="2">2 KM</option>
+                                                    <option @if($preferred_radius == 5) selected @endif value="5">5 KM</option>
+                                                    <option @if($preferred_radius == 10) selected @endif value="10">10 KM</option>
+                                                    <option @if($preferred_radius == 15) selected @endif value="15">15 KM</option>
+                                                    <option @if($preferred_radius == 30) selected @endif value="30">30 KM</option>
+                                                    <option @if($preferred_radius == 50) selected @endif value="50">50 KM</option>
+                                                    <option @if($preferred_radius == 100) selected @endif value="100">100 KM</option>
+
+                                                @else
+
+                                                    <option value="0">0 KM</option>
+                                                    <option value="1">1 KM</option>
+                                                    <option value="2">2 KM</option>
+                                                    <option value="5">5 KM</option>
+                                                    <option value="10">10 KM</option>
+                                                    <option value="15">15 KM</option>
+                                                    <option value="30">30 KM</option>
+                                                    <option value="50">50 KM</option>
+                                                    <option value="100">100 KM</option>
+
+                                                @endif
+
+                                            </select>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-12" style="display: inline-block;float: right;">
+
+                                        <label style="float: left;">What type of home are you looking for?</label>
+
+                                        <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto;background: white;">
+
+                                            <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-home" aria-hidden="true"></i></div>
+
+                                            <select name="preferred_house_kind" id="preferred_house_kind" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 80%;border: 0;">
+
+                                                @foreach($types as $type)
+
+                                                    @if(isset($preferred_house_kind))
+
+                                                        <option @if($preferred_house_kind == $type->id) selected @endif value="{{$type->id}}">{{$type->types}}</option>
+
+                                                    @else
+
+                                                        <option value="{{$type->id}}">{{$type->types}}</option>
+
+                                                    @endif
+
+
+                                                @endforeach
+
+                                            </select>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-12" style="display: inline-block;float: right;">
+
+                                        <label style="float: left;">Type of Property</label>
+
+                                        <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto;background: white;">
+
+                                            <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-home" aria-hidden="true"></i></div>
+
+                                            <select name="preferred_property_type" id="preferred_property_type" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 80%;border: 0;">
+
+                                                <option value="Rent">Rental</option>
+
+                                            </select>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-12" style="display: inline-block;float: right;">
+
+                                        <label style="float: left;">Minimum Bedrooms</label>
+
+                                        <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;border-right: 0;margin: auto;background: white;">
+
+                                            <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-bed" aria-hidden="true"></i></div>
+
+                                            <input type="number" step="1" max="" placeholder="No. of Bedroom(s)" name="preferred_bedrooms" required @if(isset($preferred_bedrooms)) value="{{$preferred_bedrooms}}" @else value="1" @endif class="quantity-field" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+                                            <input type="button" value="+" class="button-plus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d7d7d7;margin-top: -0.1px;">
+                                            <input type="button" value="-" class="button-minus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;margin-top: -0.1px;">
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-12" style="display: inline-block;float: right;">
+
+                                        <label style="float: left;">Minimum Area <small>(m2)</small></label>
+
+                                        <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;border-right: 0;margin: auto;background: white;">
+
+                                            <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-crop-alt" aria-hidden="true"></i></div>
+
+                                            <input type="number" name="preferred_area" @if(isset($preferred_area)) value="{{$preferred_area}}" @else value="" @endif placeholder="Area" required class="quantity-field" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+                                            <input type="button" value="+" class="button-plus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d7d7d7;margin-top: -0.1px;">
+                                            <input type="button" value="-" class="button-minus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;margin-top: -0.1px;">
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-12" style="display: inline-block;float: right;">
+
+                                        <label style="float: left;">Maximum Rent Per Month <small>(€)</small></label>
+
+                                        <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;border-right: 0;margin: auto;background: white;">
+
+                                            <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-tag" aria-hidden="true"></i></div>
+
+                                            <input type="number" name="preferred_rent" @if(isset($preferred_rent)) value="{{$preferred_rent}}" @else value="" @endif placeholder="Maximum Rent" required class="quantity-field" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+                                            <input type="button" value="+" class="button-plus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d7d7d7;margin-top: -0.1px;">
+                                            <input type="button" value="-" class="button-minus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;margin-top: -0.1px;">
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-12" style="display: inline-block;float: right;">
+
+                                        <a style="padding: 0;margin: 0px;text-align: left;color: #2a2929;">
+
+                                            <input name="media" @if(isset($media)) @if($media == 1) checked @endif @endif value="1" type="checkbox" id="media" style="position: relative;top: 2px;display: block;height: 0px;">
+
+                                            <label class="bg" for="media" style="margin: 0;padding-left: 22px;">
+
+                                                <span class="search-span" style="position: relative;top: 3px;font-size: 10px;color: #4b4848;">Only show me homes with photos or videos</span>
+
+                                            </label>
+
+
+                                        </a>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="text-align: center;margin-top: 20px;">
+                                    <button type="submit" class="btn btn-success" style="font-size: 17px;outline: none;"><i class="fas fa-search" style="margin-right: 5px;font-size: 17px;" aria-hidden="true"></i> Search</button>
+                                </div>
+
+                                <input type="hidden" value="newest" name="filter" id="filter_orderby">
+
 
                             </div>
 
-                        </div>
-
-
-                        <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-12" style="display: inline-block;float: left;">
-
-                            <label style="float: left;">What kind of home do you have?</label>
-
-                            <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto;background: white;">
-
-                                <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-home" aria-hidden="true"></i></div>
-
-                                <select name="house_kind" id="house_kind" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 80%;border: 0;">
-
-                                    @foreach($types as $type)
-
-                                        @if(isset($house_kind))
-
-                                            <option @if($house_kind == $type->id) selected @endif value="{{$type->id}}">{{$type->types}}</option>
-
-                                            @else
-
-                                            <option value="{{$type->id}}">{{$type->types}}</option>
-
-                                            @endif
-
-
-                                    @endforeach
-
-                                </select>
-
-                            </div>
-
-                        </div>
-
-                        <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-12" style="display: inline-block;float: left;">
-
-                            <label style="float: left;">Type of Property</label>
-
-                            <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto;background: white;">
-
-                                <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-home" aria-hidden="true"></i></div>
-
-                                <select name="property_type" id="property_type" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 80%;border: 0;">
-
-                                        <option value="Rent">Rental</option>
-
-                                </select>
-
-                            </div>
-
-                        </div>
-
-                        <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-12" style="display: inline-block;float: left;">
-
-                            <label style="float: left;">BEDROOMS</label>
-
-                            <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;border-right: 0;margin: auto;background: white;">
-
-                                <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-bed" aria-hidden="true"></i></div>
-
-                                <input type="number" step="1" max="" placeholder="No. of Bedroom(s)" name="bedrooms" required  @if(isset($bedrooms)) value="{{$bedrooms}}" @else value="1" @endif class="quantity-field" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
-                                <input type="button" value="+" class="button-plus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d7d7d7;margin-top: -0.1px;">
-                                <input type="button" value="-" class="button-minus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;margin-top: -0.1px;">
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-12" style="display: inline-block;float: left;">
-
-                            <label style="float: left;">Area <small>(m2)</small></label>
-
-                            <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;border-right: 0;margin: auto;background: white;">
-
-                                <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-crop-alt" aria-hidden="true"></i></div>
-
-                                <input type="number" @if(isset($area)) value="{{$area}}" @else value="" @endif name="area" placeholder="Area" required class="quantity-field" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
-                                <input type="button" value="+" class="button-plus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d7d7d7;margin-top: -0.1px;">
-                                <input type="button" value="-" class="button-minus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;margin-top: -0.1px;">
-
-                            </div>
-
-                        </div>
-
-                        <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-12" style="display: inline-block;float: left;">
-
-                            <label style="float: left;">Rent Per Month <small>(€)</small></label>
-
-                            <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;border-right: 0;margin: auto;background: white;">
-
-                                <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-tag" aria-hidden="true"></i></div>
-
-                                <input type="number" @if(isset($rent)) value="{{$rent}}" @else value="" @endif name="rent" placeholder="Rent Per Month" required class="quantity-field" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
-                                <input type="button" value="+" class="button-plus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d7d7d7;margin-top: -0.1px;">
-                                <input type="button" value="-" class="button-minus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;margin-top: -0.1px;">
-
-                            </div>
-
-                        </div>
+                        </form>
 
                     </div>
-
-                    <div id="wrapper_2" class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="padding: 0;">
-
-                        <h3 class="col-lg-10 col-md-10 col-sm-10 col-xs-12" style="margin-bottom: 30px;float: right;text-align: center;color: white;display: inline-block;background: linear-gradient(to right, #494949 0, #434343 100%);padding: 10px;border: 1px solid #d5d5d5;font-weight: 600;font-size: 20px;">You are looking for?</h3>
-
-                        <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-12" style="display: inline-block;float: right;">
-
-                            <label style="float: left;">Where do you want to live?</label>
-
-                            <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto;background: white;">
-
-                                <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-map-marker-alt" aria-hidden="true"></i></div>
-
-                                <input type="text" id="preferred-address-input" autocomplete="off" required placeholder="Enter Address" name="preferred_address" @if(isset($preferred_address)) value="{{$preferred_address}}" @endif style="border: 0;margin: 0;float: left;width: 80%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control map-input">
-                                <input type="hidden" name="preferred_address_latitude" id="preferred-address-latitude" @if(isset($preferred_address_latitude)) value="{{$preferred_address_latitude}}" @endif />
-                                <input type="hidden" name="preferred_address_longitude" id="preferred-address-longitude" @if(isset($preferred_address_longitude)) value="{{$preferred_address_longitude}}" @endif  />
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-12" style="display: inline-block;float: right;">
-
-                            <label style="float: left;">Within Radius of?</label>
-
-                            <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto;background: white;">
-
-                                <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-arrows-alt-h" aria-hidden="true"></i></div>
-
-                                <select name="preferred_radius" id="preferred_radius" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 80%;border: 0;">
-
-                                    @if(isset($preferred_radius))
-
-                                        <option @if($preferred_radius == 0) selected @endif value="0">0 KM</option>
-                                        <option @if($preferred_radius == 1) selected @endif value="1">1 KM</option>
-                                        <option @if($preferred_radius == 2) selected @endif value="2">2 KM</option>
-                                        <option @if($preferred_radius == 5) selected @endif value="5">5 KM</option>
-                                        <option @if($preferred_radius == 10) selected @endif value="10">10 KM</option>
-                                        <option @if($preferred_radius == 15) selected @endif value="15">15 KM</option>
-                                        <option @if($preferred_radius == 30) selected @endif value="30">30 KM</option>
-                                        <option @if($preferred_radius == 50) selected @endif value="50">50 KM</option>
-                                        <option @if($preferred_radius == 100) selected @endif value="100">100 KM</option>
-
-                                    @else
-
-                                        <option value="0">0 KM</option>
-                                        <option value="1">1 KM</option>
-                                        <option value="2">2 KM</option>
-                                        <option value="5">5 KM</option>
-                                        <option value="10">10 KM</option>
-                                        <option value="15">15 KM</option>
-                                        <option value="30">30 KM</option>
-                                        <option value="50">50 KM</option>
-                                        <option value="100">100 KM</option>
-
-                                    @endif
-
-                                </select>
-
-                            </div>
-
-                        </div>
-
-                        <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-12" style="display: inline-block;float: right;">
-
-                            <label style="float: left;">What type of home are you looking for?</label>
-
-                            <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto;background: white;">
-
-                                <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-home" aria-hidden="true"></i></div>
-
-                                <select name="preferred_house_kind" id="preferred_house_kind" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 80%;border: 0;">
-
-                                    @foreach($types as $type)
-
-                                        @if(isset($preferred_house_kind))
-
-                                            <option @if($preferred_house_kind == $type->id) selected @endif value="{{$type->id}}">{{$type->types}}</option>
-
-                                        @else
-
-                                            <option value="{{$type->id}}">{{$type->types}}</option>
-
-                                        @endif
-
-
-                                    @endforeach
-
-                                </select>
-
-                            </div>
-
-                        </div>
-
-                        <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-12" style="display: inline-block;float: right;">
-
-                            <label style="float: left;">Type of Property</label>
-
-                            <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto;background: white;">
-
-                                <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-home" aria-hidden="true"></i></div>
-
-                                <select name="preferred_property_type" id="preferred_property_type" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 80%;border: 0;">
-
-                                    <option value="Rent">Rental</option>
-
-                                </select>
-
-                            </div>
-
-                        </div>
-
-                        <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-12" style="display: inline-block;float: right;">
-
-                            <label style="float: left;">Minimum Bedrooms</label>
-
-                            <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;border-right: 0;margin: auto;background: white;">
-
-                                <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-bed" aria-hidden="true"></i></div>
-
-                                <input type="number" step="1" max="" placeholder="No. of Bedroom(s)" name="preferred_bedrooms" required @if(isset($preferred_bedrooms)) value="{{$preferred_bedrooms}}" @else value="1" @endif class="quantity-field" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
-                                <input type="button" value="+" class="button-plus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d7d7d7;margin-top: -0.1px;">
-                                <input type="button" value="-" class="button-minus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;margin-top: -0.1px;">
-
-                            </div>
-
-                        </div>
-
-                        <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-12" style="display: inline-block;float: right;">
-
-                            <label style="float: left;">Minimum Area <small>(m2)</small></label>
-
-                            <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;border-right: 0;margin: auto;background: white;">
-
-                                <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-crop-alt" aria-hidden="true"></i></div>
-
-                                <input type="number" name="preferred_area" @if(isset($preferred_area)) value="{{$preferred_area}}" @else value="" @endif placeholder="Area" required class="quantity-field" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
-                                <input type="button" value="+" class="button-plus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d7d7d7;margin-top: -0.1px;">
-                                <input type="button" value="-" class="button-minus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;margin-top: -0.1px;">
-
-                            </div>
-
-                        </div>
-
-                        <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-12" style="display: inline-block;float: right;">
-
-                            <label style="float: left;">Maximum Rent Per Month <small>(€)</small></label>
-
-                            <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;border-right: 0;margin: auto;background: white;">
-
-                                <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-tag" aria-hidden="true"></i></div>
-
-                                <input type="number" name="preferred_rent" @if(isset($preferred_rent)) value="{{$preferred_rent}}" @else value="" @endif placeholder="Maximum Rent" required class="quantity-field" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
-                                <input type="button" value="+" class="button-plus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d7d7d7;margin-top: -0.1px;">
-                                <input type="button" value="-" class="button-minus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;margin-top: -0.1px;">
-
-                            </div>
-
-                        </div>
-
-                        <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-12" style="display: inline-block;float: right;">
-
-                            <a style="padding: 0;margin: 0px;text-align: left;color: #2a2929;">
-
-                                <input name="media" @if(isset($media)) @if($media == 1) checked @endif @endif value="1" type="checkbox" id="media" style="position: relative;top: 2px;display: block;height: 0px;">
-
-                                <label class="bg" for="media" style="margin: 0;">
-
-                                    <span class="search-span" style="position: relative;top: 3px;font-size: 14px;color: #4b4848;">Only show me homes with photos or videos</span>
-
-                                </label>
-
-
-                            </a>
-
-                        </div>
-
-                    </div>
-
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="text-align: center;margin-top: 20px;">
-                        <button type="submit" class="btn btn-success" style="font-size: 20px;outline: none;"><i class="fas fa-search" style="margin-right: 5px;font-size: 17px;" aria-hidden="true"></i> Search</button>
-                    </div>
-
-                    <input type="hidden" value="newest" name="filter" id="filter_orderby">
-
 
                 </div>
 
-            </form>
+
+                <link href="{{ URL::asset('assets/css/style.css') }}" rel="stylesheet">
 
                 <style>
+
+                    a:hover, a:focus
+                    {
+                        color: hsl(73, 46%, 55%);
+                    }
+
+                    label
+                    {
+                        font-size: 11px;
+                    }
+
+                    .cd-faq__item
+                    {
+                        background: #fafafa;
+                        /*box-shadow: 0px 0px 18px -8px rgb(196 196 196);*/
+                        border: 1px solid #efefef;
+                        margin-bottom: 10px;
+                    }
+
+                    .cd-faq__trigger
+                    {
+                        font-size: 16px;
+                    }
+
+                    .cd-faq__content .text-component
+                    {
+                        font-size: 1.0rem;
+                    }
+
+                    .cd-faq__content p
+                    {
+                        color: hsl(0deg 0% 35%);
+                    }
+
+                    .btn:not(:disabled):not(.disabled)
+                    {
+                        cursor: pointer;
+                    }
 
                     [type="checkbox"]:not(:checked),
                     [type="checkbox"]:checked {
@@ -539,6 +634,9 @@
                 </style>
 
                 <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+
+                <script src="{{ URL::asset('assets/js/util.js') }}"></script>
+                <script src="{{ URL::asset('assets/js/main.js') }}"></script>
 
                 <script>
 

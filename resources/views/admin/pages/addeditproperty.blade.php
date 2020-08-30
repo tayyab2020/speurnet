@@ -218,7 +218,7 @@
 
                                                     <input type="radio" name="property_purpose"  @if($property->property_purpose=='Sale') checked="checked" @endif  value="Sale">
 
-                                                    <img src="{{ URL::asset('assets/img/sale.png') }}" style="width: 65%;">
+                                                    <img src="{{ URL::asset('assets/img/sale.png') }}" style="width: 100%;">
 
                                                     <span>For Sale</span>
 
@@ -233,7 +233,7 @@
 
                                                 <label style="min-width: 100%;min-height: 147px;">
 
-                                                    <img src="{{ URL::asset('assets/img/rent.png') }}"  style="width: 65%;">
+                                                    <img src="{{ URL::asset('assets/img/rent.png') }}"  style="width: 100%;">
 
                                                     <input type="radio" name="property_purpose" @if($property->property_purpose=='Rent') checked="checked" @endif value="Rent">
 
@@ -255,7 +255,7 @@
 
                                                     <input type="radio" name="property_purpose" @if(old('property_purpose') == 'Sale') checked="checked" @elseif(old('property_purpose') == '') checked="checked"  @endif  value="Sale">
 
-                                                    <img src="{{ URL::asset('assets/img/sale.png') }}" style="width: 65%;">
+                                                    <img src="{{ URL::asset('assets/img/sale.png') }}" style="width: 100%;">
 
                                                     <span>For Sale</span>
 
@@ -270,7 +270,7 @@
 
                                                 <label style="min-width: 100%;min-height: 147px;">
 
-                                                    <img src="{{ URL::asset('assets/img/rent.png') }}"  style="width: 65%;">
+                                                    <img src="{{ URL::asset('assets/img/rent.png') }}"  style="width: 100%;">
 
                                                     <input type="radio" name="property_purpose" @if(old('property_purpose') == 'Rent') checked="checked"  @endif value="Rent">
 
@@ -538,7 +538,6 @@
                                 </div>
 
                                     @endif
-
 
 
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;margin-top: 30px;">

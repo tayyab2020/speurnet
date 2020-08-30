@@ -1097,7 +1097,7 @@
 
                           <div class="row" style="margin: 40px 0px;">
 
-                                      <img src="{{ URL::asset('assets/img/travel-time-logo.png') }}" style="width: 250px;display: block;" />
+                                      <img src="{{ URL::asset('assets/img/travel-time-logo.png') }}" style="width: 110px;display: block;" />
 
                                       <p style="font-size: 19px;font-weight: 600;margin-top: 30px;">See how long it takes you to travel from this house to for example your work or family.</p>
 
