@@ -445,8 +445,15 @@
                     .cd-faq__trigger
                     {
                         font-size: 16px;
+                        font-weight: 300;
+                        margin: 0;
+                        padding: var(--space-sm) var(--space-lg) var(--space-sm) var(--space-sm);
                     }
 
+                    .cd-faq__items{position:static;height:auto;width:auto;-ms-flex-positive:1;flex-grow:1;overflow:visible;-webkit-transform:translateX(0);-ms-transform:translateX(0);transform:translateX(0);padding:0 0 0 0.75em;padding:0 0 0 var(--space-sm);background:transparent}
+
+                    .cd-faq{position:relative;box-shadow:none;display:-ms-flexbox;display:flex}.cd-faq::before{content:'desktop'}
+                                                                                               
                     .cd-faq__content .text-component
                     {
                         font-size: 1.0rem;
