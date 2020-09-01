@@ -51,6 +51,12 @@ Route::group(['middleware' => 'App\Http\Middleware\UserTypeMiddleware'], functio
         Route::get('testimonials/addtestimonial/{id}', 'TestimonialsController@edittestimonial');
         Route::get('testimonials/delete/{id}', 'TestimonialsController@delete');
 
+        Route::get('faqs', 'DashboardController@faq');
+        Route::get('faqs/addfaq', 'DashboardController@addeditfaq');
+        Route::post('faqs/addfaq', 'DashboardController@addnew');
+        Route::get('faqs/addfaq/{id}', 'DashboardController@editfaq');
+        Route::get('faqs/delete/{id}', 'DashboardController@delete');
+
         Route::get('blogs', 'BlogsController@blogslist')->name('blogs');
         Route::get('blogs/addblog', 'BlogsController@addeditblogs')->name('add-blog');
         Route::post('blogs/addblog', 'BlogsController@addnew')->name('post-blog');

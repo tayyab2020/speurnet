@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\City;
+use App\faqs;
 use App\Home_Exchange;
 use App\New_Constructions;
 use App\User;
@@ -460,9 +461,11 @@ class PropertiesController extends Controller
     {
         $types = Types::orderBy('types')->get();
 
+        $faqs = faqs::orderBy('id', 'desc')->take(5)->get();
+
         $recent = Home_Exchange::where('home_exchange',1)->orderBy('id', 'desc')->take(5)->get();
 
-        return view('pages.home_exchange',compact('types','recent'));
+        return view('pages.home_exchange',compact('types','recent','faqs'));
     }
 
     public function HomeExchangeSearch(Request $request)

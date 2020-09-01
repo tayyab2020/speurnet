@@ -32,6 +32,8 @@
 
                		<li class="{{classActivePath('dashboard')}}"><a href="{{ URL::to('admin/dashboard') }}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
 
+                    <li class="{{classActivePath('faqs')}}"><a href="{{ URL::to('admin/faqs') }}"><i class="fa fa-question"></i> FAQ's</a></li>
+
 	                <li class="{{classActivePath('types')}}"><a href="{{ URL::to('admin/types') }}"><i class="fa fa-tags"></i>Property Types</a></li>
 
 	                <li class="{{classActivePath('properties')}}"><a href="{{ URL::to('admin/properties') }}"><i class="md md-pin-drop"></i>Properties</a></li>

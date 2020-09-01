@@ -44,41 +44,21 @@
                             <div class="cd-faq__items" style="padding: 0;">
 
                                 <ul id="basics" class="cd-faq__group" style="padding: 0;">
-                                    <li class="cd-faq__item">
-                                        <a class="cd-faq__trigger" href="#0"><span>How do I change my password?</span></a>
-                                        <div class="cd-faq__content">
-                                            <div class="text-component">
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae quidem blanditiis delectus corporis, possimus officia sint sequi ex tenetur id impedit est pariatur iure animi non a ratione reiciendis nihil sed consequatur atque repellendus fugit perspiciatis rerum et. Dolorum consequuntur fugit deleniti, soluta fuga nobis. Ducimus blanditiis velit sit iste delectus obcaecati debitis omnis, assumenda accusamus cumque perferendis eos aut quidem! Aut, totam rerum, cupiditate quae aperiam voluptas rem inventore quas, ex maxime culpa nam soluta labore at amet nihil laborum? Explicabo numquam, sit fugit, voluptatem autem atque quis quam voluptate fugiat earum rem hic, reprehenderit quaerat tempore at. Aperiam.</p>
-                                            </div>
-                                        </div> <!-- cd-faq__content -->
-                                    </li>
 
-                                    <li class="cd-faq__item">
-                                        <a class="cd-faq__trigger" href="#0"><span>How do I sign up?</span></a>
-                                        <div class="cd-faq__content">
-                                            <div class="text-component">
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi cupiditate et laudantium esse adipisci consequatur modi possimus accusantium vero atque excepturi nobis in doloremque repudiandae soluta non minus dolore voluptatem enim reiciendis officia voluptates, fuga ullam? Voluptas reiciendis cumque molestiae unde numquam similique quas doloremque non, perferendis doloribus necessitatibus itaque dolorem quam officia atque perspiciatis dolore laudantium dolor voluptatem eligendi? Aliquam nulla unde voluptatum molestiae, eos fugit ullam, consequuntur, saepe voluptas quaerat deleniti. Repellendus magni sint temporibus, accusantium rem commodi?</p>
-                                            </div>
-                                        </div> <!-- cd-faq__content -->
-                                    </li>
+                                    @foreach($faqs as $key)
 
-                                    <li class="cd-faq__item">
-                                        <a class="cd-faq__trigger" href="#0"><span>Can I remove a post?</span></a>
-                                        <div class="cd-faq__content">
-                                            <div class="text-component">
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis provident officiis, reprehenderit numquam. Praesentium veritatis eos tenetur magni debitis inventore fugit, magnam, reiciendis, saepe obcaecati ex vero quaerat distinctio velit.</p>
-                                            </div>
-                                        </div> <!-- cd-faq__content -->
-                                    </li>
+                                        <li class="cd-faq__item">
+                                            <a class="cd-faq__trigger" href="#0"><span>{{$key->question}}</span></a>
+                                            <div class="cd-faq__content">
+                                                <div class="text-component">
+                                                    <p>{!! $key->answer !!}</p>
+                                                </div>
+                                            </div> <!-- cd-faq__content -->
+                                        </li>
 
-                                    <li class="cd-faq__item">
-                                        <a class="cd-faq__trigger" href="#0"><span>How do reviews work?</span></a>
-                                        <div class="cd-faq__content">
-                                            <div class="text-component">
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis provident officiis, reprehenderit numquam. Praesentium veritatis eos tenetur magni debitis inventore fugit, magnam, reiciendis, saepe obcaecati ex vero quaerat distinctio velit.</p>
-                                            </div>
-                                        </div> <!-- cd-faq__content -->
-                                    </li>
+                                    @endforeach
+
+
                                 </ul> <!-- cd-faq__group -->
 
                             </div> <!-- cd-faq__items -->
@@ -434,14 +414,14 @@
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="padding: 0;display: flex;flex-direction: row;">
 
                                     <div style="background: url(<?php echo URL::asset('assets/img/photograph.png') ?>);background-color: #48cfad;min-width: 45px;height: 40px;background-size: 50% 50%;background-repeat: no-repeat;background-position: center;border-radius: 8px;float: left;"></div>
-                                    <small style="text-overflow: ellipsis;display: block;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;float: left;font-weight: 600;padding-left: 10px;white-space: nowrap;"><i style="color: #9b9b9b;margin-right: 5px;" class="fas fa-map-marker-alt" aria-hidden="true"></i> {{$temp->address}} <br> <span style="font-weight: 500;">€ {{$temp->rent_per_month}}</span> <br> <?php foreach($types as $type) { if($temp->property_type == $type->id){ echo $type->types; }} ?></small>
+                                    <small style="text-overflow: ellipsis;display: block;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;float: left;font-weight: 600;padding-left: 10px;white-space: nowrap;"><i style="color: #9b9b9b;margin-right: 5px;" class="fas fa-map-marker-alt" aria-hidden="true"></i> <a class="res-title" href="{{URL::to('home-exchange/'.$temp->property_slug)}}">{{$temp->address}}</a> <br> <span style="font-weight: 500;">€ {{$temp->rent_per_month}}</span> <br> <?php foreach($types as $type) { if($temp->property_type == $type->id){ echo $type->types; }} ?></small>
 
                                 </div>
 
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="padding: 0;padding-left: 10px;display: flex;flex-direction: row;">
 
                                     <div style="background: url(<?php echo URL::asset('assets/img/exchange.png') ?>);background-color: #48514f;min-width: 41px;height: 40px;background-size: 50% 50%;background-repeat: no-repeat;background-position: center;border-radius: 100%;float: left;"></div>
-                                    <small style="text-overflow: ellipsis;display: block;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;float: left;font-weight: 600;padding-left: 10px;white-space: nowrap;"><i style="color: #9b9b9b;margin-right: 5px;" class="fas fa-map-marker-alt" aria-hidden="true"></i> {{$temp->preferred_place}} <br> <span style="font-weight: 500;">€ {{$temp->preferred_rent_max}}</span> <br> <?php foreach($types as $type) { if($temp->preferred_kind == $type->id){ echo $type->types; }} ?></small>
+                                    <small style="text-overflow: ellipsis;display: block;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;float: left;font-weight: 600;padding-left: 10px;white-space: nowrap;"><i style="color: #9b9b9b;margin-right: 5px;" class="fas fa-map-marker-alt" aria-hidden="true"></i> <a class="res-title" href="{{URL::to('home-exchange/'.$temp->property_slug)}}">{{$temp->preferred_place}}</a> <br> <span style="font-weight: 500;">€ {{$temp->preferred_rent_max}}</span> <br> <?php foreach($types as $type) { if($temp->preferred_kind == $type->id){ echo $type->types; }} ?></small>
 
                                 </div>
 
