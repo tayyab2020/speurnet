@@ -460,12 +460,13 @@ class PropertiesController extends Controller
     {
         $types = Types::orderBy('types')->get();
 
-        return view('pages.home_exchange',compact('types'));
+        $recent = Home_Exchange::where('home_exchange',1)->orderBy('id', 'desc')->take(5)->get();
+
+        return view('pages.home_exchange',compact('types','recent'));
     }
 
     public function HomeExchangeSearch(Request $request)
     {
-
 
         $types = Types::orderBy('types')->get();
 
@@ -533,7 +534,7 @@ class PropertiesController extends Controller
 
         if($preferred_address && $preferred_address_latitude && $preferred_address_longitude) {
 
-            if ($preferred_radius != 0) {
+            if($preferred_radius != 0) {
 
                 foreach ($properties->get() as $key) {
 
@@ -567,6 +568,7 @@ class PropertiesController extends Controller
                 $properties = $properties->leftjoin('cities','cities.id','=','properties.city_id')->where(function($query) use($preferred_address) {
                     $query->where('cities.city_name', 'like', '%' . $preferred_address . '%')->orWhere('properties.address', 'like', '%' . $preferred_address . '%');
                 })->get();
+
 
             }
 
@@ -697,6 +699,8 @@ class PropertiesController extends Controller
                     }
 
                 }
+
+
 
         return view('pages.home_exchange',compact('house_kind','property_type','address','address_latitude','address_longitude','bedrooms','area','rent','preferred_house_kind','preferred_address','preferred_address_latitude','preferred_address_longitude','preferred_radius','preferred_bedrooms','preferred_area','preferred_rent','properties','types','media','filter'));
 

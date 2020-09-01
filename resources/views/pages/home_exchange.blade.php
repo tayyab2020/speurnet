@@ -32,7 +32,9 @@
 
             <div class="row mobile-row">
 
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" style="margin-top: 65px;">
+                @if(!isset($properties))
+
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" style="margin-top: 60px;">
 
                     <div style="background: white;padding: 20px;border-radius: 10px;box-shadow: 1px 1px 14px 2px #e7e7e7;">
 
@@ -419,6 +421,44 @@
 
                 </div>
 
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" style="margin-top: 60px;">
+
+                    <div style="background: white;padding: 20px 10px 0px 10px;border-radius: 10px;box-shadow: 1px 1px 14px 2px #e7e7e7;">
+
+                        <h2 style="margin-bottom: 30px;color: #303030;text-align: center;margin-top: 0px;">Recent Ads</h2>
+
+                        @foreach($recent as $temp)
+
+                            <div class="row" style="margin: 0;border-bottom:1px solid #e5e5e5;margin-bottom: 20px;">
+
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="padding: 0;display: flex;flex-direction: row;">
+
+                                    <div style="background: url(<?php echo URL::asset('assets/img/photograph.png') ?>);background-color: #48cfad;min-width: 45px;height: 40px;background-size: 50% 50%;background-repeat: no-repeat;background-position: center;border-radius: 8px;float: left;"></div>
+                                    <small style="text-overflow: ellipsis;display: block;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;float: left;font-weight: 600;padding-left: 10px;white-space: nowrap;"><i style="color: #9b9b9b;margin-right: 5px;" class="fas fa-map-marker-alt" aria-hidden="true"></i> {{$temp->address}} <br> <span style="font-weight: 500;">€ {{$temp->rent_per_month}}</span> <br> <?php foreach($types as $type) { if($temp->property_type == $type->id){ echo $type->types; }} ?></small>
+
+                                </div>
+
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="padding: 0;padding-left: 10px;display: flex;flex-direction: row;">
+
+                                    <div style="background: url(<?php echo URL::asset('assets/img/exchange.png') ?>);background-color: #48514f;min-width: 41px;height: 40px;background-size: 50% 50%;background-repeat: no-repeat;background-position: center;border-radius: 100%;float: left;"></div>
+                                    <small style="text-overflow: ellipsis;display: block;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;float: left;font-weight: 600;padding-left: 10px;white-space: nowrap;"><i style="color: #9b9b9b;margin-right: 5px;" class="fas fa-map-marker-alt" aria-hidden="true"></i> {{$temp->preferred_place}} <br> <span style="font-weight: 500;">€ {{$temp->preferred_rent_max}}</span> <br> <?php foreach($types as $type) { if($temp->preferred_kind == $type->id){ echo $type->types; }} ?></small>
+
+                                </div>
+
+                                <div class="row" style="margin: 0;display: inline-block;width: 100%;">
+                                    <small style="float: left;font-weight: 600;padding-left: 10px;padding-top: 20px;"> Posted on 06 June, 2020</small>
+                                </div>
+
+                            </div>
+
+                        @endforeach
+
+
+                    </div>
+
+                </div>
+
+                @endif
 
                 <link href="{{ URL::asset('assets/css/style.css') }}" rel="stylesheet">
 
@@ -444,7 +484,7 @@
 
                     .cd-faq__trigger
                     {
-                        font-size: 16px;
+                        font-size: 12px;
                         font-weight: 300;
                         margin: 0;
                         padding: var(--space-sm) var(--space-lg) var(--space-sm) var(--space-sm);
@@ -453,7 +493,7 @@
                     .cd-faq__items{position:static;height:auto;width:auto;-ms-flex-positive:1;flex-grow:1;overflow:visible;-webkit-transform:translateX(0);-ms-transform:translateX(0);transform:translateX(0);padding:0 0 0 0.75em;padding:0 0 0 var(--space-sm);background:transparent}
 
                     .cd-faq{position:relative;box-shadow:none;display:-ms-flexbox;display:flex}.cd-faq::before{content:'desktop'}
-                                                                                               
+
                     .cd-faq__content .text-component
                     {
                         font-size: 1.0rem;
@@ -853,7 +893,7 @@
 
                     @if(count($properties) >= 1)
 
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;">
+                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9" style="padding: 0;margin: auto;float: none;display: table;">
 
                     <!-- begin:article -->
                     <div class="properties-ordering-wrapper" style="box-shadow: 5px 7px 8px -7px #868686;background: linear-gradient(to right, #494949 0, #434343 100%);color: white;border: 0;">

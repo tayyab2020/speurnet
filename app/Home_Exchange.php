@@ -32,20 +32,6 @@ class Home_Exchange extends Model
 
         $query->where("area" ,'>=', $preferred_area);
 
-        $query->where("rent_per_month" ,'<=', $preferred_rent);
-
-        $query->where("preferred_kind", "$house_kind");
-
-        $query->where("preferred_bedrooms", '<=', $bedrooms);
-
-        $query->where("preferred_area" ,'<=', $area);
-
-        $query->where("preferred_rent_max" ,'>=', $rent);
-
-        if($media)
-        {
-            $query->where("featured_image",'!=',NULL)->orWhere('property_images1','!=',NULL)->orWhere('property_images2','!=',NULL)->orWhere('property_images3','!=',NULL)->orWhere('property_images4','!=',NULL)->orWhere('property_images5','!=',NULL)->orWhere('video','!=',NULL);
-        }
 
         return $query;
     }
