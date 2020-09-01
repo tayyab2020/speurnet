@@ -34,7 +34,7 @@
 
                 @if(!isset($properties))
 
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" style="margin-top: 60px;">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 faq" style="margin-top: 60px;">
 
                     <div style="background: white;padding: 20px;border-radius: 10px;box-shadow: 1px 1px 14px 2px #e7e7e7;">
 
@@ -414,14 +414,14 @@
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="padding: 0;display: flex;flex-direction: row;">
 
                                     <div style="background: url(<?php echo URL::asset('assets/img/photograph.png') ?>);background-color: #48cfad;min-width: 45px;height: 40px;background-size: 50% 50%;background-repeat: no-repeat;background-position: center;border-radius: 8px;float: left;"></div>
-                                    <small style="text-overflow: ellipsis;display: block;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;float: left;font-weight: 600;padding-left: 10px;white-space: nowrap;"><i style="color: #9b9b9b;margin-right: 5px;" class="fas fa-map-marker-alt" aria-hidden="true"></i> <a class="res-title" href="{{URL::to('home-exchange/'.$temp->property_slug)}}">{{$temp->address}}</a> <br> <span style="font-weight: 500;">€ {{$temp->rent_per_month}}</span> <br> <?php foreach($types as $type) { if($temp->property_type == $type->id){ echo $type->types; }} ?></small>
+                                    <small style="text-overflow: ellipsis;display: block;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;float: left;font-weight: 600;padding-left: 10px;white-space: nowrap;"><i style="color: #9b9b9b;margin-right: 5px;" class="fas fa-map-marker-alt" aria-hidden="true"></i> <a style="color: black;" href="{{URL::to('home-exchange/'.$temp->property_slug)}}">{{$temp->address}}</a> <br> <span style="font-weight: 500;">€ {{$temp->rent_per_month}}</span> <br> <?php foreach($types as $type) { if($temp->property_type == $type->id){ echo $type->types; }} ?></small>
 
                                 </div>
 
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="padding: 0;padding-left: 10px;display: flex;flex-direction: row;">
 
                                     <div style="background: url(<?php echo URL::asset('assets/img/exchange.png') ?>);background-color: #48514f;min-width: 41px;height: 40px;background-size: 50% 50%;background-repeat: no-repeat;background-position: center;border-radius: 100%;float: left;"></div>
-                                    <small style="text-overflow: ellipsis;display: block;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;float: left;font-weight: 600;padding-left: 10px;white-space: nowrap;"><i style="color: #9b9b9b;margin-right: 5px;" class="fas fa-map-marker-alt" aria-hidden="true"></i> <a class="res-title" href="{{URL::to('home-exchange/'.$temp->property_slug)}}">{{$temp->preferred_place}}</a> <br> <span style="font-weight: 500;">€ {{$temp->preferred_rent_max}}</span> <br> <?php foreach($types as $type) { if($temp->preferred_kind == $type->id){ echo $type->types; }} ?></small>
+                                    <small style="text-overflow: ellipsis;display: block;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;float: left;font-weight: 600;padding-left: 10px;white-space: nowrap;"><i style="color: #9b9b9b;margin-right: 5px;" class="fas fa-map-marker-alt" aria-hidden="true"></i> <a style="color: black;" href="{{URL::to('home-exchange/'.$temp->property_slug)}}">{{$temp->preferred_place}}</a> <br> <span style="font-weight: 500;">€ {{$temp->preferred_rent_max}}</span> <br> <?php foreach($types as $type) { if($temp->preferred_kind == $type->id){ echo $type->types; }} ?></small>
 
                                 </div>
 
@@ -869,47 +869,23 @@
 
                 </script>
 
-                @if(isset($properties))
-
-                    @if(count($properties) >= 1)
-
-                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9" style="padding: 0;margin: auto;float: none;display: table;">
-
-                    <!-- begin:article -->
-                    <div class="properties-ordering-wrapper" style="box-shadow: 5px 7px 8px -7px #868686;background: linear-gradient(to right, #494949 0, #434343 100%);color: white;border: 0;">
-                        <div class="results-count">
-                            Showing <?php $count = count($properties); echo $count; if($count > 1) { echo " results"; } else{ echo " result"; } ?></div>
-
-                        <div class="properties-ordering">
-
-                                            <div class="label" style="color: white;">Sort by:</div>
-
-                                            <select name="filter_orderby" id="filter" class="orderby" data-placeholder="Sort by" tabindex="-1" aria-hidden="true">
-
-                                                <option @if(isset($filter)) @if($filter == "newest") selected @endif @endif value="newest">Newest</option>
-                                                <option @if(isset($filter)) @if($filter == "oldest") selected @endif @endif value="oldest">Oldest</option>
-                                                <option @if(isset($filter)) @if($filter == "bedrooms") selected @endif @endif value="bedrooms">Bedrooms</option>
-                                                <option @if(isset($filter)) @if($filter == "popularity") selected @endif @endif value="popularity">Popularity</option>
-                                                <option @if(isset($filter)) @if($filter == "lowest_rent_price") selected @endif @endif value="lowest_rent_price">Lowest Rent</option>
-                                                <option @if(isset($filter)) @if($filter == "highest_rent_price") selected @endif @endif value="highest_rent_price">Highest Rent</option>
-                                                <option @if(isset($filter)) @if($filter == "lowest_area") selected @endif @endif value="lowest_area">Lowest Area</option>
-                                                <option @if(isset($filter)) @if($filter == "highest_area") selected @endif @endif value="highest_area">Highest Area</option>
-
-                                            </select>
-
-                        </div></div>
-
-
-                    <!-- begin:product -->
-
                     <style>
-
 
                         @media (max-width: 992px)
                         {
+
                             .res-img
                             {
                                 display: none;
+                            }
+                        }
+
+                        @media (max-width: 767px)
+                        {
+                            .faq
+                            {
+                                margin-top: 0 !important;
+                                margin-bottom: 20px;
                             }
                         }
 
@@ -981,6 +957,40 @@
                         }
 
                     </style>
+
+                @if(isset($properties))
+
+                    @if(count($properties) >= 1)
+
+                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9" style="padding: 0;margin: auto;float: none;display: table;">
+
+                    <!-- begin:article -->
+                    <div class="properties-ordering-wrapper" style="box-shadow: 5px 7px 8px -7px #868686;background: linear-gradient(to right, #494949 0, #434343 100%);color: white;border: 0;">
+                        <div class="results-count">
+                            Showing <?php $count = count($properties); echo $count; if($count > 1) { echo " results"; } else{ echo " result"; } ?></div>
+
+                        <div class="properties-ordering">
+
+                                            <div class="label" style="color: white;">Sort by:</div>
+
+                                            <select name="filter_orderby" id="filter" class="orderby" data-placeholder="Sort by" tabindex="-1" aria-hidden="true">
+
+                                                <option @if(isset($filter)) @if($filter == "newest") selected @endif @endif value="newest">Newest</option>
+                                                <option @if(isset($filter)) @if($filter == "oldest") selected @endif @endif value="oldest">Oldest</option>
+                                                <option @if(isset($filter)) @if($filter == "bedrooms") selected @endif @endif value="bedrooms">Bedrooms</option>
+                                                <option @if(isset($filter)) @if($filter == "popularity") selected @endif @endif value="popularity">Popularity</option>
+                                                <option @if(isset($filter)) @if($filter == "lowest_rent_price") selected @endif @endif value="lowest_rent_price">Lowest Rent</option>
+                                                <option @if(isset($filter)) @if($filter == "highest_rent_price") selected @endif @endif value="highest_rent_price">Highest Rent</option>
+                                                <option @if(isset($filter)) @if($filter == "lowest_area") selected @endif @endif value="lowest_area">Lowest Area</option>
+                                                <option @if(isset($filter)) @if($filter == "highest_area") selected @endif @endif value="highest_area">Highest Area</option>
+
+                                            </select>
+
+                        </div></div>
+
+
+                    <!-- begin:product -->
+
 
                         <div class="row" style="margin: 0;">
 
@@ -1277,7 +1287,13 @@
                         </div>
                         <!-- end:article -->
 
+                        @else
+
+                            <h1 style="text-align: center;color: #5f5f5f;">No Properties Found...</h1>
+
                     @endif
+
+
                     @endif
 
                 </div>
