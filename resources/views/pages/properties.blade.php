@@ -126,11 +126,11 @@
 
                         @if(Route::currentRouteName() == 'newconstructions-front')
 
-                            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-11 res-box" style="margin-bottom: 0px;">
+                            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-11 res-box">
 
                             @else
 
-                            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-11 res-box" style="margin-bottom: 0px;min-height: 510px;">
+                            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-11 res-box" style="min-height: 510px;">
 
                             @endif
 
@@ -142,7 +142,7 @@
 
                                     @else
 
-                                        <div class="property-price" style="background: transparent;min-height: 28px;position:relative;max-width: 100%;font-size: 11px;padding: 3px 0px;margin-bottom: 6px;border-radius: 5px;"></div>
+                                        <div class="property-price res-open" style="background: transparent;min-height: 28px;position:relative;max-width: 100%;font-size: 11px;padding: 3px 0px;margin-bottom: 6px;border-radius: 5px;"></div>
 
                                     @endif
                      @endif
@@ -585,6 +585,13 @@
              margin: auto;
              display: table;
              float: none !important;
+             margin-bottom: 20px;
+             min-height: auto !important;
+         }
+
+         .res-open
+         {
+             display: none;
          }
 
      }
