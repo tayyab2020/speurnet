@@ -126,7 +126,7 @@
 
                         @if(Route::currentRouteName() == 'newconstructions-front')
 
-                            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-11 res-box">
+                            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-11 res-box" style="margin-bottom: 20px;">
 
                             @else
 
