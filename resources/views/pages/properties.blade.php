@@ -126,11 +126,11 @@
 
                         @if(Route::currentRouteName() == 'newconstructions-front')
 
-                            <div class="col-md-6 col-sm-6 col-xs-12" style="margin-bottom: 40px;min-height: 410px;">
+                            <div class="col-md-5 col-sm-5 col-xs-10 res-box" style="margin-bottom: 40px;">
 
                             @else
 
-                            <div class="col-md-6 col-sm-6 col-xs-12" style="margin-bottom: 40px;min-height: 610px;">
+                            <div class="col-md-5 col-sm-5 col-xs-10 res-box" style="margin-bottom: 20px;min-height: 500px;<?php if($i%2 != 0){ echo "float:right";} ?>">
 
                             @endif
 
@@ -147,7 +147,7 @@
                                     @endif
                      @endif
 
-            <div class="property-container" style="border: 1px solid #48cfad;margin-bottom: 10px">
+                                <div class="property-container" style="border: 1px solid #48cfad;margin-bottom: 10px">
 
                 <div class="property-image">
 
@@ -161,7 +161,7 @@
 
                     @endif
 
-                <img src="{{ URL::asset('upload/properties/'.$property->featured_image.'-b.jpg') }}" alt="{{ $property->property_name }}">
+                            <img src="{{ URL::asset('upload/properties/'.$property->featured_image.'-b.jpg') }}" alt="{{ $property->property_name }}">
 
                         </a>
 
@@ -417,17 +417,15 @@
 
                                               @endif
 
-
-
                                   @else
 
                                           @if($ext == 'pdf')
 
-                                              <a data-gallery="floor-images{{$i}}" href=" {{ URL::asset('upload/properties/'.$property->basement) }} " style="color: white;" data-toggle="lightbox"> <img style="width: 20px;margin-right: 10px;position: relative;bottom: 2px;" src="{{ URL::asset('assets/img/blueprint.png') }}" > </a>
+                                              <a data-gallery="floor-images{{$i}}" href=" {{ URL::asset('upload/properties/'.$property->basement) }} " style="color: white;" data-toggle="lightbox"> <img style="width: 20px;margin-right: 10px;position: relative;bottom: 2px;" src="{{ URL::asset('assets/img/blueprint.png') }}"> </a>
 
                                               @else
 
-                                              <a data-gallery="floor-images{{$i}}" href="{{ URL::asset('upload/properties/'.$property->basement) }}" style="color: white;" data-toggle="lightbox"> <img style="width: 20px;margin-right: 10px;position: relative;bottom: 2px;" src="{{ URL::asset('assets/img/blueprint.png') }}" > </a>
+                                              <a data-gallery="floor-images{{$i}}" href="{{ URL::asset('upload/properties/'.$property->basement) }}" style="color: white;" data-toggle="lightbox"> <img style="width: 20px;margin-right: 10px;position: relative;bottom: 2px;" src="{{ URL::asset('assets/img/blueprint.png') }}"> </a>
 
                                               @endif
 
@@ -504,20 +502,20 @@
 
                 @if(Route::currentRouteName() != 'newconstructions-front')
 
-                <div class="property-content" style="border-top:1px solid #cacaca;display: flex;padding: 0;height: 125px;align-items: center;">
+                <div class="property-content" style="border-top:1px solid #cacaca;display: flex;padding: 0;height: 70px;align-items: center;">
 
-                <div style="width: 40%;padding-left: 3px;">
+                <div style="width: 50%;padding-left: 3px;">
                     <span style="font-weight: 700;color: #aca6a6;">Brought to you by</span>
                 </div>
 
-                <div style="width: 60%;height: 100%;padding: 8px;padding-bottom: 2px;">
+                <div style="width: 50%;height: 100%;padding: 5px;">
 
                     <a style="outline: none;" href="{{URL::to('agents/details/'.$property->user_id)}}">
 
                     @if($property->image_icon)
-                    <img style="width: 100%;height: 100%;" src="{{ URL::asset('upload/members/'.$property->image_icon.'-b.jpg') }}">
+                    <img style="width: 60%;height: 100%;float: right;" src="{{ URL::asset('upload/members/'.$property->image_icon.'-b.jpg') }}">
                     @else
-                    <img style="width: 100%;height: 100%;" src="{{ URL::asset('assets/img/team03.jpg') }}" >
+                    <img style="width: 60%;height: 100%;float: right;" src="{{ URL::asset('assets/img/team03.jpg') }}" >
                     @endif
 
                     </a>
@@ -529,6 +527,7 @@
                     @endif
 
             </div>
+
                                 @if(Route::currentRouteName() != 'newconstructions-front')
 
                                     @if($property->listed)
@@ -570,6 +569,17 @@
  <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/css/flaticon.css') }}"/>
 
  <style>
+
+     @media (max-width: 767px){
+
+         .res-box
+         {
+             margin: auto;
+             display: table;
+             float: none !important;
+         }
+
+     }
 
      @media (max-width: 991px){
 
@@ -681,7 +691,7 @@
 
      .property-image
      {
-         height: 265px;
+         height: 200px;
      }
 
      .property-image img
