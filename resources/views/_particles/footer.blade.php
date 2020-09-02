@@ -68,7 +68,16 @@
                               <div class="row1">
                                   <div class="large-4 columns popupImage">
 
-                                      <img src="{{ URL::asset('upload/properties/'.$previous->featured_image.'-b.jpg') }}" alt="{{$previous->property_name}}">
+                                      @if($previous->featured_image)
+
+                                          <img src="{{ URL::asset('upload/properties/'.$previous->featured_image.'-b.jpg') }}" alt="{{$previous->property_name}}">
+
+                                      @else
+
+                                          <img src="{{ URL::asset('upload/noFeatured.jpg') }}" alt="{{$previous->property_name}}">
+
+                                      @endif
+
 
                                       <div class="large-10 columns nopad ftTop">
                                           <h6 class="unitPrice" style="text-align: left;margin-top: 0;">€ @if($previous->sale_price){{$previous->sale_price}} @else{{$previous->rent_price}} @endif</h6>
@@ -130,7 +139,15 @@
                               <div class="row1">
                                   <div class="large-4 columns popupImage">
 
-                                      <img src="{{ URL::asset('upload/properties/'.$next->featured_image.'-b.jpg') }}" alt="{{$next->property_name}}">
+                                      @if($next->featured_image)
+
+                                          <img src="{{ URL::asset('upload/properties/'.$next->featured_image.'-b.jpg') }}" alt="{{$next->property_name}}">
+
+                                      @else
+
+                                          <img src="{{ URL::asset('upload/noFeatured.jpg') }}" alt="{{$next->property_name}}">
+
+                                      @endif
 
                                       <div class="large-10 columns nopad ftTop">
                                           <h6 class="unitPrice" style="text-align: left;margin-top: 0;">€ @if($next->sale_price){{$next->sale_price}} @else{{$next->rent_price}} @endif</h6>
@@ -151,12 +168,28 @@
                       </div>
                   </div>
 
+                          @if($property->new_construction == 0 && $property->home_exchange == 0)
 
-              <a href="{{URL::to('properties/'.$next->property_slug)}}" class="btn btn-primary footer-button next-property" style="left: auto;right: 0px;margin-left: 0px;">
-                  <i class="fa fa-angle-right" aria-hidden="true" style="margin-right: 10px;"></i>
-                  <span>Next House</span>
+                              <a href="{{URL::to('properties/'.$next->property_slug)}}" class="btn btn-primary footer-button next-property" style="left: auto;right: 0px;margin-left: 0px;">
+                                  <i class="fa fa-angle-right" aria-hidden="true" style="margin-right: 10px;"></i>
+                                  <span>Next House</span>
+                              </a>
 
-              </a>
+                          @elseif($property->new_construction == 1)
+
+                              <a href="{{URL::to('new-constructions/'.$next->property_slug)}}" class="btn btn-primary footer-button next-property" style="left: auto;right: 0px;margin-left: 0px;">
+                                  <i class="fa fa-angle-right" aria-hidden="true" style="margin-right: 10px;"></i>
+                                  <span>Next House</span>
+                              </a>
+
+                          @else
+
+                              <a href="{{URL::to('home-exchange/'.$next->property_slug)}}" class="btn btn-primary footer-button next-property" style="left: auto;right: 0px;margin-left: 0px;">
+                                  <i class="fa fa-angle-right" aria-hidden="true" style="margin-right: 10px;"></i>
+                                  <span>Next House</span>
+                              </a>
+
+                          @endif
 
                   @endif
 

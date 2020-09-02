@@ -131,8 +131,6 @@
 
                               @endif
 
-
-
                             <div class="item active">
                                 @if($property->featured_image)
                               <img src="{{ URL::asset('upload/properties/'.$property->featured_image.'-b.jpg') }}" alt="">
@@ -171,8 +169,6 @@
                               <img src="{{ URL::asset('upload/properties/'.$property->property_images5.'-b.jpg') }}" alt="">
                             </div>
                             @endif
-
-
 
                           </div>
 
