@@ -758,7 +758,7 @@
 
                                     <tr>
                                         <td><strong>Rent</strong></td>
-                                        <td>{{getcong('currency_sign')}} {{$property->rent_per_month}}</sup> </td>
+                                        <td>€ {{number_format($property->rent_per_month, 0, ',', '.')}}</sup> </td>
                                     </tr>
 
 

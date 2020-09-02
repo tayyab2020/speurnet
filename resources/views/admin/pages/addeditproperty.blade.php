@@ -1363,7 +1363,7 @@
 
                                     @if(Route::currentRouteName() != 'addhomeexchange')
 
-                                        @if(Route::currentRouteName() == 'addhomeexchange')
+                                        @if(Route::currentRouteName() == 'addproperty')
 
                                             @if(old('property_purpose') == 'Sale')
 
