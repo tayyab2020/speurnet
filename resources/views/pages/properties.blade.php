@@ -130,7 +130,7 @@
 
                             @else
 
-                            <div class="col-md-4 col-sm-6 col-xs-11 res-box" style="margin-bottom: 0px;min-height: 500px;">
+                            <div class="col-md-4 col-sm-6 col-xs-11 res-box" style="margin-bottom: 0px;min-height: 510px;">
 
                             @endif
 
