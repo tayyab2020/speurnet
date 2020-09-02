@@ -65,7 +65,7 @@
                 </style>
 
           <!-- begin:article -->
-              <div class="properties-ordering-wrapper">
+              <div class="properties-ordering-wrapper" style="margin-bottom: 40px;">
 
                   <div class="results-count">Showing <span class="first">@if($properties->firstItem() != $properties->lastItem()) {{$properties->firstItem()}}</span> – <span class="last">{{$properties->lastItem()}}</span> of {{$properties->total()}} results @else {{$properties->firstItem()}}</span> of {{$properties->total()}} results @endif</div>
 
@@ -126,11 +126,11 @@
 
                         @if(Route::currentRouteName() == 'newconstructions-front')
 
-                            <div class="col-md-5 col-sm-5 col-xs-10 res-box" style="margin-bottom: 40px;">
+                            <div class="col-md-4 col-sm-6 col-xs-11 res-box" style="margin-bottom: 0px;">
 
                             @else
 
-                            <div class="col-md-5 col-sm-5 col-xs-10 res-box" style="margin-bottom: 20px;min-height: 500px;<?php if($i%2 != 0){ echo "float:right";} ?>">
+                            <div class="col-md-4 col-sm-6 col-xs-11 res-box" style="margin-bottom: 0px;min-height: 500px;">
 
                             @endif
 
@@ -138,11 +138,11 @@
 
                                     @if($property->open_date)
 
-                                        <div class="property-price" style="min-height: 28px;position:relative;max-width: 100%;font-size: 15px;padding: 3px 0px;margin-bottom: 6px;border-radius: 5px;"><span>Open House {{$property->open_date}} {{$property->open_timeFrom}} to {{$property->open_timeTo}}</span></div>
+                                        <div class="property-price" style="min-height: 28px;position:relative;max-width: 100%;font-size: 11px;padding: 3px 0px;margin-bottom: 6px;border-radius: 5px;"><span>Open House {{$property->open_date}} {{$property->open_timeFrom}} to {{$property->open_timeTo}}</span></div>
 
                                     @else
 
-                                        <div class="property-price" style="background: transparent;min-height: 28px;position:relative;max-width: 100%;font-size: 15px;padding: 3px 0px;margin-bottom: 6px;border-radius: 5px;"></div>
+                                        <div class="property-price" style="background: transparent;min-height: 28px;position:relative;max-width: 100%;font-size: 11px;padding: 3px 0px;margin-bottom: 6px;border-radius: 5px;"></div>
 
                                     @endif
                      @endif
@@ -497,12 +497,12 @@
                       @endif
 
                   <p>{{$property->bedrooms}} @if($property->bedrooms == 1) room  @else rooms @endif - {{$property->area}}</p>
-                  <b>@if($property->sale_price) € {{$property->sale_price}} @elseif($property->rent_price) € {{$property->rent_price}} @endif</b>
+                  <b>@if($property->sale_price) € {{number_format($property->sale_price, 0, ',', '.')}} k.k. @elseif($property->rent_price) € {{$property->rent_price}} @endif</b>
               </div>
 
                 @if(Route::currentRouteName() != 'newconstructions-front')
 
-                <div class="property-content" style="border-top:1px solid #cacaca;display: flex;padding: 0;height: 70px;align-items: center;">
+                <div class="property-content" style="border-top:1px solid #cacaca;display: flex;padding: 0;height: 85px;align-items: center;">
 
                 <div style="width: 50%;padding-left: 3px;">
                     <span style="font-weight: 700;color: #aca6a6;">Brought to you by</span>
@@ -513,9 +513,9 @@
                     <a style="outline: none;" href="{{URL::to('agents/details/'.$property->user_id)}}">
 
                     @if($property->image_icon)
-                    <img style="width: 60%;height: 100%;float: right;" src="{{ URL::asset('upload/members/'.$property->image_icon.'-b.jpg') }}">
+                    <img style="width: 95%;height: 100%;float: right;" src="{{ URL::asset('upload/members/'.$property->image_icon.'-b.jpg') }}">
                     @else
-                    <img style="width: 60%;height: 100%;float: right;" src="{{ URL::asset('assets/img/team03.jpg') }}" >
+                    <img style="width: 95%;height: 100%;float: right;" src="{{ URL::asset('assets/img/team03.jpg') }}" >
                     @endif
 
                     </a>
@@ -569,6 +569,14 @@
  <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/css/flaticon.css') }}"/>
 
  <style>
+
+     @media (min-width: 1200px)
+     {
+         .container
+         {
+             width: 80%;
+         }
+     }
 
      @media (max-width: 767px){
 

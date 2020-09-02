@@ -93,10 +93,11 @@
                                 <div class="col-md-4 col-sm-12 col-xs-12">
 
                                     <div style="min-height: 55px;display: flex;">
+
                                         @if($property->open_date)
-                                            <div class="property-price" style="min-height: 28px;position:relative;max-width: 100%;font-size: 15px;padding: 3px 5px;margin: auto 0;width: 100%;border-radius: 5px;"><span>Open House {{$property->open_date}} {{$property->open_timeFrom}} to {{$property->open_timeTo}}</span></div>
+                                            <div class="property-price" style="min-height: 28px;position:relative;max-width: 100%;font-size: 11px;padding: 3px 5px;margin: auto 0;width: 100%;border-radius: 5px;"><span>Open House {{$property->open_date}} {{$property->open_timeFrom}} to {{$property->open_timeTo}}</span></div>
                                         @else
-                                            <div class="property-price" style="background: transparent;min-height: 28px;position:relative;max-width: 100%;font-size: 15px;padding: 3px 5px;margin: auto 0;width: 100%;border-radius: 5px;"></div>
+                                            <div class="property-price" style="background: transparent;min-height: 28px;position:relative;max-width: 100%;font-size: 11px;padding: 3px 5px;margin: auto 0;width: 100%;border-radius: 5px;"></div>
                                         @endif
 
                                     </div>
@@ -419,20 +420,20 @@
                                             <b>@if($property->sale_price) € {{$property->sale_price}} @elseif($property->rent_price) € {{$property->rent_price}} @endif</b>
                                         </div>
 
-                                        <div class="property-content" style="border-top:1px solid #cacaca;display: flex;padding: 0;height: 125px;align-items: center;">
+                                        <div class="property-content" style="border-top:1px solid #cacaca;display: flex;padding: 0;height: 70px;align-items: center;">
 
-                                            <div style="width: 40%;padding-left: 3px;">
+                                            <div style="width: 50%;padding-left: 3px;">
                                                 <span style="font-weight: 700;color: #aca6a6;">Brought to you by</span>
                                             </div>
 
-                                            <div style="width: 60%;height: 100%;padding: 8px;padding-bottom: 2px;">
+                                            <div style="width: 50%;height: 100%;padding: 5px;">
 
                                                 <a style="outline: none;" href="{{URL::to('agents/details/'.$property->user_id)}}">
 
                                                 @if($property->image_icon)
-                                                    <img style="width: 75%;height: 95%;float: right;" src="{{ URL::asset('upload/members/'.$property->image_icon.'-b.jpg') }}">
+                                                    <img style="width: 50%;height: 100%;float: right;" src="{{ URL::asset('upload/members/'.$property->image_icon.'-b.jpg') }}">
                                                 @else
-                                                    <img style="width: 75%;height: 95%;float: right;" src="{{ URL::asset('assets/img/team03.jpg') }}" >
+                                                    <img style="width: 50%;height: 100%;float: right;" src="{{ URL::asset('assets/img/team03.jpg') }}" >
                                                 @endif
 
                                                 </a>
@@ -820,7 +821,7 @@
     $('.latestProperties').slick({
         dots: false,
         arrows: true,
-        slidesToShow: 3,
+        slidesToShow: 4,
         slidesToScroll: 1,
         responsive: [
             {
