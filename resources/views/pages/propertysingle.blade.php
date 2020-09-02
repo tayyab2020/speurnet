@@ -72,15 +72,7 @@
             @endif
 
           <!-- begin:article -->
-            @if($property->new_construction == 1 || $property->home_exchange == 1)
-
-                <div class="col-md-9 main-content">
-
-                @else
-
-                <div class="col-md-7 main-content">
-
-                @endif
+            <div class="col-md-7 main-content">
 
             <div class="row">
               <div class="col-md-12 single-post">
