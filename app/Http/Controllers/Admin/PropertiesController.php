@@ -846,16 +846,33 @@ class PropertiesController extends MainAdminController
 
         if($request->route != 'home_exchange')
         {
-            if($request->property_purpose == "Sale" || $request->kind_of_type == "For Sale")
+            if($request->route == 'property')
             {
-                $rent_price = 0;
-                $sale_price = $request->sale_price;
+                if($request->property_purpose == "Sale")
+                {
+                    $rent_price = 0;
+                    $sale_price = $request->sale_price;
+                }
+                else
+                {
+                    $sale_price = 0;
+                    $rent_price = $request->rent_price;
+                }
             }
-            else
+            elseif($request->route == 'construction')
             {
-                $sale_price = 0;
-                $rent_price = $request->rent_price;
+                if($request->kind_of_type == "For Sale")
+                {
+                    $rent_price = 0;
+                    $sale_price = $request->sale_price;
+                }
+                else
+                {
+                    $sale_price = 0;
+                    $rent_price = $request->rent_price;
+                }
             }
+
         }
         else
         {
