@@ -136,14 +136,9 @@
                     <label>Wheelchair friendly home for people with walking difficulties</label>
 
                     <p style="margin-top: 10px;">
-                        <input type="radio" id="wh1" name="wheelchair" value="1" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') @if($wheelchair == 1) checked @endif @endif>
-                        <label for="wh1">Yes</label>
+                        <label style="cursor: pointer;"><input style="margin-right: 5px;" type="checkbox" id="wh1" name="wheelchair" value="1" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') @if($wheelchair == 1) checked @endif @endif> Yes</label>
                     </p>
 
-                    <p>
-                        <input type="radio" id="wh2" name="wheelchair" value="0" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') @if($wheelchair == 0) checked @endif @else checked @endif>
-                        <label for="wh2">No</label>
-                    </p>
 
                 </div>
 
@@ -492,14 +487,9 @@
                             <label>Wheelchair friendly home for people with walking difficulties</label>
 
                             <p style="margin-top: 10px;">
-                                <input type="radio" id="wh1" name="wheelchair" value="1" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') @if($wheelchair == 1) checked @endif @endif>
-                                <label for="wh1">Yes</label>
+                                <label style="cursor: pointer"><input style="margin-right: 5px;" type="checkbox" id="wh1" name="wheelchair" value="1" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') @if($wheelchair == 1) checked @endif @endif> Yes</label>
                             </p>
 
-                            <p>
-                                <input type="radio" id="wh2" name="wheelchair" value="0" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') @if($wheelchair == 0) checked @endif @else checked @endif>
-                                <label for="wh2">No</label>
-                            </p>
 
                         </div>
 
@@ -594,7 +584,7 @@
         left: -9999px;
     }
     [type="radio"]:checked + label,
-    [type="radio"]:not(:checked) + label
+    [type="radio"]:not(:checked) + label,
     {
         position: relative;
         padding-left: 22px;

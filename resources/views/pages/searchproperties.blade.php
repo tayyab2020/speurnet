@@ -125,11 +125,6 @@
 
                                   </a>
 
-                                          <div class="property-price">
-                                              <h4>{{ getPropertyTypeName($property->property_type)->types }}</h4>
-                                              <span>{{getcong('currency_sign')}}@if($property->sale_price) {{$property->sale_price}} @else {{$property->rent_price}} @endif</span>
-                                          </div>
-
                                           <div class="property-status">
                                               @if(Route::currentRouteName() != 'searchnewconstructions')
                                                   <span>For {{$property->property_purpose}}</span>
@@ -147,11 +142,17 @@
                                   <div class="property-content">
                                       @if(Route::currentRouteName() != 'searchnewconstructions')
 
-                                          <h3><a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;" href="{{URL::to('properties/'.$property->property_slug)}}">{{ Str::limit($property->property_name,35) }}</a> <small style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;">{{ Str::limit($property->address,40) }}</small></h3>
+                                          <h3><a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;" href="{{URL::to('properties/'.$property->property_slug)}}">{{ Str::limit($property->property_name,35) }}</a> <small style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;">{{ Str::limit($property->address,40) }}</small>
+                                              <small style="margin-top: 20px;font-weight: 600;">{{ getPropertyTypeName($property->property_type)->types }}</small>
+                                              <small>€@if($property->sale_price) {{number_format($property->sale_price, 0, ',', '.')}} k.k. @else {{number_format($property->rent_price, 0, ',', '.')}} @endif</small>
+                                          </h3>
 
                                           @else
 
-                                          <h3><a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;" href="{{URL::to('new-constructions/'.$property->property_slug)}}">{{ Str::limit($property->property_name,35) }}</a> <small style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;">{{ Str::limit($property->address,40) }}</small></h3>
+                                          <h3><a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;" href="{{URL::to('new-constructions/'.$property->property_slug)}}">{{ Str::limit($property->property_name,35) }}</a> <small style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;">{{ Str::limit($property->address,40) }}</small>
+                                              <small style="margin-top: 20px;font-weight: 600;">{{ getPropertyTypeName($property->property_type)->types }}</small>
+                                              <small>€@if($property->sale_price) {{number_format($property->sale_price, 0, ',', '.')}} k.k. @else {{number_format($property->rent_price, 0, ',', '.')}} @endif</small>
+                                          </h3>
 
                                           @endif
                                   </div>

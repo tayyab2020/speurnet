@@ -77,10 +77,10 @@
             <div class="row">
               <div class="col-md-12 single-post">
                 <ul id="myTab" class="nav nav-tabs nav-justified">
-                  <li class="property-tab active"><a href="#detail" style="outline: none;" id="left-tab" data-toggle="tab"><i class="fa fa-university"></i> Property Detail</a></li>
+                  <li class="property-tab active"><a href="#detail" style="outline: none;" id="left-tab" data-toggle="tab"><i style="margin-right: 5px;" class="fas fa-house-user"></i> Property Detail</a></li>
 
                     @if($property->new_construction != 1)
-                    <li class="contact-tab"><a href="#location" style="outline: none;" id="right-tab" data-toggle="tab"><i class="fa fa-paper-plane-o"></i> Contact</a></li>
+                    <li class="contact-tab"><a href="#location" style="outline: none;" id="right-tab" data-toggle="tab"><i style="margin-right: 5px;" class="far fa-comment-dots"></i> Contact</a></li>
                         @endif
                 </ul>
 
@@ -768,7 +768,7 @@
 
                                 <tr>
                                     <td><strong>Price</strong> <img src="{{ URL::asset('assets/img/tag.png') }}" style="width: 18px;float: right;" /></td>
-                                    <td>{{getcong('currency_sign')}}@if($property->sale_price) {{$property->sale_price}} @else {{$property->rent_price}} @endif</td>
+                                    <td>€@if($property->sale_price) {{number_format($property->sale_price, 0, ',', '.')}} k.k. @else {{number_format($property->rent_price, 0, ',', '.')}} @endif</td>
                                 </tr>
 
                                 @if($property->new_construction != 1)

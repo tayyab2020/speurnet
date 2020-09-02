@@ -1230,6 +1230,7 @@ class PropertiesController extends Controller
 
 	    $inputs = $request->all();
 
+
 	    if($request->wheelchair)
         {
             $wheelchair = 1;
