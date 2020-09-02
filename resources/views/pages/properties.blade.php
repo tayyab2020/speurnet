@@ -37,7 +37,7 @@
 
     <!-- begin:content -->
     <div id="content">
-      <div class="container">
+      <div class="container container1">
 
         <div class="row mobile-row">
             <div class="col-md-9 col-md-push-3 main-content">
@@ -126,11 +126,11 @@
 
                         @if(Route::currentRouteName() == 'newconstructions-front')
 
-                            <div class="col-md-4 col-sm-6 col-xs-11 res-box" style="margin-bottom: 0px;">
+                            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-11 res-box" style="margin-bottom: 0px;">
 
                             @else
 
-                            <div class="col-md-4 col-sm-6 col-xs-11 res-box" style="margin-bottom: 0px;min-height: 510px;">
+                            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-11 res-box" style="margin-bottom: 0px;min-height: 510px;">
 
                             @endif
 
@@ -572,9 +572,9 @@
 
      @media (min-width: 1200px)
      {
-         .container
+         .container1
          {
-             width: 80%;
+             width: 90%;
          }
      }
 
