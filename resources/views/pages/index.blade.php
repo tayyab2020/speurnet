@@ -94,9 +94,9 @@
 
                                     <div style="min-height: 55px;display: flex;">
                                         @if($property->open_date)
-                                            <div class="property-price" style="min-height: 28px;position:relative;max-width: 100%;font-size: 15px;padding: 3px 5px;margin: auto 0;width: 100%;border-radius: 5px;"><span>Open House {{$property->open_date}} {{$property->open_timeFrom}} to {{$property->open_timeTo}}</span></div>
+                                            <div class="property-price" style="min-height: 28px;position:relative;max-width: 100%;font-size: 11px;padding: 3px 5px;margin: auto 0;width: 100%;border-radius: 5px;"><span>Open House {{$property->open_date}} {{$property->open_timeFrom}} to {{$property->open_timeTo}}</span></div>
                                         @else
-                                            <div class="property-price" style="background: transparent;min-height: 28px;position:relative;max-width: 100%;font-size: 15px;padding: 3px 5px;margin: auto 0;width: 100%;border-radius: 5px;"></div>
+                                            <div class="property-price" style="background: transparent;min-height: 28px;position:relative;max-width: 100%;font-size: 11px;padding: 3px 5px;margin: auto 0;width: 100%;border-radius: 5px;"></div>
                                         @endif
 
                                     </div>
@@ -413,13 +413,19 @@
                                           <span><i class="fa fa-male"></i> {{$property->bathrooms}}</span>
                                         </div>--}}
 
-                                        <div class="property-content" style="height: 133px;">
-                                            <h3 style="margin-bottom: 5px;margin-top: 3px;"><a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;" href="{{URL::to('properties/'.$property->property_slug)}}">{{ Str::limit($property->property_name,35) }}</a> <small style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;">{{ Str::limit($property->address,40) }}</small></h3>
-                                            <p>{{$property->bedrooms}} @if($property->bedrooms == 1) room  @else rooms @endif - {{$property->area}}</p>
-                                            <b>@if($property->sale_price) € {{$property->sale_price}} @elseif($property->rent_price) € {{$property->rent_price}} @endif</b>
+                                        <div class="property-content">
+                                            <h3 style="margin-bottom: 5px;margin-top: 3px;">
+
+                                                <div style="display: inline-block;width: 100%;">
+                                                    <a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;width: 70%;float: left;" href="{{URL::to('properties/'.$property->property_slug)}}">{{ Str::limit($property->property_name,35) }}</a>
+                                                    <small style="margin-top: 5px;float: right;width: 30%;font-weight: 600;text-align: right;">@if($property->sale_price) € {{number_format($property->sale_price, 0, ',', '.')}} k.k. @elseif($property->rent_price) € {{$property->rent_price}} @endif</small>
+                                                </div>
+
+                                                <small style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;">{{ Str::limit($property->address,40) }}</small></h3>
+                                            <p style="margin: 0;">{{$property->bedrooms}} @if($property->bedrooms == 1) room  @else rooms @endif - {{$property->area}}</p>
                                         </div>
 
-                                        <div class="property-content" style="border-top:1px solid #cacaca;display: flex;padding: 0;height: 125px;align-items: center;">
+                                        <div class="property-content" style="border-top:1px solid #cacaca;display: flex;padding: 0;height: 85px;align-items: center;">
 
                                             <div style="width: 40%;padding-left: 3px;">
                                                 <span style="font-weight: 700;color: #aca6a6;">Brought to you by</span>
@@ -430,9 +436,9 @@
                                                 <a style="outline: none;" href="{{URL::to('agents/details/'.$property->user_id)}}">
 
                                                 @if($property->image_icon)
-                                                    <img style="width: 75%;height: 95%;float: right;" src="{{ URL::asset('upload/members/'.$property->image_icon.'-b.jpg') }}">
+                                                    <img style="width: 55%;height: 95%;float: right;" src="{{ URL::asset('upload/members/'.$property->image_icon.'-b.jpg') }}">
                                                 @else
-                                                    <img style="width: 75%;height: 95%;float: right;" src="{{ URL::asset('assets/img/team03.jpg') }}" >
+                                                    <img style="width: 55%;height: 95%;float: right;" src="{{ URL::asset('assets/img/team03.jpg') }}" >
                                                 @endif
 
                                                 </a>
@@ -648,7 +654,7 @@
 
     .latest
     {
-        height: 190px;
+        height: 210px;
     }
 
     .latest img
