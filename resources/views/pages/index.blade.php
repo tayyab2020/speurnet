@@ -492,10 +492,6 @@
 
                                 </a>
 
-                                <div class="property-price">
-                                    <h4>{{ getPropertyTypeName($temp->property_type)->types }}</h4>
-                                    <span>{{getcong('currency_sign')}}@if($temp->sale_price) {{$temp->sale_price}} @else {{$temp->rent_price}} @endif</span>
-                                </div>
 
                                 <div class="property-status">
                                     <span>For {{$temp->property_purpose}}</span>
@@ -509,7 +505,9 @@
                             </div>
 
                             <div class="property-content">
-                                <h3><a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;" href="{{URL::to('properties/'.$temp->property_slug)}}">{{ Str::limit($temp->property_name,35) }}</a> <small style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;">{{ Str::limit($temp->address,40) }}</small></h3>
+                                <h3 style="margin: 10px 0px;"><a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;" href="{{URL::to('properties/'.$temp->property_slug)}}">{{ Str::limit($temp->property_name,35) }}</a> <small style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;">{{ Str::limit($temp->address,40) }}</small></h3>
+                                <small style="margin-top: 20px;font-weight: 600;">{{ getPropertyTypeName($property->property_type)->types }}</small>
+                                <small style="float: right;">€@if($property->sale_price) {{number_format($property->sale_price, 0, ',', '.')}} k.k. @else {{number_format($property->rent_price, 0, ',', '.')}} @endif</small>
                             </div>
 
                         </div>
