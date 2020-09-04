@@ -2721,6 +2721,25 @@
 
     <style>
 
+        .bootstrap-datetimepicker-widget table td .glyphicon
+        {
+            color: #474747;
+        }
+
+        .bootstrap-datetimepicker-widget .timepicker-hour, .bootstrap-datetimepicker-widget .timepicker-minute
+        {
+            background: white;
+        }
+
+        .bootstrap-datetimepicker-widget.dropdown-menu.top:after
+        {
+            border-top: 6px solid #48cfad;
+        }
+
+        .bootstrap-datetimepicker-widget.dropdown-menu.bottom:after
+        {
+            border-bottom: 6px solid #48cfad;
+        }
 
         .checkbox
         {
