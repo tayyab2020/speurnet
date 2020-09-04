@@ -12,10 +12,9 @@
         <div class="col-lg-5 col-md-6 col-sm-6 col-xs-12" style="padding: 0;">
 
             <div class="blog-container" style="margin-bottom: 0;display: flex;">
-                <div class="blog-content col-lg-10 col-md-11 col-sm-11 col-xs-10" style="background: #fff;margin: 40px auto;padding: 30px 45px 30px 45px;font-family: 'Roboto', sans-serif;border-radius: 8px;box-shadow: 0px 0px 7px 5px #efefef;">
-                    <div class="blog-title" style="text-align: center;padding: 0;">
-                        <h3 style="font-family: 'Roboto', sans-serif;font-weight: 600;">Register an account for free</h3>
-
+                <div class="blog-content col-lg-10 col-md-11 col-sm-11 col-xs-10" style="background: #fff;margin: 30px auto;padding: 15px 45px 15px 45px;font-family: 'Roboto', sans-serif;border-radius: 8px;box-shadow: 0px 0px 7px 5px #efefef;">
+                    <div class="blog-title" style="text-align: center;padding: 0;margin-bottom: 0;">
+                        <h4 style="font-family: 'Roboto', sans-serif;font-weight: 600;">Register an account for free</h4>
                     </div>
 
                     <div class="blog-text contact" style="padding: 0;">
@@ -46,11 +45,11 @@
                             <div class="col-md-12">
                                 {!! Form::open(array('url' => 'register','class'=>'','id'=>'registerform','role'=>'form')) !!}
 
-                                <div class="form-group" style="margin-top: 30px;">
+                                <div class="form-group" style="margin-top: 20px;">
 
                                     <label for="email">Profile Type</label>
 
-                                    <div class="bulgy-radios" role="radiogroup" aria-labelledby="bulgy-radios-label" style="width: 100%;text-align: left;min-height: 50px;">
+                                    <div class="bulgy-radios" role="radiogroup" aria-labelledby="bulgy-radios-label" style="width: 100%;text-align: left;/*min-height: 50px;*/">
 
                                         <label style="margin-left: 5px;float: left;max-width: 100px;">
                                             <input type="radio" name="usertype" class="usertype" value="Agents" checked />
@@ -69,20 +68,19 @@
 
                                 <div class="form-group">
 
-
                                     <div style="width: 100%;display: flex;border: 1px solid #d7d7d7;margin: auto;background: white;">
 
                                         <div class="icon-con" style="width:15%;float: left;text-align: center;vertical-align: middle;border-right: 1px solid #dbdbdb;display: flex;">
 
                                     <span style="width: 100%;display: flex;justify-content: center;flex-direction: column;">
 
-                                        <i class="fas fa-user res-icon" style="font-size: 20px;" aria-hidden="true"></i>
+                                        <i class="fas fa-user res-icon" style="font-size: 15px;" aria-hidden="true"></i>
 
                                     </span>
 
                                         </div>
 
-                                        <input type="text" name="name" id="name" placeholder="Enter name" style="box-shadow: none;border: 0;margin: 0;float: left;width: 85%;left: 0;height: 50px;text-align: left;" class="form-control res-inp">
+                                        <input type="text" name="name" id="name" placeholder="Enter name" style="box-shadow: none;border: 0;margin: 0;float: left;width: 85%;left: 0;height: 35px;text-align: left;" class="form-control res-inp">
 
 
                                     </div>
@@ -98,13 +96,13 @@
 
                                     <span style="width: 100%;display: flex;justify-content: center;flex-direction: column;">
 
-                                        <i class="fas fa-id-badge res-icon" style="font-size: 20px;" aria-hidden="true"></i>
+                                        <i class="fas fa-id-badge res-icon" style="font-size: 15px;" aria-hidden="true"></i>
 
                                     </span>
 
                                         </div>
 
-                                        <input type="text" name="company_name" placeholder="Enter Company name" style="box-shadow: none;border: 0;margin: 0;float: left;width: 85%;left: 0;height: 50px;text-align: left;" class="form-control res-inp">
+                                        <input type="text" name="company_name" placeholder="Enter Company name" style="box-shadow: none;border: 0;margin: 0;float: left;width: 85%;left: 0;height: 35px;text-align: left;" class="form-control res-inp">
 
 
                                     </div>
@@ -120,13 +118,13 @@
 
                                     <span style="width: 100%;display: flex;justify-content: center;flex-direction: column;">
 
-                                        <i class="far fa-envelope res-icon" style="font-size: 20px;" aria-hidden="true"></i>
+                                        <i class="far fa-envelope res-icon" style="font-size: 15px;" aria-hidden="true"></i>
 
                                     </span>
 
                                         </div>
 
-                                        <input type="email" class="form-control res-inp" name="email" id="email" placeholder="Enter email" style="box-shadow: none;border: 0;margin: 0;float: left;width: 85%;left: 0;height: 50px;text-align: left;">
+                                        <input type="email" class="form-control res-inp" name="email" id="email" placeholder="Enter email" style="box-shadow: none;border: 0;margin: 0;float: left;width: 85%;left: 0;height: 35px;text-align: left;">
 
                                     </div>
 
@@ -142,13 +140,13 @@
 
                                     <span style="width: 100%;display: flex;justify-content: center;flex-direction: column;">
 
-                                        <i class="fas fa-unlock-alt res-icon" style="font-size: 20px;" aria-hidden="true"></i>
+                                        <i class="fas fa-unlock-alt res-icon" style="font-size: 15px;" aria-hidden="true"></i>
 
                                     </span>
 
                                         </div>
 
-                                        <input type="password" class="form-control res-inp" name="password" id="password" placeholder="Enter password" style="box-shadow: none;border: 0;margin: 0;float: left;width: 85%;left: 0;height: 50px;text-align: left;">
+                                        <input type="password" class="form-control res-inp" name="password" id="password" placeholder="Enter password" style="box-shadow: none;border: 0;margin: 0;float: left;width: 85%;left: 0;height: 35px;text-align: left;">
 
                                     </div>
 
@@ -162,35 +160,13 @@
 
                                     <span style="width: 100%;display: flex;justify-content: center;flex-direction: column;">
 
-                                        <i class="fas fa-unlock-alt res-icon" style="font-size: 20px;" aria-hidden="true"></i>
+                                        <i class="fas fa-unlock-alt res-icon" style="font-size: 15px;" aria-hidden="true"></i>
 
                                     </span>
 
                                         </div>
 
-                                        <input type="password" class="form-control res-inp" name="password_confirmation" id="password_confirmation" placeholder="Confirm Password" style="box-shadow: none;border: 0;margin: 0;float: left;width: 85%;left: 0;height: 50px;text-align: left;">
-
-                                    </div>
-
-                                </div>
-
-
-                                <div class="form-group">
-
-
-                                    <div style="width: 100%;display: flex;border: 1px solid #d7d7d7;margin: auto;background: white;">
-
-                                        <div class="icon-con" style="width:15%;float: left;text-align: center;vertical-align: middle;border-right: 1px solid #dbdbdb;display: flex;">
-
-                                    <span style="width: 100%;display: flex;justify-content: center;flex-direction: column;">
-
-                                        <i class="fas fa-phone res-icon" style="font-size: 20px;" aria-hidden="true"></i>
-
-                                    </span>
-
-                                        </div>
-
-                                        <input type="text" class="form-control res-inp" name="phone" id="phone" placeholder="Enter Mobile No" style="box-shadow: none;border: 0;margin: 0;float: left;width: 85%;left: 0;height: 50px;text-align: left;">
+                                        <input type="password" class="form-control res-inp" name="password_confirmation" id="password_confirmation" placeholder="Confirm Password" style="box-shadow: none;border: 0;margin: 0;float: left;width: 85%;left: 0;height: 35px;text-align: left;">
 
                                     </div>
 
@@ -206,33 +182,53 @@
 
                                     <span style="width: 100%;display: flex;justify-content: center;flex-direction: column;">
 
-                                        <i class="fas fa-map-marker-alt res-icon" style="font-size: 20px;" aria-hidden="true"></i>
+                                        <i class="fas fa-phone res-icon" style="font-size: 15px;" aria-hidden="true"></i>
 
                                     </span>
 
                                         </div>
 
-                                        <input type="text" class="form-control res-inp" autocomplete="off" name="city" id="city-input" placeholder="Enter City" style="box-shadow: none;border: 0;margin: 0;float: left;width: 85%;left: 0;height: 50px;text-align: left;">
+                                        <input type="text" class="form-control res-inp" name="phone" id="phone" placeholder="Enter Mobile No" style="box-shadow: none;border: 0;margin: 0;float: left;width: 85%;left: 0;height: 35px;text-align: left;">
 
                                     </div>
 
                                 </div>
 
-                                <div class="form-group" style="margin: 30px 0px 30px 5px;">
 
+                                <div class="form-group">
+
+
+                                    <div style="width: 100%;display: flex;border: 1px solid #d7d7d7;margin: auto;background: white;">
+
+                                        <div class="icon-con" style="width:15%;float: left;text-align: center;vertical-align: middle;border-right: 1px solid #dbdbdb;display: flex;">
+
+                                    <span style="width: 100%;display: flex;justify-content: center;flex-direction: column;">
+
+                                        <i class="fas fa-map-marker-alt res-icon" style="font-size: 15px;" aria-hidden="true"></i>
+
+                                    </span>
+
+                                        </div>
+
+                                        <input type="text" class="form-control res-inp" autocomplete="off" name="city" id="city-input" placeholder="Enter City" style="box-shadow: none;border: 0;margin: 0;float: left;width: 85%;left: 0;height: 35px;text-align: left;">
+
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group" style="margin: 15px 0px 15px 5px;">
 
                                     <input name="terms" value="1" type="checkbox" required id="terms" style="position: relative;top: 2px;display: block;height: 0px;">
 
-
                                     <label class="bg" for="terms" style="margin: 0;font-weight: 600;">
 
-                                        <span class="search-span" style="position: relative;top: 3px;font-size: 14px;color: #575454;">I agree <a href="{{ URL::asset('assets/terms-and-conditions-template.pdf') }}" target="_blank">Terms of Services</a>&nbsp;and&nbsp;<a href="{{ URL::asset('assets/privacy_policy.pdf') }}" target="_blank">Privacy Policy</a></span>
+                                        <span class="search-span" style="position: relative;top: 2px;font-size: 11px;color: #575454;">I agree <a href="{{ URL::asset('assets/terms-and-conditions-template.pdf') }}" target="_blank">Terms of Services</a>&nbsp;and&nbsp;<a href="{{ URL::asset('assets/privacy_policy.pdf') }}" target="_blank">Privacy Policy</a></span>
 
                                     </label>
 
                                 </div>
 
-                                <div class="form-group checkbox" style="margin-top: 50px;">
+                                <div class="form-group checkbox" style="margin-top: 30px;">
 
                                     <p style="margin-left: 3px;margin-bottom: 0;">Already have account ? <a href="{{ URL::to('login') }}">Sign in here</a></p>
 
@@ -245,8 +241,8 @@
                                 </div>
 
 
-                                <div class="form-group" style="margin: 30px 0px;">
-                                    <button style="width: 100%;background-color: #3f9dca;border-color: #3f9dca;outline: none;font-size: 18px;" type="submit" name="submit" class="btn btn-warning">Sign Up</button>
+                                <div class="form-group" style="margin: 15px 0px;">
+                                    <button style="width: 100%;background-color: #3f9dca;border-color: #3f9dca;outline: none;font-size: 16px;" type="submit" name="submit" class="btn btn-warning">Sign Up</button>
                                 </div>
 
 
@@ -293,13 +289,14 @@
         }
 
         .social-button {
+            font-size: 11px;
             background-position: 25px 0px;
             box-sizing: border-box;
             color: rgb(255, 255, 255);
             cursor: pointer;
             display: inline-block;
-            height: 50px;
-            line-height: 50px;
+            height: 30px;
+            line-height: 30px;
             text-align: left;
             text-decoration: none;
             text-transform: uppercase;
@@ -318,13 +315,13 @@
         }
 
         #facebook-connect {
-            background: rgb(255, 255, 255) url('https://raw.githubusercontent.com/eswarasai/social-login/master/img/facebook.svg?sanitize=true') no-repeat scroll 5px 0px / 30px 50px padding-box border-box;
+            background: rgb(255, 255, 255) url('https://raw.githubusercontent.com/eswarasai/social-login/master/img/facebook.svg?sanitize=true') no-repeat scroll 5px 3px / 23px 25px padding-box border-box;
             border: 1px solid rgb(60, 90, 154);
         }
 
         #facebook-connect:hover {
             border-color: rgb(60, 90, 154);
-            background: rgb(60, 90, 154) url('https://raw.githubusercontent.com/eswarasai/social-login/master/img/facebook-white.svg?sanitize=true') no-repeat scroll 5px 0px / 30px 50px padding-box border-box;
+            background: rgb(60, 90, 154) url('https://raw.githubusercontent.com/eswarasai/social-login/master/img/facebook-white.svg?sanitize=true') no-repeat scroll 5px 3px / 23px 25px padding-box border-box;
             -webkit-transition: all .8s ease-out;
             -moz-transition: all .3s ease;
             -ms-transition: all .3s ease;
@@ -357,17 +354,17 @@
         }
 
         #google-connect {
-            background: rgb(255, 255, 255) url('https://i.pinimg.com/originals/39/21/6d/39216d73519bca962bd4a01f3e8f4a4b.png') no-repeat scroll 5px 0px / 30px 50px padding-box border-box;
+            background: rgb(255, 255, 255) url('https://i.pinimg.com/originals/39/21/6d/39216d73519bca962bd4a01f3e8f4a4b.png') no-repeat scroll 7px 0px / 30px 50px padding-box border-box;
             border: 1px solid #a30d0d;
-            background-size: 35px;
-            background-position-y: 7px;
+            background-size: 25px;
+            background-position-y: 2px;
         }
 
         #google-connect:hover {
             border-color: #dddddd;
-            background: #fcfcfc url('https://i.pinimg.com/originals/39/21/6d/39216d73519bca962bd4a01f3e8f4a4b.png') no-repeat scroll 5px 0px / 30px 50px padding-box border-box;
-            background-size: 35px;
-            background-position-y: 7px;
+            background: #fcfcfc url('https://i.pinimg.com/originals/39/21/6d/39216d73519bca962bd4a01f3e8f4a4b.png') no-repeat scroll 7px 0px / 30px 50px padding-box border-box;
+            background-size: 25px;
+            background-position-y: 2px;
             -webkit-transition: all .8s ease-out;
             -moz-transition: all .3s ease;
             -ms-transition: all .3s ease;
@@ -488,7 +485,7 @@
             padding-left: 20px;
             margin-bottom: 0;
             cursor: pointer;
-            font-size: 25px;
+            font-size: 18px;
             user-select: none;
             color: #555;
             letter-spacing: 1px;
@@ -584,10 +581,10 @@
         }
         .radio {
             position: absolute;
-            top: 0.2rem;
+            top: 0;
             left: 0;
-            height: 15px;
-            width: 15px;
+            height: 12px;
+            width: 12px;
             min-height: 0px;
             background: #c9ded6;
             border-radius: 50%;
@@ -596,11 +593,11 @@
             content: '';
             position: absolute;
             opacity: 0;
-            top: 4px;
-            left: 4px;
+            top: 3px;
+            left: 2.5px;
             width: 7px;
             height: 7px;
-            border-radius: 50%;
+            border-radius: 100%;
             background: #fff;
         }
         @keyframes bulge {
