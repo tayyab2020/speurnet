@@ -214,17 +214,50 @@
 
                                     @if($agent->sold_prev || $agent->rentout_prev)
 
-                                    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12" style="margin-bottom: 60px;">
+                                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 60px;">
+
                                         <h3 style="text-align: center;">Total Sold & Rentout {{$agent->prev_year}}</h3>
+
+                                        <div style="width: 100%;display: inline-block;margin-bottom: 40px;margin-top: 20px;">
+
+                                            <div style="display: flex;flex-direction: row;width: 50%;float: left;justify-content: center;">
+                                                <span style="background: rgb(255,86,68);height: 13px;width: 13px;display: block;float: left;margin-right: 9px;align-self: center;"></span>
+                                                <p style="float: left;margin: 0;">{{$agent->sold_prev}} @if($agent->sold_prev > 1) Properties Sold @else Property Sold @endif</p>
+                                            </div>
+
+                                            <div style="display: flex;flex-direction: row;width: 50%;float: left;justify-content: center;">
+                                                <span style="background: rgb(30,181,204);height: 13px;width: 13px;display: block;float: left;margin-right: 9px;align-self: center;"></span>
+                                                <p style="float: left;margin: 0;">{{$agent->rentout_prev}} @if($agent->rentout_prev > 1) Properties Rentout @else Property Rentout @endif</p>
+                                            </div>
+
+                                        </div>
+
                                     <canvas id="myChart" width="400" height="400"></canvas>
+
                                     </div>
 
                                         @endif
 
                                         @if($agent->sold_prev_prev || $agent->rentout_prev_prev)
 
-                                    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12" style="float: right;">
+                                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12" style="float: right;">
+
                                         <h3 style="text-align: center;">Total Sold & Rentout {{$agent->prev_prev_year}}</h3>
+
+                                        <div style="width: 100%;display: inline-block;margin-bottom: 40px;margin-top: 20px;">
+
+                                            <div style="display: flex;flex-direction: row;width: 50%;float: left;justify-content: center;">
+                                                <span style="background: rgb(255,86,68);height: 13px;width: 13px;display: block;float: left;margin-right: 9px;align-self: center;"></span>
+                                                <p style="float: left;margin: 0;">{{$agent->sold_prev_prev}} @if($agent->sold_prev_prev > 1) Properties Sold @else Property Sold @endif</p>
+                                            </div>
+
+                                            <div style="display: flex;flex-direction: row;width: 50%;float: left;justify-content: center;">
+                                                <span style="background: rgb(30,181,204);height: 13px;width: 13px;display: block;float: left;margin-right: 9px;align-self: center;"></span>
+                                                <p style="float: left;margin: 0;">{{$agent->rentout_prev_prev}} @if($agent->rentout_prev_prev > 1) Properties Rentout @else Property Rentout @endif</p>
+                                            </div>
+
+                                        </div>
+
                                         <canvas id="myChart1" width="400" height="400"></canvas>
                                     </div>
 
@@ -1001,8 +1034,8 @@
         @media (min-width: 768px){
             canvas{
 
-                width:300px !important;
-                height:300px !important;
+                width:250px !important;
+                height:250px !important;
                 margin: auto;
 
             }
@@ -1042,13 +1075,7 @@
                     },
                     options: {
                         responsive: true,
-                        legend: {
-                            labels: {
-                                fontSize: 15,
-                                boxWidth: 20,
-                                padding: 20
-                            },
-                        }
+                        legend: false
                     },
 
                 });
@@ -1074,13 +1101,7 @@
                     },
                     options: {
                         responsive: true,
-                        legend: {
-                            labels: {
-                                fontSize: 15,
-                                boxWidth: 20,
-                                padding: 20
-                            },
-                        }
+                        legend: false
                     },
 
                 });
