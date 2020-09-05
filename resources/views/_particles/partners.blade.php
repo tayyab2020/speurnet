@@ -3,8 +3,8 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12">
-           		
-            <div class="heading-title bg-white">
+
+            <div class="heading-title bg-white" style="margin-top: 20px;">
               <h2>Our Partnership</h2>
             </div>
           </div>
@@ -17,11 +17,11 @@
               <div class="jcarousel">
                 <ul>
                 @foreach($partners as $i => $partner)
-                
+
                   <li><a href="{{$partner->url}}" target="_blank"><img src="{{ URL::asset('upload/partners/'.$partner->partner_image.'.jpg') }}" alt="{{$partner->name}}"></a></li>
-                
-                @endforeach  
-                   
+
+                @endforeach
+
                 </ul>
               </div>
               <a href="#" class="jcarousel-control-prev"><i class="fa fa-angle-left"></i></a>

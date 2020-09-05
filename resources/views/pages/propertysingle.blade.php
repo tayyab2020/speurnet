@@ -2164,7 +2164,7 @@
 
                     <div class="row related-properties" style="display: flex;margin-top: 30px;">
                         <div class="col-lg-10 col-md-12 col-sm-12 col-xs-12" style="margin: auto;">
-                            <div id="partner" style="padding: 10px 0px;">
+                            <div id="partner" style="padding: 10px 0px;background: transparent;">
                                 <div class="container" style="width: 100%;">
                                     <div class="row">
                                         <div class="col-md-12">
@@ -2185,10 +2185,6 @@
                                                         <div class="property-container">
                                                             <div class="property-image">
                                                                 <img src="{{ URL::asset('upload/properties/'.$property->featured_image.'-s.jpg') }}" alt="{{ $property->property_name }}">
-                                                                <div class="property-price">
-                                                                    <h4>{{ getPropertyTypeName($property->property_type)->types }}</h4>
-                                                                    <span>{{getcong('currency_sign')}}@if($property->sale_price) {{$property->sale_price}} @else {{$property->rent_price}} @endif</span>
-                                                                </div>
                                                                 <div class="property-status">
                                                                     @if($property->new_construction != 1)
 
@@ -2202,12 +2198,14 @@
                                                                 </div>
                                                             </div>
                                                             <div class="property-features">
-                                                                <span><i class="fa fa-home"></i> {{$property->area}}</span>
-                                                                <span><i class="fa fa-hdd-o"></i> {{$property->bedrooms}}</span>
+                                                                <span><i class="fa fa-home"></i> {{$property->area}} <small>m2</small></span>
+                                                                <span><i class="fa fa-bed"></i> {{$property->bedrooms}}</span>
                                                                 <span><i class="fa fa-male"></i> {{$property->bathrooms}}</span>
                                                             </div>
                                                             <div class="property-content">
-                                                                <h3><a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;" href="{{URL::to('properties/'.$property->property_slug)}}">{{ Str::limit($property->property_name,35) }}</a> <small style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;">{{ Str::limit($property->address,40) }}</small></h3>
+                                                                <h3 style="margin: 10px 0px;"><a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;" href="{{URL::to('properties/'.$property->property_slug)}}">{{ Str::limit($property->property_name,35) }}</a> <small style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;">{{ Str::limit($property->address,40) }}</small></h3>
+                                                                <small style="margin-top: 20px;font-weight: 600;">{{ getPropertyTypeName($property->property_type)->types }}</small>
+                                                                <small style="float: right;">€@if($property->sale_price) {{number_format($property->sale_price, 0, ',', '.')}} k.k. @else {{number_format($property->rent_price, 0, ',', '.')}} @endif</small>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -2275,6 +2273,11 @@
 <?php $footer = 1; ?>
 
     <style>
+
+        .heading-title.bg-white h2::before
+        {
+            background: #f4f4f4;
+        }
 
         .sidebar .widget, .apus-sidebar .widget{margin:0 0 30px;padding:15px;background:#fff;border:1px solid #ebebeb;border-radius:6px;-webkit-border-radius:6px;-moz-border-radius:6px;-ms-border-radius:6px;-o-border-radius:6px}
 

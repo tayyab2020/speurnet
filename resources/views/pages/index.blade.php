@@ -420,15 +420,20 @@
                                                     <a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;" href="{{URL::to('properties/'.$property->property_slug)}}">{{ Str::limit($property->property_name,35) }}</a>
                                                 </div>
 
-                                                <small style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;width: 70%;float: left;">{{ Str::limit($property->address,40) }}</small>
-                                                <small style="margin-top: 5px;float: right;font-weight: 600;width: 30%;text-align: right;">@if($property->sale_price) € {{number_format($property->sale_price, 0, ',', '.')}} k.k. @elseif($property->rent_price) € {{$property->rent_price}} @endif</small>
+                                                <small style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;width: 50%;float: left;">{{ Str::limit($property->address,40) }}</small>
+                                                <small style="margin-top: 5px;float: right;font-weight: 600;width: 50%;text-align: right;">@if($property->sale_price) € {{number_format($property->sale_price, 0, ',', '.')}} k.k. @elseif($property->rent_price) € {{$property->rent_price}} @endif</small>
 
                                             </h3>
 
                                             <div style="display: flex;flex-direction: row;">
 
-                                                <img style="width: 20px;height: 18px;float: left;margin-right: 10px;align-self: center;" src="{{ URL::asset('assets/img/browser.png') }}"><span>{{$property->area}}</span>
-                                                <img style="width: 20px;height: 20px;float: left;margin-right: 10px;margin-left: 20px;align-self: center;" src="{{ URL::asset('assets/img/bed.png') }}"><span>{{$property->bedrooms}} @if($property->bedrooms == 1) room  @else rooms @endif</span>
+                                                <img style="width: 20px;height: 18px;float: left;margin-right: 10px;align-self: center;" src="{{ URL::asset('assets/img/browser.png') }}"><span style="font-weight: 600;">{{$property->area}} <small>m2</small></span>
+
+                                                @if($property->bedrooms >= 1)
+
+                                                    <img style="width: 20px;height: 20px;float: left;margin-right: 10px;margin-left: 20px;align-self: center;" src="{{ URL::asset('assets/img/bed.png') }}"><span style="font-weight: 600;">{{$property->bedrooms}} @if($property->bedrooms == 1) room  @else rooms @endif</span>
+
+                                                @endif
 
                                             </div>
 
@@ -436,7 +441,7 @@
 
                                         <div class="property-content" style="border-top:1px solid #cacaca;display: flex;padding: 0;height: 85px;align-items: center;">
 
-                                            <div style="width: 40%;padding-left: 3px;">
+                                            <div style="width: 40%;padding-left: 8px;">
                                                 <span style="font-weight: 700;color: #aca6a6;">Brought to you by</span>
                                             </div>
 
@@ -509,7 +514,7 @@
 
                             <div class="property-features">
                                 <span><i class="fa fa-home"></i> {{$temp->area}}</span>
-                                <span><i class="fa fa-hdd-o"></i> {{$temp->bedrooms}}</span>
+                                <span><i class="fa fa-bed"></i> {{$temp->bedrooms}}</span>
                                 <span><i class="fa fa-male"></i> {{$temp->bathrooms}}</span>
                             </div>
 
@@ -607,9 +612,9 @@
         .show-more-container{padding: 0px 120px;}
     }
 
-    @media (min-width: 1250px){
-        .latest-container{padding: 0px 95px;}
-        .show-more-container{padding: 0px 120px;}
+    @media (min-width: 1295px){
+        .latest-container{padding: 0px 120px;}
+        .show-more-container{padding: 0px 135px;}
     }
 
     .video-wrapper-inner .popup-video{position:relative;z-index:1;display:inline-block;width:50px;height:50px;line-height:50px;border-radius:50%;-webkit-border-radius:50%;-moz-border-radius:50%;-ms-border-radius:50%;-o-border-radius:50%;-webkit-transition:all 0.3s ease-in-out 0s;-o-transition:all 0.3s ease-in-out 0s;transition:all 0.3s ease-in-out 0s;font-size:18px;color:#fff;background:#dfc615;text-align:center}
@@ -764,6 +769,15 @@
     }
 
     @media (min-width: 1200px){
+
+        .slick-slide
+        {
+            padding: 0px 20px;
+        }
+
+    }
+
+    @media (min-width: 1250px){
 
         .slick-slide
         {
@@ -954,8 +968,7 @@
     <div class="container" style="width: 100%;">
         <div class="row">
             <div class="col-md-12">
-
-                <div class="heading-title bg-white">
+                <div class="heading-title bg-white" style="margin-top: 20px;">
                     <h2>Our Blogs</h2>
                 </div>
             </div>
