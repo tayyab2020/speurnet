@@ -485,20 +485,51 @@
                 <span><i class="fa fa-male"></i> {{$property->bathrooms}}</span>
               </div>--}}
 
-              <div class="property-content" style="height: 133px;">
-                  @if(Route::currentRouteName() != 'newconstructions-front')
 
-                      <h3 style="margin-bottom: 5px;margin-top: 3px;"><a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;" href="{{URL::to('properties/'.$property->property_slug)}}">{{ Str::limit($property->property_name,35) }}</a> <small style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;">{{ Str::limit($property->address,40) }}</small></h3>
+                                    <div class="property-content">
 
-                      @else
+                                        @if(Route::currentRouteName() != 'newconstructions-front')
 
-                      <h3 style="margin-bottom: 5px;margin-top: 3px;"><a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;" href="{{URL::to('new-constructions/'.$property->property_slug)}}">{{ Str::limit($property->property_name,35) }}</a> <small style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;">{{ Str::limit($property->address,40) }}</small></h3>
+                                            <h3 style="margin-bottom: 15px;margin-top: 0px;display: inline-block;width: 100%;">
 
-                      @endif
+                                                <div style="display: inline-block;width: 100%;">
+                                                    <a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;" href="{{URL::to('properties/'.$property->property_slug)}}">{{ Str::limit($property->property_name,35) }}</a>
+                                                </div>
 
-                  <p>{{$property->bedrooms}} @if($property->bedrooms == 1) room  @else rooms @endif - {{$property->area}}</p>
-                  <b>@if($property->sale_price) € {{number_format($property->sale_price, 0, ',', '.')}} k.k. @elseif($property->rent_price) € {{$property->rent_price}} @endif</b>
-              </div>
+                                                <small style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;width: 50%;float: left;">{{ Str::limit($property->address,40) }}</small>
+                                                <small style="margin-top: 5px;float: right;font-weight: 600;width: 50%;text-align: right;">@if($property->sale_price) € {{number_format($property->sale_price, 0, ',', '.')}} k.k. @elseif($property->rent_price) € {{$property->rent_price}} @endif</small>
+
+                                            </h3>
+
+                                        @else
+
+                                            <h3 style="margin-bottom: 15px;margin-top: 0px;display: inline-block;width: 100%;">
+
+                                                <div style="display: inline-block;width: 100%;">
+                                                    <a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;" href="{{URL::to('new-constructions/'.$property->property_slug)}}">{{ Str::limit($property->property_name,35) }}</a>
+                                                </div>
+
+                                                <small style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;width: 50%;float: left;">{{ Str::limit($property->address,40) }}</small>
+                                                <small style="margin-top: 5px;float: right;font-weight: 600;width: 50%;text-align: right;">@if($property->sale_price) € {{number_format($property->sale_price, 0, ',', '.')}} k.k. @elseif($property->rent_price) € {{$property->rent_price}} @endif</small>
+
+                                            </h3>
+
+                                        @endif
+
+
+                                        <div style="display: flex;flex-direction: row;">
+
+                                            <img style="width: 15px;height: 15px;float: left;margin-right: 10px;align-self: center;" src="{{ URL::asset('assets/img/browser.png') }}"><span style="font-weight: 600;">{{$property->area}} <small>m2</small></span>
+
+                                            @if($property->bedrooms >= 1)
+
+                                                <img style="width: 17px;height: 17px;float: left;margin-right: 10px;margin-left: 20px;align-self: center;" src="{{ URL::asset('assets/img/bed.png') }}"><span style="font-weight: 600;">{{$property->bedrooms}} @if($property->bedrooms == 1) room  @else rooms @endif</span>
+
+                                            @endif
+
+                                        </div>
+
+                                    </div>
 
                 @if(Route::currentRouteName() != 'newconstructions-front')
 
