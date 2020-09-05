@@ -1335,7 +1335,7 @@
                                 </div>
 
 
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;display: none;">
 
                                     <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
 
@@ -1344,16 +1344,7 @@
 
                                         <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
 
-                                            @if(Route::currentRouteName() != 'addhomeexchange')
-
-                                            <input type="text" placeholder="Property Slug" name="property_slug" @if(old('property_slug')) value="{{old('property_slug')}}" @else value="{{ isset($property->property_slug) ? $property->property_slug : null }}" @endif style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control stepper-step-3-validate">
-
-                                                @else
-
-                                                <input type="text" placeholder="Property Slug" name="property_slug" @if(old('property_slug')) value="{{old('property_slug')}}" @else value="{{ isset($property->property_slug) ? $property->property_slug : null }}" @endif style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control">
-
-                                                @endif
-
+                                            <input type="text" placeholder="Property Slug" name="property_slug" @if(old('property_slug')) value="{{old('property_slug')}}" @else value="{{ isset($property->property_slug) ? $property->property_slug : null }}" @endif style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control">
 
                                         </div>
 
