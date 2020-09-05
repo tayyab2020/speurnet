@@ -2240,6 +2240,244 @@
 
       </div>
 
+        <div class="row" style="margin: 0;display: flex;flex-direction: row;justify-content: center;">
+
+            <div class="col-md-10 copyright" style="padding: 0;border-top: 1px solid #d7d7d7;">
+
+            @if($previous)
+
+                <div class="unitPopupContainer prv" style="position: absolute;left: 0;top: -18px;">
+                    <div class="unitPopup triLeft">
+                        <!-- First unit Next -->
+                        <div class="nextUnitpopup" style="display: block;">
+                            <div class="row1">
+                                <div class="large-4 columns popupImage">
+
+                                    @if($previous->featured_image)
+
+                                        <img src="{{ URL::asset('upload/properties/'.$previous->featured_image.'-b.jpg') }}" alt="{{$previous->property_name}}">
+
+                                    @else
+
+                                        <img src="{{ URL::asset('upload/noFeatured.jpg') }}" alt="{{$previous->property_name}}">
+
+                                    @endif
+
+
+                                    <div class="large-10 columns nopad ftTop">
+                                        <h6 class="unitPrice" style="text-align: left;margin-top: 0;">€ @if($previous->sale_price){{$previous->sale_price}} @else{{$previous->rent_price}} @endif</h6>
+                                        <!--<p class="unitRooms">2 kamers</p>-->
+                                    </div>
+
+                                </div>
+                                <div class="large-8 columns" style="font-family: monospace;">
+                                    <h6 class="unitStreet" style="margin-top: 0px;text-align: left;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;">{{$previous->property_name}}</h6>
+                                    <p class="unitCity" style="color: #3c3b3b;text-align: left;"><b>Address:</b> {{$previous->address}}</p>
+                                    <p class="unitCity" style="color: #3c3b3b;text-align: left;"><b>City:</b> {{$previous->city_name}}</p>
+                                    <p class="unitCity" style="color: #3c3b3b;text-align: left;"><b>Bedrooms:</b>{{$previous->bedrooms}}</p>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                @if($property->new_construction == 0 && $property->home_exchange == 0)
+
+                    <a href="{{URL::to('properties/'.$previous->property_slug)}}" class="btn btn-primary footer-button prev-property" style="left: 0px;margin-left: 0px;">
+                        <i class="fa fa-angle-left" aria-hidden="true" style="margin-right: 10px;"></i>
+                        <span>Previous House</span>
+                    </a>
+
+                @elseif($property->new_construction == 1)
+
+                    <a href="{{URL::to('new-constructions/'.$previous->property_slug)}}" class="btn btn-primary footer-button prev-property" style="left: 0px;margin-left: 0px;">
+                        <i class="fa fa-angle-left" aria-hidden="true" style="margin-right: 10px;"></i>
+                        <span>Previous House</span>
+                    </a>
+
+                @else
+
+                    <a href="{{URL::to('home-exchange/'.$previous->property_slug)}}" class="btn btn-primary footer-button prev-property" style="left: 0px;margin-left: 0px;">
+                        <i class="fa fa-angle-left" aria-hidden="true" style="margin-right: 10px;"></i>
+                        <span>Previous House</span>
+                    </a>
+
+                @endif
+
+            @endif
+
+            <a href="{{ url()->previous() }}" class="btn btn-primary footer-button" style="left: 20%;margin-left: 0px;">
+                <i class="fas fa-backward" aria-hidden="true" style="margin-right: 10px;"></i>
+                <span>Back to overview</span>
+            </a>
+
+            <a href="#top" class="btn btn-primary scroltop"><i class="fa fa-angle-up"></i></a>
+
+            @if($next)
+
+                <div class="unitPopupContainer nxt" style="position: absolute;right: 0;top: -18px;">
+                    <div class="unitPopup triRight">
+                        <!-- First unit Next -->
+                        <div class="nextUnitpopup" style="display: block;">
+                            <div class="row1">
+                                <div class="large-4 columns popupImage">
+
+                                    @if($next->featured_image)
+
+                                        <img src="{{ URL::asset('upload/properties/'.$next->featured_image.'-b.jpg') }}" alt="{{$next->property_name}}">
+
+                                    @else
+
+                                        <img src="{{ URL::asset('upload/noFeatured.jpg') }}" alt="{{$next->property_name}}">
+
+                                    @endif
+
+                                    <div class="large-10 columns nopad ftTop">
+                                        <h6 class="unitPrice" style="text-align: left;margin-top: 0;">€ @if($next->sale_price){{$next->sale_price}} @else{{$next->rent_price}} @endif</h6>
+                                        <!--<p class="unitRooms">2 kamers</p>-->
+                                    </div>
+
+                                </div>
+                                <div class="large-8 columns" style="font-family: monospace;">
+                                    <h6 class="unitStreet" style="margin-top: 0px;text-align: left;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;">{{$next->property_name}}</h6>
+                                    <p class="unitCity" style="color: #3c3b3b;text-align: left;"><b>Address:</b> {{$next->address}}</p>
+                                    <p class="unitCity" style="color: #3c3b3b;text-align: left;"><b>City:</b> {{$next->city_name}}</p>
+                                    <p class="unitCity" style="color: #3c3b3b;text-align: left;"><b>Bedrooms:</b>{{$next->bedrooms}}</p>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                @if($property->new_construction == 0 && $property->home_exchange == 0)
+
+                    <a href="{{URL::to('properties/'.$next->property_slug)}}" class="btn btn-primary footer-button next-property" style="left: auto;right: 0px;margin-left: 0px;">
+                        <i class="fa fa-angle-right" aria-hidden="true" style="margin-right: 10px;"></i>
+                        <span>Next House</span>
+                    </a>
+
+                @elseif($property->new_construction == 1)
+
+                    <a href="{{URL::to('new-constructions/'.$next->property_slug)}}" class="btn btn-primary footer-button next-property" style="left: auto;right: 0px;margin-left: 0px;">
+                        <i class="fa fa-angle-right" aria-hidden="true" style="margin-right: 10px;"></i>
+                        <span>Next House</span>
+                    </a>
+
+                @else
+
+                    <a href="{{URL::to('home-exchange/'.$next->property_slug)}}" class="btn btn-primary footer-button next-property" style="left: auto;right: 0px;margin-left: 0px;">
+                        <i class="fa fa-angle-right" aria-hidden="true" style="margin-right: 10px;"></i>
+                        <span>Next House</span>
+                    </a>
+
+                @endif
+
+            @endif
+
+            </div>
+        </div>
+
+            <style>
+
+                .prv{display: none;}
+
+                .nxt{display: none;}
+
+                .row1
+                {
+                    width: auto;
+                    margin-left: -0.9375em;
+                    margin-right: -0.9375em;
+                    margin-top: 0;
+                    margin-bottom: 0;
+                    max-width: none;
+                    *zoom: 1; }
+
+                .ftTop{margin-top: 15px !important;}
+
+                .nopad{padding-left: 0 !important;padding-right: 0 !important;}
+
+                .columns img{display: inline-block;vertical-align: middle;width: 100%;height: 100%;}
+
+
+                .unitPopup .popupImage{padding: 0;}
+
+                .large-4{width: 33.33333%;}
+
+                .large-8{width: 66.66667%;}
+
+                .large-10{width: 83.33333%;}
+
+                .unitPopup.triRight:after{right: 20px;}
+
+                .unitPopup.triLeft:after{left: 20px;}
+
+                .unitPopup:after {-moz-border-bottom-colors: none;-moz-border-left-colors: none;-moz-border-right-colors: none;-moz-border-top-colors: none;border-color: #f3f3f3 transparent transparent;border-image: none;border-style: solid;border-width: 10px;content: " ";height: 0;position: absolute;bottom: -20px;width: 0;}
+
+                .unitPopup .unitStreet, .unitPopup .unitPrice{font-size: 16px;color: #3c3b3b;}
+
+                .columns {
+                    position: relative;
+                    padding-left: 0.9375em;
+                    padding-right: 0.9375em;
+                    float: left; }
+
+
+                .triRight {border-radius: 5px;position: absolute; right: 0; bottom: 30px; width: 344px; height: 200px; background: #f3f3f3; padding: 20px 20px 20px 35px;}
+
+                .triLeft {border-radius: 5px;position: absolute; left: 0; bottom: 30px; width: 344px; height: 200px; background: #f3f3f3; padding: 20px 20px 20px 35px;}
+
+
+                .copyright .footer-button{
+                    position: absolute;
+                    left: 50%;
+                    top: -18px;
+                    margin-left: -18px;
+                }
+
+                @media (max-width: 991px)
+                {
+                    .footer-button span{display: none;}
+                }
+
+            </style>
+
+            <script>
+
+                $('.next-property').hover(function (e) {
+
+                    if($('.nxt').hasClass('show'))
+                    {
+                        $('.nxt').removeClass('show');
+                    }
+                    else
+                    {
+                        $('.nxt').addClass('show');
+                    }
+
+                });
+
+                $('.prev-property').hover(function (e) {
+
+                    if($('.prv').hasClass('show'))
+                    {
+                        $('.prv').removeClass('show');
+                    }
+                    else
+                    {
+                        $('.prv').addClass('show');
+                    }
+
+                });
+
+
+            </script>
+
+
 
     </div>
     <!-- end:content -->
