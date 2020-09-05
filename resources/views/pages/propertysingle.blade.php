@@ -805,7 +805,7 @@
 
                         </table>
 
-                          <table class="table table-bordered">
+                          <table class="table table-bordered" style="table-layout: fixed;">
 
                               @if($property->kind_of_type)
                                   <tr>
@@ -845,7 +845,7 @@
 
                                       <tr>
                                           <td><strong>Source</strong></td>
-                                          <td>{{$property->source}}</sup> </td>
+                                          <td style="word-wrap: break-word;overflow-wrap: break-word;">{{$property->source}}</sup> </td>
                                       </tr>
 
                                   @endif
@@ -1887,10 +1887,23 @@
                               @endif
 
                             <div class="team-social">
-                              <span><a href="{{$agent->twitter}}" title="Twitter" rel="tooltip" data-placement="top"><i class="fa fa-twitter"></i></a></span>
-                              <span><a href="{{$agent->facebook}}" title="Facebook" rel="tooltip" data-placement="top"><i class="fa fa-facebook"></i></a></span>
-                              <span><a href="{{$agent->gplus}}" title="Google Plus" rel="tooltip" data-placement="top"><i class="fa fa-google-plus"></i></a></span>
-                              <span><a href="{{$agent->linkedin}}" title="LinkedIn" rel="tooltip" data-placement="top"><i class="fa fa-linkedin"></i></a></span>
+
+                                @if($agent->twitter)
+                                    <span><a href="{{$agent->twitter}}" title="Twitter" rel="tooltip" data-placement="top"><i class="fa fa-twitter"></i></a></span>
+                                @endif
+
+                                @if($agent->facebook)
+                                    <span><a href="{{$agent->facebook}}" title="Facebook" rel="tooltip" data-placement="top"><i class="fa fa-facebook"></i></a></span>
+                                @endif
+
+                                @if($agent->gplus)
+                                    <span><a href="{{$agent->gplus}}" title="Google Plus" rel="tooltip" data-placement="top"><i class="fa fa-google-plus"></i></a></span>
+                                @endif
+
+                                @if($agent->linkedin)
+                                    <span><a href="{{$agent->linkedin}}" title="LinkedIn" rel="tooltip" data-placement="top"><i class="fa fa-linkedin"></i></a></span>
+                                @endif
+
                             </div>
                           </div>
                         </div>

@@ -46,10 +46,23 @@
                     @endif
 
                         <div class="team-social">
-                            <span><a href="{{$agent->twitter}}" title="Twitter" rel="tooltip" data-placement="top"><i style="color: #448fed;" class="fa fa-twitter"></i></a></span>
-                            <span><a href="{{$agent->facebook}}" title="Facebook" rel="tooltip" data-placement="top"><i style="color: #4545b2;" class="fa fa-facebook"></i></a></span>
-                            <span><a href="{{$agent->gplus}}" title="Google Plus" rel="tooltip" data-placement="top"><i style="color: #cc3636;" class="fa fa-google-plus"></i></a></span>
-                            <span><a href="{{$agent->linkedin}}" title="LinkedIn" rel="tooltip" data-placement="top"><i style="color: #4e4e99;" class="fa fa-linkedin"></i></a></span>
+
+                            @if($agent->twitter)
+                                <span><a href="{{$agent->twitter}}" title="Twitter" rel="tooltip" data-placement="top"><i style="color: #448fed;" class="fa fa-twitter"></i></a></span>
+                            @endif
+
+                            @if($agent->facebook)
+                                <span><a href="{{$agent->facebook}}" title="Facebook" rel="tooltip" data-placement="top"><i style="color: #4545b2;" class="fa fa-facebook"></i></a></span>
+                            @endif
+
+                            @if($agent->gplus)
+                                <span><a href="{{$agent->gplus}}" title="Google Plus" rel="tooltip" data-placement="top"><i style="color: #cc3636;" class="fa fa-google-plus"></i></a></span>
+                            @endif
+
+                            @if($agent->linkedin)
+                                <span><a href="{{$agent->linkedin}}" title="LinkedIn" rel="tooltip" data-placement="top"><i style="color: #4e4e99;" class="fa fa-linkedin"></i></a></span>
+                            @endif
+
                         </div>
 
                 </div>
@@ -61,11 +74,11 @@
                     <p style="margin-top: 25px;">
                     @if($agent->herefor == 1)
 
-                        <img style="width: 80px;" src="{{ URL::asset('upload/herefor1.png') }}">
+                        <img style="width: 180px;" src="{{ URL::asset('upload/herefor1.png') }}">
 
                         @else
 
-                        <img style="width: 80px;" src="{{ URL::asset('upload/herefor2.png') }}">
+                        <img style="width: 50px;" src="{{ URL::asset('upload/herefor2.png') }}">
 
                         @endif
                     </p>
