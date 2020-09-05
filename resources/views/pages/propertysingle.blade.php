@@ -2242,7 +2242,7 @@
 
         <div class="row" style="margin: 0;display: flex;flex-direction: row;justify-content: center;">
 
-            <div class="col-md-10 copyright" style="padding: 0;border-top: 1px solid #d7d7d7;">
+            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 copyright" style="padding: 0;border-top: 1px solid #d7d7d7;">
 
             @if($previous)
 
@@ -2403,6 +2403,7 @@
 
                 .columns img{display: inline-block;vertical-align: middle;width: 100%;height: 100%;}
 
+                .unitPopup{ background: white !important;box-shadow: 1px 2px 9px 0px #6d6a6a; }
 
                 .unitPopup .popupImage{padding: 0;}
 
