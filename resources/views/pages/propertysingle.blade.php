@@ -376,11 +376,15 @@
 
                                   @if($property->home_exchange != 1)
 
+                                      @if(count($similar_properties)>0)
+
                                   <li class="image-tab">
                                       <a class="add-compare new-icons" title="Add Compare" style="border-radius: 100px;position: relative;">
                                           <i class="fas fa-exchange-alt" style="vertical-align: middle;"></i>
                                       </a>
                                   </li>
+
+                                          @endif
 
                                   @endif
 
