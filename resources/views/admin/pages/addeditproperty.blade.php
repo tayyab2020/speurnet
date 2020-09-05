@@ -326,7 +326,7 @@
 
                                     <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 left-div" style="display: inline-block;margin: 25px 0px;">
 
-                                        <label class="left-label" style="float: left;">TYPE OF HOUSE</label>
+                                        <label class="left-label" style="float: left;">TYPE OF HOUSE <span style="color: red;font-size: 20px;">*</span></label>
 
                                         <div style="width: 100%;display: inline-block;margin: auto">
 
@@ -365,7 +365,7 @@
 
                                     <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 right-div" style="display: inline-block;float: right;margin: 25px 0px;">
 
-                                        <label class="right-label" style="float: left;">TYPE OF CONSTRUCTION</label>
+                                        <label class="right-label" style="float: left;">TYPE OF CONSTRUCTION <span style="color: red;font-size: 20px;">*</span></label>
 
                                         <div style="width: 100%;display: inline-block;margin: auto">
 
@@ -392,11 +392,11 @@
 
                                     <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 left-div" style="display: inline-block;margin: 20px 0px;">
 
-                                        <label class="left-label" style="float: left;">YEAR OF CONSTRUCTION</label>
+                                        <label class="left-label" style="float: left;">YEAR OF CONSTRUCTION <span style="color: red;font-size: 20px;">*</span></label>
 
                                         <div  style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;border-right: 0;margin: auto">
 
-                                            <input type="number" step="1" max="" name="year_construction" @if(old('year_construction') != '') value="{{old('year_construction')}}" @else value="{{ isset($property->year_construction) ? $property->year_construction : 1980 }}" @endif class="quantity-field" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+                                            <input type="number" step="1" max="" name="year_construction" @if(old('year_construction') != '') value="{{old('year_construction')}}" @else value="{{ isset($property->year_construction) ? $property->year_construction : 1980 }}" @endif class="quantity-field stepper-step-2-validate" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
                                             <input type="button" value="+" class="button-plus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d7d7d7;margin-top: -0.1px;">
                                             <input type="button" value="-" class="button-minus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;margin-top: -0.1px;">
 
@@ -407,7 +407,7 @@
 
                                     <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 right-div" style="display: inline-block;float: right;margin: 25px 0px;">
 
-                                        <label class="right-label" style="float: left;">CONDITION OF THE BUILDING</label>
+                                        <label class="right-label" style="float: left;">CONDITION OF THE BUILDING <span style="color: red;font-size: 20px;">*</span></label>
 
                                         <div style="width: 100%;display: inline-block;margin: auto">
 
@@ -437,7 +437,7 @@
 
                                         <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 right-div" style="display: inline-block;float: right;margin: 25px 0px;">
 
-                                            <label class="right-label" style="float: left;">KIND OF TYPE</label>
+                                            <label class="right-label" style="float: left;">KIND OF TYPE <span style="color: red;font-size: 20px;">*</span></label>
 
                                             <div style="width: 100%;display: inline-block;margin: auto">
 
@@ -544,7 +544,7 @@
 
                                         <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
 
-                                            <label class="left-label" style="float: left;">BEDROOMS</label>
+                                            <label class="left-label" style="float: left;">BEDROOMS <span style="color: red;font-size: 20px;">*</span></label>
 
                                             <div  style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;border-right: 0;margin: auto">
 
@@ -560,7 +560,7 @@
 
                                         <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 right-div" style="display: inline-block;float: right">
 
-                                            <label class="right-label" style="float: left;">BATHROOMS</label>
+                                            <label class="right-label" style="float: left;">BATHROOMS <span style="color: red;font-size: 20px;">*</span></label>
 
                                             <div class="right-content" style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;border-right: 0;margin: auto;">
 
@@ -578,7 +578,7 @@
 
                                         <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 right-div" style="display: inline-block">
 
-                                            <label class="right-label" style="float: left;">SQFT <small>(m2)</small></label>
+                                            <label class="right-label" style="float: left;">SQFT <small>(m2)</small> <span style="color: red;font-size: 20px;">*</span></label>
 
                                             <div class="right-content" style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto;">
 
@@ -630,7 +630,7 @@
 
                                         <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 right-div" style="display: inline-block;float: right;">
 
-                                            <label class="left-label" style="float: left;">Owner</label>
+                                            <label class="left-label" style="float: left;">Owner <span style="color: red;font-size: 20px;">*</span></label>
 
                                             <div class="right-content" style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto;">
 
@@ -645,7 +645,7 @@
 
                                                 <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
 
-                                                    <label class="left-label" style="float: left;">TYPE OF HOUSE</label>
+                                                    <label class="left-label" style="float: left;">TYPE OF HOUSE <span style="color: red;font-size: 20px;">*</span></label>
 
                                                     <div style="width: 100%;display: inline-block;margin: auto">
 
@@ -723,7 +723,7 @@
 
                                     <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 left-div" style="display: inline-block;margin: 25px 0px;">
 
-                                        <label class="left-label" style="float: left;">GARAGE <small>(m2)</small></label>
+                                        <label class="left-label" style="float: left;">GARAGE <small>(m2)</small> <span style="color: red;font-size: 20px;">*</span></label>
 
                                         <div class="right-content" style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto;">
 
@@ -1034,11 +1034,9 @@
 
                                         <ul style="list-style: none;display: inline-block;width: 100%;padding: 0;">
 
-
                                                 <li class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;margin: 20px 0px;text-align: left;">
 
                                                     <input name="wheelchair" @if(old('wheelchair') == 1) checked @else @if(isset($property->wheelchair)) checked @endif @endif value="1" type="checkbox" id="wheelchair" style="position: relative;top: 2px;">
-
 
                                                     <label class="bg" for="wheelchair">
 
@@ -1187,7 +1185,6 @@
 
                                     <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
 
-
                                         <label class="left-label" style="float: left;width: 100%;">PROPERTY FEATURES</label>
 
                                         <small style="display: block;">Please list the key features of your property this is a good oppurtunity to sell your property!</small>
@@ -1319,8 +1316,7 @@
 
                                     <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
 
-
-                                        <label class="left-label" style="float: left;">Property Name</label>
+                                        <label class="left-label" style="float: left;">Property Name <span style="color: red;font-size: 20px;">*</span></label>
 
                                         <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
 
@@ -1362,7 +1358,7 @@
 
                                                     <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
 
-                                                        <label class="left-label" style="float: left;">Sale Price</label>
+                                                        <label class="left-label" style="float: left;">Sale Price <span style="color: red;font-size: 20px;">*</span></label>
 
                                                         <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
 
@@ -1379,7 +1375,7 @@
 
                                                     <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
 
-                                                        <label class="left-label" style="float: left;">Rent Price</label>
+                                                        <label class="left-label" style="float: left;">Rent Price <span style="color: red;font-size: 20px;">*</span></label>
 
                                                         <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
 
@@ -1397,7 +1393,7 @@
 
                                                     <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
 
-                                                        <label class="left-label" style="float: left;">Sale Price</label>
+                                                        <label class="left-label" style="float: left;">Sale Price <span style="color: red;font-size: 20px;">*</span></label>
 
                                                         <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
 
@@ -1414,7 +1410,7 @@
 
                                                     <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
 
-                                                        <label class="left-label" style="float: left;">Rent Price</label>
+                                                        <label class="left-label" style="float: left;">Rent Price <span style="color: red;font-size: 20px;">*</span></label>
 
                                                         <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
 
@@ -1436,7 +1432,7 @@
 
                                                             <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
 
-                                                                <label class="left-label" style="float: left;">Sale Price</label>
+                                                                <label class="left-label" style="float: left;">Sale Price <span style="color: red;font-size: 20px;">*</span></label>
 
                                                                 <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
 
@@ -1453,7 +1449,7 @@
 
                                                             <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
 
-                                                                <label class="left-label" style="float: left;">Rent Price</label>
+                                                                <label class="left-label" style="float: left;">Rent Price <span style="color: red;font-size: 20px;">*</span></label>
 
                                                                 <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
 
@@ -1471,7 +1467,7 @@
 
                                                             <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
 
-                                                                <label class="left-label" style="float: left;">Sale Price</label>
+                                                                <label class="left-label" style="float: left;">Sale Price <span style="color: red;font-size: 20px;">*</span></label>
 
                                                                 <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
 
@@ -1488,7 +1484,7 @@
 
                                                             <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
 
-                                                                <label class="left-label" style="float: left;">Rent Price</label>
+                                                                <label class="left-label" style="float: left;">Rent Price <span style="color: red;font-size: 20px;">*</span></label>
 
                                                                 <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
 
@@ -1509,7 +1505,7 @@
 
                                                         <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
 
-                                                            <label class="left-label" style="float: left;">Sale Price</label>
+                                                            <label class="left-label" style="float: left;">Sale Price <span style="color: red;font-size: 20px;">*</span></label>
 
                                                             <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
 
@@ -1526,7 +1522,7 @@
 
                                                         <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
 
-                                                            <label class="left-label" style="float: left;">Rent Price</label>
+                                                            <label class="left-label" style="float: left;">Rent Price <span style="color: red;font-size: 20px;">*</span></label>
 
                                                             <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
 
@@ -1550,7 +1546,7 @@
 
                                                     <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
 
-                                                        <label class="left-label" style="float: left;">Sale Price</label>
+                                                        <label class="left-label" style="float: left;">Sale Price <span style="color: red;font-size: 20px;">*</span></label>
 
                                                         <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
 
@@ -1567,7 +1563,7 @@
 
                                                     <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
 
-                                                        <label class="left-label" style="float: left;">Rent Price</label>
+                                                        <label class="left-label" style="float: left;">Rent Price <span style="color: red;font-size: 20px;">*</span></label>
 
                                                         <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
 
@@ -1585,7 +1581,7 @@
 
                                                     <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
 
-                                                        <label class="left-label" style="float: left;">Sale Price</label>
+                                                        <label class="left-label" style="float: left;">Sale Price <span style="color: red;font-size: 20px;">*</span></label>
 
                                                         <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
 
@@ -1602,7 +1598,7 @@
 
                                                     <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
 
-                                                        <label class="left-label" style="float: left;">Rent Price</label>
+                                                        <label class="left-label" style="float: left;">Rent Price <span style="color: red;font-size: 20px;">*</span></label>
 
                                                         <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
 
@@ -1624,7 +1620,7 @@
 
                                                             <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
 
-                                                                <label class="left-label" style="float: left;">Sale Price</label>
+                                                                <label class="left-label" style="float: left;">Sale Price <span style="color: red;font-size: 20px;">*</span></label>
 
                                                                 <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
 
@@ -1641,7 +1637,7 @@
 
                                                             <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
 
-                                                                <label class="left-label" style="float: left;">Rent Price</label>
+                                                                <label class="left-label" style="float: left;">Rent Price <span style="color: red;font-size: 20px;">*</span></label>
 
                                                                 <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
 
@@ -1659,7 +1655,7 @@
 
                                                             <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
 
-                                                                <label class="left-label" style="float: left;">Sale Price</label>
+                                                                <label class="left-label" style="float: left;">Sale Price <span style="color: red;font-size: 20px;">*</span></label>
 
                                                                 <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
 
@@ -1676,7 +1672,7 @@
 
                                                             <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
 
-                                                                <label class="left-label" style="float: left;">Rent Price</label>
+                                                                <label class="left-label" style="float: left;">Rent Price <span style="color: red;font-size: 20px;">*</span></label>
 
                                                                 <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
 
@@ -1697,7 +1693,7 @@
 
                                                         <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
 
-                                                            <label class="left-label" style="float: left;">Sale Price</label>
+                                                            <label class="left-label" style="float: left;">Sale Price <span style="color: red;font-size: 20px;">*</span></label>
 
                                                             <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
 
@@ -1714,7 +1710,7 @@
 
                                                         <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
 
-                                                            <label class="left-label" style="float: left;">Rent Price</label>
+                                                            <label class="left-label" style="float: left;">Rent Price <span style="color: red;font-size: 20px;">*</span></label>
 
                                                             <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
 
@@ -1739,7 +1735,7 @@
 
                                             <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
 
-                                                <label class="left-label" style="float: left;">Rent Per Month €</label>
+                                                <label class="left-label" style="float: left;">Rent Per Month € <span style="color: red;font-size: 20px;">*</span></label>
 
                                                 <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
 
@@ -1774,8 +1770,7 @@
 
                                     <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
 
-
-                                        <label class="left-label" style="float: left;">Description</label>
+                                        <label class="left-label" style="float: left;">Description <span style="color: red;font-size: 20px;">*</span></label>
 
                                         <div style="width: 100%;display: inline-block;margin: auto">
 
@@ -1793,22 +1788,17 @@
 
                                     <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
 
-
                                         <label class="left-label" style="float: left;">KEYWORDS/TAGS</label>
-
 
                                         <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
 
-
                                             <input type="text" name="property_keywords" @if(old('property_keywords')) value="{{old('property_keywords')}}" @else @if(isset($property->keywords)) value="{{$property->keywords}}" @endif @endif placeholder="Keywords" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;" data-role="tagsinput tag-primary" class="form-control">
-
 
                                         </div>
 
                                     </div>
 
                                 </div>
-
 
                             </div>
 
@@ -1845,7 +1835,7 @@
                                     <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
 
 
-                                        <label class="left-label" style="float: left;">Address</label>
+                                        <label class="left-label" style="float: left;">Address <span style="color: red;font-size: 20px;">*</span></label>
 
                                         <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
 
@@ -1918,7 +1908,7 @@
                                     <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
 
 
-                                        <label class="left-label" style="float: left;">Featured Image</label>
+                                        <label class="left-label" style="float: left;">Featured Image <span style="color: red;font-size: 20px;">*</span></label>
 
                                         <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
 
@@ -2412,7 +2402,7 @@
 
                                     <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
 
-                                        <label class="left-label" style="float: left;">I'm looking for</label>
+                                        <label class="left-label" style="float: left;">I'm looking for <span style="color: red;font-size: 20px;">*</span></label>
 
                                         <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
 
@@ -2449,7 +2439,7 @@
 
                                     <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 right-div" style="display: inline-block;float: right;">
 
-                                        <label class="right-label" style="float: left;">SQFT <small>(m2)</small></label>
+                                        <label class="right-label" style="float: left;">SQFT <small>(m2)</small> <span style="color: red;font-size: 20px;">*</span></label>
 
                                         <div class="right-content" style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto;">
 
@@ -2469,7 +2459,7 @@
 
                                     <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
 
-                                        <label class="left-label" style="float: left;">BEDROOMS</label>
+                                        <label class="left-label" style="float: left;">BEDROOMS <span style="color: red;font-size: 20px;">*</span></label>
 
                                         <div  style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;border-right: 0;margin: auto">
 
@@ -2486,7 +2476,7 @@
 
                                     <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 right-div" style="display: inline-block;float: right">
 
-                                        <label class="right-label" style="float: left;">BATHROOMS</label>
+                                        <label class="right-label" style="float: left;">BATHROOMS <span style="color: red;font-size: 20px;">*</span></label>
 
                                         <div class="right-content" style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;border-right: 0;margin: auto;">
 
@@ -2499,7 +2489,6 @@
                                         </div>
 
                                     </div>
-
 
                                 </div>
 
@@ -2532,7 +2521,7 @@
 
                                     <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
 
-                                        <label class="left-label" style="float: left;">Preferred Place of Residence</label>
+                                        <label class="left-label" style="float: left;">Preferred Place of Residence <span style="color: red;font-size: 20px;">*</span></label>
 
                                         <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
 
@@ -2551,7 +2540,7 @@
 
                                     <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
 
-                                        <label class="left-label" style="float: left;">Radius</label>
+                                        <label class="left-label" style="float: left;">Radius <span style="color: red;font-size: 20px;">*</span></label>
 
                                         <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
 
@@ -2635,8 +2624,7 @@
 
                                     <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
 
-
-                                        <label class="left-label" style="float: left;">Maximum Rent Per Month €</label>
+                                        <label class="left-label" style="float: left;">Maximum Rent Per Month € <span style="color: red;font-size: 20px;">*</span></label>
 
                                         <div  style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;border-right: 0;margin: auto">
 

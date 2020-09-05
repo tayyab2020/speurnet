@@ -414,15 +414,24 @@
                                         </div>--}}
 
                                         <div class="property-content">
-                                            <h3 style="margin-bottom: 5px;margin-top: 3px;">
+                                            <h3 style="margin-bottom: 15px;margin-top: 0px;display: inline-block;width: 100%;">
 
                                                 <div style="display: inline-block;width: 100%;">
-                                                    <a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;width: 70%;float: left;" href="{{URL::to('properties/'.$property->property_slug)}}">{{ Str::limit($property->property_name,35) }}</a>
-                                                    <small style="margin-top: 5px;float: right;width: 30%;font-weight: 600;text-align: right;">@if($property->sale_price) € {{number_format($property->sale_price, 0, ',', '.')}} k.k. @elseif($property->rent_price) € {{$property->rent_price}} @endif</small>
+                                                    <a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;" href="{{URL::to('properties/'.$property->property_slug)}}">{{ Str::limit($property->property_name,35) }}</a>
                                                 </div>
 
-                                                <small style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;">{{ Str::limit($property->address,40) }}</small></h3>
-                                            <p style="margin: 0;">{{$property->bedrooms}} @if($property->bedrooms == 1) room  @else rooms @endif - {{$property->area}}</p>
+                                                <small style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;width: 70%;float: left;">{{ Str::limit($property->address,40) }}</small>
+                                                <small style="margin-top: 5px;float: right;font-weight: 600;width: 30%;text-align: right;">@if($property->sale_price) € {{number_format($property->sale_price, 0, ',', '.')}} k.k. @elseif($property->rent_price) € {{$property->rent_price}} @endif</small>
+
+                                            </h3>
+
+                                            <div style="display: flex;flex-direction: row;">
+
+                                                <img style="width: 20px;height: 18px;float: left;margin-right: 10px;align-self: center;" src="{{ URL::asset('assets/img/browser.png') }}"><span>{{$property->area}}</span>
+                                                <img style="width: 20px;height: 20px;float: left;margin-right: 10px;margin-left: 20px;align-self: center;" src="{{ URL::asset('assets/img/bed.png') }}"><span>{{$property->bedrooms}} @if($property->bedrooms == 1) room  @else rooms @endif</span>
+
+                                            </div>
+
                                         </div>
 
                                         <div class="property-content" style="border-top:1px solid #cacaca;display: flex;padding: 0;height: 85px;align-items: center;">
@@ -594,8 +603,13 @@
     }
 
     @media (min-width: 1250px){
-        .latest-container{padding: 0px 120px;}
-        .show-more-container{padding: 0px 135px;}
+        .latest-container{padding: 0px 95px;}
+        .show-more-container{padding: 0px 120px;}
+    }
+
+    @media (min-width: 1250px){
+        .latest-container{padding: 0px 95px;}
+        .show-more-container{padding: 0px 120px;}
     }
 
     .video-wrapper-inner .popup-video{position:relative;z-index:1;display:inline-block;width:50px;height:50px;line-height:50px;border-radius:50%;-webkit-border-radius:50%;-moz-border-radius:50%;-ms-border-radius:50%;-o-border-radius:50%;-webkit-transition:all 0.3s ease-in-out 0s;-o-transition:all 0.3s ease-in-out 0s;transition:all 0.3s ease-in-out 0s;font-size:18px;color:#fff;background:#dfc615;text-align:center}
