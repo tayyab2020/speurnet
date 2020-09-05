@@ -315,7 +315,6 @@ class PropertiesController extends Controller
     public function PostRequestViewing(Request $request)
     {
 
-
         $post = new request_viewings;
 
         $post->property_id = $request->id;
@@ -702,8 +701,6 @@ class PropertiesController extends Controller
                     }
 
                 }
-
-
 
         return view('pages.home_exchange',compact('house_kind','property_type','address','address_latitude','address_longitude','bedrooms','area','rent','preferred_house_kind','preferred_address','preferred_address_latitude','preferred_address_longitude','preferred_radius','preferred_bedrooms','preferred_area','preferred_rent','properties','types','media','filter'));
 
@@ -1269,8 +1266,14 @@ class PropertiesController extends Controller
 	 	$keywords = $request->keywords;
         $properties_search = [];
 
-
-    	 $properties = Properties::SearchByKeyword($type,$purpose,$price,$min_price,$max_price,$min_area,$max_area,$bathrooms,$bedrooms,$type_of_construction,$keywords)->where('is_sold',0)->where('is_rented',0)->where('wheelchair',$wheelchair)->select('properties.*');
+        if($wheelchair)
+        {
+            $properties = Properties::SearchByKeyword($type,$purpose,$price,$min_price,$max_price,$min_area,$max_area,$bathrooms,$bedrooms,$type_of_construction,$keywords)->where('is_sold',0)->where('is_rented',0)->where('wheelchair',$wheelchair)->select('properties.*');
+        }
+        else
+        {
+            $properties = Properties::SearchByKeyword($type,$purpose,$price,$min_price,$max_price,$min_area,$max_area,$bathrooms,$bedrooms,$type_of_construction,$keywords)->where('is_sold',0)->where('is_rented',0)->select('properties.*');
+        }
 
 
     	 if($address && $address_latitude && $address_longitude)
@@ -1350,9 +1353,6 @@ class PropertiesController extends Controller
         }
 
 
-        /*$properties = Properties::where(array('property_type'=>$inputs['type'],'property_purpose'=>$inputs['purpose']))
-
-                                ->orderBy('id', 'desc')->paginate(9);*/
         if($request->kind_of_type=='For Sale')
         {
             $price='sale_price';
@@ -1379,8 +1379,15 @@ class PropertiesController extends Controller
         $keywords = $request->keywords;
         $properties_search = [];
 
+        if($wheelchair)
+        {
+            $properties = New_Constructions::SearchByKeyword($type,$purpose,$price,$min_price,$max_price,$min_area,$max_area,$bathrooms,$bedrooms,$kind_of_type,$keywords)->where('is_sold',0)->where('is_rented',0)->where('wheelchair',$wheelchair)->select('properties.*');
+        }
+        else
+        {
+            $properties = New_Constructions::SearchByKeyword($type,$purpose,$price,$min_price,$max_price,$min_area,$max_area,$bathrooms,$bedrooms,$kind_of_type,$keywords)->where('is_sold',0)->where('is_rented',0)->select('properties.*');
+        }
 
-        $properties = New_Constructions::SearchByKeyword($type,$purpose,$price,$min_price,$max_price,$min_area,$max_area,$bathrooms,$bedrooms,$kind_of_type,$keywords)->where('is_sold',0)->where('is_rented',0)->where('wheelchair',$wheelchair)->select('properties.*');
 
 
         if($address && $address_latitude && $address_longitude)
