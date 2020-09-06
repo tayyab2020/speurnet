@@ -19,7 +19,16 @@
                         <div class="col-md-12">
                             <div class="post_img">
 
-                                @if(Route::currentRouteName() == 'front-blog')
+                                <h1 class="post_title" style="font-weight: 100;text-align: center;">
+                                    {{$blog->title}}
+                                </h1>
+                                <?php $date = $blog->created_at;
+                                $date = date("M d, Y", strtotime($date)); ?>
+
+
+                                <div class="post_meta_top" style="text-align: center;margin-bottom: 20px;">
+                                    <span class="post_meta_date">{{$date}}</span>
+                                </div>
 
                                     @if($blog->image)
 
@@ -31,32 +40,6 @@
 
                                     @endif
 
-                                @elseif(Route::currentRouteName() == 'front-moving-tip')
-
-                                    @if($blog->image)
-
-                                        <img src="{{ URL::asset('upload/moving-tips/'.$blog->image) }}" style="width: 100%;" alt="{{$blog->title}}">
-
-                                        @else
-
-                                        <img src="{{ URL::asset('upload/noImage.png') }}" style="width: 100%;" alt="{{$blog->title}}">
-
-                                    @endif
-
-
-                                @else
-
-                                    @if($blog->image)
-
-                                        <img src="{{ URL::asset('upload/expats/'.$blog->image) }}" style="width: 100%;" alt="{{$blog->title}}">
-
-                                        @else
-
-                                        <img src="{{ URL::asset('upload/noImage.png') }}" style="width: 100%;" alt="{{$blog->title}}">
-
-                                        @endif
-
-                                @endif
 
                             </div>
                         </div>
@@ -66,14 +49,7 @@
                         <div class="col-lg-10 col-md-12 col-sm-12 col-xs-12" style="margin: auto;">
                             <div class="blog_posts stander_blog_single_post">
                                 <article>
-                                    <h1 class="post_title" style="font-weight: 100;">
-                                        {{$blog->title}}
-                                    </h1>
-                                    <?php $date = $blog->created_at;
-                                    $date = date("M d, Y", strtotime($date)); ?>
-                                    <div class="post_meta_top">
-                                        <span class="post_meta_date">{{$date}}</span>
-                                    </div>
+
                                     <div class="post_content description-content" style="margin-top: 40px;">
                                         {!! $blog->description !!}
                                     </div>

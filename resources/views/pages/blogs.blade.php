@@ -187,6 +187,22 @@
 
     <style>
 
+        @media (min-width: 992px)
+        {
+            .post_img img
+            {
+                width: 80% !important;
+                height: 500px !important;
+                margin: auto;
+                display: block;
+            }
+        }
+
+        .post_img img
+        {
+            height: 300px;
+        }
+
         @media (max-width: 767px)
         {
             .res-float

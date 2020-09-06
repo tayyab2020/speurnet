@@ -21,6 +21,31 @@
                     <div class="col-md-12">
                         <div class="post_img">
 
+                            @if(Route::currentRouteName() != 'front-moving-tips')
+
+                                <h1 class="post_title" style="font-weight: 100;text-align: center;">
+                                    {{$key->title}}
+                                </h1>
+
+                            @else
+
+                                <h1 class="post_title" style="font-weight: 100;text-align: center;margin-bottom: 40px;">
+                                    {{$key->title}}
+                                </h1>
+
+                            @endif
+
+                            <?php $date = $key->created_at;
+                            $date = date("M d, Y", strtotime($date)); ?>
+
+                            @if(Route::currentRouteName() != 'front-moving-tips')
+
+                            <div class="post_meta_top" style="text-align: center;margin-bottom: 20px;">
+                                <span class="post_meta_date">{{$date}}</span>
+                            </div>
+
+                            @endif
+
                             @if(Route::currentRouteName() == 'front-moving-tips')
 
                                 @if($key->image)
@@ -56,14 +81,7 @@
                     <div class="col-lg-10 col-md-12 col-sm-12 col-xs-12" style="margin: auto;">
                         <div class="blog_posts stander_blog_single_post">
                             <article>
-                                <h1 class="post_title" style="font-weight: 100;">
-                                    {{$key->title}}
-                                </h1>
-                                <?php $date = $key->created_at;
-                                $date = date("M d, Y", strtotime($date)); ?>
-                                <div class="post_meta_top">
-                                    <span class="post_meta_date">{{$date}}</span>
-                                </div>
+
                                 <div class="post_content description-content" style="margin-top: 40px;">
                                     {!! $key->description !!}
                                 </div>
@@ -84,6 +102,22 @@
 
 
     <style>
+
+        @media (min-width: 992px)
+        {
+            .post_img img
+            {
+                width: 80% !important;
+                height: 500px !important;
+                margin: auto;
+                display: block;
+            }
+        }
+
+        .post_img img
+        {
+            height: 300px;
+        }
 
         .description-content img
         {

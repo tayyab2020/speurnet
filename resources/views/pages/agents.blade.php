@@ -139,7 +139,7 @@
 
                                           <input class="services" @if(isset($service)) @if($service == 3) checked @endif @endif type="radio" name="services" value="3">
 
-                                          <span style="padding-top: 0;"><img style="display: block;width: 50px;margin: auto;margin-bottom: 10px;" src="https://image.flaticon.com/icons/svg/2959/2959610.svg">I am looking for a hiring broker</span>
+                                          <span style="padding-top: 0;"><img src="{{ URL::asset('assets/img/hire_broker.png') }}" style="display: block;width: 50px;margin: auto;margin-bottom: 10px;">I am looking for a hiring broker</span>
 
                                       </label>
 
@@ -154,7 +154,7 @@
 
                                           <input class="services" @if(isset($service)) @if($service == 4) checked @endif @endif type="radio" name="services" value="4">
 
-                                          <span style="padding-top: 0;"><img style="display: block;width: 50px;margin: auto;margin-bottom: 10px;" src="https://image.flaticon.com/icons/svg/2172/2172298.svg">I am looking for a purchase broker</span>
+                                          <span style="padding-top: 0;"><img src="{{ URL::asset('assets/img/purchase_broker.png') }}" style="display: block;width: 50px;margin: auto;margin-bottom: 10px;">I am looking for a purchase broker</span>
 
                                       </label>
 
@@ -169,7 +169,7 @@
 
                                           <input class="services" @if(isset($service)) @if($service == 5) checked @endif @endif type="radio" name="services" value="5">
 
-                                          <span style="padding-top: 0;"><img style="display: block;width: 50px;margin: auto;margin-bottom: 10px;" src="https://image.flaticon.com/icons/svg/1452/1452601.svg">Appraise House</span>
+                                          <span style="padding-top: 0;"><img src="{{ URL::asset('assets/img/calculator1.png') }}" style="display: block;width: 50px;margin: auto;margin-bottom: 10px;">Appraise House</span>
 
                                       </label>
 
