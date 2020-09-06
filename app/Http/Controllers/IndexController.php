@@ -6,6 +6,7 @@ use App\Blogs;
 use App\Expats;
 use App\HomepageIcons;
 use App\moving_tips;
+use App\moving_tips_contents;
 use App\savedPropertyAlert;
 use App\Settings;
 use Auth;
@@ -310,7 +311,11 @@ class IndexController extends Controller
     {
         $m_e = moving_tips::orderBy('id', 'desc')->get();
 
-        return view('pages.m_e_page',compact('m_e'));
+        $content = moving_tips_contents::orderBy('id','asc')->get();
+
+        $heading = Settings::where('id',1)->first();
+
+        return view('pages.m_e_page',compact('m_e','content','heading'));
     }
 
     public function MovingTip($id)

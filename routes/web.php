@@ -69,6 +69,14 @@ Route::group(['middleware' => 'App\Http\Middleware\UserTypeMiddleware'], functio
         Route::get('moving-tips/addmovingtip/{id}', 'BlogsController@editblog')->name('edit-moving-tip');
         Route::get('moving-tips/delete/{id}', 'BlogsController@delete')->name('delete-moving-tip');
 
+        Route::get('moving-tips/moving-tips-content', 'BlogsController@movingtipscontentlist');
+        Route::get('moving-tips/addmovingtipscontent', 'BlogsController@addeditmovingtipscontent');
+        Route::post('moving-tips/addmovingtipscontent', 'BlogsController@addnewmovingtipscontent');
+        Route::get('moving-tips/addmovingtipscontent/{id}', 'BlogsController@editmovingtipscontent');
+        Route::get('moving-tips/delete-moving-tips-content/{id}', 'BlogsController@deletemovingtipscontent');
+        Route::get('moving-tips/changeheading', 'BlogsController@movingtipscontentheading');
+        Route::post('moving-tips/changeheading', 'BlogsController@SaveMovingTipsContentHeading');
+
         Route::get('expats', 'BlogsController@blogslist')->name('expats');
         Route::get('expats/addexpat', 'BlogsController@addeditblogs')->name('add-expat');
         Route::post('expats/addexpat', 'BlogsController@addnew')->name('post-expat');

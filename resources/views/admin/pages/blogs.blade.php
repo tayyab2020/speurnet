@@ -15,6 +15,7 @@
                 @elseif(Route::currentRouteName() == 'moving-tips')
 
                 <div class="pull-right">
+                    <a href="{{URL::to('admin/moving-tips/moving-tips-content')}}" class="btn btn-success">Moving Tips Content <i style="margin-left: 5px;position: relative;top: 1px;" class="fa fa-book"></i></a>
                     <a href="{{URL::to('admin/moving-tips/addmovingtip')}}" class="btn btn-primary">Add Moving Tip <i style="margin-left: 5px;position: relative;top: 1px;" class="fa fa-plus"></i></a>
                 </div>
 
