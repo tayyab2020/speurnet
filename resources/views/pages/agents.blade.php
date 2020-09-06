@@ -109,7 +109,7 @@
 
                                           <input class="services" @if(isset($service)) @if($service == 1) checked @endif @endif  type="radio" name="services" value="1">
 
-                                          <span style="padding-top: 0;"><img style="display: block;width: 50px;margin: auto;margin-bottom: 10px;" src="https://image.flaticon.com/icons/svg/1452/1452601.svg">I am looking for a sales broker</span>
+                                          <span style="padding-top: 0;"><img src="{{ URL::asset('assets/img/broker.png') }}" style="display: block;width: 50px;margin: auto;margin-bottom: 10px;">I am looking for a sales broker</span>
 
                                       </label>
 
@@ -124,7 +124,7 @@
 
                                           <input class="services"  @if(isset($service)) @if($service == 2) checked @endif @endif type="radio" name="services" value="2">
 
-                                          <span style="padding-top: 0;"><img style="display: block;width: 50px;margin: auto;margin-bottom: 10px;" src="https://image.flaticon.com/icons/svg/948/948711.svg">I am looking for a rental agent</span>
+                                          <span style="padding-top: 0;"><img src="{{ URL::asset('assets/img/agent.png') }}" style="display: block;width: 50px;margin: auto;margin-bottom: 10px;">I am looking for a rental agent</span>
 
                                       </label>
 
@@ -184,6 +184,11 @@
                   </form>
 
                   <style>
+
+                      .team-image img
+                      {
+                          height: 200px;
+                      }
 
                       @import url('https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic');
 
@@ -410,9 +415,14 @@
                                             </a>
                                         </div>
 
-                                        <div class="col-sm-3" style="float: right;">
-                                            <p style="color: red"><a style="text-decoration: none;color: red;" href="{{ URL::to('/agent-properties/user/'.$agent->id.'/0') }}" target="_blank">{{$agent->properties_count}} Property (s)</a></p>
-                                        </div>
+                                        @if($agent->properties_count >= 1)
+
+                                            <div class="col-sm-3" style="float: right;">
+                                                <p style="color: red"><a style="text-decoration: none;color: red;" href="{{ URL::to('/agent-properties/user/'.$agent->id.'/0') }}" target="_blank">{{$agent->properties_count}} Property (s)</a></p>
+                                            </div>
+
+                                        @endif
+
                                     </div>
                                     @if($agent->address)
                                     <div class="row">
