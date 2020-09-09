@@ -723,13 +723,13 @@
 
                                     <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 left-div" style="display: inline-block;margin: 25px 0px;">
 
-                                        <label class="left-label" style="float: left;">GARAGE <small>(m2)</small> <span style="color: red;font-size: 20px;">*</span></label>
+                                        <label class="left-label" style="float: left;">GARAGE <small>(m2)</small></label>
 
                                         <div class="right-content" style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto;">
 
                                             <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-warehouse"></i></div>
 
-                                            <input type="number" step="1" max="" @if(old('garage') != '') value="{{old('garage')}}" @else value="{{ isset($property->garage) ? $property->garage : null }}" @endif name="garage" placeholder="800m2" class="quantity-field stepper-step-2-validate" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+                                            <input type="number" step="1" max="" @if(old('garage') != '') value="{{old('garage')}}" @else value="{{ isset($property->garage) ? $property->garage : null }}" @endif name="garage" placeholder="800m2" class="quantity-field" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
                                             <input type="button" value="+" class="button-plus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d7d7d7;margin-top: -0.1px;">
                                             <input type="button" value="-" class="button-minus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;margin-top: -0.1px;">
 
@@ -1366,6 +1366,14 @@
 
                                                         </div>
 
+                                                        <label style="margin-top: 10px;" class="container-radio">
+                                                            <input style="position: relative;top: 2px;" name="cost_for" type="radio" value="k.k." @if(old('cost_for') == 'k.k.') checked @endif> <span style="font-weight: 600;margin-left: 3px;">k.k.</span>
+                                                        </label>
+
+                                                        <label style="margin-left: 15px;" class="container-radio">
+                                                            <input style="position: relative;top: 2px;" name="cost_for" type="radio" value="v.o.n." @if(old('cost_for') == 'v.o.n.') checked @endif> <span style="font-weight: 600;margin-left: 3px;">v.o.n.</span>
+                                                        </label>
+
                                                     </div>
 
                                                 </div>
@@ -1400,6 +1408,14 @@
                                                             <input type="number" id="sale_price_field" name="sale_price" @if(old('sale_price')) value="{{old('sale_price')}}" @else value="{{ isset($property->sale_price) ? $property->sale_price : null }}" @endif placeholder="800000" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control"  >
 
                                                         </div>
+
+                                                        <label style="margin-top: 10px;" class="container-radio">
+                                                            <input style="position: relative;top: 2px;" name="cost_for" type="radio" value="k.k." checked> <span style="font-weight: 600;margin-left: 3px;">k.k.</span>
+                                                        </label>
+
+                                                        <label style="margin-left: 15px;" class="container-radio">
+                                                            <input style="position: relative;top: 2px;" name="cost_for" type="radio" value="v.o.n."> <span style="font-weight: 600;margin-left: 3px;">v.o.n.</span>
+                                                        </label>
 
                                                     </div>
 
@@ -1440,6 +1456,14 @@
 
                                                                 </div>
 
+                                                                <label style="margin-top: 10px;" class="container-radio">
+                                                                    <input style="position: relative;top: 2px;" name="cost_for" type="radio" value="k.k." @if($property->cost_for == 'k.k.') checked @endif> <span style="font-weight: 600;margin-left: 3px;">k.k.</span>
+                                                                </label>
+
+                                                                <label style="margin-left: 15px;" class="container-radio">
+                                                                    <input style="position: relative;top: 2px;" name="cost_for" type="radio" value="v.o.n." @if($property->cost_for == 'v.o.n.') checked @endif> <span style="font-weight: 600;margin-left: 3px;">v.o.n.</span>
+                                                                </label>
+
                                                             </div>
 
                                                         </div>
@@ -1475,6 +1499,14 @@
 
                                                                 </div>
 
+                                                                <label style="margin-top: 10px;" class="container-radio">
+                                                                    <input style="position: relative;top: 2px;" name="cost_for" type="radio" value="k.k." @if($property->cost_for == 'k.k.') checked @endif> <span style="font-weight: 600;margin-left: 3px;">k.k.</span>
+                                                                </label>
+
+                                                                <label style="margin-left: 15px;" class="container-radio">
+                                                                    <input style="position: relative;top: 2px;" name="cost_for" type="radio" value="v.o.n." @if($property->cost_for == 'v.o.n.') checked @endif> <span style="font-weight: 600;margin-left: 3px;">v.o.n.</span>
+                                                                </label>
+
                                                             </div>
 
                                                         </div>
@@ -1509,9 +1541,17 @@
 
                                                             <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
 
-                                                                <input type="number" id="sale_price_field" name="sale_price" @if(old('sale_price')) value="{{old('sale_price')}}" @else value="{{ isset($property->sale_price) ? $property->sale_price : null }}" @endif placeholder="800000" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control stepper-step-3-validate"  >
+                                                                <input type="number" id="sale_price_field" name="sale_price" @if(old('sale_price')) value="{{old('sale_price')}}" @else value="{{ isset($property->sale_price) ? $property->sale_price : null }}" @endif placeholder="800000" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control stepper-step-3-validate">
 
                                                             </div>
+
+                                                            <label style="margin-top: 10px;" class="container-radio">
+                                                                <input style="position: relative;top: 2px;" name="cost_for" type="radio" value="k.k." checked> <span style="font-weight: 600;margin-left: 3px;">k.k.</span>
+                                                            </label>
+
+                                                            <label style="margin-left: 15px;" class="container-radio">
+                                                                <input style="position: relative;top: 2px;" name="cost_for" type="radio" value="v.o.n."> <span style="font-weight: 600;margin-left: 3px;">v.o.n.</span>
+                                                            </label>
 
                                                         </div>
 
@@ -1554,6 +1594,14 @@
 
                                                         </div>
 
+                                                        <label style="margin-top: 10px;" class="container-radio">
+                                                            <input style="position: relative;top: 2px;" name="cost_for" type="radio" value="k.k." @if(old('cost_for') == 'k.k.') checked @endif> <span style="font-weight: 600;margin-left: 3px;">k.k.</span>
+                                                        </label>
+
+                                                        <label style="margin-left: 15px;" class="container-radio">
+                                                            <input style="position: relative;top: 2px;" name="cost_for" type="radio" value="v.o.n." @if(old('cost_for') == 'v.o.n.') checked @endif> <span style="font-weight: 600;margin-left: 3px;">v.o.n.</span>
+                                                        </label>
+
                                                     </div>
 
                                                 </div>
@@ -1588,6 +1636,14 @@
                                                             <input type="number" id="sale_price_field" name="sale_price" @if(old('sale_price')) value="{{old('sale_price')}}" @else value="{{ isset($property->sale_price) ? $property->sale_price : null }}" @endif placeholder="800000" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control"  >
 
                                                         </div>
+
+                                                        <label style="margin-top: 10px;" class="container-radio">
+                                                            <input style="position: relative;top: 2px;" name="cost_for" type="radio" value="k.k." checked> <span style="font-weight: 600;margin-left: 3px;">k.k.</span>
+                                                        </label>
+
+                                                        <label style="margin-left: 15px;" class="container-radio">
+                                                            <input style="position: relative;top: 2px;" name="cost_for" type="radio" value="v.o.n."> <span style="font-weight: 600;margin-left: 3px;">v.o.n.</span>
+                                                        </label>
 
                                                     </div>
 
@@ -1628,6 +1684,14 @@
 
                                                                 </div>
 
+                                                                <label style="margin-top: 10px;" class="container-radio">
+                                                                    <input style="position: relative;top: 2px;" name="cost_for" type="radio" value="k.k." @if($property->cost_for == 'k.k.') checked @endif> <span style="font-weight: 600;margin-left: 3px;">k.k.</span>
+                                                                </label>
+
+                                                                <label style="margin-left: 15px;" class="container-radio">
+                                                                    <input style="position: relative;top: 2px;" name="cost_for" type="radio" value="v.o.n." @if($property->cost_for == 'v.o.n.') checked @endif> <span style="font-weight: 600;margin-left: 3px;">v.o.n.</span>
+                                                                </label>
+
                                                             </div>
 
                                                         </div>
@@ -1662,6 +1726,14 @@
                                                                     <input type="number" id="sale_price_field" name="sale_price" @if(old('sale_price')) value="{{old('sale_price')}}" @else value="{{ isset($property->sale_price) ? $property->sale_price : null }}" @endif placeholder="800000" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control"  >
 
                                                                 </div>
+
+                                                                <label style="margin-top: 10px;" class="container-radio">
+                                                                    <input style="position: relative;top: 2px;" name="cost_for" type="radio" value="k.k." @if($property->cost_for == 'k.k.') checked @endif> <span style="font-weight: 600;margin-left: 3px;">k.k.</span>
+                                                                </label>
+
+                                                                <label style="margin-left: 15px;" class="container-radio">
+                                                                    <input style="position: relative;top: 2px;" name="cost_for" type="radio" value="v.o.n." @if($property->cost_for == 'v.o.n.') checked @endif> <span style="font-weight: 600;margin-left: 3px;">v.o.n.</span>
+                                                                </label>
 
                                                             </div>
 
@@ -1700,6 +1772,14 @@
                                                                 <input type="number" id="sale_price_field" name="sale_price" @if(old('sale_price')) value="{{old('sale_price')}}" @else value="{{ isset($property->sale_price) ? $property->sale_price : null }}" @endif placeholder="800000" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control stepper-step-3-validate"  >
 
                                                             </div>
+
+                                                            <label style="margin-top: 10px;" class="container-radio">
+                                                                <input style="position: relative;top: 2px;" name="cost_for" type="radio" value="k.k." checked> <span style="font-weight: 600;margin-left: 3px;">k.k.</span>
+                                                            </label>
+
+                                                            <label style="margin-left: 15px;" class="container-radio">
+                                                                <input style="position: relative;top: 2px;" name="cost_for" type="radio" value="v.o.n."> <span style="font-weight: 600;margin-left: 3px;">v.o.n.</span>
+                                                            </label>
 
                                                         </div>
 

@@ -772,7 +772,7 @@
 
                                 <tr>
                                     <td><strong>Price</strong> <img src="{{ URL::asset('assets/img/tag.png') }}" style="width: 18px;float: right;" /></td>
-                                    <td>€@if($property->sale_price) {{number_format($property->sale_price, 0, ',', '.')}} k.k. @else {{number_format($property->rent_price, 0, ',', '.')}} @endif</td>
+                                    <td>€@if($property->sale_price) {{number_format($property->sale_price, 0, ',', '.')}} {{$property->cost_for}} @else {{number_format($property->rent_price, 0, ',', '.')}} @endif</td>
                                 </tr>
 
                                 @if($property->new_construction != 1)

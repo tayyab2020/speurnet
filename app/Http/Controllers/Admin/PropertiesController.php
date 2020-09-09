@@ -446,7 +446,10 @@ class PropertiesController extends MainAdminController
                 $property = Home_Exchange::findOrFail($inputs['id']);
             }
 
+
         }else{
+
+            $user_id=Auth::user()->id;
 
             if($request->route == 'property')
             {
@@ -454,13 +457,14 @@ class PropertiesController extends MainAdminController
             }
             elseif($request->route == 'construction')
             {
-                $property = new New_Constructions();
+                $property = new New_Constructions;
             }
             else
             {
                 $property = new Home_Exchange();
             }
 
+            $property->user_id = $user_id;
 
         }
 
@@ -893,8 +897,6 @@ class PropertiesController extends MainAdminController
             $wheelchair = 0;
         }
 
-		$user_id=Auth::user()->id;
-
 
 		if(!$request->property_purpose)
         {
@@ -902,7 +904,7 @@ class PropertiesController extends MainAdminController
         }
 
 
-		$property->user_id = $user_id;
+
 		$property->available_immediately = $request->available_immediately;
 		$property->property_name = $request->property_name;
 		$property->property_slug = $property_slug;
@@ -911,6 +913,7 @@ class PropertiesController extends MainAdminController
 		$property->property_purpose = $request->property_purpose;
 		$property->sale_price = $sale_price;
 		$property->rent_price = $rent_price;
+		$property->cost_for = $request->cost_for;
 		$property->address = $request->address;
         $property->map_latitude = $request->address_latitude;
         $property->map_longitude = $request->address_longitude;

@@ -145,14 +145,14 @@
                                           <h3 style="margin: 10px 0px;"><a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;" href="{{URL::to('properties/'.$property->property_slug)}}">{{ Str::limit($property->property_name,35) }}</a> <small style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;">{{ Str::limit($property->address,40) }}</small></h3>
 
                                           <small style="margin-top: 20px;font-weight: 600;">{{ getPropertyTypeName($property->property_type)->types }}</small>
-                                          <small style="float: right;">€@if($property->sale_price) {{number_format($property->sale_price, 0, ',', '.')}} k.k. @else {{number_format($property->rent_price, 0, ',', '.')}} @endif</small>
+                                          <small style="float: right;">€@if($property->sale_price) {{number_format($property->sale_price, 0, ',', '.')}} {{$property->cost_for}} @else {{number_format($property->rent_price, 0, ',', '.')}} @endif</small>
 
                                           @else
 
                                           <h3 style="margin: 10px 0px;"><a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;" href="{{URL::to('new-constructions/'.$property->property_slug)}}">{{ Str::limit($property->property_name,35) }}</a> <small style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;">{{ Str::limit($property->address,40) }}</small></h3>
 
                                           <small style="margin-top: 20px;font-weight: 600;">{{ getPropertyTypeName($property->property_type)->types }}</small>
-                                          <small style="float: right;">€@if($property->sale_price) {{number_format($property->sale_price, 0, ',', '.')}} k.k. @else {{number_format($property->rent_price, 0, ',', '.')}} @endif</small>
+                                          <small style="float: right;">€@if($property->sale_price) {{number_format($property->sale_price, 0, ',', '.')}} {{$property->cost_for}} @else {{number_format($property->rent_price, 0, ',', '.')}} @endif</small>
 
                                           @endif
                                   </div>
