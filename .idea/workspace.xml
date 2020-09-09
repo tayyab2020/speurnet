@@ -2,17 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7fe7f36f-c82f-4504-8c0a-7874522d22c9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/moving_tips_contents.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/upload/moving-tips/tip-1-3b2dc797b7ec76891f28b92c145abb4b.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/pages/addeditmovingtipscontent.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/pages/m_t_change_heading.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/pages/moving_tips_content.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/tickets.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/tickets_images.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/upload/tickets/ticket-id-4738aad4137d4c3d49b67e8d4e2db4c5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/upload/tickets/ticket-id-a3209347dfea2ac488fc4595df350a9a.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/pages/addeditticket.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/pages/tickets.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/emails/ticketAdminMail.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/emails/ticketMail.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/emails/ticketUserMail.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/BlogsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/BlogsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/IndexController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/IndexController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Settings.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Settings.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/pages/blogs.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/pages/blogs.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/pages/m_e_page.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/m_e_page.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/DashboardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/DashboardController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/PropertiesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/PropertiesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/sidebar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/agents.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/agents.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -255,7 +258,7 @@
       <workItem from="1597950457679" duration="682000" />
       <workItem from="1598347955873" duration="31197000" />
       <workItem from="1598596942646" duration="1541000" />
-      <workItem from="1598729337451" duration="97246000" />
+      <workItem from="1598729337451" duration="135077000" />
     </task>
     <servers />
   </component>
@@ -274,10 +277,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="574" y="97" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1595275785017" />
-    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1599392991635">
+    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1599597349971">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1599392991635" />
+    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1599597349971" />
     <state x="452" y="67" width="645" height="690" key="#phpunit.xml" timestamp="1596907790347">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -314,9 +317,9 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1596007419074" />
-    <state x="389" y="66" width="756" height="758" key="search.everywhere.popup" timestamp="1595001870134">
+    <state x="389" y="66" width="756" height="758" key="search.everywhere.popup" timestamp="1599651897046">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="389" y="66" width="756" height="758" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1595001870134" />
+    <state x="389" y="66" width="756" height="758" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1599651897046" />
   </component>
 </project>

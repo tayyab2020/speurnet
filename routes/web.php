@@ -57,6 +57,13 @@ Route::group(['middleware' => 'App\Http\Middleware\UserTypeMiddleware'], functio
         Route::get('faqs/addfaq/{id}', 'DashboardController@editfaq');
         Route::get('faqs/delete/{id}', 'DashboardController@delete');
 
+        Route::get('tickets', 'DashboardController@tickets');
+        Route::get('tickets/addticket', 'DashboardController@addeditticket');
+        Route::post('tickets/addticket', 'DashboardController@postTicket');
+        Route::get('tickets/addticket/{id}', 'DashboardController@editticket');
+        Route::get('tickets/delete/{id}', 'DashboardController@deleteTicket');
+        Route::post('tickets/update', 'DashboardController@update');
+
         Route::get('blogs', 'BlogsController@blogslist')->name('blogs');
         Route::get('blogs/addblog', 'BlogsController@addeditblogs')->name('add-blog');
         Route::post('blogs/addblog', 'BlogsController@addnew')->name('post-blog');

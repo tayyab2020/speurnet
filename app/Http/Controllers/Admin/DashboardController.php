@@ -10,7 +10,12 @@ use App\Partners;
 use App\Subscriber;
 use App\Testimonials;
 use App\faqs;
+use Intervention\Image\Facades\Image;
 use Session;
+use App\tickets;
+use App\tickets_images;
+use Illuminate\Support\Str;
+use Mail;
 
 use App\Http\Requests;
 use Illuminate\Http\Request;
@@ -172,6 +177,251 @@ class DashboardController extends MainAdminController
         \Session::flash('flash_message', 'Deleted');
 
         return redirect()->back();
+
+    }
+
+    public function tickets()
+    {
+        if(Auth::User()->usertype == "Admin"){
+
+            $tickets = tickets::leftjoin('users','users.id','=','tickets.user_id')->orderBy('tickets.id', 'desc')->select('tickets.*','users.name','users.email')->get();
+
+        }
+        else
+        {
+            $tickets = tickets::leftjoin('users','users.id','=','tickets.user_id')->where('tickets.user_id',Auth::User()->id)->orderBy('tickets.id', 'desc')->select('tickets.*','users.name','users.email')->get();
+        }
+
+
+        return view('admin.pages.tickets',compact('tickets'));
+    }
+
+    public function addeditticket(){
+
+        return view('admin.pages.addeditticket');
+    }
+
+    public function editticket($id)
+    {
+        $ticket = tickets::findOrFail($id);
+
+        $ticket_images = tickets_images::where('ticket_id',$id)->get();
+
+        if(Auth::User()->usertype != "Admin")
+        {
+            if($ticket->user_id != Auth::User()->id)
+            {
+                \Session::flash('flash_message', 'Access denied!');
+
+                return redirect('admin/dashboard');
+            }
+        }
+
+        return view('admin.pages.addeditticket',compact('ticket','ticket_images'));
+
+    }
+
+
+    public function postTicket(Request $request)
+    {
+
+        $data =  \Request::except(array('_token')) ;
+
+        $inputs = $request->all();
+
+        $rule=array(
+            'images.*' => 'mimes:jpg,jpeg,gif,png|max:2000',
+        );
+
+        $messages = [
+            'images.*.mimes' => 'Ticket Images must be a file of type: jpg, jpeg, gif, png.',
+            'images.*.max' => 'Ticket Images may not be greater than 2mb.',
+        ];
+
+        $validator = \Validator::make($data,$rule,$messages);
+
+
+        if($validator->fails())
+        {
+            return redirect()->back()->withErrors($validator->messages())->withInput();
+        }
+
+
+
+        if(!empty($inputs['id'])){
+
+            $ticket = tickets::findOrFail($inputs['id']);
+
+        }else{
+
+            $ticket = new tickets;
+
+        }
+
+
+        $user_id=Auth::user()->id;
+
+        $ticket->user_id = $user_id;
+        $ticket->subject = $inputs['ticket_subject'];
+        $ticket->priority = $inputs['priority'];
+        $ticket->status = 'Open';
+        $ticket->issue = $inputs['ticket_issue'];
+
+        $ticket->save();
+
+        $id = sprintf("%02d", $ticket->id);
+
+        $ticket_id = '#TK-'. $user_id .'-'.$id;
+
+        $update = tickets::where('id',$id)->update(['ticket_id'=>$ticket_id]);
+
+        $images = $request->file('images');
+
+        $countfiles = count($_FILES['images']['name']);
+
+        $imgs = [];
+
+
+        if($images){
+
+            $find = tickets_images::where('ticket_id',$ticket->id)->get();
+
+            foreach ($find as $temp)
+            {
+                \File::delete(public_path() .'/upload/tickets/'.$temp->image);
+
+                tickets_images::where('ticket_id',$ticket->id)->delete();
+            }
+
+
+            $tmpFilePath = 'upload/tickets/';
+
+            for($i=0;$i<$countfiles;$i++) {
+
+                $filename = $_FILES['images']['name'][$i];
+
+                $ext = pathinfo($filename, PATHINFO_EXTENSION);
+
+                $hardPath =  Str::slug('ticket-id', '-').'-'.md5(rand(0,99999));
+
+                $img = Image::make($request->file('images')[$i]);
+
+                $img->save($tmpFilePath.$hardPath. '.' . $ext);
+
+
+
+                $imgs[$i] = $hardPath . "." . $ext;
+
+            }
+
+        }
+
+
+        if(count($imgs) > 0)
+        {
+            foreach ($imgs as $key)
+            {
+
+                $ticket_images = new tickets_images;
+                $ticket_images->ticket_id = $ticket->id;
+                $ticket_images->image = $key;
+                $ticket_images->save();
+
+            }
+
+        }
+
+        if(!empty($inputs['id'])){
+
+            \Session::flash('flash_message', 'Changes Saved');
+
+            return \Redirect::back();
+        }else{
+
+            $sender_email = "info@zoekjehuisje.nl";
+            $user_email = Auth::user()->email;
+
+            Mail::send('emails.ticketAdminMail',
+                array(
+                    'parameters' => $request,
+                    'ticket_id' => $ticket_id
+                ),  function ($message) use($request,$sender_email) {
+                    $message->from(getcong('site_email'),getcong('site_name'));
+                    $message->to($sender_email)
+                        ->subject($request->ticket_subject);
+                });
+
+
+            Mail::send('emails.ticketUserMail',
+                array(
+                    'parameters' => $request,
+                    'ticket_id' => $ticket_id
+                ),  function ($message) use($request,$user_email) {
+                    $message->from(getcong('site_email'),getcong('site_name'));
+                    $message->to($user_email)
+                        ->subject($request->ticket_subject);
+                });
+
+            \Session::flash('flash_message', 'Added');
+
+            return \Redirect::back();
+
+        }
+
+
+    }
+
+    public function deleteTicket($id)
+    {
+
+        $ticket = tickets::findOrFail($id);
+
+        $ticket->delete();
+
+        $ticket_images = tickets_images::where('ticket_id',$id)->get();
+
+        foreach ($ticket_images as $key)
+        {
+
+            $image = $key->image;
+
+            \File::delete(public_path() .'/upload/tickets/'.$image);
+
+        }
+
+        $ticket_images = tickets_images::where('ticket_id',$id)->delete();
+
+
+        \Session::flash('flash_message', 'Ticket Deleted');
+
+        return redirect()->back();
+
+    }
+
+    public function update(Request $request)
+    {
+
+        $ticket = tickets::where('id',$request->id)->update(['priority'=>$request->priority, 'status'=>$request->status]);
+
+        $sender_email = $request->email_to;
+
+        if($request->type == 1)
+        {
+            Mail::send('emails.ticketMail',
+                array(
+                    'parameters' => $request,
+                    'ticket_id' => $request->code
+                ),  function ($message) use($request,$sender_email) {
+                    $message->from(getcong('site_email'),getcong('site_name'));
+                    $message->to($sender_email)
+                        ->subject($request->ticket_subject);
+                });
+        }
+
+        \Session::flash('flash_message', 'Ticket Updated');
+
+        return redirect()->back();
+
 
     }
 

@@ -411,7 +411,7 @@ class PropertiesController extends MainAdminController
             'property_images5.max' => 'Property Image 5 may not be greater than 3mb.',
             'video.mimetypes' => 'Video must be a file of type: wmv, flv, mp4, m3u8, ts, 3gp, mov, avi.',
             'video.max' => 'Video may not be greater than 20mb.',
-            'documents.*.mimes' => 'Documents be a file of type: pdf, doc, txt, rtf, wpd, ppt, pptx.',
+            'documents.*.mimes' => 'Documents must be a file of type: pdf, doc, txt, rtf, wpd, ppt, pptx.',
             'first_floor.mimes' => 'First Floor must be a file of type: jpg, jpeg, gif, png, pdf.',
             'first_floor.max' => 'First Floor may not be greater than 5mb.',
             'second_floor.mimes' => 'Second Floor must be a file of type: jpg, jpeg, gif, png, pdf.',

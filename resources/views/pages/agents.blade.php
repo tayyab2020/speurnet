@@ -10,7 +10,7 @@
         <div class="row">
           <div class="col-md-10 col-md-offset-1 col-sm-12">
             <div class="page-title">
-              <p>Members</p>
+              <h2>Members</h2>
             </div>
             <ol class="breadcrumb">
               <li><a href="{{ URL::to('/') }}">Home</a></li>
@@ -427,7 +427,7 @@
                                     @if($agent->address)
                                     <div class="row">
                                         <div class="col-sm-12">
-                                            <p><i class="fa fa-map-marker" aria-hidden="true"></i> {{$agent->address}}</p>
+                                            <p><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp&nbsp {{$agent->address}}</p>
                                         </div>
                                     </div>
                                     @endif
