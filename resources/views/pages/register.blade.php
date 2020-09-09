@@ -51,10 +51,16 @@
 
                                     <div class="bulgy-radios" role="radiogroup" aria-labelledby="bulgy-radios-label" style="width: 100%;text-align: left;/*min-height: 50px;*/">
 
-                                        <label style="margin-left: 5px;float: left;max-width: 100px;">
+                                        <label style="margin-left: 5px;float: left;">
                                             <input type="radio" name="usertype" class="usertype" value="Agents" checked />
                                             <span class="radio"></span>
                                             <span class="label">Agent</span>
+                                        </label>
+
+                                        <label style="margin-left: 5px;float: left;">
+                                            <input type="radio" name="usertype" class="usertype" value="landlord" />
+                                            <span class="radio"></span>
+                                            <span class="label">Private Landlord</span>
                                         </label>
 
                                         <label style="margin-left: 10px;">
@@ -593,10 +599,10 @@
             content: '';
             position: absolute;
             opacity: 0;
-            top: 3px;
-            left: 2.5px;
-            width: 7px;
-            height: 7px;
+            top: 20%;
+            left: 24%;
+            width: 60%;
+            height: 66%;
             border-radius: 100%;
             background: #fff;
         }

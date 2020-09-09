@@ -63,17 +63,23 @@
 
                                     <div class="col-12 pb-5">
 
-                                    <input class="checkbox-tools" type="radio" name="type" id="tool-1" value="Agents" >
-                                    <label class="for-checkbox-tools" for="tool-1">
-                                        <i class="fas fa-user-edit" style="font-size: 24px;display: block;position:relative;top: 15px;"></i>
-                                        Broker
-                                    </label>
+                                        <input class="checkbox-tools" type="radio" name="type" id="tool-1" value="Agents" >
+                                        <label class="for-checkbox-tools" for="tool-1">
+                                            <i class="fas fa-user-edit" style="font-size: 24px;display: block;position:relative;top: 15px;"></i>
+                                            Broker
+                                        </label>
 
-                                    <input class="checkbox-tools" type="radio" name="type" id="tool-2" value="Users">
-                                    <label class="for-checkbox-tools" for="tool-2">
-                                        <i class="fas fa-user" style="font-size: 24px;display: block;position:relative;top: 15px;"></i>
-                                        User
-                                    </label>
+                                        <input class="checkbox-tools" type="radio" name="type" id="tool-3" value="landlord" >
+                                        <label class="for-checkbox-tools" for="tool-3">
+                                            <i class="fas fa-user-edit" style="font-size: 24px;display: block;position:relative;top: 15px;"></i>
+                                            Private Landlord
+                                        </label>
+
+                                        <input class="checkbox-tools" type="radio" name="type" id="tool-2" value="Users">
+                                        <label class="for-checkbox-tools" for="tool-2">
+                                            <i class="fas fa-user" style="font-size: 24px;display: block;position:relative;top: 15px;"></i>
+                                            User
+                                        </label>
 
                                     </div>
 

@@ -46,7 +46,14 @@ class IndexController extends MainAdminController
     public function ConfirmType(Request $request)
     {
 
-       $user = User::where('id',$request->user_id)->update(['usertype' => $request->type]);
+        if($request->type == 'landlord')
+        {
+            $user = User::where('id',$request->user_id)->update(['usertype' => 'Agents', 'landlord' => 1]);
+        }
+        else
+        {
+            $user = User::where('id',$request->user_id)->update(['usertype' => $request->type]);
+        }
 
         \Session::flash('flash_message', 'Account Type configured successfully!');
         return redirect('admin/dashboard');

@@ -42,7 +42,6 @@ class IndexController extends Controller
         if(!$user->email)
         {
 
-
             return redirect()->back()->withErrors('Please link your facebook account with an email address.');
 
         }
@@ -559,7 +558,16 @@ class IndexController extends Controller
 		$user_name= $request->name;
 		$user_email= $request->email;
 
-		$user->usertype = $request->usertype;
+		if($request->usertype == "landlord")
+        {
+           $user->usertype = "Agents";
+            $user->landlord = 1;
+        }
+		else
+        {
+            $user->usertype = $request->usertype;
+        }
+
 		$user->name = $user_name;
 		$user->company_name = $request->company_name;
 		$user->email = $user_email;

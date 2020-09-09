@@ -100,7 +100,7 @@
 
                                                         <input class="services" @if(in_array(1, $services_ids)) checked @endif type="checkbox" name="services[]" value="1">
 
-                                                        <span style="padding-top: 0;"><img style="display: block;width: 50px;margin: auto;margin-bottom: 10px;" src="https://image.flaticon.com/icons/svg/1452/1452601.svg" />I am looking for a sales broker</span>
+                                                        <span style="padding-top: 0;"><img style="display: block;width: 50px;margin: auto;margin-bottom: 10px;" src="{{ URL::asset('assets/img/broker.png') }}" />I am looking for a sales broker</span>
 
                                                     </label>
 
@@ -115,7 +115,7 @@
 
                                                 <input class="services" @if(in_array(2, $services_ids)) checked @endif type="checkbox" name="services[]" value="2">
 
-                                                <span style="padding-top: 0;"><img style="display: block;width: 50px;margin: auto;margin-bottom: 10px;" src="https://image.flaticon.com/icons/svg/948/948711.svg" />I am looking for a rental agent</span>
+                                                <span style="padding-top: 0;"><img style="display: block;width: 50px;margin: auto;margin-bottom: 10px;" src="{{ URL::asset('assets/img/agent.png') }}" />I am looking for a rental agent</span>
 
                                             </label>
 
@@ -130,7 +130,7 @@
 
                                                 <input class="services" @if(in_array(3, $services_ids)) checked @endif type="checkbox" name="services[]" value="3">
 
-                                                <span style="padding-top: 0;"><img style="display: block;width: 50px;margin: auto;margin-bottom: 10px;" src="https://image.flaticon.com/icons/svg/2959/2959610.svg" />I am looking for a hiring broker</span>
+                                                <span style="padding-top: 0;"><img style="display: block;width: 50px;margin: auto;margin-bottom: 10px;" src="{{ URL::asset('assets/img/hire_broker.png') }}" />I am looking for a hiring broker</span>
 
                                             </label>
 
@@ -145,7 +145,7 @@
 
                                                 <input class="services" @if(in_array(4, $services_ids)) checked @endif type="checkbox" name="services[]" value="4">
 
-                                                <span style="padding-top: 0;"><img style="display: block;width: 50px;margin: auto;margin-bottom: 10px;" src="https://image.flaticon.com/icons/svg/2172/2172298.svg" />I am looking for a purchase broker</span>
+                                                <span style="padding-top: 0;"><img style="display: block;width: 50px;margin: auto;margin-bottom: 10px;" src="{{ URL::asset('assets/img/purchase_broker.png') }}" />I am looking for a purchase broker</span>
 
                                             </label>
 
@@ -160,7 +160,7 @@
 
                                                 <input class="services" @if(in_array(5, $services_ids)) checked @endif type="checkbox" name="services[]" value="5">
 
-                                                <span style="padding-top: 0;"><img style="display: block;width: 50px;margin: auto;margin-bottom: 10px;" src="https://image.flaticon.com/icons/svg/1452/1452601.svg" />Appraise House</span>
+                                                <span style="padding-top: 0;"><img style="display: block;width: 50px;margin: auto;margin-bottom: 10px;" src="{{ URL::asset('assets/img/calculator1.png') }}" />Appraise House</span>
 
                                             </label>
 
@@ -172,7 +172,7 @@
                         </div>
 
                     <div class="form-group herefor" style="display: flex;margin: 10px 0px;text-align: center;padding-top: 40px;border-top: 1px solid #dddddd;">
-                            <label class="col-sm-3 col-xs-12 control-label" style="align-self: center;padding: 0;">I am here for (Optional)</label>
+                            <label class="col-sm-3 col-xs-12 control-label" style="align-self: center;padding: 0;">I am here for (Optional) <br> <small style="color: gray;display: block;margin-top: 5px;font-size: 10px;">Double click to unselect</small></label>
                         <div class="col-sm-9 col-xs-12" style="margin: 20px 0px;">
                                 <label class="col-lg-4 col-md-6 col-sm-6 col-xs-12 herefor-radio" style="margin: 20px 0px;padding: 0;">
                                     <input type="radio" name="herefor" value="1" <?=Auth::user()->herefor==1?'checked':'' ?>>

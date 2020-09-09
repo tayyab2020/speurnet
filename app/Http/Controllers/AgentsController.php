@@ -36,11 +36,11 @@ class AgentsController extends Controller
 
             if($service)
             {
-                $agents = user::leftjoin('user_services','user_services.user_id','=','users.id')->where('users.usertype','Agents')->where('users.status',1)->where('user_services.service_id',$service)->where('users.name', 'like', '%' . $agent_name . '%')->select('users.*')->withCount('properties');
+                $agents = user::leftjoin('user_services','user_services.user_id','=','users.id')->where('users.usertype','Agents')->where('users.landlord',0)->where('users.status',1)->where('user_services.service_id',$service)->where('users.name', 'like', '%' . $agent_name . '%')->select('users.*')->withCount('properties');
             }
             else
             {
-                $agents = user::where('users.usertype','Agents')->where('users.status',1)->where('users.name', 'like', '%' . $agent_name . '%')->withCount('properties');
+                $agents = user::where('users.usertype','Agents')->where('users.landlord',0)->where('users.status',1)->where('users.name', 'like', '%' . $agent_name . '%')->withCount('properties');
             }
 
             if($address && $address_latitude && $address_longitude)
@@ -98,7 +98,7 @@ class AgentsController extends Controller
         }
         else
         {
-            $agents = User::where('usertype','Agents')->where('status',1)->withCount('properties')->orderBy('id', 'desc')->paginate(9);
+            $agents = User::where('usertype','Agents')->where('landlord',0)->where('status',1)->withCount('properties')->orderBy('id', 'desc')->paginate(9);
 
 
             $usertype='Agent';
