@@ -174,14 +174,14 @@
                     <div class="form-group herefor" style="display: flex;margin: 10px 0px;text-align: center;padding-top: 40px;border-top: 1px solid #dddddd;">
                             <label class="col-sm-3 col-xs-12 control-label" style="align-self: center;padding: 0;">I am here for (Optional)</label>
                         <div class="col-sm-9 col-xs-12" style="margin: 20px 0px;">
-                                <label class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="margin: 20px 0px;padding: 0;">
+                                <label class="col-lg-4 col-md-6 col-sm-6 col-xs-12 herefor-radio" style="margin: 20px 0px;padding: 0;">
                                     <input type="radio" name="herefor" value="1" <?=Auth::user()->herefor==1?'checked':'' ?>>
-                                    <img class="herefor-img" style="width: 60%;height: 70px;" height="100px"  src="{{ URL::asset('upload/herefor1.png')}}" >
+                                    <img class="herefor-img" style="width: 90%;height: 70px;" height="100px"  src="{{ URL::asset('upload/herefor1.png')}}" >
                                 </label>
 
-                                <label class="col-lg-4 col-md-6 col-sm-6 col-xs-12" style="margin: 20px 0px;padding: 0;">
+                                <label class="col-lg-4 col-md-6 col-sm-6 col-xs-12 herefor-radio" style="margin: 20px 0px;padding: 0;">
                                     <input type="radio" name="herefor" value="2" <?=Auth::user()->herefor==2?'checked':'' ?>>
-                                    <img class="herefor-img" style="width: 60%;height: 70px;" height="100px" src="{{ URL::asset('upload/herefor2.png') }}">
+                                    <img class="herefor-img" style="width: 20%;height: 70px;" height="100px" src="{{ URL::asset('upload/herefor2.png') }}">
                                 </label>
                             </div>
                         </div>
@@ -434,6 +434,14 @@
                     </style>
 
                     <script>
+
+                        $(document).on('dblclick','.herefor-radio',function(){
+
+                            if($(this).children('input').is(':checked')){
+
+                                $(this).children('input').prop('checked', false);
+                            }
+                        });
 
                         $('#monday_timeFrom').datetimepicker({
                             format: 'LT'

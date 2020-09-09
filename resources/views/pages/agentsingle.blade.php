@@ -76,7 +76,7 @@
 
                         <img style="width: 180px;" src="{{ URL::asset('upload/herefor1.png') }}">
 
-                        @else
+                        @elseif($agent->herefor == 2)
 
                         <img style="width: 50px;" src="{{ URL::asset('upload/herefor2.png') }}">
 
