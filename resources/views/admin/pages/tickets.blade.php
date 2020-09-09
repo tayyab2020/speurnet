@@ -31,7 +31,7 @@
                         <th>Ticket Subject</th>
                         <th>Posted By</th>
                         <th>Email</th>
-                        <th>Created Date</th>
+                        <th>Created At</th>
                         <th>Priority</th>
                         <th>Status</th>
                         <th class="text-center width-100">Action</th>

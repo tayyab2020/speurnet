@@ -302,6 +302,8 @@ class DashboardController extends MainAdminController
 
                 $ext = pathinfo($filename, PATHINFO_EXTENSION);
 
+                $ext = strtolower($ext);
+
                 $hardPath =  Str::slug('ticket-id', '-').'-'.md5(rand(0,99999));
 
                 $img = Image::make($request->file('images')[$i]);

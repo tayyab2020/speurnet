@@ -65,7 +65,9 @@
                                 @if(isset($ticket_images))
                                 <div class="media-left" style="display: block;margin-bottom: 10px;">
                                     @foreach($ticket_images as $key)
-                                    <img style="width: 250px;height: 150px;" src="{{ URL::asset('upload/tickets/'.$key->image) }}" width="200" alt="person">
+                                        <a target="_blank" href="{{ URL::asset('upload/tickets/'.$key->image) }}">
+                                            <img style="width: 250px;height: 150px;" src="{{ URL::asset('upload/tickets/'.$key->image) }}" width="200" alt="person">
+                                        </a>
                                     @endforeach
                                 </div>
                                 @endif
