@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Blogs;
 use App\Expats;
+use App\footer_pages;
 use App\HomepageIcons;
 use App\moving_tips;
 use App\moving_tips_contents;
@@ -302,6 +303,13 @@ class IndexController extends Controller
     public function Blog($id)
     {
         $blog = Blogs::where('id',$id)->first();
+
+        return view('pages.blog',compact('blog'));
+    }
+
+    public function FooterPage($id)
+    {
+        $blog = footer_pages::where('id',$id)->first();
 
         return view('pages.blog',compact('blog'));
     }

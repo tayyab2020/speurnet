@@ -30,6 +30,8 @@
                                     <span class="post_meta_date">{{$date}}</span>
                                 </div>
 
+                                @if(Route::currentRouteName() == 'front-blog')
+
                                     @if($blog->image)
 
                                         <img src="{{ URL::asset('upload/blogs/'.$blog->image) }}" style="width: 100%;" alt="{{$blog->title}}">
@@ -39,6 +41,20 @@
                                         <img src="{{ URL::asset('upload/noImage.png') }}" style="width: 100%;" alt="{{$blog->title}}">
 
                                     @endif
+
+                                @else
+
+                                    @if($blog->image)
+
+                                        <img src="{{ URL::asset('upload/footer-pages/'.$blog->image) }}" style="width: 100%;" alt="{{$blog->title}}">
+
+                                    @else
+
+                                        <img src="{{ URL::asset('upload/noImage.png') }}" style="width: 100%;" alt="{{$blog->title}}">
+
+                                    @endif
+
+                                @endif
 
 
                             </div>

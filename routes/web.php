@@ -57,6 +57,18 @@ Route::group(['middleware' => 'App\Http\Middleware\UserTypeMiddleware'], functio
         Route::get('faqs/addfaq/{id}', 'DashboardController@editfaq');
         Route::get('faqs/delete/{id}', 'DashboardController@delete');
 
+        Route::get('footer-headings', 'DashboardController@footerHeadings');
+        Route::get('footer-headings/add-footer-heading', 'DashboardController@addFooterHeading');
+        Route::post('footer-headings/add-footer-heading', 'DashboardController@postFooterHeading');
+        Route::get('footer-headings/add-footer-heading/{id}', 'DashboardController@editFooterHeading');
+        Route::get('footer-headings/delete/{id}', 'DashboardController@deleteFooterHeading');
+
+        Route::get('footer-pages', 'DashboardController@footerPages')->name('footer-pages');
+        Route::get('footer-pages/add-footer-page', 'DashboardController@addFooterPage')->name('add-footer-page');
+        Route::post('footer-pages/add-footer-page', 'DashboardController@postFooterPage')->name('post-footer-page');
+        Route::get('footer-pages/add-footer-page/{id}', 'DashboardController@editFooterPage')->name('edit-footer-page');
+        Route::get('footer-pages/delete/{id}', 'DashboardController@deleteFooterPage')->name('delete-footer-page');
+
         Route::get('tickets', 'DashboardController@tickets');
         Route::get('tickets/addticket', 'DashboardController@addeditticket');
         Route::post('tickets/addticket', 'DashboardController@postTicket');
@@ -186,6 +198,8 @@ Route::group(['middleware' => 'App\Http\Middleware\UserTypeMiddleware'], functio
     Route::get('expats', 'IndexController@Expats')->name('front-expats');
 
     Route::get('expats/{id}', 'IndexController@Expat')->name('front-expat');
+
+    Route::get('footer-pages/{id}', 'IndexController@FooterPage')->name('front-footer-pages');
 
     Route::get('homeexchange', 'PropertiesController@homeexchange');
 

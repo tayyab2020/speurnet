@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\footer_headings;
+use App\footer_pages;
 use Auth;
 use App\User;
 use App\Properties;
@@ -458,6 +460,310 @@ class DashboardController extends MainAdminController
 
         return redirect()->back();
 
+
+    }
+
+    public function footerHeadings()
+    {
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        $footer_headings = footer_headings::all();
+
+        return view('admin.pages.footer_headings',compact('footer_headings'));
+    }
+
+    public function addFooterHeading(){
+
+        if(Auth::User()->usertype!="Admin"){
+
+            Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        return view('admin.pages.add_footer_heading');
+    }
+
+    public function postFooterHeading(Request $request)
+    {
+
+        $data =  \Request::except(array('_token')) ;
+
+        $inputs = $request->all();
+
+        $rule=array(
+            'heading' => 'required',
+        );
+
+        $validator = \Validator::make($data,$rule);
+
+        if ($validator->fails())
+        {
+            return redirect()->back()->withErrors($validator->messages());
+        }
+
+
+        if(!empty($inputs['id'])){
+
+            $footer_heading = footer_headings::findOrFail($inputs['id']);
+
+        }else{
+
+            $footer_heading = new footer_headings;
+
+        }
+
+
+        $footer_heading->heading = $inputs['heading'];
+
+        $footer_heading->save();
+
+        if(!empty($inputs['id'])){
+
+            \Session::flash('flash_message', 'Changes Saved');
+
+            return \Redirect::back();
+        }else{
+
+            \Session::flash('flash_message', 'Added');
+
+            return \Redirect::back();
+
+        }
+
+    }
+
+    public function editFooterHeading($id)
+    {
+
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        $footer_heading = footer_headings::findOrFail($id);
+
+        return view('admin.pages.add_footer_heading',compact('footer_heading'));
+
+    }
+
+    public function deleteFooterHeading($id)
+    {
+
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        $footer_heading = footer_headings::findOrFail($id);
+        $footer_heading->delete();
+
+        \Session::flash('flash_message', 'Deleted');
+
+        return redirect()->back();
+
+    }
+
+    public function footerPages()
+    {
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        $allblogs = footer_pages::leftjoin('footer_headings','footer_headings.id','=','footer_pages.heading_id')->select('footer_pages.*','footer_headings.heading')->get();
+
+        return view('admin.pages.blogs',compact('allblogs'));
+    }
+
+    public function addFooterPage(){
+
+        if(Auth::User()->usertype!="Admin"){
+
+            Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        $headings = footer_headings::all();
+
+        return view('admin.pages.addeditblog',compact('headings'));
+    }
+
+
+    public function postFooterPage(Request $request)
+    {
+
+        $data =  \Request::except(array('_token')) ;
+
+        $inputs = $request->all();
+
+        $rule=array(
+            'title' => 'required',
+            'description' => 'required',
+            'image' => 'mimes:jpg,jpeg,gif,png'
+        );
+
+        $validator = \Validator::make($data,$rule);
+
+        if ($validator->fails())
+        {
+            return redirect()->back()->withErrors($validator->messages());
+        }
+
+
+        if(!empty($inputs['id'])){
+
+            $blog = footer_pages::findOrFail($inputs['id']);
+
+            //Slide image
+            $t_user_image = $request->file('image');
+
+            if($t_user_image){
+
+
+                \File::delete(public_path() .'/upload/footer-pages/'.$blog->image);
+
+                $tmpFilePath = 'upload/footer-pages/';
+
+                $filename = $_FILES['image']['name'];
+
+                $ext = pathinfo($filename, PATHINFO_EXTENSION);
+
+                $hardPath =  Str::slug($inputs['title'], '-').'-'.md5(time());
+
+                $image_file = $hardPath . '.' . $ext;
+
+                $target_file = $tmpFilePath . $image_file;
+
+                $img = Image::make($t_user_image);
+
+                $img->save($target_file);
+
+                $blog->image = $image_file;
+
+            }
+
+
+        }else{
+
+            $blog = new footer_pages;
+
+            //Slide image
+            $t_user_image = $request->file('image');
+
+            if($t_user_image){
+
+
+                \File::delete(public_path() .'/upload/footer-pages/'.$blog->image);
+
+                $tmpFilePath = 'upload/footer-pages/';
+
+                $filename = $_FILES['image']['name'];
+
+                $ext = pathinfo($filename, PATHINFO_EXTENSION);
+
+                $hardPath =  Str::slug($inputs['title'], '-').'-'.md5(time());
+
+                $image_file = $hardPath . '.' . $ext;
+
+                $target_file = $tmpFilePath . $image_file;
+
+                $img = Image::make($t_user_image);
+
+                $img->save($target_file);
+
+                $blog->image = $image_file;
+
+            }
+            else
+            {
+                $blog->image = '';
+            }
+
+        }
+
+
+        $blog->title = $inputs['title'];
+        $blog->description = $inputs['description'];
+        $blog->heading_id = $inputs['heading'];
+
+        $blog->save();
+
+        if(!empty($inputs['id'])){
+
+            \Session::flash('flash_message', 'Changes Saved');
+
+            return \Redirect::back();
+        }else{
+
+            \Session::flash('flash_message', 'Added');
+
+            return \Redirect::back();
+
+        }
+
+
+    }
+
+
+    public function editFooterPage($id)
+    {
+
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        $headings = footer_headings::all();
+
+        $blog = footer_pages::findOrFail($id);
+
+        return view('admin.pages.addeditblog',compact('blog','headings'));
+
+    }
+
+    public function deleteFooterPage($id)
+    {
+
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        $blog = footer_pages::findOrFail($id);
+
+        \File::delete(public_path() .'/upload/footer-pages/'.$blog->image);
+
+
+        $blog->delete();
+
+        \Session::flash('flash_message', 'Deleted');
+
+        return redirect()->back();
 
     }
 

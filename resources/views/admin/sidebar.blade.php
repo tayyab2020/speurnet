@@ -32,6 +32,10 @@
 
                		<li class="{{classActivePath('dashboard')}}"><a href="{{ URL::to('admin/dashboard') }}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
 
+                    <li class="{{classActivePath('footer-headings')}}"><a href="{{ URL::to('admin/footer-headings') }}"><i class="fa fa-header"></i> Footer Headings</a></li>
+
+                    <li class="{{classActivePath('footer-pages')}}"><a href="{{ URL::to('admin/footer-pages') }}"><i class="fa fa-list"></i> Footer Pages</a></li>
+
                     <li class="{{classActivePath('faqs')}}"><a href="{{ URL::to('admin/faqs') }}"><i class="fa fa-question"></i> FAQ's</a></li>
 
                     <li class="{{classActivePath('tickets')}}"><a href="{{ URL::to('admin/tickets') }}"><i class="fa fa-ticket"></i> Tickets</a></li>

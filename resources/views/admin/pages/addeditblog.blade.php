@@ -11,19 +11,25 @@
 
                 <a href="{{ URL::to('admin/blogs') }}" class="btn btn-default-light btn-xs"><i class="md md-backspace"></i> Back</a>
 
-                @elseif(Route::currentRouteName() == 'add-moving-tip' || Route::currentRouteName() == 'edit-moving-tip')
+            @elseif(Route::currentRouteName() == 'add-moving-tip' || Route::currentRouteName() == 'edit-moving-tip')
 
                 <h2> {{ isset($blog->title) ? 'Edit: '. $blog->title : 'Add Moving Tip' }}</h2>
 
                 <a href="{{ URL::to('admin/moving-tips') }}" class="btn btn-default-light btn-xs"><i class="md md-backspace"></i> Back</a>
 
-                @else
+            @elseif(Route::currentRouteName() == 'add-expat' || Route::currentRouteName() == 'edit-expat')
 
                 <h2> {{ isset($blog->title) ? 'Edit: '. $blog->title : 'Add Expat' }}</h2>
 
                 <a href="{{ URL::to('admin/expats') }}" class="btn btn-default-light btn-xs"><i class="md md-backspace"></i> Back</a>
 
-                @endif
+            @else
+
+                <h2> {{ isset($blog->title) ? 'Edit: '. $blog->title : 'Add Footer Page' }}</h2>
+
+                <a href="{{ URL::to('admin/footer-pages') }}" class="btn btn-default-light btn-xs"><i class="md md-backspace"></i> Back</a>
+
+            @endif
 
         </div>
 
@@ -58,15 +64,51 @@
                     {!! Form::open(array('url' => array('admin/moving-tips/addmovingtip'),'class'=>'form-horizontal padding-15','name'=>'addmovingtip_form','id'=>'addmovingtip_form','role'=>'form','enctype' => 'multipart/form-data')) !!}
                     <input type="hidden" name="page" value="moving">
 
-                @else
+                @elseif(Route::currentRouteName() == 'add-expat' || Route::currentRouteName() == 'edit-expat')
 
                     {!! Form::open(array('url' => array('admin/expats/addexpat'),'class'=>'form-horizontal padding-15','name'=>'addexpat_form','id'=>'addexpat_form','role'=>'form','enctype' => 'multipart/form-data')) !!}
                     <input type="hidden" name="page" value="expat">
+
+                @else
+
+                    {!! Form::open(array('url' => array('admin/footer-pages/add-footer-page'),'class'=>'form-horizontal padding-15','name'=>'addfooterpage_form','id'=>'addfooterpage_form','role'=>'form','enctype' => 'multipart/form-data')) !!}
+                    <input type="hidden" name="page" value="footer">
 
                 @endif
 
                 <input type="hidden" name="id" value="{{ isset($blog->id) ? $blog->id : null }}">
 
+
+                    @if(Route::currentRouteName() == 'add-footer-page' || Route::currentRouteName() == 'edit-footer-page')
+
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">Heading</label>
+                            <div class="col-sm-9">
+
+                                <select class="form-control" name="heading">
+
+                                    <option value="0">Company</option>
+
+                                    @foreach($headings as $key)
+
+                                        @if(isset($blog->heading_id))
+
+                                            <option value="{{$key->id}}" @if($blog->heading_id == $key->id) selected @endif>{{$key->heading}}</option>
+
+                                        @else
+
+                                            <option value="{{$key->id}}">{{$key->heading}}</option>
+
+                                        @endif
+
+                                    @endforeach
+
+                                </select>
+
+                            </div>
+                        </div>
+
+                    @endif
 
                 <div class="form-group">
                     <label for="" class="col-sm-3 control-label">Title</label>
@@ -74,6 +116,7 @@
                         <input type="text" name="title" value="{{ isset($blog->title) ? $blog->title : null }}" class="form-control">
                     </div>
                 </div>
+
                 <div class="form-group">
                     <label for="" class="col-sm-3 control-label">Description</label>
                     <div class="col-sm-9">
@@ -103,7 +146,7 @@
 
                                 @if(isset($blog->image))
 
-                                @if(Route::currentRouteName() == 'add-blog' || Route::currentRouteName() == 'edit-blog')
+                                    @if(Route::currentRouteName() == 'add-blog' || Route::currentRouteName() == 'edit-blog')
 
                                         @if($blog->image)
 
@@ -115,7 +158,7 @@
 
                                         @endif
 
-                                @elseif(Route::currentRouteName() == 'add-moving-tip' || Route::currentRouteName() == 'edit-moving-tip')
+                                    @elseif(Route::currentRouteName() == 'add-moving-tip' || Route::currentRouteName() == 'edit-moving-tip')
 
                                         @if($blog->image)
 
@@ -127,7 +170,7 @@
 
                                         @endif
 
-                                @else
+                                    @elseif(Route::currentRouteName() == 'add-expat' || Route::currentRouteName() == 'edit-expat')
 
                                         @if($blog->image)
 
@@ -139,9 +182,21 @@
 
                                         @endif
 
-                                @endif
+                                    @else
+
+                                        @if($blog->image)
+
+                                            <img src="{{ URL::asset('upload/footer-pages/'.$blog->image) }}" width="100">
+
+                                        @else
+
+                                            <img src="{{ URL::asset('upload/noImage.png') }}" width="100">
+
+                                        @endif
 
                                     @endif
+
+                                @endif
 
                             </div>
                             <div class="media-body media-middle">
@@ -166,9 +221,13 @@
 
                             <button type="submit" class="btn btn-primary">{{ isset($blog->title) ? 'Edit Moving Tip' : 'Add Moving Tip' }}</button>
 
-                        @else
+                        @elseif(Route::currentRouteName() == 'add-expat' || Route::currentRouteName() == 'edit-expat')
 
                             <button type="submit" class="btn btn-primary">{{ isset($blog->title) ? 'Edit Expat' : 'Add Expat' }}</button>
+
+                        @else
+
+                            <button type="submit" class="btn btn-primary">{{ isset($blog->title) ? 'Edit Footer Page' : 'Add Footer Page' }}</button>
 
                         @endif
 
@@ -178,7 +237,6 @@
                 {!! Form::close() !!}
             </div>
         </div>
-
 
     </div>
 

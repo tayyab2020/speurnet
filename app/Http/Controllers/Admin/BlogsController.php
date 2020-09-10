@@ -288,61 +288,104 @@ class BlogsController extends MainAdminController
 
                 $blog = Expats::findOrFail($inputs['id']);
 
+                //Slide image
+                $t_user_image = $request->file('image');
+
+                if($t_user_image){
+
+                    if(Route::currentRouteName() == 'post-blog')
+                    {
+                        \File::delete(public_path() .'/upload/blogs/'.$blog->image);
+
+                        $tmpFilePath = 'upload/blogs/';
+                    }
+                    elseif(Route::currentRouteName() == 'post-moving-tip')
+                    {
+                        \File::delete(public_path() .'/upload/moving-tips/'.$blog->image);
+
+                        $tmpFilePath = 'upload/moving-tips/';
+                    }
+                    else
+                    {
+                        \File::delete(public_path() .'/upload/expats/'.$blog->image);
+
+                        $tmpFilePath = 'upload/expats/';
+                    }
+
+
+                    $filename = $_FILES['image']['name'];
+
+                    $ext = pathinfo($filename, PATHINFO_EXTENSION);
+
+                    $hardPath =  Str::slug($inputs['title'], '-').'-'.md5(time());
+
+                    $image_file = $hardPath . '.' . $ext;
+
+                    $target_file = $tmpFilePath . $image_file;
+
+                    $img = Image::make($t_user_image);
+
+                    $img->save($target_file);
+
+                    $blog->image = $image_file;
+
+                }
+
             }else{
 
                 $blog = new Expats;
 
+                //Slide image
+                $t_user_image = $request->file('image');
+
+                if($t_user_image){
+
+                    if(Route::currentRouteName() == 'post-blog')
+                    {
+                        \File::delete(public_path() .'/upload/blogs/'.$blog->image);
+
+                        $tmpFilePath = 'upload/blogs/';
+                    }
+                    elseif(Route::currentRouteName() == 'post-moving-tip')
+                    {
+                        \File::delete(public_path() .'/upload/moving-tips/'.$blog->image);
+
+                        $tmpFilePath = 'upload/moving-tips/';
+                    }
+                    else
+                    {
+                        \File::delete(public_path() .'/upload/expats/'.$blog->image);
+
+                        $tmpFilePath = 'upload/expats/';
+                    }
+
+
+                    $filename = $_FILES['image']['name'];
+
+                    $ext = pathinfo($filename, PATHINFO_EXTENSION);
+
+                    $hardPath =  Str::slug($inputs['title'], '-').'-'.md5(time());
+
+                    $image_file = $hardPath . '.' . $ext;
+
+                    $target_file = $tmpFilePath . $image_file;
+
+                    $img = Image::make($t_user_image);
+
+                    $img->save($target_file);
+
+                    $blog->image = $image_file;
+
+                }
+                else
+                {
+                    $blog->image = '';
+                }
+
             }
 
         }
 
-
-        //Slide image
-        $t_user_image = $request->file('image');
-
-        if($t_user_image){
-
-            if(Route::currentRouteName() == 'post-blog')
-            {
-                \File::delete(public_path() .'/upload/blogs/'.$blog->image);
-
-                $tmpFilePath = 'upload/blogs/';
-            }
-            elseif(Route::currentRouteName() == 'post-moving-tip')
-            {
-                \File::delete(public_path() .'/upload/moving-tips/'.$blog->image);
-
-                $tmpFilePath = 'upload/moving-tips/';
-            }
-            else
-            {
-                \File::delete(public_path() .'/upload/expats/'.$blog->image);
-
-                $tmpFilePath = 'upload/expats/';
-            }
-
-
-            $filename = $_FILES['image']['name'];
-
-            $ext = pathinfo($filename, PATHINFO_EXTENSION);
-
-            $hardPath =  Str::slug($inputs['title'], '-').'-'.md5(time());
-
-            $image_file = $hardPath . '.' . $ext;
-
-            $target_file = $tmpFilePath . $image_file;
-
-            $img = Image::make($t_user_image);
-
-            $img->save($target_file);
-
-            $blog->image = $image_file;
-
-        }
-        else
-        {
-            $blog->image = '';
-        }
 
 
         $blog->title = $inputs['title'];
