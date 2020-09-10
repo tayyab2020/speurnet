@@ -63,6 +63,7 @@ Route::group(['middleware' => 'App\Http\Middleware\UserTypeMiddleware'], functio
         Route::get('tickets/addticket/{id}', 'DashboardController@editticket');
         Route::get('tickets/delete/{id}', 'DashboardController@deleteTicket');
         Route::post('tickets/update', 'DashboardController@update');
+        Route::post('tickets/send-mail', 'DashboardController@SendMail');
 
         Route::get('blogs', 'BlogsController@blogslist')->name('blogs');
         Route::get('blogs/addblog', 'BlogsController@addeditblogs')->name('add-blog');

@@ -124,6 +124,7 @@
                                         Actions <span class="caret"></span>
                                     </button>
                                     <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                                        <li><a class="send-mail" style="cursor: pointer;"><i class="md md-mail"></i> Send Email</a></li>
                                         <li><a href="{{ url('admin/tickets/addticket/'.$ticket->id) }}"><i class="md md-edit"></i> Edit Editor</a></li>
                                         <li><a href="{{ url('admin/tickets/delete/'.$ticket->id) }}"><i class="md md-delete"></i> Delete</a></li>
                                     </ul>
@@ -144,7 +145,7 @@
 
                 <div class="modal-dialog">
 
-                {!! Form::open(array('url' => array('admin/tickets/update'),'class'=>'form-horizontal padding-15','name'=>'user_form','id'=>'user_form','role'=>'form','enctype' => 'multipart/form-data')) !!}
+                {!! Form::open(array('url' => array('admin/tickets/update'),'class'=>'form-horizontal padding-15','name'=>'user_form','id'=>'update_form','role'=>'form','enctype' => 'multipart/form-data')) !!}
 
                     <!-- Modal content-->
                     <div class="modal-content">
@@ -180,7 +181,7 @@
                                 <div class="form-group" style="display: inline-block;width: 100%;margin: 5px 0px;">
                                     <label style="margin-bottom: 5px;" for="" class="col-sm-3 control-label">Recipient Email</label>
                                     <div class="col-sm-12">
-                                        <input type="email" placeholder="Recipient Email" id="email_to" name="email_to" class="form-control">
+                                        <input required type="email" placeholder="Recipient Email" id="email_to" name="email_to" class="form-control id1">
                                     </div>
                                 </div>
 
@@ -198,6 +199,77 @@
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                             <button type="button" id="save" class="btn btn-success" data-dismiss="modal">Save</button>
                             <button type="button" id="send" class="btn btn-success"><i class="fa fa-send" style="margin-right: 5px;"></i>Send</button>
+                        </div>
+
+                    </div>
+
+                    {!! Form::close() !!}
+
+                </div>
+
+            </div>
+
+
+            <div id="mailModal" class="modal fade" role="dialog">
+
+                <div class="modal-dialog">
+
+                {!! Form::open(array('url' => array('admin/tickets/send-mail'),'class'=>'form-horizontal padding-15','name'=>'user_form','id'=>'mail_form','role'=>'form','enctype' => 'multipart/form-data')) !!}
+
+                <!-- Modal content-->
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Send Email to ask your query.</h4>
+                        </div>
+
+                        <div class="modal-body">
+
+                            <input type="hidden" name="id" id="tk_id">
+                            <input type="hidden" name="tk_rec_name" id="tk_rec_name">
+                            <input type="hidden" name="tk_subject" id="tk_subject">
+                            <input type="hidden" name="tk_issue" id="tk_issue">
+                            <input type="hidden" name="tk_code" id="tk_code">
+
+                            <div class="form-group" style="display: inline-block;width: 100%;margin: 5px 0px;">
+                                <label style="margin-bottom: 5px;" for="" class="col-sm-3 control-label">Ticket Priority</label>
+                                <div class="col-sm-12">
+                                    <input readonly type="text" placeholder="Ticket Priority" name="tk_priority" id="tk_priority" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="form-group" style="display: inline-block;width: 100%;margin: 5px 0px;">
+                                <label style="margin-bottom: 5px;" for="" class="col-sm-3 control-label">Ticket Status</label>
+                                <div class="col-sm-12">
+                                    <input readonly type="text" placeholder="Ticket Status" name="tk_status" id="tk_status" class="form-control">
+                                </div>
+                            </div>
+
+                            @if(Auth::user()->usertype == 'Admin')
+
+                            <div class="form-group" style="display: inline-block;width: 100%;margin: 5px 0px;">
+                                <label style="margin-bottom: 5px;" for="" class="col-sm-3 control-label">Recipient Email</label>
+                                <div class="col-sm-12">
+                                    <input readonly type="email" placeholder="Recipient Email" id="tk_email_to" name="tk_email_to" class="form-control">
+                                </div>
+                            </div>
+
+                            @endif
+
+                            <div class="form-group" style="display: inline-block;width: 100%;margin: 5px 0px;">
+                                <label style="margin-bottom: 5px;" for="" class="col-sm-3 control-label">Message</label>
+                                <div class="col-sm-12">
+                                    <textarea required rows="6" placeholder="Message" name="tk_message" class="form-control id2"></textarea>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="button" id="send-mail-btn" class="btn btn-success"><i class="fa fa-send" style="margin-right: 5px;"></i>Send</button>
                         </div>
 
                     </div>
@@ -259,6 +331,11 @@
             color: #009efb !important;
         }
 
+        .validation
+        {
+            border: 1px solid red !important;
+        }
+
 
     </style>
 
@@ -270,7 +347,16 @@
 
                 $('#type').val(0);
 
-                $('form').submit();
+                var inpObj = $('.id1');
+
+                if (!inpObj.val()) {
+                    inpObj.addClass('validation');
+                }
+                else
+                {
+                    inpObj.removeClass('validation');
+                    $('#update_form').submit();
+                }
 
             });
 
@@ -278,7 +364,42 @@
 
                 $('#type').val(1);
 
-                $('form').submit();
+                var inpObj = $('.id1');
+
+                if(!inpObj.val()) {
+
+                    inpObj.addClass('validation');
+                }
+                else
+                {
+                    var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+                    if(!regex.test(inpObj.val()))
+                    {
+                        inpObj.addClass('validation');
+                    }
+                    else
+                    {
+                        inpObj.removeClass('validation');
+                        $('#update_form').submit();
+                    }
+
+                }
+
+            });
+
+            $('#send-mail-btn').click(function() {
+
+                var inpObj = $('.id2');
+
+                if (!inpObj.val()) {
+                    inpObj.addClass('validation');
+                }
+                else
+                {
+                    inpObj.removeClass('validation');
+                    $('#mail_form').submit();
+                }
 
             });
 
@@ -343,6 +464,40 @@
                 $("#code").val(ticket_code);
 
                 $('#myModal').modal("show"); //Open Modal
+
+
+            });
+
+
+            $('.send-mail').click(function() {
+
+                var priority = $(this).closest('tr').children('#ticket_priority').val();
+
+                var status = $(this).closest('tr').children('#ticket_status').val();
+
+                var email = $(this).closest("tr").children('#email').val();
+
+                var id = $(this).closest('tr').children("#ticket_id").val();
+
+                var name = $(this).closest('tr').children("#name").val();
+
+                var subject = $(this).closest('tr').children("#subject").val();
+
+                var issue = $(this).closest('tr').children("#issue").val();
+
+                var ticket_code = $(this).closest('tr').children("#ticket_code").val();
+
+
+                $("#tk_id").val(id);
+                $("#tk_rec_name").val(name);
+                $("#tk_email_to").val(email);
+                $("#tk_priority").val(priority);
+                $("#tk_status").val(status);
+                $("#tk_subject").val(subject);
+                $("#tk_issue").val(issue);
+                $("#tk_code").val(ticket_code);
+
+                $('#mailModal').modal("show"); //Open Modal
 
 
             });

@@ -57,7 +57,7 @@
 
                     <tbody>
 
-                    <tr><td>A ticket {{$ticket_id}} has been created at {{getcong('site_name')}}</td></tr>
+                    <tr><td>A Ticket {{$ticket_id}} has been created at {{getcong('site_name')}}</td></tr>
 
                     <tr><td style="padding:10px 0 0 0"><p>Ticket Subject: </p>
 
@@ -74,6 +74,12 @@
                     <tr><td style="padding:10px 0 0 0"><p>Ticket Priority: </p>
 
                             <span class="button-applied-filter span-heading">{{$parameters->priority}}</span>
+
+                        </td></tr>
+
+                    <tr><td style="padding:10px 0 0 0"><p>Ticket Creator Email: </p>
+
+                            <span class="button-applied-filter span-heading"><a href="mailto:{{$user_email}}" target="_blank">{{$user_email}}</a></span>
 
                         </td></tr>
 

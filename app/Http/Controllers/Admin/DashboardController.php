@@ -259,7 +259,7 @@ class DashboardController extends MainAdminController
         }
 
 
-        $user_id=Auth::user()->id;
+        $user_id = Auth::user()->id;
 
         $ticket->user_id = $user_id;
         $ticket->subject = $inputs['ticket_subject'];
@@ -346,7 +346,8 @@ class DashboardController extends MainAdminController
             Mail::send('emails.ticketAdminMail',
                 array(
                     'parameters' => $request,
-                    'ticket_id' => $ticket_id
+                    'ticket_id' => $ticket_id,
+                    'user_email' => $user_email
                 ),  function ($message) use($request,$sender_email) {
                     $message->from(getcong('site_email'),getcong('site_name'));
                     $message->to($sender_email)
@@ -421,6 +422,39 @@ class DashboardController extends MainAdminController
         }
 
         \Session::flash('flash_message', 'Ticket Updated');
+
+        return redirect()->back();
+
+
+    }
+
+    public function SendMail(Request $request)
+    {
+
+        $user_type = Auth::user()->usertype;
+
+        if($user_type == 'Admin')
+        {
+            $sender_email = $request->tk_email_to;
+        }
+        else
+        {
+            $sender_email = getcong('site_email');
+        }
+
+
+            Mail::send('emails.ticketMailQuery',
+                array(
+                    'parameters' => $request,
+                    'ticket_id' => $request->tk_code
+                ),  function ($message) use($request,$sender_email) {
+                    $message->from(getcong('site_email'),getcong('site_name'));
+                    $message->to($sender_email)
+                        ->subject($request->tk_subject);
+                });
+
+
+        \Session::flash('flash_message', 'Task Successful');
 
         return redirect()->back();
 

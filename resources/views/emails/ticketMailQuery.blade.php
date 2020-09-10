@@ -46,7 +46,7 @@
         <tbody>
 
         <tr>
-            <td style="padding:40px 30px 30px 30px" align="center" bgcolor="#33333e"><h1 style="color:#fff">Ticket Update</h1>
+            <td style="padding:40px 30px 30px 30px" align="center" bgcolor="#33333e"><h1 style="color:#fff">Ticket Message</h1>
             </td>
         </tr>
 
@@ -57,41 +57,38 @@
 
                     <tbody>
 
-                            <tr><td>Hello {{$parameters->rec_name}}, Your ticket {{$ticket_id}} has been updated at {{getcong('site_name')}}</td></tr>
+                    <tr><td>Hello {{$parameters->tk_rec_name}}, You have received a message regarding {{$ticket_id}} at {{getcong('site_name')}}</td></tr>
 
-                            <tr><td style="padding:10px 0 0 0"><p>Ticket Subject: </p>
+                    <tr><td style="padding:10px 0 0 0"><p>Ticket Subject: </p>
 
-                                    <span class="button-applied-filter span-heading">{{$parameters->ticket_subject}}</span>
+                            <span class="button-applied-filter span-heading">{{$parameters->tk_subject}}</span>
 
-                                </td></tr>
+                        </td></tr>
 
-                            <tr><td style="padding:10px 0 0 0"><p>Ticket Issue: </p>
+                    <tr><td style="padding:10px 0 0 0"><p>Ticket Issue: </p>
 
-                                    <span class="button-applied-filter span-heading">"{{$parameters->ticket_issue}}"</span>
+                            <span class="button-applied-filter span-heading">"{{$parameters->tk_issue}}"</span>
 
-                                </td></tr>
+                        </td></tr>
 
-                            <tr><td style="padding:10px 0 0 0"><p>Ticket Priority: </p>
+                    <tr><td style="padding:10px 0 0 0"><p>Ticket Priority: </p>
 
-                                    <span class="button-applied-filter span-heading">{{$parameters->priority}}</span>
+                            <span class="button-applied-filter span-heading">{{$parameters->tk_priority}}</span>
 
-                                </td></tr>
+                        </td></tr>
 
-                            <tr><td style="padding:10px 0 0 0"><p>Ticket Status: </p>
+                    <tr><td style="padding:10px 0 0 0"><p>Ticket Status: </p>
 
-                                    <span class="button-applied-filter span-heading">{{$parameters->status}}</span>
+                            <span class="button-applied-filter span-heading">{{$parameters->tk_status}}</span>
 
-                                </td></tr>
+                        </td></tr>
 
-                            @if($parameters->message)
 
-                            <tr><td style="padding:10px 0 0 0"><p>Message: </p>
+                        <tr><td style="padding:10px 0 0 0"><p>Message: </p>
 
-                                    <span class="button-applied-filter span-heading">"{{$parameters->message}}"</span>
+                                <span class="button-applied-filter span-heading">"{{$parameters->tk_message}}"</span>
 
-                                </td></tr>
-
-                                @endif
+                            </td></tr>
 
 
                     </tbody>
