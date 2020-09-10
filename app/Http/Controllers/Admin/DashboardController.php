@@ -340,7 +340,7 @@ class DashboardController extends MainAdminController
             return \Redirect::back();
         }else{
 
-            $sender_email = "tayyabkhurram62@gmail.com";
+            $sender_email = "info@zoekjehuisje.nl";
             $user_email = Auth::user()->email;
 
             Mail::send('emails.ticketAdminMail',
