@@ -117,3 +117,11 @@
       </div>
     </div>
     <!-- end:footer -->
+
+<style>
+
+    .widget ul li a{color: #3bafda !important;}
+
+    .widget ul li a:hover{color: #fff !important;}
+
+</style>
