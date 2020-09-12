@@ -761,6 +761,7 @@
 
     .fade.in {
         transform: scale(1);
+        display: flex !important;
     }
 
     .slick-slide
@@ -1032,31 +1033,38 @@
 
 @endif
 
-<div id="partner" class="cookie-container" style="background: #f4f4f4;padding: 0px 0px 20px 0px;">
-    <div class="container" style="width: 100%;">
 
-        <div class="row" style="display: flex;width: 100%;margin: 0;flex-direction: column;">
+<!-- Modal -->
+<div id="myModal2" class="modal fade" role="dialog">
+    <div class="modal-dialog">
 
-            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10" style="margin: auto;padding: 10px 0px;">
-                <button style="width: 17%;outline: none;float: right;" class="btn btn-danger hide-cookies">Verberg deze melding</button>
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-body">
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin: auto;padding: 10px 0px;">
+                    <button style="outline: none;float: right;" class="col-lg-3 col-md-3 col-sm-3 btn btn-danger hide-cookies">Verberg deze melding</button>
+                </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin: auto;border: 1px solid #4ab8ca;padding: 20px 20px;">
+
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        Om u zo goed mogelijk te kunnen helpen en deze site goed te laten werken, maakt Zoekjehuisje.nl gebruik van cookies. Als u hiermee akkoord gaat, geeft u ons toestemming voor alle cookies die wij gebruiken. Wilt u geen gebruik maken van alle cookies? Dan kunt u zelf uw voorkeur aanpassen door op instellingen te klikken. Lees gerust onze cookieverklaring en privacybeleid.
+                    </div>
+
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4 ck-icn" style="margin-top: 20px;">
+                        <img src="{{ URL::asset('assets/img/dessert.png') }}" style="width: 70%;height: 60px;display: block;margin: auto;">
+                    </div>
+
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 ck-ls" style="float: right;margin-top: 10px;">
+                        <button style="background: #4ab8ca;color: white;outline: none;" type="button" class="btn col-lg-12 col-md-12 col-sm-12 col-xs-12 hide-cookies">IK ga akkoord</button>
+                        <span><a class="cookie-btn" style="cursor: pointer;" data-toggle="modal" data-target="#myModal1">Instellingen</a></span>
+                    </div>
+
+                </div>
+
             </div>
-
-            <div class="col-lg-10 col-md-12 col-sm-12 col-xs-12" style="margin: auto;border: 1px solid #4ab8ca;padding: 30px 20px;">
-
-                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
-                    Om u zo goed mogelijk te kunnen helpen en deze site goed te laten werken, maakt Zoekjehuisje.nl gebruik van cookies. Als u hiermee akkoord gaat, geeft u ons toestemming voor alle cookies die wij gebruiken. Wilt u geen gebruik maken van alle cookies? Dan kunt u zelf uw voorkeur aanpassen door op instellingen te klikken. Lees gerust onze cookieverklaring en privacybeleid.
-                </div>
-
-                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-                    <img src="{{ URL::asset('assets/img/dessert.png') }}" style="width: 80%;height: 60px;display: block;margin: auto;">
-                </div>
-
-                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="float: right;">
-                    <button style="background: #4ab8ca;color: white;width: 100%;outline: none;" type="button" class="btn btn--primary">IK ga akkoord</button>
-                    <span><a style="cursor: pointer;" data-toggle="modal" data-target="#myModal1">Instellingen</a></span>
-                </div>
-
-            </div></div>
+        </div>
 
     </div>
 </div>
@@ -1074,8 +1082,9 @@
                     Wij maken gebruik van verschillende soorten cookies. Uiteraard beslist u zelf welke cookies Zoekjehuisje.nl mag gebruiken. De website werkt het best wanneer u gebruik maakt van alle cookies. Wij slaan alleen gegevens op die noodzakelijk zijn voor een goede werking van de website. U kunt hierbij denken aan: welke sitepagina's u bezocht heeft, de duur van uw bezoek en het tijdstip en van welke webbrowser u gebruik maakt (zoals Google Chrome, internet Explorer of Firefox).
                 </div>
 
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top: 30px;">
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 res-ck" style="margin-top: 30px;display: flex;">
+
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 ck-cont">
 
                         <div class="cookie-selected cookie-box">
                             <div style="width: 100%;text-align: center;">
@@ -1090,7 +1099,7 @@
 
                     </div>
 
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 ck-cont">
 
                         <div class="cookie-box">
                             <div style="width: 100%;text-align: center;">
@@ -1104,7 +1113,7 @@
 
                     </div>
 
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 ck-cont">
 
                         <div class="cookie-box">
                             <div style="width: 100%;text-align: center;">
@@ -1117,10 +1126,10 @@
 
                     </div>
 
-                    <div class="row" style="margin: 30px 0px 10px 0px;display: inline-block;width: 100%;text-align: center;">
-                        <button style="text-align: center;width: 15%;outline: none;" class="btn btn-danger save-cookie">Save</button>
-                    </div>
+                </div>
 
+                <div class="row" style="margin: 30px 0px 10px 0px;display: inline-block;width: 100%;text-align: center;">
+                    <button data-dismiss="modal" style="text-align: center;float: none;outline: none;" class="btn btn-danger save-cookie col-lg-2 col-md-3 col-sm-3 col-xs-4">Save</button>
                 </div>
 
             </div>
@@ -1131,7 +1140,18 @@
 
 <style>
 
-    #myModal1{display: flex !important;}
+    .ck-cont
+    {
+        flex: 1;
+    }
+
+    #myModal2 .modal-dialog .modal-content .modal-body{display: inline-block;}
+
+    #myModal2 .modal-dialog
+    {
+        margin: auto;
+        width: 60%;
+    }
 
     #myModal1 .modal-dialog .modal-content .modal-body{display: inline-block;}
 
@@ -1140,19 +1160,100 @@
         margin: auto;
         width: 60%;
     }
-    
-    .cookie-box{min-height: 260px;padding: 15px;border: 1px solid #e5e5e5;}
+
+    .cookie-box{height: 100%;padding: 15px;border: 1px solid #e5e5e5;}
 
     .cookie-box:hover{border: 1px solid #f3de47 !important;cursor: pointer;}
 
     .cookie-selected{border: 1px solid #f3de47;}
 
+    @media (max-width: 1200px)
+    {
+        #myModal1 .modal-dialog
+        {
+            width: 80%;
+        }
+
+        #myModal2 .modal-dialog
+        {
+            width: 80%;
+        }
+    }
+
+    @media (max-width: 991px)
+    {
+
+        #myModal1 .modal-dialog
+        {
+            width: 90%;
+        }
+
+        #myModal2 .modal-dialog
+        {
+            width: 90%;
+        }
+
+        .ck-cont
+        {
+            margin-bottom: 20px;
+        }
+    }
+
+    @media (max-width: 767px)
+    {
+        .ck-ls
+        {
+            margin-top: 20px !important;
+        }
+
+        .ck-ls span{margin-left: 10px;}
+
+        .res-ck{flex-direction: column;}
+
+    }
+
+    .modal-open1{
+        overflow: hidden;
+    }
+
 </style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <script>
 
-    $(".hide-cookies").click(function(){
-        $('.cookie-container').hide();
+
+    $( document ).ready(function() {
+
+        $(window).on('load',function(){
+            $('#myModal2').modal('show');
+        });
+
+
+
+        $('#myModal1').on('shown.bs.modal', function () {
+            $("body").addClass("modal-open1");
+            $('#myModal1').css('overflow-x','hidden');
+            $('#myModal1').css('overflow-y','auto');
+        });
+
+        $('#myModal1').on('hidden.bs.modal', function () {
+            $("body").removeClass("modal-open1");
+        });
+
+
+        $(".hide-cookies").click(function () {
+            $("#myModal2").modal('toggle');
+        });
+
+        $(".cookie-box").click(function () {
+            $(".cookie-box").removeClass('cookie-selected');
+            $(this).addClass('cookie-selected');
+        });
+
     });
 
 </script>
