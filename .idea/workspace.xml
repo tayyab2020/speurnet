@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7fe7f36f-c82f-4504-8c0a-7874522d22c9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/upload/moving-tips/test-e200a61326eb2a4d9e0950f794f136fe.JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img/biscuit.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img/cookies.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img/cookies1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/img/dessert.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/index.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -245,7 +250,7 @@
       <workItem from="1598347955873" duration="31197000" />
       <workItem from="1598596942646" duration="1541000" />
       <workItem from="1598729337451" duration="176664000" />
-      <workItem from="1599904738156" duration="1409000" />
+      <workItem from="1599904738156" duration="7684000" />
     </task>
     <servers />
   </component>

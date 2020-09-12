@@ -964,11 +964,11 @@
     </style>
 
 <!-- begin:blog -->
-<div id="partner">
+<div id="partner" style="background: #f4f4f4;">
     <div class="container" style="width: 100%;">
         <div class="row">
             <div class="col-md-12">
-                <div class="heading-title bg-white" style="margin-top: 20px;">
+                <div class="heading-title" style="margin-top: 20px;">
                     <h2>Our Blogs</h2>
                 </div>
             </div>
@@ -1032,9 +1032,134 @@
 
 @endif
 
+<div id="partner" class="cookie-container" style="background: #f4f4f4;padding: 0px 0px 20px 0px;">
+    <div class="container" style="width: 100%;">
+
+        <div class="row" style="display: flex;width: 100%;margin: 0;flex-direction: column;">
+
+            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10" style="margin: auto;padding: 10px 0px;">
+                <button style="width: 17%;outline: none;float: right;" class="btn btn-danger hide-cookies">Verberg deze melding</button>
+            </div>
+
+            <div class="col-lg-10 col-md-12 col-sm-12 col-xs-12" style="margin: auto;border: 1px solid #4ab8ca;padding: 30px 20px;">
+
+                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+                    Om u zo goed mogelijk te kunnen helpen en deze site goed te laten werken, maakt Zoekjehuisje.nl gebruik van cookies. Als u hiermee akkoord gaat, geeft u ons toestemming voor alle cookies die wij gebruiken. Wilt u geen gebruik maken van alle cookies? Dan kunt u zelf uw voorkeur aanpassen door op instellingen te klikken. Lees gerust onze cookieverklaring en privacybeleid.
+                </div>
+
+                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+                    <img src="{{ URL::asset('assets/img/dessert.png') }}" style="width: 80%;height: 60px;display: block;margin: auto;">
+                </div>
+
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="float: right;">
+                    <button style="background: #4ab8ca;color: white;width: 100%;outline: none;" type="button" class="btn btn--primary">IK ga akkoord</button>
+                    <span><a style="cursor: pointer;" data-toggle="modal" data-target="#myModal1">Instellingen</a></span>
+                </div>
+
+            </div></div>
+
+    </div>
+</div>
+
+<!-- Modal -->
+<div id="myModal1" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-body">
+                <h2 style="text-align: center;color: #d00447;font-weight: 600;">Cookie Settings <img src="{{ URL::asset('assets/img/cookies1.png') }}" style="width: 50px;"></h2>
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    Wij maken gebruik van verschillende soorten cookies. Uiteraard beslist u zelf welke cookies Zoekjehuisje.nl mag gebruiken. De website werkt het best wanneer u gebruik maakt van alle cookies. Wij slaan alleen gegevens op die noodzakelijk zijn voor een goede werking van de website. U kunt hierbij denken aan: welke sitepagina's u bezocht heeft, de duur van uw bezoek en het tijdstip en van welke webbrowser u gebruik maakt (zoals Google Chrome, internet Explorer of Firefox).
+                </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top: 30px;">
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+
+                        <div class="cookie-selected cookie-box">
+                            <div style="width: 100%;text-align: center;">
+                                <img src="{{ URL::asset('assets/img/biscuit.png') }}" style="width: 35px;">
+                                <img src="{{ URL::asset('assets/img/biscuit.png') }}" style="width: 35px;">
+                                <img src="{{ URL::asset('assets/img/biscuit.png') }}" style="width: 35px;">
+                            </div>
+                            <div style="width: 100%;text-align: center;margin-top: 20px;">
+                                Onze website werkt met deze cookies het best. De site onderzoekt uw bezoekersgedrag, slaat uw keuzes op en laat u informatie zien die handig voor u kunnen zijn en zo goed mogelijk bij u passen.
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+
+                        <div class="cookie-box">
+                            <div style="width: 100%;text-align: center;">
+                                <img src="{{ URL::asset('assets/img/biscuit.png') }}" style="width: 35px;">
+                                <img src="{{ URL::asset('assets/img/biscuit.png') }}" style="width: 35px;">
+                            </div>
+                            <div style="width: 100%;text-align: center;margin-top: 20px;">
+                                Deze site kan - ter verbetering van onze site en uw gebruikersbeleving- voorkeuren opslaan en uw bezoekersgedrag onderzoeken.
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+
+                        <div class="cookie-box">
+                            <div style="width: 100%;text-align: center;">
+                                <img src="{{ URL::asset('assets/img/biscuit.png') }}" style="width: 35px;">
+                            </div>
+                            <div style="width: 100%;text-align: center;margin-top: 20px;">
+                                De site kan voorkeuren opslaan voor een beter resultaat van de werking van de website (zoals uw woonplaats of taalvoorkeur). Deze cookies zijn onmisbaar voor een goed werkende site.
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row" style="margin: 30px 0px 10px 0px;display: inline-block;width: 100%;text-align: center;">
+                        <button style="text-align: center;width: 15%;outline: none;" class="btn btn-danger save-cookie">Save</button>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<style>
+
+    #myModal1{display: flex !important;}
+
+    #myModal1 .modal-dialog .modal-content .modal-body{display: inline-block;}
+
+    #myModal1 .modal-dialog
+    {
+        margin: auto;
+        width: 60%;
+    }
+    
+    .cookie-box{min-height: 260px;padding: 15px;border: 1px solid #e5e5e5;}
+
+    .cookie-box:hover{border: 1px solid #f3de47 !important;cursor: pointer;}
+
+    .cookie-selected{border: 1px solid #f3de47;}
+
+</style>
+
+<script>
+
+    $(".hide-cookies").click(function(){
+        $('.cookie-container').hide();
+    });
+
+</script>
+
 @include("_particles.partners")
 
-	@include("_particles.subscribe")
+@include("_particles.subscribe")
 
 
 
