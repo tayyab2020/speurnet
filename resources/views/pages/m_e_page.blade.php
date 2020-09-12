@@ -137,9 +137,9 @@
 
         .css-ce6ko1{font-size:25px;font-weight:bold;margin-bottom:18px;}
 
-        @media(min-width:624px){.css-48sroz{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;}}
+        @media(min-width:624px){.css-48sroz{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:flex-start;}}
 
-        @media(min-width:1021px){.css-48sroz{border-radius:3px;border:1px solid #fff;-webkit-flex-wrap:nowrap;-ms-flex-wrap:nowrap;flex-wrap:nowrap;box-shadow:0 1px 3px 0 rgba(30,41,61,0.1),0 1px 2px 0 rgba(30,41,61,0.2);}}
+        @media(min-width:1021px){.css-48sroz{border-radius:3px;/*border:1px solid #fff;*/-webkit-flex-wrap:nowrap;-ms-flex-wrap:nowrap;flex-wrap:nowrap;/*box-shadow:0 1px 3px 0 rgba(30,41,61,0.1),0 1px 2px 0 rgba(30,41,61,0.2);*/}}
 
         .css-48sroz li{font-weight:bold;margin-bottom:12px;background-color:#fff;box-shadow:0 1px 3px 0 rgba(30,41,61,0.1),0 1px 2px 0 rgba(30,41,61,0.2);}
 
@@ -151,7 +151,7 @@
 
         @media(min-width:1021px){
 
-            .css-48sroz li{-webkit-box-flex:1;-webkit-flex-grow:1;-ms-flex-positive:1;flex-grow:1;-webkit-flex-basis:20%;-ms-flex-preferred-size:20%;flex-basis:20%;font-size:18px;text-align:center;box-shadow:none;border-right:1px solid #e6e9ed;margin-top:-1px;margin-bottom:-1px;}
+            .css-48sroz li{-webkit-box-flex:1;-webkit-flex-grow:0.2;-ms-flex-positive:1;flex-grow:0.2;-webkit-flex-basis:15%;-ms-flex-preferred-size:20%;flex-basis:15%;font-size:18px;text-align:center;box-shadow:none;border-right:1px solid #e6e9ed;margin-top:-1px;margin-bottom:-1px;}
             .css-48sroz li:last-child{border-right-width:0;}
         }
 
@@ -163,7 +163,7 @@
 
         .css-48sroz img{color:#0ea800;width:65px !important;height:55px !important;margin-right:25px;}
 
-        @media(min-width:1021px){.css-48sroz img{display:block;margin:0 auto 20px auto;width:52% !important;height:65px !important;}}
+        @media(min-width:1021px){.css-48sroz img{display:block;margin:0 auto 20px auto;width:80% !important;height:100px !important;}}
 
         .css-jeyium{stroke-linejoin:round;stroke-linecap:round;fill:none;vertical-align:middle;width:24px;height:24px;}
 
