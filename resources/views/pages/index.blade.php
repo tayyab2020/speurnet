@@ -1059,6 +1059,7 @@
 
 @endif
 
+<input type="hidden" id="cookie-consent" value="{{$cookie}}">
 
 <!-- Modal -->
 <div id="myModal2" class="modal fade" role="dialog">
@@ -1096,7 +1097,7 @@
 </div>
 
 <!-- Modal -->
-<div id="myModal1" class="modal fade" role="dialog">
+<div id="myModal1" class="modal fade" role="dialog" style="overflow-x: hidden;overflow-y: auto;">
     <div class="modal-dialog">
 
         <!-- Modal content-->
@@ -1115,9 +1116,13 @@
 
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 res-ck" style="margin-top: 30px;display: flex;">
 
+                    <input type="hidden" name="cookie_choice" id="cookie-choice" value="3">
+                    <input type="hidden" name="ip" id="ip" value="<?php echo Request::ip() ?>">
+                    <input type="hidden" id="cookie-token" value="{{csrf_token()}}">
+
                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 ck-cont">
 
-                        <div class="cookie-selected cookie-box">
+                        <div class="cookie-selected cookie-box" data-id="3">
                             <div style="width: 100%;text-align: center;">
                                 <img src="{{ URL::asset('assets/img/biscuit.png') }}" style="width: 35px;">
                                 <img src="{{ URL::asset('assets/img/biscuit.png') }}" style="width: 35px;">
@@ -1132,7 +1137,7 @@
 
                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 ck-cont">
 
-                        <div class="cookie-box">
+                        <div class="cookie-box" data-id="2">
                             <div style="width: 100%;text-align: center;">
                                 <img src="{{ URL::asset('assets/img/biscuit.png') }}" style="width: 35px;">
                                 <img src="{{ URL::asset('assets/img/biscuit.png') }}" style="width: 35px;">
@@ -1146,7 +1151,7 @@
 
                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 ck-cont">
 
-                        <div class="cookie-box">
+                        <div class="cookie-box" data-id="1">
                             <div style="width: 100%;text-align: center;">
                                 <img src="{{ URL::asset('assets/img/biscuit.png') }}" style="width: 35px;">
                             </div>
@@ -1259,16 +1264,18 @@
 
     $( document ).ready(function() {
 
+        var consent = $('#cookie-consent').val();
+
         $(window).on('load',function(){
-            $('#myModal2').modal('show');
+
+            if(consent == '')
+            {
+                $('#myModal2').modal('show');
+            }
         });
-
-
 
         $('#myModal1').on('shown.bs.modal', function () {
             $("body").addClass("modal-open1");
-            $('#myModal1').css('overflow-x','hidden');
-            $('#myModal1').css('overflow-y','auto');
         });
 
         $('#myModal1').on('hidden.bs.modal', function () {
@@ -1281,8 +1288,46 @@
         });
 
         $(".cookie-box").click(function () {
+
+            var id =$(this).data('id');
+
+            $("#cookie-choice").val(id);
+
             $(".cookie-box").removeClass('cookie-selected');
             $(this).addClass('cookie-selected');
+        });
+
+        $(".save-cookie").click(function () {
+
+            $.ajax({
+
+                type: "POST",
+                url:"{{URL::to('cookie-save/')}}",
+                data: {'ip':$('#ip').val(), 'choice':$('#cookie-choice').val(), '_token': $('#cookie-token').val()},
+                success: function(msg)
+                {
+                    $("#content").prepend('<div class="alert alert-success alert-box" style="text-align: center;font-size: 16px;position: fixed;top: 20%;z-index: 1000;padding-right: 35px;background-color: rgb(0 0 0);color: rgb(255 255 255);border: 0;max-width: 400px;border-radius: 0;">\n' +
+                        '                <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="position: absolute;top: 5px;right: 8px;font-size: 28px;line-height: 0.5;opacity: 0.8;font-weight: 100;text-shadow: none;color: #ffffff;">\n' +
+                        '                    <span aria-hidden="true">&times;</span></button>\n' +
+                        '                Cookie Consent Saved Successfully' +
+                        '            </div>');
+
+                    $('.alert-box').delay(5000).fadeOut('slow');
+                },
+                error: function()
+                {
+                    $("#content").prepend('<div class="alert alert-success alert-box" style="text-align: center;font-size: 16px;position: fixed;top: 20%;z-index: 1000;padding-right: 35px;background-color: rgb(0 0 0);color: rgb(255 255 255);border: 0;max-width: 400px;border-radius: 0;">\n' +
+                        '                <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="position: absolute;top: 5px;right: 8px;font-size: 28px;line-height: 0.5;opacity: 0.8;font-weight: 100;text-shadow: none;color: #ffffff;">\n' +
+                        '                    <span aria-hidden="true">&times;</span></button>\n' +
+                        '                Something went wrong!' +
+                        '            </div>');
+
+                    $('.alert-box').delay(5000).fadeOut('slow');
+
+                }
+
+            });
+
         });
 
     });

@@ -229,6 +229,7 @@ Route::group(['middleware' => 'App\Http\Middleware\UserTypeMiddleware'], functio
 
 
     Route::post('subscribe', 'IndexController@subscribe');
+    Route::post('cookie-save', 'IndexController@cookieSave');
 
     Route::get('agents', 'AgentsController@index');
     Route::post('agents/send-enquiry', 'AgentsController@SendEnquiry');

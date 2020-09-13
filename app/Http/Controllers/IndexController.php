@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Blogs;
+use App\cookies;
 use App\Expats;
 use App\footer_pages;
 use App\HomepageIcons;
@@ -289,8 +290,9 @@ class IndexController extends Controller
 
         }
 
+        $cookie = cookies::where('ip',\Request::ip())->first();
 
-        return view('pages.index',compact('propertieslist','blogs', 'heading', 'most_viewed', 'partners','city_list','top_members','top_properties','content'));
+        return view('pages.index',compact('cookie','propertieslist','blogs', 'heading', 'most_viewed', 'partners','city_list','top_members','top_properties','content'));
     }
 
     public function Blogs()
@@ -375,6 +377,24 @@ class IndexController extends Controller
 
 	    echo '<p style="color: #189e26;font-size: 20px;">Successfully subscribe</p>';
         exit;
+
+    }
+
+    public function cookieSave(Request $request)
+    {
+
+        $data =  \Request::except(array('_token')) ;
+
+        $inputs = $request->all();
+
+        $cookie = new cookies;
+
+        $cookie->ip = $inputs['ip'];
+        $cookie->choice = $inputs['choice'];
+
+        $cookie->save();
+
+        return "Done";
 
     }
 
