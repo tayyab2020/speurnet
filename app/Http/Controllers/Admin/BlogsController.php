@@ -109,33 +109,59 @@ class BlogsController extends MainAdminController
 
             $slide = moving_tips_contents::findOrFail($inputs['id']);
 
+            //Slide image
+            $slide_image = $request->file('image');
+
+            if($slide_image){
+
+                \File::delete(public_path() .'/upload/moving-tips/'.$slide->image);
+
+                $filename = $_FILES['image']['name'];
+
+                $ext = pathinfo($filename, PATHINFO_EXTENSION);
+
+                $tmpFilePath = 'upload/moving-tips/';
+
+                $hardPath =  Str::slug($inputs['title'], '-').'-'.md5(time()) .'.'.$ext;
+
+                $img = Image::make($slide_image);
+
+                $img->save($tmpFilePath.$hardPath);
+
+                $slide->image = $hardPath;
+
+            }
+
         }else{
 
-            $slide = new moving_tips_contents();
+            $slide = new moving_tips_contents;
 
-        }
+            //Slide image
+            $slide_image = $request->file('image');
 
+            if($slide_image){
 
-        //Slide image
-        $slide_image = $request->file('image');
+                \File::delete(public_path() .'/upload/moving-tips/'.$slide->image);
 
-        if($slide_image){
+                $filename = $_FILES['image']['name'];
 
-            \File::delete(public_path() .'/upload/moving-tips/'.$slide->image);
+                $ext = pathinfo($filename, PATHINFO_EXTENSION);
 
-            $filename = $_FILES['image']['name'];
+                $tmpFilePath = 'upload/moving-tips/';
 
-            $ext = pathinfo($filename, PATHINFO_EXTENSION);
+                $hardPath =  Str::slug($inputs['title'], '-').'-'.md5(time()) .'.'.$ext;
 
-            $tmpFilePath = 'upload/moving-tips/';
+                $img = Image::make($slide_image);
 
-            $hardPath =  Str::slug($inputs['title'], '-').'-'.md5(time()) .'.'.$ext;
+                $img->save($tmpFilePath.$hardPath);
 
-            $img = Image::make($slide_image);
+                $slide->image = $hardPath;
 
-            $img->save($tmpFilePath.$hardPath);
-
-            $slide->image = $hardPath;
+            }
+            else
+            {
+                $slide->image = '';
+            }
 
         }
 
@@ -261,9 +287,68 @@ class BlogsController extends MainAdminController
 
                 $blog = Blogs::findOrFail($inputs['id']);
 
+                //Slide image
+                $t_user_image = $request->file('image');
+
+                if($t_user_image){
+
+                    \File::delete(public_path() .'/upload/moving-tips/'.$blog->image);
+
+                    $tmpFilePath = 'upload/moving-tips/';
+
+                    $filename = $_FILES['image']['name'];
+
+                    $ext = pathinfo($filename, PATHINFO_EXTENSION);
+
+                    $hardPath =  Str::slug($inputs['title'], '-').'-'.md5(time());
+
+                    $image_file = $hardPath . '.' . $ext;
+
+                    $target_file = $tmpFilePath . $image_file;
+
+                    $img = Image::make($t_user_image);
+
+                    $img->save($target_file);
+
+                    $blog->image = $image_file;
+
+                }
+
+
             }else{
 
                 $blog = new Blogs;
+
+                //Slide image
+                $t_user_image = $request->file('image');
+
+                if($t_user_image){
+
+                    \File::delete(public_path() .'/upload/moving-tips/'.$blog->image);
+
+                    $tmpFilePath = 'upload/moving-tips/';
+
+                    $filename = $_FILES['image']['name'];
+
+                    $ext = pathinfo($filename, PATHINFO_EXTENSION);
+
+                    $hardPath =  Str::slug($inputs['title'], '-').'-'.md5(time());
+
+                    $image_file = $hardPath . '.' . $ext;
+
+                    $target_file = $tmpFilePath . $image_file;
+
+                    $img = Image::make($t_user_image);
+
+                    $img->save($target_file);
+
+                    $blog->image = $image_file;
+
+                }
+                else
+                {
+                    $blog->image = '';
+                }
 
             }
 
@@ -275,9 +360,68 @@ class BlogsController extends MainAdminController
 
                 $blog = moving_tips::findOrFail($inputs['id']);
 
+                //Slide image
+                $t_user_image = $request->file('image');
+
+                if($t_user_image){
+
+                    \File::delete(public_path() .'/upload/moving-tips/'.$blog->image);
+
+                    $tmpFilePath = 'upload/moving-tips/';
+
+                    $filename = $_FILES['image']['name'];
+
+                    $ext = pathinfo($filename, PATHINFO_EXTENSION);
+
+                    $hardPath =  Str::slug($inputs['title'], '-').'-'.md5(time());
+
+                    $image_file = $hardPath . '.' . $ext;
+
+                    $target_file = $tmpFilePath . $image_file;
+
+                    $img = Image::make($t_user_image);
+
+                    $img->save($target_file);
+
+                    $blog->image = $image_file;
+
+                }
+
+
             }else{
 
                 $blog = new moving_tips;
+
+                //Slide image
+                $t_user_image = $request->file('image');
+
+                if($t_user_image){
+
+                    \File::delete(public_path() .'/upload/moving-tips/'.$blog->image);
+
+                    $tmpFilePath = 'upload/moving-tips/';
+
+                    $filename = $_FILES['image']['name'];
+
+                    $ext = pathinfo($filename, PATHINFO_EXTENSION);
+
+                    $hardPath =  Str::slug($inputs['title'], '-').'-'.md5(time());
+
+                    $image_file = $hardPath . '.' . $ext;
+
+                    $target_file = $tmpFilePath . $image_file;
+
+                    $img = Image::make($t_user_image);
+
+                    $img->save($target_file);
+
+                    $blog->image = $image_file;
+
+                }
+                else
+                {
+                    $blog->image = '';
+                }
 
             }
 
@@ -293,25 +437,9 @@ class BlogsController extends MainAdminController
 
                 if($t_user_image){
 
-                    if(Route::currentRouteName() == 'post-blog')
-                    {
-                        \File::delete(public_path() .'/upload/blogs/'.$blog->image);
+                    \File::delete(public_path() .'/upload/expats/'.$blog->image);
 
-                        $tmpFilePath = 'upload/blogs/';
-                    }
-                    elseif(Route::currentRouteName() == 'post-moving-tip')
-                    {
-                        \File::delete(public_path() .'/upload/moving-tips/'.$blog->image);
-
-                        $tmpFilePath = 'upload/moving-tips/';
-                    }
-                    else
-                    {
-                        \File::delete(public_path() .'/upload/expats/'.$blog->image);
-
-                        $tmpFilePath = 'upload/expats/';
-                    }
-
+                    $tmpFilePath = 'upload/expats/';
 
                     $filename = $_FILES['image']['name'];
 
@@ -340,25 +468,9 @@ class BlogsController extends MainAdminController
 
                 if($t_user_image){
 
-                    if(Route::currentRouteName() == 'post-blog')
-                    {
-                        \File::delete(public_path() .'/upload/blogs/'.$blog->image);
+                    \File::delete(public_path() .'/upload/expats/'.$blog->image);
 
-                        $tmpFilePath = 'upload/blogs/';
-                    }
-                    elseif(Route::currentRouteName() == 'post-moving-tip')
-                    {
-                        \File::delete(public_path() .'/upload/moving-tips/'.$blog->image);
-
-                        $tmpFilePath = 'upload/moving-tips/';
-                    }
-                    else
-                    {
-                        \File::delete(public_path() .'/upload/expats/'.$blog->image);
-
-                        $tmpFilePath = 'upload/expats/';
-                    }
-
+                    $tmpFilePath = 'upload/expats/';
 
                     $filename = $_FILES['image']['name'];
 

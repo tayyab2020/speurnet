@@ -1052,11 +1052,11 @@
                         Om u zo goed mogelijk te kunnen helpen en deze site goed te laten werken, maakt Zoekjehuisje.nl gebruik van cookies. Als u hiermee akkoord gaat, geeft u ons toestemming voor alle cookies die wij gebruiken. Wilt u geen gebruik maken van alle cookies? Dan kunt u zelf uw voorkeur aanpassen door op instellingen te klikken. Lees gerust onze cookieverklaring en privacybeleid.
                     </div>
 
-                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4 ck-icn" style="margin-top: 20px;">
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-5 ck-icn" style="margin-top: 20px;">
                         <img src="{{ URL::asset('assets/img/dessert.png') }}" style="width: 70%;height: 60px;display: block;margin: auto;">
                     </div>
 
-                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 ck-ls" style="float: right;margin-top: 10px;">
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-7 ck-ls" style="float: right;margin-top: 10px;">
                         <button style="background: #4ab8ca;color: white;outline: none;" type="button" class="btn col-lg-12 col-md-12 col-sm-12 col-xs-12 hide-cookies">IK ga akkoord</button>
                         <span><a class="cookie-btn" style="cursor: pointer;" data-toggle="modal" data-target="#myModal1">Instellingen</a></span>
                     </div>
@@ -1076,7 +1076,12 @@
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-body">
-                <h2 style="text-align: center;color: #d00447;font-weight: 600;">Cookie Settings <img src="{{ URL::asset('assets/img/cookies1.png') }}" style="width: 50px;"></h2>
+
+                <button style="outline: none;" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span style="font-size: 30px;" aria-hidden="true">×</span>
+                </button>
+
+                <h2 style="text-align: center;color: #d00447;font-weight: 600;display: inline-block;width: 100%;margin-top: 0;">Cookie Settings <img src="{{ URL::asset('assets/img/cookies1.png') }}" style="width: 50px;"></h2>
 
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     Wij maken gebruik van verschillende soorten cookies. Uiteraard beslist u zelf welke cookies Zoekjehuisje.nl mag gebruiken. De website werkt het best wanneer u gebruik maakt van alle cookies. Wij slaan alleen gegevens op die noodzakelijk zijn voor een goede werking van de website. U kunt hierbij denken aan: welke sitepagina's u bezocht heeft, de duur van uw bezoek en het tijdstip en van welke webbrowser u gebruik maakt (zoals Google Chrome, internet Explorer of Firefox).

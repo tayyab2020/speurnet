@@ -53,9 +53,17 @@
                             <div class="media-left">
                                 @if(isset($slide->image))
 
-                                    <img src="{{ URL::asset('upload/homepage_icons/'.$slide->image) }}" width="200" alt="person">
-                                @endif
+                                    @if($slide->image)
 
+                                        <img src="{{ URL::asset('upload/homepage_icons/'.$slide->image) }}" width="200" alt="person">
+
+                                    @else
+
+                                        <img src="{{ URL::asset('upload/noImage.png') }}" width="200" alt="person">
+
+                                    @endif
+
+                                @endif
                             </div>
                             <div class="media-body media-middle">
                                 <input type="file" name="image" class="filestyle">

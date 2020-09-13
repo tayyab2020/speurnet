@@ -52,9 +52,18 @@
                     <div class="col-sm-9">
                         <div class="media">
                             <div class="media-left">
+
                                 @if(isset($slide->image))
 
-                                    <img src="{{ URL::asset('upload/moving-tips/'.$slide->image) }}" width="200" alt="person">
+                                    @if($slide->image)
+
+                                        <img src="{{ URL::asset('upload/moving-tips/'.$slide->image) }}" width="200" alt="person">
+
+                                    @else
+
+                                        <img src="{{ URL::asset('upload/noImage.png') }}" width="200" alt="person">
+
+                                    @endif
 
                                 @endif
 

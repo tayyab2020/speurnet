@@ -197,35 +197,62 @@ class SliderController extends MainAdminController
 
             $slide = HomepageIcons::findOrFail($inputs['id']);
 
+            //Slide image
+            $slide_image = $request->file('image');
+
+            if($slide_image){
+
+                \File::delete(public_path() .'/upload/homepage_icons/'.$slide->image);
+
+                $filename = $_FILES['image']['name'];
+
+                $ext = pathinfo($filename, PATHINFO_EXTENSION);
+
+                $tmpFilePath = 'upload/homepage_icons/';
+
+                $hardPath =  Str::slug($inputs['title'], '-').'-'.md5(time()) .'.'.$ext;
+
+                $img = Image::make($slide_image);
+
+                $img->save($tmpFilePath.$hardPath);
+
+                $slide->image = $hardPath;
+
+            }
+
         }else{
 
             $slide = new HomepageIcons();
 
+            //Slide image
+            $slide_image = $request->file('image');
+
+            if($slide_image){
+
+                \File::delete(public_path() .'/upload/homepage_icons/'.$slide->image);
+
+                $filename = $_FILES['image']['name'];
+
+                $ext = pathinfo($filename, PATHINFO_EXTENSION);
+
+                $tmpFilePath = 'upload/homepage_icons/';
+
+                $hardPath =  Str::slug($inputs['title'], '-').'-'.md5(time()) .'.'.$ext;
+
+                $img = Image::make($slide_image);
+
+                $img->save($tmpFilePath.$hardPath);
+
+                $slide->image = $hardPath;
+
+            }
+            else
+            {
+                $slide->image = '';
+            }
+
         }
 
-
-        //Slide image
-        $slide_image = $request->file('image');
-
-        if($slide_image){
-
-            \File::delete(public_path() .'/upload/homepage_icons/'.$slide->image);
-
-            $filename = $_FILES['image']['name'];
-
-            $ext = pathinfo($filename, PATHINFO_EXTENSION);
-
-            $tmpFilePath = 'upload/homepage_icons/';
-
-            $hardPath =  Str::slug($inputs['title'], '-').'-'.md5(time()) .'.'.$ext;
-
-            $img = Image::make($slide_image);
-
-            $img->save($tmpFilePath.$hardPath);
-
-            $slide->image = $hardPath;
-
-        }
 
 
         $slide->title = $inputs['title'];

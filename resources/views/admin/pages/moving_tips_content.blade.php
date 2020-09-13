@@ -35,11 +35,19 @@
                     <tbody>
                     @foreach($all as $i => $slide)
                         <tr>
-                            <td> @if($slide->image)
+                            <td>
 
-                                    <a href="{{ URL::asset('upload/moving-tips/'.$slide->image) }}"><img src="{{ URL::asset('upload/moving-tips/'.$slide->image) }}" width="100" alt=""></a>
+                                @if($slide->image)
 
-                                @endif</td>
+                                    <img src="{{ URL::asset('upload/moving-tips/'.$slide->image) }}" width="80" alt="">
+
+                                @else
+
+                                    <img src="{{ URL::asset('upload/noImage.png') }}" width="80" alt="">
+
+                                @endif
+
+                            </td>
                             <td>{{ $slide->title }}</td>
                             <td>{{ $slide->url }}</td>
 
