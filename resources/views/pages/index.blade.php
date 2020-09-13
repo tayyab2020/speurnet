@@ -1084,7 +1084,7 @@
                     </div>
 
                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-7 ck-ls" style="float: right;margin-top: 10px;">
-                        <button style="background: #4ab8ca;color: white;outline: none;" type="button" class="btn col-lg-12 col-md-12 col-sm-12 col-xs-12 hide-cookies">IK ga akkoord</button>
+                        <button data-dismiss="modal" style="background: #4ab8ca;color: white;outline: none;" type="button" class="btn col-lg-12 col-md-12 col-sm-12 col-xs-12 save-cookie">IK ga akkoord</button>
                         <span><a class="cookie-btn" style="cursor: pointer;" data-toggle="modal" data-target="#myModal1">Instellingen</a></span>
                     </div>
 
@@ -1250,6 +1250,7 @@
 
     .modal-open1{
         overflow: hidden;
+        padding-right: 9px;
     }
 
 </style>
@@ -1280,6 +1281,7 @@
 
         $('#myModal1').on('hidden.bs.modal', function () {
             $("body").removeClass("modal-open1");
+            $("body").css("padding-right","0");
         });
 
 
