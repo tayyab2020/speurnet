@@ -1253,6 +1253,11 @@
         padding-right: 9px;
     }
 
+    body
+    {
+        padding-right: 0 !important;
+    }
+
 </style>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -1281,7 +1286,6 @@
 
         $('#myModal1').on('hidden.bs.modal', function () {
             $("body").removeClass("modal-open1");
-            $("body").css("padding-right","0");
         });
 
 
