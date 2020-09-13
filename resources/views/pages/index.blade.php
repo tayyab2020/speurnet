@@ -417,10 +417,10 @@
                                             <h3 style="margin-bottom: 15px;margin-top: 0px;display: inline-block;width: 100%;">
 
                                                 <div style="display: inline-block;width: 100%;">
-                                                    <a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;" href="{{URL::to('properties/'.$property->property_slug)}}">{{ Str::limit($property->property_name,35) }}</a>
+                                                    <a style="text-overflow: ellipsis;display: block;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;white-space: nowrap;" href="{{URL::to('properties/'.$property->property_slug)}}">{{ Str::limit($property->property_name,35) }}</a>
                                                 </div>
 
-                                                <small style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;width: 50%;float: left;">{{ Str::limit($property->address,40) }}</small>
+                                                <small style="text-overflow: ellipsis;display: block;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;width: 50%;float: left;white-space: nowrap;">{{ Str::limit($property->address,40) }}</small>
                                                 <small style="margin-top: 5px;float: right;font-weight: 600;width: 50%;text-align: right;">@if($property->sale_price) € {{number_format($property->sale_price, 0, ',', '.')}} {{$property->cost_for}} @elseif($property->rent_price) € {{$property->rent_price}} @endif</small>
 
                                             </h3>
@@ -519,7 +519,7 @@
                             </div>
 
                             <div class="property-content">
-                                <h3 style="margin: 10px 0px;"><a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;" href="{{URL::to('properties/'.$temp->property_slug)}}">{{ Str::limit($temp->property_name,35) }}</a> <small style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;">{{ Str::limit($temp->address,40) }}</small></h3>
+                                <h3 style="margin: 10px 0px;"><a style="text-overflow: ellipsis;display: block;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;white-space: nowrap;" href="{{URL::to('properties/'.$temp->property_slug)}}">{{ Str::limit($temp->property_name,35) }}</a> <small style="text-overflow: ellipsis;display: block;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;white-space: nowrap;">{{ Str::limit($temp->address,40) }}</small></h3>
                                 <small style="margin-top: 20px;font-weight: 600;">{{ getPropertyTypeName($property->property_type)->types }}</small>
                                 <small style="float: right;">€@if($property->sale_price) {{number_format($property->sale_price, 0, ',', '.')}} {{$temp->cost_for}} @else {{number_format($property->rent_price, 0, ',', '.')}} @endif</small>
                             </div>
@@ -575,7 +575,7 @@
                                 </div>
 
                                 <div class="property-content">
-                                    <h3><a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;" href="{{URL::to('agents')}}">{{$temp->name}}</a> <small style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;">{{$temp->email}}</small></h3>
+                                    <h3><a style="text-overflow: ellipsis;display: block;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;white-space: nowrap;" href="{{URL::to('agents')}}">{{$temp->name}}</a> <small style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;">{{$temp->email}}</small></h3>
                                 </div>
                             </div>
                         </div>
@@ -1010,7 +1010,7 @@
 
                                 <div class="property-content description-content">
 
-                                    <h3><a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;" href="{{ url('blogs/'.$blog->id) }}">{{$blog->title}}</a>
+                                    <h3><a style="text-overflow: ellipsis;display: block;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;white-space: nowrap;" href="{{ url('blogs/'.$blog->id) }}">{{$blog->title}}</a>
                                     <small style="color: #acacac;font-style: normal;">{{$date}}</small>
                                     </h3>
 
