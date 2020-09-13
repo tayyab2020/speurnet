@@ -52,7 +52,7 @@
 
   <body id="top">
 
-	  @include("_particles.header")
+  @include("_particles.header")
 
 
 	  @yield("content")
