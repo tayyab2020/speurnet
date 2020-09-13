@@ -457,8 +457,10 @@
 
                                         <div class="property-content" style="border-top:1px solid #cacaca;display: flex;padding: 0;height: 85px;align-items: center;">
 
+                                            @if(!$property->landlord)
+
                                             <div style="width: 40%;padding-left: 8px;">
-                                                <span style="font-weight: 700;color: #aca6a6;">Brought to you by</span>
+                                                <span style="font-weight: 600;color: #808080;">Brought to you by</span>
                                             </div>
 
                                             <div style="width: 60%;height: 100%;padding: 8px;padding-bottom: 2px;">
@@ -474,6 +476,14 @@
                                                 </a>
 
                                             </div>
+
+                                            @else
+
+                                                <div style="width: 100%;text-align: center;">
+                                                    <span style="font-weight: 600;color: #808080;">Brought to you by a private landlord</span>
+                                                </div>
+
+                                            @endif
 
                                         </div>
 

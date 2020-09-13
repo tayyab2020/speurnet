@@ -535,23 +535,33 @@
 
                 <div class="property-content" style="border-top:1px solid #cacaca;display: flex;padding: 0;height: 85px;align-items: center;">
 
-                <div style="width: 50%;padding-left: 3px;">
-                    <span style="font-weight: 700;color: #aca6a6;">Brought to you by</span>
-                </div>
+                    @if(!$property->landlord)
 
-                <div style="width: 50%;height: 100%;padding: 5px;">
+                        <div style="width: 50%;padding-left: 3px;">
+                            <span style="font-weight: 600;color: #808080;">Brought to you by</span>
+                        </div>
 
-                    <a style="outline: none;" href="{{URL::to('agents/details/'.$property->user_id)}}">
+                        <div style="width: 50%;height: 100%;padding: 5px;">
 
-                    @if($property->image_icon)
-                    <img style="width: 95%;height: 100%;float: right;" src="{{ URL::asset('upload/members/'.$property->image_icon.'-b.jpg') }}">
-                    @else
-                    <img style="width: 95%;height: 100%;float: right;" src="{{ URL::asset('assets/img/team03.jpg') }}" >
+                        <a style="outline: none;" href="{{URL::to('agents/details/'.$property->user_id)}}">
+
+                            @if($property->image_icon)
+                                <img style="width: 95%;height: 100%;float: right;" src="{{ URL::asset('upload/members/'.$property->image_icon.'-b.jpg') }}">
+                            @else
+                                <img style="width: 95%;height: 100%;float: right;" src="{{ URL::asset('assets/img/team03.jpg') }}" >
+                            @endif
+
+                        </a>
+
+                        </div>
+
+                        @else
+
+                        <div style="width: 100%;text-align: center;">
+                            <span style="font-weight: 600;color: #808080;">Brought to you by a private landlord</span>
+                        </div>
+
                     @endif
-
-                    </a>
-
-                </div>
 
                 </div>
 
