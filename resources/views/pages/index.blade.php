@@ -1014,7 +1014,7 @@
                                     <small style="color: #acacac;font-style: normal;">{{$date}}</small>
                                     </h3>
 
-                                    <p style="text-overflow: ellipsis;display: block;-webkit-line-clamp: 4;-webkit-box-orient: vertical;overflow: hidden;line-height: 2;font-size: 15px;margin-top: 15px;white-space: nowrap;">{{$description}}</p>
+                                    <p style="text-overflow: ellipsis;display: block;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;font-size: 15px;margin-top: 15px;white-space: nowrap;">{{$description}}</p>
 
                                 </div>
                             </div>
