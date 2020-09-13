@@ -32,10 +32,6 @@
 
                                     <img src="{{ URL::asset('upload/moving-tips/'.$key->image) }}" style="width: 100%;" alt="{{$key->title}}">
 
-                                @else
-
-                                    <img src="{{ URL::asset('upload/noImage.png') }}" style="width: 100%;" alt="{{$key->title}}">
-
                                 @endif
 
 
@@ -44,10 +40,6 @@
                                 @if($key->image)
 
                                     <img src="{{ URL::asset('upload/expats/'.$key->image) }}" style="width: 100%;" alt="{{$key->title}}">
-
-                                @else
-
-                                    <img src="{{ URL::asset('upload/noImage.png') }}" style="width: 100%;" alt="{{$key->title}}">
 
                                 @endif
 
@@ -75,9 +67,25 @@
 
                                         @foreach($content as $temp)
 
-                                            <li><a href="@if($temp->url){{$temp->url}} @else {{URL::to('/')}} @endif">
+                                            <li>
 
-                                                    <img src="{{ URL::asset('upload/moving-tips/'.$temp->image) }}">{{$temp->title}}</a>
+                                                @if($temp->image)
+
+                                                    <a href="@if($temp->url){{$temp->url}} @else {{URL::to('/')}} @endif">
+
+                                                        <img src="{{ URL::asset('upload/moving-tips/'.$temp->image) }}">{{$temp->title}}
+
+                                                    </a>
+
+                                                @else
+
+                                                    <a style="display: flex;justify-content: center;" href="@if($temp->url){{$temp->url}} @else {{URL::to('/')}} @endif">
+
+                                                        {{$temp->title}}
+
+                                                    </a>
+
+                                                @endif
 
                                             </li>
 

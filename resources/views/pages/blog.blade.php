@@ -19,18 +19,19 @@
                         <div class="col-md-12">
                             <div class="post_img">
 
-                                <h1 class="post_title" style="font-weight: 100;text-align: center;">
-                                    {{$blog->title}}
-                                </h1>
-                                <?php $date = $blog->created_at;
-                                $date = date("M d, Y", strtotime($date)); ?>
-
-
-                                <div class="post_meta_top" style="text-align: center;margin-bottom: 20px;">
-                                    <span class="post_meta_date">{{$date}}</span>
-                                </div>
-
                                 @if(Route::currentRouteName() == 'front-blog')
+
+                                    <h1 class="post_title" style="font-weight: 100;text-align: center;">
+                                        {{$blog->title}}
+                                    </h1>
+
+                                    <?php $date = $blog->created_at;
+                                    $date = date("M d, Y", strtotime($date)); ?>
+
+
+                                    <div class="post_meta_top" style="text-align: center;margin-bottom: 20px;">
+                                        <span class="post_meta_date">{{$date}}</span>
+                                    </div>
 
                                     @if($blog->image)
 
@@ -43,6 +44,10 @@
                                     @endif
 
                                 @else
+
+                                    <h1 class="post_title" style="font-weight: 100;text-align: center;margin-bottom: 40px;">
+                                        {{$blog->title}}
+                                    </h1>
 
                                     @if($blog->image)
 

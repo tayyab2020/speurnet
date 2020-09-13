@@ -43,9 +43,25 @@
 
                               @foreach($content as $temp)
 
-                              <li><a href="@if($temp->url){{$temp->url}} @else {{URL::to('/')}} @endif">
+                              <li>
 
-                                      <img src="{{ URL::asset('upload/homepage_icons/'.$temp->image) }}">{{$temp->title}}</a>
+                                  @if($temp->image)
+
+                                      <a href="@if($temp->url){{$temp->url}} @else {{URL::to('/')}} @endif">
+
+                                          <img src="{{ URL::asset('upload/homepage_icons/'.$temp->image) }}">{{$temp->title}}
+
+                                      </a>
+
+                                  @else
+
+                                      <a style="display: flex;justify-content: center;" href="@if($temp->url){{$temp->url}} @else {{URL::to('/')}} @endif">
+
+                                          {{$temp->title}}
+
+                                      </a>
+
+                                  @endif
 
                               </li>
 

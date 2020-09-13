@@ -425,8 +425,10 @@
 
                                 </div>
 
+                                <?php $date = date_format($temp->created_at,"F d, Y");?>
+
                                 <div class="row" style="margin: 0;display: inline-block;width: 100%;">
-                                    <small style="float: left;font-weight: 600;padding-left: 10px;padding-top: 20px;"> Posted on 06 June, 2020</small>
+                                    <small style="float: left;font-weight: 600;padding-left: 10px;padding-top: 20px;"> Posted on {{$date}}</small>
                                 </div>
 
                             </div>
