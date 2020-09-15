@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -52,7 +52,46 @@
 
   <body id="top">
 
-  @include("_particles.header")
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+  {!! Form::open(array('url' => array('change-language'),'class'=>'form-horizontal padding-15','name'=>'lng_form','id'=>'lng_form','role'=>'form','enctype' => 'multipart/form-data')) !!}
+
+  <input type="hidden" id="language" name="language" value="{{Config::get('app.locale')}}">
+
+  <div class="dropdown" style="position: absolute;top: 95px;right: 0;z-index: 1000;">
+
+  <button style="outline: none;background: white;border: 1px solid #cccccc;border-radius: 50px;" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      @if( Config::get('app.locale') == 'en')
+
+          <img src="https://www.flaticon.com/svg/static/icons/svg/197/197374.svg" style="margin-right: 5px;width: 30px;"> English
+
+      @else
+
+          <img src="https://www.flaticon.com/svg/static/icons/svg/197/197441.svg" style="margin-right: 5px;width: 30px;"> Dutch
+
+      @endif
+  </button>
+
+  <div style="background: transparent;min-width: 100%;" data-value="en" class="dropdown-menu menu-status" aria-labelledby="dropdownMenuButton">
+      @if( Config::get('app.locale') == 'en')
+
+          <a style="background: white;border-radius: 100px;cursor: pointer;" data-value="du" class="dropdown-item dropdown-lng">
+              <img src="https://www.flaticon.com/svg/static/icons/svg/197/197441.svg" style="margin-right: 5px;width: 30px;"> Dutch</a>
+
+      @else
+
+          <a style="background: white;border-radius: 100px;cursor: pointer;" data-value="en" class="dropdown-item dropdown-lng">
+              <img src="https://www.flaticon.com/svg/static/icons/svg/197/197374.svg" style="margin-right: 5px;width: 30px;"> English</a>
+
+      @endif
+  </div>
+
+  </div>
+
+  {!! Form::close() !!}
+
+	  @include("_particles.header")
 
 
 	  @yield("content")
@@ -107,6 +146,31 @@
 
       <style>
 
+          .dropdown .dropdown-toggle::after
+          {
+              display: inline-block;
+              margin-left: .255em;
+              vertical-align: .255em;
+              content: "";
+              border-top: .3em solid;
+              border-right: .3em solid transparent;
+              border-bottom: 0;
+              border-left: .3em solid transparent;
+
+          }
+
+
+          .dropdown-menu a{
+              display: block;
+              padding: 5px 10px;
+              width: 100%;
+              white-space: nowrap;
+              text-decoration: none;
+              color: #212529;
+          }
+
+          .dropdown-menu a i{ margin-right: 5px; }
+
           .backstretch
           {
               width: 100% !important;
@@ -121,6 +185,22 @@
           }
 
       </style>
+
+  <script>
+
+      $(document).ready(function() { //Make script DOM ready
+
+          $('.dropdown-lng').click(function () {
+
+              var value = $(this).data('value');
+
+              $('#language').val(value);
+
+              $('#lng_form').submit();
+          });
+      });
+
+  </script>
 
     {!!getcong('site_footer_code')!!}
 

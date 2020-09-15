@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\footer_pages;
 use App\Observers\PropertiesObserver;
 use App\Properties;
+use App\user_languages;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\View;
@@ -31,6 +32,40 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
         /*Properties::observe(PropertiesObserver::class);*/
+
+        if (!empty($_SERVER['HTTP_CLIENT_IP']))
+        {
+            $ip_address = $_SERVER['HTTP_CLIENT_IP'];
+        }
+
+        //whether ip is from proxy
+        elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR']))
+        {
+            $ip_address = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        }
+
+        //whether ip is from remote address
+        else
+        {
+            $ip_address = $_SERVER['REMOTE_ADDR'];
+        }
+
+        $language = user_languages::where('ip','=',$ip_address)->first();
+
+        if($language == '')
+        {
+            $language = new user_languages;
+            $language->ip = $ip_address;
+            $language->lang = 'du';
+            $language->save();
+
+            \App::setLocale('du');
+        }
+        else
+        {
+            \App::setLocale($language->lang);
+        }
+
 
         $footer_content = footer_pages::all();
 

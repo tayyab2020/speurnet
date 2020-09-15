@@ -11,6 +11,7 @@ use App\moving_tips;
 use App\moving_tips_contents;
 use App\savedPropertyAlert;
 use App\Settings;
+use App\user_languages;
 use Auth;
 use App\User;
 use App\City;
@@ -54,6 +55,33 @@ class IndexController extends Controller
 
         return redirect('admin/confirm-user-type');
 
+    }
+
+    public function changeLanguage(Request $request)
+    {
+
+        if (!empty($_SERVER['HTTP_CLIENT_IP']))
+        {
+            $ip_address = $_SERVER['HTTP_CLIENT_IP'];
+        }
+
+        //whether ip is from proxy
+        elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR']))
+        {
+            $ip_address = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        }
+
+        //whether ip is from remote address
+        else
+        {
+            $ip_address = $_SERVER['REMOTE_ADDR'];
+        }
+
+        $lang = user_languages::where('ip','=',$ip_address)->update(['lang' => $request->language]);
+
+        \App::setLocale($request->language);
+
+        return redirect()->back();
     }
 
     public  function createUser($getInfo,$provider){

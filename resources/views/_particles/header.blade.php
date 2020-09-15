@@ -20,8 +20,8 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="navbar-top">
           <ul class="nav navbar-nav navbar-right">
-            <li class="{{classActivePathPublic('')}}"><a href="{{ URL::to('/') }}">Home</a></li>
-        	<li class="{{classActivePathPublic('properties')}}"><a href="{{ URL::to('properties/') }}">All Properties</a></li>
+            <li class="{{classActivePathPublic('')}}"><a href="{{ URL::to('/') }}">{{__('text.Home')}}</a></li>
+        	<li class="{{classActivePathPublic('properties')}}"><a href="{{ URL::to('properties/') }}">{{__('text.All Properties')}}</a></li>
             {{--<li class="{{classActivePathPublic('featured')}}"><a href="{{ URL::to('featured/') }}">Featured</a></li>--}}
             {{--<li class="{{classActivePathPublic('sale')}}"><a href="{{ URL::to('sale/') }}">Sale</a></li>
             <li class="{{classActivePathPublic('rent')}}"><a href="{{ URL::to('rent/') }}">Rent</a></li>--}}
