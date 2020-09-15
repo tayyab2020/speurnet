@@ -25,32 +25,32 @@
             {{--<li class="{{classActivePathPublic('featured')}}"><a href="{{ URL::to('featured/') }}">Featured</a></li>--}}
             {{--<li class="{{classActivePathPublic('sale')}}"><a href="{{ URL::to('sale/') }}">Sale</a></li>
             <li class="{{classActivePathPublic('rent')}}"><a href="{{ URL::to('rent/') }}">Rent</a></li>--}}
-            <li class="{{classActivePathPublic('agents')}}"><a href="{{ URL::to('agents/') }}">Agents</a></li>
-            <li class="{{classActivePathPublic('new-constructions')}}"><a href="{{ URL::to('new-constructions/') }}">New Constructions</a></li>
-            <li class="{{classActivePathPublic('homeexchange')}}"><a href="{{ URL::to('homeexchange') }}">Home Exchange</a></li>
-            <li class="{{classActivePathPublic('moving-tips')}}"><a href="{{ URL::to('moving-tips/') }}">Moving Tips</a></li>
-            <li class="{{classActivePathPublic('expats')}}"><a href="{{ URL::to('expats/') }}">Expats</a></li>
+            <li class="{{classActivePathPublic('agents')}}"><a href="{{ URL::to('agents/') }}">{{__('text.Agents')}}</a></li>
+            <li class="{{classActivePathPublic('new-constructions')}}"><a href="{{ URL::to('new-constructions/') }}">{{__('text.New Constructions')}}</a></li>
+            <li class="{{classActivePathPublic('homeexchange')}}"><a href="{{ URL::to('homeexchange') }}">{{__('text.Home Exchange')}}</a></li>
+            <li class="{{classActivePathPublic('moving-tips')}}"><a href="{{ URL::to('moving-tips/') }}">{{__('text.Moving Tips')}}</a></li>
+            <li class="{{classActivePathPublic('expats')}}"><a href="{{ URL::to('expats/') }}">{{__('text.Expats')}}</a></li>
 
              @if(Auth::check())
 
              <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Account <b class="caret"></b></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{__('text.My Account')}} <b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><a href="{{ URL::to('admin/dashboard/') }}">Dashboard</a></li>
-                <li><a href="{{ URL::to('admin/profile/') }}">Profile</a></li>
-                <li><a href="{{ URL::to('logout') }}">Logout</a></li>
+                <li><a href="{{ URL::to('admin/dashboard/') }}">{{__('text.Dashboard')}}</a></li>
+                <li><a href="{{ URL::to('admin/profile/') }}">{{__('text.Profile')}}</a></li>
+                <li><a href="{{ URL::to('logout') }}">{{__('text.Logout')}}</a></li>
 
               </ul>
             </li>
 
-             	<li><a href="{{ URL::to('addproperty') }}" class="signup col-lg-12 col-md-3 col-sm-6 col-xs-6">Post your Property</a></li>
+             	<li><a href="{{ URL::to('addproperty') }}" class="signup col-lg-12 col-md-3 col-sm-6 col-xs-6">{{__('text.Post your Property')}}</a></li>
              @else
                   <li>
                       <i style="font-size: 18px;border-left: 1px solid #a5a1a1;padding-left: 15px;" class="fas fa-user"></i>
-                      <a href="{{ URL::to('login') }}" style="display: inline-block;padding-left: 5px;padding-right: 5px;">Sign in</a><span> / </span>
-                      <a href="{{ URL::to('register') }}" style="display: inline-block;padding-left: 5px;padding-right: 5px;">Sign up</a>
+                      <a href="{{ URL::to('login') }}" style="display: inline-block;padding-left: 5px;padding-right: 5px;">{{__('text.Sign in')}}</a><span> / </span>
+                      <a href="{{ URL::to('register') }}" style="display: inline-block;padding-left: 5px;padding-right: 5px;">{{__('text.Sign up')}}</a>
                   </li>
-            	<li><a href="{{ URL::to('login') }}" class="signup col-lg-12 col-md-3 col-sm-6 col-xs-6">Post your Property</a></li>
+            	<li><a href="{{ URL::to('login') }}" class="signup col-lg-12 col-md-3 col-sm-6 col-xs-6">{{__('text.Post your Property')}}</a></li>
              @endif
 
 

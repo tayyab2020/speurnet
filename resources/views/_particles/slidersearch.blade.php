@@ -13,12 +13,12 @@
                             <div class="col-md-12 col-sm-12 col-xs-12">
                                         <span style="display: inline-block;min-width: 75px;">
                                             <input class="search-input" type="radio" id="buy" name="purpose" value="Sale" style="width: 16px;height: 16px;position: relative;top: 1px;cursor: pointer;" checked>
-                                            <label class="search-label" for="buy" style="margin-left: 2px;font-size: 18px;cursor: pointer;">Buy</label>
+                                            <label class="search-label" for="buy" style="margin-left: 2px;font-size: 18px;cursor: pointer;">{{__('text.Buy')}}</label>
                                         </span>
 
                                         <span style="display: inline-block;min-width: 75px;">
                                             <input class="search-input" type="radio" id="rent" name="purpose" value="Rent" style="width: 16px;height: 16px;position: relative;top: 1px;cursor: pointer;">
-                                            <label class="search-label" for="rent" style="margin-left: 2px;font-size: 18px;cursor: pointer;">Rent</label>
+                                            <label class="search-label" for="rent" style="margin-left: 2px;font-size: 18px;cursor: pointer;">{{__('text.Rent')}}</label>
                                         </span>
                             </div>
 
@@ -37,7 +37,7 @@
 
                                     <button type="button" value="Filters" href="#myModal" data-toggle="modal" class="btn btn-primary filter-button" style="position: absolute;right: 185px;top: 8px;color: black;background: white;border-color: #9f9c9c;height: 40px;padding-top: 7px;outline: none;"><span><img src="{{ URL::asset('assets/img/Filter-512.png') }}" aria-hidden="true" style="margin-right: 10px;width: 20px;margin-top: -3px;" /> <span style="font-size: 16px;">Filters</span></span></button>
 
-                                    <button type="submit" name="submit" value="Search" class="btn btn-primary search-button" style="padding: 0px 28px;font-size: 16px;outline: none;"><span><i class="fa fa-search" aria-hidden="true" style="margin-right: 10px;"></i> <span>Search</span></span></button>
+                                    <button type="submit" name="submit" value="Search" class="btn btn-primary search-button" style="padding: 0px 28px;font-size: 16px;outline: none;"><span><i class="fa fa-search" aria-hidden="true" style="margin-right: 10px;"></i> <span>{{__('text.Search')}}</span></span></button>
 
                                 </div>
 

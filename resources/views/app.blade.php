@@ -59,7 +59,7 @@
 
   <input type="hidden" id="language" name="language" value="{{Config::get('app.locale')}}">
 
-  <div class="dropdown" style="position: absolute;top: 95px;right: 0;z-index: 1000;">
+  <div class="dropdown" style="position: absolute;top: 95px;right: 5px;z-index: 1000;">
 
   <button style="outline: none;background: white;border: 1px solid #cccccc;border-radius: 50px;" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       @if( Config::get('app.locale') == 'en')
@@ -141,12 +141,11 @@
     });
 
 
-
 	  </script>
 
       <style>
 
-          .dropdown .dropdown-toggle::after
+          .dropdown button::after
           {
               display: inline-block;
               margin-left: .255em;

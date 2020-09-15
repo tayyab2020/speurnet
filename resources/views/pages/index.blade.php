@@ -25,7 +25,7 @@
 
                   <div class="col-md-9 col-sm-12 col-xs-12" style="margin: auto;">
 
-                  <a href="{{URL::to('properties/'.$most_viewed->property_slug)}}" style="padding: 0;margin: 0px;text-align: left;text-decoration: underline;cursor: pointer;color: black;font-size: 18px;font-weight: 600;"><img style="width: 30px;margin-right: 10px;margin-bottom: 2px;" src="{{ URL::asset('assets/img/eye.png') }}" />Most Viewed Ad >></a>
+                  <a href="{{URL::to('properties/'.$most_viewed->property_slug)}}" style="padding: 0;margin: 0px;text-align: left;text-decoration: underline;cursor: pointer;color: black;font-size: 18px;font-weight: 600;"><img style="width: 30px;margin-right: 10px;margin-bottom: 2px;" src="{{ URL::asset('assets/img/eye.png') }}" />{{__('text.Most Viewed Ad')}} >></a>
 
                   </div>
                   </a>
@@ -82,14 +82,14 @@
 
                 <div class="col-md-12 col-sm-12">
                     <div class="heading-title" style="margin-bottom: 45px;">
-                        <h2>Latest Properties</h2>
+                        <h2>{{__('text.Latest Properties')}}</h2>
                     </div>
 
                 </div>
 
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 show-more-container" style="margin-bottom: 10px;text-align: right;">
-                        <a href="{{URL::to('properties')}}" style="background-color: transparent;color: black;border-width: 2px;" class="btn btn-success">Show More Properties</a>
+                        <a href="{{URL::to('properties')}}" style="background-color: transparent;color: black;border-width: 2px;" class="btn btn-success">{{__('text.Show More Properties')}}</a>
                     </div>
                 </div>
 
@@ -329,8 +329,6 @@
 
                                                             @endif
 
-
-
                                                             <?php $check = 1; ?>
 
                                                         @endif
@@ -373,7 +371,6 @@
 
                                                             @endif
 
-
                                                             <?php $check = 1; ?>
 
                                                         @endif
@@ -382,7 +379,6 @@
                                                     @endif
 
                                                 @endif
-
 
 
                                                 <a data-toggle="lightbox" data-gallery="hidden-images{{$i}}" href="{{ URL::asset('upload/properties/'.$property->featured_image.'-b.jpg') }}" style="color: white;"> <i class="fas fa-camera" style="font-size: 18px;"></i><span style="padding: 0px 6px;font-weight: 700;font-size: 18px;position: relative;bottom: 1px;margin-left: 5px;">{{$x}}</span></a>
@@ -491,7 +487,7 @@
 
                                     @if($property->listed)
 
-                                        <div class="property-price" style="background: #d6d63e;position:relative;max-width: 50%;margin-bottom: 12px;font-size: 15px;padding: 2px 0px;border-radius: 5px;">Listed {{$property->listed}}</div>
+                                        <div class="property-price" style="background: #d6d63e;position:relative;max-width: 50%;margin-bottom: 12px;font-size: 15px;padding: 2px 0px;border-radius: 5px;">{{$property->listed}}</div>
 
                                     @endif
 
@@ -509,7 +505,7 @@
 
                 <div class="col-md-12 col-sm-12">
                     <div class="heading-title">
-                        <h2>Top Properties</h2>
+                        <h2>{{__('text.Top Properties')}}</h2>
                     </div>
                 </div>
 
@@ -564,7 +560,7 @@
 
                 <div class="col-md-12 col-sm-12">
                     <div class="heading-title">
-                        <h2>Top Members</h2>
+                        <h2>{{__('text.Top Members')}}</h2>
                     </div>
                 </div>
 
@@ -996,7 +992,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="heading-title" style="margin-top: 20px;">
-                    <h2>Our Blogs</h2>
+                    <h2>{{__('text.Our Blogs')}}</h2>
                 </div>
             </div>
         </div>

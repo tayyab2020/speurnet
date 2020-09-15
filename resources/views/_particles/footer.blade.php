@@ -5,13 +5,13 @@
 
            <div class="col-md-3 col-sm-6 col-xs-12">
             <div class="widget">
-                <h3>Company</h3>
+                <h3>{{__('text.Company')}}</h3>
                 <ul class="list-unstyled">
-                    <li><a href="{{ URL::to('about-us') }}">About Us</a></li>
-                    <li><a href="{{ URL::to('contact-us') }}">Contact Us</a></li>
-                    <li><a href="{{ URL::to('careers-with-us')}}">Careers with Us</a></li>
-                    <li><a href="{{ URL::to('terms-conditions')}}">Terms & Conditions</a></li>
-                    <li><a href="{{ URL::to('privacy-policy')}}">Privacy Policy</a></li>
+                    <li><a href="{{ URL::to('about-us') }}">{{__('text.About Us')}}</a></li>
+                    <li><a href="{{ URL::to('contact-us') }}">{{__('text.Contact Us')}}</a></li>
+                    <li><a href="{{ URL::to('careers-with-us')}}">{{__('text.Careers with Us')}}</a></li>
+                    <li><a href="{{ URL::to('terms-conditions')}}">{{__('text.Terms & Conditions')}}</a></li>
+                    <li><a href="{{ URL::to('privacy-policy')}}">{{__('text.Privacy Policy')}}</a></li>
                     @foreach($footer_content as $i => $key)
 
                         @if($key->heading_id == 0)

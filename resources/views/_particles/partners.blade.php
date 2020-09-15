@@ -5,7 +5,7 @@
           <div class="col-md-12">
 
             <div class="heading-title bg-white" style="margin-top: 20px;">
-              <h2>Our Partnership</h2>
+              <h2>{{__('text.Our Partnership')}}</h2>
             </div>
           </div>
         </div>
