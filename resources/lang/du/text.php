@@ -23,7 +23,7 @@ return [
     'Latest Properties' => 'Recent Binnengekomen',
     'Show More Properties' => 'Laat Meer Woningen Zien',
     'Listed' => 'Vermeld',
-    'Listed Just Now' => 'Zojuist vermeld',
+    'Listed Just Now' => 'Zojuist Binnengekomen',
     'Listed one minute ago' => 'Een minuut geleden vermeld',
     'Listed minutes ago' => ':minutes minuten geleden vermeld',
     'Listed an hour ago' => 'Listed an hour ago',
