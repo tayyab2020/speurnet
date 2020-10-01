@@ -184,9 +184,13 @@
 
                                     @else
 
+                                        <input name="remove_image" id="remove_image" type="hidden">
+
                                         @if($blog->image)
 
-                                            <img src="{{ URL::asset('upload/footer-pages/'.$blog->image) }}" width="100">
+                                            <span class="image-remove" style="color: red;position: absolute;left: -5px;cursor: pointer;"><i class="fa fa-close"></i></span>
+
+                                            <img class="footer-image" src="{{ URL::asset('upload/footer-pages/'.$blog->image) }}" width="100">
 
                                         @else
 
@@ -241,3 +245,23 @@
     </div>
 
 @endsection
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script>
+
+
+    $( document ).ready(function() {
+
+        $(".image-remove").click(function () {
+            $(".image-remove").remove();
+            $(".footer-image").remove();
+            $('#remove_image').val(1);
+        });
+
+    });
+
+</script>

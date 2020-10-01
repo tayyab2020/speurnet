@@ -636,6 +636,13 @@ class DashboardController extends MainAdminController
             //Slide image
             $t_user_image = $request->file('image');
 
+            if($request->remove_image)
+            {
+                \File::delete(public_path() .'/upload/footer-pages/'.$blog->image);
+
+                $blog->image = '';
+            }
+
             if($t_user_image){
 
 
