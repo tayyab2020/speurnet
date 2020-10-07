@@ -33,7 +33,7 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(191);
         /*Properties::observe(PropertiesObserver::class);*/
 
-        if (!empty($_SERVER['HTTP_CLIENT_IP']))
+        /*if (!empty($_SERVER['HTTP_CLIENT_IP']))
         {
             $ip_address = $_SERVER['HTTP_CLIENT_IP'];
         }
@@ -64,7 +64,7 @@ class AppServiceProvider extends ServiceProvider
         else
         {
             \App::setLocale($language->lang);
-        }
+        }*/
 
 
         $footer_content = footer_pages::all();

@@ -38,7 +38,7 @@
 
                     <div style="background: white;padding: 20px;border-radius: 10px;box-shadow: 1px 1px 14px 2px #e7e7e7;">
 
-                        <h2 style="margin-bottom: 30px;color: #303030;text-align: center;margin-top: 0px;">FAQ's</h2>
+                        <h2 style="margin-bottom: 30px;color: #303030;text-align: center;margin-top: 0px;">{{__('text.FAQs')}}</h2>
 
                         <section class="cd-faq js-cd-faq container max-width-md margin-top-lg margin-bottom-lg" style="padding: 0;margin: 0;width: 100%;">
                             <div class="cd-faq__items" style="padding: 0;">
@@ -84,21 +84,21 @@
 
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-10" style="display: table;margin: auto;float: none;margin-bottom: 60px;">
 
-                                <h2 style="margin-bottom: 30px;color: #303030;text-align: center;">Find Your Match</h2>
+                                <h2 style="margin-bottom: 30px;color: #303030;text-align: center;">{{__('text.Find Your Match')}}</h2>
 
                                 <div id="wrapper_1" class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="padding: 0;">
 
-                                    <h5 class="col-lg-10 col-md-10 col-sm-10 col-xs-12" style="margin-bottom: 30px;float: left;text-align: center;color: white;display: inline-block;background: linear-gradient(to right, #494949 0, #434343 100%);padding: 10px;border: 1px solid #d5d5d5;font-weight: 600;">Your House</h5>
+                                    <h5 class="col-lg-10 col-md-10 col-sm-10 col-xs-12" style="margin-bottom: 30px;float: left;text-align: center;color: white;display: inline-block;background: linear-gradient(to right, #494949 0, #434343 100%);padding: 10px;border: 1px solid #d5d5d5;font-weight: 600;">{{__('text.Your House')}}</h5>
 
                                     <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-12" style="display: inline-block;float: left;">
 
-                                        <label style="float: left;">Where do you live?</label>
+                                        <label style="float: left;">{{__('text.Where do you live?')}}</label>
 
                                         <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto;background: white;">
 
                                             <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-map-marker-alt" aria-hidden="true"></i></div>
 
-                                            <input type="text" id="address-input" autocomplete="off" required placeholder="Enter Address" name="address" @if(isset($address)) value="{{$address}}" @endif style="border: 0;margin: 0;float: left;width: 80%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control map-input">
+                                            <input type="text" id="address-input" autocomplete="off" required placeholder="" name="address" @if(isset($address)) value="{{$address}}" @endif style="border: 0;margin: 0;float: left;width: 80%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control map-input">
                                             <input type="hidden" name="address_latitude" id="address-latitude" @if(isset($address_latitude)) value="{{$address_latitude}}" @endif />
                                             <input type="hidden" name="address_longitude" id="address-longitude" @if(isset($address_longitude)) value="{{$address_longitude}}" @endif  />
 
@@ -109,7 +109,7 @@
 
                                     <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-12" style="display: inline-block;float: left;">
 
-                                        <label style="float: left;">What kind of home do you have?</label>
+                                        <label style="float: left;">{{__('text.What kind of home do you have?')}}</label>
 
                                         <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto;background: white;">
 
@@ -138,7 +138,7 @@
 
                                     </div>
 
-                                    <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-12" style="display: inline-block;float: left;">
+                                    <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-12" style="display: none;float: left;">
 
                                         <label style="float: left;">Type of Property</label>
 
@@ -158,13 +158,13 @@
 
                                     <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-12" style="display: inline-block;float: left;">
 
-                                        <label style="float: left;">BEDROOMS</label>
+                                        <label style="float: left;">{{__('text.BEDROOMS')}}</label>
 
                                         <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;border-right: 0;margin: auto;background: white;">
 
                                             <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-bed" aria-hidden="true"></i></div>
 
-                                            <input type="number" step="1" max="" placeholder="No. of Bedroom(s)" name="bedrooms" required  @if(isset($bedrooms)) value="{{$bedrooms}}" @else value="1" @endif class="quantity-field" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+                                            <input type="number" step="1" max="" placeholder="" name="bedrooms" required  @if(isset($bedrooms)) value="{{$bedrooms}}" @else value="1" @endif class="quantity-field" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
                                             <input type="button" value="+" class="button-plus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d7d7d7;margin-top: -0.1px;">
                                             <input type="button" value="-" class="button-minus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;margin-top: -0.1px;">
 
@@ -175,13 +175,13 @@
 
                                     <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-12" style="display: inline-block;float: left;">
 
-                                        <label style="float: left;">Area <small>(m2)</small></label>
+                                        <label style="float: left;">{{__('text.Area')}} <small>(m2)</small></label>
 
                                         <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;border-right: 0;margin: auto;background: white;">
 
                                             <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-crop-alt" aria-hidden="true"></i></div>
 
-                                            <input type="number" @if(isset($area)) value="{{$area}}" @else value="" @endif name="area" placeholder="Area" required class="quantity-field" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+                                            <input type="number" @if(isset($area)) value="{{$area}}" @else value="" @endif name="area" placeholder="" required class="quantity-field" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
                                             <input type="button" value="+" class="button-plus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d7d7d7;margin-top: -0.1px;">
                                             <input type="button" value="-" class="button-minus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;margin-top: -0.1px;">
 
@@ -191,13 +191,13 @@
 
                                     <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-12" style="display: inline-block;float: left;">
 
-                                        <label style="float: left;">Rent Per Month <small>(€)</small></label>
+                                        <label style="float: left;">{{__('text.Rent Per Month')}}</label>
 
                                         <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;border-right: 0;margin: auto;background: white;">
 
                                             <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-tag" aria-hidden="true"></i></div>
 
-                                            <input type="number" @if(isset($rent)) value="{{$rent}}" @else value="" @endif name="rent" placeholder="Rent Per Month" required class="quantity-field" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+                                            <input type="number" @if(isset($rent)) value="{{$rent}}" @else value="" @endif name="rent" placeholder="" required class="quantity-field" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
                                             <input type="button" value="+" class="button-plus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d7d7d7;margin-top: -0.1px;">
                                             <input type="button" value="-" class="button-minus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;margin-top: -0.1px;">
 
@@ -209,17 +209,17 @@
 
                                 <div id="wrapper_2" class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="padding: 0;">
 
-                                    <h5 class="col-lg-10 col-md-10 col-sm-10 col-xs-12" style="margin-bottom: 30px;float: right;text-align: center;color: white;display: inline-block;background: linear-gradient(to right, #494949 0, #434343 100%);padding: 10px;border: 1px solid #d5d5d5;font-weight: 600;">You are looking for?</h5>
+                                    <h5 class="col-lg-10 col-md-10 col-sm-10 col-xs-12" style="margin-bottom: 30px;float: right;text-align: center;color: white;display: inline-block;background: linear-gradient(to right, #494949 0, #434343 100%);padding: 10px;border: 1px solid #d5d5d5;font-weight: 600;">{{__('text.You are looking for?')}}</h5>
 
                                     <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-12" style="display: inline-block;float: right;">
 
-                                        <label style="float: left;">Where do you want to live?</label>
+                                        <label style="float: left;">{{__('text.Where do you want to live?')}}</label>
 
                                         <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto;background: white;">
 
                                             <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-map-marker-alt" aria-hidden="true"></i></div>
 
-                                            <input type="text" id="preferred-address-input" autocomplete="off" required placeholder="Enter Address" name="preferred_address" @if(isset($preferred_address)) value="{{$preferred_address}}" @endif style="border: 0;margin: 0;float: left;width: 80%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control map-input">
+                                            <input type="text" id="preferred-address-input" autocomplete="off" required placeholder="" name="preferred_address" @if(isset($preferred_address)) value="{{$preferred_address}}" @endif style="border: 0;margin: 0;float: left;width: 80%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control map-input">
                                             <input type="hidden" name="preferred_address_latitude" id="preferred-address-latitude" @if(isset($preferred_address_latitude)) value="{{$preferred_address_latitude}}" @endif />
                                             <input type="hidden" name="preferred_address_longitude" id="preferred-address-longitude" @if(isset($preferred_address_longitude)) value="{{$preferred_address_longitude}}" @endif  />
 
@@ -230,7 +230,7 @@
 
                                     <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-12" style="display: inline-block;float: right;">
 
-                                        <label style="float: left;">Within Radius of?</label>
+                                        <label style="float: left;">{{__('text.Within Radius of?')}}</label>
 
                                         <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto;background: white;">
 
@@ -272,7 +272,7 @@
 
                                     <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-12" style="display: inline-block;float: right;">
 
-                                        <label style="float: left;">What type of home are you looking for?</label>
+                                        <label style="float: left;">{{__('text.What type of home are you looking for?')}}</label>
 
                                         <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto;background: white;">
 
@@ -301,7 +301,7 @@
 
                                     </div>
 
-                                    <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-12" style="display: inline-block;float: right;">
+                                    <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-12" style="display: none;float: right;">
 
                                         <label style="float: left;">Type of Property</label>
 
@@ -319,15 +319,15 @@
 
                                     </div>
 
-                                    <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-12" style="display: inline-block;float: right;">
+                                    <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-12" style="display: inline-block;float: right;margin-top: 20px;">
 
-                                        <label style="float: left;">Minimum Bedrooms</label>
+                                        <label style="float: left;">{{__('text.Minimum Bedrooms')}}</label>
 
                                         <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;border-right: 0;margin: auto;background: white;">
 
                                             <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-bed" aria-hidden="true"></i></div>
 
-                                            <input type="number" step="1" max="" placeholder="No. of Bedroom(s)" name="preferred_bedrooms" required @if(isset($preferred_bedrooms)) value="{{$preferred_bedrooms}}" @else value="1" @endif class="quantity-field" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+                                            <input type="number" step="1" max="" placeholder="" name="preferred_bedrooms" required @if(isset($preferred_bedrooms)) value="{{$preferred_bedrooms}}" @else value="1" @endif class="quantity-field" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
                                             <input type="button" value="+" class="button-plus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d7d7d7;margin-top: -0.1px;">
                                             <input type="button" value="-" class="button-minus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;margin-top: -0.1px;">
 
@@ -337,13 +337,13 @@
 
                                     <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-12" style="display: inline-block;float: right;">
 
-                                        <label style="float: left;">Minimum Area <small>(m2)</small></label>
+                                        <label style="float: left;">{{__('text.Minimum Area')}}</label>
 
                                         <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;border-right: 0;margin: auto;background: white;">
 
                                             <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-crop-alt" aria-hidden="true"></i></div>
 
-                                            <input type="number" name="preferred_area" @if(isset($preferred_area)) value="{{$preferred_area}}" @else value="" @endif placeholder="Area" required class="quantity-field" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+                                            <input type="number" name="preferred_area" @if(isset($preferred_area)) value="{{$preferred_area}}" @else value="" @endif placeholder="" required class="quantity-field" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
                                             <input type="button" value="+" class="button-plus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d7d7d7;margin-top: -0.1px;">
                                             <input type="button" value="-" class="button-minus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;margin-top: -0.1px;">
 
@@ -353,13 +353,13 @@
 
                                     <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-12" style="display: inline-block;float: right;">
 
-                                        <label style="float: left;">Maximum Rent Per Month <small>(€)</small></label>
+                                        <label style="float: left;">{{__('text.Maximum Rent Per Month')}}</label>
 
                                         <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;border-right: 0;margin: auto;background: white;">
 
                                             <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-tag" aria-hidden="true"></i></div>
 
-                                            <input type="number" name="preferred_rent" @if(isset($preferred_rent)) value="{{$preferred_rent}}" @else value="" @endif placeholder="Maximum Rent" required class="quantity-field" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+                                            <input type="number" name="preferred_rent" @if(isset($preferred_rent)) value="{{$preferred_rent}}" @else value="" @endif placeholder="" required class="quantity-field" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
                                             <input type="button" value="+" class="button-plus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d7d7d7;margin-top: -0.1px;">
                                             <input type="button" value="-" class="button-minus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;margin-top: -0.1px;">
 
@@ -375,7 +375,7 @@
 
                                             <label class="bg" for="media" style="margin: 0;padding-left: 22px;">
 
-                                                <span class="search-span" style="position: relative;top: 3px;font-size: 10px;color: #4b4848;">Only show me homes with photos or videos</span>
+                                                <span class="search-span" style="position: relative;top: 3px;font-size: 10px;color: #4b4848;">{{__('text.Only show me homes with photos or videos')}}</span>
 
                                             </label>
 
@@ -387,7 +387,7 @@
                                 </div>
 
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="text-align: center;margin-top: 20px;">
-                                    <button type="submit" class="btn btn-success" style="font-size: 17px;outline: none;"><i class="fas fa-search" style="margin-right: 5px;font-size: 17px;" aria-hidden="true"></i> Search</button>
+                                    <button type="submit" class="btn btn-success" style="font-size: 17px;outline: none;"><i class="fas fa-search" style="margin-right: 5px;font-size: 17px;" aria-hidden="true"></i> {{__('text.Search')}}</button>
                                 </div>
 
                                 <input type="hidden" value="newest" name="filter" id="filter_orderby">
@@ -405,7 +405,7 @@
 
                     <div style="background: white;padding: 20px 10px 0px 10px;border-radius: 10px;box-shadow: 1px 1px 14px 2px #e7e7e7;">
 
-                        <h2 style="margin-bottom: 30px;color: #303030;text-align: center;margin-top: 0px;">Recent Ads</h2>
+                        <h2 style="margin-bottom: 30px;color: #303030;text-align: center;margin-top: 0px;">{{__('text.Recent Ads')}}</h2>
 
                         @foreach($recent as $temp)
 
@@ -425,10 +425,10 @@
 
                                 </div>
 
-                                <?php $date = date_format($temp->created_at,"F d, Y");?>
+                                <?php $date = date_format($temp->created_at,"d F Y");?>
 
                                 <div class="row" style="margin: 0;display: inline-block;width: 100%;">
-                                    <small style="float: left;font-weight: 600;padding-left: 10px;padding-top: 20px;"> Posted on {{$date}}</small>
+                                    <small style="float: left;font-weight: 600;padding-left: 10px;padding-top: 20px;"> {{__('text.Posted on')}} {{$date}}</small>
                                 </div>
 
                             </div>

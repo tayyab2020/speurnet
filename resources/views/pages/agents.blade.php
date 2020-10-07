@@ -38,7 +38,7 @@
 
                       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 20px;border: 1px solid #e3e3e3;background: white;">
 
-                      <h4 style="margin-bottom: 20px;border-bottom: 1px solid #ededed;padding-bottom: 10px;">FIND REAL ESTATE MEMBERS</h4>
+                      <h4 style="line-height: 1.5;margin-bottom: 20px;border-bottom: 1px solid #ededed;padding-bottom: 10px;">{{__('text.Find real estate members')}}</h4>
 
                       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;">
 
@@ -48,7 +48,7 @@
 
                                   <i class="fas fa-search" style="position: absolute;left: 15px;right: auto;color: #d5d5d5;font-size: 14px;top: 55%;margin:-9px 0 0;pointer-events:none;" aria-hidden="true"></i>
 
-                                  <input @if(isset($agent_name)) value="{{$agent_name}}" @endif style="padding: 0 0 0 40px;height: 42px;color:#bcbcbc;border-color:#e6e6e6;border-radius: 3px;box-shadow: none;" type="text" placeholder="Agent Name" name="agent_name" class="form-control search-fields" id="agent_name">
+                                  <input @if(isset($agent_name)) value="{{$agent_name}}" @endif style="padding: 0 0 0 40px;height: 42px;color:#bcbcbc;border-color:#e6e6e6;border-radius: 3px;box-shadow: none;" type="text" placeholder="{{__('text.Agent Name')}}" name="agent_name" class="form-control search-fields" id="agent_name">
 
                               </div>
 
@@ -60,7 +60,7 @@
 
                                   <i class="fas fa-map-marker-alt" style="position: absolute;left: 15px;right: auto;color: #d5d5d5;font-size: 14px;top: 55%;margin:-9px 0 0;pointer-events:none;" aria-hidden="true"></i>
 
-                                  <input @if(isset($address)) value="{{$address}}" @endif autocomplete="off" style="padding: 0 0 0 40px;height: 42px;color:#bcbcbc;border-color:#e6e6e6;border-radius: 3px;box-shadow: none;" type="text" placeholder="Search Address, City etc" name="address" class="form-control search-fields" id="address">
+                                  <input @if(isset($address)) value="{{$address}}" @endif autocomplete="off" style="padding: 0 0 0 40px;height: 42px;color:#bcbcbc;border-color:#e6e6e6;border-radius: 3px;box-shadow: none;" type="text" placeholder="{{__('text.Search Address, City etc')}}" name="address" class="form-control search-fields" id="address">
                                   <input @if(isset($address_latitude)) value="{{$address_latitude}}" @endif type="hidden" name="city_latitude" id="city-latitude">
                                   <input @if(isset($address_longitude)) value="{{$address_longitude}}" @endif type="hidden" name="city_longitude" id="city-longitude">
                               </div>
@@ -89,7 +89,7 @@
 
                           </div>
 
-                          <button style="border:0;font-size: 14px;padding: 7px 0px;margin-top: 3px;" type="submit" class="btn btn-success col-lg-2 col-md-2 col-sm-2 col-xs-4 search-btn">Search</button>
+                          <button style="border:0;font-size: 14px;padding: 7px 0px;margin-top: 3px;" type="submit" class="btn btn-success col-lg-2 col-md-2 col-sm-2 col-xs-4 search-btn">{{__('text.Search')}}</button>
 
                       </div>
                       </div>
@@ -109,7 +109,7 @@
 
                                           <input class="services" @if(isset($service)) @if($service == 1) checked @endif @endif  type="radio" name="services" value="1">
 
-                                          <span style="padding-top: 0;"><img src="{{ URL::asset('assets/img/broker.png') }}" style="display: block;width: 50px;margin: auto;margin-bottom: 10px;">I am looking for a sales broker</span>
+                                          <span style="padding-top: 0;"><img src="{{ URL::asset('assets/img/broker.png') }}" style="display: block;width: 50px;margin: auto;margin-bottom: 10px;">{{__('text.I am looking for a sales broker')}}</span>
 
                                       </label>
 
@@ -124,7 +124,7 @@
 
                                           <input class="services"  @if(isset($service)) @if($service == 2) checked @endif @endif type="radio" name="services" value="2">
 
-                                          <span style="padding-top: 0;"><img src="{{ URL::asset('assets/img/agent.png') }}" style="display: block;width: 50px;margin: auto;margin-bottom: 10px;">I am looking for a rental agent</span>
+                                          <span style="padding-top: 0;"><img src="{{ URL::asset('assets/img/agent.png') }}" style="display: block;width: 50px;margin: auto;margin-bottom: 10px;">{{__('text.I am looking for a rental agent')}}</span>
 
                                       </label>
 
@@ -139,7 +139,7 @@
 
                                           <input class="services" @if(isset($service)) @if($service == 3) checked @endif @endif type="radio" name="services" value="3">
 
-                                          <span style="padding-top: 0;"><img src="{{ URL::asset('assets/img/hire_broker.png') }}" style="display: block;width: 50px;margin: auto;margin-bottom: 10px;">I am looking for a hiring broker</span>
+                                          <span style="padding-top: 0;"><img src="{{ URL::asset('assets/img/hire_broker.png') }}" style="display: block;width: 50px;margin: auto;margin-bottom: 10px;">{{__('text.I am looking for a hiring broker')}}</span>
 
                                       </label>
 
@@ -154,7 +154,7 @@
 
                                           <input class="services" @if(isset($service)) @if($service == 4) checked @endif @endif type="radio" name="services" value="4">
 
-                                          <span style="padding-top: 0;"><img src="{{ URL::asset('assets/img/purchase_broker.png') }}" style="display: block;width: 50px;margin: auto;margin-bottom: 10px;">I am looking for a purchase broker</span>
+                                          <span style="padding-top: 0;"><img src="{{ URL::asset('assets/img/purchase_broker.png') }}" style="display: block;width: 50px;margin: auto;margin-bottom: 10px;">{{__('text.I am looking for a purchase broker')}}</span>
 
                                       </label>
 
@@ -169,7 +169,7 @@
 
                                           <input class="services" @if(isset($service)) @if($service == 5) checked @endif @endif type="radio" name="services" value="5">
 
-                                          <span style="padding-top: 0;"><img src="{{ URL::asset('assets/img/calculator1.png') }}" style="display: block;width: 50px;margin: auto;margin-bottom: 10px;">Appraise House</span>
+                                          <span style="padding-top: 0;"><img src="{{ URL::asset('assets/img/calculator1.png') }}" style="display: block;width: 50px;margin: auto;margin-bottom: 10px;">{{__('text.Appraise House')}}</span>
 
                                       </label>
 
@@ -369,11 +369,11 @@
 
                           @if($agents->total() > 0)
                               <div class="row" style="margin: 0;">
-                                  <p style="font-weight: 600;color: black;">@php echo $agents->total(); @endphp Member(s) Found</p>
+                                  <p style="font-weight: 600;color: black;">@php echo $agents->total(); @endphp {{__('text.Member(s) Found')}}</p>
                               </div>
                               @else
                       <div class="row" style="margin: 0;">
-                          <h2 style="font-weight: 600;text-align: center">No Results Found</h2>
+                          <h2 style="font-weight: 600;text-align: center">{{__('text.No Results Found')}}</h2>
                       </div>
 
                           @endif
@@ -418,7 +418,7 @@
                                         @if($agent->properties_count >= 1)
 
                                             <div class="col-sm-3" style="float: right;">
-                                                <p style="color: red"><a style="text-decoration: none;color: red;" href="{{ URL::to('/agent-properties/user/'.$agent->id.'/0') }}" target="_blank">{{$agent->properties_count}} Property (s)</a></p>
+                                                <p style="color: red"><a style="text-decoration: none;color: red;" href="{{ URL::to('/agent-properties/user/'.$agent->id.'/0') }}" target="_blank">{{$agent->properties_count}} @if($agent->properties_count <= 1) {{__('text.Property')}} @else {{__('text.Properties')}} @endif</a></p>
                                             </div>
 
                                         @endif

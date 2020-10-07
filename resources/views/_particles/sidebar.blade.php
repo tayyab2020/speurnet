@@ -2,7 +2,7 @@
 
     <div class="widget widget-white">
         <div class="widget-header">
-            <h3>Advance Search</h3>
+            <h3>{{__('text.Advance Search')}}</h3>
         </div>
 
 
@@ -24,9 +24,9 @@
                     @endif
 
                <div class="form-group">
-                      <label for="city">City</label>
+                      <label for="city">{{__('text.City')}}</label>
 
-                   <input class="form-control city-input" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') value="{{$address}}" @else value="" @endif type="text" placeholder="City, State, Address" name="city_name" id="city-input" autocomplete="off">
+                   <input class="form-control city-input" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') value="{{$address}}" @else value="" @endif type="text" placeholder="{{__('text.City, State, Address')}}" name="city_name" id="city-input" autocomplete="off">
 
                    <input type="hidden" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') value="{{$address_latitude}}" @else value="" @endif name="city_latitude" id="city-latitude"  />
                    <input type="hidden" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') value="{{$address_longitude}}" @else value="" @endif name="city_longitude" id="city-longitude"  />
@@ -34,7 +34,7 @@
                     </div>
 
                 <div class="form-group">
-                    <label for="purpose">Radius</label>
+                    <label for="purpose">{{__('text.Radius')}}</label>
                     <select class="form-control" name="radius">
                         <option value="0" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') @if($radius == 0) selected @endif @endif>0 KM</option>
                         <option value="1" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') @if($radius == 1) selected @endif @endif>1 KM</option>
@@ -51,7 +51,7 @@
                 @if(Route::currentRouteName() != 'newconstructions-front' && Route::currentRouteName() != 'searchnewconstructions' && Route::currentRouteName() != 'newconstruction-single')
 
                 <div class="form-group">
-                      <label for="purpose">Purpose</label>
+                      <label for="purpose">{{__('text.Purpose')}}</label>
                       <select class="form-control" name="purpose">
                         <option value="Sale" @if(Route::currentRouteName() == 'searchproperties') @if($purpose == 'Sale') selected @endif @endif>For Sale</option>
                         <option value="Rent" @if(Route::currentRouteName() == 'searchproperties') @if($purpose == 'Rent') selected @endif @endif>For Rent</option>
@@ -61,7 +61,7 @@
                     @else
 
                     <div class="form-group">
-                        <label for="minprice">Kind of Type</label>
+                        <label for="minprice">{{__('text.Kind of Type')}}</label>
                         <select class="form-control" name="kind_of_type">
                             <option value="For Sale" @if(Route::currentRouteName() == 'searchnewconstructions') @if($kind_of_type == 'For Sale') selected @endif @endif>For Sale</option>
                             <option value="To Rent Social" @if(Route::currentRouteName() == 'searchnewconstructions') @if($kind_of_type == 'To Rent Social') selected @endif @endif>To Rent Social</option>
@@ -72,7 +72,7 @@
                 @endif
 
                <div class="form-group">
-                      <label for="type">Property Type</label>
+                      <label for="type">{{__('text.Property Type')}}</label>
                       <select class="form-control" name="type">
                           <option value="">All</option>
                         @foreach(\App\Types::orderBy('types')->get() as $type)
@@ -84,39 +84,39 @@
 
 
                 <div class="form-group">
-                      <label for="minprice">Min Price</label>
-                      <input type="number" name="min_price" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') value="{{$min_price}}" @else value="" @endif class="form-control" placeholder="Min Price (number)">
+                      <label for="minprice">{{__('text.Min Price')}}</label>
+                      <input type="number" name="min_price" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') value="{{$min_price}}" @else value="" @endif class="form-control" placeholder="">
                 </div>
 
                 <div class="form-group">
-                      <label for="maxprice">Max Price</label>
-                      <input type="number" name="max_price" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') value="{{$max_price}}" @else value="" @endif class="form-control" placeholder="Max Price (number)">
+                      <label for="maxprice">{{__('text.Max Price')}}</label>
+                      <input type="number" name="max_price" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') value="{{$max_price}}" @else value="" @endif class="form-control" placeholder="">
                 </div>
 
                 <div class="form-group">
-                    <label for="minprice">Bedrooms</label>
-                    <input type="number" name="bedrooms" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') value="{{$bedrooms}}" @else value="" @endif class="form-control" placeholder="No. of Bedrooms">
+                    <label for="minprice">{{__('text.Bedrooms')}}</label>
+                    <input type="number" name="bedrooms" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') value="{{$bedrooms}}" @else value="" @endif class="form-control" placeholder="">
                 </div>
 
                 <div class="form-group">
-                    <label for="minprice">Bathrooms</label>
-                    <input type="number" name="bathrooms" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') value="{{$bathrooms}}" @else value="" @endif class="form-control" placeholder="No. of Bathrooms">
+                    <label for="minprice">{{__('text.Bathrooms')}}</label>
+                    <input type="number" name="bathrooms" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') value="{{$bathrooms}}" @else value="" @endif class="form-control" placeholder="">
                 </div>
 
                 <div class="form-group">
-                    <label for="minprice">Min Area (m2)</label>
-                    <input type="number" name="min_area" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') value="{{$min_area}}" @else value="" @endif class="form-control" placeholder="Minimum SQFT Area (m2)">
+                    <label for="minprice">{{__('text.Min Area')}}</label>
+                    <input type="number" name="min_area" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') value="{{$min_area}}" @else value="" @endif class="form-control" placeholder="">
                 </div>
 
                 <div class="form-group">
-                    <label for="minprice">Max Area (m2)</label>
-                    <input type="number" name="max_area" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') value="{{$max_area}}" @else value="" @endif class="form-control" placeholder="Maximum SQFT Area (m2)">
+                    <label for="minprice">{{__('text.Max Area')}}</label>
+                    <input type="number" name="max_area" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') value="{{$max_area}}" @else value="" @endif class="form-control" placeholder="">
                 </div>
 
                 @if(Route::currentRouteName() != 'newconstructions-front' && Route::currentRouteName() != 'searchnewconstructions' && Route::currentRouteName() != 'newconstruction-single')
 
                 <div class="form-group">
-                    <label for="minprice">Type of Construction</label>
+                    <label for="minprice">{{__('text.Type of Construction')}}</label>
                     <select class="form-control" name="type_of_construction">
                         <option value="">All</option>
                         <option value="New" @if(Route::currentRouteName() == 'searchproperties') @if($type_of_construction == 'New') selected @endif @endif>New</option>
@@ -128,21 +128,21 @@
 
                 <div class="form-group">
                     <label for="minprice">Keywords</label>
-                    <input type="text" name="keywords" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') value="{{$keywords}}" @else value="" @endif class="form-control" placeholder="Search by Keywords">
+                    <input type="text" name="keywords" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') value="{{$keywords}}" @else value="" @endif class="form-control" placeholder="{{__('text.Search by Keywords')}}">
                 </div>
 
                 <div class="form-group">
 
-                    <label>Wheelchair friendly home for people with walking difficulties</label>
+                    <label>{{__('text.Wheelchair friendly home for people with walking difficulties')}}</label>
 
                     <p style="margin-top: 10px;">
-                        <label style="cursor: pointer;"><input style="margin-right: 5px;" type="checkbox" id="wh1" name="wheelchair" value="1" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') @if($wheelchair == 1) checked @endif @endif> Yes</label>
+                        <label style="cursor: pointer;"><input style="margin-right: 5px;" type="checkbox" id="wh1" name="wheelchair" value="1" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') @if($wheelchair == 1) checked @endif @endif> {{__('text.Yes')}}</label>
                     </p>
 
 
                 </div>
 
-                <input type="submit" name="submit" value="Search" class="btn btn-primary btn-block" style="outline: none;">
+                <input type="submit" name="submit" value="{{__('text.Search Property')}}" class="btn btn-primary btn-block" style="outline: none;">
               {!! Form::close() !!}
             </div>
             <!-- break -->
@@ -375,9 +375,9 @@
                         @endif
 
                         <div class="form-group">
-                            <label for="city">City</label>
+                            <label for="city">{{__('text.City')}}</label>
 
-                            <input class="form-control city-input" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') value="{{$address}}" @else value="" @endif type="text" placeholder="City, State, Address" name="city_name" id="city-input" autocomplete="off">
+                            <input class="form-control city-input" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') value="{{$address}}" @else value="" @endif type="text" placeholder="{{__('text.City, State, Address')}}" name="city_name" id="city-input" autocomplete="off">
 
                             <input type="hidden" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') value="{{$address_latitude}}" @else value="" @endif name="city_latitude" id="city-latitude"  />
                             <input type="hidden" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') value="{{$address_longitude}}" @else value="" @endif name="city_longitude" id="city-longitude"  />
@@ -385,7 +385,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="purpose">Radius</label>
+                            <label for="purpose">{{__('text.Radius')}}</label>
                             <select class="form-control" name="radius">
                                 <option value="0" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') @if($radius == 0) selected @endif @endif>0 KM</option>
                                 <option value="1" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') @if($radius == 1) selected @endif @endif>1 KM</option>
@@ -402,7 +402,7 @@
                         @if(Route::currentRouteName() != 'newconstructions-front' && Route::currentRouteName() != 'searchnewconstructions' && Route::currentRouteName() != 'newconstruction-single')
 
                             <div class="form-group">
-                                <label for="purpose">Purpose</label>
+                                <label for="purpose">{{__('text.Purpose')}}</label>
                                 <select class="form-control" name="purpose">
                                     <option value="Sale" @if(Route::currentRouteName() == 'searchproperties') @if($purpose == 'Sale') selected @endif @endif>For Sale</option>
                                     <option value="Rent" @if(Route::currentRouteName() == 'searchproperties') @if($purpose == 'Rent') selected @endif @endif>For Rent</option>
@@ -412,7 +412,7 @@
                         @else
 
                             <div class="form-group">
-                                <label for="minprice">Kind of Type</label>
+                                <label for="minprice">{{__('text.Kind of Type')}}</label>
                                 <select class="form-control" name="kind_of_type">
                                     <option value="For Sale" @if(Route::currentRouteName() == 'searchnewconstructions') @if($kind_of_type == 'For Sale') selected @endif @endif>For Sale</option>
                                     <option value="To Rent Social" @if(Route::currentRouteName() == 'searchnewconstructions') @if($kind_of_type == 'To Rent Social') selected @endif @endif>To Rent Social</option>
@@ -423,7 +423,7 @@
                         @endif
 
                         <div class="form-group">
-                            <label for="type">Property Type</label>
+                            <label for="type">{{__('text.Property Type')}}</label>
                             <select class="form-control" name="type">
                                 <option value="">All</option>
                                 @foreach(\App\Types::orderBy('types')->get() as $type)
@@ -435,39 +435,39 @@
 
 
                         <div class="form-group">
-                            <label for="minprice">Min Price</label>
-                            <input type="number" name="min_price" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') value="{{$min_price}}" @else value="" @endif class="form-control" placeholder="Min Price (number)">
+                            <label for="minprice">{{__('text.Min Price')}}</label>
+                            <input type="number" name="min_price" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') value="{{$min_price}}" @else value="" @endif class="form-control" placeholder="">
                         </div>
 
                         <div class="form-group">
-                            <label for="maxprice">Max Price</label>
-                            <input type="number" name="max_price" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') value="{{$max_price}}" @else value="" @endif class="form-control" placeholder="Max Price (number)">
+                            <label for="maxprice">{{__('text.Max Price')}}</label>
+                            <input type="number" name="max_price" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') value="{{$max_price}}" @else value="" @endif class="form-control" placeholder="">
                         </div>
 
                         <div class="form-group">
-                            <label for="minprice">Bedrooms</label>
-                            <input type="number" name="bedrooms" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') value="{{$bedrooms}}" @else value="" @endif class="form-control" placeholder="No. of Bedrooms">
+                            <label for="minprice">{{__('text.Bedrooms')}}</label>
+                            <input type="number" name="bedrooms" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') value="{{$bedrooms}}" @else value="" @endif class="form-control" placeholder="">
                         </div>
 
                         <div class="form-group">
-                            <label for="minprice">Bathrooms</label>
-                            <input type="number" name="bathrooms" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') value="{{$bathrooms}}" @else value="" @endif class="form-control" placeholder="No. of Bathrooms">
+                            <label for="minprice">{{__('text.Bathrooms')}}</label>
+                            <input type="number" name="bathrooms" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') value="{{$bathrooms}}" @else value="" @endif class="form-control" placeholder="">
                         </div>
 
                         <div class="form-group">
-                            <label for="minprice">Min Area (m2)</label>
-                            <input type="number" name="min_area" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') value="{{$min_area}}" @else value="" @endif class="form-control" placeholder="Minimum SQFT Area (m2)">
+                            <label for="minprice">{{__('text.Min Area')}}</label>
+                            <input type="number" name="min_area" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') value="{{$min_area}}" @else value="" @endif class="form-control" placeholder="">
                         </div>
 
                         <div class="form-group">
-                            <label for="minprice">Max Area (m2)</label>
-                            <input type="number" name="max_area" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') value="{{$max_area}}" @else value="" @endif class="form-control" placeholder="Maximum SQFT Area (m2)">
+                            <label for="minprice">{{__('text.Max Area')}}</label>
+                            <input type="number" name="max_area" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') value="{{$max_area}}" @else value="" @endif class="form-control" placeholder="">
                         </div>
 
                         @if(Route::currentRouteName() != 'newconstructions-front' && Route::currentRouteName() != 'searchnewconstructions' && Route::currentRouteName() != 'newconstruction-single')
 
                             <div class="form-group">
-                                <label for="minprice">Type of Construction</label>
+                                <label for="minprice">{{__('text.Type of Construction')}}</label>
                                 <select class="form-control" name="type_of_construction">
                                     <option value="">All</option>
                                     <option value="New" @if(Route::currentRouteName() == 'searchproperties') @if($type_of_construction == 'New') selected @endif @endif>New</option>
@@ -479,21 +479,21 @@
 
                         <div class="form-group">
                             <label for="minprice">Keywords</label>
-                            <input type="text" name="keywords" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') value="{{$keywords}}" @else value="" @endif class="form-control" placeholder="Search by Keywords">
+                            <input type="text" name="keywords" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') value="{{$keywords}}" @else value="" @endif class="form-control" placeholder="{{__('text.Search by Keywords')}}">
                         </div>
 
                         <div class="form-group">
 
-                            <label>Wheelchair friendly home for people with walking difficulties</label>
+                            <label>{{__('text.Wheelchair friendly home for people with walking difficulties')}}</label>
 
                             <p style="margin-top: 10px;">
-                                <label style="cursor: pointer"><input style="margin-right: 5px;" type="checkbox" id="wh1" name="wheelchair" value="1" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') @if($wheelchair == 1) checked @endif @endif> Yes</label>
+                                <label style="cursor: pointer"><input style="margin-right: 5px;" type="checkbox" id="wh1" name="wheelchair" value="1" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') @if($wheelchair == 1) checked @endif @endif> {{__('text.Yes')}}</label>
                             </p>
 
 
                         </div>
 
-                        <input type="submit" name="submit" value="Search" class="btn btn-primary btn-block" style="outline: none;">
+                        <input type="submit" name="submit" value="{{__('text.Search Property')}}" class="btn btn-primary btn-block" style="outline: none;">
                         {!! Form::close() !!}
                     </div>
                     <!-- break -->
@@ -522,6 +522,16 @@
 
 
 <style>
+
+    input[type=number]::-webkit-outer-spin-button,
+    input[type=number]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    input[type=number] {
+        -moz-appearance:textfield;
+    }
 
     #myModal1
     {

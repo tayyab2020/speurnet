@@ -455,18 +455,18 @@
 
                                             @if(!$property->landlord)
 
-                                            <div style="width: 40%;padding-left: 8px;">
-                                                <span style="font-weight: 600;color: #808080;">Brought to you by</span>
+                                            <div style="width: 60%;padding-left: 8px;">
+                                                <span style="font-weight: 600;color: #808080;">{{__('text.Brought to you by')}}</span>
                                             </div>
 
-                                            <div style="width: 60%;height: 100%;padding: 8px;padding-bottom: 2px;">
+                                            <div style="width: 40%;height: 100%;padding: 8px;padding-bottom: 2px;">
 
                                                 <a style="outline: none;" href="{{URL::to('agents/details/'.$property->user_id)}}">
 
                                                 @if($property->image_icon)
-                                                    <img style="width: 55%;height: 95%;float: right;" src="{{ URL::asset('upload/members/'.$property->image_icon.'-b.jpg') }}">
+                                                    <img style="width: 90%;height: 95%;float: right;" src="{{ URL::asset('upload/members/'.$property->image_icon.'-b.jpg') }}">
                                                 @else
-                                                    <img style="width: 55%;height: 95%;float: right;" src="{{ URL::asset('assets/img/team03.jpg') }}" >
+                                                    <img style="width: 90%;height: 95%;float: right;" src="{{ URL::asset('assets/img/team03.jpg') }}" >
                                                 @endif
 
                                                 </a>
@@ -476,7 +476,7 @@
                                             @else
 
                                                 <div style="width: 100%;text-align: center;">
-                                                    <span style="font-weight: 600;color: #808080;">Brought to you by a private landlord</span>
+                                                    <span style="font-weight: 600;color: #808080;">{{__('text.Brought to you by')}} a private landlord</span>
                                                 </div>
 
                                             @endif

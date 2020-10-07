@@ -538,7 +538,7 @@
                     @if(!$property->landlord)
 
                         <div style="width: 50%;padding-left: 3px;">
-                            <span style="font-weight: 600;color: #808080;">Brought to you by</span>
+                            <span style="font-weight: 600;color: #808080;">{{__('text.Brought to you by')}}</span>
                         </div>
 
                         <div style="width: 50%;height: 100%;padding: 5px;">
@@ -558,7 +558,7 @@
                         @else
 
                         <div style="width: 100%;text-align: center;">
-                            <span style="font-weight: 600;color: #808080;">Brought to you by a private landlord</span>
+                            <span style="font-weight: 600;color: #808080;">{{__('text.Brought to you by')}} a private landlord</span>
                         </div>
 
                     @endif

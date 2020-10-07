@@ -83,6 +83,8 @@
 
                   <a href="#top" class="btn btn-primary scroltop"><i class="fa fa-angle-up"></i></a>
 
+                  <h4 style="margin-bottom: 30px;">{{__('text.Stay informed and quickly find, sell or rent your home')}}</h4>
+
                   @if(getcong('social_facebook'))
                       <li><a href="{{getcong('social_facebook')}}" class="icon-facebook" rel="tooltip" title="" data-placement="bottom" data-original-title="Facebook" target="_blank"><i class="fa fa-facebook"></i></a></li>
                   @endif

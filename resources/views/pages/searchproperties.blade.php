@@ -86,9 +86,15 @@
           <!-- begin:article -->
           <div class="col-md-9 col-md-push-3">
 
+              @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions')
+
+                  <h5 style="margin-top: 0;">{{__('text.Is there no home that makes you happy?')}}</h5>
+
+              @endif
+
               <div class="properties-ordering-wrapper">
 
-                  <div class="results-count" style="font-size: 18px;display: inline-block;padding-top: 5px;">{{count($properties)}} results found</div>
+                  <div class="results-count" style="font-size: 18px;display: inline-block;padding-top: 5px;">{{__('text.Results')}} {{count($properties)}} {{__('text.properties found')}}</div>
 
                   <button type="button" value="Filters" href="#myModal1" data-toggle="modal" class="btn btn-primary filter-button" style="float: right;color: black;background: white;border-color: #9f9c9c;outline: none;display: none;">
                       <span>

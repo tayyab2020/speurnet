@@ -28,7 +28,7 @@
                                     {{--<label for="address">Address</label>--}}
 
                                     <div style="flex-grow: 2;height: 100%;border: 1px solid #d7d7d7;">
-                                        <input style="border: 0;height: 100%;box-shadow: none;" class="form-control city-input" type="text" placeholder="City, State, Address" name="city_name" id="city-input" autocomplete="off">
+                                        <input style="border: 0;height: 100%;box-shadow: none;" class="form-control city-input" type="text" placeholder="{{__('text.City, State, Address')}}" name="city_name" id="city-input" autocomplete="off">
 
                                         <input type="hidden" name="city_latitude" id="city-latitude"  />
                                         <input type="hidden" name="city_longitude" id="city-longitude"  />
@@ -37,7 +37,7 @@
 
                                     <button type="button" value="Filters" href="#myModal" data-toggle="modal" class="btn btn-primary filter-button" style="position: absolute;right: 185px;top: 8px;color: black;background: white;border-color: #9f9c9c;height: 40px;padding-top: 7px;outline: none;"><span><img src="{{ URL::asset('assets/img/Filter-512.png') }}" aria-hidden="true" style="margin-right: 10px;width: 20px;margin-top: -3px;" /> <span style="font-size: 16px;">Filters</span></span></button>
 
-                                    <button type="submit" name="submit" value="Search" class="btn btn-primary search-button" style="width: 18%;white-space: break-spaces;padding: 0px;font-size: 16px;outline: none;"><span><i class="fa fa-search" aria-hidden="true" style="margin-right: 10px;"></i> <span>{{__('text.Search')}}</span></span></button>
+                                    <button type="submit" name="submit" value="Search" class="btn btn-primary search-button" style="width: 18%;white-space: break-spaces;padding: 0px;font-size: 16px;outline: none;"><span><i class="fa fa-search" aria-hidden="true" style="margin-right: 10px;"></i> <span>{{__('text.Search Property')}}</span></span></button>
 
                                 </div>
 
@@ -54,7 +54,7 @@
 
                                         <img src="{{ URL::asset('assets/img/signaling.png') }}" style="width: 17px;position:relative;top: -1px;margin-right: 3px;" class="icon-feature" />
 
-                                        <span class="search-span" style="position: relative;top: 3px;font-size: 14px;color: #4b4848;">Wheelchair friendly home for people with walking difficulties</span>
+                                        <span class="search-span" style="position: relative;top: 3px;font-size: 14px;color: #4b4848;">{{__('text.Wheelchair friendly home for people with walking difficulties')}}</span>
 
                                     </label>
 
