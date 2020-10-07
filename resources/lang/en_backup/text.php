@@ -97,5 +97,6 @@ return [
     'Is there no home that makes you happy?' => 'Is there no home that makes you happy? Then sign up for your Huisalert. That way you won\'t miss your home!',
     'Results' => 'Results:',
     'properties found' => 'properties found',
+    'a private landlord' => 'a private landlord',
 
 ];

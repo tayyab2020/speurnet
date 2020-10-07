@@ -4,7 +4,7 @@
 @include("_particles.slidersearch")
 
 <!-- begin:content -->
-    <div id="content">
+    <div id="content" style="background: white;">
 
         @if(Session::has('flash_message'))
             <div class="alert alert-success alert-box" style="text-align: center;font-size: 16px;position: fixed;top: 20%;z-index: 1000;padding-right: 35px;background-color: rgb(0 0 0);color: rgb(255 255 255);border: 0;max-width: 400px;border-radius: 0;">
@@ -475,8 +475,8 @@
 
                                             @else
 
-                                                <div style="width: 100%;text-align: center;">
-                                                    <span style="font-weight: 600;color: #808080;">{{__('text.Brought to you by')}} a private landlord</span>
+                                                <div style="width: 100%;text-align: center;padding: 0px 5px;">
+                                                    <span style="font-weight: 600;color: #808080;">{{__('text.Brought to you by')}} {{__('text.a private landlord')}}</span>
                                                 </div>
 
                                             @endif
@@ -670,7 +670,7 @@
 
     @media(min-width:1021px){.css-48sroz{border-radius:3px;border:1px solid #fff;-webkit-flex-wrap:nowrap;-ms-flex-wrap:nowrap;flex-wrap:nowrap;box-shadow:0 1px 3px 0 rgba(30,41,61,0.1),0 1px 2px 0 rgba(30,41,61,0.2);}}
 
-    .css-48sroz li{font-weight:bold;margin-bottom:12px;background-color:#fff;box-shadow:0 1px 3px 0 rgba(30,41,61,0.1),0 1px 2px 0 rgba(30,41,61,0.2);}
+    .css-48sroz li{font-weight:bold;margin-bottom:12px;background-color:#fefefe;box-shadow:0 1px 3px 0 rgba(30,41,61,0.1),0 1px 2px 0 rgba(30,41,61,0.2);}
 
     .css-48sroz li:hover,.css-48sroz li:focus{box-shadow:0 3px 6px 0 rgba(30,41,61,0.15),0 5px 10px 0 rgba(30,41,61,0.15);-webkit-transition:box-shadow ease-in 100ms;transition:box-shadow ease-in 100ms;z-index:1;}
 
@@ -987,7 +987,7 @@
     </style>
 
 <!-- begin:blog -->
-<div id="partner" style="background: #f4f4f4;">
+<div id="partner">
     <div class="container" style="width: 100%;">
         <div class="row">
             <div class="col-md-12">

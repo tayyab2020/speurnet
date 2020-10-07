@@ -97,5 +97,6 @@ return [
     'Is there no home that makes you happy?' => 'Zit er geen woning tussen waar jij blij van wordt? Meld je dan aan voor jouw Huisalert. Zo mis je straks jouw woning niet!',
     'Results' => 'Resultaten:',
     'properties found' => 'woningen gevonden',
+    'a private landlord' => 'een particuliere verhuurder',
 
 ];
