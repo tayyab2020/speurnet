@@ -13,8 +13,9 @@
 
             <div class="blog-container" style="margin-bottom: 0;display: flex;">
                 <div class="blog-content col-lg-10 col-md-11 col-sm-11 col-xs-10" style="background: #fff;margin: 30px auto;padding: 15px 45px 15px 45px;font-family: 'Roboto', sans-serif;border-radius: 8px;box-shadow: 0px 0px 7px 5px #efefef;">
-                    <div class="blog-title" style="text-align: center;padding: 0;margin-bottom: 0;">
-                        <h4 style="font-family: 'Roboto', sans-serif;font-weight: 600;">Register an account for free</h4>
+                    <div class="blog-title" style="padding: 0;margin-bottom: 0;">
+                        <h4 style="font-family: 'Roboto', sans-serif;font-weight: bold;color: #18ace5;">{{__('text.Register an account for free')}}</h4>
+                        <p>{!! nl2br(e(__('text.Register description')))!!}</p>
                     </div>
 
                     <div class="blog-text contact" style="padding: 0;">
@@ -47,26 +48,26 @@
 
                                 <div class="form-group" style="margin-top: 20px;">
 
-                                    <label for="email">Profile Type</label>
+                                    <label for="email">Account Type</label>
 
                                     <div class="bulgy-radios" role="radiogroup" aria-labelledby="bulgy-radios-label" style="width: 100%;text-align: left;/*min-height: 50px;*/">
 
-                                        <label style="margin-left: 5px;float: left;">
+                                        <label style="margin-left: 5px;">
                                             <input type="radio" name="usertype" class="usertype" value="Agents" checked />
                                             <span class="radio"></span>
-                                            <span class="label">Agent</span>
+                                            <span class="label">{{__('text.Agent')}}</span>
                                         </label>
 
-                                        <label style="margin-left: 5px;float: left;">
+                                        <label style="margin-left: 5px;">
                                             <input type="radio" name="usertype" class="usertype" value="landlord" />
                                             <span class="radio"></span>
-                                            <span class="label">Private Landlord</span>
+                                            <span class="label">{{__('text.Private Landlord')}}</span>
                                         </label>
 
-                                        <label style="margin-left: 10px;">
+                                        <label style="margin-left: 5px;">
                                             <input type="radio" name="usertype" class="usertype" value="Users" />
                                             <span class="radio"></span>
-                                            <span class="label">User</span>
+                                            <span class="label">{{__('text.User')}}</span>
                                         </label>
 
                                     </div>
@@ -86,7 +87,7 @@
 
                                         </div>
 
-                                        <input type="text" name="name" id="name" placeholder="Enter name" style="box-shadow: none;border: 0;margin: 0;float: left;width: 85%;left: 0;height: 35px;text-align: left;" class="form-control res-inp">
+                                        <input type="text" name="name" id="name" placeholder="{{__('text.Name Contact Person')}}" data-placeholder="{{__('text.Your Name')}}" style="box-shadow: none;border: 0;margin: 0;float: left;width: 85%;left: 0;height: 35px;text-align: left;" class="form-control res-inp">
 
 
                                     </div>
@@ -108,7 +109,7 @@
 
                                         </div>
 
-                                        <input type="text" name="company_name" placeholder="Enter Company name" style="box-shadow: none;border: 0;margin: 0;float: left;width: 85%;left: 0;height: 35px;text-align: left;" class="form-control res-inp">
+                                        <input type="text" name="company_name" placeholder="{{__('text.Company name')}}" style="box-shadow: none;border: 0;margin: 0;float: left;width: 85%;left: 0;height: 35px;text-align: left;" class="form-control res-inp">
 
 
                                     </div>
@@ -130,7 +131,7 @@
 
                                         </div>
 
-                                        <input type="email" class="form-control res-inp" name="email" id="email" placeholder="Enter email" style="box-shadow: none;border: 0;margin: 0;float: left;width: 85%;left: 0;height: 35px;text-align: left;">
+                                        <input type="email" class="form-control res-inp" name="email" id="email" placeholder="{{__('text.Email Address')}}" style="box-shadow: none;border: 0;margin: 0;float: left;width: 85%;left: 0;height: 35px;text-align: left;">
 
                                     </div>
 
@@ -152,7 +153,7 @@
 
                                         </div>
 
-                                        <input type="password" class="form-control res-inp" name="password" id="password" placeholder="Enter password" style="box-shadow: none;border: 0;margin: 0;float: left;width: 85%;left: 0;height: 35px;text-align: left;">
+                                        <input type="password" class="form-control res-inp" name="password" id="password" placeholder="{{__('text.Password')}}" style="box-shadow: none;border: 0;margin: 0;float: left;width: 85%;left: 0;height: 35px;text-align: left;">
 
                                     </div>
 
@@ -172,7 +173,7 @@
 
                                         </div>
 
-                                        <input type="password" class="form-control res-inp" name="password_confirmation" id="password_confirmation" placeholder="Confirm Password" style="box-shadow: none;border: 0;margin: 0;float: left;width: 85%;left: 0;height: 35px;text-align: left;">
+                                        <input type="password" class="form-control res-inp" name="password_confirmation" id="password_confirmation" placeholder="{{__('text.Confirm Password')}}" style="box-shadow: none;border: 0;margin: 0;float: left;width: 85%;left: 0;height: 35px;text-align: left;">
 
                                     </div>
 
@@ -194,7 +195,7 @@
 
                                         </div>
 
-                                        <input type="text" class="form-control res-inp" name="phone" id="phone" placeholder="Enter Mobile No" style="box-shadow: none;border: 0;margin: 0;float: left;width: 85%;left: 0;height: 35px;text-align: left;">
+                                        <input type="text" class="form-control res-inp" name="phone" id="phone" placeholder="{{__('text.Mobile No')}}" style="box-shadow: none;border: 0;margin: 0;float: left;width: 85%;left: 0;height: 35px;text-align: left;">
 
                                     </div>
 
@@ -216,7 +217,7 @@
 
                                         </div>
 
-                                        <input type="text" class="form-control res-inp" autocomplete="off" name="city" id="city-input" placeholder="Enter City" style="box-shadow: none;border: 0;margin: 0;float: left;width: 85%;left: 0;height: 35px;text-align: left;">
+                                        <input type="text" class="form-control res-inp" autocomplete="off" name="city" id="city-input" placeholder="{{__('text.Place of establishment')}}" data-placeholder="{{__('text.Residence')}}" style="box-shadow: none;border: 0;margin: 0;float: left;width: 85%;left: 0;height: 35px;text-align: left;">
 
                                     </div>
 
@@ -226,9 +227,9 @@
 
                                     <input name="terms" value="1" type="checkbox" required id="terms" style="position: relative;top: 2px;display: block;height: 0px;">
 
-                                    <label class="bg" for="terms" style="margin: 0;font-weight: 600;">
+                                    <label class="bg" for="terms" style="margin: 0;font-weight: 500;">
 
-                                        <span class="search-span" style="position: relative;top: 2px;font-size: 11px;color: #575454;">I agree <a href="{{ URL::asset('assets/terms-and-conditions-template.pdf') }}" target="_blank">Terms of Services</a>&nbsp;and&nbsp;<a href="{{ URL::asset('assets/privacy_policy.pdf') }}" target="_blank">Privacy Policy</a></span>
+                                        <span class="search-span" style="position: relative;top: 2px;font-size: 11px;color: #6b6e80;">{{__('text.I agree to the')}} <a href="{{ URL::asset('assets/terms-and-conditions-template.pdf') }}" style="display: inline-flex;" target="_blank">{{__('text.Terms of Conditions')}}</a>&nbsp;{{__('text.and')}}&nbsp;<a href="{{ URL::asset('assets/privacy_policy.pdf') }}" style="text-transform: lowercase;" target="_blank">{{__('text.Privacy Policy')}}</a></span>
 
                                     </label>
 
@@ -236,19 +237,19 @@
 
                                 <div class="form-group checkbox" style="margin-top: 30px;">
 
-                                    <p style="margin-left: 3px;margin-bottom: 0;">Already have account ? <a href="{{ URL::to('login') }}">Sign in here</a></p>
+                                    <p style="margin-left: 3px;margin-bottom: 0;">{{__('text.Already have account?')}} <a href="{{ URL::to('login') }}">{{__('text.Sign in here')}}</a></p>
 
-                                    <a href="redirect/facebook" class="social-button" id="facebook-connect"> <span>Sign in with Facebook</span></a>
+                                    <a href="redirect/facebook" class="social-button" id="facebook-connect"> <span>{{__('text.Sign in with Facebook')}}</span></a>
 
 
-                                    <a href="redirect/google" class="social-button" id="google-connect"> <span>Sign in with Google</span></a>
+                                    <a href="redirect/google" class="social-button" id="google-connect"> <span>{{__('text.Sign in with Google')}}</span></a>
 
 
                                 </div>
 
 
                                 <div class="form-group" style="margin: 15px 0px;">
-                                    <button style="width: 100%;background-color: #3f9dca;border-color: #3f9dca;outline: none;font-size: 16px;" type="submit" name="submit" class="btn btn-warning">Sign Up</button>
+                                    <button style="width: 100%;background-color: #3f9dca;border-color: #3f9dca;outline: none;font-size: 16px;white-space: break-spaces;" type="submit" name="submit" class="btn btn-warning">{{__('text.Sign Up Account')}}</button>
                                 </div>
 
 
@@ -318,6 +319,14 @@
             -ms-transition: all .3s ease;
             -o-transition: all .3s ease;
             transition: all .3s ease;
+        }
+
+        @media (max-width: 600px)
+        {
+            .social-button
+            {
+                padding-left: 22%;
+            }
         }
 
         #facebook-connect {
@@ -485,7 +494,7 @@
             text-align: center;
         }
         .bulgy-radios label {
-            display: inline-block;
+            display: block;
             position: relative;
             height: 35px;
             padding-left: 20px;
@@ -599,10 +608,10 @@
             content: '';
             position: absolute;
             opacity: 0;
-            top: 20%;
-            left: 24%;
-            width: 60%;
-            height: 66%;
+            top: 3px;
+            left: 3px;
+            width: 6px;
+            height: 6px;
             border-radius: 100%;
             background: #fff;
         }
@@ -692,6 +701,28 @@
 
         $( document ).ready(function() {
 
+            $('input[type=radio][name=usertype]').change(function() {
+
+                var type = $(this).val();
+
+                if(type == 'Agents' || type == 'landlord')
+                {
+
+                }
+                else
+                {
+                    $(".res-inp").each(function() {
+
+                        var placeholder = $(this).attr('placeholder');
+                        var new_placeholder = $(this).data('placeholder');
+
+                        $(this).attr("placeholder", new_placeholder);
+                        $(this).data("placeholder", placeholder);
+                    });
+                }
+
+            });
+
             $('#city-input').on('keyup keypress', function(e) {
 
                 var keyCode = e.keyCode || e.which;
@@ -780,7 +811,7 @@
                 if (this.value == 'Users') {
                     $('.company_name').hide();
                 }
-                else if (this.value == 'Agents') {
+                else if (this.value == 'Agents' || this.value == 'landlord') {
                     $('.company_name').show();
                 }
             });

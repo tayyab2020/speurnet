@@ -4,7 +4,7 @@
 @include("_particles.slidersearch")
 
 <!-- begin:content -->
-    <div id="content" style="background: white;">
+    <div id="content">
 
         @if(Session::has('flash_message'))
             <div class="alert alert-success alert-box" style="text-align: center;font-size: 16px;position: fixed;top: 20%;z-index: 1000;padding-right: 35px;background-color: rgb(0 0 0);color: rgb(255 255 255);border: 0;max-width: 400px;border-radius: 0;">
@@ -25,7 +25,7 @@
 
                   <div class="col-md-9 col-sm-12 col-xs-12" style="margin: auto;">
 
-                  <a href="{{URL::to('properties/'.$most_viewed->property_slug)}}" style="padding: 0;margin: 0px;text-align: left;text-decoration: underline;cursor: pointer;color: black;font-size: 18px;font-weight: 600;"><img style="width: 30px;margin-right: 10px;margin-bottom: 2px;" src="{{ URL::asset('assets/img/eye.png') }}" />{{__('text.Most Viewed Ad')}} >></a>
+                  <a href="{{URL::to('properties/'.$most_viewed->property_slug)}}" style="padding: 0;margin: 0px;text-align: left;text-decoration: underline;cursor: pointer;color: black;font-size: 18px;font-weight: 600;"><img style="width: 30px;margin-right: 10px;margin-bottom: 2px;" src="{{ URL::asset('assets/img/eye.png') }}" />{{__('text.Most Viewed Ad')}}</a>
 
                   </div>
                   </a>
@@ -670,7 +670,7 @@
 
     @media(min-width:1021px){.css-48sroz{border-radius:3px;border:1px solid #fff;-webkit-flex-wrap:nowrap;-ms-flex-wrap:nowrap;flex-wrap:nowrap;box-shadow:0 1px 3px 0 rgba(30,41,61,0.1),0 1px 2px 0 rgba(30,41,61,0.2);}}
 
-    .css-48sroz li{font-weight:bold;margin-bottom:12px;background-color:#fefefe;box-shadow:0 1px 3px 0 rgba(30,41,61,0.1),0 1px 2px 0 rgba(30,41,61,0.2);}
+    .css-48sroz li{font-weight:bold;margin-bottom:12px;background-color:#fff;box-shadow:0 1px 3px 0 rgba(30,41,61,0.1),0 1px 2px 0 rgba(30,41,61,0.2);}
 
     .css-48sroz li:hover,.css-48sroz li:focus{box-shadow:0 3px 6px 0 rgba(30,41,61,0.15),0 5px 10px 0 rgba(30,41,61,0.15);-webkit-transition:box-shadow ease-in 100ms;transition:box-shadow ease-in 100ms;z-index:1;}
 
@@ -987,7 +987,7 @@
     </style>
 
 <!-- begin:blog -->
-<div id="partner">
+<div id="partner" style="background: #f4f4f4;">
     <div class="container" style="width: 100%;">
         <div class="row">
             <div class="col-md-12">

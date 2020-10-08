@@ -78,50 +78,50 @@
 
 	                <li class="{{classActivePath('settings')}}"><a href="{{ URL::to('admin/settings') }}"><i class="md md-settings"></i>Settings</a></li>
                 @else
-               		 <li class="{{classActivePath('dashboard')}}"><a href="{{ URL::to('admin/dashboard') }}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+
+                    <li class="{{classActivePath('dashboard')}}"><a href="{{ URL::to('admin/dashboard') }}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
 
                     <li class="{{classActivePath('tickets')}}"><a href="{{ URL::to('admin/tickets') }}"><i class="fa fa-ticket"></i> Tickets</a></li>
 
-               		 <li class="{{classActivePath('properties')}}"><a href="{{ URL::to('admin/properties') }}"><i class="md md-pin-drop"></i>My Properties</a></li>
+                    <li class="{{classActivePath('properties')}}"><a href="{{ URL::to('admin/properties') }}"><i class="md md-pin-drop"></i>{{__('text.My Properties')}}</a></li>
 
                     @if(Auth::user()->usertype =='Users')
 
-                     <li class="{{classActivePath('home_exchange')}}"><a href="{{ URL::to('admin/home_exchange') }}"><i class="md md-pin-drop"></i>Home Exchange Properties</a></li>
+                        <li class="{{classActivePath('home_exchange')}}"><a href="{{ URL::to('admin/home_exchange') }}"><i class="md md-pin-drop"></i>Home Exchange Properties</a></li>
 
                     @endif
 
-               		 <li class="{{classActivePath('favourite-properties')}}"><a href="{{ URL::to('admin/favourite-properties') }}"><i class="md md-favorite"></i>Favourite Properties</a></li>
-
-                @if(Auth::user()->usertype !='Users')
-
-               		 <li class="{{classActivePath('hidden-properties')}}"><a href=""><i class="md md-location-disabled"></i>Hidden Properties</a></li>
-
-
-                     <li class="{{classActivePath('property-notes')}}"><a href=""><i class="md md-speaker-notes"></i>Property Notes</a></li>
-
-                    @endif
-
-                     <li class="{{classActivePath('viewings')}}"><a href="{{ URL::to('admin/viewings') }}"><i class="md md-pin-drop"></i>Requested Viewings</a></li>
-
-                     <li class="{{classActivePath('reviews')}}"><a href=""><i class="md md-star"></i>Reviews</a></li>
+                    <li class="{{classActivePath('favourite-properties')}}"><a href="{{ URL::to('admin/favourite-properties') }}"><i class="md md-favorite"></i>{{__('text.Favourite Properties')}}</a></li>
 
                     @if(Auth::user()->usertype !='Users')
 
-                     <li class="{{classActivePath('alerts-searches')}}"><a href=""><i class="md md-save"></i>Alerts & Searches</a></li>
+                        <li class="{{classActivePath('hidden-properties')}}"><a href=""><i class="md md-location-disabled"></i>{{__('text.Hidden Properties')}}</a></li>
+
+                        <li class="{{classActivePath('property-notes')}}"><a href=""><i class="md md-speaker-notes"></i>{{__('text.Property Notes')}}</a></li>
 
                     @endif
 
-               		 <li class="{{classActivePath('inquiries')}}"><a href="{{ URL::to('admin/inquiries') }}"><i class="md md-perm-phone-msg"></i>Inquiries</a></li>
+                    <li class="{{classActivePath('viewings')}}"><a href="{{ URL::to('admin/viewings') }}"><i class="md md-pin-drop"></i>{{__('text.Requested Viewings')}}</a></li>
+
+                    <li class="{{classActivePath('reviews')}}"><a href=""><i class="md md-star"></i>Reviews</a></li>
 
                     @if(Auth::user()->usertype !='Users')
 
-               		 <li class="{{classActivePath('packages')}}"><a href=""><i class="md md-check-box-outline-blank"></i>Packages</a></li>
+                        <li class="{{classActivePath('alerts-searches')}}"><a href=""><i class="md md-save"></i>Alerts & Searches</a></li>
 
                     @endif
 
-               		 <li class="{{classActivePath('admin')}}"><a href="{{ URL::to('admin/profile') }}"><i class="md md-person-outline"></i> Account</a></li>
+                    <li class="{{classActivePath('inquiries')}}"><a href="{{ URL::to('admin/inquiries') }}"><i class="md md-perm-phone-msg"></i>{{__('text.Inquiries')}}</a></li>
+
+                    @if(Auth::user()->usertype !='Users')
+
+                        <li class="{{classActivePath('packages')}}"><a href=""><i class="md md-check-box-outline-blank"></i>{{__('text.Packages')}}</a></li>
+
+                    @endif
+
+                    <li class="{{classActivePath('admin')}}"><a href="{{ URL::to('admin/profile') }}"><i class="md md-person-outline"></i> Account</a></li>
+
                 @endif
-
 
 			</ul>
 

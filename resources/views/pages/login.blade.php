@@ -15,7 +15,9 @@
             <div class="blog-container" style="margin-bottom: 0;display: flex;">
                 <div class="blog-content col-lg-10 col-md-11 col-sm-11 col-xs-10" style="background: #fff;margin: 40px auto;padding: 30px 45px 30px 45px;font-family: 'Roboto', sans-serif;border-radius: 8px;box-shadow: 0px 0px 7px 5px #efefef;">
                     <div class="blog-title" style="text-align: center;padding: 0;">
-                        <h3 style="font-family: 'Roboto', sans-serif;font-weight: 600;">Access to your account</h3>
+
+                        <h3 style="font-family: 'Roboto', sans-serif;font-weight: 600;">{{__('text.Access to your account')}}</h3>
+                        <h3 style="font-family: 'Roboto', sans-serif;font-weight: 600;">{{__('text.Login to Zoekjehuisje.nl')}}</h3>
 
                     </div>
 
@@ -48,15 +50,15 @@
 
                                 <div class="form-group checkbox">
 
-                                    <a href="redirect/facebook" class="social-button" id="facebook-connect"> <span>Sign in with Facebook</span></a>
+                                    <a href="redirect/facebook" class="social-button" id="facebook-connect"> <span>{{__('text.Sign in with Facebook')}}</span></a>
 
 
-                                    <a href="redirect/google" class="social-button" id="google-connect"> <span>Sign in with Google</span></a>
+                                    <a href="redirect/google" class="social-button" id="google-connect"> <span>{{__('text.Sign in with Google')}}</span></a>
 
 
                                 </div>
 
-                                <h4><span>Or</span></h4>
+                                <h4><span>{{__('text.Or')}}</span></h4>
 
                                 {!! Form::open(array('url' => 'login','class'=>'','id'=>'loginform','role'=>'form')) !!}
 
@@ -75,7 +77,7 @@
 
                                         </div>
 
-                                        <input type="email" class="form-control res-inp" name="email" id="email" placeholder="Enter email" style="box-shadow: none;border: 0;margin: 0;float: left;width: 85%;left: 0;height: 50px;text-align: left;">
+                                        <input type="email" class="form-control res-inp" name="email" id="email" placeholder="{{__('text.Enter email')}}" style="box-shadow: none;border: 0;margin: 0;float: left;width: 85%;left: 0;height: 50px;text-align: left;">
 
                                     </div>
 
@@ -96,7 +98,7 @@
 
                                         </div>
 
-                                        <input type="password" class="form-control res-inp" name="password" id="password" placeholder="Enter password" style="box-shadow: none;border: 0;margin: 0;float: left;width: 85%;left: 0;height: 50px;text-align: left;">
+                                        <input type="password" class="form-control res-inp" name="password" id="password" placeholder="{{__('text.Enter password')}}" style="box-shadow: none;border: 0;margin: 0;float: left;width: 85%;left: 0;height: 50px;text-align: left;">
 
                                     </div>
 
@@ -106,10 +108,10 @@
                                 <div class="form-group checkbox" style="margin: 30px 0px;">
 
                                     <label style="margin-left: 3px;">
-                                        <input style="position: relative;top: 1.5px;" type="checkbox" name="remember" id="checkbox1" /> Keep me signed in
+                                        <input style="position: relative;top: 1.5px;" type="checkbox" name="remember" id="checkbox1" /> {{__('text.Keep me signed in')}}
                                     </label>
 
-                                    <a style="float: right;" href="{{ URL::to('admin/password/email') }}">Forgot password?</a>
+                                    <a style="float: right;" href="{{ URL::to('admin/password/email') }}">{{__('text.Forgot password?')}}</a>
 
 
                                 </div>
@@ -122,8 +124,8 @@
                                 {!! Form::close() !!}
 
                                 <div class="form-group checkbox" style="margin-top: 30px;">
-                                    <p style="text-align: center;">Don't have account ? <a href="{{ URL::to('register') }}">Sign up here.</a>                <br/>
-                                        <span class="search-span" style="position: relative;top: 3px;font-size: 14px;color: #575454;"><a href="{{ URL::asset('assets/terms-and-conditions-template.pdf') }}" target="_blank">Terms of Services</a>&nbsp;and&nbsp;<a href="{{ URL::asset('assets/privacy_policy.pdf') }}" target="_blank">Privacy Policy</a> apply</span>
+                                    <p style="text-align: center;">{{__('text.Don\'t have account?')}} <a href="{{ URL::to('register') }}">{{__('text.Sign up here')}}</a>                <br/>
+                                        <span class="search-span" style="position: relative;top: 3px;font-size: 14px;color: #575454;"><a href="{{ URL::asset('assets/terms-and-conditions-template.pdf') }}" target="_blank">{{__('text.Terms of Services')}}</a>&nbsp;{{__('text.and')}}&nbsp;<a href="{{ URL::asset('assets/privacy_policy.pdf') }}" target="_blank">{{__('text.Privacy Policy')}}</a></span>
                                     </p>
                                 </div>
                             </div>
@@ -210,13 +212,14 @@
         border-radius: 3px;
         margin: 10px auto;
         outline: rgb(255, 255, 255) none 0px;
-        padding-left: 33%;
+        padding-left: 25%;
         transition: all 0.2s cubic-bezier(0.72, 0.01, 0.56, 1) 0s;
         -webkit-transition: all .3s ease;
         -moz-transition: all .3s ease;
         -ms-transition: all .3s ease;
         -o-transition: all .3s ease;
         transition: all .3s ease;
+        font-size: 17px;
     }
 
     #facebook-connect {
@@ -239,7 +242,7 @@
         color: rgb(60, 90, 154);
         cursor: pointer;
         text-align: center;
-        text-transform: uppercase;
+        text-transform: none;
         border: 0px none rgb(255, 255, 255);
         outline: rgb(255, 255, 255) none 0px;
         -webkit-transition: all .3s ease;
@@ -282,7 +285,7 @@
         color: #a30d0d;
         cursor: pointer;
         text-align: center;
-        text-transform: uppercase;
+        text-transform: none;
         border: 0px none rgb(255, 255, 255);
         outline: rgb(255, 255, 255) none 0px;
         -webkit-transition: all .3s ease;

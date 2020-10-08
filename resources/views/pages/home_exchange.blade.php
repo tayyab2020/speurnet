@@ -12,12 +12,11 @@
                 <div class="col-md-10 col-md-offset-1 col-sm-12">
                     <div class="page-title">
 
-                            <h2>Home Exchange</h2>
+                            <h2>{{__('text.Home Exchange')}}</h2>
 
                     </div>
                     <ol class="breadcrumb">
                         <li><a href="{{ URL::to('/') }}">Home</a></li>
-                        <li class="active">Home Exchange</li>
                     </ol>
                 </div>
             </div>
@@ -74,7 +73,7 @@
 
                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
 
-                    <a href="{{ URL::to('addhomeexchange') }}" class="btn btn-success" style="float: right;font-size: 18px;margin-bottom: 20px;">Add Property</a>
+                    <a href="{{ URL::to('addhomeexchange') }}" class="btn btn-success" style="float: right;font-size: 18px;margin-bottom: 20px;">{{__('text.Add Property')}}</a>
 
                     <div style="background-color: white;border-radius: 10px;box-shadow: 1px 1px 14px 2px #e7e7e7;display: inline-block;">
 

@@ -244,6 +244,10 @@
 
     @else
 
+        <style>
+            .width-100{width: 150px;}
+        </style>
+
     <a href="{{ URL::to('admin/properties') }}">
     	<div class="col-sm-6 col-md-3">
         <div class="panel panel-orange panel-shadow">
@@ -251,7 +255,7 @@
                 <div class="media-left">
                     <div class="panel-body">
                         <div class="width-100">
-                            <h5 class="margin-none" id="graphWeek-y">Properties</h5>
+                            <h5 class="margin-none" id="graphWeek-y">{{__('text.My Properties')}}</h5>
 
                             <h2 class="margin-none" id="graphWeek-a">
                                 {{$properties_count}}
@@ -276,7 +280,7 @@
                 <div class="media-left">
                     <div class="panel-body">
                         <div class="width-100">
-                            <h5 class="margin-none" id="graphWeek-y">Publish</h5>
+                            <h5 class="margin-none" id="graphWeek-y">{{__('text.Publish')}}</h5>
 
                             <h2 class="margin-none" id="graphWeek-a">
                                 {{$publish_properties}}
@@ -301,7 +305,7 @@
                 <div class="media-left">
                     <div class="panel-body">
                         <div class="width-100">
-                            <h5 class="margin-none" id="graphWeek-y">UnPublish</h5>
+                            <h5 class="margin-none" id="graphWeek-y">{{__('text.UnPublish')}}</h5>
 
                             <h2 class="margin-none" id="graphWeek-a">
                                 {{$unpublish_properties}}
@@ -326,7 +330,7 @@
                 <div class="media-left">
                     <div class="panel-body">
                         <div class="width-100">
-                            <h5 class="margin-none" id="graphWeek-y">Inquiries</h5>
+                            <h5 class="margin-none" id="graphWeek-y">{{__('text.Dashboard Inquiries')}}</h5>
 
                             <h2 class="margin-none" id="graphWeek-a">
                                 {{$inquiries}}

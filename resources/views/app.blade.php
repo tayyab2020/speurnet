@@ -64,44 +64,44 @@
 
   <body id="top">
 
-  {{--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  {{--
+    {!! Form::open(array('url' => array('change-language'),'class'=>'form-horizontal padding-15','name'=>'lng_form','id'=>'lng_form','role'=>'form','enctype' => 'multipart/form-data')) !!}
 
-  {!! Form::open(array('url' => array('change-language'),'class'=>'form-horizontal padding-15','name'=>'lng_form','id'=>'lng_form','role'=>'form','enctype' => 'multipart/form-data')) !!}
+    <input type="hidden" id="language" name="language" value="{{Config::get('app.locale')}}">
 
-  <input type="hidden" id="language" name="language" value="{{Config::get('app.locale')}}">
+    <div class="dropdown" style="position: absolute;top: 95px;right: 5px;z-index: 1000;">
 
-  <div class="dropdown" style="position: absolute;top: 95px;right: 5px;z-index: 1000;">
+    <button style="outline: none;background: white;border: 1px solid #cccccc;border-radius: 50px;" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        @if( Config::get('app.locale') == 'en')
 
-  <button style="outline: none;background: white;border: 1px solid #cccccc;border-radius: 50px;" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      @if( Config::get('app.locale') == 'en')
+            <img src="https://www.flaticon.com/svg/static/icons/svg/197/197374.svg" style="margin-right: 5px;width: 30px;"> English
 
-          <img src="https://www.flaticon.com/svg/static/icons/svg/197/197374.svg" style="margin-right: 5px;width: 30px;"> English
+        @else
 
-      @else
+            <img src="https://www.flaticon.com/svg/static/icons/svg/197/197441.svg" style="margin-right: 5px;width: 30px;"> Dutch
 
-          <img src="https://www.flaticon.com/svg/static/icons/svg/197/197441.svg" style="margin-right: 5px;width: 30px;"> Dutch
+        @endif
+    </button>
 
-      @endif
-  </button>
+    <div style="background: transparent;min-width: 100%;" data-value="en" class="dropdown-menu menu-status" aria-labelledby="dropdownMenuButton">
+        @if( Config::get('app.locale') == 'en')
 
-  <div style="background: transparent;min-width: 100%;" data-value="en" class="dropdown-menu menu-status" aria-labelledby="dropdownMenuButton">
-      @if( Config::get('app.locale') == 'en')
+            <a style="background: white;border-radius: 100px;cursor: pointer;" data-value="du" class="dropdown-item dropdown-lng">
+                <img src="https://www.flaticon.com/svg/static/icons/svg/197/197441.svg" style="margin-right: 5px;width: 30px;"> Dutch</a>
 
-          <a style="background: white;border-radius: 100px;cursor: pointer;" data-value="du" class="dropdown-item dropdown-lng">
-              <img src="https://www.flaticon.com/svg/static/icons/svg/197/197441.svg" style="margin-right: 5px;width: 30px;"> Dutch</a>
+        @else
 
-      @else
+            <a style="background: white;border-radius: 100px;cursor: pointer;" data-value="en" class="dropdown-item dropdown-lng">
+                <img src="https://www.flaticon.com/svg/static/icons/svg/197/197374.svg" style="margin-right: 5px;width: 30px;"> English</a>
 
-          <a style="background: white;border-radius: 100px;cursor: pointer;" data-value="en" class="dropdown-item dropdown-lng">
-              <img src="https://www.flaticon.com/svg/static/icons/svg/197/197374.svg" style="margin-right: 5px;width: 30px;"> English</a>
+        @endif
+    </div>
 
-      @endif
-  </div>
+    </div>
 
-  </div>
-
-  {!! Form::close() !!}--}}
+    {!! Form::close() !!}--}}
 
 	  @include("_particles.header")
 
