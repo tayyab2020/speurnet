@@ -7,10 +7,10 @@
         <div class="page-header">
 
             <div class="pull-right">
-                <a href="{{URL::to('admin/tickets/addticket')}}" class="btn btn-primary">Add Ticket <i style="margin-left: 5px;position: relative;top: 1px;" class="fa fa-plus"></i></a>
+                <a href="{{URL::to('admin/tickets/addticket')}}" class="btn btn-primary">@if(Auth::User()->usertype != "Admin") {{__('text.Add Ticket')}} @else Add Ticket @endif <i style="margin-left: 5px;position: relative;top: 1px;" class="fa fa-plus"></i></a>
             </div>
 
-            <h2>Tickets</h2>
+            <h2>Tickets @if(Auth::User()->usertype != "Admin") <small style="font-size: 13px;color: #b4b4b4;vertical-align: middle;margin-left: 5px;">{{__('text.Ticket Heading')}}</small> @endif</h2>
         </div>
 
         @if(Session::has('flash_message'))
@@ -24,17 +24,26 @@
         <div class="panel panel-default panel-shadow">
             <div class="panel-body">
 
-                <table id="data-table" class="table table-striped table-hover dt-responsive" cellspacing="0" width="100%">
+                @if(Auth::User()->usertype == "Admin")
+
+                    <table id="data-table" class="table table-striped table-hover dt-responsive" cellspacing="0" width="100%">
+
+                        @else
+
+                            <table id="data-table1" class="table table-striped table-hover dt-responsive" cellspacing="0" width="100%">
+
+                                @endif
+
                     <thead>
                     <tr>
                         <th>Ticket ID</th>
-                        <th>Ticket Subject</th>
-                        <th>Posted By</th>
+                        <th>@if(Auth::User()->usertype != "Admin") {{__('text.Ticket Subject')}} @else Ticket Subject @endif</th>
+                        <th>@if(Auth::User()->usertype != "Admin") {{__('text.Posted By')}} @else Posted By @endif</th>
                         <th>Email</th>
-                        <th>Created At</th>
-                        <th>Priority</th>
+                        <th>@if(Auth::User()->usertype != "Admin") {{__('text.Created At')}} @else Created At @endif</th>
+                        <th>@if(Auth::User()->usertype != "Admin") {{__('text.Priority')}} @else Priority @endif</th>
                         <th>Status</th>
-                        <th class="text-center width-100">Action</th>
+                        <th class="text-center width-100">@if(Auth::User()->usertype != "Admin") {{__('text.Action')}} @else Action @endif</th>
                     </tr>
                     </thead>
 
@@ -64,7 +73,7 @@
                             <td>{{$ticket->email}}</td>
 
 
-                            <?php $date = date_format($ticket->created_at,"d M Y h:i A"); ?>
+                            <?php $date = date_format($ticket->created_at,"d M Y H:i"); ?>
 
                             <td>{{$date}}</td>
 
@@ -84,7 +93,7 @@
                                     @else
 
                                         <button style="background: white;border: 1px solid #cccccc;border-radius: 50px;" class="btn btn-secondary" type="button" aria-haspopup="true" aria-expanded="false">
-                                            @if($ticket->priority == 'High')  <i style="margin-right: 5px;" class="fa fa-dot-circle-o text-danger"></i> @elseif($ticket->priority == 'Medium') <i style="margin-right: 5px;" class="fa fa-dot-circle-o text-warning"></i> @else <i style="margin-right: 5px;" class="fa fa-dot-circle-o text-success"></i>  @endif {{$ticket->priority}}
+                                            @if($ticket->priority == 'High') <?php $priority = __('text.High'); ?> <i style="margin-right: 5px;" class="fa fa-dot-circle-o text-danger"></i> @elseif($ticket->priority == 'Medium') <?php $priority = __('text.Medium'); ?> <i style="margin-right: 5px;" class="fa fa-dot-circle-o text-warning"></i> @else <?php $priority = __('text.Low'); ?> <i style="margin-right: 5px;" class="fa fa-dot-circle-o text-success"></i>  @endif {{$priority}}
                                         </button>
 
                                     @endif
@@ -111,7 +120,7 @@
                                         @else
 
                                         <button style="background: white;border: 1px solid #cccccc;border-radius: 50px;" class="btn btn-secondary" type="button" aria-haspopup="true" aria-expanded="false">
-                                            @if($ticket->status == 'Open')  <i style="margin-right: 5px;" class="fa fa-dot-circle-o text-info"></i> @elseif($ticket->status == 'Reopened') <i style="margin-right: 5px;" class="fa fa-dot-circle-o text-info"></i> @elseif($ticket->status == 'On Hold') <i style="margin-right: 5px;" class="fa fa-dot-circle-o text-danger"></i> @elseif($ticket->status == 'Closed') <i style="margin-right: 5px;" class="fa fa-dot-circle-o text-success"></i> @elseif($ticket->status == 'In Progress') <i style="margin-right: 5px;" class="fa fa-dot-circle-o text-success"></i> @else <i style="margin-right: 5px;" class="fa fa-dot-circle-o text-danger"></i>  @endif {{$ticket->status}}
+                                            @if($ticket->status == 'Open') <?php $status = __('text.Open'); ?> <i style="margin-right: 5px;" class="fa fa-dot-circle-o text-info"></i> @elseif($ticket->status == 'Reopened') <?php $status = __('text.Reopened'); ?> <i style="margin-right: 5px;" class="fa fa-dot-circle-o text-info"></i> @elseif($ticket->status == 'On Hold') <?php $status = __('text.On Hold'); ?> <i style="margin-right: 5px;" class="fa fa-dot-circle-o text-danger"></i> @elseif($ticket->status == 'Closed') <?php $status = __('text.Closed'); ?> <i style="margin-right: 5px;" class="fa fa-dot-circle-o text-success"></i> @elseif($ticket->status == 'In Progress') <?php $status = __('text.In Progress'); ?> <i style="margin-right: 5px;" class="fa fa-dot-circle-o text-success"></i> @else <?php $status = __('text.Cancelled'); ?> <i style="margin-right: 5px;" class="fa fa-dot-circle-o text-danger"></i>  @endif {{$status}}
                                         </button>
 
                                     @endif
@@ -121,12 +130,12 @@
                             <td class="text-center">
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-default-dark dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                        Actions <span class="caret"></span>
+                                        {{__('text.Action')}}s <span class="caret"></span>
                                     </button>
                                     <ul class="dropdown-menu dropdown-menu-right" role="menu">
-                                        <li><a class="send-mail" style="cursor: pointer;"><i class="md md-mail"></i> Send Email</a></li>
-                                        <li><a href="{{ url('admin/tickets/addticket/'.$ticket->id) }}"><i class="md md-edit"></i> Edit Editor</a></li>
-                                        <li><a href="{{ url('admin/tickets/delete/'.$ticket->id) }}"><i class="md md-delete"></i> Delete</a></li>
+                                        <li><a class="send-mail" style="cursor: pointer;"><i class="md md-mail"></i> {{__('text.Send Email')}}</a></li>
+                                        <li><a href="{{ url('admin/tickets/addticket/'.$ticket->id) }}"><i class="md md-edit"></i> {{__('text.Edit Editor')}}</a></li>
+                                        <li><a href="{{ url('admin/tickets/delete/'.$ticket->id) }}"><i class="md md-delete"></i> {{__('text.Delete')}}</a></li>
                                     </ul>
                                 </div>
 
@@ -221,7 +230,7 @@
 
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Send Email to ask your query.</h4>
+                            <h4 class="modal-title">{{__('text.Send Email to ask your query')}}</h4>
                         </div>
 
                         <div class="modal-body">
@@ -233,14 +242,14 @@
                             <input type="hidden" name="tk_code" id="tk_code">
 
                             <div class="form-group" style="display: inline-block;width: 100%;margin: 5px 0px;">
-                                <label style="margin-bottom: 5px;" for="" class="col-sm-3 control-label">Ticket Priority</label>
+                                <label style="margin-bottom: 5px;" for="" class="col-sm-3 control-label">{{__('text.Ticket Priority')}}</label>
                                 <div class="col-sm-12">
                                     <input readonly type="text" placeholder="Ticket Priority" name="tk_priority" id="tk_priority" class="form-control">
                                 </div>
                             </div>
 
                             <div class="form-group" style="display: inline-block;width: 100%;margin: 5px 0px;">
-                                <label style="margin-bottom: 5px;" for="" class="col-sm-3 control-label">Ticket Status</label>
+                                <label style="margin-bottom: 5px;" for="" class="col-sm-3 control-label">{{__('text.Ticket Status')}}</label>
                                 <div class="col-sm-12">
                                     <input readonly type="text" placeholder="Ticket Status" name="tk_status" id="tk_status" class="form-control">
                                 </div>
@@ -258,7 +267,7 @@
                             @endif
 
                             <div class="form-group" style="display: inline-block;width: 100%;margin: 5px 0px;">
-                                <label style="margin-bottom: 5px;" for="" class="col-sm-3 control-label">Message</label>
+                                <label style="margin-bottom: 5px;" for="" class="col-sm-3 control-label">{{__('text.Message')}}</label>
                                 <div class="col-sm-12">
                                     <textarea required rows="6" placeholder="Message" name="tk_message" class="form-control id2"></textarea>
                                 </div>
@@ -342,6 +351,18 @@
     <script>
 
         $(document).ready(function(){ //Make script DOM ready
+
+            $('#data-table1').dataTable( {
+                "oLanguage": {
+                    "sLengthMenu": "<?php echo __('text.Show') . ' _MENU_ ' . __('text.records'); ?>",
+                    "sSearch": "<?php echo __('text.Search') . ':' ?>",
+                    "sInfo": "<?php echo __('text.Showing') . ' _START_ ' . __('text.to') . ' _END_ ' . __('text.of') . ' _TOTAL_ ' . __('text.items'); ?>",
+                    "oPaginate": {
+                        "sPrevious": "<?php echo __('text.Previous'); ?>",
+                        "sNext": "<?php echo __('text.Next'); ?>"
+                    }
+                }
+            });
 
             $('#save').click(function() {
 

@@ -16,7 +16,7 @@
     @endif
 
 
-<div class="row">
+<div class="row widgets-row">
 
   	@if(Auth::user()->usertype=='Admin')
 
@@ -245,37 +245,47 @@
     @else
 
         <style>
-            .width-100{width: 150px;}
+
+            @media (min-width: 992px)
+            {
+                .widgets-row{display: flex;margin: 0;}
+            }
+
+            .panel{height: 75%;}
+
+            #graphWeek-a{margin-top: 5px;}
+
         </style>
 
-    <a href="{{ URL::to('admin/properties') }}">
-    	<div class="col-sm-6 col-md-3">
-        <div class="panel panel-orange panel-shadow">
-            <div class="media">
-                <div class="media-left">
-                    <div class="panel-body">
-                        <div class="width-100">
-                            <h5 class="margin-none" id="graphWeek-y">{{__('text.My Properties')}}</h5>
+        <div class="col-sm-6 col-md-3">
+            <a style="text-decoration: none;" href="{{ URL::to('admin/properties') }}">
+                <div class="panel panel-orange panel-shadow">
+                    <div class="media">
+                        <div class="media-left">
+                            <div class="panel-body">
+                                <div class="width-100">
+                                    <h5 class="margin-none" id="graphWeek-y">{{__('text.My Properties')}}</h5>
 
-                            <h2 class="margin-none" id="graphWeek-a">
-                                {{$properties_count}}
-                            </h2>
+                                    <h2 class="margin-none" id="graphWeek-a">
+                                        {{$properties_count}}
+                                    </h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="media-body">
+                            <div class="pull-right width-150">
+                                <i class="fa fa-map-marker fa-4x" style="margin: 8px;"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="media-body">
-                    <div class="pull-right width-150">
-                        <i class="fa fa-map-marker fa-4x" style="margin: 8px;"></i>
-                    </div>
-                </div>
-            </div>
+            </a>
         </div>
-    </div>
-    </a>
 
-    <a href="{{ URL::to('admin/properties') }}">
+
     	<div class="col-sm-6 col-md-3">
-        <div class="panel panel-green panel-shadow">
+            <a style="text-decoration: none;" href="{{ URL::to('admin/properties') }}">
+            <div class="panel panel-green panel-shadow">
             <div class="media">
                 <div class="media-left">
                     <div class="panel-body">
@@ -294,13 +304,14 @@
                     </div>
                 </div>
             </div>
-        </div>
+            </div>
+            </a>
     </div>
-    </a>
 
-    <a href="{{ URL::to('admin/properties') }}">
+
     	<div class="col-sm-6 col-md-3">
-        <div class="panel panel-grey panel-shadow">
+            <a style="text-decoration: none;" href="{{ URL::to('admin/properties') }}">
+            <div class="panel panel-grey panel-shadow">
             <div class="media">
                 <div class="media-left">
                     <div class="panel-body">
@@ -319,34 +330,36 @@
                     </div>
                 </div>
             </div>
-        </div>
+            </div>
+            </a>
     </div>
-    </a>
 
-    <a href="{{ URL::to('admin/inquiries') }}">
+
     	<div class="col-sm-6 col-md-3">
-        <div class="panel panel-primary panel-shadow">
-            <div class="media">
-                <div class="media-left">
-                    <div class="panel-body">
-                        <div class="width-100">
-                            <h5 class="margin-none" id="graphWeek-y">{{__('text.Dashboard Inquiries')}}</h5>
+            <a style="text-decoration: none;" href="{{ URL::to('admin/inquiries') }}">
+                <div class="panel panel-primary panel-shadow">
+                    <div class="media">
+                        <div class="media-left">
+                            <div class="panel-body">
+                                <div class="width-100">
+                                    <h5 class="margin-none" id="graphWeek-y">{{__('text.Dashboard Inquiries')}}</h5>
 
-                            <h2 class="margin-none" id="graphWeek-a">
-                                {{$inquiries}}
-                            </h2>
+                                    <h2 class="margin-none" id="graphWeek-a">
+                                        {{$inquiries}}
+                                    </h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="media-body">
+                            <div class="pull-right width-150">
+                                <i class="fa fa-send fa-4x" style="margin: 8px;"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="media-body">
-                    <div class="pull-right width-150">
-                        <i class="fa fa-send fa-4x" style="margin: 8px;"></i>
-                    </div>
-                </div>
-            </div>
+            </a>
         </div>
-    </div>
-    </a>
+
 
     @endif
 
