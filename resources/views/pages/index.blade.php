@@ -1267,7 +1267,7 @@
 
         $(window).on('load',function(){
 
-            if(consent != '')
+            if(consent == '')
             {
                 $('#myModal2').modal('show');
             }
