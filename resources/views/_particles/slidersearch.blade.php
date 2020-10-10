@@ -341,7 +341,7 @@
 
                                     .filter-button
                                     {
-                                        right: 82px !important;
+                                        right: 24% !important;
                                         top: 13px !important;
                                         height: 25px !important;
                                         padding: 4px 10px !important;
