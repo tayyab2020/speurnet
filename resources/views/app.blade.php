@@ -64,8 +64,6 @@
 
   <body id="top">
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   {{--
     {!! Form::open(array('url' => array('change-language'),'class'=>'form-horizontal padding-15','name'=>'lng_form','id'=>'lng_form','role'=>'form','enctype' => 'multipart/form-data')) !!}
 
