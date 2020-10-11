@@ -3,9 +3,7 @@
 @section("content")
     <div id="main">
         <div class="page-header">
-
-
-            <h2>Properties</h2>
+            <h2>@if(Auth::User()->usertype != "Admin"){{__('text.My Properties')}}@else Properties @endif</h2>
         </div>
         @if(Session::has('flash_message'))
             <div class="alert alert-success">
@@ -21,20 +19,22 @@
                 <table id="data-table1" class="table table-striped table-hover dt-responsive" cellspacing="0" width="100%">
                     <thead>
                     <tr>
-                        <th style="width: 100px;">Property ID</th>
+                        <th style="width: 100px;">@if(Auth::User()->usertype != "Admin"){{__('text.Property ID')}}@else Property ID @endif</th>
+
                         @if(Auth::user()->usertype=='Admin' || Auth::user()->usertype=='Users')
-                            <th>Agent</th>
+                            <th>@if(Auth::User()->usertype != "Admin"){{__('text.Agent')}}@else Agent @endif</th>
                         @endif
 
                         @if(Auth::user()->usertype=='Admin' || Auth::user()->usertype=='Agents')
-                            <th>Client</th>
+                            <th>@if(Auth::User()->usertype != "Admin"){{__('text.Client')}}@else Client @endif</th>
                         @endif
-                        <th>Property Name</th>
+
+                        <th>@if(Auth::User()->usertype != "Admin"){{__('text.Property Name')}}@else Property Name @endif</th>
                         <th>Type</th>
-                        <th>Posting Date</th>
-                        <th>Purpose</th>
+                        <th>@if(Auth::User()->usertype != "Admin"){{__('text.Posting Date')}}@else Posting Date @endif</th>
+                        <th>@if(Auth::User()->usertype != "Admin"){{__('text.Purpose')}}@else Purpose @endif</th>
                         @if(Auth::user()->usertype=='Users')
-                        <th class="text-center width-100">Action</th>
+                        <th class="text-center width-100">{{__('text.Action')}}</th>
                         @endif
                     </tr>
                     </thead>
@@ -55,6 +55,7 @@
                         <tr>
 
                             <td style="padding-left: 20px;">{{ $property->id }}</td>
+
                             @if(Auth::user()->usertype=='Admin' || Auth::user()->usertype=='Users')
                                 <td>{{ getUserInfo($property->user_id)->name }}</td>
                             @endif
@@ -65,7 +66,19 @@
 
                             <td>
 
-                                <a href="{{URL::to('properties/'.$property->property_slug)}}">{{ $property->property_name }}</a>
+                                @if($property->home_exchange)
+
+                                    <a href="{{URL::to('home-exchange/'.$property->property_slug)}}">{{ $property->property_name }}</a>
+
+                                @elseif($property->new_construction)
+
+                                    <a href="{{URL::to('new-constructions/'.$property->property_slug)}}">{{ $property->property_name }}</a>
+
+                                @else
+
+                                    <a href="{{URL::to('properties/'.$property->property_slug)}}">{{ $property->property_name }}</a>
+
+                                @endif
 
                             </td>
                             <td>{{ getPropertyTypeName($property->property_type)->types }}</td>
@@ -106,22 +119,39 @@
     <script>
         $(document).ready(function(){
 
+            @if(Auth::User()->usertype == "Admin")
+
             $('#data-table1').dataTable({
                 "order": [[ 0, "desc" ]] // Order on init. # is the column, starting at 0
             });
 
+            @else
+
+            $('#data-table1').dataTable( {
+                "oLanguage": {
+                    "sLengthMenu": "<?php echo __('text.Show') . ' _MENU_ ' . __('text.records'); ?>",
+                    "sSearch": "<?php echo __('text.Search') . ':' ?>",
+                    "sInfo": "<?php echo __('text.Showing') . ' _START_ ' . __('text.to') . ' _END_ ' . __('text.of') . ' _TOTAL_ ' . __('text.items'); ?>",
+                    "oPaginate": {
+                        "sPrevious": "<?php echo __('text.Previous'); ?>",
+                        "sNext": "<?php echo __('text.Next'); ?>"
+                    },
+                    "sEmptyTable": '<?php echo __('text.No data available in table'); ?>'
+                }
+            });
+
+            @endif
+
 
             $("input:checkbox").change( function(){
-
-
                 $(this).closest('form').submit();
             });
 
-            $('#data-table tr').click(function () {
+            $('#data-table1 tr').click(function () {
 
-                if($('#data-table tr').hasClass("bg_color"))
+                if($('#data-table1 tr').hasClass("bg_color"))
                 {
-                    $('#data-table tr').removeClass("bg_color");
+                    $('#data-table1 tr').removeClass("bg_color");
                 }
                 else
                 {

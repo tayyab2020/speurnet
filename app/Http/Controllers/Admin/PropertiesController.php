@@ -227,10 +227,9 @@ class PropertiesController extends MainAdminController
     public function favouriteProperties()
     {
 
-
         if(Auth::user()->usertype=='Admin')
         {
-            $propertieslist = saved_properties::leftjoin('properties','properties.id','=','saved_properties.property_id')->leftjoin('users','users.id','=','saved_properties.user_id')->orderBy('properties.id','desc')->select('properties.id','properties.user_id','properties.property_slug','properties.property_name','properties.property_type','properties.property_purpose','users.name as client_name','saved_properties.created_at','saved_properties.id as saved_id')->get();
+            $propertieslist = saved_properties::leftjoin('properties','properties.id','=','saved_properties.property_id')->leftjoin('users','users.id','=','saved_properties.user_id')->orderBy('properties.id','desc')->select('properties.*','users.name as client_name','saved_properties.created_at','saved_properties.id as saved_id')->get();
         }
         else
         {
@@ -239,13 +238,13 @@ class PropertiesController extends MainAdminController
             if(Auth::user()->usertype == 'Agents')
             {
 
-                $propertieslist = saved_properties::leftjoin('properties','properties.id','=','saved_properties.property_id')->leftjoin('users','users.id','=','saved_properties.user_id')->where('properties.user_id',$user_id)->orderBy('properties.id','desc')->select('properties.id','properties.user_id','properties.property_slug','properties.property_name','properties.property_type','properties.property_purpose','users.name as client_name','saved_properties.created_at','saved_properties.id as saved_id')->get();
+                $propertieslist = saved_properties::leftjoin('properties','properties.id','=','saved_properties.property_id')->leftjoin('users','users.id','=','saved_properties.user_id')->where('saved_properties.user_id',$user_id)->orderBy('properties.id','desc')->select('properties.*','users.name as client_name','saved_properties.created_at','saved_properties.id as saved_id')->get();
 
             }
             elseif(Auth::user()->usertype == 'Users')
             {
 
-                $propertieslist = saved_properties::leftjoin('properties','properties.id','=','saved_properties.property_id')->leftjoin('users','users.id','=','saved_properties.user_id')->where('saved_properties.user_id',$user_id)->orderBy('properties.id','desc')->select('properties.id','properties.user_id','properties.property_slug','properties.property_name','properties.property_type','properties.property_purpose','users.name as client_name','saved_properties.created_at','saved_properties.id as saved_id')->get();
+                $propertieslist = saved_properties::leftjoin('properties','properties.id','=','saved_properties.property_id')->leftjoin('users','users.id','=','saved_properties.user_id')->where('saved_properties.user_id',$user_id)->orderBy('properties.id','desc')->select('properties.*','users.name as client_name','saved_properties.created_at','saved_properties.id as saved_id')->get();
 
             }
 

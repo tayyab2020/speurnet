@@ -83,11 +83,15 @@
 
                     <li class="{{classActivePath('tickets')}}"><a href="{{ URL::to('admin/tickets') }}"><i class="fa fa-ticket"></i> Tickets</a></li>
 
+                    @if(Auth::user()->usertype !='Users')
+
                     <li class="{{classActivePath('properties')}}"><a href="{{ URL::to('admin/properties') }}"><i class="md md-pin-drop"></i>{{__('text.My Properties')}}</a></li>
+
+                    @endif
 
                     @if(Auth::user()->usertype =='Users')
 
-                        <li class="{{classActivePath('home_exchange')}}"><a href="{{ URL::to('admin/home_exchange') }}"><i class="md md-pin-drop"></i>Home Exchange Properties</a></li>
+                        <li class="{{classActivePath('home_exchange')}}"><a href="{{ URL::to('admin/home_exchange') }}"><i class="md md-pin-drop"></i>{{__('text.Home Exchange Properties')}}</a></li>
 
                     @endif
 
@@ -168,3 +172,11 @@
 	</div>
 </div>
   <!-- // Sidebar -->
+
+<style>
+
+    .sidebar .nav-sidebar > li > a
+    {
+        padding: 20px 0px 20px 55px;
+    }
+</style>

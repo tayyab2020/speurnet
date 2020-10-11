@@ -25,15 +25,14 @@
 
             @else
 
-
                 @if(Auth::user()->usertype =='Users')
-                <a href="{{URL::to('admin/properties/addhomeexchange')}}" class="btn btn-primary">Add Property <i class="fa fa-plus" style="margin-left: 8px;"></i></a>
-            @endif
+                    <a href="{{URL::to('admin/properties/addhomeexchange')}}" class="btn btn-primary">@if(Auth::User()->usertype != "Admin"){{__('text.Place the house')}}@else Add Property @endif <i class="fa fa-plus" style="margin-left: 8px;"></i></a>
+                @endif
 
                 @endif
         </div>
 
-        <h2>@if(Route::currentRouteName() == 'properties') @if(Auth::User()->usertype != "Admin"){{__('text.My Properties')}}@else Properties @endif @elseif(Route::currentRouteName() == 'new_constructions') New Construction Properties @else Home Exchange Properties @endif</h2>
+        <h2>@if(Route::currentRouteName() == 'properties') @if(Auth::User()->usertype != "Admin"){{__('text.My Properties')}}@else Properties @endif @elseif(Route::currentRouteName() == 'new_constructions') New Construction Properties @else @if(Auth::User()->usertype != "Admin"){{__('text.Home Exchange Properties')}}@else Home Exchange Properties @endif @endif</h2>
 
     </div>
 
@@ -172,25 +171,25 @@
                                     @if(Route::currentRouteName() == 'properties')
 
 
-                                        <li><a href="{{ url('admin/properties/addproperty/'.$property->id) }}"><i class="md md-edit"></i> Edit Editor</a></li>
+                                        <li><a href="{{ url('admin/properties/addproperty/'.$property->id) }}"><i class="md md-edit"></i> @if(Auth::User()->usertype != "Admin"){{__('text.Edit Editor')}}@else Edit Editor @endif</a></li>
 
                                         <li>
                                             @if($property->featured_property==0)
-                                                <a href="{{ url('admin/properties/featuredproperty/'.$property->id) }}"><i class="md md-star"></i> Set as Featured</a>
+                                                <a href="{{ url('admin/properties/featuredproperty/'.$property->id) }}"><i class="md md-star"></i> @if(Auth::User()->usertype != "Admin"){{__('text.Set as Featured')}}@else Set as Featured @endif</a>
                                             @else
-                                                <a href="{{ url('admin/properties/featuredproperty/'.$property->id) }}"><i class="md md-check"></i> Unset from Featured</a>
+                                                <a href="{{ url('admin/properties/featuredproperty/'.$property->id) }}"><i class="md md-check"></i> @if(Auth::User()->usertype != "Admin"){{__('text.Unset from Featured')}}@else Unset from Featured @endif</a>
                                             @endif
                                         </li>
 
 
                                         <li>
                                             @if($property->status==1)
-                                                <a href="{{ url('admin/properties/status/'.$property->id) }}"><i class="md md-close"></i> Unpublish</a>
+                                                <a href="{{ url('admin/properties/status/'.$property->id) }}"><i class="md md-close"></i> @if(Auth::User()->usertype != "Admin"){{__('text.Unpublish')}}@else Unpublish @endif</a>
                                             @else
-                                                <a href="{{ url('admin/properties/status/'.$property->id) }}"><i class="md md-check"></i> Publish</a>
+                                                <a href="{{ url('admin/properties/status/'.$property->id) }}"><i class="md md-check"></i> @if(Auth::User()->usertype != "Admin"){{__('text.Publish Property')}}@else Publish @endif</a>
                                             @endif
                                         </li>
-                                        <li><a href="{{ url('admin/properties/delete/'.$property->id) }}" onclick="return confirm('Are you sure? You will not be able to recover this.')"><i class="md md-delete"></i> Delete</a></li>
+                                        <li><a href="{{ url('admin/properties/delete/'.$property->id) }}" onclick="return confirm('Are you sure? You will not be able to recover this.')"><i class="md md-delete"></i> @if(Auth::User()->usertype != "Admin"){{__('text.Delete')}}@else Delete @endif</a></li>
 
 
                                     @elseif(Route::currentRouteName() == 'new_constructions')
@@ -220,25 +219,25 @@
                                     @else
 
 
-                                        <li><a href="{{ url('admin/properties/addhomeexchange/'.$property->id) }}"><i class="md md-edit"></i> Edit Editor</a></li>
+                                        <li><a href="{{ url('admin/properties/addhomeexchange/'.$property->id) }}"><i class="md md-edit"></i> @if(Auth::User()->usertype != "Admin"){{__('text.Edit Editor')}}@else Edit Editor @endif</a></li>
 
                                         <li>
                                             @if($property->featured_property==0)
-                                                <a href="{{ url('admin/properties/featuredhomeexchange/'.$property->id) }}"><i class="md md-star"></i> Set as Featured</a>
+                                                <a href="{{ url('admin/properties/featuredhomeexchange/'.$property->id) }}"><i class="md md-star"></i> @if(Auth::User()->usertype != "Admin"){{__('text.Set as Featured')}}@else Set as Featured @endif</a>
                                             @else
-                                                <a href="{{ url('admin/properties/featuredhomeexchange/'.$property->id) }}"><i class="md md-check"></i> Unset from Featured</a>
+                                                <a href="{{ url('admin/properties/featuredhomeexchange/'.$property->id) }}"><i class="md md-check"></i> @if(Auth::User()->usertype != "Admin"){{__('text.Unset from Featured')}}@else Unset from Featured @endif</a>
                                             @endif
                                         </li>
 
 
                                         <li>
                                             @if($property->status==1)
-                                                <a href="{{ url('admin/properties/statushomeexchange/'.$property->id) }}"><i class="md md-close"></i> Unpublish</a>
+                                                <a href="{{ url('admin/properties/statushomeexchange/'.$property->id) }}"><i class="md md-close"></i> @if(Auth::User()->usertype != "Admin"){{__('text.Unpublish')}}@else Unpublish @endif</a>
                                             @else
-                                                <a href="{{ url('admin/properties/statushomeexchange/'.$property->id) }}"><i class="md md-check"></i> Publish</a>
+                                                <a href="{{ url('admin/properties/statushomeexchange/'.$property->id) }}"><i class="md md-check"></i> @if(Auth::User()->usertype != "Admin"){{__('text.Publish Property')}}@else Publish @endif</a>
                                             @endif
                                         </li>
-                                        <li><a href="{{ url('admin/properties/deletehomeexchange/'.$property->id) }}" onclick="return confirm('Are you sure? You will not be able to recover this.')"><i class="md md-delete"></i> Delete</a></li>
+                                        <li><a href="{{ url('admin/properties/deletehomeexchange/'.$property->id) }}" onclick="return confirm('Are you sure? You will not be able to recover this.')"><i class="md md-delete"></i> @if(Auth::User()->usertype != "Admin"){{__('text.Delete')}}@else Delete @endif</a></li>
 
 
                                         @endif
@@ -308,7 +307,8 @@
                 "oPaginate": {
                     "sPrevious": "<?php echo __('text.Previous'); ?>",
                     "sNext": "<?php echo __('text.Next'); ?>"
-                }
+                },
+                "sEmptyTable": '<?php echo __('text.No data available in table'); ?>'
             }
         });
 

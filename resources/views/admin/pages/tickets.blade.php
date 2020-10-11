@@ -368,7 +368,8 @@
                     "oPaginate": {
                         "sPrevious": "<?php echo __('text.Previous'); ?>",
                         "sNext": "<?php echo __('text.Next'); ?>"
-                    }
+                    },
+                    "sEmptyTable": '<?php echo __('text.No data available in table'); ?>'
                 }
             });
 

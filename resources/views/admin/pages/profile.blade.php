@@ -5,7 +5,7 @@
     <div id="main">
         <div class="page-header">
             <h2> {{ Auth::user()->name }}</h2>
-            <a href="{{ URL::to('admin/dashboard') }}" class="btn btn-default-light btn-xs"><i class="md md-backspace"></i> Back</a>
+            <a href="{{ URL::to('admin/dashboard') }}" class="btn btn-default-light btn-xs"><i class="md md-backspace"></i> @if(Auth::User()->usertype != "Admin") {{__('text.Back')}} @else Back @endif</a>
 
         </div>
         @if (count($errors) > 0)
@@ -31,7 +31,7 @@
                     <a href="#account" aria-controls="account" role="tab" data-toggle="tab">Account</a>
                 </li>
                 <li role="presentation">
-                    <a href="#ac_password" aria-controls="ac_password" role="tab" data-toggle="tab">Password</a>
+                    <a href="#ac_password" aria-controls="ac_password" role="tab" data-toggle="tab">@if(Auth::User()->usertype != "Admin") {{__('text.Password')}} @else Password @endif</a>
                 </li>
                 </li>
             </ul>
@@ -42,7 +42,7 @@
                     {!! Form::open(array('url' => 'admin/profile','class'=>'form-horizontal padding-15','name'=>'account_form','id'=>'account_form','role'=>'form','enctype' => 'multipart/form-data')) !!}
 
                     <div class="form-group">
-                        <label for="avatar" class="col-sm-3 control-label">Profile Picture</label>
+                        <label for="avatar" class="col-sm-3 control-label">Logo</label>
                         <div class="col-sm-9">
                             <div class="media">
                                 <div class="media-left">
@@ -61,7 +61,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="" class="col-sm-3 control-label">Name</label>
+                        <label for="" class="col-sm-3 control-label">@if(Auth::User()->usertype != "Admin") {{__('text.Name')}} @else Name @endif</label>
                         <div class="col-sm-9">
                             <input type="text" name="name" value="{{ Auth::user()->name }}" class="form-control" value="">
                         </div>
@@ -73,7 +73,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="" class="col-sm-3 control-label">Phone</label>
+                        <label for="" class="col-sm-3 control-label">@if(Auth::User()->usertype != "Admin") {{__('text.Mobile No')}} @else Phone @endif</label>
                         <div class="col-sm-9">
                             <input type="text" name="phone" value="{{ Auth::user()->phone }}" class="form-control" value="">
                         </div>
@@ -88,7 +88,7 @@
                     @if(Auth::user()->usertype != 'Admin' && Auth::user()->usertype != 'Users')
 
                         <div class="form-group herefor" style="display: flex;margin: 25px 0px;">
-                            <label class="col-sm-3 col-xs-12 control-label" style="padding: 0;padding-top: 30px;">People can come to us for</label>
+                            <label class="col-sm-3 col-xs-12 control-label" style="padding: 0;padding-top: 30px;">@if(Auth::User()->usertype != "Admin") {{__('text.People can come to us for')}} @else People can come to us for @endif</label>
                             <div class="col-sm-9 col-xs-12">
                                 <ul class="property-radios" style="padding: 0;margin-top: 30px;">
 
@@ -100,7 +100,7 @@
 
                                                         <input class="services" @if(in_array(1, $services_ids)) checked @endif type="checkbox" name="services[]" value="1">
 
-                                                        <span style="padding-top: 0;"><img style="display: block;width: 50px;margin: auto;margin-bottom: 10px;" src="{{ URL::asset('assets/img/broker.png') }}" />I am looking for a sales broker</span>
+                                                        <span style="padding-top: 0;"><img style="display: block;width: 50px;margin: auto;margin-bottom: 10px;" src="{{ URL::asset('assets/img/broker.png') }}" />@if(Auth::User()->usertype != "Admin") {{__('text.I am looking for a sales broker')}} @else I am looking for a sales broker @endif</span>
 
                                                     </label>
 
@@ -115,7 +115,7 @@
 
                                                 <input class="services" @if(in_array(2, $services_ids)) checked @endif type="checkbox" name="services[]" value="2">
 
-                                                <span style="padding-top: 0;"><img style="display: block;width: 50px;margin: auto;margin-bottom: 10px;" src="{{ URL::asset('assets/img/agent.png') }}" />I am looking for a rental agent</span>
+                                                <span style="padding-top: 0;"><img style="display: block;width: 50px;margin: auto;margin-bottom: 10px;" src="{{ URL::asset('assets/img/agent.png') }}" />@if(Auth::User()->usertype != "Admin") {{__('text.I am looking for a rental agent')}} @else I am looking for a rental agent @endif</span>
 
                                             </label>
 
@@ -130,7 +130,7 @@
 
                                                 <input class="services" @if(in_array(3, $services_ids)) checked @endif type="checkbox" name="services[]" value="3">
 
-                                                <span style="padding-top: 0;"><img style="display: block;width: 50px;margin: auto;margin-bottom: 10px;" src="{{ URL::asset('assets/img/hire_broker.png') }}" />I am looking for a hiring broker</span>
+                                                <span style="padding-top: 0;"><img style="display: block;width: 50px;margin: auto;margin-bottom: 10px;" src="{{ URL::asset('assets/img/hire_broker.png') }}" />@if(Auth::User()->usertype != "Admin") {{__('text.I am looking for a hiring broker')}} @else I am looking for a hiring broker @endif</span>
 
                                             </label>
 
@@ -145,7 +145,7 @@
 
                                                 <input class="services" @if(in_array(4, $services_ids)) checked @endif type="checkbox" name="services[]" value="4">
 
-                                                <span style="padding-top: 0;"><img style="display: block;width: 50px;margin: auto;margin-bottom: 10px;" src="{{ URL::asset('assets/img/purchase_broker.png') }}" />I am looking for a purchase broker</span>
+                                                <span style="padding-top: 0;"><img style="display: block;width: 50px;margin: auto;margin-bottom: 10px;" src="{{ URL::asset('assets/img/purchase_broker.png') }}" />@if(Auth::User()->usertype != "Admin") {{__('text.I am looking for a purchase broker')}} @else I am looking for a purchase broker @endif</span>
 
                                             </label>
 
@@ -160,7 +160,7 @@
 
                                                 <input class="services" @if(in_array(5, $services_ids)) checked @endif type="checkbox" name="services[]" value="5">
 
-                                                <span style="padding-top: 0;"><img style="display: block;width: 50px;margin: auto;margin-bottom: 10px;" src="{{ URL::asset('assets/img/calculator1.png') }}" />Appraise House</span>
+                                                <span style="padding-top: 0;"><img style="display: block;width: 50px;margin: auto;margin-bottom: 10px;" src="{{ URL::asset('assets/img/calculator1.png') }}" />@if(Auth::User()->usertype != "Admin") {{__('text.Appraise House')}} @else Appraise House @endif</span>
 
                                             </label>
 
@@ -172,7 +172,7 @@
                         </div>
 
                     <div class="form-group herefor" style="display: flex;margin: 10px 0px;text-align: center;padding-top: 40px;border-top: 1px solid #dddddd;">
-                            <label class="col-sm-3 col-xs-12 control-label" style="align-self: center;padding: 0;">I am here for (Optional) <br> <small style="color: gray;display: block;margin-top: 5px;font-size: 10px;">Double click to unselect</small></label>
+                            <label class="col-sm-3 col-xs-12 control-label" style="align-self: center;padding: 0;">@if(Auth::User()->usertype != "Admin") {{__('text.I am here for')}} @else I am here for (Optional) @endif <br> <small style="color: gray;display: block;margin-top: 5px;font-size: 10px;">@if(Auth::User()->usertype != "Admin") {{__('text.Double click to unselect')}} @else Double click to unselect @endif</small></label>
                         <div class="col-sm-9 col-xs-12" style="margin: 20px 0px;">
                                 <label class="col-lg-4 col-md-6 col-sm-6 col-xs-12 herefor-radio" style="margin: 20px 0px;padding: 0;">
                                     <input type="radio" name="herefor" value="1" <?=Auth::user()->herefor==1?'checked':'' ?>>
@@ -187,58 +187,114 @@
                         </div>
 
                         <div class="form-group" style="margin: 30px 0px;padding-top: 40px;border-top: 1px solid #dddddd;">
-                            <label class="col-sm-3 col-xs-12 control-label open-label" style="padding: 0;margin-bottom: 30px;">Opening Hours</label>
+                            <label class="col-sm-3 col-xs-12 control-label open-label" style="padding: 0;margin-bottom: 30px;">@if(Auth::User()->usertype != "Admin") {{__('text.Opening Hours')}} @else Opening Hours @endif</label>
 
-                            <div class="col-sm-9 col-xs-12" style="padding: 0px;">
+                            <div class="col-sm-9 col-xs-12">
 
 
                                 <div style="display: inline-block;width: 100%;margin-bottom: 30px;position: relative;">
-                                <label style="width: 100%;margin-bottom: 10px;">Monday</label>
-                                <input type="text" name="monday_timeFrom" id="monday_timeFrom" value="{{Auth::user()->monday_timeFrom}}" placeholder="Time From" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5 monday_time" style="margin-right: 20px;">
-                                <input type="text" name="monday_timeTo" id="monday_timeTo" value="{{Auth::user()->monday_timeTo}}" placeholder="Time To" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5 r-fl monday_time1">
-                                <input type="text" name="monday_description" value="{{Auth::user()->monday_description}}" placeholder="Additional Info" class="form-control1 col-lg-5 col-md-5 col-sm-5 col-xs-12 r-t" style="float: right;">
+
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="padding: 0;">
+                                        <label style="width: 100%;margin-bottom: 10px;">@if(Auth::User()->usertype != "Admin") {{__('text.Monday')}} @else Monday @endif</label>
+                                        <input type="text" name="monday_timeFrom" id="monday_timeFrom" value="{{Auth::user()->monday_timeFrom}}" @if(Auth::User()->usertype != "Admin") placeholder="{{__('text.of')}}" @else placeholder="Time From" @endif class="form-control1 col-lg-5 col-md-5 col-sm-5 col-xs-5 monday_time" style="text-transform: capitalize;">
+                                        <input type="text" name="monday_timeTo" id="monday_timeTo" value="{{Auth::user()->monday_timeTo}}" @if(Auth::User()->usertype != "Admin") placeholder="{{__('text.to')}}" @else placeholder="Time To" @endif class="form-control1 col-lg-5 col-md-5 col-sm-5 col-xs-5 r-fl monday_time1" style="text-transform: capitalize;float: right;">
+                                    </div>
+
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ad-info">
+                                        <label style="width: 100%;margin-bottom: 10px;">@if(Auth::User()->usertype != "Admin") {{__('text.Additional Info Heading')}} @else Additional Info @endif</label>
+                                        <input type="text" name="monday_description" value="{{Auth::user()->monday_description}}" @if(Auth::User()->usertype != "Admin") placeholder="{{__('text.Additional Info')}}" @else placeholder="Additional Info" @endif class="form-control1 col-lg-12 col-md-12 col-sm-12 col-xs-12 r-t">
+                                    </div>
+
                                 </div>
 
                                 <div style="display: inline-block;width: 100%;margin-bottom: 30px;position: relative;">
-                                    <label style="width: 100%;margin-bottom: 10px;">Tuesday</label>
-                                    <input type="text" name="tuesday_timeFrom" id="tuesday_timeFrom" value="{{Auth::user()->tuesday_timeFrom}}" placeholder="Time From" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5 tuesday_time" style="margin-right: 20px;">
-                                    <input type="text" name="tuesday_timeTo" id="tuesday_timeTo" value="{{Auth::user()->tuesday_timeTo}}" placeholder="Time To" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5 r-fl tuesday_time1">
-                                    <input type="text" name="tuesday_description" value="{{Auth::user()->tuesday_description}}" placeholder="Additional Info" class="form-control1 col-lg-5 col-md-5 col-sm-5 col-xs-12 r-t" style="float: right;">
+
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="padding: 0;">
+                                        <label style="width: 100%;margin-bottom: 10px;">@if(Auth::User()->usertype != "Admin") {{__('text.Tuesday')}} @else Tuesday @endif</label>
+                                        <input type="text" name="tuesday_timeFrom" id="tuesday_timeFrom" value="{{Auth::user()->tuesday_timeFrom}}" @if(Auth::User()->usertype != "Admin") placeholder="{{__('text.of')}}" @else placeholder="Time From" @endif class="form-control1 col-lg-5 col-md-5 col-sm-5 col-xs-5 tuesday_time" style="text-transform: capitalize;">
+                                        <input type="text" name="tuesday_timeTo" id="tuesday_timeTo" value="{{Auth::user()->tuesday_timeTo}}" @if(Auth::User()->usertype != "Admin") placeholder="{{__('text.to')}}" @else placeholder="Time To" @endif class="form-control1 col-lg-5 col-md-5 col-sm-5 col-xs-5 r-fl tuesday_time1" style="text-transform: capitalize;float: right;">
+                                    </div>
+
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ad-info">
+                                        <label style="width: 100%;margin-bottom: 10px;">@if(Auth::User()->usertype != "Admin") {{__('text.Additional Info Heading')}} @else Additional Info @endif</label>
+                                        <input type="text" name="tuesday_description" value="{{Auth::user()->tuesday_description}}" @if(Auth::User()->usertype != "Admin") placeholder="{{__('text.Additional Info')}}" @else placeholder="Additional Info" @endif class="form-control1 col-lg-12 col-md-12 col-sm-12 col-xs-12 r-t">
+                                    </div>
+
                                 </div>
 
                                 <div style="display: inline-block;width: 100%;margin-bottom: 30px;position: relative;">
-                                    <label style="width: 100%;margin-bottom: 10px;">Wednesday</label>
-                                    <input type="text" name="wednesday_timeFrom" id="wednesday_timeFrom" value="{{Auth::user()->wednesday_timeFrom}}" placeholder="Time From" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5 wednesday_time" style="margin-right: 20px;">
-                                    <input type="text" name="wednesday_timeTo" id="wednesday_timeTo" value="{{Auth::user()->wednesday_timeTo}}" placeholder="Time To" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5 r-fl wednesday_time1">
-                                    <input type="text" name="wednesday_description" value="{{Auth::user()->wednesday_description}}" placeholder="Additional Info" class="form-control1 col-lg-5 col-md-5 col-sm-5 col-xs-12 r-t" style="float: right;">
+
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="padding: 0;">
+                                        <label style="width: 100%;margin-bottom: 10px;">@if(Auth::User()->usertype != "Admin") {{__('text.Wednesday')}} @else Wednesday @endif</label>
+                                        <input type="text" name="wednesday_timeFrom" id="wednesday_timeFrom" value="{{Auth::user()->wednesday_timeFrom}}" @if(Auth::User()->usertype != "Admin") placeholder="{{__('text.of')}}" @else placeholder="Time From" @endif class="form-control1 col-lg-5 col-md-5 col-sm-5 col-xs-5 wednesday_time" style="text-transform: capitalize;">
+                                        <input type="text" name="wednesday_timeTo" id="wednesday_timeTo" value="{{Auth::user()->wednesday_timeTo}}" @if(Auth::User()->usertype != "Admin") placeholder="{{__('text.to')}}" @else placeholder="Time To" @endif class="form-control1 col-lg-5 col-md-5 col-sm-5 col-xs-5 r-fl wednesday_time1" style="text-transform: capitalize;float: right;">
+                                    </div>
+
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ad-info">
+                                        <label style="width: 100%;margin-bottom: 10px;">@if(Auth::User()->usertype != "Admin") {{__('text.Additional Info Heading')}} @else Additional Info @endif</label>
+                                        <input type="text" name="wednesday_description" value="{{Auth::user()->wednesday_description}}" @if(Auth::User()->usertype != "Admin") placeholder="{{__('text.Additional Info')}}" @else placeholder="Additional Info" @endif class="form-control1 col-lg-12 col-md-12 col-sm-12 col-xs-12 r-t">
+                                    </div>
+
                                 </div>
 
                                 <div style="display: inline-block;width: 100%;margin-bottom: 30px;position: relative;">
-                                    <label style="width: 100%;margin-bottom: 10px;">Thursday</label>
-                                    <input type="text" name="thursday_timeFrom" id="thursday_timeFrom" value="{{Auth::user()->thursday_timeFrom}}" placeholder="Time From" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5 thursday_time" style="margin-right: 20px;">
-                                    <input type="text" name="thursday_timeTo" id="thursday_timeTo" value="{{Auth::user()->thursday_timeTo}}" placeholder="Time To" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5 r-fl thursday_time1">
-                                    <input type="text" name="thursday_description" value="{{Auth::user()->thursday_description}}" placeholder="Additional Info" class="form-control1 col-lg-5 col-md-5 col-sm-5 col-xs-12 r-t" style="float: right;">
+
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="padding: 0;">
+                                        <label style="width: 100%;margin-bottom: 10px;">@if(Auth::User()->usertype != "Admin") {{__('text.Thursday')}} @else Thursday @endif</label>
+                                        <input type="text" name="thursday_timeFrom" id="thursday_timeFrom" value="{{Auth::user()->thursday_timeFrom}}" @if(Auth::User()->usertype != "Admin") placeholder="{{__('text.of')}}" @else placeholder="Time From" @endif class="form-control1 col-lg-5 col-md-5 col-sm-5 col-xs-5 thursday_time" style="text-transform: capitalize;">
+                                        <input type="text" name="thursday_timeTo" id="thursday_timeTo" value="{{Auth::user()->thursday_timeTo}}" @if(Auth::User()->usertype != "Admin") placeholder="{{__('text.to')}}" @else placeholder="Time To" @endif class="form-control1 col-lg-5 col-md-5 col-sm-5 col-xs-5 r-fl thursday_time1" style="text-transform: capitalize;float: right;">
+                                    </div>
+
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ad-info">
+                                        <label style="width: 100%;margin-bottom: 10px;">@if(Auth::User()->usertype != "Admin") {{__('text.Additional Info Heading')}} @else Additional Info @endif</label>
+                                        <input type="text" name="thursday_description" value="{{Auth::user()->thursday_description}}" @if(Auth::User()->usertype != "Admin") placeholder="{{__('text.Additional Info')}}" @else placeholder="Additional Info" @endif class="form-control1 col-lg-12 col-md-12 col-sm-12 col-xs-12 r-t">
+                                    </div>
+
                                 </div>
 
                                 <div style="display: inline-block;width: 100%;margin-bottom: 30px;position: relative;">
-                                    <label style="width: 100%;margin-bottom: 10px;">Friday</label>
-                                    <input type="text" name="friday_timeFrom" id="friday_timeFrom" value="{{Auth::user()->friday_timeFrom}}" placeholder="Time From" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5 friday_time" style="margin-right: 20px;">
-                                    <input type="text" name="friday_timeTo" id="friday_timeTo" value="{{Auth::user()->friday_timeTo}}" placeholder="Time To" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5 r-fl friday_time1">
-                                    <input type="text" name="friday_description" value="{{Auth::user()->friday_description}}" placeholder="Additional Info" class="form-control1 col-lg-5 col-md-5 col-sm-5 col-xs-12 r-t" style="float: right;">
+
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="padding: 0;">
+                                        <label style="width: 100%;margin-bottom: 10px;">@if(Auth::User()->usertype != "Admin") {{__('text.Friday')}} @else Friday @endif</label>
+                                        <input type="text" name="friday_timeFrom" id="friday_timeFrom" value="{{Auth::user()->friday_timeFrom}}" @if(Auth::User()->usertype != "Admin") placeholder="{{__('text.of')}}" @else placeholder="Time From" @endif class="form-control1 col-lg-5 col-md-5 col-sm-5 col-xs-5 friday_time" style="text-transform: capitalize;">
+                                        <input type="text" name="friday_timeTo" id="friday_timeTo" value="{{Auth::user()->friday_timeTo}}" @if(Auth::User()->usertype != "Admin") placeholder="{{__('text.to')}}" @else placeholder="Time To" @endif class="form-control1 col-lg-5 col-md-5 col-sm-5 col-xs-5 r-fl friday_time1" style="text-transform: capitalize;float: right;">
+                                    </div>
+
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ad-info">
+                                        <label style="width: 100%;margin-bottom: 10px;">@if(Auth::User()->usertype != "Admin") {{__('text.Additional Info Heading')}} @else Additional Info @endif</label>
+                                        <input type="text" name="friday_description" value="{{Auth::user()->friday_description}}" @if(Auth::User()->usertype != "Admin") placeholder="{{__('text.Additional Info')}}" @else placeholder="Additional Info" @endif class="form-control1 col-lg-12 col-md-12 col-sm-12 col-xs-12 r-t">
+                                    </div>
+
                                 </div>
 
                                 <div style="display: inline-block;width: 100%;margin-bottom: 30px;position: relative;">
-                                    <label style="width: 100%;margin-bottom: 10px;">Saturday</label>
-                                    <input type="text" name="saturday_timeFrom" id="saturday_timeFrom" value="{{Auth::user()->saturday_timeFrom}}" placeholder="Time From" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5 saturday_time" style="margin-right: 20px;">
-                                    <input type="text" name="saturday_timeTo" id="saturday_timeTo" value="{{Auth::user()->saturday_timeTo}}" placeholder="Time To" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5 r-fl saturday_time1">
-                                    <input type="text" name="saturday_description" value="{{Auth::user()->saturday_description}}" placeholder="Additional Info" class="form-control1 col-lg-5 col-md-5 col-sm-5 col-xs-12 r-t" style="float: right;">
+
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="padding: 0;">
+                                        <label style="width: 100%;margin-bottom: 10px;">@if(Auth::User()->usertype != "Admin") {{__('text.Saturday')}} @else Saturday @endif</label>
+                                        <input type="text" name="saturday_timeFrom" id="saturday_timeFrom" value="{{Auth::user()->saturday_timeFrom}}" @if(Auth::User()->usertype != "Admin") placeholder="{{__('text.of')}}" @else placeholder="Time From" @endif class="form-control1 col-lg-5 col-md-5 col-sm-5 col-xs-5 saturday_time" style="text-transform: capitalize;">
+                                        <input type="text" name="saturday_timeTo" id="saturday_timeTo" value="{{Auth::user()->saturday_timeTo}}" @if(Auth::User()->usertype != "Admin") placeholder="{{__('text.to')}}" @else placeholder="Time To" @endif class="form-control1 col-lg-5 col-md-5 col-sm-5 col-xs-5 r-fl saturday_time1" style="text-transform: capitalize;float: right;">
+                                    </div>
+
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ad-info">
+                                        <label style="width: 100%;margin-bottom: 10px;">@if(Auth::User()->usertype != "Admin") {{__('text.Additional Info Heading')}} @else Additional Info @endif</label>
+                                        <input type="text" name="saturday_description" value="{{Auth::user()->saturday_description}}" @if(Auth::User()->usertype != "Admin") placeholder="{{__('text.Additional Info')}}" @else placeholder="Additional Info" @endif class="form-control1 col-lg-12 col-md-12 col-sm-12 col-xs-12 r-t">
+                                    </div>
+
                                 </div>
 
                                 <div style="display: inline-block;width: 100%;margin-bottom: 30px;position: relative;">
-                                    <label style="width: 100%;margin-bottom: 10px;">Sunday</label>
-                                    <input type="text" name="sunday_timeFrom" id="sunday_timeFrom" value="{{Auth::user()->sunday_timeFrom}}" placeholder="Time From" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5 sunday_time" style="margin-right: 20px;">
-                                    <input type="text" name="sunday_timeTo" id="sunday_timeTo" value="{{Auth::user()->sunday_timeTo}}" placeholder="Time To" class="form-control1 col-lg-3 col-md-3 col-sm-3 col-xs-5 r-fl sunday_time1">
-                                    <input type="text" name="sunday_description" value="{{Auth::user()->sunday_description}}" placeholder="Additional Info" class="form-control1 col-lg-5 col-md-5 col-sm-5 col-xs-12 r-t" style="float: right;">
+
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="padding: 0;">
+                                        <label style="width: 100%;margin-bottom: 10px;">@if(Auth::User()->usertype != "Admin") {{__('text.Sunday')}} @else Sunday @endif</label>
+                                        <input type="text" name="sunday_timeFrom" id="sunday_timeFrom" value="{{Auth::user()->sunday_timeFrom}}" @if(Auth::User()->usertype != "Admin") placeholder="{{__('text.of')}}" @else placeholder="Time From" @endif class="form-control1 col-lg-5 col-md-5 col-sm-5 col-xs-5 sunday_time" style="text-transform: capitalize;">
+                                        <input type="text" name="sunday_timeTo" id="sunday_timeTo" value="{{Auth::user()->sunday_timeTo}}" @if(Auth::User()->usertype != "Admin") placeholder="{{__('text.to')}}" @else placeholder="Time To" @endif class="form-control1 col-lg-5 col-md-5 col-sm-5 col-xs-5 r-fl sunday_time1" style="text-transform: capitalize;float: right;">
+                                    </div>
+
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ad-info">
+                                        <label style="width: 100%;margin-bottom: 10px;">@if(Auth::User()->usertype != "Admin") {{__('text.Additional Info Heading')}} @else Additional Info @endif</label>
+                                        <input type="text" name="sunday_description" value="{{Auth::user()->sunday_description}}" @if(Auth::User()->usertype != "Admin") placeholder="{{__('text.Additional Info')}}" @else placeholder="Additional Info" @endif class="form-control1 col-lg-12 col-md-12 col-sm-12 col-xs-12 r-t">
+                                    </div>
+
                                 </div>
 
                             </div>
@@ -257,15 +313,15 @@
 
                                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12" style="padding: 0;margin-bottom: 30px;">
 
-                                    <label style="width: 100%;margin-bottom: 25px;font-size: 23px;">Sales Results</label>
+                                    <label style="width: 100%;margin-bottom: 25px;font-size: 23px;">@if(Auth::User()->usertype != "Admin") {{__('text.Sales Results')}} @else Sales Results @endif</label>
 
                                     <div style="display:inline-block;width: 100%;margin-bottom: 20px;min-height: 70px;">
-                                    <span class="col-lg-5 col-md-12 col-sm-12 col-xs-12" style="float: left;padding: 0;padding-top: 5px;padding-bottom: 10px;">Total Sold {{date("Y",strtotime("-1 year"))}}: </span>
+                                    <span class="col-lg-5 col-md-12 col-sm-12 col-xs-12" style="float: left;padding: 0;padding-top: 5px;padding-bottom: 10px;">@if(Auth::User()->usertype != "Admin") {{__('text.Total Sold')}} @else Total Sold @endif {{date("Y",strtotime("-1 year"))}}: </span>
                                     <input style="float: right;" type="number" name="sold_prev" placeholder="Enter Number" class="col-lg-7 col-md-12 col-sm-12 col-xs-12 form-control1" @if(Auth::user()->prev_year != date("Y",strtotime("-1 year"))) value="" @else value="{{Auth::user()->sold_prev}}" @endif>
                                     </div>
 
                                     <div style="display:inline-block;width: 100%;margin-bottom: 20px;min-height: 70px;">
-                                        <span class="col-lg-5 col-md-12 col-sm-12 col-xs-12" style="float: left;padding: 0;padding-top: 5px;padding-bottom: 10px;">Total Sold {{date("Y",strtotime("-2 year"))}}: </span>
+                                        <span class="col-lg-5 col-md-12 col-sm-12 col-xs-12" style="float: left;padding: 0;padding-top: 5px;padding-bottom: 10px;">@if(Auth::User()->usertype != "Admin") {{__('text.Total Sold')}} @else Total Sold @endif {{date("Y",strtotime("-2 year"))}}: </span>
                                         <input style="float: right;" type="number" name="sold_prev_prev" placeholder="Enter Number" class="col-lg-7 col-md-12 col-sm-12 col-xs-12 form-control1" @if(Auth::user()->prev_prev_year != date("Y",strtotime("-2 year"))) value="" @else value="{{Auth::user()->sold_prev_prev}}" @endif>
                                     </div>
 
@@ -277,12 +333,12 @@
                                     <label style="width: 100%;margin-bottom: 25px;font-size: 23px;">Rental Results</label>
 
                                     <div style="display:inline-block;width: 100%;margin-bottom: 20px;min-height: 70px;">
-                                        <span class="col-lg-5 col-md-12 col-sm-12 col-xs-12" style="float: left;padding: 0;padding-top: 5px;padding-bottom: 10px;">Total Rentout {{date("Y",strtotime("-1 year"))}}: </span>
+                                        <span class="col-lg-5 col-md-12 col-sm-12 col-xs-12" style="float: left;padding: 0;padding-top: 5px;padding-bottom: 10px;">@if(Auth::User()->usertype != "Admin") {{__('text.Total Rentout')}} @else Total Rentout @endif {{date("Y",strtotime("-1 year"))}}: </span>
                                         <input style="float: right;" type="number" name="rentout_prev" placeholder="Enter Number" class="col-lg-7 col-md-12 col-sm-12 col-xs-12 form-control1" @if(Auth::user()->prev_year != date("Y",strtotime("-1 year"))) value="" @else value="{{Auth::user()->rentout_prev}}" @endif>
                                     </div>
 
                                     <div style="display:inline-block;width: 100%;margin-bottom: 20px;min-height: 70px;">
-                                        <span class="col-lg-5 col-md-12 col-sm-12 col-xs-12" style="float: left;padding: 0;padding-top: 5px;padding-bottom: 10px;">Total Rentout {{date("Y",strtotime("-2 year"))}}: </span>
+                                        <span class="col-lg-5 col-md-12 col-sm-12 col-xs-12" style="float: left;padding: 0;padding-top: 5px;padding-bottom: 10px;">@if(Auth::User()->usertype != "Admin") {{__('text.Total Rentout')}} @else Total Rentout @endif {{date("Y",strtotime("-2 year"))}}: </span>
                                         <input style="float: right;" type="number" name="rentout_prev_prev" placeholder="Enter Number" class="col-lg-7 col-md-12 col-sm-12 col-xs-12 form-control1" @if(Auth::user()->prev_prev_year != date("Y",strtotime("-2 year"))) value="" @else value="{{Auth::user()->rentout_prev_prev}}" @endif>
                                     </div>
 
@@ -400,9 +456,14 @@
                                 float: right;
                             }
 
+                            .ad-info
+                            {
+                                padding: 0;
+                                margin-top: 20px;
+                            }
+
                             .r-t
                             {
-                                margin-top: 20px;
                                 height: 65px;
                             }
 
@@ -444,59 +505,59 @@
                         });
 
                         $('#monday_timeFrom').datetimepicker({
-                            format: 'LT'
+                            format: 'HH:mm',
                         });
 
                         $('#monday_timeTo').datetimepicker({
-                            format: 'LT'
+                            format: 'HH:mm',
                         });
 
                         $('#tuesday_timeFrom').datetimepicker({
-                            format: 'LT'
+                            format: 'HH:mm',
                         });
 
                         $('#tuesday_timeTo').datetimepicker({
-                            format: 'LT'
+                            format: 'HH:mm',
                         });
 
                         $('#wednesday_timeFrom').datetimepicker({
-                            format: 'LT'
+                            format: 'HH:mm',
                         });
 
                         $('#wednesday_timeTo').datetimepicker({
-                            format: 'LT'
+                            format: 'HH:mm',
                         });
 
                         $('#thursday_timeFrom').datetimepicker({
-                            format: 'LT'
+                            format: 'HH:mm',
                         });
 
                         $('#thursday_timeTo').datetimepicker({
-                            format: 'LT'
+                            format: 'HH:mm',
                         });
 
                         $('#friday_timeFrom').datetimepicker({
-                            format: 'LT'
+                            format: 'HH:mm',
                         });
 
                         $('#friday_timeTo').datetimepicker({
-                            format: 'LT'
+                            format: 'HH:mm',
                         });
 
                         $('#saturday_timeFrom').datetimepicker({
-                            format: 'LT'
+                            format: 'HH:mm',
                         });
 
                         $('#saturday_timeTo').datetimepicker({
-                            format: 'LT'
+                            format: 'HH:mm',
                         });
 
                         $('#sunday_timeFrom').datetimepicker({
-                            format: 'LT'
+                            format: 'HH:mm',
                         });
 
                         $('#sunday_timeTo').datetimepicker({
-                            format: 'LT'
+                            format: 'HH:mm',
                         });
 
                         $('#monday_timeFrom').on('dp.change', function(e){
@@ -575,7 +636,7 @@
                     </script>
 
                     <div class="form-group" style="border-top: 1px solid #dddddd;padding-top: 50px;">
-                        <label for="" class="col-sm-3 control-label">Address</label>
+                        <label for="" class="col-sm-3 control-label">@if(Auth::User()->usertype != "Admin") {{__('text.Address')}} @else Address @endif</label>
                         <div class="col-sm-9">
 
                             <input type="text" id="address-input" placeholder="Enter Address" name="address" @if(Auth::user()->address) value="{{Auth::user()->address}}" @endif   class="form-control map-input">
@@ -600,7 +661,7 @@
 
 
                     <div class="form-group">
-                        <label for="" class="col-sm-3 control-label">City</label>
+                        <label for="" class="col-sm-3 control-label">@if(Auth::User()->usertype != "Admin") {{__('text.City')}} @else City @endif</label>
                         <div class="col-sm-9">
 
                             <input type="text" value="{{Auth::user()->city}}" readonly id="city_name" name="city" class="form-control" >
@@ -611,7 +672,7 @@
                     @endif
 
                     <div class="form-group">
-                        <label for="" class="col-sm-3 control-label">About</label>
+                        <label for="" class="col-sm-3 control-label">@if(Auth::User()->usertype != "Admin") {{__('text.About')}} @else About @endif</label>
                         <div class="col-sm-9">
 
                             <textarea name="about" cols="50" rows="5" class="form-control">{{ Auth::user()->about }}</textarea>
@@ -646,10 +707,10 @@
                         <div class="col-md-offset-3 col-sm-9 ">
                             @if(Auth::user()->usertype != 'Admin' && Auth::user()->usertype != 'Users')
 
-                                <button type="button" class="btn btn-primary custom-save">Save Changes <i class="md md-lock-open"></i></button>
+                                <button type="button" class="btn btn-primary custom-save">{{__('text.Save')}} <i class="md md-lock-open"></i></button>
                             @else
 
-                                <button type="submit" class="btn btn-primary">Save Changes <i class="md md-lock-open"></i></button>
+                                <button type="submit" class="btn btn-primary">@if(Auth::User()->usertype != "Admin") {{__('text.Save')}} @else Save Changes @endif <i class="md md-lock-open"></i></button>
 
                             @endif
                         </div>
@@ -662,13 +723,13 @@
                     {!! Form::open(array('url' => 'admin/profile_pass','class'=>'form-horizontal padding-15','name'=>'pass_form','id'=>'pass_form','role'=>'form')) !!}
 
                     <div class="form-group">
-                        <label for="" class="col-sm-3 control-label">New Password</label>
+                        <label for="" class="col-sm-3 control-label">@if(Auth::User()->usertype != "Admin") {{__('text.New Password')}} @else New Password @endif</label>
                         <div class="col-sm-9">
                             <input type="password" name="password" value="" class="form-control" value="">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="" class="col-sm-3 control-label">Confirm Password</label>
+                        <label for="" class="col-sm-3 control-label">@if(Auth::User()->usertype != "Admin") {{__('text.Confirm Password1')}} @else Confirm Password @endif</label>
                         <div class="col-sm-9">
                             <input type="password" name="password_confirmation" value="" class="form-control" value="">
                         </div>
@@ -677,7 +738,7 @@
                     <hr>
                     <div class="form-group">
                         <div class="col-md-offset-3 col-sm-9 ">
-                                <button type="submit" class="btn btn-primary">Save Changes <i class="md md-lock-open"></i></button>
+                                <button type="submit" class="btn btn-primary">@if(Auth::User()->usertype != "Admin") {{__('text.Save')}} @else Save Changes @endif <i class="md md-lock-open"></i></button>
                         </div>
                     </div>
 
