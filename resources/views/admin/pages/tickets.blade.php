@@ -56,8 +56,10 @@
                             <input type="hidden" id="subject" value="{{$ticket->subject}}">
                             <input type="hidden" id="name" value="{{$ticket->name}}">
                             <input type="hidden" id="email" value="{{$ticket->email}}">
+                            @if(Auth::User()->usertype == "Admin")
                             <input type="hidden" id="ticket_priority" value="{{$ticket->priority}}">
                             <input type="hidden" id="ticket_status" value="{{$ticket->status}}">
+                            @endif
                             <input type="hidden" id="issue" value="{{$ticket->issue}}">
 
                             <td>
@@ -130,7 +132,7 @@
                             <td class="text-center">
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-default-dark dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                        {{__('text.Action')}}s <span class="caret"></span>
+                                        @if(Auth::user()->usertype != 'Admin'){{__('text.Action')}}s @else Actions @endif <span class="caret"></span>
                                     </button>
                                     <ul class="dropdown-menu dropdown-menu-right" role="menu">
                                         <li><a class="send-mail" style="cursor: pointer;"><i class="md md-mail"></i> {{__('text.Send Email')}}</a></li>
@@ -141,6 +143,10 @@
 
                             </td>
 
+                            @if(Auth::User()->usertype != "Admin")
+                                <input type="hidden" id="ticket_priority" value="{{$priority}}">
+                                <input type="hidden" id="ticket_status" value="{{$status}}">
+                            @endif
                         </tr>
 
                     @endforeach
@@ -230,7 +236,7 @@
 
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">{{__('text.Send Email to ask your query')}}</h4>
+                            <h4 class="modal-title">@if(Auth::User()->usertype != "Admin"){{__('text.Send Email to ask your query')}}@else Send Email to ask your query @endif</h4>
                         </div>
 
                         <div class="modal-body">
@@ -242,16 +248,18 @@
                             <input type="hidden" name="tk_code" id="tk_code">
 
                             <div class="form-group" style="display: inline-block;width: 100%;margin: 5px 0px;">
-                                <label style="margin-bottom: 5px;" for="" class="col-sm-3 control-label">{{__('text.Ticket Priority')}}</label>
+                                <label style="margin-bottom: 5px;" for="" class="col-sm-3 control-label">@if(Auth::User()->usertype != "Admin"){{__('text.Ticket Priority')}}@else Ticket Priority @endif</label>
                                 <div class="col-sm-12">
-                                    <input readonly type="text" placeholder="Ticket Priority" name="tk_priority" id="tk_priority" class="form-control">
+                                    <input type="text" readonly id="fk_priority" class="form-control">
+                                    <input type="hidden" placeholder="Ticket Priority" name="tk_priority" id="tk_priority" class="form-control">
                                 </div>
                             </div>
 
                             <div class="form-group" style="display: inline-block;width: 100%;margin: 5px 0px;">
-                                <label style="margin-bottom: 5px;" for="" class="col-sm-3 control-label">{{__('text.Ticket Status')}}</label>
+                                <label style="margin-bottom: 5px;" for="" class="col-sm-3 control-label">@if(Auth::User()->usertype != "Admin"){{__('text.Ticket Status')}}@else Ticket Status @endif</label>
                                 <div class="col-sm-12">
-                                    <input readonly type="text" placeholder="Ticket Status" name="tk_status" id="tk_status" class="form-control">
+                                    <input type="text" readonly id="fk_status" class="form-control">
+                                    <input type="hidden" placeholder="Ticket Status" name="tk_status" id="tk_status" class="form-control">
                                 </div>
                             </div>
 
@@ -267,9 +275,9 @@
                             @endif
 
                             <div class="form-group" style="display: inline-block;width: 100%;margin: 5px 0px;">
-                                <label style="margin-bottom: 5px;" for="" class="col-sm-3 control-label">{{__('text.Message')}}</label>
+                                <label style="margin-bottom: 5px;" for="" class="col-sm-3 control-label">@if(Auth::User()->usertype != "Admin"){{__('text.Message')}}@else Message @endif</label>
                                 <div class="col-sm-12">
-                                    <textarea required rows="6" placeholder="Message" name="tk_message" class="form-control id2"></textarea>
+                                    <textarea required rows="6" @if(Auth::User()->usertype != "Admin") placeholder="{{__('text.Message')}}" @else placeholder="Message" @endif name="tk_message" class="form-control id2"></textarea>
                                 </div>
                             </div>
 
@@ -513,7 +521,9 @@
                 $("#tk_rec_name").val(name);
                 $("#tk_email_to").val(email);
                 $("#tk_priority").val(priority);
+                $("#fk_priority").val(priority);
                 $("#tk_status").val(status);
+                $("#fk_status").val(status);
                 $("#tk_subject").val(subject);
                 $("#tk_issue").val(issue);
                 $("#tk_code").val(ticket_code);

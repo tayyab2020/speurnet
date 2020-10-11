@@ -14,7 +14,7 @@
 
                     @elseif(Auth::user()->usertype =='Agents')
 
-                    <a href="{{URL::to('addproperty')}}" class="btn btn-primary">Add Property <i class="fa fa-plus" style="margin-left: 8px;"></i></a>
+                    <a href="{{URL::to('addproperty')}}" class="btn btn-primary">@if(Auth::User()->usertype != "Admin"){{__('text.Place the house')}}@else Add Property @endif <i class="fa fa-plus" style="margin-left: 8px;"></i></a>
 
                     @endif
 
@@ -33,7 +33,7 @@
                 @endif
         </div>
 
-        <h2>@if(Route::currentRouteName() == 'properties') Properties @elseif(Route::currentRouteName() == 'new_constructions') New Construction Properties @else Home Exchange Properties @endif</h2>
+        <h2>@if(Route::currentRouteName() == 'properties') @if(Auth::User()->usertype != "Admin"){{__('text.My Properties')}}@else Properties @endif @elseif(Route::currentRouteName() == 'new_constructions') New Construction Properties @else Home Exchange Properties @endif</h2>
 
     </div>
 
@@ -51,16 +51,16 @@
         <table id="data-table1" class="table table-striped table-hover dt-responsive" cellspacing="0" width="100%">
             <thead>
 	            <tr>
-	                <th style="width: 100px;">Property ID</th>
+	                <th style="width: 100px;">@if(Auth::User()->usertype != "Admin"){{__('text.Property ID')}}@else Property ID @endif</th>
                     @if(Auth::user()->usertype=='Admin')
 	                <th>Agent</th>
                     @endif
-	                <th>Property Name</th>
+	                <th>@if(Auth::User()->usertype != "Admin"){{__('text.Property Name')}}@else Property Name @endif</th>
 					<th>Type</th>
-                    <th>Posting Date</th>
-					<th>Purpose</th>
+                    <th>@if(Auth::User()->usertype != "Admin"){{__('text.Posting Date')}}@else Posting Date @endif</th>
+					<th>@if(Auth::User()->usertype != "Admin"){{__('text.Purpose')}}@else Purpose @endif</th>
 	                <th class="text-center">Status</th>
-	                <th class="text-center width-100">Action</th>
+	                <th class="text-center width-100">@if(Auth::User()->usertype != "Admin"){{__('text.Action')}}@else Action @endif</th>
 	            </tr>
             </thead>
 
@@ -72,7 +72,7 @@
 
                 <?php
                 $date=date_create($property->created_at);
-                $date = date_format($date,"d-F-Y");
+                $date = date_format($date,"d-m-Y");
                 ?>
 
          	   <tr>
@@ -109,27 +109,27 @@
 
                     @if( $property->property_purpose == "Sale" )
 
-                        <li><input name="sold" @if($property->is_sold) checked @endif @if($property->is_negotiation || $property->is_under_offer || $property->available_immediately) disabled @endif type="checkbox" id="sold{{$i}}" style="position: relative;top: 2px;"><label @if(!$property->is_negotiation && !$property->is_under_offer && !$property->available_immediately) class="bg" @endif for="sold{{$i}}">MARK AS SOLD</label></li>
+                        <li><input name="sold" @if($property->is_sold) checked @endif @if($property->is_negotiation || $property->is_under_offer || $property->available_immediately) disabled @endif type="checkbox" id="sold{{$i}}" style="position: relative;top: 2px;"><label @if(!$property->is_negotiation && !$property->is_under_offer && !$property->available_immediately) class="bg" @endif for="sold{{$i}}">@if(Auth::User()->usertype != "Admin"){{__('text.MARK AS SOLD')}}@else MARK AS SOLD @endif</label></li>
 
                     @elseif( $property->property_purpose == "Rent" )
 
-                        <li><input name="rented" @if($property->is_rented) checked @endif @if($property->is_negotiation || $property->available_immediately) disabled @endif  type="checkbox" id="rent{{$i}}" style="position: relative;top: 2px;"><label @if(!$property->is_negotiation && !$property->available_immediately) class="bg" @endif for="rent{{$i}}">MARK AS RENTOUT</label></li>
+                        <li><input name="rented" @if($property->is_rented) checked @endif @if($property->is_negotiation || $property->available_immediately) disabled @endif  type="checkbox" id="rent{{$i}}" style="position: relative;top: 2px;"><label @if(!$property->is_negotiation && !$property->available_immediately) class="bg" @endif for="rent{{$i}}">@if(Auth::User()->usertype != "Admin"){{__('text.MARK AS RENTOUT')}}@else MARK AS RENTOUT @endif</label></li>
 
                     @endif
 
-                        <li><input name="negotiation" @if($property->is_negotiation) checked @endif @if($property->is_sold || $property->is_rented || $property->is_under_offer || $property->available_immediately) disabled @endif  type="checkbox" id="negotiation{{$i}}" style="position: relative;top: 2px;"><label @if(!$property->is_sold && !$property->is_rented && !$property->is_under_offer && !$property->available_immediately) class="bg" @endif for="negotiation{{$i}}">MARK AS IN NEGOTIATION</label></li>
+                        <li><input name="negotiation" @if($property->is_negotiation) checked @endif @if($property->is_sold || $property->is_rented || $property->is_under_offer || $property->available_immediately) disabled @endif  type="checkbox" id="negotiation{{$i}}" style="position: relative;top: 2px;"><label @if(!$property->is_sold && !$property->is_rented && !$property->is_under_offer && !$property->available_immediately) class="bg" @endif for="negotiation{{$i}}">@if(Auth::User()->usertype != "Admin"){{__('text.MARK AS IN NEGOTIATION')}}@else MARK AS IN NEGOTIATION @endif</label></li>
 
                         @if( $property->property_purpose == "Sale" )
 
-                            <li><input name="under_offer" @if($property->is_under_offer) checked @endif @if($property->is_sold || $property->is_negotiation || $property->available_immediately) disabled @endif  type="checkbox" id="under_offer{{$i}}" style="position: relative;top: 2px;"><label @if(!$property->is_sold && !$property->is_negotiation && !$property->available_immediately) class="bg" @endif for="under_offer{{$i}}">MARK AS UNDER OFFER</label></li>
+                            <li><input name="under_offer" @if($property->is_under_offer) checked @endif @if($property->is_sold || $property->is_negotiation || $property->available_immediately) disabled @endif  type="checkbox" id="under_offer{{$i}}" style="position: relative;top: 2px;"><label @if(!$property->is_sold && !$property->is_negotiation && !$property->available_immediately) class="bg" @endif for="under_offer{{$i}}">@if(Auth::User()->usertype != "Admin"){{__('text.MARK AS UNDER OFFER')}}@else MARK AS UNDER OFFER @endif</label></li>
 
                         @endif
 
-                    <li><input name="available" @if($property->available_immediately) checked @endif @if($property->is_sold || $property->is_rented || $property->is_negotiation || $property->is_under_offer) disabled @endif  type="checkbox" id="available{{$i}}" style="position: relative;top: 2px;"><label @if(!$property->is_sold && !$property->is_rented && !$property->is_negotiation && !$property->is_under_offer) class="bg" @endif for="available{{$i}}">MARK AVAILABLE IMMEDIATELY</label></li>
+                    <li><input name="available" @if($property->available_immediately) checked @endif @if($property->is_sold || $property->is_rented || $property->is_negotiation || $property->is_under_offer) disabled @endif  type="checkbox" id="available{{$i}}" style="position: relative;top: 2px;"><label @if(!$property->is_sold && !$property->is_rented && !$property->is_negotiation && !$property->is_under_offer) class="bg" @endif for="available{{$i}}">@if(Auth::User()->usertype != "Admin"){{__('text.MARK AVAILABLE IMMEDIATELY')}}@else MARK AVAILABLE IMMEDIATELY @endif</label></li>
 
                     <li style="margin-top: 5px;padding-left: 12px;">
 
-                        <a style="color:#786d6d;font-weight: 700;text-decoration: underline;font-size: 15px;" href="{{ URL::to('admin/inquiries/show') }}/{{$property->id}}">Received Inquiries</a>
+                        <a style="color:#786d6d;font-weight: 700;text-decoration: underline;font-size: 15px;" href="{{ URL::to('admin/inquiries/show') }}/{{$property->id}}">@if(Auth::User()->usertype != "Admin"){{__('text.Received Inquiries')}}@else Received Inquiries @endif</a>
 
                         <b style="position: relative;bottom: 1px;background: #555;color: white;border-radius: 20px;padding: 0px 8px;display: inline-block;margin-left: 5px;font-size: 9px;line-height: 16px;">{{$property->enquiries_count}}</b>
 
@@ -137,7 +137,7 @@
 
                     <li style="margin-top: 5px;padding-left: 12px;">
 
-                        <a style="color:#786d6d;font-weight: 700;text-decoration: underline;font-size: 15px;" href="{{ URL::to('admin/viewings/show') }}/{{$property->id}}">Received Viewings</a>
+                        <a style="color:#786d6d;font-weight: 700;text-decoration: underline;font-size: 15px;" href="{{ URL::to('admin/viewings/show') }}/{{$property->id}}">@if(Auth::User()->usertype != "Admin"){{__('text.Received Viewings')}}@else Received Viewings @endif</a>
 
                         <b style="position: relative;bottom: 1px;background: #555;color: white;border-radius: 20px;padding: 0px 8px;display: inline-block;margin-left: 5px;font-size: 9px;line-height: 16px;">{{$property->viewings_count}}</b>
 
@@ -145,16 +145,12 @@
 
                 </ul>
 
-
                 </form>
-
-
-
 
                 </td>
 				<td>{{ getPropertyTypeName($property->property_type)->types }}</td>
                 <td>{{$date}}</td>
-				<td>{{ $property->property_purpose }}</td>
+				<td>@if(Auth::User()->usertype != "Admin"){{__('text.'.$property->property_purpose)}}@else {{$property->property_purpose}} @endif</td>
 				<td class="text-center">
 						@if($property->status==1)
 							<span class="icon-circle bg-green">
@@ -169,7 +165,7 @@
                 <td class="text-center">
                 <div class="btn-group">
 								<button type="button" class="btn btn-default-dark dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-									Actions <span class="caret"></span>
+                                    @if(Auth::User()->usertype != "Admin"){{__('text.Action')}}s @else Actions @endif <span class="caret"></span>
 								</button>
 								<ul class="dropdown-menu dropdown-menu-right" role="menu">
 
@@ -296,9 +292,27 @@
 
         });
 
+        @if(Auth::User()->usertype == "Admin")
+
         $('#data-table1').dataTable({
             "order": [[ 0, "desc" ]] // Order on init. # is the column, starting at 0
         });
+
+        @else
+
+        $('#data-table1').dataTable( {
+            "oLanguage": {
+                "sLengthMenu": "<?php echo __('text.Show') . ' _MENU_ ' . __('text.records'); ?>",
+                "sSearch": "<?php echo __('text.Search') . ':' ?>",
+                "sInfo": "<?php echo __('text.Showing') . ' _START_ ' . __('text.to') . ' _END_ ' . __('text.of') . ' _TOTAL_ ' . __('text.items'); ?>",
+                "oPaginate": {
+                    "sPrevious": "<?php echo __('text.Previous'); ?>",
+                    "sNext": "<?php echo __('text.Next'); ?>"
+                }
+            }
+        });
+
+        @endif
 
     });
 </script>

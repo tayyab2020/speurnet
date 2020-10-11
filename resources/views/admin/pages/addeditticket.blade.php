@@ -4,9 +4,9 @@
 
     <div id="main">
         <div class="page-header">
-            <h2> {{ isset($ticket->id) ? 'Edit Ticket: '. $ticket->id : 'Add Ticket' }}</h2>
+            <h2><?php if(Auth::User()->usertype != "Admin"){ if(isset($ticket->id)) { echo __('text.Edit') . ' ticket'; } else { echo __('text.Save') . ' ticket'; } } else { if(isset($ticket->id)) { echo 'Edit Ticket'; } else { echo 'Save Ticket'; } } ?></h2>
 
-            <a href="{{ URL::to('admin/tickets') }}" class="btn btn-default-light btn-xs"><i class="md md-backspace"></i> Back</a>
+            <a href="{{ URL::to('admin/tickets') }}" class="btn btn-default-light btn-xs"><i class="md md-backspace"></i> @if(Auth::User()->usertype != "Admin") {{__('text.Back')}} @else Back @endif</a>
 
         </div>
         @if (count($errors) > 0)
@@ -33,33 +33,33 @@
                 <input type="hidden" name="id" value="{{ isset($ticket->id) ? $ticket->id : null }}">
 
                 <div class="form-group">
-                    <label for="" class="col-sm-3 control-label">Ticket Subject</label>
+                    <label for="" class="col-sm-3 control-label">@if(Auth::User()->usertype != "Admin") {{__('text.Ticket Subject')}} @else Ticket Subject @endif</label>
                     <div class="col-sm-9">
-                        <input type="text" required placeholder="Ticket Subject" name="ticket_subject" value="{{ isset($ticket->subject) ? $ticket->subject : old('ticket_subject') }}" class="form-control">
+                        <input type="text" required @if(Auth::User()->usertype != "Admin") placeholder="{{__('text.Ticket Subject')}}" @else placeholder="Ticket Subject" @endif name="ticket_subject" value="{{ isset($ticket->subject) ? $ticket->subject : old('ticket_subject') }}" class="form-control">
                     </div>
                 </div>
 
 
                 <div class="form-group">
-                    <label for="" class="col-sm-3 control-label">Priority</label>
+                    <label for="" class="col-sm-3 control-label">@if(Auth::User()->usertype != "Admin") {{__('text.Priority')}} @else Priority @endif</label>
                     <div class="col-sm-9">
                         <select name="priority" class="form-control">
-                            <option {{ isset($ticket->priority) ? ($ticket->priority == 'High') ? 'selected' : null : null }} value="High">High</option>
-                            <option {{ isset($ticket->priority) ? ($ticket->priority == 'Medium') ? 'selected' : null : null }} value="Medium">Medium</option>
-                            <option {{ isset($ticket->priority) ? ($ticket->priority == 'Low') ? 'selected' : null : null }} value="Low">Low</option>
+                            <option {{ isset($ticket->priority) ? ($ticket->priority == 'High') ? 'selected' : null : null }} value="High">@if(Auth::User()->usertype != "Admin"){{__('text.High')}}@else High @endif</option>
+                            <option {{ isset($ticket->priority) ? ($ticket->priority == 'Medium') ? 'selected' : null : null }} value="Medium">@if(Auth::User()->usertype != "Admin"){{__('text.Medium')}}@else Medium @endif</option>
+                            <option {{ isset($ticket->priority) ? ($ticket->priority == 'Low') ? 'selected' : null : null }} value="Low">@if(Auth::User()->usertype != "Admin"){{__('text.Low')}}@else Low @endif</option>
                         </select>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="" class="col-sm-3 control-label">Description</label>
+                    <label for="" class="col-sm-3 control-label">@if(Auth::User()->usertype != "Admin"){{__('text.Description')}}@else Description @endif</label>
                     <div class="col-sm-9">
-                        <textarea required rows="7" name="ticket_issue" class="form-control" placeholder="Ticket Description">{{ isset($ticket->issue) ? $ticket->issue : old('ticket_issue') }}</textarea>
+                        <textarea required rows="7" name="ticket_issue" class="form-control" @if(Auth::User()->usertype != "Admin") placeholder="{{__('text.Description')}}" @else placeholder="Description" @endif>{{ isset($ticket->issue) ? $ticket->issue : old('ticket_issue') }}</textarea>
                     </div>
                 </div>
 
                 <div class="form-group" style="margin-top: 30px;">
-                    <label for="avatar" class="col-sm-3 control-label">Ticket Images</label>
+                    <label for="avatar" class="col-sm-3 control-label">@if(Auth::User()->usertype != "Admin"){{__('text.Ticket Images')}}@else Ticket Images @endif</label>
                     <div class="col-sm-9">
                         <div class="media">
                                 @if(isset($ticket_images))
@@ -74,7 +74,7 @@
 
                             <div class="media-body media-middle">
                                 <input type="file" multiple name="images[]" class="filestyle">
-                                <small style="position: relative;top: 5px;">Press &amp; hold CTRL key to select multiple files.</small>
+                                <small style="display: block;margin-top: 10px;">@if(Auth::User()->usertype != "Admin"){{__('text.Press &amp; hold CTRL key to select multiple files.')}}@else Press &amp; hold CTRL key to select multiple files. @endif</small>
                             </div>
                         </div>
 
@@ -86,7 +86,7 @@
                 <hr>
                 <div class="form-group">
                     <div class="col-md-offset-3 col-sm-9 ">
-                        <button type="submit" class="btn btn-primary">{{ isset($ticket->id) ? 'Edit Ticket' : 'Save Ticket' }}</button>
+                        <button type="submit" class="btn btn-primary"><?php if(Auth::User()->usertype != "Admin"){ if(isset($ticket->id)) { echo __('text.Edit'); } else { echo __('text.Save'); } } else { if(isset($ticket->id)) { echo 'Edit'; } else { echo 'Save'; } } ?></button>
 
                     </div>
                 </div>
