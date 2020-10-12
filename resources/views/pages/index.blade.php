@@ -1305,13 +1305,13 @@
                 data: {'ip':$('#ip').val(), 'choice':$('#cookie-choice').val(), '_token': $('#cookie-token').val()},
                 success: function(msg)
                 {
-                    $("#content").prepend('<div class="alert alert-success alert-box" style="text-align: center;font-size: 16px;position: fixed;top: 20%;z-index: 1000;padding-right: 35px;background-color: rgb(0 0 0);color: rgb(255 255 255);border: 0;max-width: 400px;border-radius: 0;">\n' +
+                    /*$("#content").prepend('<div class="alert alert-success alert-box" style="text-align: center;font-size: 16px;position: fixed;top: 20%;z-index: 1000;padding-right: 35px;background-color: rgb(0 0 0);color: rgb(255 255 255);border: 0;max-width: 400px;border-radius: 0;">\n' +
                         '                <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="position: absolute;top: 5px;right: 8px;font-size: 28px;line-height: 0.5;opacity: 0.8;font-weight: 100;text-shadow: none;color: #ffffff;">\n' +
                         '                    <span aria-hidden="true">&times;</span></button>\n' +
                         '                Cookie Consent Saved Successfully' +
                         '            </div>');
 
-                    $('.alert-box').delay(5000).fadeOut('slow');
+                    $('.alert-box').delay(5000).fadeOut('slow');*/
                 },
                 error: function()
                 {

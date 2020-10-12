@@ -225,5 +225,6 @@ return [
     'Total Rentout' => 'Total Rentout',
     'New Password' => 'New Password',
     'Confirm Password1' => 'Confirm Password',
+    'Create Alert for this Result' => 'Create Alert for this Result',
 
 ];

@@ -88,7 +88,7 @@
 
               @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions')
 
-                  <h5 style="margin-top: 0;">{{__('text.Is there no home that makes you happy?')}}</h5>
+                  <h5 style="margin-top: 0;padding: 0px 10px;font-weight: 600;">{{__('text.Is there no home that makes you happy?')}}</h5>
 
               @endif
 

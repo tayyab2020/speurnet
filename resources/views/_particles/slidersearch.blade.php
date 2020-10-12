@@ -164,7 +164,7 @@
                                                 <div class="col-sm-4 col-md-4 col-lg-4" style="margin: auto;">
 
                                                     <div class="form-group">
-                                                        <label for="purpose">Radius</label>
+                                                        <label for="purpose">{{__('text.Radius')}}</label>
                                                         <select class="form-control" name="radius">
                                                             <option value="0">0 KM</option>
                                                             <option value="1">1 KM</option>
@@ -180,7 +180,7 @@
 
 
                                                         <div class="form-group">
-                                                            <label for="type">Type</label>
+                                                            <label for="type">{{__('text.Property Type')}}</label>
                                                             <select class="form-control" name="type">
                                                                 <option value="">All</option>
                                                                 @foreach(\App\Types::orderBy('types')->get() as $type)
@@ -192,27 +192,27 @@
 
 
                                                         <div class="form-group">
-                                                            <label for="maxprice">Max Price</label>
+                                                            <label for="maxprice">{{__('text.Max Price')}}</label>
                                                             <input type="number" name="max_price" class="form-control" placeholder="800000">
                                                         </div>
 
                                                         <div class="form-group">
-                                                            <label for="minprice">Min Price</label>
+                                                            <label for="minprice">{{__('text.Min Price')}}</label>
                                                             <input type="number" name="min_price" class="form-control" placeholder="20000">
                                                         </div>
 
                                                     <div class="form-group">
-                                                        <label for="bedrooms">Bedrooms</label>
-                                                        <input type="number" name="bedrooms" class="form-control" placeholder="No. of Bedrooms">
+                                                        <label for="bedrooms">{{__('text.Bedrooms')}}</label>
+                                                        <input type="number" name="bedrooms" class="form-control" placeholder="">
                                                     </div>
 
                                                     <div class="form-group">
-                                                        <label for="bethrooms">Bethrooms</label>
-                                                        <input type="number" name="bathrooms" class="form-control" placeholder="No. of Bathrooms">
+                                                        <label for="bethrooms">{{__('text.Bathrooms')}}</label>
+                                                        <input type="number" name="bathrooms" class="form-control" placeholder="">
                                                     </div>
 
                                                     <div class="form-group">
-                                                        <label for="minprice">Type of Construction</label>
+                                                        <label for="minprice">{{__('text.Type of Construction')}}</label>
                                                         <select class="form-control" name="type_of_construction">
                                                             <option value="">All</option>
                                                             <option value="New">New</option>
@@ -222,7 +222,7 @@
 
                                                     <div class="form-group">
                                                         <label for="minprice">Keywords</label>
-                                                        <input type="text" name="keywords" class="form-control" placeholder="Search by Keywords">
+                                                        <input type="text" name="keywords" class="form-control" placeholder="{{__('text.Search by Keywords')}}">
                                                     </div>
 
 
@@ -365,6 +365,12 @@
 
                                         padding: 0px 18px !important;
 
+                                    }
+
+                                    .city-input,
+                                    .city-input::-webkit-input-placeholder {
+                                        font-size: 10px;
+                                        line-height: 3;
                                     }
 
                                     .search-button i

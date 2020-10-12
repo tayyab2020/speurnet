@@ -225,5 +225,6 @@ return [
     'Total Rentout' => 'Totaal verhuurd',
     'New Password' => 'Nieuwe wachtwoord',
     'Confirm Password1' => 'Bevestig wachtwoord',
+    'Create Alert for this Result' => 'Maak jouw eigen zoekopdracht',
 
 ];
