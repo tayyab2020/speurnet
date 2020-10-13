@@ -226,5 +226,9 @@ return [
     'New Password' => 'New Password',
     'Confirm Password1' => 'Confirm Password',
     'Create Alert for this Result' => 'Create Alert for this Result',
+    'Phone' => 'Phone',
+    'Preferred Day' => 'Preferred Day',
+    'Preferred Moment' => 'Preferred Moment',
+    'Sent On' => 'Sent On',
 
 ];

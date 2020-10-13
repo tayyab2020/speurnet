@@ -29,8 +29,17 @@ class InquiriesController extends MainAdminController
         if(Auth::User()->usertype!="Admin")
         {
             $user_id=Auth::user()->id;
+            $user_type=Auth::user()->usertype;
+            $user_email = Auth::user()->email;
 
-            $viewingslist = request_viewings::where('agent_id',$user_id)->orderBy('id','desc')->with('user')->get();
+            if($user_type == 'Users')
+            {
+                $viewingslist = request_viewings::where('email',$user_email)->orderBy('id','desc')->with('user')->get();
+            }
+            else
+            {
+                $viewingslist = request_viewings::where('agent_id',$user_id)->orderBy('id','desc')->with('user')->get();
+            }
         }
         else
         {

@@ -226,5 +226,9 @@ return [
     'New Password' => 'Nieuwe wachtwoord',
     'Confirm Password1' => 'Bevestig wachtwoord',
     'Create Alert for this Result' => 'Maak jouw eigen zoekopdracht',
+    'Phone' => 'Tel',
+    'Preferred Day' => 'Voorkeursdag',
+    'Preferred Moment' => 'Voorkeursmoment',
+    'Sent On' => 'Verstuurd op',
 
 ];
