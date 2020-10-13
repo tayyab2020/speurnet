@@ -4,7 +4,7 @@
 <div id="main">
 	<div class="page-header">
 
-		<h2>Inquiries</h2>
+		<h2>@if(Auth::User()->usertype != "Admin") {{__('text.Inquiries Heading')}} @else Inquiries @endif</h2>
 	</div>
 	@if(Session::has('flash_message'))
 				    <div class="alert alert-success">
@@ -17,18 +17,17 @@
 <div class="panel panel-default panel-shadow">
     <div class="panel-body">
 
-        <table id="data-table" class="table table-striped table-hover dt-responsive" cellspacing="0" width="100%">
+        <table id="data-table1" class="table table-striped table-hover dt-responsive" cellspacing="0" width="100%">
             <thead>
 	            <tr>
-	                <th>Property ID</th>
-                    <th>Agent Name</th>
-	                <th>Name</th>
+	                <th>@if(Auth::User()->usertype != "Admin"){{__('text.Property ID')}}@else Property ID @endif</th>
+                    <th>@if(Auth::User()->usertype != "Admin"){{__('text.Agent')}}@else Agent @endif</th>
+                    <th>@if(Auth::User()->usertype != "Admin"){{__('text.Name')}}@else Name @endif</th>
 	                <th>Email</th>
-	                <th>Phone</th>
-                    <th>Posting Date</th>
-	                <th>Message</th>
-
-	                <th class="text-center width-100">Action</th>
+                    <th>@if(Auth::User()->usertype != "Admin"){{__('text.Phone')}}@else Phone @endif</th>
+                    <th>@if(Auth::User()->usertype != "Admin"){{__('text.Sent On')}}@else Posting Date @endif</th>
+                    <th>@if(Auth::User()->usertype != "Admin"){{__('text.Message')}}@else Message @endif</th>
+                    <th class="text-center width-100">@if(Auth::User()->usertype != "Admin"){{__('text.Action')}}@else Action @endif</th>
 	            </tr>
             </thead>
 
@@ -71,11 +70,34 @@
 <script>
     $(document).ready(function(){
 
-        $('#data-table tr').click(function () {
+        @if(Auth::User()->usertype == "Admin")
 
-            if($('#data-table tr').hasClass("bg_color"))
+        $('#data-table1').dataTable({
+            "order": [[ 0, "desc" ]] // Order on init. # is the column, starting at 0
+        });
+
+        @else
+
+        $('#data-table1').dataTable( {
+            "oLanguage": {
+                "sLengthMenu": "<?php echo __('text.Show') . ' _MENU_ ' . __('text.records'); ?>",
+                "sSearch": "<?php echo __('text.Search') . ':' ?>",
+                "sInfo": "<?php echo __('text.Showing') . ' _START_ ' . __('text.to') . ' _END_ ' . __('text.of') . ' _TOTAL_ ' . __('text.items'); ?>",
+                "oPaginate": {
+                    "sPrevious": "<?php echo __('text.Previous'); ?>",
+                    "sNext": "<?php echo __('text.Next'); ?>"
+                },
+                "sEmptyTable": '<?php echo __('text.No data available in table'); ?>'
+            }
+        });
+
+        @endif
+
+        $('#data-table1 tr').click(function () {
+
+            if($('#data-table1 tr').hasClass("bg_color"))
             {
-                $('#data-table tr').removeClass("bg_color");
+                $('#data-table1 tr').removeClass("bg_color");
             }
             else
             {

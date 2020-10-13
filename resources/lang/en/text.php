@@ -230,5 +230,6 @@ return [
     'Preferred Day' => 'Voorkeursdag',
     'Preferred Moment' => 'Voorkeursmoment',
     'Sent On' => 'Verstuurd op',
+    'Inquiries Heading' => 'Gestelde bezoekersvragen',
 
 ];

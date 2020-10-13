@@ -230,5 +230,6 @@ return [
     'Preferred Day' => 'Preferred Day',
     'Preferred Moment' => 'Preferred Moment',
     'Sent On' => 'Sent On',
+    'Inquiries Heading' => 'Inquiries',
 
 ];
