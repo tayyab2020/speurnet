@@ -312,10 +312,10 @@
                                     @endif
 
 
-                                    @if(Route::currentRouteName() != 'addhomeexchange')
 
                                 <div class="main-childs col-lg-12 col-md-12 col-sm-12 col-xs-12" style="border:1px solid #e6e6e6;padding: 20px;margin: 25px 0px;">
 
+                                    @if(Route::currentRouteName() != 'addhomeexchange')
 
                                     <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 left-div" style="display: inline-block;margin: 25px 0px;">
 
@@ -498,7 +498,7 @@
 
                                         </div>
 
-                                        <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 right-div" style="display: inline-block;float: right;margin: 25px 0px;">
+                                        <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 right-div" style="float: right;margin: 25px 0px;@if(Route::currentRouteName() != 'addnewconstruction') display: inline-block @else display:none @endif">
 
                                             <label class="left-label" style="float: left;">{{__('text.Source Project')}}</label>
 
@@ -526,74 +526,68 @@
 
                                     @endif
 
-
-                                </div>
-
                                     @endif
 
+                                    <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
 
-                                    <div class="main-childs col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;margin-top: 30px;">
+                                        <label class="left-label" style="float: left;">{{__('text.Total Bedrooms')}} <span style="color: red;font-size: 20px;">*</span></label>
 
-                                        <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
+                                        <div  style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;border-right: 0;margin: auto">
 
-                                            <label class="left-label" style="float: left;">{{__('text.Total Bedrooms')}} <span style="color: red;font-size: 20px;">*</span></label>
+                                            <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-bed"></i></div>
 
-                                            <div  style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;border-right: 0;margin: auto">
-
-                                                <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-bed"></i></div>
-
-                                                <input type="number" step="1" max="" name="bedrooms" @if(old('bedrooms') != '') value="{{old('bedrooms')}}" @else value="{{ isset($property->bedrooms) ? $property->bathrooms : 1 }}" @endif class="quantity-field stepper-step-2-validate" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
-                                                <input type="button" value="+" class="button-plus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d7d7d7;margin-top: -0.1px;">
-                                                <input type="button" value="-" class="button-minus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;margin-top: -0.1px;">
-
-                                            </div>
+                                            <input type="number" step="1" max="" name="bedrooms" @if(old('bedrooms') != '') value="{{old('bedrooms')}}" @else value="{{ isset($property->bedrooms) ? $property->bathrooms : 1 }}" @endif class="quantity-field stepper-step-2-validate" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+                                            <input type="button" value="+" class="button-plus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d7d7d7;margin-top: -0.1px;">
+                                            <input type="button" value="-" class="button-minus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;margin-top: -0.1px;">
 
                                         </div>
 
-                                        <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 right-div" style="float: right;@if(Route::currentRouteName() != 'addnewconstruction') display: inline-block @else display:none @endif">
+                                    </div>
 
-                                            <label class="right-label" style="float: left;">{{__('text.Total Bathrooms')}} <span style="color: red;font-size: 20px;">*</span></label>
+                                    <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 right-div" style="float: right;@if(Route::currentRouteName() != 'addnewconstruction') display: inline-block @else display:none @endif">
 
-                                            <div class="right-content" style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;border-right: 0;margin: auto;">
+                                        <label class="right-label" style="float: left;">{{__('text.Total Bathrooms')}} <span style="color: red;font-size: 20px;">*</span></label>
 
-                                                <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-restroom"></i></div>
+                                        <div class="right-content" style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;border-right: 0;margin: auto;">
 
-                                                <input type="number" step="1" max="" name="bathrooms" @if(old('bathrooms') != '') value="{{old('bathrooms')}}"  @else value="{{ isset($property->bathrooms) ? $property->bathrooms : 1 }}" @endif class="quantity-field stepper-step-2-validate" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
-                                                <input type="button" value="+" class="button-plus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d7d7d7;margin-top: -0.1px;">
-                                                <input type="button" value="-" class="button-minus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;margin-top: -0.1px;">
+                                            <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-restroom"></i></div>
 
-                                            </div>
+                                            <input type="number" step="1" max="" name="bathrooms" @if(old('bathrooms') != '') value="{{old('bathrooms')}}"  @else value="{{ isset($property->bathrooms) ? $property->bathrooms : 1 }}" @endif class="quantity-field stepper-step-2-validate" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+                                            <input type="button" value="+" class="button-plus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d7d7d7;margin-top: -0.1px;">
+                                            <input type="button" value="-" class="button-minus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;margin-top: -0.1px;">
+
                                         </div>
+                                    </div>
 
-                                        <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 right-div" style="@if(Route::currentRouteName() != 'addnewconstruction') display: inline-block @else display:none @endif">
+                                    <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 right-div" style="@if(Route::currentRouteName() != 'addnewconstruction') display: inline-block @else display:none @endif">
 
-                                            <label class="right-label" style="float: left;">{{__('text.SQFT')}} <small>(m2)</small> <span style="color: red;font-size: 20px;">*</span></label>
+                                        <label class="right-label" style="float: left;">{{__('text.SQFT')}} <small>(m2)</small> <span style="color: red;font-size: 20px;">*</span></label>
 
-                                            <div class="right-content" style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto;">
+                                        <div class="right-content" style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto;">
 
-                                                <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-crop-alt"></i></div>
+                                            <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-crop-alt"></i></div>
 
-                                                <input type="number" step="1" max="" name="area" @if(old('area') != '') value="{{old('area')}}" @else value="{{ isset($property->area) ? $property->area : null }}" @endif placeholder="" class="quantity-field stepper-step-2-validate" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
-                                                <input type="button" value="+" class="button-plus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d7d7d7;margin-top: -0.1px;">
-                                                <input type="button" value="-" class="button-minus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;margin-top: -0.1px;">
+                                            <input type="number" step="1" max="" name="area" @if(old('area') != '') value="{{old('area')}}" @else value="{{ isset($property->area) ? $property->area : null }}" @endif placeholder="" class="quantity-field stepper-step-2-validate" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+                                            <input type="button" value="+" class="button-plus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d7d7d7;margin-top: -0.1px;">
+                                            <input type="button" value="-" class="button-minus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;margin-top: -0.1px;">
 
-                                            </div>
                                         </div>
+                                    </div>
 
-                                        <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 left-div" style="float: right;@if(Route::currentRouteName() != 'addnewconstruction') display: inline-block @else display:none @endif">
+                                    <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 left-div" style="float: right;@if(Route::currentRouteName() != 'addnewconstruction') display: inline-block @else display:none @endif">
 
-                                            <label class="left-label" style="float: left;">{{__('text.Volume')}} <small>(m3)</small></label>
+                                        <label class="left-label" style="float: left;">{{__('text.Volume')}} <small>(m3)</small></label>
 
-                                            <div class="right-content" style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto;">
+                                        <div class="right-content" style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto;">
 
-                                                <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-arrows-alt-h"></i></div>
+                                            <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-arrows-alt-h"></i></div>
 
-                                                <input type="number" step="1" max="" name="volume" @if(old('volume') != '') value="{{old('volume')}}" @else value="{{ isset($property->volume) ? $property->volume : null }}" @endif placeholder="" class="quantity-field" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
-                                                <input type="button" value="+" class="button-plus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d7d7d7;margin-top: -0.1px;">
-                                                <input type="button" value="-" class="button-minus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;margin-top: -0.1px;">
+                                            <input type="number" step="1" max="" name="volume" @if(old('volume') != '') value="{{old('volume')}}" @else value="{{ isset($property->volume) ? $property->volume : null }}" @endif placeholder="" class="quantity-field" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+                                            <input type="button" value="+" class="button-plus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d7d7d7;margin-top: -0.1px;">
+                                            <input type="button" value="-" class="button-minus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;margin-top: -0.1px;">
 
-                                            </div>
                                         </div>
+                                    </div>
 
 
                                     <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 left-div" style="@if(Route::currentRouteName() != 'addnewconstruction') display: inline-block @else display:none @endif">
@@ -612,60 +606,60 @@
 
                                     </div>
 
+                                        @if(Route::currentRouteName() == 'addhomeexchange')
 
-                                    @if(Route::currentRouteName() == 'addhomeexchange')
+                                            <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 right-div" style="display: inline-block;float: right;">
 
-                                        <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 right-div" style="display: inline-block;float: right;">
+                                                <label class="left-label" style="float: left;">{{__('text.Owner')}} <span style="color: red;font-size: 20px;">*</span></label>
 
-                                            <label class="left-label" style="float: left;">{{__('text.Owner')}} <span style="color: red;font-size: 20px;">*</span></label>
+                                                <div class="right-content" style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto;">
 
-                                            <div class="right-content" style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto;">
-
-                                                <input type="text"  @if(old('owner') != '') value="{{old('owner')}}" @else value="{{ isset($property->owner) ? $property->owner : null }}" @endif name="owner" placeholder="Owner" class="quantity-field stepper-step-2-validate" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
-
-                                            </div>
-
-                                        </div>
-
-                                                <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
-
-                                                    <label class="left-label" style="float: left;">{{__('text.Type of house')}} <span style="color: red;font-size: 20px;">*</span></label>
-
-                                                    <div style="width: 100%;display: inline-block;margin: auto">
-
-                                                        @if(isset($property->property_type))
-
-                                                            <select name="property_type" id="property_type" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;height: 40px;">
-
-                                                                @foreach($types as $type)
-
-                                                                    <option value="{{$type->id}}" @if($type->id == $property->property_type) selected @endif>{{$type->types}}</option>
-
-                                                                @endforeach
-
-                                                            </select>
-
-                                                        @else
-
-                                                            <select name="property_type" id="property_type" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;height: 40px;">
-
-                                                                @foreach($types as $type)
-
-                                                                    <option value="{{$type->id}}" @if(old('property_type') == $type->id) selected @endif>{{$type->types}}</option>
-
-                                                                @endforeach
-
-                                                            </select>
-
-                                                        @endif
-
-                                                    </div>
+                                                    <input type="text"  @if(old('owner') != '') value="{{old('owner')}}" @else value="{{ isset($property->owner) ? $property->owner : null }}" @endif name="owner" placeholder="Owner" class="quantity-field stepper-step-2-validate" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
 
                                                 </div>
 
-                                    @endif
+                                            </div>
+
+                                            <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
+
+                                                <label class="left-label" style="float: left;">{{__('text.Type of house')}} <span style="color: red;font-size: 20px;">*</span></label>
+
+                                                <div style="width: 100%;display: inline-block;margin: auto">
+
+                                                    @if(isset($property->property_type))
+
+                                                        <select name="property_type" id="property_type" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;height: 40px;">
+
+                                                            @foreach($types as $type)
+
+                                                                <option value="{{$type->id}}" @if($type->id == $property->property_type) selected @endif>{{$type->types}}</option>
+
+                                                            @endforeach
+
+                                                        </select>
+
+                                                    @else
+
+                                                        <select name="property_type" id="property_type" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;height: 40px;">
+
+                                                            @foreach($types as $type)
+
+                                                                <option value="{{$type->id}}" @if(old('property_type') == $type->id) selected @endif>{{$type->types}}</option>
+
+                                                            @endforeach
+
+                                                        </select>
+
+                                                    @endif
+
+                                                </div>
+
+                                            </div>
+
+                                        @endif
 
                                 </div>
+                                    
 
                                     @if(Route::currentRouteName() != 'addhomeexchange')
 
