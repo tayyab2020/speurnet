@@ -47,7 +47,6 @@
                             <div class="media">
                                 <div class="media-left">
                                     @if(Auth::user()->image_icon)
-
                                         <img src="{{ URL::asset('upload/members/'.Auth::user()->image_icon.'-s.jpg') }}" width="80" alt="person">
                                     @endif
 

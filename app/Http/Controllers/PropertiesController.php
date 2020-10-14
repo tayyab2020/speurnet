@@ -431,6 +431,7 @@ class PropertiesController extends Controller
 
     public function addeditproperty()
     {
+
         if(Auth::user())
         {
             if(Auth::user()->usertype=='Agents')

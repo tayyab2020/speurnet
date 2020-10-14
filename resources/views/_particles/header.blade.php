@@ -43,7 +43,16 @@
               </ul>
             </li>
 
-             	<li><a href="{{ URL::to('addproperty') }}" class="signup col-lg-12 col-md-3 col-sm-6 col-xs-6">{{__('text.Post your Property')}}</a></li>
+                  @if(Auth::user()->usertype=='Users')
+
+                      <li><a href="{{ URL::to('addhomeexchange') }}" class="signup col-lg-12 col-md-3 col-sm-6 col-xs-6">{{__('text.Post your Property')}}</a></li>
+
+                  @else
+
+                      <li><a href="{{ URL::to('addproperty') }}" class="signup col-lg-12 col-md-3 col-sm-6 col-xs-6">{{__('text.Post your Property')}}</a></li>
+
+                  @endif
+
              @else
                   <li>
                       <i style="font-size: 18px;border-left: 1px solid #a5a1a1;padding-left: 15px;" class="fas fa-user"></i>

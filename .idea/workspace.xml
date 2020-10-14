@@ -3,9 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="7fe7f36f-c82f-4504-8c0a-7874522d22c9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PropertiesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PropertiesController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/lang/en/text.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/text.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/lang/en_backup/text.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en_backup/text.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/pages/inquiries.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/pages/inquiries.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/_particles/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/_particles/header.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/_particles/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/_particles/sidebar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/pages/addeditproperty.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/pages/addeditproperty.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/pages/profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/pages/profile.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/propertysingle.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/propertysingle.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -261,7 +266,7 @@
       <workItem from="1602156082246" duration="24023000" />
       <workItem from="1602359031505" duration="22872000" />
       <workItem from="1602496080572" duration="3319000" />
-      <workItem from="1602581817521" duration="4327000" />
+      <workItem from="1602581817521" duration="39589000" />
     </task>
     <servers />
   </component>
@@ -288,10 +293,6 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1594141879865" />
-    <state x="93" y="93" width="1350" height="638" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1593975149559">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="93" y="93" width="1350" height="638" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1536.824@0.0.1536.824" timestamp="1593975149559" />
     <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1602496081370">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -304,17 +305,17 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="553" y="319" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1595277485716" />
-    <state x="344" y="100" width="805" height="606" key="find.popup" timestamp="1602280939620">
+    <state x="344" y="100" width="805" height="606" key="find.popup" timestamp="1602675612588">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="344" y="100" width="805" height="606" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1602280939620" />
-    <state x="425" y="187" key="run.anything.popup" timestamp="1596007419074">
+    <state x="344" y="100" width="805" height="606" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1602675612588" />
+    <state x="425" y="187" key="run.anything.popup" timestamp="1602702106801">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1596007419074" />
-    <state x="389" y="66" width="756" height="758" key="search.everywhere.popup" timestamp="1602082873890">
+    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1602702106801" />
+    <state x="389" y="66" width="756" height="758" key="search.everywhere.popup" timestamp="1602700381454">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="389" y="66" width="756" height="758" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1602082873890" />
+    <state x="389" y="66" width="756" height="758" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1602700381454" />
   </component>
 </project>

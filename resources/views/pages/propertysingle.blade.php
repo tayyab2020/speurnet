@@ -77,7 +77,7 @@
             <div class="row">
               <div class="col-md-12 single-post">
                 <ul id="myTab" class="nav nav-tabs nav-justified">
-                  <li class="property-tab active"><a href="#detail" style="outline: none;" id="left-tab" data-toggle="tab"><i style="margin-right: 5px;" class="fas fa-house-user"></i> Property Detail</a></li>
+                  <li class="property-tab active"><a href="#detail" style="outline: none;" id="left-tab" data-toggle="tab"><i style="margin-right: 5px;" class="fas fa-house-user"></i> {{__('text.Property Detail')}}</a></li>
 
                     @if($property->new_construction != 1)
                     <li class="contact-tab"><a href="#location" style="outline: none;" id="right-tab" data-toggle="tab"><i style="margin-right: 5px;" class="far fa-comment-dots"></i> Contact</a></li>
@@ -316,11 +316,11 @@
                                   </div>
 
 
-                                  <?php $date = date_format($property->created_at,"F d, Y");?>
+                                  <?php $date = date_format($property->created_at,"d F Y");?>
 
                                   <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" style="padding: 0;">
 
-                                      <span style="font-size: 12px;line-height: 1;vertical-align: top;float: right;">Posted On {{$date}}</span>
+                                      <span style="font-size: 12px;line-height: 1;vertical-align: top;float: right;">{{__('text.Posted on')}} {{$date}}</span>
 
                                   </div>
 
@@ -477,7 +477,7 @@
                                               <div class="modal-header" style="border-bottom: 0;display: inline-block;width: 100%;padding: 15px 25px 20px 25px;border-bottom: 1px solid #e6e9ed;">
 
 
-                                                  <h4 style="margin-top: 5px;" class="modal-title" id="exampleModalLabel">SHARE THIS AD</h4>
+                                                  <h4 style="margin-top: 5px;" class="modal-title" id="exampleModalLabel">{{__('text.SHARE THIS AD')}}</h4>
 
                                               </div>
 
@@ -494,7 +494,7 @@
                                                               <div style="line-height: 5;padding: 0px 20px;">
                                                               <i class="fa fa-whatsapp" aria-hidden="true" style="font-size: 20px;color: #474646;"></i>
 
-                                                                  <span style="margin-left: 6px;font-size: 20px;color: #474646;">Share By Whatsapp</span>
+                                                                  <span style="margin-left: 6px;font-size: 20px;color: #474646;">{{__('text.Share By Whatsapp')}}</span>
 
                                                               </div>
                                                           </a>
@@ -505,7 +505,7 @@
 
                                                               <i class="fa fa-facebook" aria-hidden="true" style="font-size: 20px;color: #474646;"></i>
 
-                                                                  <span style="margin-left: 6px;font-size: 20px;color: #474646;">Share By Facebook</span>
+                                                                  <span style="margin-left: 6px;font-size: 20px;color: #474646;">{{__('text.Share By Facebook')}}</span>
 
                                                               </div>
                                                           </a>
@@ -533,7 +533,7 @@
 
                                               </div>
                                               <div class="modal-footer">
-                                                  <button type="button" class="btn btn-success" data-dismiss="modal">Cancel</button>
+                                                  <button type="button" class="btn btn-success" data-dismiss="modal">{{__('text.Cancel')}}</button>
                                               </div>
                                           </div>
 
@@ -547,13 +547,13 @@
                                   @if($property->new_construction != 1 && $property->home_exchange != 1)
 
                               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="outline: none;">
-                                  <i class="far fa-calendar-check" style="margin-right: 7px;"></i> Request Viewing
+                                  <i class="far fa-calendar-check" style="margin-right: 7px;"></i> {{__('text.Request Viewing')}}
                               </button>
 
                                       @elseif($property->new_construction == 1)
 
                                       <a class="btn btn-primary" href="{{$property->citation}}" style="outline: none;">
-                                          <i class="fas fa-globe" style="margin-right: 7px;"></i> Contact Page Source
+                                          <i class="fas fa-globe" style="margin-right: 7px;"></i> {{__('text.Contact Page Source')}}
                                       </a>
 
                                   @endif
@@ -580,8 +580,8 @@
                                                       <span aria-hidden="true">&times;</span>
                                                   </button>
 
-                                                  <h4 style="margin-top: 5px;" class="modal-title" id="exampleModalLabel">REQUEST VIEWING</h4>
-                                                  <p style="margin-top: 15px;width: 90%;">Physical Arrange viewings is always been attractive to property clients. Just fill out the form to arrange visualizations around our properties.</p>
+                                                  <h4 style="margin-top: 5px;" class="modal-title" id="exampleModalLabel">{{__('text.Request Viewing')}}</h4>
+                                                  <p style="margin-top: 15px;width: 90%;">{{__('text.Request Viewing Heading')}}</p>
 
                                               </div>
 
@@ -594,20 +594,18 @@
 
                                                       <div style="position: relative;width: 100%;">
 
-                                                          <div class="bulgy-radios" role="radiogroup" aria-labelledby="bulgy-radios-label" style="width: 100%;min-height: 100px;text-align: left;">
-
-                                                              <h3 id="bulgy-radios-label">Select Gender</h3>
+                                                          <div class="bulgy-radios" role="radiogroup" aria-labelledby="bulgy-radios-label" style="width: 100%;min-height: 50px;text-align: left;">
 
                                                               <label style="margin-left: 5px;float: left;max-width: 80px;">
                                                                   <input type="radio" name="gender" value="Mr." checked />
                                                                   <span class="radio"></span>
-                                                                  <span class="label">Mr.</span>
+                                                                  <span class="label">{{__('text.Mr.')}}</span>
                                                               </label>
 
                                                               <label>
                                                                   <input type="radio" name="gender" value="Ms." />
                                                                   <span class="radio"></span>
-                                                                  <span class="label">Ms.</span>
+                                                                  <span class="label">{{__('text.Ms.')}}</span>
                                                               </label>
 
                                                           </div>
@@ -620,22 +618,22 @@
 
                                                       <div style="width: 100%;position: relative;">
 
-                                                          <label style="font-weight: 600;">Preferred Day*</label>
+                                                          <label style="font-weight: 600;">{{__('text.Preferred Day')}}*</label>
 
                                                           <i class="fas fa-calendar-alt" style="position: absolute;left: 15px;right: auto;color: #d5d5d5;font-size: 14px;top: 72%;margin:-9px 0 0;pointer-events:none;"></i>
                                                           <i class="fas fa-chevron-down" style="position: absolute;font-size: 14px;top: 72%;right:10px;left: auto;margin: -7px 0 0;pointer-events: none;color: #767676;"></i>
 
                                                           <select style="-webkit-appearance:none;-moz-appearance:none;appearance:none;padding: 0 0 0 40px;cursor: pointer;height: 42px;color:#bcbcbc;border-color:#e6e6e6;border-radius: 3px;box-shadow: none;"  placeholder="Preferred Day *" name="day" required  class="form-control" >
 
-                                                              <option value="">No preference</option>
-                                                              <option value="Only on workdays">Only on workdays</option>
-                                                              <option value="Weekend">Weekend</option>
-                                                              <option value="Monday">Monday</option>
-                                                              <option value="Tuesday">Tuesday</option>
-                                                              <option value="Wednesday">Wednesday</option>
-                                                              <option value="Thursday">Thursday</option>
-                                                              <option value="Friday">Friday</option>
-                                                              <option value="Saturday">Saturday</option>
+                                                              <option value="">{{__('text.No preference')}}</option>
+                                                              <option value="Only on workdays">{{__('text.Only on workdays')}}</option>
+                                                              <option value="Weekend">{{__('text.Weekend')}}</option>
+                                                              <option value="Monday">{{__('text.Monday')}}</option>
+                                                              <option value="Tuesday">{{__('text.Tuesday')}}</option>
+                                                              <option value="Wednesday">{{__('text.Wednesday')}}</option>
+                                                              <option value="Thursday">{{__('text.Thursday')}}</option>
+                                                              <option value="Friday">{{__('text.Friday')}}</option>
+                                                              <option value="Saturday">{{__('text.Saturday')}}</option>
 
                                                           </select>
 
@@ -647,16 +645,16 @@
 
                                                       <div style="width: 100%;position: relative;">
 
-                                                          <label style="font-weight: 600;">Preferred Moment*</label>
+                                                          <label style="font-weight: 600;">{{__('text.Preferred Moment')}}*</label>
 
                                                           <i class="far fa-clock" style="position: absolute;left: 15px;right: auto;color: #d5d5d5;font-size: 14px;top: 72%;margin:-9px 0 0;pointer-events:none;"></i>
                                                           <i class="fas fa-chevron-down" style="position: absolute;font-size: 14px;top: 72%;right:10px;left: auto;margin: -7px 0 0;pointer-events: none;color: #767676;"></i>
 
                                                           <select style="-webkit-appearance:none;-moz-appearance:none;appearance:none;padding: 0 0 0 40px;cursor: pointer;height: 42px;color:#bcbcbc;border-color:#e6e6e6;border-radius: 3px;box-shadow: none;"  placeholder="Preferred Moment *" name="moment" required  class="form-control" >
 
-                                                              <option value="">No preference</option>
-                                                              <option value="in the morning">in the morning</option>
-                                                              <option value="in the afternoon">in the afternoon</option>
+                                                              <option value="">{{__('text.No preference')}}</option>
+                                                              <option value="in the morning">{{__('text.in the morning')}}</option>
+                                                              <option value="in the afternoon">{{__('text.in the afternoon')}}</option>
 
                                                           </select>
 
@@ -670,7 +668,7 @@
 
                                                           <i class="fas fa-user" style="position: absolute;left: 15px;right: auto;color: #d5d5d5;font-size: 14px;top: 55%;margin:-9px 0 0;pointer-events:none;"></i>
 
-                                                          <input style="padding: 0 0 0 40px;height: 42px;color:#bcbcbc;border-color:#e6e6e6;border-radius: 3px;box-shadow: none;" type='text' placeholder="Your Name *" name="username" required  class="form-control" id='username' />
+                                                          <input style="padding: 0 0 0 40px;height: 42px;color:#bcbcbc;border-color:#e6e6e6;border-radius: 3px;box-shadow: none;" type='text' placeholder="{{__('text.Name')}}" name="username" required  class="form-control" id='username' />
 
                                                       </div>
 
@@ -682,7 +680,7 @@
 
                                                           <i class="fas fa-at" style="position: absolute;left: 15px;right: auto;color: #d5d5d5;font-size: 14px;top: 55%;margin:-9px 0 0;pointer-events:none;"></i>
 
-                                                          <input style="padding: 0 0 0 40px;height: 42px;color:#bcbcbc;border-color:#e6e6e6;border-radius: 3px;box-shadow: none;" type='email' placeholder="Your Email *" name="email" required  class="form-control" id='email' />
+                                                          <input style="padding: 0 0 0 40px;height: 42px;color:#bcbcbc;border-color:#e6e6e6;border-radius: 3px;box-shadow: none;" type='email' placeholder="E-mailadres" name="email" required  class="form-control" id='email' />
 
                                                       </div>
 
@@ -694,7 +692,7 @@
 
                                                           <i class="fas fa-phone-alt" style="position: absolute;left: 15px;right: auto;color: #d5d5d5;font-size: 14px;top: 55%;margin:-9px 0 0;pointer-events:none;"></i>
 
-                                                          <input style="padding: 0 0 0 40px;height: 42px;color:#bcbcbc;border-color:#e6e6e6;border-radius: 3px;box-shadow: none;" type='text' placeholder="Your Phone Number" name="phone" class="form-control" id='phone' />
+                                                          <input style="padding: 0 0 0 40px;height: 42px;color:#bcbcbc;border-color:#e6e6e6;border-radius: 3px;box-shadow: none;" type='text' placeholder="{{__('text.Mobile No')}}" name="phone" class="form-control" id='phone' />
 
                                                       </div>
 
@@ -706,7 +704,7 @@
 
                                                           <i class="far fa-comment-alt" style="position: absolute;left: 15px;right: auto;color: #d5d5d5;font-size: 14px;margin:10px 0 0;pointer-events:none;"></i>
 
-                                                          <textarea style="height:100px;padding-left:40px;color:#bcbcbc;border-color:#e6e6e6;border-radius: 3px;box-shadow: none;" class="form-control" id="message-text" placeholder="Message" name="message"></textarea>
+                                                          <textarea style="height:100px;padding-left:40px;color:#bcbcbc;border-color:#e6e6e6;border-radius: 3px;box-shadow: none;" class="form-control" id="message-text" placeholder="{{__('text.Message')}}" name="message"></textarea>
 
 
                                                       </div>
@@ -716,8 +714,8 @@
 
                                               </div>
                                               <div class="modal-footer">
-                                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                  <button type="submit" class="btn btn-primary">Send message</button>
+                                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__('text.Close')}}</button>
+                                                  <button type="submit" class="btn btn-primary">{{__('text.Send message')}}</button>
                                               </div>
                                           </div>
 
@@ -730,19 +728,19 @@
                           </div>
 
 
-                        <h3>Property Overview</h3>
+                        <h3>{{__('text.Property Overview')}}</h3>
 
                           <div class="row" style="margin: 30px 0px;">
                               <div class="col-lg-12 col-md-12 col-sm-12 col-sm-12" style="padding: 0;">
-                                  <label class="head-label" style="color: #434343;font-weight: 600;">Bedroom<img src="{{ URL::asset('assets/img/bed.png') }}" style="width: 25px;margin: 0px 13px;" /><span style="font-size: 20px;color: #4d4b4b;">{{$property->bedrooms}}</span></label>
-                                  <label class="mid-label" style="color: #434343;font-weight: 600;margin: 0px 65px;">Bedroom<img src="{{ URL::asset('assets/img/bathroom.png') }}" style="width: 25px;margin: 0px 13px;margin-bottom: 3px;" /><span style="font-size: 20px;color: #4d4b4b;">{{$property->bathrooms}}</span></label>
-                                  <label class="head-label" style="color: #434343;font-weight: 600;">Area<img src="{{ URL::asset('assets/img/browser.png') }}" style="width: 20px;margin: 0px 13px;margin-bottom: 3px;" /><span style="font-size: 17px;color: #4d4b4b;">{{$property->area}} <small>m2</small></span></label>
+                                  <label class="head-label" style="color: #434343;font-weight: 600;">{{__('text.Bedrooms')}}<img src="{{ URL::asset('assets/img/bed.png') }}" style="width: 25px;margin: 0px 13px;" /><span style="font-size: 20px;color: #4d4b4b;">{{$property->bedrooms}}</span></label>
+                                  <label class="mid-label" style="color: #434343;font-weight: 600;margin: 0px 65px;">{{__('text.Bathrooms')}}<img src="{{ URL::asset('assets/img/bathroom.png') }}" style="width: 25px;margin: 0px 13px;margin-bottom: 3px;" /><span style="font-size: 20px;color: #4d4b4b;">{{$property->bathrooms}}</span></label>
+                                  <label class="head-label" style="color: #434343;font-weight: 600;">{{__('text.Area')}}<img src="{{ URL::asset('assets/img/browser.png') }}" style="width: 20px;margin: 0px 13px;margin-bottom: 3px;" /><span style="font-size: 17px;color: #4d4b4b;">{{$property->area}} <small>m2</small></span></label>
                               </div>
                           </div>
 
                           <table class="table table-bordered">
                               <tr>
-                                  <td><strong>Type</strong> <img src="{{ URL::asset('assets/img/house.png') }}" style="width: 18px;float: right;" /></td>
+                                  <td><strong>{{__('text.Type')}}</strong> <img src="{{ URL::asset('assets/img/house.png') }}" style="width: 18px;float: right;" /></td>
                                   <td>{{ getPropertyTypeName($property->property_type)->types }}</td>
                               </tr>
                           </table>
@@ -756,12 +754,12 @@
                             @if($property->home_exchange == 1)
 
                                 <tr>
-                                    <td><strong>Owner</strong></td>
+                                    <td><strong>{{__('text.Owner')}}</strong></td>
                                     <td>{{$property->owner}}</td>
                                 </tr>
 
                                     <tr>
-                                        <td><strong>Rent</strong></td>
+                                        <td><strong>{{__('text.Rent')}}</strong></td>
                                         <td>€ {{number_format($property->rent_per_month, 0, ',', '.')}}</sup> </td>
                                     </tr>
 
@@ -771,14 +769,14 @@
                             @if($property->home_exchange != 1)
 
                                 <tr>
-                                    <td><strong>Price</strong> <img src="{{ URL::asset('assets/img/tag.png') }}" style="width: 18px;float: right;" /></td>
+                                    <td><strong>{{__('text.Price')}}</strong> <img src="{{ URL::asset('assets/img/tag.png') }}" style="width: 18px;float: right;" /></td>
                                     <td>€@if($property->sale_price) {{number_format($property->sale_price, 0, ',', '.')}} {{$property->cost_for}} @else {{number_format($property->rent_price, 0, ',', '.')}} @endif</td>
                                 </tr>
 
                                 @if($property->new_construction != 1)
 
                                     <tr>
-                                        <td><strong>Contract</strong> <img src="{{ URL::asset('assets/img/communications.png') }}" style="width: 18px;float: right;" /></td>
+                                        <td><strong>{{__('text.Contract')}}</strong> <img src="{{ URL::asset('assets/img/communications.png') }}" style="width: 18px;float: right;" /></td>
                                         <td>{{$property->property_purpose}}</td>
                                     </tr>
 
@@ -787,19 +785,19 @@
                             @endif
 
                           <tr>
-                            <td><strong>Location</strong> <img src="{{ URL::asset('assets/img/pin.png') }}" style="width: 18px;float: right;" /></td>
+                            <td><strong>{{__('text.Location')}}</strong> <img src="{{ URL::asset('assets/img/pin.png') }}" style="width: 18px;float: right;" /></td>
                             <td>{{$property->address}}</td>
                           </tr>
                           <tr>
-                            <td><strong>Bathrooms</strong> <img src="{{ URL::asset('assets/img/bathroom.png') }}" style="width: 18px;float: right;" /></td>
+                            <td><strong>{{__('text.Bathrooms')}}</strong> <img src="{{ URL::asset('assets/img/bathroom.png') }}" style="width: 18px;float: right;" /></td>
                             <td>{{$property->bathrooms}}</td>
                           </tr>
                           <tr>
-                            <td><strong>Bedrooms</strong> <img src="{{ URL::asset('assets/img/bed.png') }}" style="width: 18px;float: right;" /></td>
+                            <td><strong>{{__('text.Bedrooms')}}</strong> <img src="{{ URL::asset('assets/img/bed.png') }}" style="width: 18px;float: right;" /></td>
                             <td>{{$property->bedrooms}}</td>
                           </tr>
                           <tr>
-                            <td><strong>Area <small>(m2)</small></strong></td>
+                            <td><strong>{{__('text.Area')}} <small>(m2)</small></strong></td>
                             <td>{{$property->area}} m2</sup> </td>
                           </tr>
 
@@ -809,7 +807,7 @@
 
                               @if($property->kind_of_type)
                                   <tr>
-                                      <td><strong>Kind of Type</strong></td>
+                                      <td><strong>{{__('text.Kind of Type')}}</strong></td>
                                       <td>{{$property->kind_of_type}}</sup> </td>
                                   </tr>
                               @endif
@@ -817,7 +815,7 @@
                                   @if($property->realization)
 
                                       <tr>
-                                          <td><strong>Realization</strong></td>
+                                          <td><strong>{{__('text.Realization')}}</strong></td>
                                           <td>{{$property->realization}}</sup> </td>
                                       </tr>
 
@@ -826,7 +824,7 @@
                                   @if($property->homes)
 
                                       <tr>
-                                          <td><strong>Homes</strong></td>
+                                          <td><strong>{{__('text.Homes')}}</strong></td>
                                           <td>{{$property->homes}}</sup> </td>
                                       </tr>
 
@@ -835,7 +833,7 @@
                                   @if($property->rental_properties)
 
                                       <tr>
-                                          <td><strong>Rental Properties</strong></td>
+                                          <td><strong>{{__('text.Rental Properties')}}</strong></td>
                                           <td>{{$property->rental_properties}}</sup> </td>
                                       </tr>
 
@@ -844,7 +842,7 @@
                                   @if($property->source)
 
                                       <tr>
-                                          <td><strong>Source</strong></td>
+                                          <td><strong>{{__('text.Source')}}</strong></td>
                                           <td style="word-wrap: break-word;overflow-wrap: break-word;">{{$property->source}}</sup> </td>
                                       </tr>
 
@@ -853,7 +851,7 @@
                                   @if($property->citation)
 
                                       <tr>
-                                          <td><strong>Citation</strong></td>
+                                          <td><strong>{{__('text.Citation')}}</strong></td>
                                           <td>{{$property->Citation}}</sup> </td>
                                       </tr>
 
@@ -861,7 +859,7 @@
 
                             @if($property->garage)
                                 <tr>
-                                    <td><strong>Garage <small>(m2)</small></strong></td>
+                                    <td><strong>{{__('text.Garage')}} <small>(m2)</small></strong></td>
                                     <td>{{$property->garage}} m2</sup> </td>
                                 </tr>
                             @endif
@@ -870,7 +868,7 @@
                             @if($property->construction_type)
 
                                 <tr>
-                                    <td><strong>Construction Type</strong></td>
+                                    <td><strong>{{__('text.Construction Type')}}</strong></td>
                                     <td>{{$property->construction_type}}</sup> </td>
                                 </tr>
 
@@ -879,7 +877,7 @@
                             @if($property->year_construction)
 
                                 <tr>
-                                    <td><strong>Construction Year</strong></td>
+                                    <td><strong>{{__('text.Construction Year')}}</strong></td>
                                     <td>{{$property->year_construction}}</sup> </td>
                                 </tr>
 
@@ -888,7 +886,7 @@
                             @if($property->building_condition)
 
                                 <tr>
-                                    <td><strong>Building Condition</strong></td>
+                                    <td><strong>{{__('text.Building Condition')}}</strong></td>
                                     <td>{{$property->building_condition}}</sup> </td>
                                 </tr>
 
@@ -897,7 +895,7 @@
                             @if($property->volume)
 
                                 <tr>
-                                    <td><strong>Volume <small>(m3)</small></strong></td>
+                                    <td><strong>{{__('text.Volume')}} <small>(m3)</small></strong></td>
                                     <td>{{$property->volume}} m3</sup> </td>
                                 </tr>
 
@@ -906,7 +904,7 @@
                             @if($property->floors)
 
                                 <tr>
-                                    <td><strong>Floors</strong></td>
+                                    <td><strong>{{__('text.Floors')}}</strong></td>
                                     <td>{{$property->floors}}</sup> </td>
                                 </tr>
 
@@ -915,7 +913,7 @@
                             @if($property->backyard)
 
                                 <tr>
-                                    <td><strong>Backyard <small>(m2)</small></strong></td>
+                                    <td><strong>{{__('text.Backyard')}} <small>(m2)</small></strong></td>
                                     <td>{{$property->backyard}}</sup> </td>
                                 </tr>
 
@@ -924,7 +922,7 @@
                             @if($property->frontyard)
 
                                 <tr>
-                                    <td><strong>Frontyard <small>(m2)</small></strong></td>
+                                    <td><strong>{{__('text.Frontyard')}} <small>(m2)</small></strong></td>
                                     <td>{{$property->frontyard}} m2</sup> </td>
                                 </tr>
 
@@ -933,7 +931,7 @@
                             @if($property->terrace)
 
                                 <tr>
-                                    <td><strong>Terrace <small>(m2)</small></strong></td>
+                                    <td><strong>{{__('text.Terrace')}} <small>(m2)</small></strong></td>
                                     <td>{{$property->terrace}} m2</sup> </td>
                                 </tr>
 
@@ -942,7 +940,7 @@
                             @if($property->garage_type)
 
                                 <tr>
-                                    <td><strong>Garage Type</strong></td>
+                                    <td><strong>{{__('text.Garage Type')}}</strong></td>
                                     <td>{{$property->garage_type}}</sup> </td>
                                 </tr>
 
@@ -951,7 +949,7 @@
                             @if($property->energy_rating)
 
                                 <tr>
-                                    <td><strong>Energy Rating</strong> <img src="{{ URL::asset('assets/img/green-house.png') }}" style="width: 18px;float: right;" /></td>
+                                    <td><strong>{{__('text.Energy Rating')}}</strong> <img src="{{ URL::asset('assets/img/green-house.png') }}" style="width: 18px;float: right;" /></td>
                                     <td>{{$property->energy_rating}}</sup> </td>
                                 </tr>
 
@@ -960,7 +958,7 @@
                             @if($property->solar_panel)
 
                                 <tr>
-                                    <td><strong>Solar Panel</strong></td>
+                                    <td><strong>{{__('text.Solar Panel')}}</strong></td>
                                     <td>{{$property->solar_panel}}</sup> </td>
                                 </tr>
 
@@ -969,7 +967,7 @@
                             @if($property->floor_option)
 
                                 <tr>
-                                    <td><strong>Floors Availability</strong></td>
+                                    <td><strong>{{__('text.Floors Availability')}}</strong></td>
                                     <td>{{$property->floor_option}}</sup> </td>
                                 </tr>
 
@@ -978,7 +976,7 @@
                             @if($property->walls)
 
                                 <tr>
-                                    <td><strong>Walls Availability</strong></td>
+                                    <td><strong>{{__('text.Walls Availability')}}</strong></td>
                                     <td>{{$property->walls}}</sup> </td>
                                 </tr>
 
@@ -987,7 +985,7 @@
                             @if($property->roof_insulation)
 
                                 <tr>
-                                    <td><strong>Roof Insulation</strong></td>
+                                    <td><strong>{{__('text.Roof Insulation')}}</strong></td>
                                     <td>{{$property->roof_insulation}}</sup> </td>
                                 </tr>
 
@@ -996,7 +994,7 @@
                             @if($property->cook)
 
                                 <tr>
-                                    <td><strong>Cook</strong> <img src="{{ URL::asset('assets/img/cook.png') }}" style="width: 18px;float: right;" /></td>
+                                    <td><strong>{{__('text.Cook')}}</strong> <img src="{{ URL::asset('assets/img/cook.png') }}" style="width: 18px;float: right;" /></td>
                                     <td>{{$property->cook}}</sup> </td>
                                 </tr>
 
@@ -1005,7 +1003,7 @@
                             @if($property->type_of_boiler)
 
                                 <tr>
-                                    <td><strong>Boiler Type</strong></td>
+                                    <td><strong>{{__('text.Boiler Type')}}</strong></td>
                                     <td>{{$property->type_of_boiler}}</sup> </td>
                                 </tr>
 
@@ -1014,7 +1012,7 @@
                             @if($property->agreement_type)
 
                                 <tr>
-                                    <td><strong>Agreement Type</strong></td>
+                                    <td><strong>{{__('text.Agreement Type')}}</strong></td>
                                     <td>{{$property->agreement_type}}</sup> </td>
                                 </tr>
 
@@ -1023,7 +1021,7 @@
                             @if($property->year_boiler)
 
                                 <tr>
-                                    <td><strong>Boiler Year</strong></td>
+                                    <td><strong>{{__('text.Boiler Year')}}</strong></td>
                                     <td>{{$property->year_boiler}}</sup> </td>
                                 </tr>
 
@@ -1032,7 +1030,7 @@
                             @if($property->property_furnished)
 
                                 <tr>
-                                    <td><strong>Property Furnished</strong></td>
+                                    <td><strong>{{__('text.Property Furnished')}}</strong></td>
                                     <td>{{$property->property_furnished}}</sup> </td>
                                 </tr>
 
@@ -1041,7 +1039,7 @@
                             @if($property->available_from)
 
                                 <tr>
-                                    <td><strong>Available From</strong> <img src="{{ URL::asset('assets/img/calendar.png') }}" style="width: 18px;float: right;" /></td>
+                                    <td><strong>{{__('text.Available From')}}</strong> <img src="{{ URL::asset('assets/img/calendar.png') }}" style="width: 18px;float: right;" /></td>
                                     <td>{{$property->available_from}}</sup> </td>
                                 </tr>
 
@@ -1051,7 +1049,7 @@
                                   @if($property->service_costs)
 
                                       <tr>
-                                          <td><strong>Service Costs</strong></td>
+                                          <td><strong>{{__('text.Service Costs')}}</strong></td>
                                           <td>{{$property->service_costs}}</sup> </td>
                                       </tr>
 
@@ -1074,7 +1072,7 @@
 
                                               <img src="{{ URL::asset('assets/img/signaling.png') }}" style="width: 30px;position: relative;top:-1px;margin-right: 9px;" />
 
-                                              <span style="font-size: 19px;font-weight: 600;position: relative;top: 4px;">Wheelchair friendly home for people with walking difficulties</span>
+                                              <span style="font-size: 19px;font-weight: 600;position: relative;top: 4px;">{{__('text.Wheelchair friendly home for people with walking difficulties')}}</span>
 
                                           </li>
 
@@ -1085,15 +1083,13 @@
 
                           @endif
 
-                          <h3 style="margin-top: 55px;">Travel Time</h3>
+                          <h3 style="margin-top: 55px;">{{__('text.Travel Time')}}</h3>
 
                           <div class="row" style="margin: 40px 0px;">
 
-                                      <img src="{{ URL::asset('assets/img/travel-time-logo.png') }}" style="width: 110px;display: block;" />
+                              <img src="{{ URL::asset('assets/img/travel-time-logo.png') }}" style="width: 110px;display: block;margin-bottom: 20px;" />
 
-                                      <p style="font-size: 19px;font-weight: 600;margin-top: 30px;">See how long it takes you to travel from this house to for example your work or family.</p>
-
-                              <a  id="cal_dist" style="cursor: pointer;"><i class="fas fa-plus" style="margin-right: 12px;"></i>Add Location</a>
+                              <a  id="cal_dist" style="cursor: pointer;"><i class="fas fa-plus" style="margin-right: 12px;"></i>{{__('text.Add Location')}}</a>
 
                               <div class="travel-time" style="display: none;">
 
@@ -1109,24 +1105,23 @@
 
                                   </div>
 
-                                  <h2 class="travel-time__heading">Your travel time</h2>
+                                  <h2 class="travel-time__heading">{{__('text.Your travel time')}}</h2>
 
-                                  <p class="travel-time__txt">From {{$property->address}}</p>
+                                  <p class="travel-time__txt">{{__('text.From')}} {{$property->address}}</p>
 
                                   <div id="travel_data">
 
                                   <div class="travel-time-transport-modes">
 
-                                      <a href="#DRIVING" data-toggle="tab"  style="text-decoration: none;" class="travel-time-transport-modes__button travel-time-transport-modes--active" disabled="">Driving</a>
+                                      <a href="#DRIVING" data-toggle="tab"  style="text-decoration: none;" class="travel-time-transport-modes__button travel-time-transport-modes--active" disabled="">{{__('text.Driving')}}</a>
 
-                                      <a href="#TRANSIT" data-toggle="tab"  style="text-decoration: none;" class="travel-time-transport-modes__button ">Transit</a>
+                                      <a href="#TRANSIT" data-toggle="tab"  style="text-decoration: none;" class="travel-time-transport-modes__button ">{{__('text.Transit')}}</a>
 
-                                      <a href="#WALKING" data-toggle="tab"  style="text-decoration: none;" class="travel-time-transport-modes__button ">Walking</a>
+                                      <a href="#WALKING" data-toggle="tab"  style="text-decoration: none;" class="travel-time-transport-modes__button ">{{__('text.Walking')}}</a>
 
-                                      <a href="#BICYCLING" data-toggle="tab"  style="text-decoration: none;" class="travel-time-transport-modes__button ">Cycling</a>
+                                      <a href="#BICYCLING" data-toggle="tab"  style="text-decoration: none;" class="travel-time-transport-modes__button ">{{__('text.Cycling')}}</a>
 
                                   </div>
-
 
                                           <div class="travel-time-table active" id="DRIVING">
 
@@ -1155,7 +1150,7 @@
 
                                           <div class="travel-time-add__inputs" style="margin-top: 25px;">
 
-                                              <label class="travel-time-add__address" style="font-size: 17px;font-weight: 600;">To
+                                              <label class="travel-time-add__address" style="font-size: 17px;font-weight: 600;">{{__('text.To')}}
 
                                                   <div class="input-container">
 
@@ -1163,7 +1158,7 @@
 
                                                       <img src="{{ URL::asset('assets/img/tools-and-utensils.png') }}" style="width: 15px;margin-left: 18px;" />
 
-                                                      <input  class="input-field add-location loc-input" type="text" placeholder="Location" name="loc" id="loc-input" style="border: 0;outline: 0;">
+                                                      <input  class="input-field add-location loc-input" type="text" placeholder="{{__('text.Location')}}" name="loc" id="loc-input" style="border: 0;outline: 0;">
 
                                                           <input  type="hidden" name="loc" id="loc-real">
 
@@ -1178,11 +1173,11 @@
 
                                               </label>
 
-                                              <label class="travel-time-add__address" style="font-size: 17px;font-weight: 600;">Name
+                                              <label class="travel-time-add__address" style="font-size: 17px;font-weight: 600;">{{__('text.Name')}}
 
                                                   <div class="input-container">
 
-                                                      <input class="input-field name-destination" type="text" placeholder="Name your destination (Optional)" name="destination_name" id="destination_name">
+                                                      <input class="input-field name-destination" type="text" placeholder="{{__('text.Name your destination (Optional)')}}" name="destination_name" id="destination_name">
 
                                                   </div>
 
@@ -1194,7 +1189,7 @@
 
                                           <div class="travel-time-add__cta-wrapper">
 
-                                              <input type="button" class="rui-button-brand rui-button-disabled" value="Add location" disabled="">
+                                              <input type="button" class="rui-button-brand rui-button-disabled" value="{{__('text.Add location')}}" disabled="">
 
                                           </div>
 
@@ -1486,7 +1481,7 @@
 
                           @if($property_features)
 
-                        <h3 style="margin-top: 55px;">Property Features</h3>
+                        <h3 style="margin-top: 55px;">{{__('text.Property Features')}}</h3>
 
                         <div class="row" style="margin: 40px 0px;">
 
@@ -1510,7 +1505,7 @@
 
                           @endif
 
-                        <h3 style="margin-top: 55px;">Property Description</h3>
+                        <h3 style="margin-top: 55px;">{{__('text.Property Description')}}</h3>
 
                         {!!$property->description!!}
 
@@ -1523,7 +1518,7 @@
 
                               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
-                                  <h2>Property Video</h2>
+                                  <h2>{{__('text.Property Video')}}</h2>
 
                                   <?php $ext = pathinfo($property->video, PATHINFO_EXTENSION);
 
@@ -1553,7 +1548,7 @@
 
                               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
-                                  <h2>Files Attachments</h2>
+                                  <h2>{{__('text.Files Attachments')}}</h2>
 
                                   @foreach($property_documents as $key)
 
@@ -1569,7 +1564,7 @@
 
                                               <div style="display:inline-block;margin: 10px;">
                                                   <img src="{{ URL::asset('assets/img/pdf.png') }}" style="width: 45px;">
-                                                  <label style="cursor: pointer">Download</label>
+                                                  <label style="cursor: pointer">{{__('text.Download')}}</label>
                                               </div>
 
                                       </a>
@@ -1580,7 +1575,7 @@
 
                                               <div style="display:inline-block;margin: 10px;">
                                                   <img src="{{ URL::asset('assets/img/docx.png') }}" style="width: 45px;">
-                                                  <label style="cursor:pointer;">Download</label>
+                                                  <label style="cursor:pointer;">{{__('text.Download')}}</label>
                                               </div>
 
                                               </a>
@@ -1591,7 +1586,7 @@
 
                                                   <div style="display:inline-block;margin: 10px;">
                                                       <img src="{{ URL::asset('assets/img/doc.png') }}" style="width: 45px;">
-                                                      <label style="cursor:pointer;">Download</label>
+                                                      <label style="cursor:pointer;">{{__('text.Download')}}</label>
                                                   </div>
 
                                               </a>
@@ -1602,7 +1597,7 @@
 
                                                   <div style="display:inline-block;margin: 10px;">
                                                       <img src="{{ URL::asset('assets/img/txt.png') }}" style="width: 45px;">
-                                                      <label style="cursor:pointer;">Download</label>
+                                                      <label style="cursor:pointer;">{{__('text.Download')}}</label>
                                                   </div>
 
                                               </a>
@@ -1613,7 +1608,7 @@
 
                                                   <div style="display:inline-block;margin: 10px;">
                                                       <img src="{{ URL::asset('assets/img/pptx.png') }}" style="width: 45px;">
-                                                      <label style="cursor:pointer;">Download</label>
+                                                      <label style="cursor:pointer;">{{__('text.Download')}}</label>
                                                   </div>
 
                                               </a>
@@ -1624,7 +1619,7 @@
 
                                                   <div style="display:inline-block;margin: 10px;">
                                                       <img src="{{ URL::asset('assets/img/ppt.png') }}" style="width: 45px;">
-                                                      <label style="cursor:pointer;">Download</label>
+                                                      <label style="cursor:pointer;">{{__('text.Download')}}</label>
                                                   </div>
 
                                               </a>
@@ -1635,7 +1630,7 @@
 
                                                   <div style="display:inline-block;margin: 10px;">
                                                       <img src="{{ URL::asset('assets/img/wpd.png') }}" style="width: 45px;">
-                                                      <label style="cursor:pointer;">Download</label>
+                                                      <label style="cursor:pointer;">{{__('text.Download')}}</label>
                                                   </div>
 
                                               </a>
@@ -1646,7 +1641,7 @@
 
                                                   <div style="display:inline-block;margin: 10px;">
                                                       <img src="{{ URL::asset('assets/img/rtf.png') }}" style="width: 45px;">
-                                                      <label style="cursor:pointer;">Download</label>
+                                                      <label style="cursor:pointer;">{{__('text.Download')}}</label>
                                                   </div>
 
                                               </a>
@@ -1666,31 +1661,31 @@
 
                                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
-                                      <h2>Floor Plans</h2>
+                                      <h2>{{__('text.Floor Plans')}}</h2>
 
                                       <ul style="list-style: none;display: inline-block;padding: 0;">
 
                                           @if($property->first_floor)
                                           <li style="float: left;margin: 10px;">
-                                              <a style="text-decoration: underline;cursor: pointer;" data-id="first" class="floors_links">First Floor</a>
+                                              <a style="text-decoration: underline;cursor: pointer;" data-id="first" class="floors_links">{{__('text.First Floor')}}</a>
                                           </li>
                                            @endif
 
                                               @if($property->second_floor)
                                                   <li style="float: left;margin: 10px;">
-                                                      <a style="text-decoration: underline;cursor: pointer;" data-id="second" class="floors_links">Second Floor</a>
+                                                      <a style="text-decoration: underline;cursor: pointer;" data-id="second" class="floors_links">{{__('text.Second Floor')}}</a>
                                                   </li>
                                               @endif
 
                                               @if($property->ground_floor)
                                                   <li style="float: left;margin: 10px;">
-                                                      <a style="text-decoration: underline;cursor: pointer;" data-id="ground" class="floors_links">Ground Floor</a>
+                                                      <a style="text-decoration: underline;cursor: pointer;" data-id="ground" class="floors_links">{{__('text.Ground Floor')}}</a>
                                                   </li>
                                               @endif
 
                                               @if($property->basement)
                                                   <li style="float: left;margin: 10px;">
-                                                      <a style="text-decoration: underline;cursor: pointer;" data-id="basement" class="floors_links">Basement</a>
+                                                      <a style="text-decoration: underline;cursor: pointer;" data-id="basement" class="floors_links">{{__('text.Basement')}}</a>
                                                   </li>
                                               @endif
                                       </ul>
@@ -1709,7 +1704,7 @@
 
                                       <div class="tab-pane fade active in" id="first">
 
-                                          <h4 style="text-align: center;">First Floor</h4>
+                                          <h4 style="text-align: center;">{{__('text.First Floor')}}</h4>
 
                                           @if($ext == 'pdf')
 
@@ -1717,7 +1712,7 @@
 
                                                   <div style="display:inline-block;margin: 10px;margin-top: 50px;">
                                                       <img src="{{ URL::asset('assets/img/pdf.png') }}" style="width: 45px;">
-                                                      <label style="cursor:pointer;">Download</label>
+                                                      <label style="cursor:pointer;">{{__('text.Download')}}</label>
                                                   </div>
 
                                               </a>
@@ -1746,7 +1741,7 @@
 
                                           <div  @if(!$check) class="tab-pane fade active in" <?php $check = 1; ?> @else class="tab-pane fade"  @endif id="second">
 
-                                              <h4 style="text-align: center;">Second Floor</h4>
+                                              <h4 style="text-align: center;">{{__('text.Second Floor')}}</h4>
 
                                               @if($ext == 'pdf')
 
@@ -1754,7 +1749,7 @@
 
                                                       <div style="display:inline-block;margin: 10px;margin-top: 50px;">
                                                           <img src="{{ URL::asset('assets/img/pdf.png') }}" style="width: 45px;">
-                                                          <label style="cursor:pointer;">Download</label>
+                                                          <label style="cursor:pointer;">{{__('text.Download')}}</label>
                                                       </div>
 
                                                   </a>
@@ -1781,7 +1776,7 @@
 
                                           <div @if(!$check) class="tab-pane fade active in" <?php $check = 1; ?> @else class="tab-pane fade"  @endif id="ground" >
 
-                                              <h4 style="text-align: center;">Ground Floor</h4>
+                                              <h4 style="text-align: center;">{{__('text.Ground Floor')}}</h4>
 
                                               @if($ext == 'pdf')
 
@@ -1789,7 +1784,7 @@
 
                                                       <div style="display:inline-block;margin: 10px;margin-top: 50px;">
                                                           <img src="{{ URL::asset('assets/img/pdf.png') }}" style="width: 45px;">
-                                                          <label style="cursor:pointer;">Download</label>
+                                                          <label style="cursor:pointer;">{{__('text.Download')}}</label>
                                                       </div>
 
                                                   </a>
@@ -1816,7 +1811,7 @@
 
                                           <div @if(!$check) class="tab-pane fade active in" <?php $check = 1; ?> @else class="tab-pane fade"  @endif id="basement" >
 
-                                              <h4 style="text-align: center;">Basement</h4>
+                                              <h4 style="text-align: center;">{{__('text.Basement')}}</h4>
 
                                               @if($ext == 'pdf')
 
@@ -1824,7 +1819,7 @@
 
                                                       <div style="display:inline-block;margin: 10px;margin-top: 50px;">
                                                           <img src="{{ URL::asset('assets/img/pdf.png') }}" style="width: 45px;">
-                                                          <label style="cursor:pointer;">Download</label>
+                                                          <label style="cursor:pointer;">{{__('text.Download')}}</label>
                                                       </div>
 
                                                   </a>
@@ -1883,7 +1878,7 @@
                             <p>{{$agent->about}}</p>
 
                               @if($properties_count>1)
-                                  <p><a style="color: white;font-weight: 600;text-shadow: 0px 0px 4px #5d5d5d;" href="{{ URL::to('/agent-properties/user/'.$agent->id.'/'.$property->id) }}" target="_blank">See Other {{$properties_count-1}} Properties posted by this Broker</a></p>
+                                  <p><a style="color: white;font-weight: 600;text-shadow: 0px 0px 4px #5d5d5d;" href="{{ URL::to('/agent-properties/user/'.$agent->id.'/'.$property->id) }}" target="_blank">{{__('text.See Other properties posted by this Broker',['properties' => $properties_count-1])}}</a></p>
                               @endif
 
                             <div class="team-social">
@@ -1925,20 +1920,18 @@
 
                               <div style="position: relative;width: 100%;">
 
-                                  <div class="bulgy-radios" role="radiogroup" aria-labelledby="bulgy-radios-label" style="width: 100%;min-height: 100px;text-align: left;">
-
-                                      <h3 id="bulgy-radios-label">Select Gender</h3>
+                                  <div class="bulgy-radios" role="radiogroup" aria-labelledby="bulgy-radios-label" style="width: 100%;min-height: 50px;text-align: left;">
 
                                       <label style="margin-left: 5px;float: left;max-width: 80px;">
                                           <input type="radio" name="gender" value="Mr." checked />
                                           <span class="radio"></span>
-                                          <span class="label">Mr.</span>
+                                          <span class="label">{{__('text.Mr.')}}</span>
                                       </label>
 
                                       <label>
                                           <input type="radio" name="gender" value="Ms." />
                                           <span class="radio"></span>
-                                          <span class="label">Ms.</span>
+                                          <span class="label">{{__('text.Ms.')}}</span>
                                       </label>
 
                                   </div>
@@ -1948,23 +1941,23 @@
                           </div>
 
                           <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" name="name" class="form-control input-lg" placeholder="Enter name : ">
+                            <label for="name">{{__('text.Name')}}</label>
+                            <input type="text" name="name" class="form-control input-lg" placeholder="{{__('text.Name')}}">
                           </div>
                           <div class="form-group">
-                            <label for="email">Email address</label>
-                            <input type="email" name="email" class="form-control input-lg" placeholder="Enter email : ">
+                            <label for="email">E-mailadres</label>
+                            <input type="email" name="email" class="form-control input-lg" placeholder="E-mail">
                           </div>
                           <div class="form-group">
-                            <label for="telp">Telp.</label>
-                            <input type="text" name="phone" class="form-control input-lg" placeholder="Enter phone number : ">
+                            <label for="telp">{{__('text.Mobile No')}}</label>
+                            <input type="text" name="phone" class="form-control input-lg" placeholder="{{__('text.Mobile No')}}">
                           </div>
                           <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea name="message" class="form-control input-lg" rows="7" placeholder="Type a message : "></textarea>
+                            <label for="message">{{__('text.Message')}}</label>
+                            <textarea name="message" class="form-control input-lg" rows="7" placeholder="{{__('text.Message')}}"></textarea>
                           </div>
                           <div class="form-group">
-                            <input type="submit" name="submit" value="Send Message" class="btn btn-primary btn-lg">
+                            <input type="submit" name="submit" value="{{__('text.Send Message')}}" class="btn btn-primary btn-lg">
                           </div>
                         {!! Form::close() !!}
 
@@ -1977,7 +1970,7 @@
 
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;">
 
-                            <h3>Location of Agent:</h3>
+                            <h3>{{__('text.Location')}}</h3>
 
                             <input type="hidden" name="agent_latitude" id="agent_latitude" value="{{$agent->address_latitude}}" />
                             <input type="hidden" name="agent_longitude" id="agent_longitude" value="{{$agent->address_longitude}}" />
@@ -2121,20 +2114,18 @@
 
                                         <div style="position: relative;width: 100%;">
 
-                                            <div class="bulgy-radios" role="radiogroup" aria-labelledby="bulgy-radios-label" style="width: 100%;min-height: 85px;text-align: left;">
-
-                                                <h3 id="bulgy-radios-label" style="font-size: 18px;">Select Gender</h3>
+                                            <div class="bulgy-radios" role="radiogroup" aria-labelledby="bulgy-radios-label" style="width: 100%;min-height: 50px;text-align: left;">
 
                                                 <label style="margin-left: 5px;float: left;max-width: 80px;">
                                                     <input type="radio" name="gender" value="Mr." checked />
                                                     <span class="radio"></span>
-                                                    <span class="label">Mr.</span>
+                                                    <span class="label">{{__('text.Mr.')}}</span>
                                                 </label>
 
                                                 <label>
                                                     <input type="radio" name="gender" value="Ms." />
                                                     <span class="radio"></span>
-                                                    <span class="label">Ms.</span>
+                                                    <span class="label">{{__('text.Ms.')}}</span>
                                                 </label>
 
                                             </div>
@@ -2146,7 +2137,7 @@
 
                                     <div class="col-sm-12">
                                         <div class="form-group">
-                                            <input type="text" class="contact-control" name="name" placeholder="Name" required="required">
+                                            <input type="text" class="contact-control" name="name" placeholder="{{__('text.Name')}}" required="required">
                                         </div><!-- /.form-group -->
                                     </div>
                                     <div class="col-sm-12">
@@ -2156,16 +2147,16 @@
                                     </div>
                                     <div class="col-sm-12">
                                         <div class="form-group">
-                                            <input type="text" class="contact-control style2" name="phone" placeholder="Phone Number" value="">
+                                            <input type="text" class="contact-control style2" name="phone" placeholder="{{__('text.Mobile No')}}" value="">
                                         </div><!-- /.form-group -->
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <textarea class="contact-control" name="message" placeholder="Message" required="required"></textarea>
+                                    <textarea class="contact-control" name="message" placeholder="{{__('text.Message')}}" required="required"></textarea>
                                 </div><!-- /.form-group -->
 
 
-                                <button type="submit" class="button btn btn-theme btn-block" name="contact-form">Send Message</button>
+                                <button type="submit" class="button btn btn-theme btn-block" name="contact-form">{{__('text.Send Message')}}</button>
                             {!! Form::close() !!}
                         </div>
                     </aside>			   		</div>
@@ -2187,7 +2178,7 @@
                                         <div class="col-md-12">
 
                                             <div class="heading-title bg-white">
-                                                <h2>Related Properties</h2>
+                                                <h2>{{__('text.Related Properties')}}</h2>
                                             </div>
                                         </div>
                                     </div>
@@ -2272,9 +2263,9 @@
                                 </div>
                                 <div class="large-8 columns" style="font-family: monospace;">
                                     <h6 class="unitStreet" style="margin-top: 0px;text-align: left;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;">{{$previous->property_name}}</h6>
-                                    <p class="unitCity" style="color: #3c3b3b;text-align: left;"><b>Address:</b> {{$previous->address}}</p>
-                                    <p class="unitCity" style="color: #3c3b3b;text-align: left;"><b>City:</b> {{$previous->city_name}}</p>
-                                    <p class="unitCity" style="color: #3c3b3b;text-align: left;"><b>Bedrooms:</b>{{$previous->bedrooms}}</p>
+                                    <p class="unitCity" style="color: #3c3b3b;text-align: left;"><b>{{__('text.Address')}}:</b> {{$previous->address}}</p>
+                                    <p class="unitCity" style="color: #3c3b3b;text-align: left;"><b>{{__('text.City')}}:</b> {{$previous->city_name}}</p>
+                                    <p class="unitCity" style="color: #3c3b3b;text-align: left;"><b>{{__('text.Bedrooms')}}:</b>{{$previous->bedrooms}}</p>
                                 </div>
 
 
@@ -2287,21 +2278,21 @@
 
                     <a href="{{URL::to('properties/'.$previous->property_slug)}}" class="btn btn-primary footer-button prev-property" style="left: 0px;margin-left: 0px;">
                         <i class="fa fa-angle-left" aria-hidden="true" style="margin-right: 10px;"></i>
-                        <span>Previous House</span>
+                        <span>{{__('text.Previous House')}}</span>
                     </a>
 
                 @elseif($property->new_construction == 1)
 
                     <a href="{{URL::to('new-constructions/'.$previous->property_slug)}}" class="btn btn-primary footer-button prev-property" style="left: 0px;margin-left: 0px;">
                         <i class="fa fa-angle-left" aria-hidden="true" style="margin-right: 10px;"></i>
-                        <span>Previous House</span>
+                        <span>{{__('text.Previous House')}}</span>
                     </a>
 
                 @else
 
                     <a href="{{URL::to('home-exchange/'.$previous->property_slug)}}" class="btn btn-primary footer-button prev-property" style="left: 0px;margin-left: 0px;">
                         <i class="fa fa-angle-left" aria-hidden="true" style="margin-right: 10px;"></i>
-                        <span>Previous House</span>
+                        <span>{{__('text.Previous House')}}</span>
                     </a>
 
                 @endif
@@ -2310,7 +2301,7 @@
 
             <a href="{{ url()->previous() }}" class="btn btn-primary footer-button" style="left: 20%;margin-left: 0px;">
                 <i class="fas fa-backward" aria-hidden="true" style="margin-right: 10px;"></i>
-                <span>Back to overview</span>
+                <span>{{__('text.Back to overview')}}</span>
             </a>
 
             <a href="#top" class="btn btn-primary scroltop"><i class="fa fa-angle-up"></i></a>
@@ -2342,9 +2333,9 @@
                                 </div>
                                 <div class="large-8 columns" style="font-family: monospace;">
                                     <h6 class="unitStreet" style="margin-top: 0px;text-align: left;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;">{{$next->property_name}}</h6>
-                                    <p class="unitCity" style="color: #3c3b3b;text-align: left;"><b>Address:</b> {{$next->address}}</p>
-                                    <p class="unitCity" style="color: #3c3b3b;text-align: left;"><b>City:</b> {{$next->city_name}}</p>
-                                    <p class="unitCity" style="color: #3c3b3b;text-align: left;"><b>Bedrooms:</b>{{$next->bedrooms}}</p>
+                                    <p class="unitCity" style="color: #3c3b3b;text-align: left;"><b>{{__('text.Address')}}:</b> {{$next->address}}</p>
+                                    <p class="unitCity" style="color: #3c3b3b;text-align: left;"><b>{{__('text.City')}}:</b> {{$next->city_name}}</p>
+                                    <p class="unitCity" style="color: #3c3b3b;text-align: left;"><b>{{__('text.Bedrooms')}}:</b>{{$next->bedrooms}}</p>
                                 </div>
 
 
@@ -2357,21 +2348,21 @@
 
                     <a href="{{URL::to('properties/'.$next->property_slug)}}" class="btn btn-primary footer-button next-property" style="left: auto;right: 0px;margin-left: 0px;">
                         <i class="fa fa-angle-right" aria-hidden="true" style="margin-right: 10px;"></i>
-                        <span>Next House</span>
+                        <span>{{__('text.Next House')}}</span>
                     </a>
 
                 @elseif($property->new_construction == 1)
 
                     <a href="{{URL::to('new-constructions/'.$next->property_slug)}}" class="btn btn-primary footer-button next-property" style="left: auto;right: 0px;margin-left: 0px;">
                         <i class="fa fa-angle-right" aria-hidden="true" style="margin-right: 10px;"></i>
-                        <span>Next House</span>
+                        <span>{{__('text.Next House')}}</span>
                     </a>
 
                 @else
 
                     <a href="{{URL::to('home-exchange/'.$next->property_slug)}}" class="btn btn-primary footer-button next-property" style="left: auto;right: 0px;margin-left: 0px;">
                         <i class="fa fa-angle-right" aria-hidden="true" style="margin-right: 10px;"></i>
-                        <span>Next House</span>
+                        <span>{{__('text.Next House')}}</span>
                     </a>
 
                 @endif
@@ -3410,7 +3401,7 @@
                                 '\n' +
                                 '                                              </div>\n' +
                                 '\n' +
-                                '                                              <div class="travel-time-row__remove"><button class="rui-button-basic travel-time-row__btn remove_travel" id="remove_travel_'+sec_id+'" data-id="'+row_id+'" >Remove</button>\n' +
+                                '                                              <div class="travel-time-row__remove"><button class="rui-button-basic travel-time-row__btn remove_travel" id="remove_travel_'+sec_id+'" data-id="'+row_id+'" >{{__('text.Remove')}}</button>\n' +
                                 '\n' +
                                 '                                              </div>\n' +
                                 '\n' +
