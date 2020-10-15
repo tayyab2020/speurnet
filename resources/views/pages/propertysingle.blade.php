@@ -23,19 +23,19 @@
               <h2>{{$property->property_name}}</h2>
             </div>
             <ol class="breadcrumb">
-              <li><a href="{{ URL::to('/') }}">Home</a></li>
+              <li><a href="{{ URL::to('/') }}">{{__('text.Home')}}</a></li>
 
                 @if($property->new_construction == 1)
 
-                    <li><a href="{{ URL::to('new-constructions/') }}">New Constructions</a></li>
+                    <li><a href="{{ URL::to('new-constructions/') }}">{{__('text.New Constructions')}}</a></li>
 
                     @elseif($property->home_exchange == 1)
 
-                    <li><a href="{{ URL::to('homeexchange/') }}">Home Exchange</a></li>
+                    <li><a href="{{ URL::to('homeexchange/') }}">{{__('text.Home Exchange')}}</a></li>
 
                              @else
 
-                    <li><a href="{{ URL::to('properties/') }}">Properties</a></li>
+                    <li><a href="{{ URL::to('properties/') }}">{{__('text.Properties')}}</a></li>
 
                              @endif
 
@@ -77,7 +77,7 @@
             <div class="row">
               <div class="col-md-12 single-post">
                 <ul id="myTab" class="nav nav-tabs nav-justified">
-                  <li class="property-tab active"><a href="#detail" style="outline: none;" id="left-tab" data-toggle="tab"><i style="margin-right: 5px;" class="fas fa-house-user"></i> {{__('text.Property Detail')}}</a></li>
+                  <li class="property-tab active"><a href="#detail" style="outline: none;" id="left-tab" data-toggle="tab"><i style="margin-right: 5px;" class="fas fa-house-user"></i> @if($property->new_construction == 1 || $property->home_exchange == 1){{__('text.Property Detail Heading')}} @else {{__('text.Property Detail')}} @endif</a></li>
 
                     @if($property->new_construction != 1)
                     <li class="contact-tab"><a href="#location" style="outline: none;" id="right-tab" data-toggle="tab"><i style="margin-right: 5px;" class="far fa-comment-dots"></i> Contact</a></li>
@@ -680,7 +680,7 @@
 
                                                           <i class="fas fa-at" style="position: absolute;left: 15px;right: auto;color: #d5d5d5;font-size: 14px;top: 55%;margin:-9px 0 0;pointer-events:none;"></i>
 
-                                                          <input style="padding: 0 0 0 40px;height: 42px;color:#bcbcbc;border-color:#e6e6e6;border-radius: 3px;box-shadow: none;" type='email' placeholder="E-mailadres" name="email" required  class="form-control" id='email' />
+                                                          <input style="padding: 0 0 0 40px;height: 42px;color:#bcbcbc;border-color:#e6e6e6;border-radius: 3px;box-shadow: none;" type='email' placeholder="{{__('text.Email Address')}}" name="email" required  class="form-control" id='email' />
 
                                                       </div>
 
@@ -734,7 +734,7 @@
                               <div class="col-lg-12 col-md-12 col-sm-12 col-sm-12" style="padding: 0;">
                                   <label class="head-label" style="color: #434343;font-weight: 600;">{{__('text.Bedrooms')}}<img src="{{ URL::asset('assets/img/bed.png') }}" style="width: 25px;margin: 0px 13px;" /><span style="font-size: 20px;color: #4d4b4b;">{{$property->bedrooms}}</span></label>
                                   <label class="mid-label" style="color: #434343;font-weight: 600;margin: 0px 65px;">{{__('text.Bathrooms')}}<img src="{{ URL::asset('assets/img/bathroom.png') }}" style="width: 25px;margin: 0px 13px;margin-bottom: 3px;" /><span style="font-size: 20px;color: #4d4b4b;">{{$property->bathrooms}}</span></label>
-                                  <label class="head-label" style="color: #434343;font-weight: 600;">{{__('text.Area')}}<img src="{{ URL::asset('assets/img/browser.png') }}" style="width: 20px;margin: 0px 13px;margin-bottom: 3px;" /><span style="font-size: 17px;color: #4d4b4b;">{{$property->area}} <small>m2</small></span></label>
+                                  <label class="head-label" style="color: #434343;font-weight: 600;">{{__('text.Area')}} <small>(m2)</small><img src="{{ URL::asset('assets/img/browser.png') }}" style="width: 20px;margin: 0px 13px;margin-bottom: 3px;" /><span style="font-size: 17px;color: #4d4b4b;">{{$property->area}} <small>m2</small></span></label>
                               </div>
                           </div>
 
@@ -1945,7 +1945,7 @@
                             <input type="text" name="name" class="form-control input-lg" placeholder="{{__('text.Name')}}">
                           </div>
                           <div class="form-group">
-                            <label for="email">E-mailadres</label>
+                            <label for="email">{{__('text.Email Address')}}</label>
                             <input type="email" name="email" class="form-control input-lg" placeholder="E-mail">
                           </div>
                           <div class="form-group">

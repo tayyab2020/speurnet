@@ -4,7 +4,7 @@
 
 <div id="main">
 	<div class="page-header">
-		<h2>Overview</h2>
+		<h2>{{__('text.Overview Heading')}}</h2>
 	</div>
 
     @if(Session::has('flash_message'))
@@ -249,6 +249,29 @@
             @media (min-width: 992px)
             {
                 .widgets-row{display: flex;margin: 0;}
+            }
+
+            .widgets-row .media-left{
+                width: 70%;
+                display: inline-block;
+                float: left;
+            }
+
+            .widgets-row .media-body
+            {
+                width: 30%;
+                display: inline-block;
+                float: left;
+            }
+
+            .widgets-row .width-100
+            {
+                width: 100%;
+            }
+
+            .widgets-row .width-150
+            {
+                width: 100%;
             }
 
             .panel{height: 75%;}

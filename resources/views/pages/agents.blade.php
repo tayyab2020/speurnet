@@ -10,11 +10,11 @@
         <div class="row">
           <div class="col-md-10 col-md-offset-1 col-sm-12">
             <div class="page-title">
-              <h2>Members</h2>
+              <h2>{{__('text.Agents')}}</h2>
             </div>
             <ol class="breadcrumb">
-              <li><a href="{{ URL::to('/') }}">Home</a></li>
-              <li class="active">Members</li>
+              <li><a href="{{ URL::to('/') }}">{{__('text.Home')}}</a></li>
+              <li class="active">{{__('text.Agents')}}</li>
             </ol>
           </div>
         </div>
@@ -99,7 +99,7 @@
                   <div class="row" style="margin: 0;margin-bottom: 20px;">
 
                       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;">
-                          <ul class="property-radios" style="padding: 0;margin-top: 30px;display: flex;flex-direction: row;flex-flow: wrap">
+                          <ul class="property-radios" style="padding: 0;margin-top: 10px;display: flex;flex-direction: row;flex-flow: wrap;justify-content: space-evenly;">
 
                               <li class="pt @if(isset($service)) @if($service == 1) active1 @endif @endif">
 
@@ -193,16 +193,16 @@
                       @import url('https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic');
 
                       ul.property-radios li{
-                          display: inline-block; margin: auto; padding: 0; vertical-align: top;width: 160px;
+                          display: flex; margin: 0; padding: 0; vertical-align: top;width: 160px;
                       }
 
                       li{ list-style: none; }
 
-                      .type-holder-main{ position: relative; }
+                      .type-holder-main{ position: relative;display: flex;flex-wrap: wrap; }
 
                       ul.property-radios li input{ display: none; }
 
-                      ul.property-radios li label {  width: 100%;min-height: 125px;-webkit-transition: all .5s ease-in-out; transition: all .5s ease-in-out ;overflow: hidden; padding: 20px; cursor: pointer; border: solid 1px #dddddd; -webkit-border-radius: 2px; -moz-border-radius: 2px; border-radius: 2px; background-color: #fff;text-align: center; }
+                      ul.property-radios li label {  width: 100%;-webkit-transition: all .5s ease-in-out; transition: all .5s ease-in-out ;overflow: hidden; padding: 20px; cursor: pointer; border: solid 1px #dddddd; -webkit-border-radius: 2px; -moz-border-radius: 2px; border-radius: 2px; background-color: #fff;text-align: center; }
 
                       .user-holder.create-property-holder ul.property-radios li label { display: block; min-height: 55px; }
 

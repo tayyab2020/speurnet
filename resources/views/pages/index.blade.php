@@ -110,7 +110,7 @@
 
                                     <div style="min-height: 55px;display: flex;">
                                         @if($property->open_date)
-                                            <div class="property-price" style="min-height: 28px;position:relative;max-width: 100%;font-size: 11px;padding: 3px 5px;margin: auto 0;width: 100%;border-radius: 5px;"><span>Open House {{$property->open_date}} {{$property->open_timeFrom}} to {{$property->open_timeTo}}</span></div>
+                                            <div class="property-price" style="min-height: 28px;position:relative;max-width: 100%;font-size: 11px;padding: 3px 5px;margin: auto 0;width: 100%;border-radius: 5px;"><span>{{__('text.Open House')}} {{$property->open_date}} {{$property->open_timeFrom}} to {{$property->open_timeTo}}</span></div>
                                         @else
                                             <div class="property-price" style="background: transparent;min-height: 28px;position:relative;max-width: 100%;font-size: 11px;padding: 3px 5px;margin: auto 0;width: 100%;border-radius: 5px;"></div>
                                         @endif
@@ -163,7 +163,7 @@
 
                                                 <div class="property-price" style="top: 37px;left: -58px;border-radius: 5px;padding: 5px 10px;transform: rotate(-40deg);width: 240px;">
 
-                                                    <span>Sold</span>
+                                                    <span>{{__('text.Sold')}}</span>
 
                                                 </div>
 
@@ -171,7 +171,7 @@
 
                                                 <div class="property-price" style="top: 37px;left: -58px;border-radius: 5px;padding: 5px 10px;transform: rotate(-40deg);width: 240px;">
 
-                                                    <span>Rented</span>
+                                                    <span>{{__('text.Rented')}}</span>
 
                                                 </div>
 
@@ -179,7 +179,7 @@
 
                                                 <div class="property-price" style="top: 37px;left: -58px;border-radius: 5px;padding: 5px 10px;transform: rotate(-40deg);width: 240px;">
 
-                                                    <span style="font-size: 14px;">Under Negotiation</span>
+                                                    <span style="font-size: 14px;">{{__('text.Under Negotiation')}}</span>
 
                                                 </div>
 
@@ -187,14 +187,14 @@
 
                                                 <div class="property-price" style="top: 37px;left: -58px;border-radius: 5px;padding: 5px 10px;transform: rotate(-40deg);width: 240px;">
 
-                                                    <span style="font-size: 16px;">Under Offer</span>
+                                                    <span style="font-size: 16px;">{{__('text.Under Offer')}}</span>
 
                                                 </div>
 
                                             @else
 
                                                 <div class="property-price" style="top: 12px;left: 12px;border-radius: 5px;padding: 5px 10px;">
-                                                    <span>For {{$property->property_purpose}}</span>
+                                                    <span>{{__('text.For '.$property->property_purpose)}}</span>
                                                     {{--<h4>{{ getPropertyTypeName($property->property_type)->types }}</h4>
                                                     <span>{{getcong('currency_sign')}}@if($property->sale_price) {{$property->sale_price}} @else {{$property->rent_price}} @endif</span>--}}
                                                 </div>
@@ -206,7 +206,7 @@
                                             @if($property->available_immediately)
 
                                                 <div class="property-status status-responsive" style="background:#48cfad;width:170px;bottom: 12px;left: 12px;border-radius: 5px;padding: 0px;text-align: center;">
-                                                    <span>Available Immediately</span>
+                                                    <span>{{__('text.Available Immediately')}}</span>
                                                 </div>
 
                                             @endif
@@ -530,7 +530,7 @@
 
 
                                 <div class="property-status">
-                                    <span>For {{$temp->property_purpose}}</span>
+                                    <span>{{__('text.For '.$temp->property_purpose)}}</span>
                                 </div>
                             </div>
 

@@ -171,7 +171,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Property Alert Creation</h4>
+                <h4 class="modal-title">{{__('text.Property Alert Creation')}}</h4>
             </div>
 
             @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions')
@@ -181,7 +181,7 @@
                     <div class="form-group">
 
                         <p>
-                            By saving your search you will receive notifications based on the following search criteria:
+                            {{__('text.Property Alert Heading')}}:
                         </p>
 
                         @if($address)
@@ -195,7 +195,7 @@
                         @if($property_type)
                             <span class="button-applied-filter span-heading">{{ getPropertyTypeName($property_type)->types }}</span>
                         @else
-                            <span class="button-applied-filter span-heading">All Property Types</span>
+                            <span class="button-applied-filter span-heading">{{__('text.All Property Types')}}</span>
                         @endif
 
 
@@ -203,7 +203,7 @@
                         @if(Route::currentRouteName() == 'searchproperties')
 
                             @if($purpose)
-                                <span class="button-applied-filter span-heading">For {{$purpose}}</span>
+                                <span class="button-applied-filter span-heading">{{__('text.For '.$purpose)}}</span>
                             @endif
 
                         @endif
@@ -212,7 +212,7 @@
                         @if(Route::currentRouteName() == 'searchnewconstructions')
 
                             @if($kind_of_type)
-                                <span class="button-applied-filter span-heading">{{$kind_of_type}}</span>
+                                <span class="button-applied-filter span-heading">{{__('text.'.$kind_of_type)}}</span>
                             @endif
 
                         @endif
@@ -221,7 +221,7 @@
                         @if(Route::currentRouteName() == 'searchproperties')
 
                             @if($type_of_construction)
-                                <span class="button-applied-filter span-heading">{{$type_of_construction}} Property</span>
+                                <span class="button-applied-filter span-heading">{{__('text.'.$type_of_construction)}} {{__('text.Property')}}</span>
                             @endif
 
                         @endif
@@ -241,31 +241,27 @@
                         @endif
 
 
-
                         @if($bedrooms)
-                            <span class="button-applied-filter span-heading">{{$bedrooms}}@if($bedrooms!=1) Bedrooms @else Bedroom @endif</span>
+                            <span class="button-applied-filter span-heading">{{$bedrooms}}@if($bedrooms!=1) {{__('text.Total Bedrooms')}} @else {{__('text.Total Bedroom')}} @endif</span>
                         @endif
-
 
 
                         @if($bathrooms)
-                            <span class="button-applied-filter span-heading">{{$bathrooms}}@if($bathrooms!=1) Bathrooms @else Bathrooms @endif</span>
+                            <span class="button-applied-filter span-heading">{{$bathrooms}}@if($bathrooms!=1) {{__('text.Total Bathrooms')}} @else {{__('text.Total Bathroom')}} @endif</span>
                         @endif
-
 
 
                         @if($min_area != '' || $max_area != '')
 
                             @if($min_area != '' && $max_area != '')
-                                <span class="button-applied-filter span-heading">{{$min_area}} m² - {{$max_area}} m² (Plot Area)</span>
+                                <span class="button-applied-filter span-heading">{{$min_area}} m² - {{$max_area}} m² {{__('text.(Plot Area)')}}</span>
                             @elseif($min_area != '')
-                                <span class="button-applied-filter span-heading">{{$min_area}}+ m² (Plot Area)</span>
+                                <span class="button-applied-filter span-heading">{{$min_area}}+ m² {{__('text.(Plot Area)')}}</span>
                             @elseif($max_area != '')
-                                <span class="button-applied-filter span-heading">0 m² - {{$max_area}} m² (Plot Area)</span>
+                                <span class="button-applied-filter span-heading">0 m² - {{$max_area}} m² {{__('text.(Plot Area)')}}</span>
                             @endif
 
                         @endif
-
 
 
                         @if($keywords)
@@ -273,16 +269,15 @@
                         @endif
 
 
-
                         @if($wheelchair)
-                            <span class="button-applied-filter span-heading">Wheelchair Friendly</span>
+                            <span class="button-applied-filter span-heading">{{__('text.Wheelchair Friendly')}}</span>
                         @endif
 
                     </div>
 
                     {!! Form::open(array('url' => array('savepropertyalert'),'class'=>'form-horizontal padding-15','name'=>'job_form','id'=>'job_form','role'=>'form','enctype' => 'multipart/form-data')) !!}
-                    <label>Email Address: </label>
-                    <input class="form-control" name="email" title="You will receive Emails on this Address" type="email" required placeholder="Enter Email for Job Alert Receiving" value="{{isset(Auth::user()->email)?Auth::user()->email:''}}">
+                    <label>{{__('text.Email Address')}}</label>
+                    <input class="form-control" name="email" title="You will receive Emails on this Address" type="email" required placeholder="" value="{{isset(Auth::user()->email)?Auth::user()->email:''}}">
                     <input name="property_type" type="hidden" value="{{$property_type}}">
                     @if(Route::currentRouteName() == 'searchproperties')
                         <input name="property_purpose" type="hidden" value="{{$purpose}}">
@@ -315,22 +310,22 @@
 
                     <div>
 
-                        <label>Property Alert Type: &nbsp</label>
+                        <label>{{__('text.Property Alert Type')}} &nbsp</label>
 
                         <p style="margin-top: 10px;">
                             <input type="radio" id="test1" name="type" value="1" checked>
-                            <label for="test1">Daily</label>
+                            <label for="test1">{{__('text.Daily')}}</label>
                         </p>
 
                         <p>
                             <input type="radio" id="test2" name="type" value="2">
-                            <label for="test2">Weekly</label>
+                            <label for="test2">{{__('text.Weekly')}}</label>
                         </p>
 
                     </div>
 
 
-                    <button class="btn btn-success" type="submit" style="float: right;outline: none;">Create Property Alert</button>
+                    <button class="btn btn-success" type="submit" style="float: right;outline: none;">{{__('text.Create Property Alert')}}</button>
                     {!! Form::close() !!}
                 </div>
 

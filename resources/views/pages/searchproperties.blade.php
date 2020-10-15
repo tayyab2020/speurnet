@@ -64,12 +64,12 @@
             </div>--}}
 
               <div class="page-title">
-                  <h2>Search Results</h2>
+                  <h2>{{__('text.Search Results')}}</h2>
               </div>
 
             <ol class="breadcrumb">
-              <li><a href="{{ URL::to('/') }}">Home</a></li>
-              <li class="active">Search</li>
+              <li><a href="{{ URL::to('/') }}">{{__('text.Home')}}</a></li>
+              <li class="active">{{__('text.Search')}}</li>
             </ol>
           </div>
         </div>
@@ -108,7 +108,7 @@
             <!-- begin:product -->
 
                 @if(count($properties) == 0)
-                    <h1>No Properties found..</h1>
+                    <h1>{{__('text.No Properties found...')}}</h1>
                 @else
                   <div class="row">
 
@@ -133,9 +133,9 @@
 
                                           <div class="property-status">
                                               @if(Route::currentRouteName() != 'searchnewconstructions')
-                                                  <span>For {{$property->property_purpose}}</span>
+                                                  <span>{{__('text.For '.$property->property_purpose)}}</span>
                                               @else
-                                                  <span>{{$property->kind_of_type}}</span>
+                                                  <span>{{__('text.'.$property->kind_of_type)}}</span>
                                               @endif
                                           </div>
                               </div>
@@ -153,14 +153,14 @@
                                           <small style="margin-top: 20px;font-weight: 600;">{{ getPropertyTypeName($property->property_type)->types }}</small>
                                           <small style="float: right;">€@if($property->sale_price) {{number_format($property->sale_price, 0, ',', '.')}} {{$property->cost_for}} @else {{number_format($property->rent_price, 0, ',', '.')}} @endif</small>
 
-                                          @else
+                                      @else
 
                                           <h3 style="margin: 10px 0px;"><a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;" href="{{URL::to('new-constructions/'.$property->property_slug)}}">{{ Str::limit($property->property_name,35) }}</a> <small style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;">{{ Str::limit($property->address,40) }}</small></h3>
 
                                           <small style="margin-top: 20px;font-weight: 600;">{{ getPropertyTypeName($property->property_type)->types }}</small>
                                           <small style="float: right;">€@if($property->sale_price) {{number_format($property->sale_price, 0, ',', '.')}} {{$property->cost_for}} @else {{number_format($property->rent_price, 0, ',', '.')}} @endif</small>
 
-                                          @endif
+                                      @endif
                                   </div>
                               </div>
                           </div>

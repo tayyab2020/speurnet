@@ -604,9 +604,7 @@ class IndexController extends Controller
         {
                 return redirect()->back()->withErrors($validator->messages());
         }
-
-
-
+        
 
         $user = new User;
 

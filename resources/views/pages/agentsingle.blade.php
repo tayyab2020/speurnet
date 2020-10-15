@@ -17,8 +17,8 @@
                         <h2>{{$agent->name}}</h2>
                     </div>
                     <ol class="breadcrumb">
-                        <li><a href="{{ URL::to('/') }}">Home</a></li>
-                        <li><a href="{{ URL::to('agents/') }}">Agents</a></li>
+                        <li><a href="{{ URL::to('/') }}">{{__('text.Home')}}</a></li>
+                        <li><a href="{{ URL::to('agents/') }}">{{__('text.Agents')}}</a></li>
                         <li class="active">{{$agent->name}}</li>
                     </ol>
                 </div>
@@ -128,9 +128,9 @@
                     <div class="row">
                         <div class="col-md-12 single-post">
                             <ul id="myTab" class="nav nav-tabs nav-justified">
-                                <li class="property-tab active"><a href="#detail" id="left-tab" data-toggle="tab">Overview</a></li>
+                                <li class="property-tab active"><a href="#detail" id="left-tab" data-toggle="tab">{{__('text.Overview')}}</a></li>
 
-                                <li class="contact-tab"><a href="#location" id="right-tab" data-toggle="tab">Find On Map</a></li>
+                                <li class="contact-tab"><a href="#location" id="right-tab" data-toggle="tab">{{__('text.Find On Map')}}</a></li>
 
                             </ul>
 
@@ -229,18 +229,18 @@
 
                                     <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 60px;">
 
-                                        <h3 style="text-align: center;">Total Sold & Rentout {{$agent->prev_year}}</h3>
+                                        <h3 style="text-align: center;">{{__('text.Total Sold & Rentout')}} {{$agent->prev_year}}</h3>
 
                                         <div style="width: 100%;display: inline-block;margin-bottom: 40px;margin-top: 20px;">
 
                                             <div style="display: flex;flex-direction: row;width: 50%;float: left;justify-content: center;">
                                                 <span style="background: rgb(255,86,68);height: 13px;width: 13px;display: block;float: left;margin-right: 9px;align-self: center;"></span>
-                                                <p style="float: left;margin: 0;">{{$agent->sold_prev}} @if($agent->sold_prev > 1) Properties Sold @else Property Sold @endif</p>
+                                                <p style="float: left;margin: 0;">{{$agent->sold_prev}} @if($agent->sold_prev > 1) {{__('text.Properties Sold')}} @else {{__('text.Property Sold')}} @endif</p>
                                             </div>
 
                                             <div style="display: flex;flex-direction: row;width: 50%;float: left;justify-content: center;">
                                                 <span style="background: rgb(30,181,204);height: 13px;width: 13px;display: block;float: left;margin-right: 9px;align-self: center;"></span>
-                                                <p style="float: left;margin: 0;">{{$agent->rentout_prev}} @if($agent->rentout_prev > 1) Properties Rentout @else Property Rentout @endif</p>
+                                                <p style="float: left;margin: 0;">{{$agent->rentout_prev}} @if($agent->rentout_prev > 1) {{__('text.Properties Rentout')}} @else {{__('text.Property Rentout')}} @endif</p>
                                             </div>
 
                                         </div>
@@ -255,18 +255,18 @@
 
                                     <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12" style="float: right;">
 
-                                        <h3 style="text-align: center;">Total Sold & Rentout {{$agent->prev_prev_year}}</h3>
+                                        <h3 style="text-align: center;">{{__('text.Total Sold & Rentout')}} {{$agent->prev_prev_year}}</h3>
 
                                         <div style="width: 100%;display: inline-block;margin-bottom: 40px;margin-top: 20px;">
 
                                             <div style="display: flex;flex-direction: row;width: 50%;float: left;justify-content: center;">
                                                 <span style="background: rgb(255,86,68);height: 13px;width: 13px;display: block;float: left;margin-right: 9px;align-self: center;"></span>
-                                                <p style="float: left;margin: 0;">{{$agent->sold_prev_prev}} @if($agent->sold_prev_prev > 1) Properties Sold @else Property Sold @endif</p>
+                                                <p style="float: left;margin: 0;">{{$agent->sold_prev_prev}} @if($agent->sold_prev_prev > 1) {{__('text.Properties Sold')}} @else {{__('text.Property Sold')}} @endif</p>
                                             </div>
 
                                             <div style="display: flex;flex-direction: row;width: 50%;float: left;justify-content: center;">
                                                 <span style="background: rgb(30,181,204);height: 13px;width: 13px;display: block;float: left;margin-right: 9px;align-self: center;"></span>
-                                                <p style="float: left;margin: 0;">{{$agent->rentout_prev_prev}} @if($agent->rentout_prev_prev > 1) Properties Rentout @else Property Rentout @endif</p>
+                                                <p style="float: left;margin: 0;">{{$agent->rentout_prev_prev}} @if($agent->rentout_prev_prev > 1) {{__('text.Properties Rentout')}} @else {{__('text.Property Rentout')}} @endif</p>
                                             </div>
 
                                         </div>
@@ -290,7 +290,7 @@
 
                                                 <i class="far fa-comment-alt" style="position: absolute;left: 15px;right: auto;color: #d5d5d5;font-size: 14px;margin:10px 0 0;pointer-events:none;" aria-hidden="true"></i>
 
-                                                <textarea style="resize: vertical;height:150px;padding-left:40px;color:#bcbcbc;border-color:#e6e6e6;border-radius: 3px;box-shadow: none;" class="form-control" id="message-text" placeholder="Message" name="message"></textarea>
+                                                <textarea style="resize: vertical;height:150px;padding-left:40px;color:#bcbcbc;border-color:#e6e6e6;border-radius: 3px;box-shadow: none;" class="form-control" id="message-text" placeholder="{{__('text.Message')}}" name="message"></textarea>
 
 
                                             </div>
@@ -305,7 +305,7 @@
 
                                                         <label class="bg" for="selling" style="margin: 0;margin-bottom: 5px;">
 
-                                                            <span class="search-span" style="position: relative;top: 3px;font-size: 14px;color: #4b4848;">Selling my property</span>
+                                                            <span class="search-span" style="position: relative;top: 3px;font-size: 14px;color: #4b4848;">{{__('text.Selling my property')}}</span>
 
                                                         </label>
 
@@ -317,7 +317,7 @@
 
                                                         <label class="bg" for="leasing" style="margin: 0;margin-bottom: 5px;">
 
-                                                            <span class="search-span" style="position: relative;top: 3px;font-size: 14px;color: #4b4848;">Leasing my property</span>
+                                                            <span class="search-span" style="position: relative;top: 3px;font-size: 14px;color: #4b4848;">{{__('text.Leasing my property')}}</span>
 
                                                         </label>
 
@@ -329,7 +329,7 @@
 
                                                         <label class="bg" for="rent_property" style="margin: 0;margin-bottom: 5px;">
 
-                                                            <span class="search-span" style="position: relative;top: 3px;font-size: 14px;color: #4b4848;">Looking to rent a property</span>
+                                                            <span class="search-span" style="position: relative;top: 3px;font-size: 14px;color: #4b4848;">{{__('text.Looking to rent a property')}}</span>
 
                                                         </label>
 
@@ -346,7 +346,7 @@
 
                                                         <label class="bg" for="property_appraisal" style="margin: 0;margin-bottom: 5px;">
 
-                                                            <span class="search-span" style="position: relative;top: 3px;font-size: 14px;color: #4b4848;">Property Appraisal</span>
+                                                            <span class="search-span" style="position: relative;top: 3px;font-size: 14px;color: #4b4848;">{{__('text.Property Appraisal')}}</span>
 
                                                         </label>
 
@@ -358,7 +358,7 @@
 
                                                         <label class="bg" for="buy_property" style="margin: 0;margin-bottom: 5px;">
 
-                                                            <span class="search-span" style="position: relative;top: 3px;font-size: 14px;color: #4b4848;">Looking to buy a property</span>
+                                                            <span class="search-span" style="position: relative;top: 3px;font-size: 14px;color: #4b4848;">{{__('text.Looking to buy a property')}}</span>
 
                                                         </label>
 
@@ -370,7 +370,7 @@
 
                                             <div class="row" style="margin: 0;margin-top: 45px;">
 
-                                                <h3 style="margin: 0px 10px;border-bottom: 1px solid #dddddd;padding-bottom: 10px;color: #3a3a3a;font-weight: 600;">Contact Details</h3>
+                                                <h3 style="margin: 0px 10px;border-bottom: 1px solid #dddddd;padding-bottom: 10px;color: #3a3a3a;font-weight: 600;">{{__('text.Contact Details')}}</h3>
 
                                                 <div class="row" style="margin: 0;margin-top: 25px;">
 
@@ -382,7 +382,7 @@
 
                                                                 <i class="fas fa-user" style="position: absolute;left: 15px;right: auto;color: #d5d5d5;font-size: 14px;top: 55%;margin:-9px 0 0;pointer-events:none;" aria-hidden="true"></i>
 
-                                                                <input style="padding: 0 0 0 40px;height: 42px;color:#bcbcbc;border-color:#e6e6e6;border-radius: 3px;box-shadow: none;" type="text" placeholder="First Name *" name="first_name" required="" class="form-control" id="first_name">
+                                                                <input style="padding: 0 0 0 40px;height: 42px;color:#bcbcbc;border-color:#e6e6e6;border-radius: 3px;box-shadow: none;" type="text" placeholder="{{__('text.First Name')}} *" name="first_name" required="" class="form-control" id="first_name">
 
                                                             </div>
 
@@ -394,7 +394,7 @@
 
                                                                 <i class="fas fa-user" style="position: absolute;left: 15px;right: auto;color: #d5d5d5;font-size: 14px;top: 55%;margin:-9px 0 0;pointer-events:none;" aria-hidden="true"></i>
 
-                                                                <input style="padding: 0 0 0 40px;height: 42px;color:#bcbcbc;border-color:#e6e6e6;border-radius: 3px;box-shadow: none;" type="text" placeholder="Last Name *" name="last_name" required="" class="form-control" id="last_name">
+                                                                <input style="padding: 0 0 0 40px;height: 42px;color:#bcbcbc;border-color:#e6e6e6;border-radius: 3px;box-shadow: none;" type="text" placeholder="{{__('text.Last Name')}} *" name="last_name" required="" class="form-control" id="last_name">
 
                                                             </div>
 
@@ -407,7 +407,7 @@
 
                                                                 <i class="fas fa-phone-alt" style="position: absolute;left: 15px;right: auto;color: #d5d5d5;font-size: 14px;top: 55%;margin:-9px 0 0;pointer-events:none;" aria-hidden="true"></i>
 
-                                                                <input style="padding: 0 0 0 40px;height: 42px;color:#bcbcbc;border-color:#e6e6e6;border-radius: 3px;box-shadow: none;" type="text" placeholder="Phone Number" name="phone" class="form-control" id="phone">
+                                                                <input style="padding: 0 0 0 40px;height: 42px;color:#bcbcbc;border-color:#e6e6e6;border-radius: 3px;box-shadow: none;" type="text" placeholder="{{__('text.Mobile No')}}" name="phone" class="form-control" id="phone">
 
                                                             </div>
 
@@ -423,7 +423,7 @@
 
                                                                 <i class="fas fa-at" style="position: absolute;left: 15px;right: auto;color: #d5d5d5;font-size: 14px;top: 55%;margin:-9px 0 0;pointer-events:none;" aria-hidden="true"></i>
 
-                                                                <input style="padding: 0 0 0 40px;height: 42px;color:#bcbcbc;border-color:#e6e6e6;border-radius: 3px;box-shadow: none;" type="email" placeholder="Email *" name="email" required="" class="form-control" id="email">
+                                                                <input style="padding: 0 0 0 40px;height: 42px;color:#bcbcbc;border-color:#e6e6e6;border-radius: 3px;box-shadow: none;" type="email" placeholder="{{__('text.Email Address')}} *" name="email" required="" class="form-control" id="email">
 
                                                             </div>
 
@@ -435,7 +435,7 @@
 
                                                                 <i class="fas fa-map-marker-alt" style="position: absolute;left: 15px;right: auto;color: #d5d5d5;font-size: 14px;top: 55%;margin:-9px 0 0;pointer-events:none;" aria-hidden="true"></i>
 
-                                                                <input style="padding: 0 0 0 40px;height: 42px;color:#bcbcbc;border-color:#e6e6e6;border-radius: 3px;box-shadow: none;" type="text" placeholder="Postcode" name="postcode" class="form-control" id="postcode">
+                                                                <input style="padding: 0 0 0 40px;height: 42px;color:#bcbcbc;border-color:#e6e6e6;border-radius: 3px;box-shadow: none;" type="text" placeholder="{{__('text.Postcode')}}" name="postcode" class="form-control" id="postcode">
 
                                                             </div>
 
@@ -456,13 +456,13 @@
 
                                                     <label class="bg" for="agree" style="margin: 0;margin-bottom: 5px;">
 
-                                                        <span class="search-span" style="position: relative;top: 3px;font-size: 14px;color: #807f7f;">I agree to my data being collected in order to provide a response to my enquiries and to receive communications about similar properties from this website and the agent.</span>
+                                                        <span class="search-span" style="position: relative;top: 3px;font-size: 14px;color: #807f7f;">{{__('text.I agree data')}}</span>
 
                                                     </label>
 
                                                 </a>
 
-                                                <button style="margin-top: 25px;border:0;font-size: 14px;padding: 12px 20px;" type="submit" class="btn btn-success"><i class="fas fa-envelope" style="margin-right: 5px;" aria-hidden="true"></i> Send Enquiry</button>
+                                                <button style="margin-top: 25px;border:0;font-size: 14px;padding: 12px 20px;" type="submit" class="btn btn-success"><i class="fas fa-envelope" style="margin-right: 5px;" aria-hidden="true"></i> {{__('text.Send Enquiry')}}</button>
 
                                             </div>
 
@@ -482,7 +482,7 @@
 
                                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;">
 
-                                                <h3>Location of Agent:</h3>
+                                                <h3>{{__('text.Location')}}</h3>
 
                                                 <input type="hidden" name="agent_latitude" id="agent_latitude" value="{{$agent->address_latitude}}" />
                                                 <input type="hidden" name="agent_longitude" id="agent_longitude" value="{{$agent->address_longitude}}" />
@@ -514,37 +514,37 @@
 
                     <div class="sidebar sidebar-right">
 
-                        <aside class="widget widget_apus_property_contact_form" style="border:1px solid #e3e3e3;"><h2 class="widget-title" style="margin-bottom: 40px;"><span style="font-weight: 600;">Opening Time</span></h2>
+                        <aside class="widget widget_apus_property_contact_form" style="border:1px solid #e3e3e3;"><h2 class="widget-title" style="margin-bottom: 40px;"><span style="font-weight: 600;">{{__('text.Opening Time')}}</span></h2>
 
                             <table>
 
                                 <tbody></tbody>
                                 <tr>
-                                    <td width="100">Monday</td>
+                                    <td width="100">{{__('text.Monday')}}</td>
                                     <td>{{$agent->monday_timeFrom}} - {{$agent->monday_timeTo}} {{$agent->monday_description}}</td>
                                 </tr>
                                 <tr>
-                                    <td width="100">Tuesday</td>
+                                    <td width="100">{{__('text.Tuesday')}}</td>
                                     <td>{{$agent->tuesday_timeFrom}} - {{$agent->tuesday_timeTo}} {{$agent->tuesday_description}}</td>
                                 </tr>
                                 <tr>
-                                    <td width="100">Wednesday</td>
+                                    <td width="100">{{__('text.Wednesday')}}</td>
                                     <td>{{$agent->wednesday_timeFrom}} - {{$agent->wednesday_timeTo}} {{$agent->wednesday_description}}</td>
                                 </tr>
                                 <tr>
-                                    <td width="100">Thursday</td>
+                                    <td width="100">{{__('text.Thursday')}}</td>
                                     <td>{{$agent->thursday_timeFrom}} - {{$agent->thursday_timeTo}} {{$agent->thursday_description}}</td>
                                 </tr>
                                 <tr>
-                                    <td width="100">Friday</td>
+                                    <td width="100">{{__('text.Friday')}}</td>
                                     <td>{{$agent->friday_timeFrom}} - {{$agent->friday_timeTo}} {{$agent->friday_description}}</td>
                                 </tr>
                                 <tr>
-                                    <td width="100">Saturday</td>
+                                    <td width="100">{{__('text.Saturday')}}</td>
                                     <td>{{$agent->saturday_timeFrom}} - {{$agent->saturday_timeTo}} {{$agent->saturday_description}}</td>
                                 </tr>
                                 <tr>
-                                    <td width="100">Sunday</td>
+                                    <td width="100">{{__('text.Sunday')}}</td>
                                     <td>{{$agent->sunday_timeFrom}} - {{$agent->sunday_timeTo}} {{$agent->sunday_description}}</td>
                                 </tr>
 

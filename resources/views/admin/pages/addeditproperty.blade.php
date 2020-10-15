@@ -498,7 +498,7 @@
 
                                         </div>
 
-                                        <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 right-div" style="float: right;margin: 25px 0px;@if(Route::currentRouteName() != 'addnewconstruction') display: inline-block @else display:none @endif">
+                                        <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 right-div" style="float: right;margin: 25px 0px;display: inline-block;">
 
                                             <label class="left-label" style="float: left;">{{__('text.Source Project')}}</label>
 
@@ -510,7 +510,7 @@
 
                                         </div>
 
-                                        <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 left-div" style="display: inline-block;margin: 25px 0px;">
+                                        <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 left-div" style="margin: 25px 0px;@if(Route::currentRouteName() != 'addnewconstruction') display: inline-block @else display:none @endif">
 
                                             <label class="left-label" style="float: left;">{{__('text.Citation')}}</label>
 
@@ -659,11 +659,11 @@
                                         @endif
 
                                 </div>
-                                    
+
 
                                     @if(Route::currentRouteName() != 'addhomeexchange')
 
-                                <div class="main-childs col-lg-12 col-md-12 col-sm-12 col-xs-12" style="border:1px solid #e6e6e6;padding: 20px;margin: 25px 0px;">
+                                <div class="main-childs col-lg-12 col-md-12 col-sm-12 col-xs-12" style="border:1px solid #e6e6e6;padding: 20px;margin: 25px 0px;@if(Route::currentRouteName() == 'addnewconstruction') display:none @endif">
 
                                     <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 left-div" style="display: inline-block;margin: 25px 0px;">
 
@@ -742,7 +742,7 @@
                                 </div>
 
 
-                                <div class="main-childs col-lg-12 col-md-12 col-sm-12 col-xs-12" style="border:1px solid #e6e6e6;padding: 20px;margin: 25px 0px;">
+                                <div class="main-childs col-lg-12 col-md-12 col-sm-12 col-xs-12" style="border:1px solid #e6e6e6;padding: 20px;margin: 25px 0px;@if(Route::currentRouteName() == 'addnewconstruction') display:none @endif">
 
                                     <h3 style="width: 100%;">{{__('text.Energy')}}</h3>
 
@@ -930,31 +930,240 @@
                                     </div>
 
 
-                                    <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 left-div" style="display: inline-block;margin: 25px 0px;">
+                                    @if(isset($property->property_purpose))
 
-                                        <label class="left-label" style="float: left;">{{__('text.Type of agreement')}}</label>
+                                        @if($property->property_purpose == 'Sale')
 
-                                        <div style="width: 100%;display: inline-block;margin: auto">
+                                            <div id="type_agreement_box" class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 left-div" style="display: none;margin: 25px 0px;">
 
-                                            @if(isset($property->agreement_type))
+                                                <label class="left-label" style="float: left;">{{__('text.Type of agreement')}}</label>
 
-                                                <select name="agreement_type" id="agreement_type" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
-                                                    <option value="Temporarily" @if($property->agreement_type == 'Temporarily') selected @endif>{{__('text.Temporarily')}}</option>
-                                                    <option value="Indefinitely" @if($property->agreement_type == 'Indefinitely') selected @endif>{{__('text.Indefinitely')}}</option>
-                                                </select>
+                                                <div style="width: 100%;display: inline-block;margin: auto">
 
-                                                @else
+                                                    @if(isset($property->agreement_type))
 
-                                                <select name="agreement_type" id="agreement_type" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
-                                                    <option value="Temporarily" @if(old('agreement_type') == 'Temporarily') selected @endif>{{__('text.Temporarily')}}</option>
-                                                    <option value="Indefinitely" @if(old('agreement_type') == 'Indefinitely') selected @endif>{{__('text.Indefinitely')}}</option>
-                                                </select>
+                                                        <select name="agreement_type" id="agreement_type" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
+                                                            <option value="Temporarily" @if($property->agreement_type == 'Temporarily') selected @endif>{{__('text.Temporarily')}}</option>
+                                                            <option value="Indefinitely" @if($property->agreement_type == 'Indefinitely') selected @endif>{{__('text.Indefinitely')}}</option>
+                                                        </select>
 
-                                                @endif
+                                                    @else
 
-                                        </div>
+                                                        <select name="agreement_type" id="agreement_type" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
+                                                            <option value="Temporarily" @if(old('agreement_type') == 'Temporarily') selected @endif>{{__('text.Temporarily')}}</option>
+                                                            <option value="Indefinitely" @if(old('agreement_type') == 'Indefinitely') selected @endif>{{__('text.Indefinitely')}}</option>
+                                                        </select>
 
-                                    </div>
+                                                    @endif
+
+                                                </div>
+
+                                            </div>
+
+                                            <div id="property_furnished_box" class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 right-div" style="display: none;margin: 25px 0px;">
+
+                                                <label class="right-label" style="float: left;">{{__('text.Property furnished')}}</label>
+
+                                                <div style="width: 100%;display: inline-block;margin: auto">
+
+                                                    @if(isset($property->property_furnished))
+
+                                                        <select name="property_furnished" id="property_furnished" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
+                                                            <option value="Unfurnished" @if($property->property_furnished == 'Unfurnished') selected @endif>{{__('text.Unfurnished')}}</option>
+                                                            <option value="Bare" @if($property->property_furnished == 'Bare') selected @endif>{{__('text.Bare')}}</option>
+                                                            <option value="Furnished" @if($property->property_furnished == 'Furnished') selected @endif>{{__('text.Furnished')}}</option>
+                                                        </select>
+
+                                                    @else
+
+                                                        <select name="property_furnished" id="property_furnished" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
+                                                            <option value="Unfurnished" @if(old('property_furnished') == 'Unfurnished') selected @endif>{{__('text.Unfurnished')}}</option>
+                                                            <option value="Bare" @if(old('property_furnished') == 'Bare') selected @endif>{{__('text.Bare')}}</option>
+                                                            <option value="Furnished" @if(old('property_furnished') == 'Furnished') selected @endif>{{__('text.Furnished')}}</option>
+                                                        </select>
+
+                                                    @endif
+
+                                                </div>
+
+                                            </div>
+
+                                        @else
+
+                                            <div id="type_agreement_box" class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 left-div" style="display: inline-block;margin: 25px 0px;">
+
+                                                <label class="left-label" style="float: left;">{{__('text.Type of agreement')}}</label>
+
+                                                <div style="width: 100%;display: inline-block;margin: auto">
+
+                                                    @if(isset($property->agreement_type))
+
+                                                        <select name="agreement_type" id="agreement_type" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
+                                                            <option value="Temporarily" @if($property->agreement_type == 'Temporarily') selected @endif>{{__('text.Temporarily')}}</option>
+                                                            <option value="Indefinitely" @if($property->agreement_type == 'Indefinitely') selected @endif>{{__('text.Indefinitely')}}</option>
+                                                        </select>
+
+                                                    @else
+
+                                                        <select name="agreement_type" id="agreement_type" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
+                                                            <option value="Temporarily" @if(old('agreement_type') == 'Temporarily') selected @endif>{{__('text.Temporarily')}}</option>
+                                                            <option value="Indefinitely" @if(old('agreement_type') == 'Indefinitely') selected @endif>{{__('text.Indefinitely')}}</option>
+                                                        </select>
+
+                                                    @endif
+
+                                                </div>
+
+                                            </div>
+
+                                            <div id="property_furnished_box" class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 right-div" style="display: inline-block;margin: 25px 0px;">
+
+                                                <label class="right-label" style="float: left;">{{__('text.Property furnished')}}</label>
+
+                                                <div style="width: 100%;display: inline-block;margin: auto">
+
+                                                    @if(isset($property->property_furnished))
+
+                                                        <select name="property_furnished" id="property_furnished" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
+                                                            <option value="Unfurnished" @if($property->property_furnished == 'Unfurnished') selected @endif>{{__('text.Unfurnished')}}</option>
+                                                            <option value="Bare" @if($property->property_furnished == 'Bare') selected @endif>{{__('text.Bare')}}</option>
+                                                            <option value="Furnished" @if($property->property_furnished == 'Furnished') selected @endif>{{__('text.Furnished')}}</option>
+                                                        </select>
+
+                                                    @else
+
+                                                        <select name="property_furnished" id="property_furnished" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
+                                                            <option value="Unfurnished" @if(old('property_furnished') == 'Unfurnished') selected @endif>{{__('text.Unfurnished')}}</option>
+                                                            <option value="Bare" @if(old('property_furnished') == 'Bare') selected @endif>{{__('text.Bare')}}</option>
+                                                            <option value="Furnished" @if(old('property_furnished') == 'Furnished') selected @endif>{{__('text.Furnished')}}</option>
+                                                        </select>
+
+                                                    @endif
+
+                                                </div>
+
+                                            </div>
+
+                                        @endif
+
+                                    @else
+
+                                        @if(old('property_purpose') == 'Rent')
+
+                                            <div id="type_agreement_box" class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 left-div" style="display: inline-block;margin: 25px 0px;">
+
+                                                <label class="left-label" style="float: left;">{{__('text.Type of agreement')}}</label>
+
+                                                <div style="width: 100%;display: inline-block;margin: auto">
+
+                                                    @if(isset($property->agreement_type))
+
+                                                        <select name="agreement_type" id="agreement_type" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
+                                                            <option value="Temporarily" @if($property->agreement_type == 'Temporarily') selected @endif>{{__('text.Temporarily')}}</option>
+                                                            <option value="Indefinitely" @if($property->agreement_type == 'Indefinitely') selected @endif>{{__('text.Indefinitely')}}</option>
+                                                        </select>
+
+                                                    @else
+
+                                                        <select name="agreement_type" id="agreement_type" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
+                                                            <option value="Temporarily" @if(old('agreement_type') == 'Temporarily') selected @endif>{{__('text.Temporarily')}}</option>
+                                                            <option value="Indefinitely" @if(old('agreement_type') == 'Indefinitely') selected @endif>{{__('text.Indefinitely')}}</option>
+                                                        </select>
+
+                                                    @endif
+
+                                                </div>
+
+                                            </div>
+
+                                            <div id="property_furnished_box" class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 right-div" style="display: inline-block;margin: 25px 0px;">
+
+                                                <label class="right-label" style="float: left;">{{__('text.Property furnished')}}</label>
+
+                                                <div style="width: 100%;display: inline-block;margin: auto">
+
+                                                    @if(isset($property->property_furnished))
+
+                                                        <select name="property_furnished" id="property_furnished" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
+                                                            <option value="Unfurnished" @if($property->property_furnished == 'Unfurnished') selected @endif>{{__('text.Unfurnished')}}</option>
+                                                            <option value="Bare" @if($property->property_furnished == 'Bare') selected @endif>{{__('text.Bare')}}</option>
+                                                            <option value="Furnished" @if($property->property_furnished == 'Furnished') selected @endif>{{__('text.Furnished')}}</option>
+                                                        </select>
+
+                                                    @else
+
+                                                        <select name="property_furnished" id="property_furnished" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
+                                                            <option value="Unfurnished" @if(old('property_furnished') == 'Unfurnished') selected @endif>{{__('text.Unfurnished')}}</option>
+                                                            <option value="Bare" @if(old('property_furnished') == 'Bare') selected @endif>{{__('text.Bare')}}</option>
+                                                            <option value="Furnished" @if(old('property_furnished') == 'Furnished') selected @endif>{{__('text.Furnished')}}</option>
+                                                        </select>
+
+                                                    @endif
+
+                                                </div>
+
+                                            </div>
+
+                                        @else
+
+                                            <div id="type_agreement_box" class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 left-div" style="display: none;margin: 25px 0px;">
+
+                                                <label class="left-label" style="float: left;">{{__('text.Type of agreement')}}</label>
+
+                                                <div style="width: 100%;display: inline-block;margin: auto">
+
+                                                    @if(isset($property->agreement_type))
+
+                                                        <select name="agreement_type" id="agreement_type" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
+                                                            <option value="Temporarily" @if($property->agreement_type == 'Temporarily') selected @endif>{{__('text.Temporarily')}}</option>
+                                                            <option value="Indefinitely" @if($property->agreement_type == 'Indefinitely') selected @endif>{{__('text.Indefinitely')}}</option>
+                                                        </select>
+
+                                                    @else
+
+                                                        <select name="agreement_type" id="agreement_type" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
+                                                            <option value="Temporarily" @if(old('agreement_type') == 'Temporarily') selected @endif>{{__('text.Temporarily')}}</option>
+                                                            <option value="Indefinitely" @if(old('agreement_type') == 'Indefinitely') selected @endif>{{__('text.Indefinitely')}}</option>
+                                                        </select>
+
+                                                    @endif
+
+                                                </div>
+
+                                            </div>
+
+                                            <div id="property_furnished_box" class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 right-div" style="display: none;margin: 25px 0px;">
+
+                                                <label class="right-label" style="float: left;">{{__('text.Property furnished')}}</label>
+
+                                                <div style="width: 100%;display: inline-block;margin: auto">
+
+                                                    @if(isset($property->property_furnished))
+
+                                                        <select name="property_furnished" id="property_furnished" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
+                                                            <option value="Unfurnished" @if($property->property_furnished == 'Unfurnished') selected @endif>{{__('text.Unfurnished')}}</option>
+                                                            <option value="Bare" @if($property->property_furnished == 'Bare') selected @endif>{{__('text.Bare')}}</option>
+                                                            <option value="Furnished" @if($property->property_furnished == 'Furnished') selected @endif>{{__('text.Furnished')}}</option>
+                                                        </select>
+
+                                                    @else
+
+                                                        <select name="property_furnished" id="property_furnished" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
+                                                            <option value="Unfurnished" @if(old('property_furnished') == 'Unfurnished') selected @endif>{{__('text.Unfurnished')}}</option>
+                                                            <option value="Bare" @if(old('property_furnished') == 'Bare') selected @endif>{{__('text.Bare')}}</option>
+                                                            <option value="Furnished" @if(old('property_furnished') == 'Furnished') selected @endif>{{__('text.Furnished')}}</option>
+                                                        </select>
+
+                                                    @endif
+
+                                                </div>
+
+                                            </div>
+
+                                        @endif
+
+                                    @endif
+
 
 
                                     <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 right-div" style="display: inline-block;float: right;margin: 20px 0px;">
@@ -968,34 +1177,6 @@
                                             <input type="number" step="1" max="" name="year_boiler" @if(old('year_boiler') != '') value="{{old('year_boiler')}}" @else value="{{ isset($property->year_boiler) ? $property->year_boiler : 1980 }}" @endif class="quantity-field" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
                                             <input type="button" value="+" class="button-plus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d7d7d7;margin-top: -0.1px;">
                                             <input type="button" value="-" class="button-minus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;margin-top: -0.1px;">
-
-                                        </div>
-
-                                    </div>
-
-                                    <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 right-div" style="display: inline-block;margin: 25px 0px;">
-
-                                        <label class="right-label" style="float: left;">{{__('text.Property furnished')}}</label>
-
-                                        <div style="width: 100%;display: inline-block;margin: auto">
-
-                                            @if(isset($property->property_furnished))
-
-                                                <select name="property_furnished" id="property_furnished" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
-                                                    <option value="Unfurnished" @if($property->property_furnished == 'Unfurnished') selected @endif>{{__('text.Unfurnished')}}</option>
-                                                    <option value="Bare" @if($property->property_furnished == 'Bare') selected @endif>{{__('text.Bare')}}</option>
-                                                    <option value="Furnished" @if($property->property_furnished == 'Furnished') selected @endif>{{__('text.Furnished')}}</option>
-                                                </select>
-
-                                                @else
-
-                                                <select name="property_furnished" id="property_furnished" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
-                                                    <option value="Unfurnished" @if(old('property_furnished') == 'Unfurnished') selected @endif>{{__('text.Unfurnished')}}</option>
-                                                    <option value="Bare" @if(old('property_furnished') == 'Bare') selected @endif>{{__('text.Bare')}}</option>
-                                                    <option value="Furnished" @if(old('property_furnished') == 'Furnished') selected @endif>{{__('text.Furnished')}}</option>
-                                                </select>
-
-                                                @endif
 
                                         </div>
 
@@ -1034,7 +1215,7 @@
                                 </div>
 
 
-                                <div class="main-childs col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;margin-top: 25px;">
+                                <div class="main-childs col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;margin-top: 25px;@if(Route::currentRouteName() == 'addnewconstruction') display:none @endif">
 
                                     <label class="left-label" style="width: 100%;float: left;">{{__('text.Open House')}}</label>
 
@@ -1099,7 +1280,7 @@
 
                                 </div>
 
-                                <div class="main-childs col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;">
+                                <div class="main-childs col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;@if(Route::currentRouteName() == 'addnewconstruction') display:none @endif">
 
                                     <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
 
@@ -1131,7 +1312,7 @@
 
                                 </div>
 
-                                <div class="main-childs col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;">
+                                <div class="main-childs col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;@if(Route::currentRouteName() == 'addnewconstruction') display:none @endif">
 
                                     <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
 
@@ -3690,6 +3871,8 @@
                     $('#rent_price_field').removeClass('stepper-step-3-validate');
                     $('#sale_price_box').show();
                     $('#sale_price_field').addClass('stepper-step-3-validate');
+                    $('#type_agreement_box').hide();
+                    $('#property_furnished_box').hide();
                 }
                 else
                 {
@@ -3697,6 +3880,8 @@
                     $('#sale_price_field').removeClass('stepper-step-3-validate');
                     $('#rent_price_box').show();
                     $('#rent_price_field').addClass('stepper-step-3-validate');
+                    $('#type_agreement_box').show();
+                    $('#property_furnished_box').show();
 
                 }
 

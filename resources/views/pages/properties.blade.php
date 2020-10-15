@@ -13,21 +13,21 @@
             <div class="page-title">
                 @if(Route::currentRouteName() == 'properties-front')
 
-                    <h2>All Properties</h2>
+                    <h2>{{__('text.All Properties')}}</h2>
 
                 @elseif(Route::currentRouteName() == 'agent-properties')
 
-                    <h2>Agent Properties</h2>
+                    <h2>{{__('text.Agent Properties')}}</h2>
 
                 @else
 
-                    <h2>New Constructions</h2>
+                    <h2>{{__('text.New Constructions')}}</h2>
 
                 @endif
             </div>
             <ol class="breadcrumb">
-              <li><a href="{{ URL::to('/') }}">Home</a></li>
-              <li class="active">@if(Route::currentRouteName() == 'properties-front')All Properties @elseif(Route::currentRouteName() == 'agent-properties') Agent Properties @else New Constructions @endif</li>
+              <li><a href="{{ URL::to('/') }}">{{__('text.Home')}}</a></li>
+              <li class="active">@if(Route::currentRouteName() == 'properties-front') {{__('text.All Properties')}} @elseif(Route::currentRouteName() == 'agent-properties') {{__('text.Agent Properties')}} @else {{__('text.New Constructions')}} @endif</li>
             </ol>
           </div>
         </div>
@@ -67,7 +67,7 @@
           <!-- begin:article -->
               <div class="properties-ordering-wrapper" style="margin-bottom: 40px;">
 
-                  <div class="results-count">Showing <span class="first">@if($properties->firstItem() != $properties->lastItem()) {{$properties->firstItem()}}</span> – <span class="last">{{$properties->lastItem()}}</span> of {{$properties->total()}} results @else {{$properties->firstItem()}}</span> of {{$properties->total()}} results @endif</div>
+                  <div class="results-count">{{$properties->total()}} {{__('text.properties found')}}</div>
 
                   <div class="properties-ordering">
 
@@ -85,20 +85,20 @@
 
                                               @endif
 
-                          <div class="label">Sort by:</div>
+                          <div class="label">{{__('text.Sort by:')}}</div>
 
                           <select onchange="this.form.submit()" name="filter_orderby" class="orderby" data-placeholder="Sort by" tabindex="-1" aria-hidden="true">
-                              <option value="newest" @if(isset($filter) && $filter == 'newest' || $filter == '') selected @endif>Newest</option>
-                              <option value="oldest" @if(isset($filter) && $filter == 'oldest') selected @endif>Oldest</option>
-                              <option value="bedrooms" @if(isset($filter) && $filter == 'bedrooms') selected @endif>Bedrooms</option>
-                              <option value="bathrooms" @if(isset($filter) && $filter == 'bathrooms') selected @endif>Bathrooms</option>
-                              <option value="popularity" @if(isset($filter) && $filter == 'popularity') selected @endif>Popularity</option>
-                              <option value="lowest_sale_price" @if(isset($filter) && $filter == 'lowest_sale_price') selected @endif>Lowest Sale Price</option>
-                              <option value="highest_sale_price" @if(isset($filter) && $filter == 'highest_sale_price') selected @endif>Highest Sale Price</option>
-                              <option value="lowest_rent_price" @if(isset($filter) && $filter == 'lowest_rent_price') selected @endif>Lowest Rent Price</option>
-                              <option value="highest_rent_price" @if(isset($filter) && $filter == 'highest_rent_price') selected @endif>Highest Rent Price</option>
-                              <option value="lowest_area" @if(isset($filter) && $filter == 'lowest_area') selected @endif>Lowest Area</option>
-                              <option value="highest_area" @if(isset($filter) && $filter == 'highest_area') selected @endif>Highest Area</option>
+                              <option value="newest" @if(isset($filter) && $filter == 'newest' || $filter == '') selected @endif>{{__('text.Newest')}}</option>
+                              <option value="oldest" @if(isset($filter) && $filter == 'oldest') selected @endif>{{__('text.Oldest')}}</option>
+                              <option value="bedrooms" @if(isset($filter) && $filter == 'bedrooms') selected @endif>{{__('text.Most Bedrooms')}}</option>
+                              <option value="bathrooms" @if(isset($filter) && $filter == 'bathrooms') selected @endif>{{__('text.Most Bathrooms')}}</option>
+                              <option value="popularity" @if(isset($filter) && $filter == 'popularity') selected @endif>{{__('text.Popularity')}}</option>
+                              <option value="lowest_sale_price" @if(isset($filter) && $filter == 'lowest_sale_price') selected @endif>{{__('text.Lowest Sale Price')}}</option>
+                              <option value="highest_sale_price" @if(isset($filter) && $filter == 'highest_sale_price') selected @endif>{{__('text.Highest Sale Price')}}</option>
+                              <option value="lowest_rent_price" @if(isset($filter) && $filter == 'lowest_rent_price') selected @endif>{{__('text.Lowest Rent Price')}}</option>
+                              <option value="highest_rent_price" @if(isset($filter) && $filter == 'highest_rent_price') selected @endif>{{__('text.Highest Rent Price')}}</option>
+                              <option value="lowest_area" @if(isset($filter) && $filter == 'lowest_area') selected @endif>{{__('text.Lowest Area')}}</option>
+                              <option value="highest_area" @if(isset($filter) && $filter == 'highest_area') selected @endif>{{__('text.Highest Area')}}</option>
                           </select>
 
                       </form>
@@ -138,7 +138,7 @@
 
                                     @if($property->open_date)
 
-                                        <div class="property-price" style="min-height: 28px;position:relative;max-width: 100%;font-size: 11px;padding: 3px 0px;margin-bottom: 6px;border-radius: 5px;"><span>Open House {{$property->open_date}} {{$property->open_timeFrom}} to {{$property->open_timeTo}}</span></div>
+                                        <div class="property-price" style="min-height: 28px;position:relative;max-width: 100%;font-size: 11px;padding: 3px 0px;margin-bottom: 6px;border-radius: 5px;"><span>{{__('text.Open House')}} {{$property->open_date}} {{$property->open_timeFrom}} to {{$property->open_timeTo}}</span></div>
 
                                     @else
 
@@ -209,7 +209,7 @@
 
                       <div class="property-price" style="top: 37px;left: -58px;border-radius: 5px;padding: 5px 10px;transform: rotate(-40deg);width: 240px;">
 
-                          <span>Sold</span>
+                          <span>{{__('text.Sold')}}</span>
 
                       </div>
 
@@ -217,7 +217,7 @@
 
                       <div class="property-price" style="top: 37px;left: -58px;border-radius: 5px;padding: 5px 10px;transform: rotate(-40deg);width: 240px;">
 
-                          <span>Rented</span>
+                          <span>{{__('text.Rented')}}</span>
 
                       </div>
 
@@ -225,7 +225,7 @@
 
                       <div class="property-price" style="top: 37px;left: -58px;border-radius: 5px;padding: 5px 10px;transform: rotate(-40deg);width: 240px;">
 
-                          <span style="font-size: 14px;">Under Negotiation</span>
+                          <span style="font-size: 14px;">{{__('text.Under Negotiation')}}</span>
 
                       </div>
 
@@ -233,7 +233,7 @@
 
                       <div class="property-price" style="top: 37px;left: -58px;border-radius: 5px;padding: 5px 10px;transform: rotate(-40deg);width: 240px;">
 
-                          <span style="font-size: 16px;">Under Offer</span>
+                          <span style="font-size: 16px;">{{__('text.Under Offer')}}</span>
 
                       </div>
 
@@ -243,7 +243,7 @@
 
 
                           <div class="property-price" style="top: 12px;left: 12px;border-radius: 5px;padding: 5px 10px;">
-                              <span>For {{$property->property_purpose}}</span>
+                              <span>{{__('text.For '.$property->property_purpose)}}</span>
                               {{--<h4>{{ getPropertyTypeName($property->property_type)->types }}</h4>
                               <span>{{getcong('currency_sign')}}@if($property->sale_price) {{$property->sale_price}} @else {{$property->rent_price}} @endif</span>--}}
                           </div>
@@ -251,7 +251,7 @@
                       @else
 
                           <div class="property-price" style="top: 12px;left: 12px;border-radius: 5px;padding: 5px 10px;">
-                              <span>{{$property->kind_of_type}}</span>
+                              <span>{{__('text.'.$property->kind_of_type)}}</span>
                               {{--<h4>{{ getPropertyTypeName($property->property_type)->types }}</h4>
                               <span>{{getcong('currency_sign')}}@if($property->sale_price) {{$property->sale_price}} @else {{$property->rent_price}} @endif</span>--}}
                           </div>
@@ -265,7 +265,7 @@
                   @if($property->available_immediately)
 
                 <div class="property-status" style="background:#48cfad;width:170px;bottom: 12px;left: 12px;border-radius: 5px;padding: 0px;text-align: center;">
-                 <span>Available Immediately</span>
+                 <span>{{__('text.Available Immediately')}}</span>
                 </div>
 
                   @endif
@@ -302,8 +302,6 @@
                                           <a data-gallery="floor-images{{$i}}" href="{{ URL::asset('upload/properties/'.$property->first_floor) }}" style="color: white;" data-toggle="lightbox"> <img style="width: 20px;margin-right: 10px;position: relative;bottom: 2px;" src="{{ URL::asset('assets/img/blueprint.png') }}" > </a>
 
                               @endif
-
-
 
                               <?php $check = 1; ?>
 
@@ -573,7 +571,7 @@
 
                                     @if($property->listed)
 
-                                        <div class="property-price" style="background: #d6d63e;position:relative;max-width: 50%;margin-bottom: 12px;font-size: 15px;padding: 2px 0px;border-radius: 5px;">Listed {{$property->listed}}</div>
+                                        <div class="property-price" style="background: #d6d63e;position:relative;max-width: 50%;margin-bottom: 12px;font-size: 15px;padding: 2px 0px;border-radius: 5px;">{{$property->listed}}</div>
 
                                     @endif
 
@@ -589,7 +587,7 @@
 
             @else
 
-                  <h2 style="text-align: center;margin-top: 30px;margin-bottom: 30px;">No Properties found...</h2>
+                  <h2 style="text-align: center;margin-top: 30px;margin-bottom: 30px;">{{__('text.No Properties found...')}}</h2>
 
                   @endif
             <!-- begin:pagination -->
@@ -735,7 +733,7 @@
 
      .select2-container--open .select2-dropdown--below
      {
-         width: 200px !important;
+         width: 240px !important;
          text-align: left;
      }
 
