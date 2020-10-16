@@ -604,7 +604,7 @@ class IndexController extends Controller
         {
                 return redirect()->back()->withErrors($validator->messages());
         }
-        
+
 
         $user = new User;
 
@@ -648,7 +648,7 @@ class IndexController extends Controller
 
 
 
-            \Session::flash('flash_message', 'Please verify your account. We\'ll send a verification link to the email address.');
+            \Session::flash('flash_message', __('text.Please verify your account. We\'ll send a verification link to the email address.'));
 
             return \Redirect::back();
 

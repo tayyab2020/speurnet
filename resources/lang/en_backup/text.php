@@ -439,4 +439,5 @@ return [
     'All Property Types' => 'All Property Types',
     '(Plot Area)' => '(Plot Area)',
     'Wheelchair Friendly' => 'Wheelchair Friendly',
+    'Please verify your account. We\'ll send a verification link to the email address.' => 'Please verify your account. We\'ll send a verification link to the email address.',
 ];

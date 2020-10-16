@@ -33,7 +33,7 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(191);
         /*Properties::observe(PropertiesObserver::class);*/
 
-        /*if (!empty($_SERVER['HTTP_CLIENT_IP']))
+        if (!empty($_SERVER['HTTP_CLIENT_IP']))
         {
             $ip_address = $_SERVER['HTTP_CLIENT_IP'];
         }
@@ -50,7 +50,16 @@ class AppServiceProvider extends ServiceProvider
             $ip_address = $_SERVER["REMOTE_ADDR"] ?? '127.0.0.1';
         }
 
-        $language = user_languages::where('ip','=',$ip_address)->first();
+        if($ip_address == '127.0.0.1')
+        {
+            \App::setLocale('en');
+        }
+        else
+        {
+            \App::setLocale('du');
+        }
+
+        /*$language = user_languages::where('ip','=',$ip_address)->first();
 
         if($language == '')
         {
