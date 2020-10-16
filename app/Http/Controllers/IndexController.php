@@ -98,6 +98,18 @@ class IndexController extends Controller
                 'provider_id' => $getInfo->id,
                 'status' => 1
             ]);
+
+            $user_name = $getInfo->name;
+            $user_email = $getInfo->email;
+
+            Mail::send('emails.social_register_confirm',
+                array(
+                    'name' => $user_name,
+                ), function($message) use ($user_name,$user_email)
+                {
+                    $message->from(getcong('site_email'),getcong('site_name'));
+                    $message->to($user_email,$user_name)->subject(__('text.Registration Confirmation'));
+                });
         }
         return $user;
 
@@ -644,7 +656,7 @@ class IndexController extends Controller
         ), function($message) use ($user_name,$user_email)
 	    {
 	        $message->from(getcong('site_email'),getcong('site_name'));
-	        $message->to($user_email,$user_name)->subject('Registration Confirmation');
+            $message->to($user_email,$user_name)->subject(__('text.Registration Confirmation'));
 	    });
 
 

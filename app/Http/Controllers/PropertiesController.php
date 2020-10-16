@@ -348,10 +348,10 @@ class PropertiesController extends Controller
                 'email' => $request->email,
                 'phone' => $request->phone,
                 'property_name' => $request->property_name,
+                'property_address' => $request->property_address,
             ),  function ($message) use($request,$customer_email) {
                 $message->from(getcong('site_email'),getcong('site_name'));
-                $message->to($customer_email)
-                    ->subject('Request for viewing');
+                $message->to($customer_email)->subject(__('text.Request for viewing'));
             });
 
         Mail::send('emails.agent_request_viewing',
@@ -364,8 +364,7 @@ class PropertiesController extends Controller
                 'property_name' => $request->property_name,
             ),  function ($message) use($request,$broker_email) {
                 $message->from(getcong('site_email'),getcong('site_name'));
-                $message->to($broker_email)
-                    ->subject('Request for viewing');
+                $message->to($broker_email)->subject(__('text.Request for viewing'));
             });
 
         Mail::send('emails.admin_request_viewing',
@@ -384,7 +383,15 @@ class PropertiesController extends Controller
                     ->subject('Request for viewing');
             });
 
-        \Session::flash('flash_message', 'Dear ' . $request->gender . ' ' . $request->username . ', <br>You requested a viewing of  "'. $request->property_name . '". We expect the real estate agent to contact you in near future. <br>The real estate agent will contact you using the following information:<br><i class="fas fa-at" style="color: black;font-size: 13px;margin-right: 7px;"></i><b>Email Address: </b><span style="color: #7474d3;font-weight: 700;">'.$request->email .'</span><br><i class="fas fa-phone-alt" style="color: black;font-size: 13px;margin-right: 7px;"></i><b>Telephone Number: </b><span style="color: #7474d3;font-weight: 700;">'.$request->phone . '</span>');
+        if(app()->getLocale() == 'en')
+        {
+            \Session::flash('flash_message', 'Dear ' . $request->gender . ' ' . $request->username . ', <br>You requested a viewing of  "'. $request->property_name . '". We expect the real estate agent to contact you in near future. <br>The real estate agent will contact you using the following information:<br><i class="fas fa-at" style="color: black;font-size: 13px;margin-right: 7px;"></i><b>Email Address: </b><span style="color: #7474d3;font-weight: 700;">'.$request->email .'</span><br><i class="fas fa-phone-alt" style="color: black;font-size: 13px;margin-right: 7px;"></i><b>Telephone Number: </b><span style="color: #7474d3;font-weight: 700;">'.$request->phone . '</span>');
+        }
+        else
+        {
+            \Session::flash('flash_message', 'Beste ' . $request->gender . ', <br>Je hebt een bezichtiging aangevraagd voor "'. $request->property_name .',' . $request->property_address . '". <br>De makelaar neemt zo snel mogelijk contact met je op via:<br><i class="fas fa-at" style="color: black;font-size: 13px;margin-right: 7px;"></i><b>E-mailadres: </b><span style="color: #7474d3;font-weight: 700;">'.$request->email .'</span><br><i class="fas fa-phone-alt" style="color: black;font-size: 13px;margin-right: 7px;"></i><b>Telefoonnummer: </b><span style="color: #7474d3;font-weight: 700;">'.$request->phone . '</span>');
+        }
+
 
         return \Redirect::back();
 

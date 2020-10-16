@@ -440,4 +440,7 @@ return [
     '(Plot Area)' => 'Plotgebied',
     'Wheelchair Friendly' => 'Rolstoelvriendelijk',
     'Please verify your account. We\'ll send a verification link to the email address.' => 'Zoekjehuisje.nl vraagt je om je account te verifiëren. We sturen je een e-mail met daarin een verificatielink.',
+    'Account Type configured successfully!' => 'Accounttype succesvol geconfigureerd!',
+    'Registration Confirmation' => 'Registratiebevestiging',
+    'Request for viewing' => 'Verzoek om bezichtiging',
 ];

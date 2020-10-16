@@ -572,6 +572,8 @@
 
                                           <input type="hidden" name="property_name" value="{{$property->property_name}}">
 
+                                          <input type="hidden" name="property_address" value="{{$property->address}}">
+
                                           <div class="modal-content">
 
                                               <div class="modal-header" style="border-bottom: 0;display: inline-block;width: 100%;padding: 15px 25px 0px 25px;">
@@ -715,7 +717,7 @@
                                               </div>
                                               <div class="modal-footer">
                                                   <button type="button" class="btn btn-secondary" data-dismiss="modal">{{__('text.Close')}}</button>
-                                                  <button type="submit" class="btn btn-primary">{{__('text.Send message')}}</button>
+                                                  <button type="submit" class="btn btn-primary" style="outline: none;">{{__('text.Send message')}}</button>
                                               </div>
                                           </div>
 
@@ -1957,7 +1959,7 @@
                             <textarea name="message" class="form-control input-lg" rows="7" placeholder="{{__('text.Message')}}"></textarea>
                           </div>
                           <div class="form-group">
-                            <input type="submit" name="submit" value="{{__('text.Send Message')}}" class="btn btn-primary btn-lg">
+                            <input style="outline: none;" type="submit" name="submit" value="{{__('text.Send Message')}}" class="btn btn-primary btn-lg">
                           </div>
                         {!! Form::close() !!}
 
@@ -2156,7 +2158,7 @@
                                 </div><!-- /.form-group -->
 
 
-                                <button type="submit" class="button btn btn-theme btn-block" name="contact-form">{{__('text.Send Message')}}</button>
+                                <button type="submit" class="button btn btn-theme btn-block" name="contact-form" style="outline: none;">{{__('text.Send Message')}}</button>
                             {!! Form::close() !!}
                         </div>
                     </aside>			   		</div>

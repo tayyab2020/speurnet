@@ -234,7 +234,7 @@ return [
     'Inquiries Heading' => 'Inquiries',
     'Request Viewing' => 'Request Viewing',
     'Mr.' => 'Mr.',
-    'Ms.' => 'Ms.',
+    'Ms.' => 'Mrs.',
     'Send Message' => 'Send Message',
     'Request Viewing Heading' => 'A home really comes into its own when you have seen it live. Fill in the form and who knows, you might be in your future home!',
     'Close' => 'Close',
@@ -440,4 +440,7 @@ return [
     '(Plot Area)' => '(Plot Area)',
     'Wheelchair Friendly' => 'Wheelchair Friendly',
     'Please verify your account. We\'ll send a verification link to the email address.' => 'Please verify your account. We\'ll send a verification link to the email address.',
+    'Account Type configured successfully!' => 'Account Type configured successfully!',
+    'Registration Confirmation' => 'Registration Confirmation',
+    'Request for viewing' => 'Request for viewing',
 ];

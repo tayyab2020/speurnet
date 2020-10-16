@@ -55,7 +55,7 @@ class IndexController extends MainAdminController
             $user = User::where('id',$request->user_id)->update(['usertype' => $request->type]);
         }
 
-        \Session::flash('flash_message', 'Account Type configured successfully!');
+        \Session::flash('flash_message', __('text.Account Type configured successfully!'));
         return redirect('admin/dashboard');
 
     }
