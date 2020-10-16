@@ -40,14 +40,14 @@
 
 @else
 
-    <?php if($gender == 'Mr.'){ $gender = 'meneer'; }else{ $gender = 'mevrouw'; } ?>
+    <?php if($gender == 'Mr.'){ $gender = 'meneer'; $gender1 = 'Dhr.'; }else{ $gender = 'mevrouw'; $gender1 = 'mevrouw.' } ?>
 
     <div style="background: #dce36d;width: 50%;padding: 20px;border-radius: 20px;" id="res">
 
         <p style="color: black;">Beste makelaar,</p>
         <p style="color: black;">Je hebt een bezichtigingsverzoek ontvangen van {{$gender}} {{$username}} voor de "{{$property_name}}".</p>
         <p style="color: black;">Je kunt met de volgende gegevens contact opnemen met {{$gender}} {{$username}} om de bezichtiging te plannen:</p>
-        <p>{{$gender}} {{$username}}</p>
+        <p>{{$gender1}} {{$username}}</p>
         <img src="{{ $message->embed(public_path() . '/assets/img/signs.png') }}" style="width: 13px;margin-right: 8px;display: block;float: left;margin-top: 4px;"><b style="color: black;">E-mail: </b><span style="color: #7474d3;font-weight: 700;">{{$email}}</span><br><br>
 
         @if($phone)

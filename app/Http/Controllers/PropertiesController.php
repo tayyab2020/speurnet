@@ -384,11 +384,12 @@ class PropertiesController extends Controller
 
         if(app()->getLocale() == 'en')
         {
-            \Session::flash('flash_message', 'Dear ' . $request->gender . ' ' . $request->username . ', <br>You requested a viewing of  "'. $request->property_name . '". We expect the real estate agent to contact you in near future. <br>The real estate agent will contact you using the following information:<br><i class="fas fa-at" style="color: black;font-size: 13px;margin-right: 7px;"></i><b>Email Address: </b><span style="color: #7474d3;font-weight: 700;">'.$request->email .'</span><br><i class="fas fa-phone-alt" style="color: black;font-size: 13px;margin-right: 7px;"></i><b>Telephone Number: </b><span style="color: #7474d3;font-weight: 700;">'.$request->phone . '</span>');
+            \Session::flash('flash_message', 'Dear ' . $request->gender . ' ' . $request->username . ', <br>You requested a viewing of  "'. $request->property_name . '". We expect the real estate agent to contact you in near future. <br>The real estate agent will contact you using the following information:<br><div style="margin-top: 7px;"><i class="fas fa-at" style="color: black;font-size: 13px;margin-right: 7px;"></i><b>Email Address: </b><span style="color: #7474d3;font-weight: 700;">'.$request->email .'</span><br><i class="fas fa-phone-alt" style="color: black;font-size: 13px;margin-right: 7px;"></i><b>Telephone Number: </b><span style="color: #7474d3;font-weight: 700;">'.$request->phone . '</span></div>');
         }
         else
         {
-            \Session::flash('flash_message', 'Beste ' . $request->gender . ', <br>Je hebt een bezichtiging aangevraagd voor "'. $request->property_name .',' . $request->property_address . '". <br>De makelaar neemt zo snel mogelijk contact met je op via:<br><i class="fas fa-at" style="color: black;font-size: 13px;margin-right: 7px;"></i><b>E-mailadres: </b><span style="color: #7474d3;font-weight: 700;">'.$request->email .'</span><br><i class="fas fa-phone-alt" style="color: black;font-size: 13px;margin-right: 7px;"></i><b>Telefoonnummer: </b><span style="color: #7474d3;font-weight: 700;">'.$request->phone . '</span>');
+            if($request->gender == 'Mr.'){ $gender = 'Dhr'; }else{ $gender = 'mevrouw'; }
+            \Session::flash('flash_message', 'Beste ' . $gender . ', <br>Je hebt een bezichtiging aangevraagd voor "'. $request->property_name .',' . $request->property_address . '". <br>De makelaar neemt zo snel mogelijk contact met je op via:<br><div style="margin-top: 7px;"><i class="fas fa-at" style="color: black;font-size: 13px;margin-right: 7px;"></i><b>E-mailadres: </b><span style="color: #7474d3;font-weight: 700;">'.$request->email .'</span><br><i class="fas fa-phone-alt" style="color: black;font-size: 13px;margin-right: 7px;"></i><b>Telefoonnummer: </b><span style="color: #7474d3;font-weight: 700;">'.$request->phone . '</span></div>');
         }
 
 
