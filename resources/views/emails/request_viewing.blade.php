@@ -42,7 +42,7 @@
 
     <div style="background: #dce36d;width: 50%;padding: 20px;border-radius: 20px;" id="res">
 
-        <?php if($gender == 'Mr.'){ $gender == 'dhr'; }else{ $gender == 'mevrouw'; } ?>
+        <?php if($gender == 'Mr.'){ $gender = 'dhr'; }else{ $gender = 'mevrouw'; } ?>
 
         <p style="color: black;">Beste {{$gender}},</p>
         <p style="color: black;">Je hebt een bezichtiging aangevraagd voor “{{$property_name}}", {{$property_address}}.</p>
