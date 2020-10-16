@@ -314,7 +314,8 @@ class PropertiesController extends Controller
 
     public function PostRequestViewing(Request $request)
     {
-        dd($request->gender);
+        var_dump($request->gender == 'Mr.');
+        dd(strcmp($request->gender,"Mr."));
 
         $post = new request_viewings;
 
