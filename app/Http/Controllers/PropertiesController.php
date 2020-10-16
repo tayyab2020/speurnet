@@ -314,6 +314,7 @@ class PropertiesController extends Controller
 
     public function PostRequestViewing(Request $request)
     {
+        dd($request->gender);
 
         $post = new request_viewings;
 
