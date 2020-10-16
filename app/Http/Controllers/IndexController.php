@@ -639,7 +639,8 @@ class IndexController extends Controller
             'email' => $user_email,
             'password' => $request->password,
             'confirmation_code' => $string,
-            'user_message' => 'test'
+            'user_message' => 'test',
+            'user_type' => $request->usertype,
         ), function($message) use ($user_name,$user_email)
 	    {
 	        $message->from(getcong('site_email'),getcong('site_name'));
