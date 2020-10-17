@@ -1084,7 +1084,7 @@
                     </div>
 
                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-7 ck-ls" style="float: right;margin-top: 10px;">
-                        <button data-dismiss="modal" style="background: #4ab8ca;color: white;outline: none;" type="button" class="btn col-lg-12 col-md-12 col-sm-12 col-xs-12 save-cookie">IK ga akkoord</button>
+                        <button data-dismiss="modal" style="background: #4ab8ca;color: white;outline: none;" type="button" class="btn col-lg-12 col-md-12 col-sm-12 col-xs-12 save-cookie">Ik ga akkoord</button>
                         <span><a class="cookie-btn" style="cursor: pointer;" data-toggle="modal" data-target="#myModal1">Instellingen</a></span>
                     </div>
 
