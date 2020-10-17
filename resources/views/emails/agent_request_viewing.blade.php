@@ -40,7 +40,7 @@
 
 @else
 
-    <?php if($gender == 'Mr.'){ $gender = 'meneer'; $gender1 = 'Dhr.'; }else{ $gender = 'mevrouw'; $gender1 = 'mevrouw.'; } ?>
+    <?php if($gender == 'Mr.'){ $gender = 'meneer'; $gender1 = 'Dhr.'; }else{ $gender = 'mevrouw'; $gender1 = 'Mevrouw.'; } ?>
 
     <div style="background: #dce36d;width: 50%;padding: 20px;border-radius: 20px;" id="res">
 

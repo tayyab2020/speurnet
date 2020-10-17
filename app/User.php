@@ -61,12 +61,15 @@ class CustomPassword extends ResetPassword
     {
         $url=url('admin/password/reset/'.$this->token);
 
+        $user_type = $notifiable->usertype;
+        $user_name = $notifiable->name;
+
         return (new MailMessage)
-            ->subject('Reset Password')
+            ->subject(__('text.Reset password'))
             ->from(getcong('site_email'), getcong('site_name'))
             /*->line('We are sending this email because we recieved a forgot password request.')
             ->action('Reset Password', $url)
             ->line('If you did not request a password reset, no further action is required. Please contact us if you did not submit this request.');*/
-            ->view('emails.password',['url'=>$url]);
+            ->view('emails.password',['url'=>$url,'user_type'=>$user_type,'user_name'=>$user_name]);
     }
 }

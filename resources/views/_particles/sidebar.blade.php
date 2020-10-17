@@ -221,7 +221,7 @@
                         @if(Route::currentRouteName() == 'searchproperties')
 
                             @if($type_of_construction)
-                                <span class="button-applied-filter span-heading">{{__('text.'.$type_of_construction)}} {{__('text.Property')}}</span>
+                                <span class="button-applied-filter span-heading">{{__('text.'.$type_of_construction)}}{{__('text.Property')}}</span>
                             @endif
 
                         @endif
@@ -254,11 +254,11 @@
                         @if($min_area != '' || $max_area != '')
 
                             @if($min_area != '' && $max_area != '')
-                                <span class="button-applied-filter span-heading">{{$min_area}} m² - {{$max_area}} m² {{__('text.(Plot Area)')}}</span>
+                                <span class="button-applied-filter span-heading">{{__('text.(Plot Area)')}} {{$min_area}} m² - {{$max_area}} m²</span>
                             @elseif($min_area != '')
-                                <span class="button-applied-filter span-heading">{{$min_area}}+ m² {{__('text.(Plot Area)')}}</span>
+                                <span class="button-applied-filter span-heading">{{__('text.(Plot Area)')}} {{$min_area}}+ m²</span>
                             @elseif($max_area != '')
-                                <span class="button-applied-filter span-heading">0 m² - {{$max_area}} m² {{__('text.(Plot Area)')}}</span>
+                                <span class="button-applied-filter span-heading">{{__('text.(Plot Area)')}} 0 m² - {{$max_area}} m²</span>
                             @endif
 
                         @endif

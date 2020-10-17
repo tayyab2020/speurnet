@@ -3,8 +3,19 @@
   <component name="ChangeListManager">
     <list default="true" id="7fe7f36f-c82f-4504-8c0a-7874522d22c9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/PasswordController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/PasswordController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PropertiesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PropertiesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/du/text.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/du/text.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/en/text.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/text.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/_particles/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/_particles/sidebar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/auth/reset.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/auth/reset.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/pages/addeditproperty.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/pages/addeditproperty.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/password.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/password.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/emails/agent_inquiry.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/emails/agent_inquiry.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/emails/agent_request_viewing.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/emails/agent_request_viewing.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/emails/inquiry.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/emails/inquiry.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/emails/password.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/emails/password.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/emails/request_viewing.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/emails/request_viewing.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -178,9 +189,6 @@
       <method v="2" />
     </configuration>
   </component>
-  <component name="ServiceViewManager">
-    <option name="showServicesTree" value="false" />
-  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -261,7 +269,8 @@
       <workItem from="1602156082246" duration="24023000" />
       <workItem from="1602359031505" duration="22872000" />
       <workItem from="1602496080572" duration="3319000" />
-      <workItem from="1602581817521" duration="64455000" />
+      <workItem from="1602581817521" duration="73015000" />
+      <workItem from="1602927583286" duration="6810000" />
     </task>
     <servers />
   </component>
@@ -284,10 +293,6 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="452" y="67" width="645" height="690" key="#phpunit.xml/0.0.1536.824@0.0.1536.824" timestamp="1596907790347" />
-    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1594141879865">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1594141879865" />
     <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1602496081370">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -300,10 +305,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="553" y="319" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1595277485716" />
-    <state x="452" y="123" width="805" height="606" key="find.popup" timestamp="1602843447680">
+    <state x="452" y="123" width="805" height="606" key="find.popup" timestamp="1602941020274">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="452" y="123" width="805" height="606" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1602843447680" />
+    <state x="452" y="123" width="805" height="606" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1602941020274" />
     <state x="425" y="187" key="run.anything.popup" timestamp="1602767172445">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

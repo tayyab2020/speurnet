@@ -5,11 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{getcong('site_name')}} Admin</title>
-	
+
 	<link href="{{ URL::asset('upload/'.getcong('site_favicon')) }}" rel="shortcut icon" type="image/x-icon" />
 
 	<link rel="stylesheet" href="{{ URL::asset('admin_assets/css/style.css') }}">
-	
+
 	<script src="{{ URL::asset('admin_assets/js/jquery.js') }}"></script>
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -22,15 +22,15 @@
 </head>
 <body>
   <div class="container-fluid">
-      
+
 <div id="main">
     <div class="row">
     <div class="col-md-4 col-md-offset-4">
         <div class="login">
 
             <a class="logo" href="{{ URL::to('/admin') }}" align="">
-              
-            <img src="{{ URL::asset('upload/'.getcong('site_logo')) }}" alt="logo">
+
+            <img src="{{ URL::asset('upload/'.getcong('site_logo')) }}" style="width: 100%;" alt="logo">
             </a>
             <div class="panel panel-default panel-shadow">
                <!-- <div class="avatar">
@@ -38,7 +38,7 @@
                 </div>-->
                 {!! Form::open(array('url' => 'admin/password/email','class'=>'','id'=>'passwordform','role'=>'form')) !!}
                     <div class="panel-body">
-                    	
+
                     	@if(Session::has('flash_message'))
 				    <div class="alert alert-success">
 				    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -59,25 +59,25 @@
 											        </ul>
 											    </div>
 											@endif
-							                    	
+
 							                    </div>
-                    	
+
                         <div class="form-group">
-                            <label for="email">Reset password</label>
-                            <input type="email" class="form-control" name="email" id="email" placeholder="Enter email">
+                            <label for="email">{{__('text.Reset password')}}</label>
+                            <input type="email" class="form-control" name="email" id="email" placeholder="{{__('text.Email Address')}}">
                         </div>
-                       <div class="form-group">                            
-                            <a href="{{ URL::to('admin/') }}" class="small pull-right">Login?</a>
-                             
+                       <div class="form-group">
+                            <a href="{{ URL::to('admin/') }}" class="small pull-right">{{__('text.Login?')}}</a>
+
                         </div>
-                         
+
                     </div>
                     <div class="form-group text-center">
-                        <button type="submit" class="btn btn-primary"> Send Reset Link <i class="md md-lock-open"></i></button>
+                        <button type="submit" class="btn btn-primary"> {{__('text.Send Reset Link')}} <i class="md md-lock-open"></i></button>
                     </div>
-                {!! Form::close() !!} 
+                {!! Form::close() !!}
             </div>
-           
+
         </div>
     </div>
 </div>
@@ -85,13 +85,13 @@
 
 
   </div>
-	
+
 	 <!-- Plugins -->
   <script src="{{ URL::asset('admin_assets/js/plugins.js') }}"></script>
 
   <!-- App Scripts -->
   <script src="{{ URL::asset('admin_assets/js/scripts.js') }}"></script>
-	
+
 </body>
- 
+
 </html>

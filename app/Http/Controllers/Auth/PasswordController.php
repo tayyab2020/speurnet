@@ -34,28 +34,26 @@ class PasswordController extends Controller
     {
         $this->middleware('guest');
     }
-    
+
     public function getEmail()
     {
         return view('admin.password');
     }
-    
+
     public function postEmail(Request $request)
    {
- 
+
        $this->validate($request, ['email' => 'required|email']);
 
-
-
        $response = Password::sendResetLink($request->only('email'), function (Message $message) {
-           $message->subject('Your Password Reset Link');
-           $message->sender(getcong('site_email'));     
+           $message->subject(__('text.Your Password Reset Link'));
+           $message->sender(getcong('site_email'));
        });
- 
-       
+
+
        switch ($response) {
            case Password::RESET_LINK_SENT:
-               \Session::flash('flash_message', 'We have e-mailed your password reset link!');
+               \Session::flash('flash_message', __('text.We have e-mailed your password reset link!'));
                return redirect()->back();
 
            case Password::INVALID_USER:
@@ -76,7 +74,7 @@ class PasswordController extends Controller
 
         return view('admin.auth.reset')->with('token', $token);
     }
-    
+
     /**
      * Reset the given user's password.
      *
@@ -102,9 +100,9 @@ class PasswordController extends Controller
         switch ($response) {
             case Password::PASSWORD_RESET:
                 \Session::flash('success.message',  trans($response));
- 
+
                 Auth::logout();
-                \Session::flash('flash_message', 'New Password Updated');
+                \Session::flash('flash_message', __('text.New Password Updated'));
                 return redirect('login');
 
             default:
@@ -113,7 +111,7 @@ class PasswordController extends Controller
                     ->withInput($request->only('email'));
         }
     }
-    
+
     /**
      * Reset the given user's password.
      *
@@ -125,10 +123,10 @@ class PasswordController extends Controller
     {
         $user->password = bcrypt($password);
         $user->save();
- 
+
         //Auth::login($user);
         Auth::logout();
-        \Session::flash('flash_message', 'New Password Updated');
+        \Session::flash('flash_message', __('text.New Password Updated'));
 
         return redirect('/login');
     }

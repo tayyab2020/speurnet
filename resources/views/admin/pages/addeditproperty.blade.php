@@ -970,7 +970,6 @@
 
                                                         <select name="property_furnished" id="property_furnished" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
                                                             <option value="Unfurnished" @if($property->property_furnished == 'Unfurnished') selected @endif>{{__('text.Unfurnished')}}</option>
-                                                            <option value="Bare" @if($property->property_furnished == 'Bare') selected @endif>{{__('text.Bare')}}</option>
                                                             <option value="Furnished" @if($property->property_furnished == 'Furnished') selected @endif>{{__('text.Furnished')}}</option>
                                                         </select>
 
@@ -978,7 +977,6 @@
 
                                                         <select name="property_furnished" id="property_furnished" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
                                                             <option value="Unfurnished" @if(old('property_furnished') == 'Unfurnished') selected @endif>{{__('text.Unfurnished')}}</option>
-                                                            <option value="Bare" @if(old('property_furnished') == 'Bare') selected @endif>{{__('text.Bare')}}</option>
                                                             <option value="Furnished" @if(old('property_furnished') == 'Furnished') selected @endif>{{__('text.Furnished')}}</option>
                                                         </select>
 
@@ -1026,7 +1024,6 @@
 
                                                         <select name="property_furnished" id="property_furnished" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
                                                             <option value="Unfurnished" @if($property->property_furnished == 'Unfurnished') selected @endif>{{__('text.Unfurnished')}}</option>
-                                                            <option value="Bare" @if($property->property_furnished == 'Bare') selected @endif>{{__('text.Bare')}}</option>
                                                             <option value="Furnished" @if($property->property_furnished == 'Furnished') selected @endif>{{__('text.Furnished')}}</option>
                                                         </select>
 
@@ -1034,7 +1031,6 @@
 
                                                         <select name="property_furnished" id="property_furnished" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
                                                             <option value="Unfurnished" @if(old('property_furnished') == 'Unfurnished') selected @endif>{{__('text.Unfurnished')}}</option>
-                                                            <option value="Bare" @if(old('property_furnished') == 'Bare') selected @endif>{{__('text.Bare')}}</option>
                                                             <option value="Furnished" @if(old('property_furnished') == 'Furnished') selected @endif>{{__('text.Furnished')}}</option>
                                                         </select>
 
@@ -1086,7 +1082,6 @@
 
                                                         <select name="property_furnished" id="property_furnished" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
                                                             <option value="Unfurnished" @if($property->property_furnished == 'Unfurnished') selected @endif>{{__('text.Unfurnished')}}</option>
-                                                            <option value="Bare" @if($property->property_furnished == 'Bare') selected @endif>{{__('text.Bare')}}</option>
                                                             <option value="Furnished" @if($property->property_furnished == 'Furnished') selected @endif>{{__('text.Furnished')}}</option>
                                                         </select>
 
@@ -1094,7 +1089,6 @@
 
                                                         <select name="property_furnished" id="property_furnished" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
                                                             <option value="Unfurnished" @if(old('property_furnished') == 'Unfurnished') selected @endif>{{__('text.Unfurnished')}}</option>
-                                                            <option value="Bare" @if(old('property_furnished') == 'Bare') selected @endif>{{__('text.Bare')}}</option>
                                                             <option value="Furnished" @if(old('property_furnished') == 'Furnished') selected @endif>{{__('text.Furnished')}}</option>
                                                         </select>
 
@@ -1142,7 +1136,6 @@
 
                                                         <select name="property_furnished" id="property_furnished" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
                                                             <option value="Unfurnished" @if($property->property_furnished == 'Unfurnished') selected @endif>{{__('text.Unfurnished')}}</option>
-                                                            <option value="Bare" @if($property->property_furnished == 'Bare') selected @endif>{{__('text.Bare')}}</option>
                                                             <option value="Furnished" @if($property->property_furnished == 'Furnished') selected @endif>{{__('text.Furnished')}}</option>
                                                         </select>
 
@@ -1150,7 +1143,6 @@
 
                                                         <select name="property_furnished" id="property_furnished" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
                                                             <option value="Unfurnished" @if(old('property_furnished') == 'Unfurnished') selected @endif>{{__('text.Unfurnished')}}</option>
-                                                            <option value="Bare" @if(old('property_furnished') == 'Bare') selected @endif>{{__('text.Bare')}}</option>
                                                             <option value="Furnished" @if(old('property_furnished') == 'Furnished') selected @endif>{{__('text.Furnished')}}</option>
                                                         </select>
 

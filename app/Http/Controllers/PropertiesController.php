@@ -1187,23 +1187,21 @@ class PropertiesController extends Controller
                 'property_name' => $request->property_name,
             ),  function ($message) use($request,$customer_email) {
                 $message->from(getcong('site_email'),getcong('site_name'));
-                $message->to($customer_email)
-                    ->subject('Property Inquiry');
+                $message->to($customer_email)->subject(__('text.Property Inquiry'));
             });
 
         Mail::send('emails.agent_inquiry',
             array(
                 'gender' => $request->gender,
                 'broker_name' => $broker_name,
-                'username' => $request->username,
+                'username' => $request->name,
                 'email' => $request->email,
                 'phone' => $request->phone,
                 'inquiry' => $request->message,
                 'property_name' => $request->property_name,
             ),  function ($message) use($request,$broker_email) {
                 $message->from(getcong('site_email'),getcong('site_name'));
-                $message->to($broker_email)
-                    ->subject('Property Inquiry');
+                $message->to($broker_email)->subject(__('text.Property Inquiry'));
             });
 
         Mail::send('emails.admin_inquiry',
@@ -1223,7 +1221,7 @@ class PropertiesController extends Controller
                     ->subject('Property Inquiry');
             });
 
-	    \Session::flash('flash_message', 'Message send successfully');
+	    \Session::flash('flash_message', __('text.Message send successfully'));
 
          return \Redirect::back();
 

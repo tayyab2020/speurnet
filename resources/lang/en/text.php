@@ -443,4 +443,12 @@ return [
     'Account Type configured successfully!' => 'Account Type configured successfully!',
     'Registration Confirmation' => 'Registration Confirmation',
     'Request for viewing' => 'Request for viewing',
+    'Property Inquiry' => 'Property Inquiry',
+    'Message send successfully' => 'Message send successfully',
+    'New Password Updated' => 'New Password Updated',
+    'Reset password' => 'Reset password',
+    'Login?' => 'Login?',
+    'Send Reset Link' => 'Send Reset Link',
+    'We have e-mailed your password reset link!' => 'We have e-mailed your password reset link!',
+    'Your Password Reset Link' => 'Your Password Reset Link',
 ];
