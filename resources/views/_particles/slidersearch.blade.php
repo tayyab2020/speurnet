@@ -369,7 +369,7 @@
 
                                     .city-input,
                                     .city-input::-webkit-input-placeholder {
-                                        font-size: 10px;
+                                        font-size: 9px;
                                         line-height: 3;
                                     }
 

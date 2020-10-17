@@ -169,7 +169,7 @@ class AgentsController extends Controller
             });
 
 
-        Session::flash('flash_message', 'Your Enquiry has been submitted successfully!');
+        Session::flash('flash_message', __('text.Your Enquiry has been submitted successfully!'));
 
         return redirect()->back();
 

@@ -451,4 +451,5 @@ return [
     'Send Reset Link' => 'Send Reset Link',
     'We have e-mailed your password reset link!' => 'We have e-mailed your password reset link!',
     'Your Password Reset Link' => 'Your Password Reset Link',
+    'Your Enquiry has been submitted successfully!' => 'Your Enquiry has been submitted successfully!',
 ];

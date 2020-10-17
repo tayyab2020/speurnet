@@ -528,7 +528,6 @@
 
                                 </a>
 
-
                                 <div class="property-status">
                                     <span>{{__('text.For '.$temp->property_purpose)}}</span>
                                 </div>
@@ -621,6 +620,11 @@
 <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/css/flaticon.css') }}"/>
 
 <style>
+
+    small
+    {
+        line-height: 15px !important;
+    }
 
     @media (max-width: 400px) {
         .status-responsive {
@@ -1333,7 +1337,11 @@
 
 </script>
 
+@if(count($partners) != 0)
+
 @include("_particles.partners")
+
+@endif
 
 @include("_particles.subscribe")
 

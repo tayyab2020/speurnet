@@ -46,7 +46,7 @@ return [
     'Privacy Policy' => 'Privacy beleid',
     'Brought to you by' => 'Met trots aangeboden door',
     'Stay informed and quickly find, sell or rent your home' => 'Blijf op de hoogte en vind, verkoop of verhuur snel jouw huis',
-    'Find real estate members' => 'Voilà, een overzicht van makelaars die voor jou klaarstaan! Makelaars, die niets liever willen dan jou op weg helpen naar jouw volgende thuis',
+    'Find real estate members' => 'Voilà, een overzicht van makelaars die voor jou klaarstaan! Makelaars, die niets liever willen dan jou op weg helpen naar jouw volgende thuis.',
     'Agent Name' => 'Zoek op naam makelaar',
     'Search Address, City etc' => 'Zoek op adres of plaats',
     'I am looking for a sales broker' => 'Ik ben op zoek naar een verkoopmakelaar',
@@ -451,4 +451,5 @@ return [
     'Send Reset Link' => 'Verstuur resetlink',
     'We have e-mailed your password reset link!' => 'Wachtwoord vergeten? Geen probleem hoor.',
     'Your Password Reset Link' => 'Uw wachtwoord reset link',
+    'Your Enquiry has been submitted successfully!' => 'Je bericht is succesvol verzonden!',
 ];
