@@ -16,7 +16,7 @@
 
                     </div>
                     <ol class="breadcrumb">
-                        <li><a href="{{ URL::to('/') }}">Home</a></li>
+                        <li><a href="{{ URL::to('/') }}">{{__('text.Home')}}</a></li>
                     </ol>
                 </div>
             </div>
@@ -37,7 +37,7 @@
 
                     <div style="background: white;padding: 20px;border-radius: 10px;box-shadow: 1px 1px 14px 2px #e7e7e7;">
 
-                        <h2 style="margin-bottom: 30px;color: #303030;text-align: center;margin-top: 0px;">{{__('text.FAQs')}}</h2>
+                        <h2 style="margin-bottom: 30px;color: #868686;font-weight: 600;text-align: center;margin-top: 0px;">{{__('text.FAQs')}}</h2>
 
                         <section class="cd-faq js-cd-faq container max-width-md margin-top-lg margin-bottom-lg" style="padding: 0;margin: 0;width: 100%;">
                             <div class="cd-faq__items" style="padding: 0;">
@@ -83,7 +83,7 @@
 
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-10" style="display: table;margin: auto;float: none;margin-bottom: 60px;">
 
-                                <h2 style="margin-bottom: 30px;color: #303030;text-align: center;">{{__('text.Find Your Match')}}</h2>
+                                <h2 style="margin-bottom: 30px;color: #868686;font-weight: 600;text-align: center;">{{__('text.Find Your Match')}}</h2>
 
                                 <div id="wrapper_1" class="col-lg-6 col-md-6 col-sm-6 col-xs-12" style="padding: 0;">
 
@@ -404,7 +404,7 @@
 
                     <div style="background: white;padding: 20px 10px 0px 10px;border-radius: 10px;box-shadow: 1px 1px 14px 2px #e7e7e7;">
 
-                        <h2 style="margin-bottom: 30px;color: #303030;text-align: center;margin-top: 0px;">{{__('text.Recent Ads')}}</h2>
+                        <h2 style="margin-bottom: 30px;color: #868686;font-weight: 600;text-align: center;margin-top: 0px;">{{__('text.Recent Ads')}}</h2>
 
                         @foreach($recent as $temp)
 
@@ -424,7 +424,7 @@
 
                                 </div>
 
-                                <?php $date = date_format($temp->created_at,"d F Y");?>
+                                <?php setlocale(LC_TIME, 'Dutch'); $date = $temp->created_at->formatLocalized('%d %B %Y'); ?>
 
                                 <div class="row" style="margin: 0;display: inline-block;width: 100%;">
                                     <small style="float: left;font-weight: 600;padding-left: 10px;padding-top: 20px;"> {{__('text.Posted on')}} {{$date}}</small>
@@ -1317,11 +1317,11 @@
                 -moz-appearance:textfield;
             }
 
-            .video-wrapper-inner .popup-video{position:relative;z-index:1;display:inline-block;width:50px;height:50px;line-height:50px;border-radius:50%;-webkit-border-radius:50%;-moz-border-radius:50%;-ms-border-radius:50%;-o-border-radius:50%;-webkit-transition:all 0.3s ease-in-out 0s;-o-transition:all 0.3s ease-in-out 0s;transition:all 0.3s ease-in-out 0s;font-size:18px;color:#fff;background:#dfc615;text-align:center}
+            .video-wrapper-inner .popup-video{position:relative;z-index:1;display:inline-block;width:50px;height:50px;line-height:50px;border-radius:50%;-webkit-border-radius:50%;-moz-border-radius:50%;-ms-border-radius:50%;-o-border-radius:50%;-webkit-transition:all 0.3s ease-in-out 0s;-o-transition:all 0.3s ease-in-out 0s;transition:all 0.3s ease-in-out 0s;font-size:18px;color:#fff;background:#f9424b;text-align:center}
 
             @media (min-width: 1200px){.video-wrapper-inner .popup-video{width:70px;height:70px;line-height:70px;font-size:22px}}
 
-            .video-wrapper-inner .popup-video:before{-webkit-transition:all 0.3s ease-in-out 0s;-o-transition:all 0.3s ease-in-out 0s;transition:all 0.3s ease-in-out 0s;content:'';position:absolute;top:0;left:0;width:100%;height:100%;z-index:-1;background:#dfc615;opacity:0.3;filter:alpha(opacity=30);border-radius:50%;-webkit-border-radius:50%;-moz-border-radius:50%;-ms-border-radius:50%;-o-border-radius:50%;-webkit-animation:scaleicon 3s ease-in-out 0s infinite alternate;animation:scaleicon 3s ease-in-out 0s infinite alternate}.widget-video.style2 .popup-video{position:absolute;top:50%;left:50%;-webkit-transform:translate(-50%,-50%);-ms-transform:translate(-50%,-50%);-o-transform:translate(-50%,-50%);transform:translate(-50%,-50%)}
+            .video-wrapper-inner .popup-video:before{-webkit-transition:all 0.3s ease-in-out 0s;-o-transition:all 0.3s ease-in-out 0s;transition:all 0.3s ease-in-out 0s;content:'';position:absolute;top:0;left:0;width:100%;height:100%;z-index:-1;background:#f9424b;opacity:0.3;filter:alpha(opacity=30);border-radius:50%;-webkit-border-radius:50%;-moz-border-radius:50%;-ms-border-radius:50%;-o-border-radius:50%;-webkit-animation:scaleicon 3s ease-in-out 0s infinite alternate;animation:scaleicon 3s ease-in-out 0s infinite alternate}.widget-video.style2 .popup-video{position:absolute;top:50%;left:50%;-webkit-transform:translate(-50%,-50%);-ms-transform:translate(-50%,-50%);-o-transform:translate(-50%,-50%);transform:translate(-50%,-50%)}
 
             @-webkit-keyframes scaleicon{from{-ms-transform:scale(1,1);transform:scale(1,1)}50%{-ms-transform:scale(1.3,1.3);transform:scale(1.3,1.3)}}
 

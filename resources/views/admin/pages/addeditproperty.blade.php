@@ -1335,13 +1335,13 @@
 
                                         <div style="width: 100%;display: inline-block;margin: auto">
 
-                                        <ul style="list-style: none;display: inline-block;width: 100%;padding: 0;padding-top: 30px;">
+                                        <ul style="list-style: none;display: flex;flex-wrap: wrap;padding: 0;padding-top: 30px;">
 
                                             <?php $i = 0; if(isset($property->property_features)) { $selected_features = explode(',', $property->property_features); } ?>
 
                                             @foreach($property_features as $key)
 
-                                                <li class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="padding: 0;margin: 20px 0px;text-align: left;">
+                                                <li class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin: 30px 0px;text-align: left;display: flex;">
 
                                                     <input name="property_features[]" @if(old('property_features')) @if(in_array($key->id, old('property_features'))) checked @endif @else @if(isset($property->property_features)) @if(in_array($key->id, $selected_features)) checked @endif @endif @endif value="{{$key->id}}" type="checkbox" id="property_features{{$i}}" style="position: relative;top: 2px;">
 
@@ -2417,7 +2417,7 @@
 
                                         <label class="left-label" style="float: left;">{{__('text.File Documents')}}</label>
 
-                                        <div style="display:inline-block;width: 100%;"><small>Press &amp; hold CTRL key to select multiple files.</small></div>
+                                        {{--<div style="display:inline-block;width: 100%;"><small>Press &amp; hold CTRL key to select multiple files.</small></div>--}}
 
                                         <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
 
@@ -3782,7 +3782,7 @@
             });
 
 
-            $('#datetimepicker4').datetimepicker({format: 'DD/MM/YYYY'});
+            $('#datetimepicker4').datetimepicker({format: 'DD/MM/YYYY',locale: 'nl'});
 
             $('#datetimepicker4').on('dp.change', function(e){
 
@@ -3804,14 +3804,16 @@
 
             });
 
-            $('#datetimepicker5').datetimepicker({format: 'DD/MM/YYYY'});
+            $('#datetimepicker5').datetimepicker({format: 'DD/MM/YYYY',locale: 'nl'});
 
             $('#datetimepicker3').datetimepicker({
-                format: 'LT'
+                format: 'LT',
+                locale: 'nl'
             });
 
             $('#datetimepicker2').datetimepicker({
-                format: 'LT'
+                format: 'LT',
+                locale: 'nl'
             });
 
             function incrementValue(e) {

@@ -52,7 +52,7 @@ class AppServiceProvider extends ServiceProvider
 
         if($ip_address == '127.0.0.1')
         {
-            \App::setLocale('en');
+            \App::setLocale('du');
         }
         else
         {

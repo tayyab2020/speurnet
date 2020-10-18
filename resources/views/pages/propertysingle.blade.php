@@ -302,7 +302,7 @@
 
                           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 10px 0px;padding-bottom: 0px;">
 
-                                  <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8" style="padding: 0;">
+                                  <div class="col-lg-9 col-md-8 col-sm-8 col-xs-8" style="padding: 0;">
                               <span style="margin-right: 10px;float: left;margin-bottom: 7px;"><img src="{{ URL::asset('assets/img/pin.png') }}" style="width: 15px;height: 15px;display: block;" /></span>
 
                               <h5 style="margin: 0;float: left;margin-right: 20px;margin-bottom: 15px;">{{$property->address}}</h5>
@@ -318,7 +318,7 @@
 
                                   <?php $date = date_format($property->created_at,"d F Y");?>
 
-                                  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" style="padding: 0;">
+                                  <div class="col-lg-3 col-md-4 col-sm-4 col-xs-4" style="padding: 0;">
 
                                       <span style="font-size: 12px;line-height: 1;vertical-align: top;float: right;">{{__('text.Posted on')}} {{$date}}</span>
 
@@ -762,7 +762,7 @@
 
                                     <tr>
                                         <td><strong>{{__('text.Rent')}}</strong></td>
-                                        <td>€ {{number_format($property->rent_per_month, 0, ',', '.')}}</sup> </td>
+                                        <td>€ {{number_format($property->rent_per_month, 0, ',', '.')}}</td>
                                     </tr>
 
 
@@ -779,7 +779,7 @@
 
                                     <tr>
                                         <td><strong>{{__('text.Contract')}}</strong> <img src="{{ URL::asset('assets/img/communications.png') }}" style="width: 18px;float: right;" /></td>
-                                        <td>{{$property->property_purpose}}</td>
+                                        <td>{{__('text.'.$property->property_purpose)}}</td>
                                     </tr>
 
                                   @endif
@@ -800,7 +800,7 @@
                           </tr>
                           <tr>
                             <td><strong>{{__('text.Area')}} <small>(m2)</small></strong></td>
-                            <td>{{$property->area}} m2</sup> </td>
+                            <td>{{$property->area}} m2</td>
                           </tr>
 
                         </table>
@@ -810,7 +810,7 @@
                               @if($property->kind_of_type)
                                   <tr>
                                       <td><strong>{{__('text.Kind of Type')}}</strong></td>
-                                      <td>{{$property->kind_of_type}}</sup> </td>
+                                      <td>{{__('text.'.$property->kind_of_type)}}</td>
                                   </tr>
                               @endif
 
@@ -818,7 +818,7 @@
 
                                       <tr>
                                           <td><strong>{{__('text.Realization')}}</strong></td>
-                                          <td>{{$property->realization}}</sup> </td>
+                                          <td>{{$property->realization}}</td>
                                       </tr>
 
                                   @endif
@@ -827,7 +827,7 @@
 
                                       <tr>
                                           <td><strong>{{__('text.Homes')}}</strong></td>
-                                          <td>{{$property->homes}}</sup> </td>
+                                          <td>{{$property->homes}}</td>
                                       </tr>
 
                                   @endif
@@ -836,7 +836,7 @@
 
                                       <tr>
                                           <td><strong>{{__('text.Rental Properties')}}</strong></td>
-                                          <td>{{$property->rental_properties}}</sup> </td>
+                                          <td>{{$property->rental_properties}}</td>
                                       </tr>
 
                                   @endif
@@ -845,7 +845,7 @@
 
                                       <tr>
                                           <td><strong>{{__('text.Source')}}</strong></td>
-                                          <td style="word-wrap: break-word;overflow-wrap: break-word;">{{$property->source}}</sup> </td>
+                                          <td style="word-wrap: break-word;overflow-wrap: break-word;">{{$property->source}}</td>
                                       </tr>
 
                                   @endif
@@ -854,7 +854,7 @@
 
                                       <tr>
                                           <td><strong>{{__('text.Citation')}}</strong></td>
-                                          <td>{{$property->Citation}}</sup> </td>
+                                          <td>{{$property->Citation}}</td>
                                       </tr>
 
                                   @endif
@@ -862,7 +862,7 @@
                             @if($property->garage)
                                 <tr>
                                     <td><strong>{{__('text.Garage')}} <small>(m2)</small></strong></td>
-                                    <td>{{$property->garage}} m2</sup> </td>
+                                    <td>{{$property->garage}} m2</td>
                                 </tr>
                             @endif
 
@@ -870,8 +870,8 @@
                             @if($property->construction_type)
 
                                 <tr>
-                                    <td><strong>{{__('text.Construction Type')}}</strong></td>
-                                    <td>{{$property->construction_type}}</sup> </td>
+                                    <td><strong>{{__('text.Type of Construction')}}</strong></td>
+                                    <td>{{__('text.'.$property->construction_type)}}</td>
                                 </tr>
 
                             @endif
@@ -879,8 +879,8 @@
                             @if($property->year_construction)
 
                                 <tr>
-                                    <td><strong>{{__('text.Construction Year')}}</strong></td>
-                                    <td>{{$property->year_construction}}</sup> </td>
+                                    <td><strong>{{__('text.Year of construction')}}</strong></td>
+                                    <td>{{$property->year_construction}}</td>
                                 </tr>
 
                             @endif
@@ -888,8 +888,8 @@
                             @if($property->building_condition)
 
                                 <tr>
-                                    <td><strong>{{__('text.Building Condition')}}</strong></td>
-                                    <td>{{$property->building_condition}}</sup> </td>
+                                    <td><strong>{{__('text.Condition of the building')}}</strong></td>
+                                    <td>{{__('text.'.$property->building_condition)}}</td>
                                 </tr>
 
                             @endif
@@ -898,7 +898,7 @@
 
                                 <tr>
                                     <td><strong>{{__('text.Volume')}} <small>(m3)</small></strong></td>
-                                    <td>{{$property->volume}} m3</sup> </td>
+                                    <td>{{$property->volume}} m3</td>
                                 </tr>
 
                             @endif
@@ -907,7 +907,7 @@
 
                                 <tr>
                                     <td><strong>{{__('text.Floors')}}</strong></td>
-                                    <td>{{$property->floors}}</sup> </td>
+                                    <td>{{$property->floors}}</td>
                                 </tr>
 
                             @endif
@@ -916,7 +916,7 @@
 
                                 <tr>
                                     <td><strong>{{__('text.Backyard')}} <small>(m2)</small></strong></td>
-                                    <td>{{$property->backyard}}</sup> </td>
+                                    <td>{{$property->backyard}} m2</td>
                                 </tr>
 
                             @endif
@@ -925,7 +925,7 @@
 
                                 <tr>
                                     <td><strong>{{__('text.Frontyard')}} <small>(m2)</small></strong></td>
-                                    <td>{{$property->frontyard}} m2</sup> </td>
+                                    <td>{{$property->frontyard}} m2</td>
                                 </tr>
 
                             @endif
@@ -934,7 +934,7 @@
 
                                 <tr>
                                     <td><strong>{{__('text.Terrace')}} <small>(m2)</small></strong></td>
-                                    <td>{{$property->terrace}} m2</sup> </td>
+                                    <td>{{$property->terrace}} m2</td>
                                 </tr>
 
                             @endif
@@ -942,8 +942,8 @@
                             @if($property->garage_type)
 
                                 <tr>
-                                    <td><strong>{{__('text.Garage Type')}}</strong></td>
-                                    <td>{{$property->garage_type}}</sup> </td>
+                                    <td><strong>Type Garage</strong></td>
+                                    <td>{{$property->garage_type}}</td>
                                 </tr>
 
                             @endif
@@ -952,7 +952,7 @@
 
                                 <tr>
                                     <td><strong>{{__('text.Energy Rating')}}</strong> <img src="{{ URL::asset('assets/img/green-house.png') }}" style="width: 18px;float: right;" /></td>
-                                    <td>{{$property->energy_rating}}</sup> </td>
+                                    <td>{{$property->energy_rating}}</td>
                                 </tr>
 
                             @endif
@@ -961,7 +961,7 @@
 
                                 <tr>
                                     <td><strong>{{__('text.Solar Panel')}}</strong></td>
-                                    <td>{{$property->solar_panel}}</sup> </td>
+                                    <td>{{$property->solar_panel}}</td>
                                 </tr>
 
                             @endif
@@ -969,8 +969,8 @@
                             @if($property->floor_option)
 
                                 <tr>
-                                    <td><strong>{{__('text.Floors Availability')}}</strong></td>
-                                    <td>{{$property->floor_option}}</sup> </td>
+                                    <td><strong>{{__('text.Floors')}}</strong></td>
+                                    <td>{{__('text.'.$property->floor_option)}}</td>
                                 </tr>
 
                             @endif
@@ -978,8 +978,8 @@
                             @if($property->walls)
 
                                 <tr>
-                                    <td><strong>{{__('text.Walls Availability')}}</strong></td>
-                                    <td>{{$property->walls}}</sup> </td>
+                                    <td><strong>{{__('text.Walls')}}</strong></td>
+                                    <td>{{__('text.'.$property->walls)}}</td>
                                 </tr>
 
                             @endif
@@ -988,7 +988,7 @@
 
                                 <tr>
                                     <td><strong>{{__('text.Roof Insulation')}}</strong></td>
-                                    <td>{{$property->roof_insulation}}</sup> </td>
+                                    <td>{{__('text.'.$property->roof_insulation)}}</td>
                                 </tr>
 
                             @endif
@@ -997,7 +997,7 @@
 
                                 <tr>
                                     <td><strong>{{__('text.Cook')}}</strong> <img src="{{ URL::asset('assets/img/cook.png') }}" style="width: 18px;float: right;" /></td>
-                                    <td>{{$property->cook}}</sup> </td>
+                                    <td>{{__('text.'.$property->cook)}}</td>
                                 </tr>
 
                             @endif
@@ -1005,44 +1005,60 @@
                             @if($property->type_of_boiler)
 
                                 <tr>
-                                    <td><strong>{{__('text.Boiler Type')}}</strong></td>
-                                    <td>{{$property->type_of_boiler}}</sup> </td>
+                                    <td><strong>Type Boiler</strong></td>
+                                    <td>{{$property->type_of_boiler}}</td>
                                 </tr>
 
                             @endif
 
-                            @if($property->agreement_type)
+                                  @if($property->home_exchange != 1 && $property->new_construction != 1)
 
-                                <tr>
-                                    <td><strong>{{__('text.Agreement Type')}}</strong></td>
-                                    <td>{{$property->agreement_type}}</sup> </td>
-                                </tr>
+                                    @if($property->rent_price)
 
-                            @endif
+                                          <tr>
+                                              <td><strong>{{__('text.Type of agreement')}}</strong></td>
+                                              <td>{{__('text.'.$property->agreement_type)}}</td>
+                                          </tr>
+
+                                          <tr>
+                                              <td><strong>{{__('text.Property furnished')}}</strong></td>
+                                              <td>{{__('text.'.$property->property_furnished)}}</td>
+                                          </tr>
+
+                                        @endif
+
+                                  @endif
+
 
                             @if($property->year_boiler)
 
                                 <tr>
-                                    <td><strong>{{__('text.Boiler Year')}}</strong></td>
-                                    <td>{{$property->year_boiler}}</sup> </td>
+                                    <td><strong>{{__('text.Year of the boiler')}}</strong></td>
+                                    <td>{{$property->year_boiler}}</td>
                                 </tr>
 
                             @endif
 
-                            @if($property->property_furnished)
 
-                                <tr>
-                                    <td><strong>{{__('text.Property Furnished')}}</strong></td>
-                                    <td>{{$property->property_furnished}}</sup> </td>
-                                </tr>
-
-                            @endif
 
                             @if($property->available_from)
 
+                                      <?php
+                                      $originalDate = str_replace("/","-",$property->available_from);
+
+                                      $source = $originalDate;
+                                      $date = new Carbon\Carbon($source);
+
+                                      setlocale(LC_TIME, 'Dutch');
+
+                                      $available_from = $date->formatLocalized('%d %B %Y');
+
+
+                                      ?>
+
                                 <tr>
                                     <td><strong>{{__('text.Available From')}}</strong> <img src="{{ URL::asset('assets/img/calendar.png') }}" style="width: 18px;float: right;" /></td>
-                                    <td>{{$property->available_from}}</sup> </td>
+                                    <td>{{$available_from}}</td>
                                 </tr>
 
                             @endif
@@ -1216,7 +1232,7 @@
 
                                       td:nth-child(1)
                                       {
-                                          width: 40%;
+                                          width: 60%;
                                       }
 
                                       .head-label{width: 100%;}
@@ -1299,11 +1315,11 @@
                                       transition: max-height 0.2s ease-out;
                                   }
 
-                                  .video-wrapper-inner .popup-video{position:relative;z-index:1;display:inline-block;width:50px;height:50px;line-height:50px;border-radius:50%;-webkit-border-radius:50%;-moz-border-radius:50%;-ms-border-radius:50%;-o-border-radius:50%;-webkit-transition:all 0.3s ease-in-out 0s;-o-transition:all 0.3s ease-in-out 0s;transition:all 0.3s ease-in-out 0s;font-size:18px;color:#fff;background:#6ed71f;text-align:center}
+                                  .video-wrapper-inner .popup-video{position:relative;z-index:1;display:inline-block;width:50px;height:50px;line-height:50px;border-radius:50%;-webkit-border-radius:50%;-moz-border-radius:50%;-ms-border-radius:50%;-o-border-radius:50%;-webkit-transition:all 0.3s ease-in-out 0s;-o-transition:all 0.3s ease-in-out 0s;transition:all 0.3s ease-in-out 0s;font-size:18px;color:#fff;background:#f9424b;text-align:center}
 
                                   @media (min-width: 1200px){.video-wrapper-inner .popup-video{width:70px;height:70px;line-height:70px;font-size:22px}}
 
-                                  .video-wrapper-inner .popup-video:before{-webkit-transition:all 0.3s ease-in-out 0s;-o-transition:all 0.3s ease-in-out 0s;transition:all 0.3s ease-in-out 0s;content:'';position:absolute;top:0;left:0;width:100%;height:100%;z-index:-1;background:#6ed71f;opacity:0.3;filter:alpha(opacity=30);border-radius:50%;-webkit-border-radius:50%;-moz-border-radius:50%;-ms-border-radius:50%;-o-border-radius:50%;-webkit-animation:scaleicon 3s ease-in-out 0s infinite alternate;animation:scaleicon 3s ease-in-out 0s infinite alternate}.widget-video.style2 .popup-video{position:absolute;top:50%;left:50%;-webkit-transform:translate(-50%,-50%);-ms-transform:translate(-50%,-50%);-o-transform:translate(-50%,-50%);transform:translate(-50%,-50%)}
+                                  .video-wrapper-inner .popup-video:before{-webkit-transition:all 0.3s ease-in-out 0s;-o-transition:all 0.3s ease-in-out 0s;transition:all 0.3s ease-in-out 0s;content:'';position:absolute;top:0;left:0;width:100%;height:100%;z-index:-1;background:#f9424b;opacity:0.3;filter:alpha(opacity=30);border-radius:50%;-webkit-border-radius:50%;-moz-border-radius:50%;-ms-border-radius:50%;-o-border-radius:50%;-webkit-animation:scaleicon 3s ease-in-out 0s infinite alternate;animation:scaleicon 3s ease-in-out 0s infinite alternate}.widget-video.style2 .popup-video{position:absolute;top:50%;left:50%;-webkit-transform:translate(-50%,-50%);-ms-transform:translate(-50%,-50%);-o-transform:translate(-50%,-50%);transform:translate(-50%,-50%)}
 
                                   @-webkit-keyframes scaleicon{from{-ms-transform:scale(1,1);transform:scale(1,1)}50%{-ms-transform:scale(1.3,1.3);transform:scale(1.3,1.3)}}
 
@@ -1488,14 +1504,14 @@
                         <div class="row" style="margin: 40px 0px;">
 
 
-							<ul style="list-style: none;">
+							<ul style="list-style: none;display: flex;flex-wrap: wrap;">
                               @foreach($property_features as $key => $value)
 
-                                    <li class="col-md-6 col-sm-6" style="margin: 20px 0px;">
+                                    <li class="col-md-6 col-sm-6 col-xs-12" style="margin: 30px 0px;display: flex;">
 
-                                    <img src="{{ URL::asset('assets/img/'.$value) }}" style="width: 30px;position: relative;top:-1px;margin-right: 9px;" />
+                                    <img src="{{ URL::asset('assets/img/'.$value) }}" style="width: 30px;height: 30px;position: relative;top:-1px;margin-right: 9px;" />
 
-                                        <span style="font-size: 19px;font-weight: 600;position: relative;top: 4px;">{{$key}}</span>
+                                        <span style="font-size: 17px;font-weight: 600;">{{$key}}</span>
 
                                     </li>
 
@@ -1912,6 +1928,8 @@
 
                          <input type="hidden" name="property_id" value="{{$property->id}}">
 
+                         <input type="hidden" name="home_exchange" value="{{$property->home_exchange}}">
+
                          <input type="hidden" name="agent_id" value="{{$agent->id}}">
 
                          <input type="hidden" name="property_name" value="{{$property->property_name}}">
@@ -2101,6 +2119,8 @@
                             <meta name="_token" content="{!! csrf_token() !!}"/>
 
                             <input type="hidden" name="property_id" value="{{$property->id}}">
+
+                            <input type="hidden" name="home_exchange" value="{{$property->home_exchange}}">
 
                             <input type="hidden" name="agent_id" value="{{$agent->id}}">
 

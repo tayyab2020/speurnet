@@ -41,24 +41,47 @@
 
 @else
 
-    <?php if($gender == 'Mr.'){ $gender = 'Dhr'; }else{ $gender = 'mevrouw'; } ?>
+    <?php if($gender == 'Mr.'){ $gender = 'meneer'; }else{ $gender = 'mevrouw'; } ?>
 
-    <div style="background: #dce36d;width: 50%;padding: 20px;border-radius: 20px;" id="res">
+    @if($user_type)
 
-        <p style="color: black;">Beste {{$gender}},</p>
-        <p style="color: black;">Je hebt een bezichtiging aangevraagd voor “{{$property_name}}", {{$property_address}}.</p>
-        <p style="color: black;">De makelaar neemt zo snel mogelijk contact met je op via:</p>
-        <img src="{{ $message->embed(public_path() . '/assets/img/signs.png') }}" style="width: 13px;margin-right: 8px;display: block;float: left;margin-top: 4px;"><b style="color: black;">E-mailadres: </b><span style="color: #7474d3;font-weight: 700;">{{$email}}</span>
+        <div style="background: #dce36d;width: 50%;padding: 20px;border-radius: 20px;" id="res">
 
-        @if($phone)
+            <p style="color: black;">Bevestiging contact</p>
+            <p style="color: black;">Beste {{$gender}} {{$username}},</p>
+            <p style="color: black;">Je hebt een vraag gesteld over “{{$property_name}}". We verwachten dat {{$broker_name}} z.s.m. contact met je opneemt.</p>
+            <p style="color: black;">Bericht: "{!! $inquiry !!}"</p>
+            <p style="color: black;">Je hebt aangegeven dat je bereikbaar bent via de volgende gegevens:</p>
+            <img src="{{ $message->embed(public_path() . '/assets/img/signs.png') }}" style="width: 13px;margin-right: 8px;display: block;float: left;margin-top: 4px;"><b style="color: black;">E-mailadres: </b><span style="color: #7474d3;font-weight: 700;">{{$email}}</span><br><br>
 
-            <p>of</p>
+            @if($phone)
 
-            <img src="{{ $message->embed(public_path() . '/assets/img/communications.png') }}" style="width: 13px;margin-right: 8px;display: block;float: left;margin-top: 4px;"><b style="color: black;">Telefoonnummer: </b><span style="color: #7474d3;font-weight: 700;">{{$phone}}</span>
+                <img src="{{ $message->embed(public_path() . '/assets/img/communications.png') }}" style="width: 13px;margin-right: 8px;display: block;float: left;margin-top: 4px;"><b style="color: black;">Telefoonnummer: </b><span style="color: #7474d3;font-weight: 700;">{{$phone}}</span>
 
-        @endif
+            @endif
 
-    </div>
+        </div>
+
+    @else
+
+        <div style="background: #dce36d;width: 50%;padding: 20px;border-radius: 20px;" id="res">
+
+            <p style="color: black;">Bevestiging contact</p>
+            <p style="color: black;">Beste {{$gender}} {{$username}},</p>
+            <p style="color: black;">Je hebt een vraag gesteld over “{{$property_name}}". We verwachten dat de makelaar z.s.m. contact met je opneemt.</p>
+            <p style="color: black;">Bericht: "{!! $inquiry !!}"</p>
+            <p style="color: black;">Je hebt aangegeven dat je bereikbaar bent via de volgende gegevens:</p>
+            <img src="{{ $message->embed(public_path() . '/assets/img/signs.png') }}" style="width: 13px;margin-right: 8px;display: block;float: left;margin-top: 4px;"><b style="color: black;">E-mailadres: </b><span style="color: #7474d3;font-weight: 700;">{{$email}}</span><br><br>
+
+            @if($phone)
+
+                <img src="{{ $message->embed(public_path() . '/assets/img/communications.png') }}" style="width: 13px;margin-right: 8px;display: block;float: left;margin-top: 4px;"><b style="color: black;">Telefoonnummer: </b><span style="color: #7474d3;font-weight: 700;">{{$phone}}</span>
+
+            @endif
+
+        </div>
+
+    @endif
 
 @endif
 

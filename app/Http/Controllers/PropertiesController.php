@@ -1138,7 +1138,6 @@ class PropertiesController extends Controller
 
 	    $inputs = $request->all();
 
-
 	    $rule=array(
 		        'name' => 'required',
 				'email' => 'required',
@@ -1151,6 +1150,7 @@ class PropertiesController extends Controller
         {
                 return redirect()->back()->withErrors($validator->messages());
         }
+
 
     	$enquire = new Enquire;
 
@@ -1177,14 +1177,27 @@ class PropertiesController extends Controller
 
         $admin_email = getcong('site_email');
 
+        $landlord = $broker->landlord;
+
+        if($landlord || $request->home_exchange)
+        {
+            $user_type = 1;
+        }
+        else
+        {
+            $user_type = 0; //Broker
+        }
+
         Mail::send('emails.inquiry',
             array(
                 'gender' => $request->gender,
+                'broker_name' => $broker_name,
                 'username' => $request->name,
                 'email' => $request->email,
                 'inquiry' => $request->message,
                 'phone' => $request->phone,
                 'property_name' => $request->property_name,
+                'user_type' => $user_type,
             ),  function ($message) use($request,$customer_email) {
                 $message->from(getcong('site_email'),getcong('site_name'));
                 $message->to($customer_email)->subject(__('text.Property Inquiry'));
@@ -1199,6 +1212,7 @@ class PropertiesController extends Controller
                 'phone' => $request->phone,
                 'inquiry' => $request->message,
                 'property_name' => $request->property_name,
+                'user_type' => $user_type,
             ),  function ($message) use($request,$broker_email) {
                 $message->from(getcong('site_email'),getcong('site_name'));
                 $message->to($broker_email)->subject(__('text.Property Inquiry'));

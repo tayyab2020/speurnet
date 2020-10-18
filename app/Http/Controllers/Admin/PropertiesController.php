@@ -1008,12 +1008,12 @@ class PropertiesController extends MainAdminController
 
 		if(!empty($inputs['id'])){
 
-            \Session::flash('flash_message', 'Changes Saved');
+            \Session::flash('flash_message', __('text.Changes Saved'));
 
             return \Redirect::back();
         }else{
 
-            \Session::flash('flash_message', 'Property Added');
+            \Session::flash('flash_message', __('text.Property Added'));
 
             return \Redirect::back();
 

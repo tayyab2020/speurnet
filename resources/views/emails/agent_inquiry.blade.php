@@ -26,7 +26,7 @@
     <div style="background: #dce36d;width: 50%;padding: 20px;border-radius: 20px;" id="res">
 
         <p style="color: black;">Dear {{$broker_name}},</p>
-        <p style="color: black;">You have received a inquiry for you property  "{{$property_name}}" by {{$gender}} {{$username}}.</p>
+        <p style="color: black;">You have received a inquiry for your property "{{$property_name}}" by {{$gender}} {{$username}}.</p>
         <p style="color: black;">Message: "{!! $inquiry !!}"</p>
         <p style="color: black;">You can contact the person who requested for viewing using the following information:</p>
         <img src="{{ $message->embed(public_path() . '/assets/img/signs.png') }}" style="width: 13px;margin-right: 8px;display: block;float: left;margin-top: 4px;"><b style="color: black;">Email Address: </b><span style="color: #7474d3;font-weight: 700;">{{$email}}</span><br><br>
@@ -41,7 +41,7 @@
 
 @else
 
-    <?php if($gender == 'Mr.'){ $gender = 'meneer'; $gender1 = 'Dhr.'; }else{ $gender = 'mevrouw'; $gender1 = 'Mevrouw.'; } ?>
+    <?php if($gender == 'Mr.'){ $gender = 'dhr.'; $gender1 = 'Dhr.'; }else{ $gender = 'mevrouw'; $gender1 = 'Mevrouw.'; } ?>
 
     <div style="background: #dce36d;width: 50%;padding: 20px;border-radius: 20px;" id="res">
 

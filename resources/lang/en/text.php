@@ -452,4 +452,8 @@ return [
     'We have e-mailed your password reset link!' => 'We have e-mailed your password reset link!',
     'Your Password Reset Link' => 'Your Password Reset Link',
     'Your Enquiry has been submitted successfully!' => 'Your Enquiry has been submitted successfully!',
+    'Property Added' => 'Property Added',
+    'Changes Saved' => 'Changes Saved',
+    'rooms' => 'rooms',
+    'room' => 'room',
 ];
