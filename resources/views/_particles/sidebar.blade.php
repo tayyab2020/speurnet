@@ -127,7 +127,7 @@
                 @endif
 
                 <div class="form-group">
-                    <label for="minprice">Keywords</label>
+                    <label for="minprice">{{__('text.Keywords')}}</label>
                     <input type="text" name="keywords" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') value="{{$keywords}}" @else value="" @endif class="form-control" placeholder="{{__('text.Search by Keywords')}}">
                 </div>
 
@@ -473,7 +473,7 @@
                         @endif
 
                         <div class="form-group">
-                            <label for="minprice">Keywords</label>
+                            <label for="minprice">{{__('text.Keywords')}}</label>
                             <input type="text" name="keywords" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') value="{{$keywords}}" @else value="" @endif class="form-control" placeholder="{{__('text.Search by Keywords')}}">
                         </div>
 

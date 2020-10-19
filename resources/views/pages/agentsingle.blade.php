@@ -286,14 +286,7 @@
 
                                         <div class="form-group" style="display: inline-block;width: 100%;margin-top: 20px;">
 
-                                            <div style="width: 100%;position: relative;">
-
-                                                <i class="far fa-comment-alt" style="position: absolute;left: 15px;right: auto;color: #d5d5d5;font-size: 14px;margin:10px 0 0;pointer-events:none;" aria-hidden="true"></i>
-
-                                                <textarea style="resize: vertical;height:150px;padding-left:40px;color:#bcbcbc;border-color:#e6e6e6;border-radius: 3px;box-shadow: none;" class="form-control" id="message-text" placeholder="{{__('text.Message')}}" name="message"></textarea>
-
-
-                                            </div>
+                                            <h3 style="margin: 0px 10px;border-bottom: 1px solid #dddddd;padding-bottom: 10px;color: #3a3a3a;font-weight: 600;">{{__('text.Contact Details')}}</h3>
 
                                             <div class="row" style="margin: 0;margin-top: 30px;">
 
@@ -364,13 +357,32 @@
 
                                                     </a>
 
+                                                    <a style="padding: 0;margin: 0px;text-align: left;color: #2a2929;">
+
+                                                        <input name="another_topic" value="1" type="checkbox" id="another_topic" style="position: relative;top: 2px;display: block;height: 0px;">
+
+                                                        <label class="bg" for="another_topic" style="margin: 0;margin-bottom: 5px;">
+
+                                                            <span class="search-span" style="position: relative;top: 3px;font-size: 14px;color: #4b4848;">{{__('text.I have a question about another topic')}}</span>
+
+                                                        </label>
+
+                                                    </a>
+
                                                 </div>
 
                                             </div>
 
-                                            <div class="row" style="margin: 0;margin-top: 45px;">
+                                            <div style="width: 100%;position: relative;margin-top: 30px;">
 
-                                                <h3 style="margin: 0px 10px;border-bottom: 1px solid #dddddd;padding-bottom: 10px;color: #3a3a3a;font-weight: 600;">{{__('text.Contact Details')}}</h3>
+                                                <i class="far fa-comment-alt" style="position: absolute;left: 15px;right: auto;color: #d5d5d5;font-size: 14px;margin:10px 0 0;pointer-events:none;" aria-hidden="true"></i>
+
+                                                <textarea style="resize: vertical;height:150px;padding-left:40px;color:#bcbcbc;border-color:#e6e6e6;border-radius: 3px;box-shadow: none;" class="form-control" id="message-text" placeholder="{{__('text.Message')}}" name="message"></textarea>
+
+
+                                            </div>
+
+                                            <div class="row" style="margin: 0;margin-top: 30px;">
 
                                                 <div class="row" style="margin: 0;margin-top: 25px;">
 

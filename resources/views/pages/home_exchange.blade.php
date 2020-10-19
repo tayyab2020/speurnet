@@ -1290,7 +1290,7 @@
 
                         @else
 
-                            <h1 style="text-align: center;color: #5f5f5f;">No Properties Found...</h1>
+                            <h1 style="text-align: center;color: #5f5f5f;">{{__('text.No home exchange properties found...')}}</h1>
 
                     @endif
 

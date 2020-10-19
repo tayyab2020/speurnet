@@ -10,7 +10,7 @@
                 <a href="{{URL::to('admin/tickets/addticket')}}" class="btn btn-primary">@if(Auth::User()->usertype != "Admin") {{__('text.Add Ticket')}} @else Add Ticket @endif <i style="margin-left: 5px;position: relative;top: 1px;" class="fa fa-plus"></i></a>
             </div>
 
-            <h2>Tickets @if(Auth::User()->usertype != "Admin") <small style="font-size: 13px;color: #b4b4b4;vertical-align: middle;margin-left: 5px;">{{__('text.Ticket Heading')}}</small> @endif</h2>
+            <h2>Tickets @if(Auth::User()->usertype != "Admin") <small style="font-size: 15px;color: #b4b4b4;vertical-align: middle;margin-left: 5px;">{{__('text.Ticket Heading')}}</small> @endif</h2>
         </div>
 
         @if(Session::has('flash_message'))

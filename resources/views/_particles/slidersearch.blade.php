@@ -221,7 +221,7 @@
                                                     </div>
 
                                                     <div class="form-group">
-                                                        <label for="minprice">Keywords</label>
+                                                        <label for="minprice">{{__('text.Keywords')}}</label>
                                                         <input type="text" name="keywords" class="form-control" placeholder="{{__('text.Search by Keywords')}}">
                                                     </div>
 

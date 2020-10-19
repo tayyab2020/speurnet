@@ -3,16 +3,24 @@
   <component name="ChangeListManager">
     <list default="true" id="7fe7f36f-c82f-4504-8c0a-7874522d22c9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/BlogsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/BlogsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/CityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/CityController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/DashboardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/DashboardController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/PartnersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/PartnersController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/SliderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/SliderController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/TestimonialsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/TestimonialsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/TypesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/TypesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/UsersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/UsersController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AgentsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AgentsController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/lang/du/text.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/du/text.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/pages/addeditticket.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/pages/addeditticket.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/en/text.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/text.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/_particles/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/_particles/sidebar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/_particles/slidersearch.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/_particles/slidersearch.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/_particles/subscribe.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/_particles/subscribe.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/confirm_user_type.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/confirm_user_type.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/pages/tickets.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/pages/tickets.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/emails/profileEnquiry.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/emails/profileEnquiry.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/emails/profileEnquiryCopy.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/emails/profileEnquiryCopy.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/emails/ticketMail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/emails/ticketMail.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/emails/ticketMailQuery.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/emails/ticketMailQuery.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/emails/ticketUserMail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/emails/ticketUserMail.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/agentsingle.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/agentsingle.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/home_exchange.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/home_exchange.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/properties.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/properties.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/propertysingle.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/propertysingle.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -266,7 +274,7 @@
       <workItem from="1602359031505" duration="22872000" />
       <workItem from="1602496080572" duration="3319000" />
       <workItem from="1602581817521" duration="73015000" />
-      <workItem from="1602927583286" duration="44887000" />
+      <workItem from="1602927583286" duration="58098000" />
     </task>
     <servers />
   </component>
@@ -301,10 +309,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="553" y="319" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1595277485716" />
-    <state x="452" y="123" width="805" height="606" key="find.popup" timestamp="1603109906005">
+    <state x="452" y="123" width="805" height="606" key="find.popup" timestamp="1603137793448">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="452" y="123" width="805" height="606" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1603109906005" />
+    <state x="452" y="123" width="805" height="606" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1603137793448" />
     <state x="425" y="187" key="run.anything.popup" timestamp="1602767172445">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

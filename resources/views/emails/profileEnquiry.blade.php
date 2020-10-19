@@ -41,12 +41,14 @@
 
 <div style="background: #eeeeef;padding: 50px 0px;border-radius: 20px;" id="res">
 
+    @if(Config::get('app.locale') == 'en')
+
     <table style="max-width:640px" border="0" cellspacing="0" cellpadding="0" align="center">
 
         <tbody>
 
         <tr>
-            <td style="padding:40px 30px 30px 30px" align="center" bgcolor="#33333e"><h1 style="color:#fff">Agent Enquiry</h1>
+            <td style="padding:40px 30px 30px 30px" align="center" bgcolor="#d6d63e"><h1 style="color:#fff">Agent Enquiry</h1>
             </td>
         </tr>
 
@@ -83,6 +85,10 @@
 
                                     @if($parameters->buy_property)
                                         <span class="button-applied-filter span-heading">Looking to buy a property</span>
+                                    @endif
+
+                                    @if($parameters->another_topic)
+                                        <span class="button-applied-filter span-heading">I have a question about another topic</span>
                                     @endif
 
 
@@ -141,6 +147,115 @@
                     </tbody></table>
 
             </td></tr></tbody></table>
+
+    @else
+
+        <table style="max-width:640px" border="0" cellspacing="0" cellpadding="0" align="center">
+
+            <tbody>
+
+            <tr>
+                <td style="padding:40px 30px 30px 30px" align="center" bgcolor="#d6d63e"><h1 style="color:#fff">Bedankt voor jouw vraag!</h1>
+                </td>
+            </tr>
+
+            <tr>
+                <td bgcolor="#ffffff" style="padding:40px 30px 40px 30px">
+
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                        <tbody>
+
+                        <tr><td>Hallo {{$parameters->first_name}} {{$parameters->last_name}},</td></tr>
+                        <tr><td>Er is een vraag geplaatst door {{$parameters->agent_name}} in uw account op {{getcong('site_name')}}</td></tr>
+
+                        @if($parameters->selling || $parameters->leasing || $parameters->rent_property || $parameters->property_appraisal || $parameters->buy_property)
+
+                            <tr><td style="padding:10px 0 0 0"><p style="font-size: 15px;"><b>Reden contact: </b></p>
+
+                                    @if($parameters->selling)
+
+                                        <span class="button-applied-filter span-heading">{{__('text.Selling my property')}}</span>
+
+                                    @endif
+
+                                    @if($parameters->leasing)
+                                        <span class="button-applied-filter span-heading">{{__('text.Leasing my property')}}</span>
+                                    @endif
+
+                                    @if($parameters->rent_property)
+                                        <span class="button-applied-filter span-heading">{{__('text.Looking to rent a property')}}</span>
+                                    @endif
+
+                                    @if($parameters->property_appraisal)
+                                        <span class="button-applied-filter span-heading">{{__('text.Property Appraisal')}}</span>
+                                    @endif
+
+                                    @if($parameters->buy_property)
+                                        <span class="button-applied-filter span-heading">{{__('text.Looking to buy a property')}}</span>
+                                    @endif
+
+                                    @if($parameters->another_topic)
+                                        <span class="button-applied-filter span-heading">{{__('text.I have a question about another topic')}}</span>
+                                    @endif
+
+                                </td></tr>
+
+                        @endif
+
+                        <tr><td style="padding:10px 0 0 0">
+
+                                <table cellpadding="0px" cellspacing="0px">
+
+                                    <tbody>
+
+                                    <tr><td style="padding:15px 0 0 0">
+                                            <img src="{{ $message->embed(public_path() . '/assets/img/email.png') }}" style="width: 13px;margin-right: 8px;display: block;float: left;margin-top: 2px;"><b style="color: black;">Jouw bericht: </b><span style="color: #7474d3;font-weight: 700;">"{!! $parameters->message !!}"</span>
+                                        </td></tr>
+
+                                    <tr><td style="padding:15px 0 0 0">
+                                            <img src="{{ $message->embed(public_path() . '/assets/img/signs.png') }}" style="width: 13px;margin-right: 8px;display: block;float: left;margin-top: 2px;"><b style="color: black;">E-mailadres: </b><span style="color: #7474d3;font-weight: 700;">{{$parameters->email}}</span>
+                                        </td></tr>
+
+                                    @if($parameters->phone)
+
+                                        <tr><td style="padding:15px 0 0 0">
+                                                <img src="{{ $message->embed(public_path() . '/assets/img/communications.png') }}" style="width: 15px;margin-right: 6px;display: block;float: left;"><b style="color: black;">Telefoonnummer: </b><span style="color: #7474d3;font-weight: 700;">{{$parameters->phone}}</span>
+                                            </td></tr>
+
+                                    @endif
+
+                                    @if($parameters->postcode)
+
+                                        <tr><td style="padding:15px 0 0 0">
+                                                <img src="{{ $message->embed(public_path() . '/assets/img/pin.png') }}" style="width: 15px;margin-right: 6px;display: block;float: left;"><b style="color: black;">Woonplaats: </b><span style="color: #7474d3;font-weight: 700;">{{$parameters->postcode}}</span>
+                                            </td></tr>
+
+                                    @endif
+
+                                    </tbody>
+
+                                </table>
+
+                            </td></tr>
+
+                        </tbody>
+
+                    </table>
+
+                </td></tr>
+
+            <tr><td style="background-color:#ffffff;padding:30px 30px 30px 30px">
+
+                    <table border="0" width="100%" cellspacing="0" cellpadding="0"><tbody>
+
+                        <tr><td style="font-family:Arial,sans-serif;font-size:14px">® {{getcong('site_name')}}, {{date("Y")}}</td></tr>
+
+                        </tbody></table>
+
+                </td></tr></tbody></table>
+
+    @endif
 
 
 </div>

@@ -245,22 +245,22 @@
                                           <div class="col-sm-12">
                                               <div class="carousel box-carousel d-none d-sm-block" style="display: flex;padding: 10px;">
                                                   <div class="box background-active" data-type="shopping_mall">
-                                                      <a><i class="fas fa-shopping-cart" aria-hidden="true" style="font-size: 22px;margin-bottom: 10px;"></i><br>Malls</a>
+                                                      <a><i class="fas fa-shopping-cart" aria-hidden="true" style="font-size: 22px;margin-bottom: 10px;"></i><br>{{__('text.Malls')}}</a>
                                                   </div>
                                                   <div class="box" data-type="school">
-                                                      <a><i class="fas fa-graduation-cap" aria-hidden="true" style="font-size: 22px;margin-bottom: 10px;"></i><br>Schools</a>
+                                                      <a><i class="fas fa-graduation-cap" aria-hidden="true" style="font-size: 22px;margin-bottom: 10px;"></i><br>{{__('text.Schools')}}</a>
                                                   </div>
                                                   <div class="box" data-type="bank">
-                                                      <a><i class="fas fa-university" aria-hidden="true" style="font-size: 22px;margin-bottom: 10px;"></i><br>Banks</a>
+                                                      <a><i class="fas fa-university" aria-hidden="true" style="font-size: 22px;margin-bottom: 10px;"></i><br>{{__('text.Banks')}}</a>
                                                   </div>
                                                   <div class="box" data-type="hospital">
-                                                      <a><i class="fas fa-hospital" aria-hidden="true" style="font-size: 22px;margin-bottom: 10px;"></i><br>Hospitals</a>
+                                                      <a><i class="fas fa-hospital" aria-hidden="true" style="font-size: 22px;margin-bottom: 10px;"></i><br>{{__('text.Hospitals')}}</a>
                                                   </div>
                                                   <div class="box" data-type="bakery">
-                                                      <a><i class="fas fa-birthday-cake" aria-hidden="true" style="font-size: 22px;margin-bottom: 10px;"></i><br>Bakery</a>
+                                                      <a><i class="fas fa-birthday-cake" aria-hidden="true" style="font-size: 22px;margin-bottom: 10px;"></i><br>{{__('text.Bakery')}}</a>
                                                   </div>
                                                   <div class="box" data-type="pharmacy">
-                                                      <a><i class="fas fa-birthday-cake" aria-hidden="true" style="font-size: 22px;margin-bottom: 10px;"></i><br>Pharmacy</a>
+                                                      <a><i class="fas fa-first-aid" aria-hidden="true" style="font-size: 22px;margin-bottom: 10px;"></i><br>{{__('text.Pharmacy')}}</a>
                                                   </div>
 
 
@@ -276,7 +276,7 @@
                                           <div id="panel" style="width: 204px;height: auto;max-height: 340px;float: left;border: 1px solid rgba(190, 190, 190, 0.6);border-left: 0;overflow: auto;position: absolute;top: 22%;z-index: 1;background-color: white;">
 
                                               <div class="accordion">
-                                                  <span style="display: block;">Malls</span>
+                                                  <span style="display: block;">{{__('text.Malls')}}</span>
                                                   <span style="display: inline-block;"></span>
                                               </div>
 
@@ -1912,12 +1912,12 @@
                           </div>
                           <div class="team-description">
                             <h3><a style="color: white;" href="{{URL::to('agents/details/'.$agent->id)}}">{{$agent->name}}</a></h3>
-                            <p><i class="fa fa-phone"></i> Office : {{$agent->phone}}<br></p>
+                            <p><i class="fa fa-phone"></i> {{__('text.Mobile No')}} : {{$agent->phone}}<br></p>
                             <p><i class="fa fa-envelope"></i>&nbsp Email : {{$agent->email}}</p>
                             <p>{{$agent->about}}</p>
 
                               @if($properties_count>1)
-                                  <p><a style="color: white;font-weight: 600;text-shadow: 0px 0px 4px #5d5d5d;" href="{{ URL::to('/agent-properties/user/'.$agent->id.'/'.$property->id) }}" target="_blank">{{__('text.See Other properties posted by this Broker',['properties' => $properties_count-1])}}</a></p>
+                                  <p><a style="color: white;font-weight: 600;text-shadow: 0px 0px 4px #5d5d5d;" href="{{ URL::to('/agent-properties/user/'.$agent->id.'/'.$property->id) }}" target="_blank">@if($properties_count == 2) {{__('text.See Other property posted by this Broker',['property' => $properties_count-1])}} @else {{__('text.See Other properties posted by this Broker',['properties' => $properties_count-1])}} @endif</a></p>
                               @endif
 
                             <div class="team-social">
@@ -4139,10 +4139,29 @@
 
                 if(new_type == 'Shopping_mall')
                 {
-
-                    new_type = 'Shopping Malls';
-
+                    new_type = '<?php echo __('text.Malls'); ?>';
                 }
+                else if(new_type == 'School')
+                {
+                    new_type = '<?php echo __('text.Schools'); ?>';
+                }
+                else if(new_type == 'Bank')
+                {
+                    new_type = '<?php echo __('text.Banks'); ?>';
+                }
+                else if(new_type == 'Hospital')
+                {
+                    new_type = '<?php echo __('text.Hospitals'); ?>';
+                }
+                else if(new_type == 'Bakery')
+                {
+                    new_type = '<?php echo __('text.Bakery'); ?>';
+                }
+                else if(new_type == 'Pharmacy')
+                {
+                    new_type = '<?php echo __('text.Pharmacy'); ?>';
+                }
+
 
                 $("#panel div:eq(0)").children().first().text(new_type);
 

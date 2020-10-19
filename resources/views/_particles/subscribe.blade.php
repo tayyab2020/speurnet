@@ -41,7 +41,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-5 col-md-offset-2 col-sm-8 col-xs-12">
-            <h3>{{__('text.Get Newsletter Update')}}</h3>
+            <h3 style="text-transform: none;">{{__('text.Get Newsletter Update')}}</h3>
           </div>
           <div class="col-md-3 col-sm-4 col-xs-12">
 

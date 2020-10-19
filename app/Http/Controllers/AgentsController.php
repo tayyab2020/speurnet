@@ -140,6 +140,10 @@ class AgentsController extends Controller
         {
             $post->buy_property = 1;
         }
+        if($request->another_topic)
+        {
+            $post->another_topic = 1;
+        }
         $post->first_name= $request->first_name;
         $post->last_name = $request->last_name;
         $post->email = $request->email;
@@ -156,7 +160,7 @@ class AgentsController extends Controller
             ),  function ($message) use($parameters) {
                 $message->from(getcong('site_email'),getcong('site_name'));
                 $message->to($parameters->agent_email)
-                    ->subject('Enquiry request posted by ' . $parameters->first_name . " " . $parameters->last_name);
+                    ->subject(__('text.Enquiry request posted by ') . $parameters->first_name . " " . $parameters->last_name);
             });
 
         Mail::send('emails.profileEnquiryCopy',
@@ -165,7 +169,7 @@ class AgentsController extends Controller
             ),  function ($message) use($parameters) {
                 $message->from(getcong('site_email'),getcong('site_name'));
                 $message->to($parameters->email)
-                    ->subject('Enquiry request posted to Agent Mr/Mrs, ' . $parameters->agent_name);
+                    ->subject(__('text.Enquiry request posted to Agent Mr/Mrs, ') . $parameters->agent_name);
             });
 
 

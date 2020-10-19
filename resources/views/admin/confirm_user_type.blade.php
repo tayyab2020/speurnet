@@ -58,7 +58,7 @@
                                     <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
 
                                 <div class="col-12 pt-5">
-                                    <p class="mb-4 pb-2">Select Account Type</p>
+                                    <p class="mb-4 pb-2">{{__('text.Select Account Type')}}</p>
                                 </div>
 
                                     <div class="col-12 pb-5">
@@ -66,19 +66,19 @@
                                         <input class="checkbox-tools" type="radio" name="type" id="tool-1" value="Agents" >
                                         <label class="for-checkbox-tools" for="tool-1">
                                             <i class="fas fa-user-edit" style="font-size: 24px;display: block;position:relative;top: 15px;"></i>
-                                            Broker
+                                            {{__('text.Agent')}}
                                         </label>
 
                                         <input class="checkbox-tools" type="radio" name="type" id="tool-3" value="landlord" >
                                         <label class="for-checkbox-tools" for="tool-3">
                                             <i class="fas fa-user-edit" style="font-size: 24px;display: block;position:relative;top: 15px;"></i>
-                                            Private Landlord
+                                            {{__('text.Private Landlord1')}}
                                         </label>
 
                                         <input class="checkbox-tools" type="radio" name="type" id="tool-2" value="Users">
                                         <label class="for-checkbox-tools" for="tool-2">
                                             <i class="fas fa-user" style="font-size: 24px;display: block;position:relative;top: 15px;"></i>
-                                            User
+                                            {{__('text.User')}}
                                         </label>
 
                                     </div>
@@ -106,13 +106,14 @@
 
 
             Swal.fire({
-                title: 'Are you sure?',
-                text: "You won't be able to revert this!",
+                title: "<?php echo __('text.Are you sure?'); ?>",
+                text: "<?php echo __("text.You won't be able to revert this!"); ?>",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes'
+                confirmButtonText: '<?php echo __('text.Yes'); ?>',
+                cancelButtonText: '<?php echo __('text.No'); ?>'
             }).then((result) => {
                 if (result.value) {
 
@@ -284,7 +285,7 @@
         position: relative;
         display: inline-block;
         padding: 20px;
-        width: 200px;
+        width: 300px;
         font-size: 14px;
         line-height: 75px;
         letter-spacing: 1px;

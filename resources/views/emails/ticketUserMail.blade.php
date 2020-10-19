@@ -41,12 +41,14 @@
 
 <div style="background: #eeeeef;padding: 50px 0px;border-radius: 20px;" id="res">
 
+    @if(Config::get('app.locale') == 'en')
+
     <table style="max-width:640px" border="0" cellspacing="0" cellpadding="0" align="center">
 
         <tbody>
 
         <tr>
-            <td style="padding:40px 30px 30px 30px" align="center" bgcolor="#33333e"><h1 style="color:#fff">Ticket Created</h1>
+            <td style="padding:40px 30px 30px 30px" align="center" bgcolor="#d6d63e"><h1 style="color:#fff">Ticket Created</h1>
             </td>
         </tr>
 
@@ -94,6 +96,64 @@
                     </tbody></table>
 
             </td></tr></tbody></table>
+
+    @else
+
+        <table style="max-width:640px" border="0" cellspacing="0" cellpadding="0" align="center">
+
+            <tbody>
+
+            <tr>
+                <td style="padding:40px 30px 30px 30px" align="center" bgcolor="#d6d63e"><h1 style="color:#fff">Jouw ticket</h1>
+                </td>
+            </tr>
+
+            <tr>
+                <td bgcolor="#ffffff" style="padding:40px 30px 40px 30px">
+
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+
+                        <tbody>
+
+                        <tr><td>Jouw ticket ({{$ticket_id}}) is aangemaakt, wij zullen deze in behandeling nemen. Zodra je ticket is afgehandeld, ontvang je hierover bericht per mail.</td></tr>
+
+                        <tr><td style="padding:10px 0 0 0"><p>Ticket onderwerp: </p>
+
+                                <span class="button-applied-filter span-heading">{{$parameters->ticket_subject}}</span>
+
+                            </td></tr>
+
+                        <tr><td style="padding:10px 0 0 0"><p>Omschrijving: </p>
+
+                                <span class="button-applied-filter span-heading">"{{$parameters->ticket_issue}}"</span>
+
+                            </td></tr>
+
+                        <tr><td style="padding:10px 0 0 0"><p>Prioriteit: </p>
+
+                                <span class="button-applied-filter span-heading">{{__('text.'.$parameters->priority)}}</span>
+
+                            </td></tr>
+
+
+
+                        </tbody>
+
+                    </table>
+
+                </td></tr>
+
+            <tr><td style="background-color:#ffffff;padding:30px 30px 30px 30px">
+
+                    <table border="0" width="100%" cellspacing="0" cellpadding="0"><tbody>
+
+                        <tr><td style="font-family:Arial,sans-serif;font-size:14px">® {{getcong('site_name')}}, {{date("Y")}}</td></tr>
+
+                        </tbody></table>
+
+                </td></tr></tbody></table>
+
+    @endif
 
 
 </div>
