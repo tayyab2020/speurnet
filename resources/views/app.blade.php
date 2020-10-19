@@ -155,6 +155,18 @@
 
       <style>
 
+          @media screen and (max-width: 767px)
+          {
+              .navbar-nav {
+                  height: 100vh !important;
+              }
+
+              .collapse.in
+              {
+                  max-height: 100%;
+              }
+          }
+
           .dropdown button::after
           {
               display: inline-block;

@@ -456,4 +456,5 @@ return [
     'Changes Saved' => 'Changes Saved',
     'rooms' => 'rooms',
     'room' => 'room',
+    'Confirmation successful...' => 'Confirmation successful...',
 ];

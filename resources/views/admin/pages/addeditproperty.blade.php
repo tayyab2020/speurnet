@@ -428,6 +428,7 @@
 
                                         @else
 
+
                                         <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 right-div" style="display: inline-block;float: right;margin: 25px 0px;">
 
                                             <label class="right-label" style="float: left;">{{__('text.Kind of Type')}} <span style="color: red;font-size: 20px;">*</span></label>
@@ -503,25 +504,22 @@
                                             <label class="left-label" style="float: left;">{{__('text.Source Project')}}</label>
 
                                             <div class="right-content" style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto;">
-
-                                                <input type="text" @if(old('source') != '') value="{{old('source')}}" @else value="{{ isset($property->source) ? $property->source : null }}" @endif name="source" placeholder="" class="quantity-field" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
-
-                                            </div>
-
-                                        </div>
-
-                                        <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 left-div" style="margin: 25px 0px;@if(Route::currentRouteName() != 'addnewconstruction') display: inline-block @else display:none @endif">
-
-                                            <label class="left-label" style="float: left;">{{__('text.Citation')}}</label>
-
-                                            <div class="right-content" style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto;">
-
-
                                                 <input type="text" @if(old('citation') != '') value="{{old('citation')}}" @else value="{{ isset($property->citation) ? $property->citation : null }}" @endif name="citation" placeholder="" class="quantity-field" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
-
                                             </div>
 
                                         </div>
+
+                                            <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 right-div" style="display: inline-block;float: right;">
+
+                                                <label class="left-label" style="float: left;">{{__('text.Owner')}}</label>
+
+                                                <div class="right-content" style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto;">
+
+                                                    <input type="text"  @if(old('owner') != '') value="{{old('owner')}}" @else value="{{ isset($property->owner) ? $property->owner : null }}" @endif name="owner" placeholder="{{__('text.Owner')}}" class="quantity-field" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+
+                                                </div>
+
+                                            </div>
 
 
                                     @endif
@@ -610,15 +608,16 @@
 
                                             <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 right-div" style="display: inline-block;float: right;">
 
-                                                <label class="left-label" style="float: left;">{{__('text.Owner')}} <span style="color: red;font-size: 20px;">*</span></label>
+                                                <label class="left-label" style="float: left;">{{__('text.Owner')}}</label>
 
                                                 <div class="right-content" style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto;">
 
-                                                    <input type="text"  @if(old('owner') != '') value="{{old('owner')}}" @else value="{{ isset($property->owner) ? $property->owner : null }}" @endif name="owner" placeholder="Owner" class="quantity-field stepper-step-2-validate" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+                                                    <input type="text"  @if(old('owner') != '') value="{{old('owner')}}" @else value="{{ isset($property->owner) ? $property->owner : null }}" @endif name="owner" placeholder="{{__('text.Owner')}}" class="quantity-field" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
 
                                                 </div>
 
                                             </div>
+
 
                                             <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
 

@@ -691,7 +691,7 @@ class IndexController extends Controller
 
  		$user->save();
 
- 		\Session::flash('flash_message', 'Confirmation successful...');
+ 		\Session::flash('flash_message', __('text.Confirmation successful...'));
 
         return view('pages.login');
     }
