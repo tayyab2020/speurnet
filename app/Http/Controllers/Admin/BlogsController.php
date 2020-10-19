@@ -67,7 +67,7 @@ class BlogsController extends MainAdminController
 
         $heading = Settings::where('id',1)->update(['m_t_heading' => $request->title]);
 
-        \Session::flash('flash_message', 'Changes Saved.');
+        \Session::flash('flash_message', __('text.Changes Saved'));
 
         return \Redirect::back();
     }
@@ -174,12 +174,12 @@ class BlogsController extends MainAdminController
 
         if(!empty($inputs['id'])){
 
-            \Session::flash('flash_message', 'Changes Saved');
+            \Session::flash('flash_message', __('text.Changes Saved'));
 
             return \Redirect::back();
         }else{
 
-            \Session::flash('flash_message', 'Added');
+            \Session::flash('flash_message', __('text.Added'));
 
             return \Redirect::back();
 
@@ -507,12 +507,12 @@ class BlogsController extends MainAdminController
 
         if(!empty($inputs['id'])){
 
-            \Session::flash('flash_message', 'Changes Saved');
+            \Session::flash('flash_message', __('text.Changes Saved'));
 
             return \Redirect::back();
         }else{
 
-            \Session::flash('flash_message', 'Added');
+            \Session::flash('flash_message', __('text.Added'));
 
             return \Redirect::back();
 

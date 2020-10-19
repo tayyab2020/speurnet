@@ -131,12 +131,12 @@ class DashboardController extends MainAdminController
 
         if(!empty($inputs['id'])){
 
-            \Session::flash('flash_message', 'Changes Saved');
+            \Session::flash('flash_message', __('text.Changes Saved'));
 
             return \Redirect::back();
         }else{
 
-            \Session::flash('flash_message', 'Added');
+            \Session::flash('flash_message', __('text.Added'));
 
             return \Redirect::back();
 
@@ -337,7 +337,7 @@ class DashboardController extends MainAdminController
 
         if(!empty($inputs['id'])){
 
-            \Session::flash('flash_message', 'Changes Saved');
+            \Session::flash('flash_message', __('text.Changes Saved'));
 
             return \Redirect::back();
         }else{
@@ -367,7 +367,7 @@ class DashboardController extends MainAdminController
                         ->subject($request->ticket_subject);
                 });
 
-            \Session::flash('flash_message', 'Added');
+            \Session::flash('flash_message', __('text.Added'));
 
             return \Redirect::back();
 
@@ -527,12 +527,12 @@ class DashboardController extends MainAdminController
 
         if(!empty($inputs['id'])){
 
-            \Session::flash('flash_message', 'Changes Saved');
+            \Session::flash('flash_message', __('text.Changes Saved'));
 
             return \Redirect::back();
         }else{
 
-            \Session::flash('flash_message', 'Added');
+            \Session::flash('flash_message', __('text.Added'));
 
             return \Redirect::back();
 
@@ -716,12 +716,12 @@ class DashboardController extends MainAdminController
 
         if(!empty($inputs['id'])){
 
-            \Session::flash('flash_message', 'Changes Saved');
+            \Session::flash('flash_message', __('text.Changes Saved'));
 
             return \Redirect::back();
         }else{
 
-            \Session::flash('flash_message', 'Added');
+            \Session::flash('flash_message', __('text.Added'));
 
             return \Redirect::back();
 

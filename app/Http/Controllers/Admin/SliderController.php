@@ -63,7 +63,7 @@ class SliderController extends MainAdminController
 
         $heading = Settings::where('id',1)->update(['wyh_heading' => $request->title]);
 
-        \Session::flash('flash_message', 'Changes Saved.');
+        \Session::flash('flash_message', __('text.Changes Saved'));
 
         return \Redirect::back();
     }
@@ -160,12 +160,12 @@ class SliderController extends MainAdminController
 
 		if(!empty($inputs['id'])){
 
-            \Session::flash('flash_message', 'Changes Saved');
+            \Session::flash('flash_message', __('text.Changes Saved'));
 
             return \Redirect::back();
         }else{
 
-            \Session::flash('flash_message', 'Added');
+            \Session::flash('flash_message', __('text.Added'));
 
             return \Redirect::back();
 
@@ -263,12 +263,12 @@ class SliderController extends MainAdminController
 
         if(!empty($inputs['id'])){
 
-            \Session::flash('flash_message', 'Changes Saved');
+            \Session::flash('flash_message', __('text.Changes Saved'));
 
             return \Redirect::back();
         }else{
 
-            \Session::flash('flash_message', 'Added');
+            \Session::flash('flash_message', __('text.Added'));
 
             return \Redirect::back();
 

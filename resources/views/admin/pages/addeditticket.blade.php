@@ -46,7 +46,6 @@
                         <select name="priority" class="form-control">
                             <option {{ isset($ticket->priority) ? ($ticket->priority == 'High') ? 'selected' : null : null }} value="High">@if(Auth::User()->usertype != "Admin"){{__('text.High')}}@else High @endif</option>
                             <option {{ isset($ticket->priority) ? ($ticket->priority == 'Medium') ? 'selected' : null : null }} value="Medium">@if(Auth::User()->usertype != "Admin"){{__('text.Medium')}}@else Medium @endif</option>
-                            <option {{ isset($ticket->priority) ? ($ticket->priority == 'Low') ? 'selected' : null : null }} value="Low">@if(Auth::User()->usertype != "Admin"){{__('text.Low')}}@else Low @endif</option>
                         </select>
                     </div>
                 </div>

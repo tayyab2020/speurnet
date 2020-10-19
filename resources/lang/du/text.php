@@ -164,7 +164,7 @@ return [
     'Priority' => 'Prioriteit',
     'Action' => 'Actie',
     'High' => 'Hoog',
-    'Medium' => 'Medium',
+    'Medium' => 'Normaal',
     'Low' => 'Laag',
     'Open' => 'Open',
     'Reopened' => 'Heropend',
@@ -458,4 +458,5 @@ return [
     'room' => 'slaapkamer',
     'Confirmation successful...' => 'Je account is succesvol geactiveerd!',
     'Alerts & Searches' => 'Notificaties',
+    'Added' => 'Opgeslagen',
 ];

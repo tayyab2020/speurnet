@@ -458,4 +458,5 @@ return [
     'room' => 'room',
     'Confirmation successful...' => 'Confirmation successful...',
     'Alerts & Searches' => 'Alerts & Searches',
+    'Added' => 'Added',
 ];
