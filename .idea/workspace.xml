@@ -4,6 +4,7 @@
     <list default="true" id="7fe7f36f-c82f-4504-8c0a-7874522d22c9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/propertysingle.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/propertysingle.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -257,7 +258,7 @@
       <workItem from="1602359031505" duration="22872000" />
       <workItem from="1602496080572" duration="3319000" />
       <workItem from="1602581817521" duration="73015000" />
-      <workItem from="1602927583286" duration="37047000" />
+      <workItem from="1602927583286" duration="39893000" />
     </task>
     <servers />
   </component>
@@ -292,10 +293,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="553" y="319" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1595277485716" />
-    <state x="452" y="123" width="805" height="606" key="find.popup" timestamp="1603096292970">
+    <state x="452" y="123" width="805" height="606" key="find.popup" timestamp="1603099755247">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="452" y="123" width="805" height="606" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1603096292970" />
+    <state x="452" y="123" width="805" height="606" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1603099755247" />
     <state x="425" y="187" key="run.anything.popup" timestamp="1602767172445">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

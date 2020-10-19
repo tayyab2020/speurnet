@@ -159,6 +159,7 @@
           {
               .navbar-nav {
                   height: 100vh !important;
+                  overflow-y: auto;
               }
 
               .collapse.in
@@ -224,6 +225,15 @@
 
               $('#lng_form').submit();
           });
+
+          $('.navbar-collapse').on('shown.bs.collapse', function () {
+              $('body').addClass('modal-open');
+          });
+
+          $('.navbar-collapse').on('hidden.bs.collapse', function () {
+              $('body').removeClass('modal-open');
+          });
+
       });
 
   </script>

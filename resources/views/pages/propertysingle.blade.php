@@ -1129,7 +1129,7 @@
 
                                   <div id="travel_data">
 
-                                  <div class="travel-time-transport-modes">
+                                  <div class="travel-time-transport-modes" style="overflow-x: auto;overflow-y: hidden;white-space: nowrap;">
 
                                       <a href="#DRIVING" data-toggle="tab"  style="text-decoration: none;" class="travel-time-transport-modes__button travel-time-transport-modes--active" disabled="">{{__('text.Driving')}}</a>
 
@@ -1168,19 +1168,19 @@
 
                                           <div class="travel-time-add__inputs" style="margin-top: 25px;">
 
-                                              <label class="travel-time-add__address" style="font-size: 17px;font-weight: 600;">{{__('text.To')}}
+                                              <label class="travel-time-add__address col-xs-12" style="font-size: 17px;font-weight: 600;margin-bottom: 25px;">{{__('text.To')}}
 
                                                   <div class="input-container">
 
-                                                      <span style="display: block;border:1px solid #e5e5e5;">
+                                                      <span style="display: flex;flex-direction: row;border:1px solid #e5e5e5;">
 
-                                                      <img src="{{ URL::asset('assets/img/tools-and-utensils.png') }}" style="width: 15px;margin-left: 18px;" />
+                                                      <img src="{{ URL::asset('assets/img/tools-and-utensils.png') }}" style="width: 15px;margin-left: 18px;align-self: center;" />
 
-                                                      <input  class="input-field add-location loc-input" type="text" placeholder="{{__('text.Location')}}" name="loc" id="loc-input" style="border: 0;outline: 0;">
+                                                      <input  class="input-field add-location loc-input" type="text" placeholder="{{__('text.Location')}}" name="loc" id="loc-input" style="border: 0;outline: 0;width: 100%;">
 
                                                           <input  type="hidden" name="loc" id="loc-real">
 
-                                                      <img class="loc-remove" src="{{ URL::asset('assets/img/close.png') }}" style="width: 15px;float: right;padding-top: 20px;position: relative;right: 15px;display: none;cursor: pointer;" />
+                                                      <img class="loc-remove" src="{{ URL::asset('assets/img/close.png') }}" style="width: 15px;float: right;position: relative;right: 15px;display: none;cursor: pointer;align-self: center;" />
 
                                                       <input type="hidden" name="loc_latitude" id="loc-latitude"  />
                                                       <input type="hidden" name="loc_longitude" id="loc-longitude"  />
@@ -1191,7 +1191,7 @@
 
                                               </label>
 
-                                              <label class="travel-time-add__address" style="font-size: 17px;font-weight: 600;">{{__('text.Name')}}
+                                              <label class="travel-time-add__address col-xs-12" style="font-size: 17px;font-weight: 600;margin-bottom: 25px;">{{__('text.Name')}}
 
                                                   <div class="input-container">
 
@@ -1376,6 +1376,26 @@
                                   [class^="flaticon-"]:before,[class*=" flaticon-"]:before,[class^="flaticon-"]:after,[class*=" flaticon-"]:after{font-family:Flaticon;font-style:normal}
 
                                   .travel-time-add__cta-wrapper{margin:.5rem 0 0;width:100%;text-align:right}
+
+                                  .travel-time-transport-modes::-webkit-scrollbar-track
+                                  {
+                                      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+                                      background-color: #F5F5F5;
+                                      height: 5px;
+                                  }
+
+                                  .travel-time-transport-modes::-webkit-scrollbar
+                                  {
+                                      width: 6px;
+                                      background-color: #F5F5F5;
+                                      height: 5px;
+                                  }
+
+                                  .travel-time-transport-modes::-webkit-scrollbar-thumb
+                                  {
+                                      background-color: #919191;
+                                      height: 5px;
+                                  }
 
                                   .rui-button-brand.rui-button-disabled,.rui-button-brand.rui-button-disabled:hover{color:#8e9397;border-color:#eaebec;background:#eaebec}
 
