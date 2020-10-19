@@ -122,12 +122,14 @@
             @if(Auth::User()->usertype == "Admin")
 
             $('#data-table1').dataTable({
+                "lengthChange": false,
                 "order": [[ 0, "desc" ]] // Order on init. # is the column, starting at 0
             });
 
             @else
 
             $('#data-table1').dataTable( {
+                "lengthChange": false,
                 "oLanguage": {
                     "sLengthMenu": "<?php echo __('text.Show') . ' _MENU_ ' . __('text.records'); ?>",
                     "sSearch": "<?php echo __('text.Search') . ':' ?>",

@@ -5,7 +5,7 @@
 
            <div class="col-md-3 col-sm-6 col-xs-12">
             <div class="widget">
-                <h3>{{__('text.Company')}}</h3>
+                <h3>{{getcong('site_name')}}</h3>
                 <ul class="list-unstyled">
                     <li><a href="{{ URL::to('about-us') }}">{{__('text.About Us')}}</a></li>
                     <li><a href="{{ URL::to('contact-us') }}">{{__('text.Contact Us')}}</a></li>

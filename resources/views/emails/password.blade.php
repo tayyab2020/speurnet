@@ -55,7 +55,7 @@ body {
             <tr style="border:0">
                 <td>
                     @if($user_type == 'Users')
-                        Beste woningzoeker,
+                        Beste {{$user_name}},
                     @else
                         Beste makelaar {{$user_name}},
                     @endif
@@ -75,7 +75,7 @@ body {
             <tr>
                 <td style="line-height:20px">
                     Huiselijke groet,
-                    <br />- Het team van Zoekjehuisje.nl
+                    <br />- Het team van {{getcong('site_name')}}
                 </td>
             </tr>
         </table>

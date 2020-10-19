@@ -3,7 +3,7 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Zoekjehuisje</title>
+    <title>{{getcong('site_name')}}</title>
 
 
     <style>
@@ -48,7 +48,7 @@
         <div style="background: #dce36d;width: 50%;padding: 20px;border-radius: 20px;" id="res">
 
             <p style="color: black;">Bevestiging contact</p>
-            <p style="color: black;">Beste {{$gender}} {{$username}},</p>
+            <p style="color: black;">Beste {{$username}},</p>
             <p style="color: black;">Je hebt een vraag gesteld over “{{$property_name}}". We verwachten dat {{$broker_name}} z.s.m. contact met je opneemt.</p>
             <p style="color: black;">Bericht: "{!! $inquiry !!}"</p>
             <p style="color: black;">Je hebt aangegeven dat je bereikbaar bent via de volgende gegevens:</p>
@@ -67,7 +67,7 @@
         <div style="background: #dce36d;width: 50%;padding: 20px;border-radius: 20px;" id="res">
 
             <p style="color: black;">Bevestiging contact</p>
-            <p style="color: black;">Beste {{$gender}} {{$username}},</p>
+            <p style="color: black;">Beste {{$username}},</p>
             <p style="color: black;">Je hebt een vraag gesteld over “{{$property_name}}". We verwachten dat de makelaar z.s.m. contact met je opneemt.</p>
             <p style="color: black;">Bericht: "{!! $inquiry !!}"</p>
             <p style="color: black;">Je hebt aangegeven dat je bereikbaar bent via de volgende gegevens:</p>

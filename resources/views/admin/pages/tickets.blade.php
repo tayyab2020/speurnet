@@ -361,6 +361,7 @@
         $(document).ready(function(){ //Make script DOM ready
 
             $('#data-table1').dataTable( {
+                "lengthChange": false,
                 "oLanguage": {
                     "sLengthMenu": "<?php echo __('text.Show') . ' _MENU_ ' . __('text.records'); ?>",
                     "sSearch": "<?php echo __('text.Search') . ':' ?>",

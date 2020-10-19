@@ -457,4 +457,5 @@ return [
     'rooms' => 'slaapkamers',
     'room' => 'slaapkamer',
     'Confirmation successful...' => 'Je account is succesvol geactiveerd!',
+    'Alerts & Searches' => 'Notificaties',
 ];

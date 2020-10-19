@@ -111,7 +111,7 @@
 
                     @if(Auth::user()->usertype !='Users')
 
-                        <li class="{{classActivePath('alerts-searches')}}"><a href=""><i class="md md-save"></i>Alerts & Searches</a></li>
+                        <li class="{{classActivePath('alerts-searches')}}"><a href=""><i class="md md-save"></i>{{__('text.Alerts & Searches')}}</a></li>
 
                     @endif
 

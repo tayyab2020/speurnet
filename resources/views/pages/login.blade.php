@@ -212,7 +212,7 @@
         border-radius: 3px;
         margin: 10px auto;
         outline: rgb(255, 255, 255) none 0px;
-        padding-left: 25%;
+        padding-left: 20%;
         transition: all 0.2s cubic-bezier(0.72, 0.01, 0.56, 1) 0s;
         -webkit-transition: all .3s ease;
         -moz-transition: all .3s ease;
@@ -366,6 +366,14 @@
     .loginBtn--google:hover,
     .loginBtn--google:focus {
         background: #E74B37;
+    }
+
+    @media (max-width: 995px)
+    {
+        .social-button
+        {
+            font-size: 15px;
+        }
     }
 
 </style>
