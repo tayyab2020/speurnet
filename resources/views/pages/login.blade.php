@@ -372,7 +372,7 @@
     {
         .social-button
         {
-            font-size: 15px;
+            font-size: 13px;
         }
     }
 
