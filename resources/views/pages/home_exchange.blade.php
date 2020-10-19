@@ -968,22 +968,22 @@
                     <!-- begin:article -->
                     <div class="properties-ordering-wrapper" style="box-shadow: 5px 7px 8px -7px #868686;background: linear-gradient(to right, #494949 0, #434343 100%);color: white;border: 0;">
                         <div class="results-count">
-                            Showing <?php $count = count($properties); echo $count; if($count > 1) { echo " results"; } else{ echo " result"; } ?></div>
+                            <?php $count = count($properties); echo $count; ?> {{__('text.properties found')}}</div>
 
                         <div class="properties-ordering">
 
-                                            <div class="label" style="color: white;">Sort by:</div>
+                                            <div class="label" style="color: white;">{{__('text.Sort by:')}}</div>
 
                                             <select name="filter_orderby" id="filter" class="orderby" data-placeholder="Sort by" tabindex="-1" aria-hidden="true">
 
-                                                <option @if(isset($filter)) @if($filter == "newest") selected @endif @endif value="newest">Newest</option>
-                                                <option @if(isset($filter)) @if($filter == "oldest") selected @endif @endif value="oldest">Oldest</option>
-                                                <option @if(isset($filter)) @if($filter == "bedrooms") selected @endif @endif value="bedrooms">Bedrooms</option>
-                                                <option @if(isset($filter)) @if($filter == "popularity") selected @endif @endif value="popularity">Popularity</option>
-                                                <option @if(isset($filter)) @if($filter == "lowest_rent_price") selected @endif @endif value="lowest_rent_price">Lowest Rent</option>
-                                                <option @if(isset($filter)) @if($filter == "highest_rent_price") selected @endif @endif value="highest_rent_price">Highest Rent</option>
-                                                <option @if(isset($filter)) @if($filter == "lowest_area") selected @endif @endif value="lowest_area">Lowest Area</option>
-                                                <option @if(isset($filter)) @if($filter == "highest_area") selected @endif @endif value="highest_area">Highest Area</option>
+                                                <option @if(isset($filter)) @if($filter == "newest") selected @endif @endif value="newest">{{__('text.Newest')}}</option>
+                                                <option @if(isset($filter)) @if($filter == "oldest") selected @endif @endif value="oldest">{{__('text.Oldest')}}</option>
+                                                <option @if(isset($filter)) @if($filter == "bedrooms") selected @endif @endif value="bedrooms">{{__('text.Most Bedrooms')}}</option>
+                                                <option @if(isset($filter)) @if($filter == "popularity") selected @endif @endif value="popularity">{{__('text.Popularity')}}</option>
+                                                <option @if(isset($filter)) @if($filter == "lowest_rent_price") selected @endif @endif value="lowest_rent_price">{{__('text.Lowest Rent Price')}}</option>
+                                                <option @if(isset($filter)) @if($filter == "highest_rent_price") selected @endif @endif value="highest_rent_price">{{__('text.Highest Rent Price')}}</option>
+                                                <option @if(isset($filter)) @if($filter == "lowest_area") selected @endif @endif value="lowest_area">{{__('text.Lowest Area')}}</option>
+                                                <option @if(isset($filter)) @if($filter == "highest_area") selected @endif @endif value="highest_area">{{__('text.Highest Area')}}</option>
 
                                             </select>
 
@@ -1000,13 +1000,13 @@
 
                                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="padding-left: 0;">
 
-                                            <h3 style="float: left;color: white;display: inline-block;background: linear-gradient(to right, #5b5b5b 0, #898989 100%);padding: 10px;border: 0;font-weight: 600;font-size: 13px;border-radius: 5px;box-shadow: 5px 7px 8px -7px #868686;">Offered Home Exchange House</h3>
+                                            <h3 style="float: left;color: white;display: inline-block;background: linear-gradient(to right, #5b5b5b 0, #898989 100%);padding: 10px;border: 0;font-weight: 600;font-size: 13px;border-radius: 5px;box-shadow: 5px 7px 8px -7px #868686;">{{__('text.Offered Home Exchange House')}}</h3>
 
                                         </div>
 
                                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 mobile-res1" style="padding-right: 0;">
 
-                                            <h3 style="float: left;color: white;display: inline-block;background: linear-gradient(to right, #5b5b5b 0, #898989 100%);padding: 10px;border: 0;font-weight: 600;font-size: 13px;border-radius: 5px;box-shadow: 5px 7px 8px -7px #868686;">Requested Home Exchange House</h3>
+                                            <h3 style="float: left;color: white;display: inline-block;background: linear-gradient(to right, #5b5b5b 0, #898989 100%);padding: 10px;border: 0;font-weight: 600;font-size: 13px;border-radius: 5px;box-shadow: 5px 7px 8px -7px #868686;">{{__('text.Requested Home Exchange House')}}</h3>
 
                                         </div>
 
@@ -1050,7 +1050,7 @@
                                                                     <ul class="nav nav-tabs nav-table res-nav" style="float: right;border-bottom: 0;margin: 10px 0px;margin-bottom: 0px;width: 60%;">
 
                                                                         <li class="image-tab" style="float: right;">
-                                                                            <a class="new-icons" target="_blank" title="Share by Email" href="mailto:?subject=I wanted you to see this Property AD I just Found on zoekjehuisje.nl&amp;body=Check out this link {{$url}}" style="border-radius: 100px;position: relative;">
+                                                                            <a class="new-icons" target="_blank" title="Share by Email" href="mailto:?subject=I wanted you to see this Property AD I just Found on Zoekjehuisje.nl&amp;body=Check out this link {{$url}}" style="border-radius: 100px;position: relative;">
                                                                                 <i class="far fa-envelope" style="vertical-align: middle;" aria-hidden="true"></i>
                                                                             </a>
                                                                         </li>
@@ -1122,8 +1122,7 @@
 
                                                                                 <div class="modal-header" style="border-bottom: 0;display: inline-block;width: 100%;padding: 15px 25px 20px 25px;border-bottom: 1px solid #e6e9ed;">
 
-
-                                                                                    <h4 style="margin-top: 5px;" class="modal-title" id="exampleModalLabel">SHARE THIS AD</h4>
+                                                                                    <h4 style="margin-top: 5px;" class="modal-title" id="exampleModalLabel">{{__('text.SHARE THIS AD')}}</h4>
 
                                                                                 </div>
 
@@ -1140,7 +1139,7 @@
                                                                                                 <div style="line-height: 5;padding: 0px 20px;">
                                                                                                     <i class="fa fa-whatsapp" aria-hidden="true" style="font-size: 20px;color: #474646;"></i>
 
-                                                                                                    <span style="margin-left: 6px;font-size: 20px;color: #474646;">Share By Whatsapp</span>
+                                                                                                    <span style="margin-left: 6px;font-size: 20px;color: #474646;">{{__('text.Share By Whatsapp')}}</span>
 
                                                                                                 </div>
                                                                                             </a>
@@ -1151,7 +1150,7 @@
 
                                                                                                     <i class="fa fa-facebook" aria-hidden="true" style="font-size: 20px;color: #474646;"></i>
 
-                                                                                                    <span style="margin-left: 6px;font-size: 20px;color: #474646;">Share By Facebook</span>
+                                                                                                    <span style="margin-left: 6px;font-size: 20px;color: #474646;">{{__('text.Share By Facebook')}}</span>
 
                                                                                                 </div>
                                                                                             </a>
@@ -1192,14 +1191,14 @@
 
                                                                         <small class="res-address" style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;width: 55%;float: left;font-weight: 600;"><i style="color: #9b9b9b;margin-right: 5px;" class="fas fa-map-marker-alt" aria-hidden="true"></i> {{ Str::limit($key->address,40) }}</small>
 
-                                                                        <small class="res-rent" style="width: 45%;float: right;font-weight: 600;text-align: right;">€ {{$key->rent_per_month}} Rent</small>
+                                                                        <small class="res-rent" style="width: 45%;float: right;font-weight: 600;text-align: right;">€ {{$key->rent_per_month}} {{__('text.Rent')}}</small>
 
                                                                     </div>
 
                                                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 res-row" style="padding: 0px;min-height: 40px;display: flex;flex-direction: row;">
 
                                                                         <div class="col-lg-6 col-md-6 col-sm-4 col-xs-6 res-inner" style="text-align: center;display: flex;justify-content: center;flex-direction: column;border-right: 1px solid #cccccc;min-height: 40px;flex:1;">
-                                                                            <span><i style="color: #c3c3c3;margin-right: 5px;" class="fas fa-bed res-icons" aria-hidden="true"></i> @if($key->bedrooms > 1) {{$key->bedrooms}} Bedrooms @else {{$key->bedrooms}} Bedroom @endif </span>
+                                                                            <span><i style="color: #c3c3c3;margin-right: 5px;" class="fas fa-bed res-icons" aria-hidden="true"></i> @if($key->bedrooms > 1) {{$key->bedrooms}} {{__('text.Total Bedrooms')}} @else {{$key->bedrooms}} {{__('text.Total Bedroom')}} @endif </span>
                                                                         </div>
 
                                                                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 res-inner" style="text-align: center;display: flex;justify-content: center;flex-direction: column;min-height: 40px;flex:1;">
@@ -1243,14 +1242,14 @@
 
                                                         <small style="float: left;font-weight: 600;">+ {{$key->preferred_radius}} KM</small>
 
-                                                        <small style="float: right;font-weight: 600;">€ {{$preferred_rent}} Rent</small>
+                                                        <small style="float: right;font-weight: 600;">€ {{$preferred_rent}} {{__('text.Rent')}}</small>
 
                                                     </div>
 
                                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 res-row" style="padding: 0px;min-height: 40px;display: flex;flex-direction: row;">
 
                                                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 res-inner" style="text-align: center;display: flex;justify-content: center;flex-direction: column;border-right: 1px solid #cccccc;min-height: 40px;flex:1;">
-                                                           <span><i style="color: #c3c3c3;margin-right: 5px;" class="fas fa-bed res-icons" aria-hidden="true"></i> @if($preferred_bedrooms > 1) {{$preferred_bedrooms}} Bedrooms @else {{$preferred_bedrooms}} Bedroom @endif</span>
+                                                           <span><i style="color: #c3c3c3;margin-right: 5px;" class="fas fa-bed res-icons" aria-hidden="true"></i> @if($preferred_bedrooms > 1) {{$preferred_bedrooms}} {{__('text.Total Bedrooms')}} @else {{$preferred_bedrooms}} {{__('text.Total Bedroom')}} @endif</span>
                                                         </div>
 
                                                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 res-inner" style="text-align: center;display: flex;justify-content: center;flex-direction: column;min-height: 40px;flex:1;">
@@ -1397,7 +1396,7 @@
 
             .select2-container--open .select2-dropdown--below
             {
-                width: 200px !important;
+                width: 240px !important;
                 text-align: left;
             }
 

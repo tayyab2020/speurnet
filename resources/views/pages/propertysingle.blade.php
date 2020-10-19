@@ -77,7 +77,7 @@
             <div class="row">
               <div class="col-md-12 single-post">
                 <ul id="myTab" class="nav nav-tabs nav-justified">
-                  <li class="property-tab active"><a href="#detail" style="outline: none;" id="left-tab" data-toggle="tab"><i style="margin-right: 5px;" class="fas fa-house-user"></i> @if($property->new_construction == 1 || $property->home_exchange == 1){{__('text.Property Detail Heading')}} @else {{__('text.Property Detail')}} @endif</a></li>
+                  <li class="property-tab active"><a href="#detail" style="outline: none;" id="left-tab" data-toggle="tab"><i style="margin-right: 5px;" class="fas fa-house-user"></i> {{__('text.Property Detail')}}</a></li>
 
                     @if($property->new_construction != 1)
                     <li class="contact-tab"><a href="#location" style="outline: none;" id="right-tab" data-toggle="tab"><i style="margin-right: 5px;" class="far fa-comment-dots"></i> Contact</a></li>
@@ -2040,17 +2040,17 @@
 
                         <div style="background-color: #fff;border: 1px solid #ddd;padding: 30px;">
 
-                            <h4 style="text-align: center;">Requested Home Exchange House</h4>
+                            <h4 style="text-align: center;">{{__('text.Requested Home Exchange House Heading')}}</h4>
 
                             <div class="row" style="margin: 0;margin-top: 50px;">
 
                                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" style="float: left;text-align: left;">
-                                    <label>Preferred Place</label>
+                                    <label>{{__('text.Preferred Place')}}</label>
                                     <p>{{$property->preferred_place}}</p>
                                 </div>
 
                                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" style="float: right;text-align: right;">
-                                    <label>Preferred Radius</label>
+                                    <label>{{__('text.Preferred Radius')}}</label>
                                     <p>{{$property->preferred_radius}} KM</p>
                                 </div>
 
@@ -2059,12 +2059,12 @@
                             <div class="row" style="margin: 0;margin-top: 50px;">
 
                                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" style="float: left;text-align: left;">
-                                    <label>Minimum Rooms</label>
+                                    <label>{{__('text.Minimum Rooms')}}</label>
                                     <p>{{$property->preferred_bedrooms}}</p>
                                 </div>
 
                                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" style="float: right;text-align: right;">
-                                    <label>Preferred House Type</label>
+                                    <label>{{__('text.Preferred House Type')}}</label>
                                     <p>{{getPropertyTypeName($property->preferred_kind)->types}}</p>
                                 </div>
 
@@ -2073,12 +2073,12 @@
                             <div class="row" style="margin: 0;margin-top: 50px;">
 
                                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" style="float: left;text-align: left;">
-                                    <label>Preferred Maximum Rent</label>
+                                    <label>{{__('text.Preferred Maximum Rent')}}</label>
                                     <p>{{getcong('currency_sign')}} {{$property->preferred_rent_max}}</p>
                                 </div>
 
                                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" style="float: right;text-align: right;">
-                                    <label>Preferred Area</label>
+                                    <label>{{__('text.Preferred Area')}}</label>
                                     <p>{{$property->preferred_area}}</p>
                                 </div>
 
@@ -2089,7 +2089,7 @@
                             <div class="row" style="margin: 0;margin-top: 50px;">
 
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="float: left;text-align: left;">
-                                    <label>Description</label>
+                                    <label>{{__('text.Home exchange Description')}}</label>
                                     <p>{{$property->preferred_description}}</p>
                                 </div>
 
