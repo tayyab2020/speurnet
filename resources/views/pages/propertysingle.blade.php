@@ -1362,8 +1362,7 @@
 
                                   .new-button:hover, .new-button:focus{background-color:#28aedd;color:#fff}
 
-                                  .new-button{position:relative;display:block;padding:10px
-                                  15px}
+                                  .new-button{position:relative;display:block;padding:10px 15px}
 
 
                                   .new-button{border:0
@@ -1460,6 +1459,8 @@
                                   .travel-time-transport-modes--active{color:#2b6ed2;border-bottom:2px solid #2b6ed2 !important;}
 
                                   .travel-time-transport-modes__button{font-size: 122%;cursor:pointer !important;border:none;border-bottom:2px solid transparent;font-family:Museo-Sans-500,Helvetica Neue,Helvetica,Arial,sans-serif;background:transparent;padding:6px 15px;line-height:2;-webkit-appearance:none;-moz-appearance:none}
+
+                                  @media only screen and (max-width:700px){.travel-time-transport-modes__button{border-bottom: 0 !important;}}
 
                                   .travel-time-table{width: 100%;display: none;}
 

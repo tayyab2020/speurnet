@@ -19,6 +19,11 @@
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="navbar-top">
+
+            <button style="border: 0;" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-top" aria-expanded="true">
+                <i class="fa fa-close"></i>
+            </button>
+
           <ul class="nav navbar-nav navbar-right">
             <li class="{{classActivePathPublic('')}}"><a href="{{ URL::to('/') }}">{{__('text.Home')}}</a></li>
         	<li class="{{classActivePathPublic('properties')}}"><a href="{{ URL::to('properties/') }}">{{__('text.All Properties')}}</a></li>
