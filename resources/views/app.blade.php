@@ -163,7 +163,12 @@
 
               .collapse.in
               {
-                  max-height: 100%;
+                  max-height: 100% !important;
+              }
+
+              .collapsing
+              {
+                  max-height: 100% !important;
               }
           }
 
