@@ -233,7 +233,7 @@
 
                                         </div>
                                         <div class="modal-footer" style="display: flex;">
-                                            <div class="col-md-4 col-sm-5 col-xs-12" style="margin: auto;"><button style="outline: none;" type="submit" name="submit" value="Search" class="btn btn-primary btn-lg btn-block">Search</button></div>
+                                            <div class="col-md-4 col-sm-5 col-xs-12" style="margin: auto;"><button style="outline: none;" type="submit" name="submit" value="{{__('text.Search')}}" class="btn btn-primary btn-lg btn-block">{{__('text.Search')}}</button></div>
                                         </div>
                                     </div>
                                 </div>

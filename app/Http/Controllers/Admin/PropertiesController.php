@@ -902,6 +902,10 @@ class PropertiesController extends MainAdminController
             $request->property_purpose = 'Sale';
         }
 
+		if(!$request->cost_for)
+        {
+            $request->cost_for = 'k.k.';
+        }
 
 
 		$property->available_immediately = $request->available_immediately;
