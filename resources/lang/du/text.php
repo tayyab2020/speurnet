@@ -487,4 +487,5 @@ return [
     'Home exchange Description' => 'Overige informatie',
     'Successfully subscribe' => 'Jouw e-mailadres is succesvol opgeslagen!',
     'The email field is required.' => 'Je hebt geen e-mailadres opgegeven',
+    'Please link your facebook account with an email address.' => 'Koppel je Facebook-account aan een e-mailadres',
 ];

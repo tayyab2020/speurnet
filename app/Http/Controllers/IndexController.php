@@ -45,7 +45,7 @@ class IndexController extends Controller
         if(!$user->email)
         {
 
-            return redirect('/')->withErrors('Please link your facebook account with an email address.');
+            return redirect('/')->withErrors(__('text.Please link your facebook account with an email address.'));
 
         }
 

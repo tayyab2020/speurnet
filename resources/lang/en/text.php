@@ -487,4 +487,5 @@ return [
     'Home exchange Description' => 'Description',
     'Successfully subscribe' => 'Successfully subscribe',
     'The email field is required.' => 'The email field is required.',
+    'Please link your facebook account with an email address.' => 'Please link your facebook account with an email address.',
 ];
