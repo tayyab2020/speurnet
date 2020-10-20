@@ -403,7 +403,7 @@ class IndexController extends Controller
 
         if ($validator->fails())
         {
-                echo '<p style="color: #db2424;font-size: 20px;">The email field is required.</p>';
+                echo '<p style="color: #db2424;font-size: 20px;">' . __('text.The email field is required.') . '</p>';
                 exit;
         }
 
@@ -415,7 +415,7 @@ class IndexController extends Controller
 
 	    $subscriber->save();
 
-	    echo '<p style="color: #189e26;font-size: 20px;">Successfully subscribe</p>';
+	    echo '<p style="color: #189e26;font-size: 20px;">' . __("text.Successfully subscribe") . '</p>';
         exit;
 
     }

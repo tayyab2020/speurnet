@@ -485,4 +485,6 @@ return [
     'Preferred Maximum Rent' => 'Preferred Maximum Rent',
     'Preferred Area' => 'Preferred Area',
     'Home exchange Description' => 'Description',
+    'Successfully subscribe' => 'Successfully subscribe',
+    'The email field is required.' => 'The email field is required.',
 ];

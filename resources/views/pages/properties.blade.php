@@ -13,15 +13,15 @@
             <div class="page-title">
                 @if(Route::currentRouteName() == 'properties-front')
 
-                    <h2>{{__('text.All Properties')}}</h2>
+                    <h2 style="font-size: 29px;">{{__('text.All Properties')}}</h2>
 
                 @elseif(Route::currentRouteName() == 'agent-properties')
 
-                    <h2>{{__('text.Agent Properties')}}</h2>
+                    <h2 style="font-size: 29px;">{{__('text.Agent Properties')}}</h2>
 
                 @else
 
-                    <h2>{{__('text.New Constructions')}}</h2>
+                    <h2 style="font-size: 29px;">{{__('text.New Constructions')}}</h2>
 
                 @endif
             </div>

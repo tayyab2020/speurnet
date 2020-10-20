@@ -37,7 +37,7 @@ return [
     'Our Blogs' => 'Onze blogs',
     'Our Partnership' => 'Ons partnerschap',
     'Get Newsletter Update' => 'Wil jij op de hoogte blijven van alle nieuwtjes en features? Meld je dan nu aan voor de maandelijkse online nieuwsbrief.',
-    'Enter your mail' => 'Voer uw e-mailadres in',
+    'Enter your mail' => 'Jouw e-mailadres',
     'Company' => 'Bedrijf',
     'About Us' => 'Over ons',
     'Contact Us' => 'Neem contact op',
@@ -485,4 +485,6 @@ return [
     'Preferred Maximum Rent' => 'Maximale huurprijs die ik wil betalen',
     'Preferred Area' => 'Voorkeur aantal m2',
     'Home exchange Description' => 'Overige informatie',
+    'Successfully subscribe' => 'Jouw e-mailadres is succesvol opgeslagen!',
+    'The email field is required.' => 'Je hebt geen e-mailadres opgegeven',
 ];
