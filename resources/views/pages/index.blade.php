@@ -14,10 +14,15 @@
             </div>
         @endif
 
-            @if($errors)
-                <div class="error">{{ $errors }}</div>
+            @if($errors->any())
+                @foreach ($errors->all() as $error)
+                    <div class="alert alert-danger alert-box" style="text-align: center;font-size: 16px;position: fixed;top: 20%;z-index: 1000;padding-right: 35px;background-color: rgb(0 0 0);color: rgb(255 255 255);border: 0;max-width: 400px;border-radius: 0;">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="position: absolute;top: 5px;right: 8px;font-size: 28px;line-height: 0.5;opacity: 0.8;font-weight: 100;text-shadow: none;color: #ffffff;">
+                            <span aria-hidden="true">&times;</span></button>
+                        {{$error}}
+                    </div>
+                @endforeach
             @endif
-
 
       <div class="container" style="width: 100%;">
 
