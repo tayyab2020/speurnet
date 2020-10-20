@@ -42,7 +42,6 @@ class IndexController extends Controller
 
         $user = Socialite::with ( $service )->stateless()->user();
 
-        dd($user);
         if(!$user->email)
         {
 
