@@ -193,7 +193,7 @@
                       @import url('https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic');
 
                       ul.property-radios li{
-                          display: flex; margin: 0; padding: 0; vertical-align: top;width: 160px;
+                          display: flex; margin: 0; padding: 0; vertical-align: top;width: 200px;
                       }
 
                       li{ list-style: none; }
