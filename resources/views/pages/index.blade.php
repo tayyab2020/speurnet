@@ -560,6 +560,8 @@
 
             </div>
 
+            @if(count($top_members) > 0)
+
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="display: inline-block;margin-top: 50px;">
 
                 <div class="col-md-12 col-sm-12">
@@ -612,6 +614,8 @@
                     </div></div>
 
             </div>
+
+                @endif
 
 
         </div>

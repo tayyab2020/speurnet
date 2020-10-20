@@ -2,21 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7fe7f36f-c82f-4504-8c0a-7874522d22c9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/upload/blogs/all-the-worlds-waiting-for-you-c4ad5d6438a829cc77a6d3b04837096a.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/upload/blogs/test-blog-2-1989b7ab79b7b56bbe758579c222038a.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/upload/blogs/test-blog-57a69fe5b066cdc83363a06e44f43e59.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/upload/expats/expat-55ace00eac6e527e7dcbc2de1146487a.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/upload/homepage_icons/explore-home-loans-ef98688cd2e301271ee5bffbcec0e860.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/upload/homepage_icons/insure-your-home-2878fafbcbdfb34f9a68ea52d19ffcd3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/upload/homepage_icons/looking-to-sell-4e8d6df9151b6438000be76eefd9ff88.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/upload/homepage_icons/see-auction-results-1cbf099f345d8f53bb7a24735bdf7c43.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/upload/homepage_icons/see-what-your-home-may-be-worth-890c4dd0d89a2f2cce568c534212e36a.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/upload/members/nenis-jil-bcdfd0615d0b9634808555a5bbcebbbe-b.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/upload/members/nenis-jil-bcdfd0615d0b9634808555a5bbcebbbe-s.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/upload/moving-tips/moving-tip-528c21b70b1eac4763897e0fdce0441f.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/upload/moving-tips/test-e200a61326eb2a4d9e0950f794f136fe.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/upload/testimonial/muhammad-tayyab-5f31c621c4c51b3c51cd199b39463cff.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/upload/footer-pages/footer-page-3440c0bc006e7fab73b3be568a33c914.JPG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/upload/members/muhammad-tayyab-e840807fa75d4502fc96b04dbff4560e-b.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/upload/members/muhammad-tayyab-e840807fa75d4502fc96b04dbff4560e-s.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/upload/properties/awda-2e95ade370c3871fda51e03448bf1b20-b.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/upload/properties/awda-2e95ade370c3871fda51e03448bf1b20-s.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/upload/properties/qrq-b3d09b8465c094e8ec55650a24328589-b.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/upload/properties/qrq-b3d09b8465c094e8ec55650a24328589-s.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/upload/properties/test-property-9cecbb6f981ac40b3c308c13b4c44c55-b.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/upload/properties/test-property-9cecbb6f981ac40b3c308c13b4c44c55-s.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/upload/tickets/ticket-id-eaef25faf6712aacf8a7ce050673a6b1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/pages/inquiries.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/pages/inquiries.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/pages/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/index.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -272,7 +268,7 @@
       <workItem from="1602496080572" duration="3319000" />
       <workItem from="1602581817521" duration="73015000" />
       <workItem from="1602927583286" duration="62686000" />
-      <workItem from="1603182206716" duration="4412000" />
+      <workItem from="1603182206716" duration="5270000" />
     </task>
     <servers />
   </component>
