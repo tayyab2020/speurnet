@@ -42,11 +42,10 @@ class IndexController extends Controller
 
         $user = Socialite::with ( $service )->stateless()->user();
 
-        dd($user);
         if(!$user->email)
         {
 
-            return redirect()->back()->withErrors('Please link your facebook account with an email address.');
+            return redirect('/')->withErrors('Please link your facebook account with an email address.');
 
         }
 
