@@ -32,7 +32,7 @@
               </div>
 
               @endif
-              
+
 
               @if(count($content))
 

@@ -40,6 +40,8 @@
                         $date = date_format($date,"d-F-Y");
                         ?>
 
+                        @if(isset($viewings->user->name))
+
                         <tr>
 
                             <td>{{ $viewings->property_id }}</td>
@@ -53,11 +55,12 @@
                             <td>{{ $viewings->message }}</td>
                             <td class="text-center">
                                 <a href="{{ url('admin/viewings/delete/'.$viewings->id) }}" class="btn btn-default btn-rounded"><i class="md md-delete"></i></a>
-
-
                             </td>
 
                         </tr>
+
+                        @endif
+
                     @endforeach
 
                     </tbody>

@@ -39,6 +39,8 @@
                 $date = date_format($date,"d-F-Y");
                 ?>
 
+                @if(isset($inquiries->user->name))
+
          	   <tr>
 
                 <td>{{ $inquiries->property_id }}</td>
@@ -50,11 +52,12 @@
                 <td>{{ $inquiries->message }}</td>
                 <td class="text-center">
                 	<a href="{{ url('admin/inquiries/delete/'.$inquiries->id) }}" class="btn btn-default btn-rounded"><i class="md md-delete"></i></a>
-
-
-            </td>
+                </td>
 
             </tr>
+
+               @endif
+                
            @endforeach
 
             </tbody>
