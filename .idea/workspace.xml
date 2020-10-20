@@ -2,18 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7fe7f36f-c82f-4504-8c0a-7874522d22c9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/public/upload/footer-pages/footer-page-3440c0bc006e7fab73b3be568a33c914.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/upload/members/muhammad-tayyab-e840807fa75d4502fc96b04dbff4560e-b.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/upload/members/muhammad-tayyab-e840807fa75d4502fc96b04dbff4560e-s.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/upload/properties/awda-2e95ade370c3871fda51e03448bf1b20-b.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/upload/properties/awda-2e95ade370c3871fda51e03448bf1b20-s.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/upload/properties/qrq-b3d09b8465c094e8ec55650a24328589-b.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/upload/properties/qrq-b3d09b8465c094e8ec55650a24328589-s.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/upload/properties/test-property-9cecbb6f981ac40b3c308c13b4c44c55-b.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/upload/properties/test-property-9cecbb6f981ac40b3c308c13b4c44c55-s.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/upload/tickets/ticket-id-eaef25faf6712aacf8a7ce050673a6b1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/pages/inquiries.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/pages/inquiries.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/pages/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -268,7 +257,7 @@
       <workItem from="1602496080572" duration="3319000" />
       <workItem from="1602581817521" duration="73015000" />
       <workItem from="1602927583286" duration="62686000" />
-      <workItem from="1603182206716" duration="5270000" />
+      <workItem from="1603182206716" duration="6762000" />
     </task>
     <servers />
   </component>
