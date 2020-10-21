@@ -292,9 +292,9 @@ class BlogsController extends MainAdminController
 
                 if($t_user_image){
 
-                    \File::delete(public_path() .'/upload/moving-tips/'.$blog->image);
+                    \File::delete(public_path() .'/upload/blogs/'.$blog->image);
 
-                    $tmpFilePath = 'upload/moving-tips/';
+                    $tmpFilePath = 'upload/blogs/';
 
                     $filename = $_FILES['image']['name'];
 
@@ -324,9 +324,9 @@ class BlogsController extends MainAdminController
 
                 if($t_user_image){
 
-                    \File::delete(public_path() .'/upload/moving-tips/'.$blog->image);
+                    \File::delete(public_path() .'/upload/blogs/'.$blog->image);
 
-                    $tmpFilePath = 'upload/moving-tips/';
+                    $tmpFilePath = 'upload/blogs/';
 
                     $filename = $_FILES['image']['name'];
 
