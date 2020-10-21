@@ -534,7 +534,7 @@
 
                                             <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-bed"></i></div>
 
-                                            <input type="number" step="1" max="" name="bedrooms" @if(old('bedrooms') != '') value="{{old('bedrooms')}}" @else value="{{ isset($property->bedrooms) ? $property->bathrooms : 1 }}" @endif @if(Route::currentRouteName() != 'addnewconstruction') class="quantity-field stepper-step-2-validate" @else class="quantity-field" @endif style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+                                            <input type="number" step="1" max="" name="bedrooms" @if(old('bedrooms') != '') value="{{old('bedrooms')}}" @else value="{{ isset($property->bedrooms) ? $property->bedrooms : 1 }}" @endif @if(Route::currentRouteName() != 'addnewconstruction') class="quantity-field stepper-step-2-validate" @else class="quantity-field" @endif style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
                                             <input type="button" value="+" class="button-plus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d7d7d7;margin-top: -0.1px;">
                                             <input type="button" value="-" class="button-minus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;margin-top: -0.1px;">
 
