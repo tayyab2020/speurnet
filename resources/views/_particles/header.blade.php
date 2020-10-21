@@ -50,11 +50,15 @@
 
                   @if(Auth::user()->usertype=='Users')
 
-                      <li><a href="{{ URL::to('addhomeexchange') }}" class="signup col-lg-12 col-md-3 col-sm-6 col-xs-6">{{__('text.Post property button')}}</a></li>
+                      <li><a href="{{ URL::to('addhomeexchange') }}" class="signup col-lg-12 col-md-3 col-sm-6 col-xs-6" style="margin-left: 0;float: none;">{{__('text.Post your Property')}}</a>
+                          <span style="display: block;text-align: center;" class="below-btn">{{__('text.Post property button')}}</span>
+                      </li>
 
                   @else
 
-                      <li><a href="{{ URL::to('addproperty') }}" class="signup col-lg-12 col-md-3 col-sm-6 col-xs-6">{{__('text.Post property button')}}</a></li>
+                      <li><a href="{{ URL::to('addproperty') }}" class="signup col-lg-12 col-md-3 col-sm-6 col-xs-6" style="margin-left: 0;float: none;">{{__('text.Post your Property')}}</a>
+                          <span style="display: block;text-align: center;" class="below-btn">{{__('text.Post property button')}}</span>
+                      </li>
 
                   @endif
 
@@ -64,7 +68,9 @@
                       <a href="{{ URL::to('login') }}" style="display: inline-block;padding-left: 5px;padding-right: 5px;">{{__('text.Sign in')}}</a><span> / </span>
                       <a href="{{ URL::to('register') }}" style="display: inline-block;padding-left: 5px;padding-right: 5px;">{{__('text.Sign up')}}</a>
                   </li>
-            	<li><a href="{{ URL::to('login') }}" class="signup col-lg-12 col-md-3 col-sm-6 col-xs-6">{{__('text.Post property button')}}</a></li>
+            	<li><a href="{{ URL::to('login') }}" class="signup col-lg-12 col-md-3 col-sm-6 col-xs-6" style="margin-left: 0;float: none;">{{__('text.Post your Property')}}</a>
+                    <span style="display: block;text-align: center;" class="below-btn">{{__('text.Post property button')}}</span>
+                </li>
              @endif
 
 
@@ -75,6 +81,11 @@
    <!-- end:navbar -->
 
 <style>
+
+    @media screen and (max-width: 767px)
+    {
+        .below-btn{ margin-top: 10px;text-align: left !important; }
+    }
 
     a{outline: none !important;}
 

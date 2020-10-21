@@ -488,5 +488,5 @@ return [
     'Successfully subscribe' => 'Jouw e-mailadres is succesvol opgeslagen!',
     'The email field is required.' => 'Je hebt geen e-mailadres opgegeven',
     'Please link your facebook account with an email address.' => 'Koppel je Facebook-account aan een e-mailadres',
-    "Post property button" => "je huisje is zó gevonden!",
+    "Post property button" => "Je huisje is zó gevonden!",
 ];
