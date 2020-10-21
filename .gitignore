@@ -1,6 +1,16 @@
 /node_modules
 /public/hot
 /public/upload/properties
+/public/upload/blogs
+/public/upload/expats
+/public/upload/footer-pages
+/public/upload/homepage_icons
+/public/upload/members
+/public/upload/moving-tips
+/public/upload/partners
+/public/upload/slides
+/public/upload/testimonial
+/public/upload/tickets
 /public/storage
 /storage/*.key
 /vendor
