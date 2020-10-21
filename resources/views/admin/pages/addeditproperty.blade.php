@@ -33,7 +33,7 @@
                         <h2>{{__('text.Post your Property')}}</h2>
                     </div>
                     <ol class="breadcrumb">
-                        <li><a href="{{ URL::to('/') }}">Home</a></li>
+                        <li><a href="{{ URL::to('/') }}">{{__('text.Home')}}</a></li>
                         {{--<li class="active">Add New Property</li>--}}
                     </ol>
                 </div>
