@@ -172,7 +172,7 @@
                                     </div>
 
 
-                                    <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-12" style="display: inline-block;float: left;">
+                                    {{--<div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-12" style="display: inline-block;float: left;">
 
                                         <label style="float: left;">{{__('text.Area')}} <small>(m2)</small></label>
 
@@ -186,7 +186,7 @@
 
                                         </div>
 
-                                    </div>
+                                    </div>--}}
 
                                     <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-12" style="display: inline-block;float: left;">
 
@@ -334,7 +334,7 @@
 
                                     </div>
 
-                                    <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-12" style="display: inline-block;float: right;">
+                                    {{--<div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-12" style="display: inline-block;float: right;">
 
                                         <label style="float: left;">{{__('text.Minimum Area')}}</label>
 
@@ -348,7 +348,7 @@
 
                                         </div>
 
-                                    </div>
+                                    </div>--}}
 
                                     <div class="input-group col-lg-10 col-md-10 col-sm-10 col-xs-12" style="display: inline-block;float: right;">
 

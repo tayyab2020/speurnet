@@ -544,13 +544,13 @@
 
                                     <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 right-div" style="float: right;@if(Route::currentRouteName() != 'addnewconstruction') display: inline-block @else display:none @endif">
 
-                                        <label class="right-label" style="float: left;">{{__('text.Total Bathrooms')}} <span style="color: red;font-size: 20px;">*</span></label>
+                                        <label class="right-label" style="float: left;">{{__('text.Total Bathrooms')}} @if(Route::currentRouteName() != 'addhomeexchange')<span style="color: red;font-size: 20px;">*</span>@endif</label>
 
                                         <div class="right-content" style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;border-right: 0;margin: auto;">
 
                                             <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-restroom"></i></div>
 
-                                            <input type="number" step="1" max="" name="bathrooms" @if(old('bathrooms') != '') value="{{old('bathrooms')}}" @else value="{{ isset($property->bathrooms) ? $property->bathrooms : 1 }}" @endif @if(Route::currentRouteName() != 'addnewconstruction') class="quantity-field stepper-step-2-validate" @else class="quantity-field" @endif style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+                                            <input type="number" step="1" max="" name="bathrooms" @if(old('bathrooms') != '') value="{{old('bathrooms')}}" @else value="{{ isset($property->bathrooms) ? $property->bathrooms : 1 }}" @endif @if(Route::currentRouteName() != 'addnewconstruction' && Route::currentRouteName() != 'addhomeexchange') class="quantity-field stepper-step-2-validate" @else class="quantity-field" @endif style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
                                             <input type="button" value="+" class="button-plus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d7d7d7;margin-top: -0.1px;">
                                             <input type="button" value="-" class="button-minus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;margin-top: -0.1px;">
 
@@ -559,13 +559,13 @@
 
                                     <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 right-div" style="@if(Route::currentRouteName() != 'addnewconstruction') display: inline-block @else display:none @endif">
 
-                                        <label class="right-label" style="float: left;">{{__('text.SQFT')}} <small>(m2)</small> <span style="color: red;font-size: 20px;">*</span></label>
+                                        <label class="right-label" style="float: left;">{{__('text.SQFT')}} <small>(m2)</small> @if(Route::currentRouteName() != 'addhomeexchange')<span style="color: red;font-size: 20px;">*</span>@endif</label>
 
                                         <div class="right-content" style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto;">
 
                                             <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-crop-alt"></i></div>
 
-                                            <input type="number" step="1" max="" name="area" @if(old('area') != '') value="{{old('area')}}" @else value="{{ isset($property->area) ? $property->area : null }}" @endif placeholder="" @if(Route::currentRouteName() != 'addnewconstruction') class="quantity-field stepper-step-2-validate" @else class="quantity-field" @endif style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+                                            <input type="number" step="1" max="" name="area" @if(old('area') != '') value="{{old('area')}}" @else value="{{ isset($property->area) ? $property->area : null }}" @endif placeholder="" @if(Route::currentRouteName() != 'addnewconstruction' && Route::currentRouteName() != 'addhomeexchange') class="quantity-field stepper-step-2-validate" @else class="quantity-field" @endif style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
                                             <input type="button" value="+" class="button-plus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d7d7d7;margin-top: -0.1px;">
                                             <input type="button" value="-" class="button-minus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;margin-top: -0.1px;">
 
@@ -2661,13 +2661,13 @@
 
                                     <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 right-div" style="display: inline-block;float: right;">
 
-                                        <label class="right-label" style="float: left;">{{__('text.SQFT Homeexchange')}} <small>(m2)</small> <span style="color: red;font-size: 20px;">*</span></label>
+                                        <label class="right-label" style="float: left;">{{__('text.SQFT Homeexchange')}} <small>(m2)</small></label>
 
                                         <div class="right-content" style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto;">
 
                                             <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-crop-alt"></i></div>
 
-                                            <input type="number" step="1" max="" name="preferred_area" @if(old('preferred_area') != '') value="{{old('preferred_area')}}" @else value="{{ isset($property->preferred_area) ? $property->preferred_area : null }}" @endif placeholder="800m2" class="quantity-field stepper-step-5-validate" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+                                            <input type="number" step="1" max="" name="preferred_area" @if(old('preferred_area') != '') value="{{old('preferred_area')}}" @else value="{{ isset($property->preferred_area) ? $property->preferred_area : null }}" @endif placeholder="800m2" class="quantity-field" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
                                             <input type="button" value="+" class="button-plus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d7d7d7;margin-top: -0.1px;">
                                             <input type="button" value="-" class="button-minus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;margin-top: -0.1px;">
 
@@ -2698,13 +2698,13 @@
 
                                     <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 right-div" style="display: inline-block;float: right">
 
-                                        <label class="right-label" style="float: left;">{{__('text.Total Bathrooms')}} <span style="color: red;font-size: 20px;">*</span></label>
+                                        <label class="right-label" style="float: left;">{{__('text.Total Bathrooms')}}</label>
 
                                         <div class="right-content" style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;border-right: 0;margin: auto;">
 
                                             <div style="width:20%;float: left;margin-top: 7px;text-align: center;"><i class="fas fa-restroom"></i></div>
 
-                                            <input type="number" step="1" max="" name="preferred_bathrooms" @if(old('preferred_bathrooms') != '') value="{{old('preferred_bathrooms')}}"  @else value="{{ isset($property->preferred_bathrooms) ? $property->preferred_bathrooms : 1 }}" @endif class="quantity-field stepper-step-5-validate" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
+                                            <input type="number" step="1" max="" name="preferred_bathrooms" @if(old('preferred_bathrooms') != '') value="{{old('preferred_bathrooms')}}"  @else value="{{ isset($property->preferred_bathrooms) ? $property->preferred_bathrooms : 1 }}" @endif class="quantity-field" style="border: 0;margin: 0;float: left;width: 50%;left: 0;height: 37.5px;text-align: left;font-weight: bold;padding-left: 20px;">
                                             <input type="button" value="+" class="button-plus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d7d7d7;margin-top: -0.1px;">
                                             <input type="button" value="-" class="button-minus" data-field="quantity-field" style="float: right;min-width: 15%;width: 15%;font-size: 15px;font-family: monospace;border-right: 1px solid #d1d1d1;margin-top: -0.1px;">
 

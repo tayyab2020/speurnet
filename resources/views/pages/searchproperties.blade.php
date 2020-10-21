@@ -140,11 +140,16 @@
                                           </div>
                               </div>
 
+                                  @if(Route::currentRouteName() != 'searchnewconstructions')
+
                                   <div class="property-features">
                                       <span><i class="fa fa-home"></i> {{$property->area}}</span>
                                       <span><i class="fa fa-bed"></i> {{$property->bedrooms}}</span>
                                       <span><i class="fa fa-male"></i> {{$property->bathrooms}}</span>
                                   </div>
+
+                                  @endif
+
                                   <div class="property-content">
                                       @if(Route::currentRouteName() != 'searchnewconstructions')
 

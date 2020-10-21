@@ -115,7 +115,7 @@
                     <input type="number" name="max_area" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') value="{{$max_area}}" @else value="" @endif class="form-control" placeholder="">
                 </div>
 
-        
+
                 <div class="form-group">
                     <label for="minprice">{{__('text.Type of Construction')}}</label>
                     <select class="form-control" name="type_of_construction">
@@ -440,6 +440,8 @@
                             <input type="number" name="max_price" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') value="{{$max_price}}" @else value="" @endif class="form-control" placeholder="">
                         </div>
 
+                            @if(Route::currentRouteName() != 'newconstructions-front' && Route::currentRouteName() != 'searchnewconstructions' && Route::currentRouteName() != 'newconstruction-single')
+
                         <div class="form-group">
                             <label for="minprice">{{__('text.Bedrooms')}}</label>
                             <input type="number" name="bedrooms" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') value="{{$bedrooms}}" @else value="" @endif class="form-control" placeholder="">
@@ -459,8 +461,6 @@
                             <label for="minprice">{{__('text.Max Area')}}</label>
                             <input type="number" name="max_area" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') value="{{$max_area}}" @else value="" @endif class="form-control" placeholder="">
                         </div>
-
-                        @if(Route::currentRouteName() != 'newconstructions-front' && Route::currentRouteName() != 'searchnewconstructions' && Route::currentRouteName() != 'newconstruction-single')
 
                             <div class="form-group">
                                 <label for="minprice">{{__('text.Type of Construction')}}</label>

@@ -90,15 +90,19 @@
                           <select onchange="this.form.submit()" name="filter_orderby" class="orderby" data-placeholder="Sort by" tabindex="-1" aria-hidden="true">
                               <option value="newest" @if(isset($filter) && $filter == 'newest' || $filter == '') selected @endif>{{__('text.Newest')}}</option>
                               <option value="oldest" @if(isset($filter) && $filter == 'oldest') selected @endif>{{__('text.Oldest')}}</option>
+                              @if(Route::currentRouteName() != 'newconstructions-front')
                               <option value="bedrooms" @if(isset($filter) && $filter == 'bedrooms') selected @endif>{{__('text.Most Bedrooms')}}</option>
                               <option value="bathrooms" @if(isset($filter) && $filter == 'bathrooms') selected @endif>{{__('text.Most Bathrooms')}}</option>
+                              @endif
                               <option value="popularity" @if(isset($filter) && $filter == 'popularity') selected @endif>{{__('text.Popularity')}}</option>
                               <option value="lowest_sale_price" @if(isset($filter) && $filter == 'lowest_sale_price') selected @endif>{{__('text.Lowest Sale Price')}}</option>
                               <option value="highest_sale_price" @if(isset($filter) && $filter == 'highest_sale_price') selected @endif>{{__('text.Highest Sale Price')}}</option>
                               <option value="lowest_rent_price" @if(isset($filter) && $filter == 'lowest_rent_price') selected @endif>{{__('text.Lowest Rent Price')}}</option>
                               <option value="highest_rent_price" @if(isset($filter) && $filter == 'highest_rent_price') selected @endif>{{__('text.Highest Rent Price')}}</option>
+                              @if(Route::currentRouteName() != 'newconstructions-front')
                               <option value="lowest_area" @if(isset($filter) && $filter == 'lowest_area') selected @endif>{{__('text.Lowest Area')}}</option>
                               <option value="highest_area" @if(isset($filter) && $filter == 'highest_area') selected @endif>{{__('text.Highest Area')}}</option>
+                              @endif
                           </select>
 
                       </form>
@@ -514,6 +518,7 @@
 
                                         @endif
 
+                                            @if(Route::currentRouteName() != 'newconstructions-front')
 
                                         <div style="display: flex;flex-direction: row;">
 
@@ -526,6 +531,8 @@
                                             @endif
 
                                         </div>
+
+                                                @endif
 
                                     </div>
 

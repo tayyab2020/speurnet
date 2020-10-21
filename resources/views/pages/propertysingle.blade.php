@@ -747,7 +747,9 @@
                               <div class="col-lg-12 col-md-12 col-sm-12 col-sm-12" style="padding: 0;">
                                   <label class="head-label" style="color: #434343;font-weight: 600;">{{__('text.Bedrooms')}}<img src="{{ URL::asset('assets/img/bed.png') }}" style="width: 25px;margin: 0px 13px;" /><span style="font-size: 20px;color: #4d4b4b;">{{$property->bedrooms}}</span></label>
                                   <label class="mid-label" style="color: #434343;font-weight: 600;margin: 0px 65px;">{{__('text.Bathrooms')}}<img src="{{ URL::asset('assets/img/bathroom.png') }}" style="width: 25px;margin: 0px 13px;margin-bottom: 3px;" /><span style="font-size: 20px;color: #4d4b4b;">{{$property->bathrooms}}</span></label>
+                                  @if($property->home_exchange != 1)
                                   <label class="head-label" style="color: #434343;font-weight: 600;">{{__('text.Area')}} <small>(m2)</small><img src="{{ URL::asset('assets/img/browser.png') }}" style="width: 20px;margin: 0px 13px;margin-bottom: 3px;" /><span style="font-size: 17px;color: #4d4b4b;">{{$property->area}} <small>m2</small></span></label>
+                                  @endif
                               </div>
                           </div>
 
@@ -816,10 +818,14 @@
                             <td>{{$property->bedrooms}}</td>
                           </tr>
 
+                                @if($property->home_exchange != 1)
+
                           <tr>
                             <td><strong>{{__('text.Area')}} <small>(m2)</small></strong></td>
                             <td>{{$property->area}} m2</td>
                           </tr>
+
+                                    @endif
 
                             @endif
 
@@ -929,14 +935,18 @@
 
                             @endif
 
-                            @if($property->floors)
+                                @if($property->home_exchange !=1)
 
-                                <tr>
-                                    <td><strong>{{__('text.Floors')}}</strong></td>
-                                    <td>{{$property->floors}}</td>
-                                </tr>
+                                    @if($property->floors)
 
-                            @endif
+                                        <tr>
+                                            <td><strong>{{__('text.Floors')}}</strong></td>
+                                            <td>{{$property->floors}}</td>
+                                        </tr>
+
+                                    @endif
+
+                                @endif
 
                             @if($property->backyard)
 

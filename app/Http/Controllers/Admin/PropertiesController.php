@@ -912,6 +912,11 @@ class PropertiesController extends MainAdminController
             $request->bedrooms = 0;
         }
 
+        if(!$request->bathrooms)
+        {
+            $request->bathrooms = 0;
+        }
+
 		$property->available_immediately = $request->available_immediately;
 		$property->property_name = $request->property_name;
 		$property->property_slug = $property_slug;
