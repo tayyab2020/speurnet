@@ -568,8 +568,8 @@ class DashboardController extends MainAdminController
 
         }
 
-        $footer_heading = footer_headings::findOrFail($id);
-        $footer_heading->delete();
+        $footer_pages = footer_pages::where('heading_id',$id)->delete();
+        $footer_heading = footer_headings::where('id',$id)->delete();
 
         \Session::flash('flash_message', 'Deleted');
 
