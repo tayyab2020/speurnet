@@ -155,9 +155,13 @@
                                         {{$blog->heading}}
                                     </td>
 
-                                @else
+                                @elseif($blog->heading_id == 0)
 
                                     <td>Company</td>
+
+                                @else
+
+                                    <td>Not Linked</td>
 
                                 @endif
 
