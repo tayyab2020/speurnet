@@ -526,9 +526,9 @@
 
                                     @endif
 
-                                    <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
+                                    <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 left-div" style="@if(Route::currentRouteName() != 'addnewconstruction') display: inline-block @else display:none @endif">
 
-                                        <label class="left-label" style="float: left;">{{__('text.Total Bedrooms')}} <span style="color: red;font-size: 20px;@if(Route::currentRouteName() != 'addnewconstruction') display: inline-block @else display:none @endif">*</span></label>
+                                        <label class="left-label" style="float: left;">{{__('text.Total Bedrooms')}} <span style="color: red;font-size: 20px;">*</span></label>
 
                                         <div  style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;border-right: 0;margin: auto">
 

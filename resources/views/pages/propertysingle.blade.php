@@ -555,13 +555,13 @@
 
                                   @if($property->new_construction != 1 && $property->home_exchange != 1)
 
-                              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="outline: none;align-self: center;">
+                              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="outline: none;align-self: flex-start;">
                                   <i class="far fa-calendar-check" style="margin-right: 7px;"></i> {{__('text.Request Viewing')}}
                               </button>
 
                                       @elseif($property->new_construction == 1)
 
-                                      <a class="btn btn-primary" href="{{$property->citation}}" style="outline: none;align-self: center;">
+                                      <a class="btn btn-primary" href="{{$property->citation}}" style="outline: none;align-self: flex-start">
                                           <i class="fas fa-globe" style="margin-right: 7px;"></i> {{__('text.Contact Page Source')}}
                                       </a>
 
@@ -741,6 +741,8 @@
 
                         <h3>{{__('text.Property Overview')}}</h3>
 
+                          @if($property->new_construction != 1)
+
                           <div class="row" style="margin: 30px 0px;">
                               <div class="col-lg-12 col-md-12 col-sm-12 col-sm-12" style="padding: 0;">
                                   <label class="head-label" style="color: #434343;font-weight: 600;">{{__('text.Bedrooms')}}<img src="{{ URL::asset('assets/img/bed.png') }}" style="width: 25px;margin: 0px 13px;" /><span style="font-size: 20px;color: #4d4b4b;">{{$property->bedrooms}}</span></label>
@@ -748,6 +750,8 @@
                                   <label class="head-label" style="color: #434343;font-weight: 600;">{{__('text.Area')}} <small>(m2)</small><img src="{{ URL::asset('assets/img/browser.png') }}" style="width: 20px;margin: 0px 13px;margin-bottom: 3px;" /><span style="font-size: 17px;color: #4d4b4b;">{{$property->area}} <small>m2</small></span></label>
                               </div>
                           </div>
+
+                          @endif
 
                           <table class="table table-bordered">
                               <tr>
@@ -799,18 +803,25 @@
                             <td><strong>{{__('text.Location')}}</strong> <img src="{{ URL::asset('assets/img/pin.png') }}" style="width: 18px;float: right;" /></td>
                             <td>{{$property->address}}</td>
                           </tr>
+
+                            @if($property->new_construction != 1)
+
                           <tr>
                             <td><strong>{{__('text.Bathrooms')}}</strong> <img src="{{ URL::asset('assets/img/bathroom.png') }}" style="width: 18px;float: right;" /></td>
                             <td>{{$property->bathrooms}}</td>
                           </tr>
+
                           <tr>
                             <td><strong>{{__('text.Bedrooms')}}</strong> <img src="{{ URL::asset('assets/img/bed.png') }}" style="width: 18px;float: right;" /></td>
                             <td>{{$property->bedrooms}}</td>
                           </tr>
+
                           <tr>
                             <td><strong>{{__('text.Area')}} <small>(m2)</small></strong></td>
                             <td>{{$property->area}} m2</td>
                           </tr>
+
+                            @endif
 
                         </table>
 
@@ -850,23 +861,28 @@
 
                                   @endif
 
-                                  @if($property->source)
-
-                                      <tr>
-                                          <td><strong>{{__('text.Source')}}</strong></td>
-                                          <td style="word-wrap: break-word;overflow-wrap: break-word;">{{$property->source}}</td>
-                                      </tr>
-
-                                  @endif
 
                                   @if($property->citation)
 
                                       <tr>
-                                          <td><strong>{{__('text.Citation')}}</strong></td>
+                                          <td><strong>{{__('text.Source Project')}}</strong></td>
                                           <td>{{$property->Citation}}</td>
                                       </tr>
 
                                   @endif
+
+                                  @if($property->owner)
+
+                                      <tr>
+                                          <td><strong>{{__('text.Owner')}}</strong></td>
+                                          <td>{{$property->owner}}</td>
+                                      </tr>
+
+                                  @endif
+
+
+                                  @if($property->new_construction != 1)
+
 
                             @if($property->garage)
                                 <tr>
@@ -884,6 +900,7 @@
                                 </tr>
 
                             @endif
+
 
                             @if($property->year_construction)
 
@@ -1020,6 +1037,8 @@
 
                             @endif
 
+                            @endif
+
                                   @if($property->home_exchange != 1 && $property->new_construction != 1)
 
                                     @if($property->rent_price)
@@ -1038,6 +1057,9 @@
 
                                   @endif
 
+
+
+                                  @if($property->new_construction != 1)
 
                             @if($property->year_boiler)
 
@@ -1081,6 +1103,8 @@
                                       </tr>
 
                                   @endif
+
+                                      @endif
 
 
                         </table>
