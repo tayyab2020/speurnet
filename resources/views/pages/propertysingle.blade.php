@@ -269,8 +269,6 @@
                                       </div><!--row-->
 
 
-
-
                                       <div id="map-second-row">
 
                                           <div id="panel" style="width: 204px;height: auto;max-height: 340px;float: left;border: 1px solid rgba(190, 190, 190, 0.6);border-left: 0;overflow: auto;position: absolute;top: 22%;z-index: 1;background-color: white;">
@@ -316,7 +314,9 @@
                                   </div>
 
 
-                                  <?php $date = date_format($property->created_at,"d F Y");?>
+                                  <?php setlocale(LC_TIME, 'Dutch');
+                                  $date = $property->created_at->formatLocalized('%d %B %Y');
+                                  ?>
 
                                   <div class="col-lg-3 col-md-4 col-sm-4 col-xs-4" style="padding: 0;">
 
@@ -391,12 +391,6 @@
                                   <li class="image-tab">
                                       <a class="new-icons" target="_blank" title="Share by Email" href="mailto:?subject=I wanted you to see this Property AD I just Found on zoekjehuisje.nl&amp;body=Check out this link {{$url}}" style="border-radius: 100px;position: relative;">
                                           <i class="far fa-envelope" style="vertical-align: middle;"></i>
-                                      </a>
-                                  </li>
-
-                                  <li class="image-tab">
-                                      <a class="new-icons" title="Share" style="border-radius: 100px;position: relative;" data-toggle="modal" data-target="#ShareModal">
-                                          <i class="fas fa-share-alt" style="vertical-align: middle;margin-right: 2px;"></i>
                                       </a>
                                   </li>
 
@@ -542,17 +536,32 @@
                                   </div>
                               </div>
 
-                              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 request" style="padding: 0;text-align: right;margin: 25px 0px;">
+                              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 request" style="padding: 0;text-align: right;margin: 25px 0px;display: flex;justify-content: space-between;">
+
+                                  <div class="sh-ad" style="align-self: center;text-align: left;padding-right: 30px;">
+                                      <span style="font-size: 15px;">{{__('text.Share ad text')}}</span>
+
+                                      <ul class="nav nav-tabs nav-table" style="display: inline-block;margin: 0px 0px 20px 0px;">
+
+                                      <li class="image-tab" style="margin-left: 8px;margin-right: 0;">
+                                          <a class="new-icons" title="Share" style="border-radius: 100px;position: relative;width: 35px !important;height: 35px !important;line-height: 0 !important;display: flex;flex-direction: column;justify-content: center;" data-toggle="modal" data-target="#ShareModal">
+                                              <i class="fas fa-share-alt" style="vertical-align: middle;margin-right: 2px;font-size: 15px;"></i>
+                                          </a>
+                                      </li>
+
+                                      </ul>
+
+                                  </div>
 
                                   @if($property->new_construction != 1 && $property->home_exchange != 1)
 
-                              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="outline: none;">
+                              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="outline: none;align-self: center;">
                                   <i class="far fa-calendar-check" style="margin-right: 7px;"></i> {{__('text.Request Viewing')}}
                               </button>
 
                                       @elseif($property->new_construction == 1)
 
-                                      <a class="btn btn-primary" href="{{$property->citation}}" style="outline: none;">
+                                      <a class="btn btn-primary" href="{{$property->citation}}" style="outline: none;align-self: center;">
                                           <i class="fas fa-globe" style="margin-right: 7px;"></i> {{__('text.Contact Page Source')}}
                                       </a>
 
@@ -2589,7 +2598,9 @@
 
         @media (max-width: 480px){
 
-            .request{text-align: center !important;}
+            .request{text-align: center !important;justify-content: center !important;flex-direction: column;}
+
+            .sh-ad{padding-right: 0 !important;text-align: center !important;}
 
             .request button{width: 100%;}
 

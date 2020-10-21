@@ -373,7 +373,7 @@
                               </div>
                               @else
                       <div class="row" style="margin: 0;">
-                          <h2 style="font-weight: 600;text-align: center">{{__('text.No Results Found')}}</h2>
+                          <h2 style="font-weight: 600;text-align: center"></h2>
                       </div>
 
                           @endif

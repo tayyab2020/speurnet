@@ -907,6 +907,10 @@ class PropertiesController extends MainAdminController
             $request->cost_for = 'k.k.';
         }
 
+		if(!$request->bedrooms)
+        {
+            $request->bedrooms = 0;
+        }
 
 		$property->available_immediately = $request->available_immediately;
 		$property->property_name = $request->property_name;

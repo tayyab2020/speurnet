@@ -79,18 +79,12 @@
     <!-- end:header -->
 
     <!-- begin:content -->
-    <div id="content">
+    <div id="content" style="padding-top: 40px;">
 
       <div class="container">
         <div class="row">
           <!-- begin:article -->
           <div class="col-md-9 col-md-push-3">
-
-              @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions')
-
-                  <h5 style="margin-top: 0;padding: 0px 10px;font-weight: 600;">{{__('text.Is there no home that makes you happy?')}}</h5>
-
-              @endif
 
               <div class="properties-ordering-wrapper">
 
@@ -105,10 +99,16 @@
 
               </div>
 
+              @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions')
+
+                  <h5 style="margin-top: 0;padding: 0px 10px;font-weight: 600;margin-bottom: 20px;">{{__('text.Is there no home that makes you happy?')}}</h5>
+
+              @endif
+
             <!-- begin:product -->
 
                 @if(count($properties) == 0)
-                    <h1>{{__('text.No Properties found...')}}</h1>
+                    <h4></h4>
                 @else
                   <div class="row">
 

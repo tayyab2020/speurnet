@@ -1183,7 +1183,7 @@
                 </div>
 
                 <div class="row" style="margin: 30px 0px 10px 0px;display: inline-block;width: 100%;text-align: center;">
-                    <button data-dismiss="modal" style="text-align: center;float: none;outline: none;" class="btn btn-danger save-cookie col-lg-2 col-md-3 col-sm-3 col-xs-4">Save</button>
+                    <button data-dismiss="modal" style="text-align: center;float: none;outline: none;" class="btn btn-danger save-cookie col-lg-2 col-md-3 col-sm-3 col-xs-4">Opgeslagen</button>
                 </div>
 
             </div>

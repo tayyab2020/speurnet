@@ -489,4 +489,5 @@ return [
     'The email field is required.' => 'The email field is required.',
     'Please link your facebook account with an email address.' => 'Please link your facebook account with an email address.',
     "Post property button" => "Post Property",
+    'Share ad text' => 'Maybe this house can also be something for your friends or colleagues? Share me :-)',
 ];

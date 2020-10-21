@@ -489,4 +489,5 @@ return [
     'The email field is required.' => 'Je hebt geen e-mailadres opgegeven',
     'Please link your facebook account with an email address.' => 'Koppel je Facebook-account aan een e-mailadres',
     "Post property button" => "Je huisje is zó gevonden!",
+    'Share ad text' => 'Misschien kan dit huis ook iets zijn voor je vrienden of collega\'s? Deel mij :-)',
 ];

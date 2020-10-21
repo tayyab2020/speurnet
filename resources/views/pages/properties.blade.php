@@ -587,7 +587,7 @@
 
             @else
 
-                  <h2 style="text-align: center;margin-top: 30px;margin-bottom: 30px;">{{__('text.No Properties found...')}}</h2>
+                  <h4 style="text-align: center;margin-top: 30px;margin-bottom: 30px;">{{__('text.Is there no home that makes you happy?')}}</h4>
 
                   @endif
             <!-- begin:pagination -->
