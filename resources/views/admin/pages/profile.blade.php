@@ -65,12 +65,41 @@
                             <input type="text" name="name" value="{{ Auth::user()->name }}" class="form-control" value="">
                         </div>
                     </div>
+
+                    <div class="form-group">
+                        <label for="" class="col-sm-3 control-label">@if(Auth::User()->usertype != "Admin") {{__('text.Company Name')}} @else Company Name @endif</label>
+                        <div class="col-sm-9">
+                            <input type="text" name="company_name" value="{{ Auth::user()->company_name }}" class="form-control">
+                        </div>
+                    </div>
+
                     <div class="form-group">
                         <label for="" class="col-sm-3 control-label">Email</label>
                         <div class="col-sm-9">
                             <input type="email" name="email" value="{{ Auth::user()->email }}" class="form-control" value="">
                         </div>
                     </div>
+
+                    <div class="form-group">
+                        <label for="" class="col-sm-3 control-label">@if(Auth::User()->usertype != "Admin") {{__('text.Show Email in ads')}} @else Show Email in Ads @endif</label>
+                        <div class="col-sm-9">
+                            <div style="display: flex;align-items: center;">
+
+                                <label for="show_email" style="cursor: pointer;display: flex;flex-direction: row;align-items: center;">
+                                    <input id="show_email" style="width: 13px;box-shadow: none;" type="radio" name="show_email" class="form-control" @if(Auth::user()->show_email == 1) checked @endif value="1">
+                                    <span style="margin-left: 5px;">@if(Auth::User()->usertype != "Admin") {{__('text.Yes')}} @else Yes @endif</span>
+                                </label>
+
+                                <label for="not_email" style="cursor: pointer;display: flex;flex-direction: row;align-items: center;margin-left: 20px;">
+                                    <input id="not_email" style="width: 13px;box-shadow: none;" type="radio" name="show_email" class="form-control" @if(Auth::user()->show_email == 0) checked @endif value="0">
+                                    <span style="margin-left: 5px;">@if(Auth::User()->usertype != "Admin") {{__('text.No')}} @else No @endif</span>
+                                </label>
+
+                            </div>
+
+                        </div>
+                    </div>
+
                     <div class="form-group">
                         <label for="" class="col-sm-3 control-label">@if(Auth::User()->usertype != "Admin") {{__('text.Mobile No')}} @else Phone @endif</label>
                         <div class="col-sm-9">

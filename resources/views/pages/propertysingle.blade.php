@@ -784,10 +784,21 @@
 
                             @if($property->home_exchange != 1)
 
+                                @if($property->new_construction != 1)
+
                                 <tr>
                                     <td><strong>{{__('text.Price')}}</strong> <img src="{{ URL::asset('assets/img/tag.png') }}" style="width: 18px;float: right;" /></td>
                                     <td>€@if($property->sale_price) {{number_format($property->sale_price, 0, ',', '.')}} {{$property->cost_for}} @else {{number_format($property->rent_price, 0, ',', '.')}} @endif</td>
                                 </tr>
+
+                                    @else
+
+                                    <tr>
+                                        <td><strong>{{__('text.Price Description')}}</strong> <img src="{{ URL::asset('assets/img/tag.png') }}" style="width: 18px;float: right;" /></td>
+                                        <td>{{$property->price_description}}</td>
+                                    </tr>
+
+                                @endif
 
                                 @if($property->new_construction != 1)
 
@@ -1954,7 +1965,11 @@
                           <div class="team-description">
                             <h3><a style="color: white;" href="{{URL::to('agents/details/'.$agent->id)}}">{{$agent->name}}</a></h3>
                             <p><i class="fa fa-phone"></i> {{__('text.Mobile No')}} : {{$agent->phone}}<br></p>
-                            <p><i class="fa fa-envelope"></i>&nbsp Email : {{$agent->email}}</p>
+
+                              @if($agent->show_email)
+                              <p><i class="fa fa-envelope"></i>&nbsp Email : {{$agent->email}}</p>
+                              @endif
+
                             <p>{{$agent->about}}</p>
 
                               @if($properties_count>1)
@@ -2169,12 +2184,21 @@
                                     </div>				</div>
                                 <div class="agent-content">
                                     <h3><a href="{{URL::to('agents/')}}">{{$agent->name}}</a></h3>
-                                    <div class="phone"><div class="phone-wrapper agent-phone phone-hide">
+
+                                    <div class="phone">
+                                        <div class="phone-wrapper agent-phone phone-hide">
                                             <a style="color:#484848;" class="phone" href="tel:{{$agent->phone}}">{{$agent->phone}}</a>
-                                        </div></div>
-                                    <div class="email"><div class="agent-email">
+                                        </div>
+                                    </div>
+
+                                    @if($agent->show_email)
+                                    <div class="email">
+                                        <div class="agent-email">
                                             <a style="color:#484848;word-break: break-all;" href="mailto:{{$agent->email}}">{{$agent->email}}</a>
-                                        </div></div>
+                                        </div>
+                                    </div>
+                                    @endif
+
                                 </div>
                             </div>
                             {!! Form::open(array('url'=>'agentscontact','method'=>'POST', 'id'=>'agent_contact_form')) !!}

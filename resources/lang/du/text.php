@@ -498,4 +498,6 @@ return [
     'Ad Compare' => 'Check vergelijkbare woningen! ',
     'Property Successfully Saved to Your Dashboard!' => 'Met succes opgeslagen in jouw dashboard!',
     'Property Removed from Your Saved Properties List!' => 'Deze woning is niet meer opgeslagen als jouw favoriet.',
+    'Company Name' => 'Bedrijfsnaam',
+    'Show Email in ads' => 'Wil je jouw e-mailadres in de advertenties vermelden?',
 ];

@@ -499,4 +499,6 @@ return [
     'Ad Compare' => 'Ad Compare',
     'Property Successfully Saved to Your Dashboard!' => 'Property Successfully Saved to Your Dashboard!',
     'Property Removed from Your Saved Properties List!' => 'Property Removed from Your Saved Properties List!',
+    'Company Name' => 'Company Name',
+    'Show Email in ads' => 'Show Email in ads',
 ];

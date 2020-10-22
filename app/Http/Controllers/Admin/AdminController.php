@@ -52,16 +52,26 @@ class AdminController extends MainAdminController
             $services = '';
         }
 
-
-        $rule=array(
-            'name' => 'required',
-            'email' => 'required|email|max:75|unique:users,id',
-            'image_icon' => 'mimes:jpg,jpeg,gif,png',
-            'address' => 'required',
-            'address_latitude' => 'required',
-            'address_longitude' => 'required',
-            'city' => 'required'
-        );
+        if(Auth::User()->usertype == "Agents")
+        {
+            $rule=array(
+                'name' => 'required',
+                'email' => 'required|email|max:75|unique:users,id',
+                'image_icon' => 'mimes:jpg,jpeg,gif,png',
+                'address' => 'required',
+                'address_latitude' => 'required',
+                'address_longitude' => 'required',
+                'city' => 'required'
+            );
+        }
+        else
+        {
+            $rule=array(
+                'name' => 'required',
+                'email' => 'required|email|max:75|unique:users,id',
+                'image_icon' => 'mimes:jpg,jpeg,gif,png',
+            );
+        }
 
         $validator = \Validator::make($data,$rule);
 
@@ -101,20 +111,22 @@ else
     $herefor = null;
 }
 
-        $user->name = $inputs['name'];
-        $user->email = $inputs['email'];
-        $user->phone = $inputs['phone'];
-        $user->fax = $inputs['fax'];
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->fax = $request->fax;
         $user->herefor = $herefor;
-        $user->address = $inputs['address'];
-        $user->address_latitude = $inputs['address_latitude'];
-        $user->address_longitude = $inputs['address_longitude'];
-        $user->city= $inputs['city'];
-        $user->about = $inputs['about'];
-        $user->facebook = $inputs['facebook'];
-        $user->twitter = $inputs['twitter'];
-        $user->gplus = $inputs['gplus'];
-        $user->linkedin = $inputs['linkedin'];
+        $user->show_email = $request->show_email;
+        $user->company_name = $request->company_name;
+        $user->address = $request->address;
+        $user->address_latitude = $request->address_latitude;
+        $user->address_longitude = $request->address_longitude;
+        $user->city= $request->city;
+        $user->about = $request->about;
+        $user->facebook = $request->facebook;
+        $user->twitter = $request->twitter;
+        $user->gplus = $request->gplus;
+        $user->linkedin = $request->linkedin;
 
         if(Auth::user()->usertype != 'Admin' && Auth::user()->usertype != 'Users')
         {

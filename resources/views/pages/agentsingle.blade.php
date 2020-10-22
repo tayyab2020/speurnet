@@ -68,20 +68,36 @@
                 </div>
                 <div class="team-description" style="display: inline-block;padding-top: 0;">
                     <h3 style="margin-top: 0px;"><a style="color: black;" href="{{URL::to('agents/')}}">{{$agent->name}}</a></h3>
+                    @if($agent->phone)
                     <p><i class="fa fa-phone"></i>&nbsp {{$agent->phone}}<br></p>
+                    @endif
+
+                    @if($agent->show_email)
                     <p><i class="fa fa-envelope"></i>&nbsp {{$agent->email}}</p>
+                    @endif
+
+                    @if($agent->address)
                     <p><i class="fa fa-map-marker-alt"></i>&nbsp {{$agent->address}}</p>
-                    <p style="margin-top: 25px;">
+                    @endif
+
                     @if($agent->herefor == 1)
 
-                        <img style="width: 180px;" src="{{ URL::asset('upload/herefor1.png') }}">
+                        <p style="margin-top: 25px;">
 
-                        @elseif($agent->herefor == 2)
+                            <img style="width: 180px;" src="{{ URL::asset('upload/herefor1.png') }}">
 
-                        <img style="width: 50px;" src="{{ URL::asset('upload/herefor2.png') }}">
+                        </p>
 
-                        @endif
-                    </p>
+                    @elseif($agent->herefor == 2)
+
+                        <p style="margin-top: 25px;">
+
+                            <img style="width: 50px;" src="{{ URL::asset('upload/herefor2.png') }}">
+
+                        </p>
+
+                    @endif
+
 
                 </div>
             </div>
