@@ -500,4 +500,8 @@ return [
     'Property Removed from Your Saved Properties List!' => 'Deze woning is niet meer opgeslagen als jouw favoriet.',
     'Company Name' => 'Bedrijfsnaam',
     'Show Email in ads' => 'Wil je jouw e-mailadres in de advertenties vermelden?',
+    'The email or the password is invalid. Please try again.' => 'Het e-mailadres of het wachtwoord is ongeldig. Probeer het a.u.b. opnieuw.',
+    'Your account is not activated yet, please check your email.' => 'Je account is nog niet geactiveerd, check je e-mail voor de activatielink.',
+    'This Email ID is linked with Social Login. Use Social Login buttons to login.' => 'Dit e-mailadres is gelinked aan een Facebook of Google login. Klik op het Facebook of Google icoon om in te loggen.',
+    'Kindly upload your company logo or company name to create an ad.' => 'Upload jouw makelaar logo of vemeld je bedrijfsnaam in je account om een advertentie te kunnen plaatsen.',
 ];

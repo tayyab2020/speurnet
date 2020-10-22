@@ -501,4 +501,8 @@ return [
     'Property Removed from Your Saved Properties List!' => 'Property Removed from Your Saved Properties List!',
     'Company Name' => 'Company Name',
     'Show Email in ads' => 'Show Email in ads',
+    'The email or the password is invalid. Please try again.' => 'The email or the password is invalid. Please try again.',
+    'Your account is not activated yet, please check your email.' => 'Your account is not activated yet, please check your email.',
+    'This Email ID is linked with Social Login. Use Social Login buttons to login.' => 'This Email ID is linked with Social Login. Use Social Login buttons to login.',
+    'Kindly upload your company logo or company name to create an ad.' => 'Kindly upload your company logo or company name to create an ad.',
 ];

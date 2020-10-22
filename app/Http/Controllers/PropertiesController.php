@@ -443,13 +443,20 @@ class PropertiesController extends Controller
         {
             if(Auth::user()->usertype=='Agents')
             {
-                $types = Types::orderBy('types')->get();
+                if(Auth::user()->image_icon || Auth::user()->company_name)
+                {
+                    $types = Types::orderBy('types')->get();
 
-                $city_list = City::where('status','1')->orderBy('city_name')->get();
+                    $city_list = City::where('status','1')->orderBy('city_name')->get();
 
-                $property_features = property_features::all();
+                    $property_features = property_features::all();
 
-                return view('admin.pages.addeditproperty',compact('city_list','types','property_features'));
+                    return view('admin.pages.addeditproperty',compact('city_list','types','property_features'));
+                }
+                else
+                {
+                    return redirect('/')->withErrors(__('text.Kindly upload your company logo or company name to create an ad.'));
+                }
             }
             else
             {

@@ -4,7 +4,7 @@
 @include("_particles.slidersearch")
 
 <!-- begin:content -->
-    <div id="content">
+    <div id="content" style="padding: 50px 0px 0px 0px;">
 
         @if(Session::has('flash_message'))
             <div class="alert alert-success alert-box" style="text-align: center;font-size: 16px;position: fixed;top: 20%;z-index: 1000;padding-right: 35px;background-color: rgb(0 0 0);color: rgb(255 255 255);border: 0;max-width: 400px;border-radius: 0;">
@@ -479,8 +479,8 @@
 
                                                 @if($property->image_icon)
                                                     <img style="width: 90%;height: 95%;float: right;" src="{{ URL::asset('upload/members/'.$property->image_icon.'-b.jpg') }}">
-                                                @else
-                                                    <img style="width: 90%;height: 95%;float: right;" src="{{ URL::asset('assets/img/team03.jpg') }}" >
+                                                @elseif($property->company_name)
+                                                    <h3 style="margin: 0;display: flex;align-items: center;justify-content: center;height: 100%;">{{$property->company_name}}</h3>
                                                 @endif
 
                                                 </a>
@@ -597,9 +597,9 @@
 
                                         <img src="{{ URL::asset('upload/members/'.$temp->image_icon.'-b.jpg') }}" style="width: 100%;height: 200px;" >
 
-                                    @else
+                                    @elseif($temp->company_name)
 
-                                        <img src="{{ URL::asset('assets/img/user.png') }}" style="width: 100%;height: 200px;" >
+                                        <h2 style="margin: 0;height: 200px;display: flex;justify-content: center;align-items: center;">{{$temp->company_name}}</h2>
 
                                     @endif
 

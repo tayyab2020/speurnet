@@ -226,7 +226,7 @@ class IndexController extends Controller
 
     	$city_list = City::where('status','1')->orderBy('city_name')->get();
 
-		$propertieslist = Properties::leftjoin('users','users.id','=','properties.user_id')->where('properties.status','1')->orderBy('properties.id', 'desc')->select('properties.id','properties.property_name','properties.description','properties.property_slug','properties.available_immediately','properties.is_sold','properties.is_rented','properties.is_negotiation','properties.is_under_offer','properties.video','properties.property_type','properties.property_purpose','properties.sale_price','properties.cost_for','properties.rent_price','properties.address','properties.bathrooms','properties.bedrooms','properties.area','properties.featured_image','properties.property_images1','properties.property_images2','properties.property_images3','properties.property_images4','properties.property_images5','properties.first_floor','properties.second_floor','properties.ground_floor','properties.basement','properties.open_date','properties.open_timeFrom','properties.open_timeTo','properties.created_at','users.image_icon','users.id as user_id','users.landlord')->get();
+		$propertieslist = Properties::leftjoin('users','users.id','=','properties.user_id')->where('properties.status','1')->orderBy('properties.id', 'desc')->select('properties.id','users.company_name','properties.property_name','properties.description','properties.property_slug','properties.available_immediately','properties.is_sold','properties.is_rented','properties.is_negotiation','properties.is_under_offer','properties.video','properties.property_type','properties.property_purpose','properties.sale_price','properties.cost_for','properties.rent_price','properties.address','properties.bathrooms','properties.bedrooms','properties.area','properties.featured_image','properties.property_images1','properties.property_images2','properties.property_images3','properties.property_images4','properties.property_images5','properties.first_floor','properties.second_floor','properties.ground_floor','properties.basement','properties.open_date','properties.open_timeFrom','properties.open_timeTo','properties.created_at','users.image_icon','users.id as user_id','users.landlord')->get();
 
 		/*$testimonials = Testimonials::orderBy('id', 'desc')->get();*/
 
@@ -234,7 +234,7 @@ class IndexController extends Controller
 
         $blogs = Blogs::orderBy('id', 'desc')->get();
 
-		$top_members = User::withCount('properties')->where('users.usertype','=','Agents')->where('users.status',1)->orderBy('properties_count', 'desc')->get();
+		$top_members = User::withCount('properties')->where('users.usertype','=','Agents')->where('users.status',1)->where('users.landlord','!=',1)->having('properties_count', '>', 0)->orderBy('properties_count', 'desc')->get();
 
 		$top_properties = Properties::orderBy('views', 'desc')->get();
 
@@ -544,14 +544,14 @@ class IndexController extends Controller
 
 
         $user = User::where('email', $request->email)->first();
-        
+
 
         if($user)
         {
             if($user->provider_id != NULL)
             {
 
-                return redirect('/login')->withErrors('This Email ID is linked with Social Login. Use Social Login buttons to login.');
+                return redirect('/login')->withErrors(__('text.This Email ID is linked with Social Login. Use Social Login buttons to login.'));
 
             }
 
@@ -559,7 +559,7 @@ class IndexController extends Controller
 
                 if(Auth::user()->status=='0'){
                     \Auth::logout();
-                    return redirect('/login')->withErrors('Your account is not activated yet, please check your email.');
+                    return redirect('/login')->withErrors(__('text.Your account is not activated yet, please check your email.'));
                 }
 
 
@@ -569,7 +569,7 @@ class IndexController extends Controller
 
        // return array("errors" => 'The email or the password is invalid. Please try again.');
         //return redirect('/admin');
-       return redirect('/login')->withErrors('The email or the password is invalid. Please try again.');
+       return redirect('/login')->withErrors(__('text.The email or the password is invalid. Please try again.'));
 
     }
 
