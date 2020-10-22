@@ -544,26 +544,27 @@ class IndexController extends Controller
 
 
         $user = User::where('email', $request->email)->first();
-        var_dump($request->email);
-        dd($user);
+        
 
-
-        if($user->provider_id != NULL)
+        if($user)
         {
+            if($user->provider_id != NULL)
+            {
 
-            return redirect('/login')->withErrors('This Email ID is linked with Social Login. Use Social Login buttons to login.');
+                return redirect('/login')->withErrors('This Email ID is linked with Social Login. Use Social Login buttons to login.');
 
-        }
-
-         if (Auth::attempt($credentials, $request->has('remember'))) {
-
-            if(Auth::user()->status=='0'){
-                \Auth::logout();
-                return redirect('/login')->withErrors('Your account is not activated yet, please check your email.');
             }
 
+            if (Auth::attempt($credentials, $request->has('remember'))) {
 
-            return $this->handleUserWasAuthenticated($request);
+                if(Auth::user()->status=='0'){
+                    \Auth::logout();
+                    return redirect('/login')->withErrors('Your account is not activated yet, please check your email.');
+                }
+
+
+                return $this->handleUserWasAuthenticated($request);
+            }
         }
 
        // return array("errors" => 'The email or the password is invalid. Please try again.');
