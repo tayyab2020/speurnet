@@ -544,6 +544,7 @@ class IndexController extends Controller
 
 
         $user = User::where('email', $request->email)->first();
+        dd($user);
 
 
         if($user->provider_id != NULL)
