@@ -490,4 +490,6 @@ return [
     'Please link your facebook account with an email address.' => 'Please link your facebook account with an email address.',
     "Post property button" => "Post Property",
     'Share ad text' => 'Maybe this house can also be something for your friends or colleagues? Share me :-)',
+    'Property Alert Created Successfully, You will now receive Emails for Similar Properties' => 'Property Alert Created Successfully, You will now receive Emails for Similar Properties',
+    'Price Description' => 'Price Description',
 ];

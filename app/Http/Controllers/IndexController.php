@@ -169,7 +169,7 @@ class IndexController extends Controller
                 $property->wheelchair = $request->wheelchair;
                 $property->search_type = 1;
                 $property->save();
-                return redirect('/')->with('flash_message', 'Property Alert Created Successfully, You will now receive Emails for Similar Properties');;
+                return redirect('/')->with('flash_message', __('text.Property Alert Created Successfully, You will now receive Emails for Similar Properties'));
             }
         }
         else
@@ -211,7 +211,7 @@ class IndexController extends Controller
                 $property->wheelchair = $request->wheelchair;
                 $property->search_type = 2;
                 $property->save();
-                return redirect('/')->with('flash_message', 'Property Alert Created Successfully, You will now receive Emails for Similar Properties');;
+                return redirect('/')->with('flash_message', __('text.Property Alert Created Successfully, You will now receive Emails for Similar Properties'));
             }
         }
 

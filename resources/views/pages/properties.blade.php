@@ -67,7 +67,7 @@
           <!-- begin:article -->
               <div class="properties-ordering-wrapper" style="margin-bottom: 40px;">
 
-                  <div class="results-count">{{$properties->total()}} {{__('text.properties found')}}</div>
+                  <div class="results-count">{{trans_choice('text.properties found',$properties->total())}}</div>
 
                   <div class="properties-ordering">
 
@@ -95,11 +95,11 @@
                               <option value="bathrooms" @if(isset($filter) && $filter == 'bathrooms') selected @endif>{{__('text.Most Bathrooms')}}</option>
                               @endif
                               <option value="popularity" @if(isset($filter) && $filter == 'popularity') selected @endif>{{__('text.Popularity')}}</option>
+                              @if(Route::currentRouteName() != 'newconstructions-front')
                               <option value="lowest_sale_price" @if(isset($filter) && $filter == 'lowest_sale_price') selected @endif>{{__('text.Lowest Sale Price')}}</option>
                               <option value="highest_sale_price" @if(isset($filter) && $filter == 'highest_sale_price') selected @endif>{{__('text.Highest Sale Price')}}</option>
                               <option value="lowest_rent_price" @if(isset($filter) && $filter == 'lowest_rent_price') selected @endif>{{__('text.Lowest Rent Price')}}</option>
                               <option value="highest_rent_price" @if(isset($filter) && $filter == 'highest_rent_price') selected @endif>{{__('text.Highest Rent Price')}}</option>
-                              @if(Route::currentRouteName() != 'newconstructions-front')
                               <option value="lowest_area" @if(isset($filter) && $filter == 'lowest_area') selected @endif>{{__('text.Lowest Area')}}</option>
                               <option value="highest_area" @if(isset($filter) && $filter == 'highest_area') selected @endif>{{__('text.Highest Area')}}</option>
                               @endif
@@ -512,7 +512,7 @@
                                                 </div>
 
                                                 <small style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;width: 50%;float: left;line-height: 15px;">{{ Str::limit($property->address,40) }}</small>
-                                                <small style="margin-top: 5px;float: right;font-weight: 600;width: 50%;text-align: right;">@if($property->sale_price) € {{number_format($property->sale_price, 0, ',', '.')}} {{$property->cost_for}} @elseif($property->rent_price) € {{$property->rent_price}} @endif</small>
+                                                <small style="margin-top: 5px;float: right;font-weight: 600;width: 50%;text-align: right;">{{$property->price_description}}</small>
 
                                             </h3>
 
@@ -746,7 +746,7 @@
 
      .select2-container--default .select2-results>.select2-results__options
      {
-         min-height: 240px;
+         min-height: auto;
          max-height: fit-content;
      }
 

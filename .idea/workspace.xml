@@ -4,9 +4,12 @@
     <list default="true" id="7fe7f36f-c82f-4504-8c0a-7874522d22c9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/PropertiesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/PropertiesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/IndexController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/IndexController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PropertiesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PropertiesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/du/text.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/du/text.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/en/text.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/text.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/_particles/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/_particles/sidebar.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/pages/addeditproperty.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/pages/addeditproperty.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/pages/home_exchange.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/home_exchange.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/pages/properties.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/properties.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/pages/propertysingle.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/propertysingle.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/pages/searchproperties.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/searchproperties.blade.php" afterDir="false" />
@@ -264,7 +267,7 @@
       <workItem from="1602496080572" duration="3319000" />
       <workItem from="1602581817521" duration="73015000" />
       <workItem from="1602927583286" duration="62686000" />
-      <workItem from="1603182206716" duration="35256000" />
+      <workItem from="1603182206716" duration="44916000" />
     </task>
     <servers />
   </component>
@@ -299,10 +302,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="553" y="319" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1595277485716" />
-    <state x="452" y="123" width="805" height="606" key="find.popup" timestamp="1603299167206">
+    <state x="452" y="123" width="805" height="606" key="find.popup" timestamp="1603388031798">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="452" y="123" width="805" height="606" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1603299167206" />
+    <state x="452" y="123" width="805" height="606" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1603388031798" />
     <state x="425" y="187" key="run.anything.popup" timestamp="1602767172445">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

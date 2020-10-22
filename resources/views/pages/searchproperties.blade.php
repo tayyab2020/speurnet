@@ -88,7 +88,7 @@
 
               <div class="properties-ordering-wrapper">
 
-                  <div class="results-count" style="font-size: 18px;display: inline-block;padding-top: 5px;">{{__('text.Results')}} {{count($properties)}} {{__('text.properties found')}}</div>
+                  <div class="results-count" style="font-size: 18px;display: inline-block;padding-top: 5px;">{{__('text.Results')}} {{trans_choice('text.properties found',count($properties))}}</div>
 
                   <button type="button" value="Filters" href="#myModal1" data-toggle="modal" class="btn btn-primary filter-button" style="float: right;color: black;background: white;border-color: #9f9c9c;outline: none;display: none;">
                       <span>
@@ -163,7 +163,7 @@
                                           <h3 style="margin: 10px 0px;"><a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;" href="{{URL::to('new-constructions/'.$property->property_slug)}}">{{ Str::limit($property->property_name,35) }}</a> <small style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;line-height: 15px;">{{ Str::limit($property->address,40) }}</small></h3>
 
                                           <small style="margin-top: 20px;font-weight: 600;">{{ getPropertyTypeName($property->property_type)->types }}</small>
-                                          <small style="float: right;">€@if($property->sale_price) {{number_format($property->sale_price, 0, ',', '.')}} {{$property->cost_for}} @else {{number_format($property->rent_price, 0, ',', '.')}} @endif</small>
+                                          <small style="float: right;">{{$property->price_description}}</small>
 
                                       @endif
                                   </div>

@@ -968,7 +968,7 @@
                     <!-- begin:article -->
                     <div class="properties-ordering-wrapper" style="box-shadow: 5px 7px 8px -7px #868686;background: linear-gradient(to right, #494949 0, #434343 100%);color: white;border: 0;">
                         <div class="results-count">
-                            <?php $count = count($properties); echo $count; ?> {{__('text.properties found')}}</div>
+                            <?php $count = count($properties); ?> {{trans_choice('text.properties found',$count)}}</div>
 
                         <div class="properties-ordering">
 

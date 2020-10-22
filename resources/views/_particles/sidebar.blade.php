@@ -82,6 +82,7 @@
                       </select>
               </div>
 
+        @if(Route::currentRouteName() != 'newconstructions-front' && Route::currentRouteName() != 'searchnewconstructions' && Route::currentRouteName() != 'newconstruction-single')
 
                 <div class="form-group">
                       <label for="minprice">{{__('text.Min Price')}}</label>
@@ -93,7 +94,6 @@
                       <input type="number" name="max_price" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') value="{{$max_price}}" @else value="" @endif class="form-control" placeholder="">
                 </div>
 
-        @if(Route::currentRouteName() != 'newconstructions-front' && Route::currentRouteName() != 'searchnewconstructions' && Route::currentRouteName() != 'newconstruction-single')
 
                 <div class="form-group">
                     <label for="minprice">{{__('text.Bedrooms')}}</label>
@@ -429,6 +429,7 @@
                             </select>
                         </div>
 
+                            @if(Route::currentRouteName() != 'newconstructions-front' && Route::currentRouteName() != 'searchnewconstructions' && Route::currentRouteName() != 'newconstruction-single')
 
                         <div class="form-group">
                             <label for="minprice">{{__('text.Min Price')}}</label>
@@ -440,7 +441,6 @@
                             <input type="number" name="max_price" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') value="{{$max_price}}" @else value="" @endif class="form-control" placeholder="">
                         </div>
 
-                            @if(Route::currentRouteName() != 'newconstructions-front' && Route::currentRouteName() != 'searchnewconstructions' && Route::currentRouteName() != 'newconstruction-single')
 
                         <div class="form-group">
                             <label for="minprice">{{__('text.Bedrooms')}}</label>

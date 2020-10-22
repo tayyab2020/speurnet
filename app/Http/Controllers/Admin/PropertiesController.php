@@ -973,12 +973,14 @@ class PropertiesController extends MainAdminController
             $property->homes = $request->homes;
             $property->rental_properties = $request->rental_properties;
             $property->source = $request->source;
+            $property->price_description = $request->price_description;
 
-            if (strpos($request->citation,'http://') === false){
-                $request->citation = 'http://'.$request->citation;
+            if (strpos($request->citation,'https://') === false){
+                $request->citation = 'https://'.$request->citation;
             }
 
             $property->citation = $request->citation;
+            $property->owner = $request->owner;
 
         }
         else

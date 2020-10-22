@@ -96,7 +96,7 @@ return [
     'Yes' => 'Ja',
     'Is there no home that makes you happy?' => 'Zit er geen woning tussen waar jij blij van wordt? Meld je dan aan voor jouw Huisalert. Zo mis je straks jouw woning niet!',
     'Results' => 'Resultaten:',
-    'properties found' => 'woningen gevonden',
+    'properties found' => '[0,1] :count woning gevonden |[2,*] :count woningen gevonden',
     'a private landlord' => 'een particuliere verhuurder',
     'Add Property' => 'Plaats jouw woning',
     'Edit Property' => 'Bewerk',
@@ -490,4 +490,6 @@ return [
     'Please link your facebook account with an email address.' => 'Koppel je Facebook-account aan een e-mailadres',
     "Post property button" => "Je huisje is zó gevonden!",
     'Share ad text' => 'Misschien kan dit huis ook iets zijn voor je vrienden of collega\'s? Deel mij :-)',
+    'Property Alert Created Successfully, You will now receive Emails for Similar Properties' => 'Jouw Huisalert is succesvol aangemaakt! Wij houden je via  e-mail op de hoogte.',
+    'Price Description' => 'Prijsklasse',
 ];
