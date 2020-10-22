@@ -544,6 +544,7 @@ class IndexController extends Controller
 
 
         $user = User::where('email', $request->email)->first();
+        var_dump($request->email);
         dd($user);
 
 
