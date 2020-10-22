@@ -53,7 +53,7 @@
 
             <body>
             <p>Beste {{$name}},</p>
-            <p>Welkom bij bij {{getcong('site_name')}}. Doe of je thuis bent!</p>
+            <p>Welkom bij {{getcong('site_name')}}. Doe of je thuis bent!</p>
             <p>Je kunt nu inloggen met de volgende gegevens</p>
 
             <p>Gebruikersnaam: {{$email}}</p>
@@ -70,7 +70,7 @@
 
             <body>
             <p>Beste {{$name}},</p>
-            <p>Welkom bij bij {{getcong('site_name')}}. Doe of je thuis bent!</p>
+            <p>Welkom bij {{getcong('site_name')}}. Doe of je thuis bent!</p>
             <p>Je kunt nu inloggen met de volgende gegevens</p>
 
             <p>Gebruikersnaam: {{$email}}</p>

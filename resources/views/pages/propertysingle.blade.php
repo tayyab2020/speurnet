@@ -115,7 +115,7 @@
 
                           @endif
 
-                        <div id="slider-property" class="carousel slide" data-ride="carousel" style="margin-bottom: 0px;">
+                        <div id="slider-property" class="carousel slide" data-ride="carousel" style="margin-bottom: 0px;@if(!$property->featured_image && !$property->property_images1 && !$property->property_images2 && !$property->property_images3 && !$property->property_images4 && !$property->property_images5) display: none; @endif">
 
                           <div class="carousel-inner">
 
@@ -131,41 +131,41 @@
 
                               @endif
 
-                            <div class="item active">
-                                @if($property->featured_image)
-                              <img src="{{ URL::asset('upload/properties/'.$property->featured_image.'-b.jpg') }}" alt="">
-                                @else
-                                    <img src="{{ URL::asset('upload/noFeatured.jpg') }}" alt="">
-                                @endif
-                            </div>
+                                  <?php $check = 0; ?>
 
+                              @if($property->featured_image)
+                                  <?php $check = 1; ?>
+                                      <div class="item active">
+                                          <img src="{{ URL::asset('upload/properties/'.$property->featured_image.'-b.jpg') }}" alt="">
+                                      </div>
+                              @endif
 
                             @if($property->property_images1)
-                            <div class="item">
+                            <div class="item @if(!$check) <?php $check = 1; ?> active @endif">
                               <img src="{{ URL::asset('upload/properties/'.$property->property_images1.'-b.jpg') }}" alt="">
                             </div>
                             @endif
 
                              @if($property->property_images2)
-                            <div class="item">
+                            <div class="item @if(!$check) <?php $check = 1; ?> active @endif">
                               <img src="{{ URL::asset('upload/properties/'.$property->property_images2.'-b.jpg') }}" alt="">
                             </div>
                             @endif
 
                              @if($property->property_images3)
-                            <div class="item">
+                            <div class="item @if(!$check) <?php $check = 1; ?> active @endif">
                               <img src="{{ URL::asset('upload/properties/'.$property->property_images3.'-b.jpg') }}" alt="">
                             </div>
                             @endif
 
                              @if($property->property_images4)
-                            <div class="item">
+                            <div class="item @if(!$check) <?php $check = 1; ?> active @endif">
                               <img src="{{ URL::asset('upload/properties/'.$property->property_images4.'-b.jpg') }}" alt="">
                             </div>
                             @endif
 
                              @if($property->property_images5)
-                            <div class="item">
+                            <div class="item @if(!$check) <?php $check = 1; ?> active @endif">
                               <img src="{{ URL::asset('upload/properties/'.$property->property_images5.'-b.jpg') }}" alt="">
                             </div>
                             @endif
@@ -234,7 +234,7 @@
                           <input type="hidden" name="type" id="type" value="shopping_mall">
 
 
-                          <div class="row" id="map-box" style="display: none;">
+                          <div class="row" id="map-box" style="@if($check) display: none; @endif">
 
                               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="height: 100%;">
 
@@ -329,11 +329,16 @@
                           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 media-icons" style="padding: 20px 0px;padding-bottom: 0px;">
 
                               <ul class="nav nav-tabs nav-table">
+
+                                  @if($check)
+
                                   <li class="image-tab active">
                                       <a class="popup-image" data-toggle="tab">
                                           <i class="flaticon-photo-camera"></i>
                                       </a>
                                   </li>
+
+                                  @endif
 
                                   @if($property->video)
 
@@ -356,46 +361,37 @@
                                       </a>
                                   </li>
 
-                                  <li class="satellite-view-tab">
+                                  <li class="satellite-view-tab @if(!$check) active @endif">
                                       <a class="tab-google-satellite-view-map" data-toggle="tab">
                                           <i class="fas fa-satellite"></i>
                                       </a>
                                   </li>
 
 
-                              </ul>
-
-
-                          </div>
-
-                          <?php $url = "https://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; ?>
-
-                          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 media-icons" style="padding: 30px 0px;padding-bottom: 0px;">
-
-                              <ul class="nav nav-tabs nav-table">
+                                  <?php $url = "https://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']; ?>
 
                                   @if($property->home_exchange != 1)
 
                                       @if(count($similar_properties)>0)
 
-                                  <li class="image-tab">
-                                      <a class="add-compare new-icons" title="Add Compare" style="border-radius: 100px;position: relative;">
-                                          <i class="fas fa-exchange-alt" style="vertical-align: middle;"></i>
-                                      </a>
-                                  </li>
+                                          <li>
+                                              <a class="add-compare" title="{{__('text.Ad Compare')}}">
+                                                  <i class="fas fa-exchange-alt"></i>
+                                              </a>
+                                          </li>
 
-                                          @endif
+                                      @endif
 
                                   @endif
 
-                                  <li class="image-tab">
-                                      <a class="new-icons" target="_blank" title="Share by Email" href="mailto:?subject=I wanted you to see this Property AD I just Found on zoekjehuisje.nl&amp;body=Check out this link {{$url}}" style="border-radius: 100px;position: relative;">
-                                          <i class="far fa-envelope" style="vertical-align: middle;"></i>
+                                  <li>
+                                      <a target="_blank" title="{{__('text.Share by Email')}}" href="mailto:?subject=I wanted you to see this Property AD I just Found on zoekjehuisje.nl&amp;body=Check out this link {{$url}}">
+                                          <i class="far fa-envelope"></i>
                                       </a>
                                   </li>
 
 
-                                  <li class="image-tab">
+                                  <li>
 
                                       @if( isset(Auth::user()->usertype) && Auth::user()->usertype == 'Users')
 
@@ -411,42 +407,42 @@
 
                                                   <input type="hidden" name="type" value="standard">
 
-                                                  @elseif($property->new_construction == 1)
+                                              @elseif($property->new_construction == 1)
 
                                                   <input type="hidden" name="type" value="construction">
 
-                                                  @else
+                                              @else
 
                                                   <input type="hidden" name="type" value="exchange">
 
+                                              @endif
+
+                                              <button type="submit" class="new-button" title="{{__('text.Add Favorite')}}" style="outline: none;">
+
+                                                  @if($saved)
+
+                                                      <i class="fa fa-heart" id="heart" style="vertical-align: middle;font-size: 16px;">
+                                                          <span style="display: block;">{{ $property->saved_properties }}</span>
+                                                      </i>
+
+                                                  @else
+
+                                                      <i class="far fa-heart" id="heart" style="vertical-align: middle;font-size: 16px;">
+                                                          <span style="display: block;">{{ $property->saved_properties }}</span>
+                                                      </i>
+
                                                   @endif
 
-                                      <button type="submit" class="new-icons new-button" title="Add Favorite" style="border-radius: 100px;position: relative;outline: none;">
 
-                                          @if($saved)
-
-                                          <i class="fa fa-heart" id="heart" style="vertical-align: middle;font-size: 16px;">
-                                              <span style="display: block;">{{ $property->saved_properties }}</span>
-                                          </i>
-
-                                          @else
-
-                                              <i class="far fa-heart" id="heart" style="vertical-align: middle;font-size: 16px;">
-                                                  <span style="display: block;">{{ $property->saved_properties }}</span>
-                                              </i>
-
-                                          @endif
-
-
-                                      </button>
+                                              </button>
 
                                           </form>
 
-                                  @else
+                                      @else
 
-                                      @if(!isset(Auth::user()->usertype))
+                                          @if(!isset(Auth::user()->usertype))
 
-                                              <a class="new-icons" href="{{ URL::to('/login') }}" title="Be First to Save this property" style="border-radius: 100px;position: relative;">
+                                              <a href="{{ URL::to('/login') }}" title="{{__('text.Add Favorite')}}">
 
                                                   <i class="far fa-heart" id="heart" style="vertical-align: middle;font-size: 16px;">
                                                       <span style="display: block;">{{ $property->saved_properties }}</span>
@@ -455,12 +451,17 @@
 
                                           @endif
 
-                                          @endif
+                                      @endif
 
 
                                   </li>
 
                               </ul>
+
+
+                          </div>
+
+                          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 media-icons" style="padding: 0px 0px;padding-bottom: 0px;">
 
                               <div class="modal fade" id="ShareModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -531,20 +532,18 @@
                                               </div>
                                           </div>
 
-
-
                                   </div>
                               </div>
 
-                              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 request" style="padding: 0;text-align: right;margin: 25px 0px;display: flex;justify-content: space-between;">
+                              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 request" style="padding: 0;text-align: right;margin: 30px 0px 25px 0px;display: flex;justify-content: space-between;">
 
                                   <div class="sh-ad" style="align-self: center;text-align: left;padding-right: 30px;">
-                                      <span style="font-size: 15px;">{{__('text.Share ad text')}}</span>
+                                      <span style="font-size: 15px;font-weight: bold;">{{__('text.Share ad text')}}</span>
 
                                       <ul class="nav nav-tabs nav-table" style="display: inline-block;margin: 0px 0px 20px 0px;">
 
                                       <li class="image-tab" style="margin-left: 8px;margin-right: 0;">
-                                          <a class="new-icons" title="Share" style="border-radius: 100px;position: relative;width: 35px !important;height: 35px !important;line-height: 0 !important;display: flex;flex-direction: column;justify-content: center;" data-toggle="modal" data-target="#ShareModal">
+                                          <a class="new-icons" title="{{__('text.Share')}}" style="border-radius: 100px;position: relative;width: 35px !important;height: 35px !important;line-height: 0 !important;display: flex;flex-direction: column;justify-content: center;" data-toggle="modal" data-target="#ShareModal">
                                               <i class="fas fa-share-alt" style="vertical-align: middle;margin-right: 2px;font-size: 15px;"></i>
                                           </a>
                                       </li>
@@ -1380,8 +1379,7 @@
 
                                   .media-icons .nav-tabs>li{float:none;margin-bottom:-1px}
 
-                                  .media-icons .nav-table>li{margin-bottom:0 !important;margin-right:8px}
-
+                                  .media-icons .nav-table>li{margin-bottom:10px !important;margin-right:8px}
 
                                   .media-icons .nav-table>li.active>a:hover,.media-icons .nav-table>li.active>a:focus,.media-icons .nav-table>li.active>a{background-color:#28aedd;color:#fff}
 
@@ -2524,6 +2522,8 @@
 
             </style>
 
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+
             <script>
 
                 $('.next-property').hover(function (e) {
@@ -2636,8 +2636,7 @@
 
             .sh-ad{padding-right: 0 !important;text-align: center !important;}
 
-            .request button{width: 100%;}
-
+            .request button{width: 100%;font-size: 13px;}
 
         }
 
@@ -3080,8 +3079,6 @@
         }
 
     </style>
-
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
 
 
     <script>
@@ -3896,6 +3893,34 @@
                 /* TODO: Step 4A3: Add a generic sidebar */
                 infoPane = document.getElementById('panel');
 
+                if(!$('.box-carousel').hasClass('slick-initialized'))
+                {
+                    $('.box-carousel').slick({
+                        dots: false,
+                        arrows: true,
+                        slidesToShow: 4,
+                        slidesToScroll: 1,
+                        responsive: [
+                            {
+                                breakpoint: 768,
+                                arrows: true,
+                                settings: {
+                                    slidesToShow: 3
+                                }
+                            },
+                            {
+                                breakpoint: 480,
+                                arrows: true,
+                                settings: {
+                                    slidesToShow: 3
+                                }
+                            }
+                        ],
+                        prevArrow: "<button type='button' class='mission-prev-arrow'></button>",
+                        nextArrow: "<button type='button' class='mission-next-arrow'></button>"
+                    });
+                }
+
                 handleLocationError(false, infoWindow,type);
 
                 // Try HTML5 geolocation
@@ -4006,6 +4031,8 @@
                     center: pos,
                     zoom: 15
                 });
+
+                map.setMapTypeId(google.maps.MapTypeId.SATELLITE);
 
                 var centerControlDiv = document.createElement('div');
                 var centerControl = new CenterControl(centerControlDiv, map);

@@ -492,4 +492,11 @@ return [
     'Share ad text' => 'Maybe this house can also be something for your friends or colleagues? Share me :-)',
     'Property Alert Created Successfully, You will now receive Emails for Similar Properties' => 'Property Alert Created Successfully, You will now receive Emails for Similar Properties',
     'Price Description' => 'Price Description',
+    'Share' => 'Share',
+    'Be First to Save this property' => 'Be First to Save this property',
+    'Add Favorite' => 'Save to favorite',
+    'Share by Email' => 'Share by Email',
+    'Ad Compare' => 'Ad Compare',
+    'Property Successfully Saved to Your Dashboard!' => 'Property Successfully Saved to Your Dashboard!',
+    'Property Removed from Your Saved Properties List!' => 'Property Removed from Your Saved Properties List!',
 ];

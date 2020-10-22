@@ -63,7 +63,7 @@ class PropertiesController extends MainAdminController
             }
 
 
-            Session::flash('flash_message', 'Property Removed from Your Saved Properties List!');
+            Session::flash('flash_message', __('text.Property Removed from Your Saved Properties List!'));
 
         }
 
@@ -99,7 +99,7 @@ class PropertiesController extends MainAdminController
             /*$user=User::where('id',$request->user_id)->first();
             $user->views=$user->views+1;
             $user->save();*/
-            Session::flash('flash_message', 'Property Successfully Saved to Your Dashboard!');
+            Session::flash('flash_message', __('text.Property Successfully Saved to Your Dashboard!'));
 
         }
         return redirect()->back();
