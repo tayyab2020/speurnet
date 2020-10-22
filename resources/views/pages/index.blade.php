@@ -90,7 +90,7 @@
 
         <!-- begin:latest -->
 
-        <div class="row">
+        <div class="row" style="margin: 0;">
 
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="display: inline-block;">
 
