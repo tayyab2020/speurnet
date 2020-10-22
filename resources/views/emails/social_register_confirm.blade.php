@@ -22,7 +22,7 @@
 
         <body>
         <p>Beste woningzoeker,</p>
-        <p>Welkom bij bij {{getcong('site_name')}}. Doe of je thuis bent!</p>
+        <p>Welkom bij {{getcong('site_name')}}. Doe of je thuis bent!</p>
         <p>Als je problemen ervaart met het inloggen, neem dan gerust contact met ons op.</p>
 
         <p>Huiselijke groet,</p>
