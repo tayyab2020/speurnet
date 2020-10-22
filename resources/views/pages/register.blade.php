@@ -326,6 +326,11 @@
             .social-button
             {
                 padding-left: 22%;
+                font-size: 9px;
+            }
+            .btn-warning
+            {
+                font-size: 11px !important;
             }
         }
 

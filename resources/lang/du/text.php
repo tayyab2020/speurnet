@@ -121,7 +121,7 @@ return [
 
     Ben je op zoek naar een woning? Geniet dan de toegankelijkheid van het aanbod en wie weet heb je in in een oogwenk jouw droomhuis gevonden. Hoe mooi zou dat zijn?',
     'Agent' => 'Makelaar',
-    'Private Landlord' => 'Particuliere verhuurder/verkop',
+    'Private Landlord' => 'Particuliere verhuurder/verkoper',
     'User' => 'Woningzoeker',
     'Name Contact Person' => 'Naam contactpersoon',
     'Your Name' => 'Jouw naam',
