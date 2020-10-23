@@ -172,11 +172,11 @@
 						@endif
             	</td>
                 <td class="text-center">
-                <div class="btn-group" style="display:block;">
+                <div class="btn-group">
 								<button type="button" class="btn btn-default-dark dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                     @if(Auth::User()->usertype != "Admin"){{__('text.Action')}}s @else Actions @endif <span class="caret"></span>
 								</button>
-								<ul style="position:relative;" class="dropdown-menu dropdown-menu-right" role="menu">
+								<ul class="dropdown-menu dropdown-menu-right" role="menu">
 
                                     @if(Route::currentRouteName() == 'properties')
 
@@ -331,6 +331,18 @@
 
 <style>
 
+    @media (max-width: 768px)
+    {
+        .btn-group
+        {
+            display: block;
+        }
+
+        .dropdown-menu
+        {
+            position: relative;
+        }
+    }
 
     tr.bg_color  {
         background-color: #edf671 !important;
