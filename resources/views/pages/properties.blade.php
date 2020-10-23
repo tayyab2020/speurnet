@@ -552,8 +552,8 @@
 
                             @if($property->image_icon)
                                 <img style="width: 95%;height: 100%;float: right;" src="{{ URL::asset('upload/members/'.$property->image_icon.'-b.jpg') }}">
-                            @else
-                                <img style="width: 95%;height: 100%;float: right;" src="{{ URL::asset('assets/img/team03.jpg') }}" >
+                            @elseif($property->company_name)
+                                <h3 style="margin: 0;display: flex;align-items: center;justify-content: center;height: 100%;">{{$property->company_name}}</h3>
                             @endif
 
                         </a>

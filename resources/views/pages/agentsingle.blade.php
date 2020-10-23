@@ -40,9 +40,9 @@
             <div class="team-container team-dark" style="border-color: transparent;background-color: white;color: #7a7878;">
                 <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12 team-image">
                     @if($agent->image_icon)
-                        <img style="min-height: 200px;" src="{{ URL::asset('upload/members/'.$agent->image_icon.'-b.jpg') }}" alt="{{$agent->name}}">
-                    @else
-                        <img style="min-height: 200px;" src="{{ URL::asset('upload/members/user-icon.jpg') }}" alt="{{$agent->name}}">
+                        <img style="height: 200px;" src="{{ URL::asset('upload/members/'.$agent->image_icon.'-b.jpg') }}" alt="{{$agent->name}}">
+                    @elseif($agent->company_name)
+                        <h3 style="margin: 0;display: flex;align-items: center;justify-content: center;height: 200px;border: 1px solid;">{{$agent->company_name}}</h3>
                     @endif
 
                         <div class="team-social">

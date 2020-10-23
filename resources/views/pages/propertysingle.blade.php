@@ -1955,11 +1955,12 @@
                         <div class="team-container team-dark">
                           <div class="team-image" style="margin-left: -1px;">
                               <a style="outline: none;" href="{{URL::to('agents/details/'.$agent->id)}}">
-                            @if($agent->image_icon)
-                            <img src="{{ URL::asset('upload/members/'.$agent->image_icon.'-b.jpg') }}" alt="{{$agent->name}}">
-                            @else
-                            <img src="{{ URL::asset('upload/members/user-icon.jpg') }}" alt="{{$agent->name}}">
-                            @endif
+
+                                  @if($agent->image_icon)
+                                      <img src="{{ URL::asset('upload/members/'.$agent->image_icon.'-b.jpg') }}" alt="{{$agent->name}}">
+                                  @elseif($agent->company_name)
+                                      <h3 style="margin: 0;display: flex;align-items: center;justify-content: center;height: 250px;color: white;">{{$agent->company_name}}</h3>
+                                  @endif
                               </a>
                           </div>
                           <div class="team-description">
@@ -2171,17 +2172,18 @@
 
                         <div class="contact-form-agent">
                             <div class="agent-content-wrapper flex-middle">
+                                @if($agent->image_icon)
                                 <div class="agent-thumbnail" style="border-radius: 0;">
                                     <div class="agent-logo-wrapper" style="width: 100%;height: 100%;">
                                         <a class="agent-logo" href="{{URL::to('agents/')}}">
                                             <div class="image-wrapper image-loaded" style="height: 100%;">
-                                                @if($agent->image_icon)
+
                                                 <img style="width: 100%;height: 100%;" src="{{ URL::asset('upload/members/'.$agent->image_icon.'-b.jpg') }}" class="attachment-thumbnail size-thumbnail unveil-image" alt="{{$agent->name}}" >
-                                                @else
-                                                    <img style="width: 100%;height: 100%;" src="{{ URL::asset('upload/members/user-icon.jpg') }}" class="attachment-thumbnail size-thumbnail unveil-image" alt="{{$agent->name}}" >
-                                                @endif
+
                                             </div></a>
-                                    </div>				</div>
+                                    </div>
+                                </div>
+                                @endif
                                 <div class="agent-content">
                                     <h3><a href="{{URL::to('agents/')}}">{{$agent->name}}</a></h3>
 
