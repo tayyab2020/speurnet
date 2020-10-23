@@ -52,26 +52,12 @@ class AdminController extends MainAdminController
             $services = '';
         }
 
-        if(Auth::User()->usertype == "Agents")
-        {
-            $rule=array(
-                'name' => 'required',
-                'email' => 'required|email|max:75|unique:users,id',
-                'image_icon' => 'mimes:jpg,jpeg,gif,png',
-                'address' => 'required',
-                'address_latitude' => 'required',
-                'address_longitude' => 'required',
-                'city' => 'required'
-            );
-        }
-        else
-        {
             $rule=array(
                 'name' => 'required',
                 'email' => 'required|email|max:75|unique:users,id',
                 'image_icon' => 'mimes:jpg,jpeg,gif,png',
             );
-        }
+
 
         $validator = \Validator::make($data,$rule);
 
@@ -176,7 +162,7 @@ else
 
         $user->save();
 
-        Session::flash('flash_message', 'Successfully updated!');
+        Session::flash('flash_message', __('text.Successfully updated!'));
 
         return redirect()->back();
     }

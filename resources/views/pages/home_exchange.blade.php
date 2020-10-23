@@ -1054,7 +1054,7 @@
                                                                     <ul class="nav nav-tabs nav-table res-nav" style="float: right;border-bottom: 0;margin: 10px 0px;margin-bottom: 0px;width: 60%;">
 
                                                                         <li class="image-tab" style="float: right;">
-                                                                            <a class="new-icons" target="_blank" title="Share by Email" href="mailto:?subject=I wanted you to see this Property AD I just Found on Zoekjehuisje.nl&amp;body=Check out this link {{$url}}" style="border-radius: 100px;position: relative;">
+                                                                            <a class="new-icons" target="_blank" title="Share by Email" href="mailto:?subject={{__('text.I wanted you to see this Property AD I just Found on zoekjehuisje.nl')}}&amp;body={{$url}}" style="border-radius: 100px;position: relative;">
                                                                                 <i class="far fa-envelope" style="vertical-align: middle;" aria-hidden="true"></i>
                                                                             </a>
                                                                         </li>

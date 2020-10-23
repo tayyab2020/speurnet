@@ -385,7 +385,7 @@
                                   @endif
 
                                   <li>
-                                      <a target="_blank" title="{{__('text.Share by Email')}}" href="mailto:?subject=I wanted you to see this Property AD I just Found on zoekjehuisje.nl&amp;body=Check out this link {{$url}}">
+                                      <a target="_blank" title="{{__('text.Share by Email')}}" href="mailto:?subject={{__('text.I wanted you to see this Property AD I just Found on zoekjehuisje.nl')}}&amp;body={{$url}}">
                                           <i class="far fa-envelope"></i>
                                       </a>
                                   </li>

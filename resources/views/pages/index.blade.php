@@ -451,7 +451,7 @@
 
                                             </h3>
 
-                                            <div style="display: flex;flex-direction: row;">
+                                            <div class="extra-text" style="display: flex;flex-direction: row;">
 
                                                 <img style="width: 20px;height: 18px;float: left;margin-right: 10px;align-self: center;" src="{{ URL::asset('assets/img/browser.png') }}"><span style="font-weight: 600;">{{$property->area}} <small>m2</small></span>
 
@@ -469,7 +469,7 @@
 
                                             @if(!$property->landlord)
 
-                                            <div style="width: 60%;padding-left: 8px;">
+                                            <div class="extra-text" style="width: 60%;padding-left: 8px;">
                                                 <span style="font-weight: 600;color: #808080;">{{__('text.Brought to you by')}}</span>
                                             </div>
 
@@ -489,7 +489,7 @@
 
                                             @else
 
-                                                <div style="width: 100%;text-align: center;padding: 0px 5px;">
+                                                <div class="extra-text" style="width: 100%;text-align: center;padding: 0px 5px;">
                                                     <span style="font-weight: 600;color: #808080;">{{__('text.Brought to you by')}} {{__('text.a private landlord')}}</span>
                                                 </div>
 
@@ -638,6 +638,31 @@
 <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/css/flaticon.css') }}"/>
 
 <style>
+
+    @media (max-width: 768px)
+    {
+        .property-content h3, .property-text h3
+        {
+            font-size: 15px;
+        }
+
+        .property-content h3 small, .property-text h3 small
+        {
+            font-size: 11px;
+            margin-top: 5px;
+        }
+
+        .extra-text span
+        {
+            font-size: 11px !important;
+        }
+
+        .extra-text img
+        {
+            width: 15px !important;
+            height: 15px !important;
+        }
+    }
 
     small
     {

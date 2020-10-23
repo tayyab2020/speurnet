@@ -106,15 +106,23 @@
 
                 <ul style="list-style: none;padding: 15px 0px;font-size: 13px;">
 
-                    @if( $property->property_purpose == "Sale" )
-
-                        <li><input name="sold" @if($property->is_sold) checked @endif @if($property->is_negotiation || $property->is_under_offer || $property->available_immediately) disabled @endif type="checkbox" id="sold{{$i}}" style="position: relative;top: 2px;"><label @if(!$property->is_negotiation && !$property->is_under_offer && !$property->available_immediately) class="bg" @endif for="sold{{$i}}">@if(Auth::User()->usertype != "Admin"){{__('text.MARK AS SOLD')}}@else MARK AS SOLD @endif</label></li>
-
-                    @elseif( $property->property_purpose == "Rent" )
+                    @if(Route::currentRouteName() == 'home_exchange_list')
 
                         <li><input name="rented" @if($property->is_rented) checked @endif @if($property->is_negotiation || $property->available_immediately) disabled @endif  type="checkbox" id="rent{{$i}}" style="position: relative;top: 2px;"><label @if(!$property->is_negotiation && !$property->available_immediately) class="bg" @endif for="rent{{$i}}">@if(Auth::User()->usertype != "Admin"){{__('text.MARK AS RENTOUT')}}@else MARK AS RENTOUT @endif</label></li>
 
-                    @endif
+                        <li><input name="negotiation" @if($property->is_negotiation) checked @endif @if($property->is_sold || $property->is_rented || $property->is_under_offer || $property->available_immediately) disabled @endif  type="checkbox" id="negotiation{{$i}}" style="position: relative;top: 2px;"><label @if(!$property->is_sold && !$property->is_rented && !$property->is_under_offer && !$property->available_immediately) class="bg" @endif for="negotiation{{$i}}">@if(Auth::User()->usertype != "Admin"){{__('text.MARK AS IN NEGOTIATION')}}@else MARK AS IN NEGOTIATION @endif</label></li>
+
+                    @else
+
+                        @if( $property->property_purpose == "Sale" )
+
+                            <li><input name="sold" @if($property->is_sold) checked @endif @if($property->is_negotiation || $property->is_under_offer || $property->available_immediately) disabled @endif type="checkbox" id="sold{{$i}}" style="position: relative;top: 2px;"><label @if(!$property->is_negotiation && !$property->is_under_offer && !$property->available_immediately) class="bg" @endif for="sold{{$i}}">@if(Auth::User()->usertype != "Admin"){{__('text.MARK AS SOLD')}}@else MARK AS SOLD @endif</label></li>
+
+                        @elseif( $property->property_purpose == "Rent" )
+
+                            <li><input name="rented" @if($property->is_rented) checked @endif @if($property->is_negotiation || $property->available_immediately) disabled @endif  type="checkbox" id="rent{{$i}}" style="position: relative;top: 2px;"><label @if(!$property->is_negotiation && !$property->available_immediately) class="bg" @endif for="rent{{$i}}">@if(Auth::User()->usertype != "Admin"){{__('text.MARK AS RENTOUT')}}@else MARK AS RENTOUT @endif</label></li>
+
+                        @endif
 
                         <li><input name="negotiation" @if($property->is_negotiation) checked @endif @if($property->is_sold || $property->is_rented || $property->is_under_offer || $property->available_immediately) disabled @endif  type="checkbox" id="negotiation{{$i}}" style="position: relative;top: 2px;"><label @if(!$property->is_sold && !$property->is_rented && !$property->is_under_offer && !$property->available_immediately) class="bg" @endif for="negotiation{{$i}}">@if(Auth::User()->usertype != "Admin"){{__('text.MARK AS IN NEGOTIATION')}}@else MARK AS IN NEGOTIATION @endif</label></li>
 
@@ -123,6 +131,8 @@
                             <li><input name="under_offer" @if($property->is_under_offer) checked @endif @if($property->is_sold || $property->is_negotiation || $property->available_immediately) disabled @endif  type="checkbox" id="under_offer{{$i}}" style="position: relative;top: 2px;"><label @if(!$property->is_sold && !$property->is_negotiation && !$property->available_immediately) class="bg" @endif for="under_offer{{$i}}">@if(Auth::User()->usertype != "Admin"){{__('text.MARK AS UNDER OFFER')}}@else MARK AS UNDER OFFER @endif</label></li>
 
                         @endif
+
+                    @endif
 
                     <li><input name="available" @if($property->available_immediately) checked @endif @if($property->is_sold || $property->is_rented || $property->is_negotiation || $property->is_under_offer) disabled @endif  type="checkbox" id="available{{$i}}" style="position: relative;top: 2px;"><label @if(!$property->is_sold && !$property->is_rented && !$property->is_negotiation && !$property->is_under_offer) class="bg" @endif for="available{{$i}}">@if(Auth::User()->usertype != "Admin"){{__('text.MARK AVAILABLE IMMEDIATELY')}}@else MARK AVAILABLE IMMEDIATELY @endif</label></li>
 
@@ -147,9 +157,9 @@
                 </form>
 
                 </td>
-				<td>{{ getPropertyTypeName($property->property_type)->types }}</td>
+				<td>@if($property->property_type == 0) Geen voorkeur @else {{ getPropertyTypeName($property->property_type)->types }} @endif</td>
                 <td>{{$date}}</td>
-				<td>@if(Auth::User()->usertype != "Admin"){{__('text.'.$property->property_purpose)}}@else {{$property->property_purpose}} @endif</td>
+				<td>@if(Route::currentRouteName() == 'home_exchange_list') @if(Auth::User()->usertype != "Admin") {{__('text.Rent')}} @else Rent @endif @else @if(Auth::User()->usertype != "Admin"){{__('text.'.$property->property_purpose)}}@else {{$property->property_purpose}} @endif @endif</td>
 				<td class="text-center">
 						@if($property->status==1)
 							<span class="icon-circle bg-green">

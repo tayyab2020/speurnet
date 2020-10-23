@@ -613,7 +613,18 @@ class IndexController extends Controller
 		        'password' => 'required|min:3|confirmed'
 		   		 );
 
-	   	 $validator = \Validator::make($data,$rule);
+        $messages = [
+            'name.required' => __('text.Name is required.'),
+            'email.unique' => __('text.Email is already been taken.'),
+            'email.required' => __('text.The email field is required.'),
+            'email.max' => 'Email should not be greater than 75 characters',
+            'email.email' => 'Invalid Email',
+            'password.required' => __('text.Password is required'),
+            'password.min' => __('text.Password should be greater than 3 characters'),
+            'password.confirmed' => __('text.Password & Confirm Password does not match')
+        ];
+
+	   	 $validator = \Validator::make($data,$rule,$messages);
 
         if ($validator->fails())
         {

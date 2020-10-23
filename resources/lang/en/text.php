@@ -505,4 +505,11 @@ return [
     'Your account is not activated yet, please check your email.' => 'Your account is not activated yet, please check your email.',
     'This Email ID is linked with Social Login. Use Social Login buttons to login.' => 'This Email ID is linked with Social Login. Use Social Login buttons to login.',
     'Kindly upload your company logo or company name to create an ad.' => 'Kindly upload your company logo or company name to create an ad.',
+    'Password is required' => 'Password is required',
+    'Name is required.' => 'Name is required.',
+    'Email is already been taken.' => 'Email is already been taken.',
+    'Password should be greater than 3 characters' => 'Password should be greater than 3 characters',
+    'Password & Confirm Password does not match' => 'Password & Confirm Password does not match',
+    'Successfully updated!' => 'Successfully updated!',
+    'I wanted you to see this Property AD I just Found on zoekjehuisje.nl' => 'I wanted you to see this Property AD I just Found on zoekjehuisje.nl',
 ];
