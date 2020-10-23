@@ -445,7 +445,7 @@ class PropertiesController extends Controller
             {
                 if(Auth::user()->image_icon || Auth::user()->company_name)
                 {
-                    $types = Types::orderBy('types')->get();
+                    $types = Types::where('show_type','!=',1)->orderBy('types')->get();
 
                     $city_list = City::where('status','1')->orderBy('city_name')->get();
 
@@ -473,7 +473,7 @@ class PropertiesController extends Controller
 
     public function homeexchange()
     {
-        $types = Types::orderBy('types')->get();
+        $types = Types::where('show_type','!=',3)->orderBy('types')->get();
 
         $faqs = faqs::orderBy('id', 'desc')->take(5)->get();
 
@@ -485,7 +485,7 @@ class PropertiesController extends Controller
     public function HomeExchangeSearch(Request $request)
     {
 
-        $types = Types::orderBy('types')->get();
+        $types = Types::where('show_type','!=',3)->orderBy('types')->get();
 
         $house_kind = $request->house_kind;
         $property_type = $request->property_type;
@@ -728,7 +728,7 @@ class PropertiesController extends Controller
         {
             if(Auth::user()->usertype=='Users')
             {
-                $types = Types::orderBy('types')->get();
+                $types = Types::where('show_type','!=',3)->orderBy('types')->get();
 
                 $city_list = City::where('status','1')->orderBy('city_name')->get();
 

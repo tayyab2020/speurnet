@@ -97,7 +97,7 @@ return [
     'Is there no home that makes you happy?' => 'Zit er geen woning tussen waar jij blij van wordt? Meld je dan aan voor jouw Huisalert. Zo mis je straks jouw woning niet!',
     'Results' => 'Resultaten:',
     'properties found' => '[0,1] :count woning gevonden |[2,*] :count woningen gevonden',
-    'a private landlord' => 'een particuliere verhuurder',
+    'a private landlord' => 'een particuliere eigenaar',
     'Add Property' => 'Plaats jouw woning',
     'Edit Property' => 'Bewerk',
     'Access to your account' => 'Hé, leuk dat je er weer bent!',

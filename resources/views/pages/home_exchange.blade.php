@@ -116,6 +116,8 @@
 
                                             <select name="house_kind" id="house_kind" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 80%;border: 0;">
 
+                                                <option @if(isset($house_kind)) @if($house_kind == 0) selected @endif @endif value="0">Geen voorkeur</option>
+
                                                 @foreach($types as $type)
 
                                                     @if(isset($house_kind))
@@ -279,6 +281,8 @@
 
                                             <select name="preferred_house_kind" id="preferred_house_kind" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 80%;border: 0;">
 
+                                                <option @if(isset($preferred_house_kind)) @if($preferred_house_kind == 0) selected @endif @endif value="0">Geen voorkeur</option>
+
                                                 @foreach($types as $type)
 
                                                     @if(isset($preferred_house_kind))
@@ -413,14 +417,14 @@
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="padding: 0;display: flex;flex-direction: row;">
 
                                     <div style="background: url(<?php echo URL::asset('assets/img/photograph.png') ?>);background-color: #48cfad;min-width: 45px;height: 40px;background-size: 50% 50%;background-repeat: no-repeat;background-position: center;border-radius: 8px;float: left;"></div>
-                                    <small style="text-overflow: ellipsis;display: block;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;float: left;font-weight: 600;padding-left: 10px;white-space: nowrap;"><i style="color: #9b9b9b;margin-right: 5px;" class="fas fa-map-marker-alt" aria-hidden="true"></i> <a style="color: black;" href="{{URL::to('home-exchange/'.$temp->property_slug)}}">{{$temp->address}}</a> <br> <span style="font-weight: 500;">€ {{$temp->rent_per_month}}</span> <br> <?php foreach($types as $type) { if($temp->property_type == $type->id){ echo $type->types; }} ?></small>
+                                    <small style="text-overflow: ellipsis;display: block;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;float: left;font-weight: 600;padding-left: 10px;white-space: nowrap;"><i style="color: #9b9b9b;margin-right: 5px;" class="fas fa-map-marker-alt" aria-hidden="true"></i> <a style="color: black;" href="{{URL::to('home-exchange/'.$temp->property_slug)}}">{{$temp->address}}</a> <br> <span style="font-weight: 500;">€ {{$temp->rent_per_month}}</span> <br> <?php if($temp->property_type == 0) { echo "Geen voorkeur"; } foreach($types as $type) { if($temp->property_type == $type->id){ echo $type->types; }} ?></small>
 
                                 </div>
 
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="padding: 0;padding-left: 10px;display: flex;flex-direction: row;">
 
                                     <div style="background: url(<?php echo URL::asset('assets/img/exchange.png') ?>);background-color: #48514f;min-width: 41px;height: 40px;background-size: 50% 50%;background-repeat: no-repeat;background-position: center;border-radius: 100%;float: left;"></div>
-                                    <small style="text-overflow: ellipsis;display: block;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;float: left;font-weight: 600;padding-left: 10px;white-space: nowrap;"><i style="color: #9b9b9b;margin-right: 5px;" class="fas fa-map-marker-alt" aria-hidden="true"></i> <a style="color: black;" href="{{URL::to('home-exchange/'.$temp->property_slug)}}">{{$temp->preferred_place}}</a> <br> <span style="font-weight: 500;">€ {{$temp->preferred_rent_max}}</span> <br> <?php foreach($types as $type) { if($temp->preferred_kind == $type->id){ echo $type->types; }} ?></small>
+                                    <small style="text-overflow: ellipsis;display: block;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;float: left;font-weight: 600;padding-left: 10px;white-space: nowrap;"><i style="color: #9b9b9b;margin-right: 5px;" class="fas fa-map-marker-alt" aria-hidden="true"></i> <a style="color: black;" href="{{URL::to('home-exchange/'.$temp->property_slug)}}">{{$temp->preferred_place}}</a> <br> <span style="font-weight: 500;">€ {{$temp->preferred_rent_max}}</span> <br> <?php if($temp->preferred_kind == 0) { echo "Geen voorkeur"; } foreach($types as $type) { if($temp->preferred_kind == $type->id){ echo $type->types; } } ?></small>
 
                                 </div>
 
@@ -1210,7 +1214,7 @@
 
                                                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 res-foot" style="margin-top: 20px;padding: 0;">
 
-                                                                        <small style="float: left;font-weight: bold;"><?php foreach($types as $type) { if($key->property_type == $type->id){ echo $type->types; }} ?></small>
+                                                                        <small style="float: left;font-weight: bold;"><?php if($key->property_type == 0){ echo "Geen voorkeur"; } foreach($types as $type) { if($key->property_type == $type->id){ echo $type->types; }} ?></small>
                                                                         {{--<small style="float: right;font-weight: 600;color: #1db3e1;"><i class="fa fa-calendar-o" aria-hidden="true" style="margin-right: 5px;"></i> 0 Weeks Ago</small>--}}
 
                                                                     </div>
@@ -1262,7 +1266,7 @@
 
                                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top: 20px;padding: 0;">
 
-                                                        <small style="float: left;font-weight: bold;"><?php foreach($types as $type) { if($preferred_house_kind == $type->id){ echo $type->types; }} ?></small>
+                                                        <small style="float: left;font-weight: bold;"><?php if($preferred_house_kind == 0){ echo "Geen voorkeur"; } foreach($types as $type) { if($preferred_house_kind == $type->id){ echo $type->types; }} ?></small>
 
                                                     </div>
 

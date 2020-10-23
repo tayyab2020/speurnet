@@ -50,14 +50,19 @@
 
                         <div style="display: flex;align-items: center;">
 
-                            <label for="show_type" style="cursor: pointer;display: flex;flex-direction: row;align-items: center;">
-                                <input id="show_type" style="width: 13px;box-shadow: none;" type="radio" name="show_type" class="form-control" @if(isset($type->show_type)) @if($type->show_type) checked @endif @endif value="1">
-                                <span style="margin-left: 5px;">@if(Auth::User()->usertype != "Admin") {{__('text.Yes')}} @else Yes @endif</span>
+                            <label for="show_home" style="cursor: pointer;display: flex;flex-direction: row;align-items: center;">
+                                <input id="show_home" style="width: 13px;box-shadow: none;" type="radio" name="show_type" class="form-control" @if(isset($type->show_type)) @if($type->show_type == 1) checked @endif @endif value="1">
+                                <span style="margin-left: 5px;">Show only in Home Exchange</span>
                             </label>
 
-                            <label for="not_email" style="cursor: pointer;display: flex;flex-direction: row;align-items: center;margin-left: 20px;">
-                                <input id="not_email" style="width: 13px;box-shadow: none;" type="radio" name="show_email" class="form-control" @if(Auth::user()->show_email == 0) checked @endif value="0">
-                                <span style="margin-left: 5px;">@if(Auth::User()->usertype != "Admin") {{__('text.No')}} @else No @endif</span>
+                            <label for="show_everywhere" style="cursor: pointer;display: flex;flex-direction: row;align-items: center;margin-left: 20px;">
+                                <input id="show_everywhere" style="width: 13px;box-shadow: none;" type="radio" name="show_type" class="form-control" @if(isset($type->show_type)) @if($type->show_type == 2) checked @endif @endif value="2">
+                                <span style="margin-left: 5px;">Show everywhere</span>
+                            </label>
+
+                            <label for="dont_show" style="cursor: pointer;display: flex;flex-direction: row;align-items: center;margin-left: 20px;">
+                                <input id="dont_show" style="width: 13px;box-shadow: none;" type="radio" name="show_type" class="form-control" @if(isset($type->show_type)) @if($type->show_type == 3) checked @endif @else checked @endif value="3">
+                                <span style="margin-left: 5px;">Dont show in home exchange</span>
                             </label>
 
                         </div>

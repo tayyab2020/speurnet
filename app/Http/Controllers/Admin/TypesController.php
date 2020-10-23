@@ -80,6 +80,7 @@ class TypesController extends MainAdminController
 			$slug = Str::slug($inputs['slug'], "-");
 		}
 
+		$types->show_type = $request->show_type;
 		$types->types = $inputs['property_type'];
 		$types->slug = $slug;
 

@@ -284,7 +284,7 @@ class PropertiesController extends MainAdminController
 
          if(Auth::user()->usertype=='Admin')
          {
-             $types = Types::orderBy('types')->get();
+             $types = Types::where('show_type','!=',1)->orderBy('types')->get();
 
              $city_list = City::where('status','1')->orderBy('city_name')->get();
 
@@ -305,7 +305,7 @@ class PropertiesController extends MainAdminController
 
         if(Auth::user()->usertype=='Admin')
         {
-            $types = Types::orderBy('types')->get();
+            $types = Types::where('show_type','!=',1)->orderBy('types')->get();
 
             $city_list = City::where('status','1')->orderBy('city_name')->get();
 
@@ -326,7 +326,7 @@ class PropertiesController extends MainAdminController
 
         if(Auth::user()->usertype=='Users')
         {
-            $types = Types::orderBy('types')->get();
+            $types = Types::where('show_type','!=',3)->orderBy('types')->get();
 
             $city_list = City::where('status','1')->orderBy('city_name')->get();
 
@@ -1042,7 +1042,7 @@ class PropertiesController extends MainAdminController
 
           $property = Properties::findOrFail($id);
 
-          $types = Types::orderBy('types')->get();
+          $types = Types::where('show_type','!=',1)->orderBy('types')->get();
 
           $city_list = City::where('status','1')->orderBy('city_name')->get();
 
@@ -1056,7 +1056,7 @@ class PropertiesController extends MainAdminController
     {
         $property = New_Constructions::findOrFail($id);
 
-        $types = Types::orderBy('types')->get();
+        $types = Types::where('show_type','!=',1)->orderBy('types')->get();
 
         $city_list = City::where('status','1')->orderBy('city_name')->get();
 
@@ -1070,7 +1070,7 @@ class PropertiesController extends MainAdminController
     {
         $property = Home_Exchange::findOrFail($id);
 
-        $types = Types::orderBy('types')->get();
+        $types = Types::where('show_type','!=',3)->orderBy('types')->get();
 
         $city_list = City::where('status','1')->orderBy('city_name')->get();
 
