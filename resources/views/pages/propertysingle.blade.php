@@ -757,7 +757,7 @@
                           <table class="table table-bordered">
                               <tr>
                                   <td><strong>{{__('text.Type')}}</strong> <img src="{{ URL::asset('assets/img/house.png') }}" style="width: 18px;float: right;" /></td>
-                                  <td>{{ getPropertyTypeName($property->property_type)->types }}</td>
+                                  <td>@if($property->property_types == 0) Geen voorkeur @else {{ getPropertyTypeName($property->property_type)->types }} @endif</td>
                               </tr>
                           </table>
 
@@ -2122,7 +2122,7 @@
 
                                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" style="float: right;text-align: right;">
                                     <label>{{__('text.Preferred House Type')}}</label>
-                                    <p>{{getPropertyTypeName($property->preferred_kind)->types}}</p>
+                                    <p>@if($property->property_types == 0) Geen voorkeur @else {{getPropertyTypeName($property->preferred_kind)->types}} @endif</p>
                                 </div>
 
                             </div>
@@ -2322,7 +2322,7 @@
                                                             </div>
                                                             <div class="property-content">
                                                                 <h3 style="margin: 10px 0px;"><a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;" href="{{URL::to('properties/'.$property->property_slug)}}">{{ Str::limit($property->property_name,35) }}</a> <small style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;">{{ Str::limit($property->address,40) }}</small></h3>
-                                                                <small style="margin-top: 20px;font-weight: 600;">{{ getPropertyTypeName($property->property_type)->types }}</small>
+                                                                <small style="margin-top: 20px;font-weight: 600;">@if($property->property_types == 0) Geen voorkeur @else {{ getPropertyTypeName($property->property_type)->types }} @endif</small>
                                                                 <small style="float: right;">€@if($property->sale_price) {{number_format($property->sale_price, 0, ',', '.')}} k.k. @else {{number_format($property->rent_price, 0, ',', '.')}} @endif</small>
                                                             </div>
                                                         </div>

@@ -443,7 +443,7 @@ class PropertiesController extends Controller
         {
             if(Auth::user()->usertype=='Agents')
             {
-                if(Auth::user()->image_icon || Auth::user()->company_name)
+                if(Auth::user()->image_icon || Auth::user()->company_name || Auth::user()->landlord)
                 {
                     $types = Types::where('show_type','!=',1)->orderBy('types')->get();
 
