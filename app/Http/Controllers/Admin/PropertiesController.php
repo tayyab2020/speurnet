@@ -211,9 +211,15 @@ class PropertiesController extends MainAdminController
     public function homeexchangelist()
     {
 
-        if(Auth::user()->usertype=='Admin' || Auth::user()->usertype=='Users')
+        if(Auth::user()->usertype=='Admin')
         {
             $propertieslist = Home_Exchange::orderBy('id','desc')->withCount(['enquiries'])->withCount(['viewings'])->get();
+
+            return view('admin.pages.properties',compact('propertieslist'));
+        }
+        elseif(Auth::user()->usertype=='Users')
+        {
+            $propertieslist = Home_Exchange::where('user_id',Auth::user()->id)->orderBy('id','desc')->withCount(['enquiries'])->withCount(['viewings'])->get();
 
             return view('admin.pages.properties',compact('propertieslist'));
         }
