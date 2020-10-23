@@ -654,7 +654,7 @@
 
         .extra-text span
         {
-            font-size: 11px !important;
+            font-size: 10px !important;
         }
 
         .extra-text img

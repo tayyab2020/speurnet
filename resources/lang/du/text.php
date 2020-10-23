@@ -507,8 +507,8 @@ return [
     'Password is required' => 'Je hebt geen wachtwoord opgegeven',
     'Name is required.' => 'Je hebt geen naam opgegeven',
     'Email is already been taken.' => 'Dit e-mailadres is al in gebruik op Zoekjehuisje.nl',
-    'Password should be greater than 3 characters' => 'Password should be greater than 3 characters',
-    'Password & Confirm Password does not match' => 'Password & Confirm Password does not match',
+    'Password should be greater than 3 characters' => 'Het wachtwoord moet minimaal uit 3 karakters bestaan.',
+    'Password & Confirm Password does not match' => 'Het wachtwoord komen niet overeen. ',
     'Successfully updated!' => 'Succesvol geüpdatet!',
     'I wanted you to see this Property AD I just Found on zoekjehuisje.nl' => 'Deze woning heb ik gevonden op Zoekjehuisje.nl, kijk zelf maar!',
 ];
