@@ -45,7 +45,7 @@
 	@endif
 
 <div class="panel panel-default panel-shadow">
-    <div class="panel-body">
+    <div class="panel-body" style="padding: 15px 0px;">
 
         <table id="data-table1" class="table table-striped table-hover dt-responsive" cellspacing="0" width="100%">
             <thead>
@@ -330,6 +330,7 @@
 </script>
 
 <style>
+
 
     tr.bg_color  {
         background-color: #edf671 !important;
