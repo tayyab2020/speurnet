@@ -629,8 +629,6 @@
 
                                                         <select name="property_type" id="property_type" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;height: 40px;">
 
-                                                            <option value="0" @if($property->property_type == 0) selected @endif>Geen voorkeur</option>
-
                                                             @foreach($types as $type)
 
                                                                 <option value="{{$type->id}}" @if($type->id == $property->property_type) selected @endif>{{$type->types}}</option>
@@ -642,8 +640,6 @@
                                                     @else
 
                                                         <select name="property_type" id="property_type" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;height: 40px;">
-
-                                                            <option value="0" @if(old('property_type') == 0) selected @endif>Geen voorkeur</option>
 
                                                             @foreach($types as $type)
 
