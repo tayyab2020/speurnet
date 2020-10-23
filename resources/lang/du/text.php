@@ -245,7 +245,7 @@ return [
     'in the morning' => '\'s morgens',
     'in the afternoon' => '\'s middags',
     'See Other properties posted by this Broker' => 'Bekijk ook de :properties andere woningen van deze makelaar',
-    'See Other property posted by this Broker' => 'Bekijk ook :property andere woningen van deze makelaar',
+    'See Other property posted by this Broker' => 'Bekijk ook :property andere woning van deze makelaar',
     'Location' => 'Locatie',
     'Property Detail' => 'Alles wat je wilt weten over deze woning',
     'Travel Time' => 'Chek de afstand naar jouw vrienden,school of werk of ome Harry',
