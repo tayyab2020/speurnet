@@ -34,7 +34,7 @@
 
     <a class="navbar-brand" href="{{ URL::to('/') }}" style="padding-right: 0px;height: auto;margin: auto;">
 
-        @if(getcong('site_logo')) <img src="{{ URL::asset('upload/'.getcong('site_logo')) }}" alt=""> @else {{getcong('site_name')}} @endif
+        @if(getcong('site_logo')) <img src="{{ URL::asset('upload/'.getcong('site_logo')) }}" style="width: 100%;" alt=""> @else {{getcong('site_name')}} @endif
 
     </a>
     </div>
@@ -158,7 +158,6 @@
 
     body{
         width: 100%;
-        background: var(--dark-blue);
         overflow-x: hidden;
         font-family: 'Poppins', sans-serif;
         font-size: 17px;
