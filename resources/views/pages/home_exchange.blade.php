@@ -116,8 +116,6 @@
 
                                             <select name="house_kind" id="house_kind" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 80%;border: 0;">
 
-                                                <option @if(isset($house_kind)) @if($house_kind == 0) selected @endif @endif value="0">Geen voorkeur</option>
-
                                                 @foreach($types as $type)
 
                                                     @if(isset($house_kind))

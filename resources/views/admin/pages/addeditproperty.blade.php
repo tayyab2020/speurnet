@@ -2149,7 +2149,7 @@
 
                                         <label class="left-label" style="float: left;">{{__('text.Featured Image')}} @if(Route::currentRouteName() != 'addhomeexchange')<span style="color: red;font-size: 20px;">*</span>@endif</label>
 
-                                        <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
+                                        <div style="width: 100%;display: inline-block;margin: auto">
 
                                             <div class="media">
                                                 <div class="media-left">
@@ -2160,31 +2160,31 @@
                                                     @endif
 
                                                 </div>
+
+                                                <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+                                                <script type="text/javascript" src="{{ URL::asset('assets/js/spartan-multi-image-picker.js') }}"></script>
+
+                                                <style>
+
+
+                                                </style>
+
                                                 <div class="media-body media-middle">
-
-                                                    @if(isset($property->featured_image))
-
-                                                        <input type="file" name="featured_image" class="filestyle" style="width: 50%;border: none;float: left;">
-
-                                                    @else
 
                                                     @if(Route::currentRouteName() != 'addhomeexchange')
 
-                                                    <input type="file" name="featured_image" class="filestyle stepper-step-4-validate" style="width: 50%;border: none;float: left;">
+                                                        <div class="row">
+                                                            <div style="display: flex;justify-content: center;" id="featured_image" class="stepper-step-4-validate-new"></div>
+                                                        </div>
 
                                                         @else
 
-                                                        <input type="file" name="featured_image"  class="filestyle" style="width: 50%;border: none;float: left;">
+                                                        <div class="row">
+                                                            <div id="featured_image"></div>
+                                                        </div>
 
                                                         @endif
 
-                                                    @endif
-
-                                                    <button type="button" class="remove-btn" style="outline: none;border: 0;color: red;float: right;font-size: 21px;background: transparent;padding: 10px 5px;margin-right: 5px;">
-
-                                                        <i aria-hidden="true" class="fas fa-times-circle" style="position:relative;top: 1px;"></i>
-
-                                                    </button>
 
                                                 </div>
                                             </div>
@@ -2195,11 +2195,19 @@
 
                                 </div>
 
+                                    <script>
+
+                                        $("#featured_image").spartanMultiImagePicker({
+                                            fieldName:   'featured_image',
+                                            maxCount:         1,
+                                            groupClassName:   'col-md-5 col-sm-8 col-xs-12',
+                                        });
+
+                                    </script>
 
                                 <div class="main-childs col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;">
 
                                     <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
-
 
                                         <label class="left-label" style="float: left;">{{__('text.Property Image 1')}}</label>
 
@@ -2226,6 +2234,7 @@
                                                             <i aria-hidden="true" class="fas fa-times-circle" style="position:relative;top: 1px;"></i>
 
                                                         </button>
+
 
 
                                                 </div>
@@ -3392,9 +3401,12 @@
 
     <script>
 
-
         $(document).ready(function() {
 
+            $('.file-upload').change(function() {
+                var file = $(this)[0].files[0].name;
+                $(this).parent().children('span').text(file);
+            });
 
             $('.looking-input').on('keyup keypress', function(e) {
 
