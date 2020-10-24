@@ -34,9 +34,9 @@ class Home_Exchange extends Model
 
         $query->where("preferred_kind", "$house_kind");
 
-        
+        $query->where("preferred_bedrooms", '<=', $bedrooms);
 
-        $query->where("preferred_area" ,'<=', $area);
+        
 
         $query->where("preferred_rent_max" ,'>=', $rent);
 
