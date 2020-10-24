@@ -513,4 +513,5 @@ return [
     'Successfully updated!' => 'Successfully updated!',
     'I wanted you to see this Property AD I just Found on zoekjehuisje.nl' => 'I wanted you to see this Property AD I just Found on zoekjehuisje.nl',
     'Featured Image is required.' => 'Featured Image is required.',
+    'User extra text' => 'Extra option: Free placement of a home exchange advertisement',
 ];

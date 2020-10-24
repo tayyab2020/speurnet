@@ -45,9 +45,11 @@
                 <div class="section over-hide z-bigger">
 
                     <input class="checkbox" type="checkbox" name="general" id="general" checked>
-                    <label class="for-checkbox" for="general"></label>
+                    <label class="for-checkbox" for="general" style="display: none;"></label>
+
                     <div class="background-color"></div>
-                    <div class="section over-hide z-bigger">
+
+                    <div class="section over-hide z-bigger" style="margin-top: 20px;">
                         <div class="container pb-5">
                             <div class="row justify-content-center pb-5">
 
@@ -79,6 +81,8 @@
                                         <label class="for-checkbox-tools" for="tool-2">
                                             <i class="fas fa-user" style="font-size: 24px;display: block;position:relative;top: 15px;"></i>
                                             {{__('text.User')}}
+                                            <span style="font-size: 9px;line-height: 3;display: block;text-align: left;">{{__('text.User extra text')}}
+                                        </span>
                                         </label>
 
                                     </div>
