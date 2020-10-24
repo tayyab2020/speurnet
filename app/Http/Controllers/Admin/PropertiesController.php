@@ -1209,6 +1209,7 @@ class PropertiesController extends MainAdminController
             $property->construction_type = $request->construction_type;
             $property->year_construction = $request->year_construction;
             $property->building_condition = $request->building_condition;
+            $property->service_costs = $request->service_costs;
 
         }
         elseif($request->route == 'construction')

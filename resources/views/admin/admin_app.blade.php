@@ -69,7 +69,7 @@
   <!-- Plugins -->
   <script src="{{ URL::asset('admin_assets/js/plugins.min.js') }}"></script>
 
-  <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.js"></script>
+  <script src="{{ URL::asset('admin_assets/js/summernote.js') }}"></script>
 
   <!-- Loaded only in index.html for demographic vector map-->
   <script src="{{ URL::asset('admin_assets/js/jvectormap.js') }}"></script>

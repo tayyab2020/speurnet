@@ -779,6 +779,15 @@
                                         <td>€ {{number_format($property->rent_per_month, 0, ',', '.')}}</td>
                                     </tr>
 
+                                @if($property->service_costs)
+
+                                    <tr>
+                                        <td><strong>{{__('text.Any Service Costs')}}</strong></td>
+                                        <td>€ {{number_format($property->service_costs, 0, ',', '.')}}</td>
+                                    </tr>
+
+                                @endif
+
 
                                 @endif
 
@@ -790,6 +799,15 @@
                                     <td><strong>{{__('text.Price')}}</strong> <img src="{{ URL::asset('assets/img/tag.png') }}" style="width: 18px;float: right;" /></td>
                                     <td>€@if($property->sale_price) {{number_format($property->sale_price, 0, ',', '.')}} {{$property->cost_for}} @else {{number_format($property->rent_price, 0, ',', '.')}} @endif</td>
                                 </tr>
+
+                                    @if($property->property_purpose == 'Rent' && $property->service_costs)
+
+                                        <tr>
+                                            <td><strong>{{__('text.Any Service Costs')}}</strong></td>
+                                            <td>€ {{number_format($property->service_costs, 0, ',', '.')}}</td>
+                                        </tr>
+
+                                    @endif
 
                                     @else
 

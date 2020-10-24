@@ -130,7 +130,7 @@
     <script src="{{ URL::asset('assets/js/jquery.backstretch.js') }}"></script>
     <script src="{{ URL::asset('assets/js/jquery.nicescroll.min.js') }}"></script>
     <script src="{{ URL::asset('assets/js/script.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.js"></script>
+    <script src="{{ URL::asset('assets/js/summernote.js') }}"></script>
     <script src="https://bootstrap-tagsinput.github.io/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js"></script>
     <script type="text/javascript" src="{{ URL::asset('assets/js/slick.js') }}"></script>
     <script type="text/javascript" src="{{ URL::asset('assets/js/slick.min.js') }}"></script>

@@ -1538,6 +1538,22 @@
 
                                                 </div>
 
+                                                <div class="main-childs col-lg-12 col-md-12 col-sm-12 col-xs-12" id="service_charges_box" style="padding: 0;display: none;">
+
+                                                    <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
+
+                                                        <label class="left-label" style="float: left;">{{__('text.Any Service Costs')}}</label>
+
+                                                        <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
+
+                                                            <input type="number" placeholder="" name="service_costs" @if(old('service_costs')) value="{{old('service_costs')}}" @else value="{{ isset($property->service_costs) ? $property->service_costs : null }}" @endif style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;" class="form-control">
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+
                                             @elseif(old('property_purpose') == 'Rent')
 
                                                 <div class="main-childs col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;display: none;" id="sale_price_box">
@@ -1574,6 +1590,23 @@
                                                         <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
 
                                                             <input type="number" id="rent_price_field" name="rent_price" @if(old('rent_price')) value="{{old('rent_price')}}" @else value="{{ isset($property->rent_price) ? $property->rent_price : null }}" @endif placeholder="" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control stepper-step-3-validate"  >
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+
+
+                                                <div class="main-childs col-lg-12 col-md-12 col-sm-12 col-xs-12" id="service_charges_box" style="padding: 0;">
+
+                                                    <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
+
+                                                        <label class="left-label" style="float: left;">{{__('text.Any Service Costs')}}</label>
+
+                                                        <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
+
+                                                            <input type="number" placeholder="" name="service_costs" @if(old('service_costs')) value="{{old('service_costs')}}" @else value="{{ isset($property->service_costs) ? $property->service_costs : null }}" @endif style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;" class="form-control">
 
                                                         </div>
 
@@ -1628,6 +1661,23 @@
 
                                                         </div>
 
+
+                                                        <div class="main-childs col-lg-12 col-md-12 col-sm-12 col-xs-12" id="service_charges_box" style="padding: 0;display: none;">
+
+                                                            <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
+
+                                                                <label class="left-label" style="float: left;">{{__('text.Any Service Costs')}}</label>
+
+                                                                <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
+
+                                                                    <input type="number" placeholder="" name="service_costs" @if(old('service_costs')) value="{{old('service_costs')}}" @else value="{{ isset($property->service_costs) ? $property->service_costs : null }}" @endif style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;" class="form-control">
+
+                                                                </div>
+
+                                                            </div>
+
+                                                        </div>
+
                                                     @elseif($property->property_purpose == 'Rent')
 
                                                         <div class="main-childs col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;display: none;" id="sale_price_box">
@@ -1664,6 +1714,23 @@
                                                                 <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
 
                                                                     <input type="number" id="rent_price_field" name="rent_price" @if(old('rent_price')) value="{{old('rent_price')}}" @else value="{{ isset($property->rent_price) ? $property->rent_price : null }}" @endif placeholder="" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control stepper-step-3-validate"  >
+
+                                                                </div>
+
+                                                            </div>
+
+                                                        </div>
+
+
+                                                        <div class="main-childs col-lg-12 col-md-12 col-sm-12 col-xs-12" id="service_charges_box" style="padding: 0;">
+
+                                                            <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
+
+                                                                <label class="left-label" style="float: left;">{{__('text.Any Service Costs')}}</label>
+
+                                                                <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
+
+                                                                    <input type="number" placeholder="" name="service_costs" @if(old('service_costs')) value="{{old('service_costs')}}" @else value="{{ isset($property->service_costs) ? $property->service_costs : null }}" @endif style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;" class="form-control">
 
                                                                 </div>
 
@@ -1709,7 +1776,24 @@
 
                                                             <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
 
-                                                                <input type="number" id="rent_price_field" name="rent_price" @if(old('rent_price')) value="{{old('rent_price')}}" @else value="{{ isset($property->rent_price) ? $property->rent_price : null }}" @endif placeholder="" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control"  >
+                                                                <input type="number" id="rent_price_field" name="rent_price" @if(old('rent_price')) value="{{old('rent_price')}}" @else value="{{ isset($property->rent_price) ? $property->rent_price : null }}" @endif placeholder="" style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control">
+
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+
+
+                                                    <div class="main-childs col-lg-12 col-md-12 col-sm-12 col-xs-12" id="service_charges_box" style="padding: 0;display: none;">
+
+                                                        <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
+
+                                                            <label class="left-label" style="float: left;">{{__('text.Any Service Costs')}}</label>
+
+                                                            <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
+
+                                                                <input type="number" placeholder="" name="service_costs" @if(old('service_costs')) value="{{old('service_costs')}}" @else value="{{ isset($property->service_costs) ? $property->service_costs : null }}" @endif style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;" class="form-control">
 
                                                             </div>
 
@@ -1966,7 +2050,6 @@
                                             @endif
 
                                         @endif
-
 
                                     @else
 
@@ -4018,6 +4101,7 @@
                     $('#sale_price_field').addClass('stepper-step-3-validate');
                     $('#type_agreement_box').hide();
                     $('#property_furnished_box').hide();
+                    $('#service_charges_box').hide();
                 }
                 else
                 {
@@ -4027,6 +4111,7 @@
                     $('#rent_price_field').addClass('stepper-step-3-validate');
                     $('#type_agreement_box').show();
                     $('#property_furnished_box').show();
+                    $('#service_charges_box').show();
 
                 }
 
