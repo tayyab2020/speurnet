@@ -85,8 +85,6 @@
 
                 $(html).on("click", ".spartan_remove_row_new", function(){
 
-                    $(this).parent().parent().parent().parent().removeAttr("data-img","");
-
                     $(this).parent().parent().parent().parent().next('input').val(1);
 
                     settings.dataImage = '';

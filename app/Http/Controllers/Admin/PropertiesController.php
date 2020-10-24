@@ -581,106 +581,264 @@ class PropertiesController extends MainAdminController
 		//property image 1
 		$property_images1 = $request->file('property_images1');
 
-        if($property_images1){
+        if($request->remove_property_images1 == 1)
+        {
+                if($property_images1)
+                {
 
-            \File::delete(public_path() .'/upload/properties/'.$property->property_images1.'-b.jpg');
+                    \File::delete(public_path() .'/upload/properties/'.$property->property_images1.'-b.jpg');
 
 
-            $tmpFilePath = 'upload/properties/';
+                    $tmpFilePath = 'upload/properties/';
 
-            $hardPath =  Str::slug($inputs['property_name'], '-').'-'.md5(rand(0,99999));
+                    $hardPath =  Str::slug($inputs['property_name'], '-').'-'.md5(rand(0,99999));
 
-            $img = Image::make($property_images1);
+                    $img = Image::make($property_images1);
 
-            /*$img->fit(640, 425)->save($tmpFilePath.$hardPath.'-b.jpg');*/
+                    /*$img->fit(640, 425)->save($tmpFilePath.$hardPath.'-b.jpg');*/
 
-            $img->save($tmpFilePath.$hardPath.'-b.jpg');
+                    $img->save($tmpFilePath.$hardPath.'-b.jpg');
 
-            $property->property_images1 = $hardPath;
+                    $property->property_images1 = $hardPath;
+                }
+                else
+                {
+                    \File::delete(public_path() .'/upload/properties/'.$property->property_images1.'-b.jpg');
+                    $property->property_images1 = Null;
+                }
+
+
+        }
+        else
+        {
+            if($property_images1)
+            {
+                \File::delete(public_path() .'/upload/properties/'.$property->property_images1.'-b.jpg');
+
+
+                $tmpFilePath = 'upload/properties/';
+
+                $hardPath =  Str::slug($inputs['property_name'], '-').'-'.md5(rand(0,99999));
+
+                $img = Image::make($property_images1);
+
+                /*$img->fit(640, 425)->save($tmpFilePath.$hardPath.'-b.jpg');*/
+
+                $img->save($tmpFilePath.$hardPath.'-b.jpg');
+
+                $property->property_images1 = $hardPath;
+            }
 
         }
 
+
 		//property image 2
+
 		$property_images2 = $request->file('property_images2');
 
-        if($property_images2){
+        if($request->remove_property_images2 == 1)
+        {
+            if($property_images2)
+            {
 
-            \File::delete(public_path() .'/upload/properties/'.$property->property_images2.'-b.jpg');
-
-
-            $tmpFilePath = 'upload/properties/';
-
-            $hardPath =  Str::slug($inputs['property_name'], '-').'-'.md5(rand(0,99999));
-
-            $img = Image::make($property_images2);
-
-            $img->save($tmpFilePath.$hardPath.'-b.jpg');
+                \File::delete(public_path() .'/upload/properties/'.$property->property_images2.'-b.jpg');
 
 
-            $property->property_images2 = $hardPath;
+                $tmpFilePath = 'upload/properties/';
+
+                $hardPath =  Str::slug($inputs['property_name'], '-').'-'.md5(rand(0,99999));
+
+                $img = Image::make($property_images2);
+
+                /*$img->fit(640, 425)->save($tmpFilePath.$hardPath.'-b.jpg');*/
+
+                $img->save($tmpFilePath.$hardPath.'-b.jpg');
+
+                $property->property_images2 = $hardPath;
+            }
+            else
+            {
+                \File::delete(public_path() .'/upload/properties/'.$property->property_images2.'-b.jpg');
+                $property->property_images2 = Null;
+            }
+
+
+        }
+        else
+        {
+            if($property_images2)
+            {
+                \File::delete(public_path() .'/upload/properties/'.$property->property_images2.'-b.jpg');
+
+
+                $tmpFilePath = 'upload/properties/';
+
+                $hardPath =  Str::slug($inputs['property_name'], '-').'-'.md5(rand(0,99999));
+
+                $img = Image::make($property_images2);
+
+                /*$img->fit(640, 425)->save($tmpFilePath.$hardPath.'-b.jpg');*/
+
+                $img->save($tmpFilePath.$hardPath.'-b.jpg');
+
+                $property->property_images2 = $hardPath;
+            }
 
         }
 
 		//property image 3
 		$property_images3 = $request->file('property_images3');
 
-        if($property_images3){
+        if($request->remove_property_images3 == 1)
+        {
+            if($property_images3)
+            {
 
-            \File::delete(public_path() .'/upload/properties/'.$property->property_images3.'-b.jpg');
-
-
-            $tmpFilePath = 'upload/properties/';
-
-            $hardPath =  Str::slug($inputs['property_name'], '-').'-'.md5(rand(0,99999));
-
-            $img = Image::make($property_images3);
-
-            $img->save($tmpFilePath.$hardPath.'-b.jpg');
+                \File::delete(public_path() .'/upload/properties/'.$property->property_images3.'-b.jpg');
 
 
-            $property->property_images3 = $hardPath;
+                $tmpFilePath = 'upload/properties/';
+
+                $hardPath =  Str::slug($inputs['property_name'], '-').'-'.md5(rand(0,99999));
+
+                $img = Image::make($property_images3);
+
+                /*$img->fit(640, 425)->save($tmpFilePath.$hardPath.'-b.jpg');*/
+
+                $img->save($tmpFilePath.$hardPath.'-b.jpg');
+
+                $property->property_images3 = $hardPath;
+            }
+            else
+            {
+                \File::delete(public_path() .'/upload/properties/'.$property->property_images3.'-b.jpg');
+                $property->property_images3 = Null;
+            }
+
+        }
+        else
+        {
+            if($property_images3)
+            {
+                \File::delete(public_path() .'/upload/properties/'.$property->property_images3.'-b.jpg');
+
+
+                $tmpFilePath = 'upload/properties/';
+
+                $hardPath =  Str::slug($inputs['property_name'], '-').'-'.md5(rand(0,99999));
+
+                $img = Image::make($property_images3);
+
+                /*$img->fit(640, 425)->save($tmpFilePath.$hardPath.'-b.jpg');*/
+
+                $img->save($tmpFilePath.$hardPath.'-b.jpg');
+
+                $property->property_images3 = $hardPath;
+            }
 
         }
 
 		//property image 4
 		$property_images4 = $request->file('property_images4');
 
-        if($property_images4){
+        if($request->remove_property_images4 == 1)
+        {
+            if($property_images4)
+            {
 
-            \File::delete(public_path() .'/upload/properties/'.$property->property_images4.'-b.jpg');
-
-
-            $tmpFilePath = 'upload/properties/';
-
-            $hardPath =  Str::slug($inputs['property_name'], '-').'-'.md5(rand(0,99999));
-
-            $img = Image::make($property_images4);
-
-            $img->save($tmpFilePath.$hardPath.'-b.jpg');
+                \File::delete(public_path() .'/upload/properties/'.$property->property_images4.'-b.jpg');
 
 
-            $property->property_images4 = $hardPath;
+                $tmpFilePath = 'upload/properties/';
+
+                $hardPath =  Str::slug($inputs['property_name'], '-').'-'.md5(rand(0,99999));
+
+                $img = Image::make($property_images4);
+
+                /*$img->fit(640, 425)->save($tmpFilePath.$hardPath.'-b.jpg');*/
+
+                $img->save($tmpFilePath.$hardPath.'-b.jpg');
+
+                $property->property_images4 = $hardPath;
+            }
+            else
+            {
+                \File::delete(public_path() .'/upload/properties/'.$property->property_images4.'-b.jpg');
+                $property->property_images4 = Null;
+            }
+
+        }
+        else
+        {
+            if($property_images4)
+            {
+                \File::delete(public_path() .'/upload/properties/'.$property->property_images4.'-b.jpg');
+
+
+                $tmpFilePath = 'upload/properties/';
+
+                $hardPath =  Str::slug($inputs['property_name'], '-').'-'.md5(rand(0,99999));
+
+                $img = Image::make($property_images4);
+
+                /*$img->fit(640, 425)->save($tmpFilePath.$hardPath.'-b.jpg');*/
+
+                $img->save($tmpFilePath.$hardPath.'-b.jpg');
+
+                $property->property_images4 = $hardPath;
+            }
 
         }
 
 		//property image 5
 		$property_images5 = $request->file('property_images5');
 
-        if($property_images5){
+        if($request->remove_property_images5 == 1)
+        {
+            if($property_images5)
+            {
 
-            \File::delete(public_path() .'/upload/properties/'.$property->property_images5.'-b.jpg');
-
-
-            $tmpFilePath = 'upload/properties/';
-
-            $hardPath =  Str::slug($inputs['property_name'], '-').'-'.md5(rand(0,99999));
-
-            $img = Image::make($property_images5);
-
-            $img->save($tmpFilePath.$hardPath.'-b.jpg');
+                \File::delete(public_path() .'/upload/properties/'.$property->property_images5.'-b.jpg');
 
 
-            $property->property_images5 = $hardPath;
+                $tmpFilePath = 'upload/properties/';
+
+                $hardPath =  Str::slug($inputs['property_name'], '-').'-'.md5(rand(0,99999));
+
+                $img = Image::make($property_images5);
+
+                /*$img->fit(640, 425)->save($tmpFilePath.$hardPath.'-b.jpg');*/
+
+                $img->save($tmpFilePath.$hardPath.'-b.jpg');
+
+                $property->property_images5 = $hardPath;
+            }
+            else
+            {
+                \File::delete(public_path() .'/upload/properties/'.$property->property_images5.'-b.jpg');
+                $property->property_images5 = Null;
+            }
+
+        }
+        else
+        {
+            if($property_images5)
+            {
+                \File::delete(public_path() .'/upload/properties/'.$property->property_images5.'-b.jpg');
+
+
+                $tmpFilePath = 'upload/properties/';
+
+                $hardPath =  Str::slug($inputs['property_name'], '-').'-'.md5(rand(0,99999));
+
+                $img = Image::make($property_images5);
+
+                /*$img->fit(640, 425)->save($tmpFilePath.$hardPath.'-b.jpg');*/
+
+                $img->save($tmpFilePath.$hardPath.'-b.jpg');
+
+                $property->property_images5 = $hardPath;
+            }
 
         }
 

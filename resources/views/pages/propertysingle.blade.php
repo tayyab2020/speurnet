@@ -2147,7 +2147,7 @@
 
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="float: left;text-align: left;">
                                     <label>{{__('text.Home exchange Description')}}</label>
-                                    <p>{{$property->preferred_description}}</p>
+                                    <p>{!! $property->preferred_description !!}</p>
                                 </div>
 
                             </div>
