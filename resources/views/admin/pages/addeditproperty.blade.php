@@ -2152,36 +2152,90 @@
                                         <div style="width: 100%;display: inline-block;margin: auto">
 
                                             <div class="media">
-                                                <div class="media-left">
-                                                    @if(isset($property->featured_image))
-
-                                                        <img src="{{ URL::asset('upload/properties/'.$property->featured_image.'-s.jpg') }}" width="150" alt="person">
-
-                                                    @endif
-
-                                                </div>
 
                                                 <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
                                                 <script type="text/javascript" src="{{ URL::asset('assets/js/spartan-multi-image-picker.js') }}"></script>
 
-                                                <style>
-
-
-                                                </style>
 
                                                 <div class="media-body media-middle">
 
                                                     @if(Route::currentRouteName() != 'addhomeexchange')
 
+                                                        @if(isset($property->featured_image))
+
+                                                            <div class="row">
+                                                                <div style="display: flex;justify-content: center;" id="featured_image" data-img="{{ URL::asset('upload/properties/'.$property->featured_image.'-s.jpg') }}"></div>
+                                                                <input type="hidden" id="remove_featured" name="remove_featured" value="0">
+                                                            </div>
+
+                                                            <script>
+
+                                                                $("#featured_image").spartanMultiImagePicker({
+                                                                    fieldName:   'featured_image',
+                                                                    maxCount:         1,
+                                                                    groupClassName:   'col-md-5 col-sm-8 col-xs-12',
+                                                                    dataImage: '<?php echo URL::asset('upload/properties/'.$property->featured_image.'-s.jpg'); ?>'
+                                                                });
+
+                                                            </script>
+
+                                                        @else
+
                                                         <div class="row">
                                                             <div style="display: flex;justify-content: center;" id="featured_image" class="stepper-step-4-validate-new"></div>
                                                         </div>
+
+                                                            <script>
+
+                                                                $("#featured_image").spartanMultiImagePicker({
+                                                                    fieldName:   'featured_image',
+                                                                    maxCount:         1,
+                                                                    groupClassName:   'col-md-5 col-sm-8 col-xs-12',
+                                                                    dataImage: ''
+                                                                });
+
+                                                            </script>
+
+                                                        @endif
+
+                                                        @else
+
+                                                        @if(isset($property->featured_image))
+
+                                                            <div class="row">
+                                                                <div style="display: flex;justify-content: center;" id="featured_image" data-img="{{ URL::asset('upload/properties/'.$property->featured_image.'-s.jpg') }}"></div>
+                                                                <input type="hidden" id="remove_featured" name="remove_featured" value="0">
+                                                            </div>
+
+                                                            <script>
+
+                                                                $("#featured_image").spartanMultiImagePicker({
+                                                                    fieldName:   'featured_image',
+                                                                    maxCount:         1,
+                                                                    groupClassName:   'col-md-5 col-sm-8 col-xs-12',
+                                                                    dataImage: '<?php echo URL::asset('upload/properties/'.$property->featured_image.'-s.jpg'); ?>'
+                                                                });
+
+                                                            </script>
 
                                                         @else
 
                                                         <div class="row">
                                                             <div id="featured_image"></div>
                                                         </div>
+
+                                                            <script>
+
+                                                                $("#featured_image").spartanMultiImagePicker({
+                                                                    fieldName:   'featured_image',
+                                                                    maxCount:         1,
+                                                                    groupClassName:   'col-md-5 col-sm-8 col-xs-12',
+                                                                    dataImage: ''
+                                                                });
+
+                                                            </script>
+
+                                                            @endif
 
                                                         @endif
 
@@ -2195,15 +2249,6 @@
 
                                 </div>
 
-                                    <script>
-
-                                        $("#featured_image").spartanMultiImagePicker({
-                                            fieldName:   'featured_image',
-                                            maxCount:         1,
-                                            groupClassName:   'col-md-5 col-sm-8 col-xs-12',
-                                        });
-
-                                    </script>
 
                                 <div class="main-childs col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;">
 
@@ -3504,7 +3549,6 @@
 
                 var check = 0;
 
-
                 $('#' + step + ' .' + step + '-validate').map(function() {
 
                     if(!$(this).val())
@@ -3515,6 +3559,21 @@
                     else
                     {
                         $(this).parent().removeClass('validate-error');
+                    }
+
+                });
+
+
+                $('#' + step + ' .' + step + '-validate-new').map(function() {
+
+                    if(!$(this).find('input').val())
+                    {
+                        $(this).children().children().addClass('validate-error');
+                        check = 1;
+                    }
+                    else
+                    {
+                        $(this).children().children().removeClass('validate-error');
                     }
 
                 });

@@ -12,9 +12,11 @@
         var count       = 0;
         var last_index  = 0;
         var total_count = 0;
+        var main = this;
 
         var defaults = {
             fieldName:        '',
+            dataImage:        '',
             groupClassName:   'col-md-4 col-sm-4 col-xs-6',
             rowHeight:        '200px',
             dropFileLabel:    'Drop file here',
@@ -61,22 +63,92 @@
             if(typeof placeholderImage.width != 'undefined'){
                 placeholderImageWidth = placeholderImage.width;
             }
-            var template = `<div class="${groupClassName} spartan_item_wrapper" data-spartanindexrow="${count}" style="margin-bottom : 20px; ">`+
-                `<div style="position: relative;">`+
-                `<div class="spartan_item_loader" data-spartanindexloader="${count}" style=" position: absolute; width: 100%; height: ${rowHeight}; background: rgba(255,255,255, 0.7); z-index: 22; text-align: center; align-items: center; margin: auto; justify-content: center; flex-direction: column; display : none; font-size : 1.7em; color: #CECECE">` +
-                `${uploadLoaderIcon}` +
-                `</div>`+
-                `<label class="file_upload" style="width: 100%; height: ${rowHeight}; border: 2px dashed #ddd; border-radius: 3px; cursor: pointer; text-align: center; overflow: hidden; padding: 5px; margin-top: 5px; margin-bottom : 5px; position : relative; display: flex; align-items: center; margin: auto; justify-content: center; flex-direction: column;">`+
-                `<a href="javascript:void(0)" data-spartanindexremove="${count}" style="position: absolute !important; right : 3px; top: 3px; display : none; background : #ED3C20; border-radius: 3px; width: 30px; height: 30px; line-height : 30px; text-align: center; text-decoration : none; color : #FFF;" class="spartan_remove_row"><i class="fas fa-times"></i></a>`+
-                `<img style="width: ${placeholderImageWidth}; margin: 0 auto; vertical-align: middle;" data-spartanindexi="${count}" src="${placeholderImageTarget}" class="spartan_image_placeholder" /> `+
-                `<p data-spartanlbldropfile="${count}" style="color : #5FAAE1; display: none; width : auto; ">${dropFileLabel}</p>`+
-                `<img style="width: 100%; vertical-align: middle; display:none;" class="img_" data-spartanindeximage="${count}">`+
-                `<input class="form-control spartan_image_input" accept="image/*" data-spartanindexinput="${count}" style="display : none"  name="${fieldName}" type="file">`+
-                `</label> `+
-                `</div>`+
-                `</div>`;
 
-            var html = $.parseHTML(template);
+            if(settings.dataImage)
+            {
+                var template = `<div class="${groupClassName} spartan_item_wrapper" data-spartanindexrow="${count}" style="margin-bottom : 20px; ">`+
+                    `<div style="position: relative;">`+
+                    `<div class="spartan_item_loader" data-spartanindexloader="${count}" style=" position: absolute; width: 100%; height: ${rowHeight}; background: rgba(255,255,255, 0.7); z-index: 22; text-align: center; align-items: center; margin: auto; justify-content: center; flex-direction: column; display : none; font-size : 1.7em; color: #CECECE">` +
+                    `${uploadLoaderIcon}` +
+                    `</div>`+
+                    `<label class="file_upload" style="width: 100%; height: ${rowHeight}; border: 2px dashed #ddd; border-radius: 3px; cursor: pointer; text-align: center; overflow: hidden; padding: 5px; margin-top: 5px; margin-bottom : 5px; position : relative; display: flex; align-items: center; margin: auto; justify-content: center; flex-direction: column;">`+
+                    `<a href="javascript:void(0)" data-spartanindexremove="${count}" style="position: absolute !important; right : 3px; top: 3px; background : #ED3C20; border-radius: 3px; width: 30px; height: 30px; line-height : 30px; text-align: center; text-decoration : none; color : #FFF;" class="spartan_remove_row_new"><i class="fas fa-times"></i></a>`+
+                    `<img style="width: ${placeholderImageWidth}; margin: 0 auto; vertical-align: middle; display: none;" data-spartanindexi="${count}" src="${placeholderImageTarget}" class="spartan_image_placeholder" /> `+
+                    `<p data-spartanlbldropfile="${count}" style="color : #5FAAE1; display: none; width : auto; ">${dropFileLabel}</p>`+
+                    `<img style="width: 100%; vertical-align: middle;" class="img_" data-spartanindeximage="${count}" src="`+settings.dataImage+`">`+
+                    `<input class="form-control spartan_image_input" accept="image/*" data-spartanindexinput="${count}" style="display : none"  name="${fieldName}" type="file">`+
+                    `</label> `+
+                    `</div>`+
+                    `</div>`;
+
+                var html = $.parseHTML(template);
+
+                $(html).on("click", ".spartan_remove_row_new", function(){
+
+                    $(this).parent().parent().parent().parent().removeAttr("data-img","");
+
+                    $(this).parent().parent().parent().parent().next('input').val(1);
+
+                    settings.dataImage = '';
+
+                    $(this).parent().parent().parent('.spartan_item_wrapper').remove();
+
+                    return main.each( function() {
+
+                        var that = this;
+                        addRow(settings, that);
+
+                        $(this).on("change", ".spartan_image_input", function(){
+                            loadImage(settings, this, that);
+                        });
+
+                        $(this).on("click", ".spartan_remove_row", function(){
+                            removeRow(settings, this, that);
+                        });
+
+
+                        $(this).on("dragenter dragover dragstart", '.spartan_item_wrapper', function(event){
+                            event.stopPropagation();
+                            event.preventDefault();
+                            onDragEnter(this);
+                        });
+
+                        $(this).on("dragleave", '.spartan_item_wrapper', function(){
+                            onDragLeave(this);
+                        });
+
+
+                        $(this).on("drop", '.spartan_item_wrapper', function(event){
+                            event.stopPropagation();
+                            event.preventDefault();
+                            onDropImage(settings, this, that, event);
+                        });
+
+                    });
+
+                });
+            }
+            else
+            {
+                var template = `<div class="${groupClassName} spartan_item_wrapper" data-spartanindexrow="${count}" style="margin-bottom : 20px; ">`+
+                    `<div style="position: relative;">`+
+                    `<div class="spartan_item_loader" data-spartanindexloader="${count}" style=" position: absolute; width: 100%; height: ${rowHeight}; background: rgba(255,255,255, 0.7); z-index: 22; text-align: center; align-items: center; margin: auto; justify-content: center; flex-direction: column; display : none; font-size : 1.7em; color: #CECECE">` +
+                    `${uploadLoaderIcon}` +
+                    `</div>`+
+                    `<label class="file_upload" style="width: 100%; height: ${rowHeight}; border: 2px dashed #ddd; border-radius: 3px; cursor: pointer; text-align: center; overflow: hidden; padding: 5px; margin-top: 5px; margin-bottom : 5px; position : relative; display: flex; align-items: center; margin: auto; justify-content: center; flex-direction: column;">`+
+                    `<a href="javascript:void(0)" data-spartanindexremove="${count}" style="position: absolute !important; right : 3px; top: 3px; display : none; background : #ED3C20; border-radius: 3px; width: 30px; height: 30px; line-height : 30px; text-align: center; text-decoration : none; color : #FFF;" class="spartan_remove_row"><i class="fas fa-times"></i></a>`+
+                    `<img style="width: ${placeholderImageWidth}; margin: 0 auto; vertical-align: middle;" data-spartanindexi="${count}" src="${placeholderImageTarget}" class="spartan_image_placeholder" /> `+
+                    `<p data-spartanlbldropfile="${count}" style="color : #5FAAE1; display: none; width : auto; ">${dropFileLabel}</p>`+
+                    `<img style="width: 100%; vertical-align: middle; display:none;" class="img_" data-spartanindeximage="${count}">`+
+                    `<input class="form-control spartan_image_input" accept="image/*" data-spartanindexinput="${count}" style="display : none"  name="${fieldName}" type="file">`+
+                    `</label> `+
+                    `</div>`+
+                    `</div>`;
+
+                var html = $.parseHTML(template);
+
+            }
+
 
             $(el).append(html);
             count++;
@@ -85,6 +157,7 @@
                 last_index : last_index
             };
             settings.onAddRow.call(this, count);
+
         }
 
 

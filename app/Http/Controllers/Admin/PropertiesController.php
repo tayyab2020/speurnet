@@ -351,6 +351,7 @@ class PropertiesController extends MainAdminController
     public function addnew(Request $request)
     {
 
+
     	$data =  \Request::except(array('_token')) ;
 
 	    $inputs = $request->all();
@@ -477,22 +478,103 @@ class PropertiesController extends MainAdminController
 		$featured_image = $request->file('featured_image');
 
 
-        if($featured_image){
+        if($request->remove_featured == 1)
+        {
+            if($request->route != 'home_exchange')
+            {
+                if($featured_image)
+                {
 
-            \File::delete(public_path() .'/upload/properties/'.$property->featured_image.'-b.jpg');
-			\File::delete(public_path() .'/upload/properties/'.$property->featured_image.'-s.jpg');
+                    // upload new image
+
+                    \File::delete(public_path() .'/upload/properties/'.$property->featured_image.'-b.jpg');
+                    \File::delete(public_path() .'/upload/properties/'.$property->featured_image.'-s.jpg');
 
 
-            $tmpFilePath = 'upload/properties/';
+                    $tmpFilePath = 'upload/properties/';
 
-            $hardPath =  Str::slug($inputs['property_name'], '-').'-'.md5(rand(0,99999));
+                    $hardPath =  Str::slug($inputs['property_name'], '-').'-'.md5(rand(0,99999));
 
-            $img = Image::make($featured_image);
+                    $img = Image::make($featured_image);
 
-            $img->save($tmpFilePath.$hardPath.'-b.jpg');
-			$img->fit(640, 425)->save($tmpFilePath.$hardPath.'-s.jpg');
+                    $img->save($tmpFilePath.$hardPath.'-b.jpg');
+                    $img->fit(640, 425)->save($tmpFilePath.$hardPath.'-s.jpg');
 
-            $property->featured_image = $hardPath;
+                    $property->featured_image = $hardPath;
+                }
+                else
+                {
+                    $data =  \Request::except(array('_token')) ;
+
+                    $rule=array(
+                        'featured_image' => 'required',
+                    );
+
+                    $messages = [
+                        'featured_image.required' => 'Featured Image is required.',
+                    ];
+
+                    $validator = \Validator::make($data,$rule,$messages);
+
+
+                    if ($validator->fails())
+                    {
+                        return redirect()->back()->withErrors($validator->messages())->withInput();
+                    }
+                }
+            }
+            else
+            {
+                if($featured_image)
+                {
+
+                    // upload new image
+
+                    \File::delete(public_path() .'/upload/properties/'.$property->featured_image.'-b.jpg');
+                    \File::delete(public_path() .'/upload/properties/'.$property->featured_image.'-s.jpg');
+
+
+                    $tmpFilePath = 'upload/properties/';
+
+                    $hardPath =  Str::slug($inputs['property_name'], '-').'-'.md5(rand(0,99999));
+
+                    $img = Image::make($featured_image);
+
+                    $img->save($tmpFilePath.$hardPath.'-b.jpg');
+                    $img->fit(640, 425)->save($tmpFilePath.$hardPath.'-s.jpg');
+
+                    $property->featured_image = $hardPath;
+                }
+                else
+                {
+                    \File::delete(public_path() .'/upload/properties/'.$property->featured_image.'-b.jpg');
+                    \File::delete(public_path() .'/upload/properties/'.$property->featured_image.'-s.jpg');
+                    $property->featured_image = Null;
+                }
+            }
+
+        }
+        else
+        {
+            if($featured_image)
+            {
+                // upload new image
+
+                \File::delete(public_path() .'/upload/properties/'.$property->featured_image.'-b.jpg');
+                \File::delete(public_path() .'/upload/properties/'.$property->featured_image.'-s.jpg');
+
+
+                $tmpFilePath = 'upload/properties/';
+
+                $hardPath =  Str::slug($inputs['property_name'], '-').'-'.md5(rand(0,99999));
+
+                $img = Image::make($featured_image);
+
+                $img->save($tmpFilePath.$hardPath.'-b.jpg');
+                $img->fit(640, 425)->save($tmpFilePath.$hardPath.'-s.jpg');
+
+                $property->featured_image = $hardPath;
+            }
 
         }
 
