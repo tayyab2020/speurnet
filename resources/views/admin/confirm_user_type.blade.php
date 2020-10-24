@@ -63,7 +63,7 @@
                                     <p class="mb-4 pb-2">{{__('text.Select Account Type')}}</p>
                                 </div>
 
-                                    <div class="col-12 pb-5">
+                                    <div class="col-12 pb-5" style="display: flex;justify-content: space-around;margin-top: 20px;">
 
                                         <input class="checkbox-tools" type="radio" name="type" id="tool-1" value="Agents" >
                                         <label class="for-checkbox-tools" for="tool-1">
@@ -133,6 +133,27 @@
     </script>
 
 <style>
+
+    .for-checkbox-tools
+    {
+        display: flex !important;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    @media (max-width: 800px)
+    {
+        .pb-5
+        {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .for-checkbox-tools
+        {
+            margin: 15px 0px !important;
+        }
+    }
 
     .swal2-popup
     {
