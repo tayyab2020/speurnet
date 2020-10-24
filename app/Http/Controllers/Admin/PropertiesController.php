@@ -340,7 +340,7 @@ class PropertiesController extends MainAdminController
 
             $properties = Home_Exchange::where('user_id',Auth::user()->id)->get();
 
-            if(count($properties) > 1)
+            if(count($properties) >= 1)
             {
                 return redirect()->back();
             }
