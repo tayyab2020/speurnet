@@ -159,6 +159,7 @@
     body{
         width: 100%;
         overflow-x: hidden;
+        background: var(--white);
         font-family: 'Poppins', sans-serif;
         font-size: 17px;
         line-height: 30px;
