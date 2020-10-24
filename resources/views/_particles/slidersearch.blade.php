@@ -182,7 +182,7 @@
                                                         <div class="form-group">
                                                             <label for="type">{{__('text.Property Type')}}</label>
                                                             <select class="form-control" name="type">
-                                                                <option value="">All</option>
+                                                                <option value="">{{__('text.All')}}</option>
                                                                 @foreach(\App\Types::orderBy('types')->get() as $type)
                                                                     <option value="{{$type->id}}">{{$type->types}}</option>
                                                                 @endforeach
@@ -214,9 +214,9 @@
                                                     <div class="form-group">
                                                         <label for="minprice">{{__('text.Type of Construction')}}</label>
                                                         <select class="form-control" name="type_of_construction">
-                                                            <option value="">All</option>
-                                                            <option value="New">New</option>
-                                                            <option value="Old">Old</option>
+                                                            <option value="">{{__('text.All')}}</option>
+                                                            <option value="New">{{__('text.New')}}</option>
+                                                            <option value="Old">{{__('text.Old')}}</option>
                                                         </select>
                                                     </div>
 

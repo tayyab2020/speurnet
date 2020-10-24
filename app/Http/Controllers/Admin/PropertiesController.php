@@ -338,7 +338,16 @@ class PropertiesController extends MainAdminController
 
             $property_features = property_features::all();
 
-            return view('admin.pages.addeditproperty',compact('city_list','types','property_features'));
+            $properties = Home_Exchange::where('user_id',Auth::user()->id)->get();
+
+            if(count($properties) > 1)
+            {
+                return redirect()->back();
+            }
+            else
+            {
+                return view('admin.pages.addeditproperty',compact('city_list','types','property_features'));
+            }
         }
         else
         {
@@ -402,7 +411,7 @@ class PropertiesController extends MainAdminController
         $messages = [
             'property_name.required' => 'Property Name is required.',
             'property_slug.unique' => 'This Property Slug is already been taken.',
-            'description.required' => 'Description is required.',
+            'description.required' => __('Description is required.'),
             'featured_image.mimes' => 'Featured Image must be a file of type: jpg, jpeg, gif, png.',
             'featured_image.max' => 'Featured Image may not be greater than 5mb.',
             'property_images1.mimes' => 'Property Image 1 must be a file of type: jpg, jpeg, gif, png.',

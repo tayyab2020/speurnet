@@ -734,7 +734,16 @@ class PropertiesController extends Controller
 
                 $property_features = property_features::all();
 
-                return view('admin.pages.addeditproperty',compact('city_list','types','property_features'));
+                $properties = Home_Exchange::where('user_id',Auth::user()->id)->get();
+
+                if(count($properties) > 1)
+                {
+                    return redirect()->back();
+                }
+                else
+                {
+                    return view('admin.pages.addeditproperty',compact('city_list','types','property_features'));
+                }
             }
             else
             {

@@ -74,7 +74,7 @@
                <div class="form-group">
                       <label for="type">{{__('text.Property Type')}}</label>
                       <select class="form-control" name="type">
-                          <option value="">All</option>
+                          <option value="">{{__('text.All')}}</option>
                         @foreach(\App\Types::orderBy('types')->get() as $type)
                         <option value="{{$type->id}}" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') @if($property_type == $type->id) selected @endif @endif>{{$type->types}}</option>
 						@endforeach
@@ -119,7 +119,7 @@
                 <div class="form-group">
                     <label for="minprice">{{__('text.Type of Construction')}}</label>
                     <select class="form-control" name="type_of_construction">
-                        <option value="">All</option>
+                        <option value="">{{__('text.All')}}</option>
                         <option value="New" @if(Route::currentRouteName() == 'searchproperties') @if($type_of_construction == 'New') selected @endif @endif>{{__('text.New')}}</option>
                         <option value="Old" @if(Route::currentRouteName() == 'searchproperties') @if($type_of_construction == 'Old') selected @endif @endif>{{__('text.Old')}}</option>
                     </select>
@@ -421,7 +421,7 @@
                         <div class="form-group">
                             <label for="type">{{__('text.Property Type')}}</label>
                             <select class="form-control" name="type">
-                                <option value="">All</option>
+                                <option value="">{{__('text.All')}}</option>
                                 @foreach(\App\Types::orderBy('types')->get() as $type)
                                     <option value="{{$type->id}}" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') @if($property_type == $type->id) selected @endif @endif>{{$type->types}}</option>
                                 @endforeach
@@ -465,7 +465,7 @@
                             <div class="form-group">
                                 <label for="minprice">{{__('text.Type of Construction')}}</label>
                                 <select class="form-control" name="type_of_construction">
-                                    <option value="">All</option>
+                                    <option value="">{{__('text.All')}}</option>
                                     <option value="New" @if(Route::currentRouteName() == 'searchproperties') @if($type_of_construction == 'New') selected @endif @endif>{{__('text.New')}}</option>
                                     <option value="Old" @if(Route::currentRouteName() == 'searchproperties') @if($type_of_construction == 'Old') selected @endif @endif>{{__('text.Old')}}</option>
                                 </select>
@@ -601,6 +601,11 @@
         height: auto;
         border: 0;
         font-family: sans-serif;
+    }
+
+    .pac-container
+    {
+        z-index: 1000000 !important;
     }
 </style>
 
