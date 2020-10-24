@@ -28,7 +28,6 @@ class Home_Exchange extends Model
 
         $query = $query->where("property_type", "$preferred_house_kind");
 
-        $query->where("bedrooms", '>=', $preferred_bedrooms);
 
         $query->where("area" ,'>=', $preferred_area);
 
