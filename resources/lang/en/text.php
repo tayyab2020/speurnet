@@ -512,4 +512,5 @@ return [
     'Password & Confirm Password does not match' => 'Password & Confirm Password does not match',
     'Successfully updated!' => 'Successfully updated!',
     'I wanted you to see this Property AD I just Found on zoekjehuisje.nl' => 'I wanted you to see this Property AD I just Found on zoekjehuisje.nl',
+    'Featured Image is required.' => 'Featured Image is required.',
 ];

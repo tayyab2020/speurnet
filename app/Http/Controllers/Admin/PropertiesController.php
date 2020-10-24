@@ -511,7 +511,7 @@ class PropertiesController extends MainAdminController
                     );
 
                     $messages = [
-                        'featured_image.required' => 'Featured Image is required.',
+                        'featured_image.required' => __('text.Featured Image is required.'),
                     ];
 
                     $validator = \Validator::make($data,$rule,$messages);

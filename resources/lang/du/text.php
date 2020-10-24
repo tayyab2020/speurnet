@@ -511,4 +511,5 @@ return [
     'Password & Confirm Password does not match' => 'Het wachtwoord komen niet overeen. ',
     'Successfully updated!' => 'Succesvol geüpdatet!',
     'I wanted you to see this Property AD I just Found on zoekjehuisje.nl' => 'Deze woning heb ik gevonden op Zoekjehuisje.nl, kijk zelf maar!',
+    'Featured Image is required.' => 'Foto uploaden is verplicht',
 ];
