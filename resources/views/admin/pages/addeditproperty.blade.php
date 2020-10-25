@@ -2672,11 +2672,14 @@
 
                                                 <div class="media-body media-middle" style="display: flex;justify-content: space-between;">
 
-                                                    <input type="file" name="documents[]" multiple class="filestyle" style="border: none;">
+                                                    <label style="margin-bottom: 0;align-self: center;width: 100%;">
+                                                        <input type="file" name="documents[]" multiple style="display: none;" />
+                                                        Select Files
+                                                    </label>
 
                                                     <button type="button" class="remove-btn" style="outline: none;border: 0;color: red;float: right;font-size: 21px;background: transparent;padding: 10px 5px;margin-right: 5px;">
 
-                                                        <i aria-hidden="true" class="fas fa-times-circle" style="position:relative;top: 1px;">X</i>
+                                                        <i aria-hidden="true" class="fas fa-times-circle" style="position:relative;top: 1px;"></i>
 
                                                     </button>
 
