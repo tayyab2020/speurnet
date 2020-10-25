@@ -2345,7 +2345,7 @@
 
                                                 <div class="media-body media-middle">
 
-                                                    <div class="row" style="margin: 0;">
+                                                    <div class="row">
 
                                                         <?php
 
@@ -3490,9 +3490,9 @@
 
             $(".remove-btn").on('click', function() {
 
-                $(this).prev().val('');
+                $('#select_video').val('');
 
-                $(this).next('input').val(1);
+                $('#remove_video').val(1);
 
                 $('#video').hide();
 

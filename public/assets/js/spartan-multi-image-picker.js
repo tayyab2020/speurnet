@@ -181,7 +181,7 @@
                 settings.onRemoveRow.call(this, index);
 
                 $(parent).next('input').val('');
-                $(parent).next('input').val(1);
+                $(parent).next('input').next('input').val(1);
             }
 
             if (input.files && input.files[0]) {
