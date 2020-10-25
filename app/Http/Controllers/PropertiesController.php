@@ -1240,7 +1240,7 @@ class PropertiesController extends Controller
                 'broker_name' => $broker_name,
                 'broker_email' => $broker_email,
                 'broker_phone' => $broker_phone,
-                'username' => $request->username,
+                'username' => $request->name,
                 'email' => $request->email,
                 'phone' => $request->phone,
                 'inquiry' => $request->message,

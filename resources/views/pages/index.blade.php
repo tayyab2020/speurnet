@@ -131,7 +131,7 @@
 
                                     </div>
 
-                                    <div class="property-container" style="border: 1px solid #48cfad;margin-bottom: 10px">
+                                    <div class="property-container" style="border: 1px solid #48cfad;margin-bottom: 10px;">
                                         <div class="property-image latest">
 
                                             <a style="outline: none;" href="{{URL::to('properties/'.$property->property_slug)}}">
@@ -639,6 +639,17 @@
 
 <style>
 
+    .property-container
+    {
+        display: inline-table;
+        width: 100%;
+    }
+
+    .ekko-lightbox .modal-dialog
+    {
+        margin: 10px;
+    }
+
     @media (max-width: 768px)
     {
         .property-content h3, .property-text h3
@@ -828,9 +839,18 @@
 
     }
 
+    #myModal1
+    {
+        display: flex !important;
+    }
+
+    #myModal2
+    {
+        display: flex !important;
+    }
+
     .fade.in {
         transform: scale(1);
-        display: flex !important;
     }
 
     .slick-slide
@@ -899,7 +919,7 @@
         });
 
 
-        $('.modal-header .close').appendTo(".ekko-lightbox");
+        $('.ekko-lightbox .modal-header .close').appendTo(".ekko-lightbox");
 
         var length = $(".ekko-lightbox > button").length;
         length = length - 1;

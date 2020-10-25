@@ -1281,13 +1281,27 @@ class PropertiesController extends MainAdminController
 
             \Session::flash('flash_message', __('text.Changes Saved'));
 
-            return \Redirect::back();
+            if($request->route == 'home_exchange')
+            {
+                return redirect('admin/home_exchange');
+            }
+            else
+            {
+                return \Redirect::back();
+            }
+
         }else{
 
             \Session::flash('flash_message', __('text.Property Added'));
 
-            return \Redirect::back();
-
+            if($request->route == 'home_exchange')
+            {
+                return redirect('admin/home_exchange');
+            }
+            else
+            {
+                return \Redirect::back();
+            }
         }
 
 

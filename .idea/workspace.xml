@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7fe7f36f-c82f-4504-8c0a-7874522d22c9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/resources/lang/du/text.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/du/text.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/PropertiesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/PropertiesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PropertiesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PropertiesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/searchproperties.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/searchproperties.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -259,7 +263,9 @@
       <workItem from="1602927583286" duration="62686000" />
       <workItem from="1603182206716" duration="91348000" />
       <workItem from="1603533458248" duration="14830000" />
-      <workItem from="1603560505171" duration="11076000" />
+      <workItem from="1603560505171" duration="11455000" />
+      <workItem from="1603580698046" duration="645000" />
+      <workItem from="1603613544917" duration="6556000" />
     </task>
     <servers />
   </component>
@@ -282,10 +288,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="452" y="67" width="645" height="690" key="#phpunit.xml/0.0.1536.824@0.0.1536.824" timestamp="1596907790347" />
-    <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1603560507793">
+    <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1603613545752">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1603560507793" />
+    <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1603613545752" />
     <state x="329" y="14" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1599732083041">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -294,10 +300,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="553" y="319" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1595277485716" />
-    <state x="452" y="123" width="805" height="606" key="find.popup" timestamp="1603488248446">
+    <state x="452" y="123" width="805" height="606" key="find.popup" timestamp="1603636634557">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="452" y="123" width="805" height="606" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1603488248446" />
+    <state x="452" y="123" width="805" height="606" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1603636634557" />
     <state x="425" y="187" key="run.anything.popup" timestamp="1602767172445">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

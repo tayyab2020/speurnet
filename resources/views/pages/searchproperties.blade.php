@@ -190,6 +190,12 @@
 
     <style>
 
+        .property-container
+        {
+            display: inline-table;
+            width: 100%;
+        }
+
         @media (max-width: 991px){
 
             .filter-button{display: block !important;}
