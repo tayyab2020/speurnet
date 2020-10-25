@@ -2,6 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7fe7f36f-c82f-4504-8c0a-7874522d22c9" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/PropertiesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/PropertiesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/js/spartan-multi-image-picker.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/spartan-multi-image-picker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/pages/addeditproperty.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/pages/addeditproperty.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/pages/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/index.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -261,7 +265,7 @@
       <workItem from="1603533458248" duration="14830000" />
       <workItem from="1603560505171" duration="11455000" />
       <workItem from="1603580698046" duration="645000" />
-      <workItem from="1603613544917" duration="7171000" />
+      <workItem from="1603613544917" duration="15358000" />
     </task>
     <servers />
   </component>
@@ -300,10 +304,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="452" y="123" width="805" height="606" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1603636634557" />
-    <state x="425" y="187" key="run.anything.popup" timestamp="1602767172445">
+    <state x="425" y="187" key="run.anything.popup" timestamp="1603654310099">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1602767172445" />
+    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1603654310099" />
     <state x="389" y="66" width="756" height="758" key="search.everywhere.popup" timestamp="1603060757387">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

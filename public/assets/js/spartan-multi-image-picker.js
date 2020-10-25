@@ -83,9 +83,10 @@
 
                 var html = $.parseHTML(template);
 
+
                 $(html).on("click", ".spartan_remove_row_new", function(){
 
-                    $(this).parent().parent().parent().parent().next('input').val(1);
+                    $(this).parent().parent().parent().parent().next('input').val("");
 
                     settings.dataImage = '';
 
@@ -169,7 +170,23 @@
         function loadImage(settings, input, parent){
             var index = $(input).data('spartanindexinput');
 
+            console.log(input.files[0]);
+
+            if(typeof input.files[0] === "undefined")
+            {
+                $(parent).find('[data-spartanindexrow="'+index+'"]').remove();
+                if (last_index == index  || $(parent).find('img[data-spartanindeximage="'+last_index+'"]').is(":visible")  == true){
+                    addRow(settings, parent);
+                }
+                total_count--;
+                settings.onRemoveRow.call(this, index);
+
+                $(parent).next('input').val('');
+            }
+
             if (input.files && input.files[0]) {
+
+                $(parent).next('input').val(input.files[0].name);
 
                 var file_select = input.files[0], allowedExt = settings.allowedExt, maxFileSize = settings.maxFileSize;
                 var file_select_type = file_select.type,
@@ -291,6 +308,8 @@
             }
             total_count--;
             settings.onRemoveRow.call(this, index);
+
+            $(parent).next('input').val('');
         }
 
 
@@ -351,7 +370,6 @@
 
             loadImage(settings, file_p, parent);
         }
-
 
 
         return this.each( function() {

@@ -638,7 +638,7 @@
 <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/css/flaticon.css') }}"/>
 
 <style>
-    
+
 
     .ekko-lightbox .modal-dialog
     {

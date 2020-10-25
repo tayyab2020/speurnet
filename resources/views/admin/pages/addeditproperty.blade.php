@@ -2245,8 +2245,8 @@
                                                         @if(isset($property->featured_image))
 
                                                             <div class="row">
-                                                                <div id="featured_image"></div>
-                                                                <input type="hidden" id="remove_featured" name="remove_featured" value="0">
+                                                                <div id="featured_image" class="stepper-step-4-validate-new"></div>
+                                                                <input type="hidden" id="f_image" name="f_image" value="{{$property->featured_image.'-s.jpg'}}">
                                                             </div>
 
                                                             <script>
@@ -2264,6 +2264,7 @@
 
                                                         <div class="row">
                                                             <div id="featured_image" class="stepper-step-4-validate-new"></div>
+                                                            <input type="hidden" id="f_image" name="f_image" value="">
                                                         </div>
 
                                                             <script>
@@ -2285,7 +2286,7 @@
 
                                                             <div class="row">
                                                                 <div id="featured_image"></div>
-                                                                <input type="hidden" id="remove_featured" name="remove_featured" value="0">
+                                                                <input type="hidden" id="f_image" name="f_image" value="{{$property->featured_image.'-s.jpg'}}">
                                                             </div>
 
                                                             <script>
@@ -2303,6 +2304,7 @@
 
                                                         <div class="row">
                                                             <div id="featured_image"></div>
+                                                            <input type="hidden" id="f_image" name="f_image" value="">
                                                         </div>
 
                                                             <script>
@@ -2674,7 +2676,7 @@
 
                                                     <button type="button" class="remove-btn" style="outline: none;border: 0;color: red;float: right;font-size: 21px;background: transparent;padding: 10px 5px;margin-right: 5px;">
 
-                                                        <i aria-hidden="true" class="fas fa-times-circle" style="position:relative;top: 1px;"></i>
+                                                        <i aria-hidden="true" class="fas fa-times-circle" style="position:relative;top: 1px;">X</i>
 
                                                     </button>
 
@@ -3710,7 +3712,7 @@
 
                 $('#' + step + ' .' + step + '-validate-new').map(function() {
 
-                    if(!$(this).find('input').val())
+                    if(!$(this).next('input').val())
                     {
                         $(this).children().children().addClass('validate-error');
                         check = 1;
@@ -4201,19 +4203,6 @@
 
                 });
 
-                $('#' + step + ' .' + step + '-validate-new').map(function() {
-
-                    if(!$(this).find('input').val())
-                    {
-                        $(this).children().children().addClass('validate-error');
-                        check = 1;
-                    }
-                    else
-                    {
-                        $(this).children().children().removeClass('validate-error');
-                    }
-
-                });
 
                 if(!check)
                 {
