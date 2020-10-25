@@ -2345,279 +2345,60 @@
 
                                                 <div class="media-body media-middle">
 
-                                                    @if(isset($property->property_images1))
+                                                    <div class="row" style="margin: 0;">
 
-                                                        <div class="row">
-                                                            <div id="property_images1"></div>
-                                                            <input type="hidden" name="remove_property_images1" value="0">
-                                                        </div>
+                                                        <?php
 
-                                                        <script>
+                                                        $x = 0;
+                                                        for($i = 1; $i<=9; $i++)
+                                                            {
+                                                                $p = 'property_images'.$i;
 
-                                                            $("#property_images1").spartanMultiImagePicker({
-                                                                fieldName:   'property_images1',
-                                                                maxCount:         1,
-                                                                groupClassName:   'col-md-5 col-sm-8 col-xs-12',
-                                                                dataImage: '<?php echo URL::asset('upload/properties/'.$property->property_images1.'-b.jpg'); ?>'
-                                                            });
+                                                                ?>
 
-                                                        </script>
+                                                        @if(isset($property->$p))
 
-                                                    @else
+                                                            <?php $x++; ?>
 
-                                                        <div class="row">
-                                                            <div id="property_images1"></div>
-                                                        </div>
+                                                                <div id="{{$p}}"></div>
+                                                                <input type="hidden" name="p_image{{$i}}" value="{{$property->$p.'-b.jpg'}}">
+                                                                <input type="hidden" name="p_remove{{$i}}" value="0">
 
-                                                        <script>
+                                                            <script>
 
-                                                            $("#property_images1").spartanMultiImagePicker({
-                                                                fieldName:   'property_images1',
-                                                                maxCount:         1,
-                                                                groupClassName:   'col-md-5 col-sm-8 col-xs-12',
-                                                                dataImage: ''
-                                                            });
+                                                                $("#{{$p}}").spartanMultiImagePicker({
+                                                                    fieldName:   '{{$p}}',
+                                                                    maxCount:         1,
+                                                                    groupClassName:   'col-md-5 col-sm-8 col-xs-12',
+                                                                    dataImage: '<?php echo URL::asset('upload/properties/'.$property->$p.'-b.jpg'); ?>'
+                                                                });
 
-                                                        </script>
+                                                            </script>
 
-                                                    @endif
+                                                        @endif
 
+                                                            <?php } ?>
 
-                                                </div>
-                                            </div>
+                                                            @if($x < 9)
 
-                                        </div>
+                                                                <?php $y = 9 - $x; ?>
 
-                                    </div>
+                                                                <div id="property_images"></div>
 
-                                </div>
+                                                                <script>
 
+                                                                    $("#property_images").spartanMultiImagePicker({
+                                                                        fieldName:   'property_images[]',
+                                                                        maxCount:         '{{$y}}',
+                                                                        groupClassName:   'col-md-5 col-sm-8 col-xs-12',
+                                                                        dataImage: ''
+                                                                    });
 
-                                <div class="main-childs col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;">
+                                                                </script>
 
-                                    <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
+                                                            @endif
 
-                                        <label class="left-label" style="float: left;">{{__('text.Property Image 2')}}</label>
-
-                                        <div style="width: 100%;display: inline-block;margin: auto">
-
-                                            <div class="media">
-
-                                                <div class="media-body media-middle">
-
-                                                    @if(isset($property->property_images2))
-
-                                                        <div class="row">
-                                                            <div id="property_images2"></div>
-                                                            <input type="hidden" name="remove_property_images2" value="0">
-                                                        </div>
-
-                                                        <script>
-
-                                                            $("#property_images2").spartanMultiImagePicker({
-                                                                fieldName:   'property_images2',
-                                                                maxCount:         1,
-                                                                groupClassName:   'col-md-5 col-sm-8 col-xs-12',
-                                                                dataImage: '<?php echo URL::asset('upload/properties/'.$property->property_images2.'-b.jpg'); ?>'
-                                                            });
-
-                                                        </script>
-
-                                                    @else
-
-                                                        <div class="row">
-                                                            <div id="property_images2"></div>
-                                                        </div>
-
-                                                        <script>
-
-                                                            $("#property_images2").spartanMultiImagePicker({
-                                                                fieldName:   'property_images2',
-                                                                maxCount:         1,
-                                                                groupClassName:   'col-md-5 col-sm-8 col-xs-12',
-                                                                dataImage: ''
-                                                            });
-
-                                                        </script>
-
-                                                    @endif
-
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-
-                                <div class="main-childs col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;">
-
-                                    <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
-
-                                        <label class="left-label" style="float: left;">{{__('text.Property Image 3')}}</label>
-
-                                        <div style="width: 100%;display: inline-block;margin: auto">
-
-                                            <div class="media">
-
-                                                <div class="media-body media-middle">
-
-                                                    @if(isset($property->property_images3))
-
-                                                        <div class="row">
-                                                            <div id="property_images3"></div>
-                                                            <input type="hidden" name="remove_property_images3" value="0">
-                                                        </div>
-
-                                                        <script>
-
-                                                            $("#property_images3").spartanMultiImagePicker({
-                                                                fieldName:   'property_images3',
-                                                                maxCount:         1,
-                                                                groupClassName:   'col-md-5 col-sm-8 col-xs-12',
-                                                                dataImage: '<?php echo URL::asset('upload/properties/'.$property->property_images3.'-b.jpg'); ?>'
-                                                            });
-
-                                                        </script>
-
-                                                    @else
-
-                                                        <div class="row">
-                                                            <div id="property_images3"></div>
-                                                        </div>
-
-                                                        <script>
-
-                                                            $("#property_images3").spartanMultiImagePicker({
-                                                                fieldName:   'property_images3',
-                                                                maxCount:         1,
-                                                                groupClassName:   'col-md-5 col-sm-8 col-xs-12',
-                                                                dataImage: ''
-                                                            });
-
-                                                        </script>
-
-                                                    @endif
-
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-
-                                <div class="main-childs col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;">
-
-                                    <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
-
-                                        <label class="left-label" style="float: left;">{{__('text.Property Image 4')}}</label>
-
-                                        <div style="width: 100%;display: inline-block;margin: auto">
-
-                                            <div class="media">
-
-                                                <div class="media-body media-middle">
-
-                                                    @if(isset($property->property_images4))
-
-                                                        <div class="row">
-                                                            <div id="property_images4"></div>
-                                                            <input type="hidden" name="remove_property_images4" value="0">
-                                                        </div>
-
-                                                        <script>
-
-                                                            $("#property_images4").spartanMultiImagePicker({
-                                                                fieldName:   'property_images4',
-                                                                maxCount:         1,
-                                                                groupClassName:   'col-md-5 col-sm-8 col-xs-12',
-                                                                dataImage: '<?php echo URL::asset('upload/properties/'.$property->property_images4.'-b.jpg'); ?>'
-                                                            });
-
-                                                        </script>
-
-                                                    @else
-
-                                                        <div class="row">
-                                                            <div id="property_images4"></div>
-                                                        </div>
-
-                                                        <script>
-
-                                                            $("#property_images4").spartanMultiImagePicker({
-                                                                fieldName:   'property_images4',
-                                                                maxCount:         1,
-                                                                groupClassName:   'col-md-5 col-sm-8 col-xs-12',
-                                                                dataImage: ''
-                                                            });
-
-                                                        </script>
-
-                                                    @endif
-
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-
-                                <div class="main-childs col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0;">
-
-                                    <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
-
-                                        <label class="left-label" style="float: left;">{{__('text.Property Image 5')}}</label>
-
-                                        <div style="width: 100%;display: inline-block;margin: auto">
-
-                                            <div class="media">
-
-                                                <div class="media-body media-middle">
-
-                                                    @if(isset($property->property_images5))
-
-                                                        <div class="row">
-                                                            <div id="property_images5"></div>
-                                                            <input type="hidden" name="remove_property_images5" value="0">
-                                                        </div>
-
-                                                        <script>
-
-                                                            $("#property_images5").spartanMultiImagePicker({
-                                                                fieldName:   'property_images5',
-                                                                maxCount:         1,
-                                                                groupClassName:   'col-md-5 col-sm-8 col-xs-12',
-                                                                dataImage: '<?php echo URL::asset('upload/properties/'.$property->property_images5.'-b.jpg'); ?>'
-                                                            });
-
-                                                        </script>
-
-                                                    @else
-
-                                                        <div class="row">
-                                                            <div id="property_images5"></div>
-                                                        </div>
-
-                                                        <script>
-
-                                                            $("#property_images5").spartanMultiImagePicker({
-                                                                fieldName:   'property_images5',
-                                                                maxCount:         1,
-                                                                groupClassName:   'col-md-5 col-sm-8 col-xs-12',
-                                                                dataImage: ''
-                                                            });
-
-                                                        </script>
-
-                                                    @endif
+                                                    </div>
 
                                                 </div>
                                             </div>
@@ -2640,15 +2421,37 @@
 
                                             <div class="media">
 
+                                                @if(isset($property->video))
+
+                                                    <video id="video" style="width: 100%;height: 310px;" controls>
+                                                        <source src="{{URL::asset('upload/properties/'.$property->video)}}" class="video_here" type="video/mp4">
+                                                        <source src="{{URL::asset('upload/properties/'.$property->video)}}" class="video_here" type="video/ogg">
+                                                    </video>
+
+                                                    @else
+
+                                                    <video id="video" style="width: 100%;height: 310px;display: none;" controls>
+                                                        <source src="" class="video_here" type="video/mp4">
+                                                        <source src="" class="video_here" type="video/ogg">
+                                                    </video>
+
+                                                    @endif
+
+
                                                 <div class="media-body media-middle" style="display: flex;justify-content: space-between;">
 
-                                                    <input type="file" name="video" class="filestyle" style="border: none;">
+                                                    <label style="margin-bottom: 0;align-self: center;width: 100%;padding-left: 10px;font-family: 'Roboto';font-weight: 700;">
+                                                        <input type="file" id="select_video" name="video" style="display: none;" />
+                                                        Select Video
+                                                    </label>
 
                                                     <button type="button" class="remove-btn" style="outline: none;border: 0;color: red;float: right;font-size: 21px;background: transparent;padding: 10px 5px;margin-right: 5px;">
 
                                                         <i aria-hidden="true" class="fas fa-times-circle" style="position:relative;top: 1px;"></i>
 
                                                     </button>
+
+                                                    <input type="hidden" id="remove_video" name="remove_video" value="0">
 
                                                 </div>
                                             </div>
@@ -2672,7 +2475,7 @@
 
                                                 <div class="media-body media-middle" style="display: flex;justify-content: space-between;">
 
-                                                    <label style="margin-bottom: 0;align-self: center;width: 100%;padding-left: 10px;">
+                                                    <label style="margin-bottom: 0;align-self: center;width: 100%;padding-left: 10px;font-family: 'Roboto';font-weight: 700;">
                                                         <input type="file" name="documents[]" multiple style="display: none;" />
                                                         Select Files
                                                     </label>
@@ -3688,6 +3491,21 @@
             $(".remove-btn").on('click', function() {
 
                 $(this).prev().val('');
+
+                $(this).next('input').val(1);
+
+                $('#video').hide();
+
+            });
+
+            $("#select_video").on('change', function() {
+
+                var $source = $('.video_here');
+                $source[0].src = URL.createObjectURL(this.files[0]);
+                $source.parent()[0].load();
+                $('#video').show();
+
+                $('#remove_video').val(0);
 
             });
 

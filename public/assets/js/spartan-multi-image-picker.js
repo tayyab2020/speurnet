@@ -87,6 +87,7 @@
                 $(html).on("click", ".spartan_remove_row_new", function(){
 
                     $(this).parent().parent().parent().parent().next('input').val("");
+                    $(this).parent().parent().parent().parent().next('input').next('input').val(1);
 
                     settings.dataImage = '';
 
@@ -170,8 +171,6 @@
         function loadImage(settings, input, parent){
             var index = $(input).data('spartanindexinput');
 
-            console.log(input.files[0]);
-
             if(typeof input.files[0] === "undefined")
             {
                 $(parent).find('[data-spartanindexrow="'+index+'"]').remove();
@@ -182,11 +181,13 @@
                 settings.onRemoveRow.call(this, index);
 
                 $(parent).next('input').val('');
+                $(parent).next('input').val(1);
             }
 
             if (input.files && input.files[0]) {
 
                 $(parent).next('input').val(input.files[0].name);
+                $(parent).next('input').next('input').val(0);
 
                 var file_select = input.files[0], allowedExt = settings.allowedExt, maxFileSize = settings.maxFileSize;
                 var file_select_type = file_select.type,
