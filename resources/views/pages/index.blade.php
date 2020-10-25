@@ -638,12 +638,7 @@
 <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/css/flaticon.css') }}"/>
 
 <style>
-
-    .property-container
-    {
-        display: inline-table;
-        width: 100%;
-    }
+    
 
     .ekko-lightbox .modal-dialog
     {
