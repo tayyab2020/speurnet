@@ -2672,7 +2672,7 @@
 
                                                 <div class="media-body media-middle" style="display: flex;justify-content: space-between;">
 
-                                                    <label style="margin-bottom: 0;align-self: center;width: 100%;">
+                                                    <label style="margin-bottom: 0;align-self: center;width: 100%;padding-left: 10px;">
                                                         <input type="file" name="documents[]" multiple style="display: none;" />
                                                         Select Files
                                                     </label>
