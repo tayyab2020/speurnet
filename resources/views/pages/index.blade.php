@@ -1339,9 +1339,6 @@
             }
         });
 
-        $('#myModal').on('shown.bs.modal', function () {
-            $(this).css("overflow","hidden auto");
-        });
 
         $('#myModal1').on('shown.bs.modal', function () {
             $("body").addClass("modal-open1");
