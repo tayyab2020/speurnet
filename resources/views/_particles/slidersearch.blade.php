@@ -405,6 +405,14 @@
 
     $( document ).ready(function() {
 
+        $('#myModal').on('shown.bs.modal', function () {
+            $("body").addClass("modal-open");
+        });
+
+        $('#myModal').on('hidden.bs.modal', function () {
+            $("body").removeClass("modal-open");
+        });
+
         $('.city-input').on('keyup keypress', function(e) {
 
             var keyCode = e.keyCode || e.which;
