@@ -1120,7 +1120,7 @@
 <input type="hidden" id="cookie-consent" value="{{$cookie}}">
 
 <!-- Modal -->
-<div id="myModal2" class="modal fade" role="dialog">
+<div id="myModal2" class="modal fade" role="dialog" style="overflow: hidden auto;">
     <div class="modal-dialog">
 
         <!-- Modal content-->
