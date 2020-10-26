@@ -14,6 +14,7 @@
     <meta property="og:image" content="@yield('head_image', url('/upload/logo.png'))" />
     <meta property="og:url" content="@yield('head_url', url('/'))" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+      <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
 
     <link href="{{ URL::asset('upload/'.getcong('site_favicon')) }}" rel="icon" type="image/x-icon" />
 
