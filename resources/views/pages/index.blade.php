@@ -1341,11 +1341,6 @@
 
         $('#myModal').on('shown.bs.modal', function () {
             $(this).css("overflow","hidden auto");
-            $("body").addClass("modal-open1");
-        });
-
-        $('#myModal').on('hidden.bs.modal', function () {
-            $("body").removeClass("modal-open1");
         });
 
         $('#myModal1').on('shown.bs.modal', function () {
