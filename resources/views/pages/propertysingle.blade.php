@@ -2140,7 +2140,7 @@
 
                                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" style="float: right;text-align: right;">
                                     <label>{{__('text.Preferred House Type')}}</label>
-                                    <p>@if($property->property_type == 0) Geen voorkeur @else {{getPropertyTypeName($property->preferred_kind)->types}} @endif</p>
+                                    <p>@if($property->preferred_kind == 0) Geen voorkeur @else {{getPropertyTypeName($property->preferred_kind)->types}} @endif</p>
                                 </div>
 
                             </div>
