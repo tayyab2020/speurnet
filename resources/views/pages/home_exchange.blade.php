@@ -436,6 +436,8 @@
 
                         @endforeach
 
+                        {{ $recent->appends(request()->query())->links() }}
+
 
                     </div>
 

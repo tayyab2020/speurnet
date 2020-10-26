@@ -488,7 +488,7 @@ class PropertiesController extends Controller
 
         $faqs = faqs::orderBy('id', 'desc')->take(5)->get();
 
-        $recent = Home_Exchange::where('home_exchange',1)->orderBy('id', 'desc')->take(5)->get();
+        $recent = Home_Exchange::where('home_exchange',1)->orderBy('id', 'desc')->paginate(5);
 
         return view('pages.home_exchange',compact('types','recent','faqs'));
     }
