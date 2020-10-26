@@ -24,7 +24,7 @@
                 <i class="fa fa-close"></i>
             </button>
 
-          <ul class="nav navbar-nav navbar-right">
+          <ul class="nav navbar-nav navbar-right" style="-webkit-overflow-scrolling: auto;">
             <li class="{{classActivePathPublic('')}}"><a href="{{ URL::to('/') }}">{{__('text.Home')}}</a></li>
         	<li class="{{classActivePathPublic('properties')}}"><a href="{{ URL::to('properties/') }}">{{__('text.All Properties')}}</a></li>
             {{--<li class="{{classActivePathPublic('featured')}}"><a href="{{ URL::to('featured/') }}">Featured</a></li>--}}

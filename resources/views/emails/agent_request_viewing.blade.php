@@ -44,7 +44,7 @@
 
     <div style="background: #dce36d;width: 50%;padding: 20px;border-radius: 20px;" id="res">
 
-        <p style="color: black;">Beste makelaar,</p>
+        <p style="color: black;">Beste {{$broker_name}},</p>
         <p style="color: black;">Je hebt een bezichtigingsverzoek ontvangen van {{$gender}} {{$username}} voor de "{{$property_name}}".</p>
         <p style="color: black;">Je kunt met de volgende gegevens contact opnemen met {{$gender}} {{$username}} om de bezichtiging te plannen:</p>
         <p>{{$gender1}} {{$username}}</p>
