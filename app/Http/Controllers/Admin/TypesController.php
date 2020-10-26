@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Home_Exchange;
+use App\New_Constructions;
 use App\Properties;
 use Auth;
 use App\User;
@@ -132,9 +134,31 @@ class TypesController extends MainAdminController
 
         }
 
+    	$check = 0;
+
     	$properties = Properties::where('property_type',$id)->get();
 
-    	if(count($properties) == 0)
+    	if(count($properties) > 0)
+        {
+            $check = 1;
+        }
+
+        $properties = New_Constructions::where('property_type',$id)->get();
+
+        if(count($properties) > 0)
+        {
+            $check = 1;
+        }
+
+        $properties = Home_Exchange::where('property_type',$id)->orWhere('preferred_kind',$id)->get();
+
+        if(count($properties) > 0)
+        {
+            $check = 1;
+        }
+        
+
+    	if(!$check)
         {
             $type = Types::findOrFail($id);
 
