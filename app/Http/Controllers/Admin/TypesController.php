@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Properties;
 use Auth;
 use App\User;
 use App\Types;
@@ -9,6 +10,7 @@ use App\Types;
 use Carbon\Carbon;
 use App\Http\Requests;
 use Illuminate\Http\Request;
+use phpDocumentor\Reflection\DocBlock\Tags\Property;
 use Session;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\DB;
@@ -130,13 +132,21 @@ class TypesController extends MainAdminController
 
         }
 
-        $type = Types::findOrFail($id);
+    	$properties = Properties::where('property_type',$id)->get();
 
+    	if(count($properties) == 0)
+        {
+            $type = Types::findOrFail($id);
 
+            $type->delete();
 
-		$type->delete();
+            \Session::flash('flash_message', 'Deleted');
+        }
+    	else
+        {
+            \Session::flash('flash_message', 'Cant delete, you have to first unlink this property type from specific properties or remove those properties!');
+        }
 
-        \Session::flash('flash_message', 'Deleted');
 
         return redirect()->back();
 
