@@ -148,7 +148,7 @@
                             <!-- break -->
 
 
-                            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-hidden="true" style="overflow: scroll;-webkit-overflow-scrolling: touch;">
+                            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-hidden="true" style="overflow: hidden;">
                                 <div class="modal-dialog modal-full" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -157,7 +157,7 @@
                                                 <span aria-hidden="true">×</span>
                                             </button>
                                         </div>
-                                        <div class="modal-body p-4" id="result">
+                                        <div class="modal-body p-4" id="result" style="overflow: auto;height: 500px;">
 
                                             <div class="row" style="display: flex;">
 
