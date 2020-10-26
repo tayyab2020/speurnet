@@ -156,6 +156,9 @@
 	  </script>
 
       <style>
+          body{
+              -webkit-overflow-scrolling:touch;
+          }
 
           @media screen and (max-width: 767px)
           {
