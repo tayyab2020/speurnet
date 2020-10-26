@@ -157,7 +157,6 @@
                 </form>
 
                 </td>
-                   <td><?php echo getPropertyTypeName($property->property_type)->types; exit(); ?></td>
 				<td>@if($property->property_type == 0) Geen voorkeur @else {{ getPropertyTypeName($property->property_type)->types }} @endif</td>
                 <td>{{$date}}</td>
 				<td>@if(Route::currentRouteName() == 'home_exchange_list') @if(Auth::User()->usertype != "Admin") {{__('text.Rent')}} @else Rent @endif @else @if(Auth::User()->usertype != "Admin"){{__('text.'.$property->property_purpose)}}@else {{$property->property_purpose}} @endif @endif</td>
