@@ -156,6 +156,14 @@
 
       <style>
 
+          @media screen and (min-width: 1201px)
+          {
+              .navbar-default .navbar-brand::after
+              {
+                  height: 102px;
+              }
+          }
+
           @media screen and (max-width: 767px)
           {
               .navbar-nav {

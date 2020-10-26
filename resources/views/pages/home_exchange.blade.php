@@ -33,43 +33,46 @@
 
                 @if(!isset($properties))
 
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 faq" style="margin-top: 60px;">
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 faq" style="margin-top: 60px;">
 
-                    <div style="background: white;padding: 20px;border-radius: 10px;box-shadow: 1px 1px 14px 2px #e7e7e7;">
+                        <div style="background: white;padding: 20px 10px 0px 10px;border-radius: 10px;box-shadow: 1px 1px 14px 2px #e7e7e7;">
 
-                        <h2 style="margin-bottom: 30px;color: #868686;font-weight: 600;text-align: center;margin-top: 0px;">{{__('text.FAQs')}}</h2>
+                            <h2 style="margin-bottom: 30px;color: #868686;font-weight: 600;text-align: center;margin-top: 0px;">{{__('text.Recent Ads')}}</h2>
 
-                        <section class="cd-faq js-cd-faq container max-width-md margin-top-lg margin-bottom-lg" style="padding: 0;margin: 0;width: 100%;">
-                            <div class="cd-faq__items" style="padding: 0;">
+                            @foreach($recent as $temp)
 
-                                <ul id="basics" class="cd-faq__group" style="padding: 0;">
+                                <div class="row" style="margin: 0;border-bottom:1px solid #e5e5e5;margin-bottom: 20px;">
 
-                                    @foreach($faqs as $key)
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="padding: 0;display: flex;flex-direction: row;">
 
-                                        <li class="cd-faq__item">
-                                            <a class="cd-faq__trigger" href="#0"><span>{{$key->question}}</span></a>
-                                            <div class="cd-faq__content">
-                                                <div class="text-component">
-                                                    <p>{!! $key->answer !!}</p>
-                                                </div>
-                                            </div> <!-- cd-faq__content -->
-                                        </li>
+                                        <div style="background: url(<?php echo URL::asset('assets/img/photograph.png') ?>);background-color: #48cfad;min-width: 45px;height: 40px;background-size: 50% 50%;background-repeat: no-repeat;background-position: center;border-radius: 8px;float: left;"></div>
+                                        <small style="text-overflow: ellipsis;display: block;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;float: left;font-weight: 600;padding-left: 10px;white-space: nowrap;"><i style="color: #9b9b9b;margin-right: 5px;" class="fas fa-map-marker-alt" aria-hidden="true"></i> <a style="color: black;" href="{{URL::to('home-exchange/'.$temp->property_slug)}}">{{$temp->address}}</a> <br> <span style="font-weight: 500;">€ {{$temp->rent_per_month}}</span> <br> <?php if($temp->property_type == 0) { echo "Geen voorkeur"; } else { echo getPropertyTypeName($temp->property_type)->types; } ?></small>
 
-                                    @endforeach
+                                    </div>
+
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="padding: 0;padding-left: 10px;display: flex;flex-direction: row;">
+
+                                        <div style="background: url(<?php echo URL::asset('assets/img/exchange.png') ?>);background-color: #48514f;min-width: 41px;height: 40px;background-size: 50% 50%;background-repeat: no-repeat;background-position: center;border-radius: 100%;float: left;"></div>
+                                        <small style="text-overflow: ellipsis;display: block;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;float: left;font-weight: 600;padding-left: 10px;white-space: nowrap;"><i style="color: #9b9b9b;margin-right: 5px;" class="fas fa-map-marker-alt" aria-hidden="true"></i> <a style="color: black;" href="{{URL::to('home-exchange/'.$temp->property_slug)}}">{{$temp->preferred_place}}</a> <br> <span style="font-weight: 500;">€ {{$temp->preferred_rent_max}}</span> <br> <?php if($temp->preferred_kind == 0) { echo "Geen voorkeur"; } else { echo getPropertyTypeName($temp->preferred_kind)->types; } ?></small>
+
+                                    </div>
+
+                                    <?php setlocale(LC_TIME, 'Dutch'); $date = $temp->created_at->formatLocalized('%d %B %Y'); ?>
+
+                                    <div class="row" style="margin: 0;display: inline-block;width: 100%;">
+                                        <small style="float: left;font-weight: 600;padding-left: 10px;padding-top: 20px;"> {{__('text.Posted on')}} {{$date}}</small>
+                                    </div>
+
+                                </div>
+
+                            @endforeach
+
+                            {{ $recent->appends(request()->query())->links() }}
 
 
-                                </ul> <!-- cd-faq__group -->
-
-                            </div> <!-- cd-faq__items -->
-
-                            <a href="#0" class="cd-faq__close-panel text-replace">Close</a>
-
-                            <div class="cd-faq__overlay" aria-hidden="true"></div>
-                        </section> <!-- cd-faq -->
+                        </div>
 
                     </div>
-
-                </div>
 
                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
 
@@ -402,46 +405,43 @@
 
                 </div>
 
-                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" style="margin-top: 60px;">
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12" style="margin-top: 60px;">
 
-                    <div style="background: white;padding: 20px 10px 0px 10px;border-radius: 10px;box-shadow: 1px 1px 14px 2px #e7e7e7;">
+                        <div style="background: white;padding: 20px;border-radius: 10px;box-shadow: 1px 1px 14px 2px #e7e7e7;">
 
-                        <h2 style="margin-bottom: 30px;color: #868686;font-weight: 600;text-align: center;margin-top: 0px;">{{__('text.Recent Ads')}}</h2>
+                            <h2 style="margin-bottom: 30px;color: #868686;font-weight: 600;text-align: center;margin-top: 0px;">{{__('text.FAQs')}}</h2>
 
-                        @foreach($recent as $temp)
+                            <section class="cd-faq js-cd-faq container max-width-md margin-top-lg margin-bottom-lg" style="padding: 0;margin: 0;width: 100%;">
+                                <div class="cd-faq__items" style="padding: 0;">
 
-                            <div class="row" style="margin: 0;border-bottom:1px solid #e5e5e5;margin-bottom: 20px;">
+                                    <ul id="basics" class="cd-faq__group" style="padding: 0;">
 
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="padding: 0;display: flex;flex-direction: row;">
+                                        @foreach($faqs as $key)
 
-                                    <div style="background: url(<?php echo URL::asset('assets/img/photograph.png') ?>);background-color: #48cfad;min-width: 45px;height: 40px;background-size: 50% 50%;background-repeat: no-repeat;background-position: center;border-radius: 8px;float: left;"></div>
-                                    <small style="text-overflow: ellipsis;display: block;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;float: left;font-weight: 600;padding-left: 10px;white-space: nowrap;"><i style="color: #9b9b9b;margin-right: 5px;" class="fas fa-map-marker-alt" aria-hidden="true"></i> <a style="color: black;" href="{{URL::to('home-exchange/'.$temp->property_slug)}}">{{$temp->address}}</a> <br> <span style="font-weight: 500;">€ {{$temp->rent_per_month}}</span> <br> <?php if($temp->property_type == 0) { echo "Geen voorkeur"; } else { echo getPropertyTypeName($temp->property_type)->types; } ?></small>
+                                            <li class="cd-faq__item">
+                                                <a class="cd-faq__trigger" href="#0"><span>{{$key->question}}</span></a>
+                                                <div class="cd-faq__content">
+                                                    <div class="text-component">
+                                                        <p>{!! $key->answer !!}</p>
+                                                    </div>
+                                                </div> <!-- cd-faq__content -->
+                                            </li>
 
-                                </div>
+                                        @endforeach
 
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="padding: 0;padding-left: 10px;display: flex;flex-direction: row;">
 
-                                    <div style="background: url(<?php echo URL::asset('assets/img/exchange.png') ?>);background-color: #48514f;min-width: 41px;height: 40px;background-size: 50% 50%;background-repeat: no-repeat;background-position: center;border-radius: 100%;float: left;"></div>
-                                    <small style="text-overflow: ellipsis;display: block;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;float: left;font-weight: 600;padding-left: 10px;white-space: nowrap;"><i style="color: #9b9b9b;margin-right: 5px;" class="fas fa-map-marker-alt" aria-hidden="true"></i> <a style="color: black;" href="{{URL::to('home-exchange/'.$temp->property_slug)}}">{{$temp->preferred_place}}</a> <br> <span style="font-weight: 500;">€ {{$temp->preferred_rent_max}}</span> <br> <?php if($temp->preferred_kind == 0) { echo "Geen voorkeur"; } else { echo getPropertyTypeName($temp->preferred_kind)->types; } ?></small>
+                                    </ul> <!-- cd-faq__group -->
 
-                                </div>
+                                </div> <!-- cd-faq__items -->
 
-                                <?php setlocale(LC_TIME, 'Dutch'); $date = $temp->created_at->formatLocalized('%d %B %Y'); ?>
+                                <a href="#0" class="cd-faq__close-panel text-replace">Close</a>
 
-                                <div class="row" style="margin: 0;display: inline-block;width: 100%;">
-                                    <small style="float: left;font-weight: 600;padding-left: 10px;padding-top: 20px;"> {{__('text.Posted on')}} {{$date}}</small>
-                                </div>
+                                <div class="cd-faq__overlay" aria-hidden="true"></div>
+                            </section> <!-- cd-faq -->
 
-                            </div>
-
-                        @endforeach
-
-                        {{ $recent->appends(request()->query())->links() }}
-
+                        </div>
 
                     </div>
-
-                </div>
 
                 @endif
 
