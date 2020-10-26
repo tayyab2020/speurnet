@@ -2109,74 +2109,7 @@
                   </div>
                 </div>
               </div>
-                @if($property->home_exchange == 1)
-
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-
-                        <div style="background-color: #fff;border: 1px solid #ddd;padding: 30px;">
-
-                            <h4 style="text-align: center;">{{__('text.Requested Home Exchange House Heading')}}</h4>
-
-                            <div class="row" style="margin: 0;margin-top: 50px;">
-
-                                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" style="float: left;text-align: left;">
-                                    <label>{{__('text.Preferred Place')}}</label>
-                                    <p>{{$property->preferred_place}}</p>
-                                </div>
-
-                                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" style="float: right;text-align: right;">
-                                    <label>{{__('text.Preferred Radius')}}</label>
-                                    <p>{{$property->preferred_radius}} KM</p>
-                                </div>
-
-                            </div>
-
-                            <div class="row" style="margin: 0;margin-top: 50px;">
-
-                                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" style="float: left;text-align: left;">
-                                    <label>{{__('text.Minimum Rooms')}}</label>
-                                    <p>{{$property->preferred_bedrooms}}</p>
-                                </div>
-
-                                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" style="float: right;text-align: right;">
-                                    <label>{{__('text.Preferred House Type')}}</label>
-                                    <p>@if($property->preferred_kind == 0) Geen voorkeur @else {{getPropertyTypeName($property->preferred_kind)->types}} @endif</p>
-                                </div>
-
-                            </div>
-
-                            <div class="row" style="margin: 0;margin-top: 50px;">
-
-                                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" style="float: left;text-align: left;">
-                                    <label>{{__('text.Preferred Maximum Rent')}}</label>
-                                    <p>{{getcong('currency_sign')}} {{$property->preferred_rent_max}}</p>
-                                </div>
-
-                                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" style="float: right;text-align: right;">
-                                    <label>{{__('text.Preferred Area')}}</label>
-                                    <p>{{$property->preferred_area}}</p>
-                                </div>
-
-                            </div>
-
-                            @if($property->preferred_description)
-
-                            <div class="row" style="margin: 0;margin-top: 50px;">
-
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="float: left;text-align: left;">
-                                    <label>{{__('text.Home exchange Description')}}</label>
-                                    <p>{!! $property->preferred_description !!}</p>
-                                </div>
-
-                            </div>
-
-                                @endif
-
-                        </div>
-
-                    </div>
-
-                @endif
+                
             </div>
           </div>
           <!-- end:article -->
