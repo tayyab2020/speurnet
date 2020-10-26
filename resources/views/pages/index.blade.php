@@ -1340,7 +1340,7 @@
         });
 
         $('#myModal').on('shown.bs.modal', function () {
-            $("body").removeClass("modal-open");
+            $(this).css("overflow","hidden auto");
             $("body").addClass("modal-open1");
         });
 
