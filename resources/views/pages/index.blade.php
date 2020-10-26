@@ -842,6 +842,12 @@
         display: flex !important;
     }
 
+    .navbar-fixed-top, .navbar-fixed-bottom
+    {
+        -webkit-transform: none;
+        transform: none;
+    }
+
 
     .slick-slide
     {
