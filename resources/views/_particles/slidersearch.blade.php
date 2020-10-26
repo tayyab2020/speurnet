@@ -148,7 +148,7 @@
                             <!-- break -->
 
 
-                            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-hidden="true" style="overflow: auto;-webkit-overflow-scrolling: auto;">
+                            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
                                 <div class="modal-dialog modal-full" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">

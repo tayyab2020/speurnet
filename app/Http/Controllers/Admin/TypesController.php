@@ -156,7 +156,7 @@ class TypesController extends MainAdminController
         {
             $check = 1;
         }
-        
+
 
     	if(!$check)
         {

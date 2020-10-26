@@ -828,25 +828,20 @@
     }
 
     .fade {
-        transform: scale(0);
         opacity: 0;
         transition: all .2s linear;
-
     }
 
-    #myModal1
+    .modal1.fade.in
     {
         display: flex !important;
     }
 
-    #myModal2
+    .modal2.fade.in
     {
         display: flex !important;
     }
 
-    .fade.in {
-        transform: scale(1);
-    }
 
     .slick-slide
     {
@@ -1120,7 +1115,7 @@
 <input type="hidden" id="cookie-consent" value="{{$cookie}}">
 
 <!-- Modal -->
-<div id="myModal2" class="modal fade" role="dialog" style="overflow: hidden auto;">
+<div id="myModal2" class="modal modal2 fade" role="dialog" style="overflow: hidden auto;">
     <div class="modal-dialog">
 
         <!-- Modal content-->
@@ -1155,7 +1150,7 @@
 </div>
 
 <!-- Modal -->
-<div id="myModal1" class="modal fade" role="dialog" style="overflow-x: hidden;overflow-y: auto;">
+<div id="myModal1" class="modal modal1 fade" role="dialog" style="overflow-x: hidden;overflow-y: auto;">
     <div class="modal-dialog">
 
         <!-- Modal content-->
