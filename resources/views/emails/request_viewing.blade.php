@@ -46,7 +46,7 @@
 
         <p style="color: black;">Beste {{$username}},</p>
         <p style="color: black;">Je hebt een bezichtiging aangevraagd voor “{{$property_name}}", {{$property_address}}.</p>
-        <p style="color: black;">De <?php if($broker_type){ echo 'eigenaar'; else{ echo 'makelaar'; } ?> neemt zo snel mogelijk contact met je op via:</p>
+        <p style="color: black;">De <?php if($broker_type){ echo 'eigenaar'; } else{ echo 'makelaar'; } ?> neemt zo snel mogelijk contact met je op via:</p>
         <img src="{{ $message->embed(public_path() . '/assets/img/signs.png') }}" style="width: 13px;margin-right: 8px;display: block;float: left;margin-top: 4px;"><b style="color: black;">E-mailadres: </b><span style="color: #7474d3;font-weight: 700;">{{$email}}</span>
 
         @if($phone)
