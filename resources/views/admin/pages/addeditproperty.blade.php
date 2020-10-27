@@ -2096,8 +2096,7 @@
 
                                         <div style="width: 100%;display: inline-block;margin: auto">
 
-                                            <textarea name="description" rows="10" class="form-control stepper-step-3-validate summernote">@if(old('description')) {{old('description')}} @else {!! isset($property->description) ? $property->description : null !!} @endif</textarea>
-
+                                            <textarea name="description" rows="10" class="form-control stepper-step-3-validate summernote">@if(old('description')) {{old('description')}} @else @if(isset($property->description)) {!! $property->description !!} @endif @endif</textarea>
 
                                         </div>
 
