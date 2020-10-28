@@ -3200,33 +3200,7 @@
                 $("#player-window").hide();
                 $("#map-box").show();
 
-                if(!$('.box-carousel').hasClass('slick-initialized'))
-                {
-                    $('.box-carousel').slick({
-                        dots: false,
-                        arrows: true,
-                        slidesToShow: 4,
-                        slidesToScroll: 1,
-                        responsive: [
-                            {
-                                breakpoint: 768,
-                                arrows: true,
-                                settings: {
-                                    slidesToShow: 3
-                                }
-                            },
-                            {
-                                breakpoint: 480,
-                                arrows: true,
-                                settings: {
-                                    slidesToShow: 3
-                                }
-                            }
-                        ],
-                        prevArrow: "<button type='button' class='mission-prev-arrow'></button>",
-                        nextArrow: "<button type='button' class='mission-next-arrow'></button>"
-                    });
-                }
+                $('.box-carousel').slick('refresh');
 
 
                 panorama.setVisible(false);
@@ -3241,36 +3215,9 @@
                 $("#player-window").hide();
                 $("#map-box").show();
 
-                if(!$('.box-carousel').hasClass('slick-initialized'))
-                {
-                    $('.box-carousel').slick({
-                        dots: false,
-                        arrows: true,
-                        slidesToShow: 4,
-                        slidesToScroll: 1,
-                        responsive: [
-                            {
-                                breakpoint: 768,
-                                arrows: true,
-                                settings: {
-                                    slidesToShow: 3
-                                }
-                            },
-                            {
-                                breakpoint: 480,
-                                arrows: true,
-                                settings: {
-                                    slidesToShow: 3
-                                }
-                            }
-                        ],
-                        prevArrow: "<button type='button' class='mission-prev-arrow'></button>",
-                        nextArrow: "<button type='button' class='mission-next-arrow'></button>"
-                    });
-                }
+                $('.box-carousel').slick('refresh');
 
-
-                    panorama.setVisible(true);
+                panorama.setVisible(true);
 
             });
 
@@ -3281,34 +3228,7 @@
                 $("#player-window").hide();
                 $("#map-box").show();
 
-                if(!$('.box-carousel').hasClass('slick-initialized'))
-                {
-                    $('.box-carousel').slick({
-                        dots: false,
-                        arrows: true,
-                        slidesToShow: 4,
-                        slidesToScroll: 1,
-                        responsive: [
-                            {
-                                breakpoint: 768,
-                                arrows: true,
-                                settings: {
-                                    slidesToShow: 3
-                                }
-                            },
-                            {
-                                breakpoint: 480,
-                                arrows: true,
-                                settings: {
-                                    slidesToShow: 3
-                                }
-                            }
-                        ],
-                        prevArrow: "<button type='button' class='mission-prev-arrow'></button>",
-                        nextArrow: "<button type='button' class='mission-next-arrow'></button>"
-                    });
-                }
-
+                $('.box-carousel').slick('refresh');
 
                 panorama.setVisible(false);
                 map.setMapTypeId(google.maps.MapTypeId.SATELLITE);
@@ -3945,8 +3865,7 @@
                 /* TODO: Step 4A3: Add a generic sidebar */
                 infoPane = document.getElementById('panel');
 
-                if(!$('.box-carousel').hasClass('slick-initialized'))
-                {
+
                     $('.box-carousel').slick({
                         dots: false,
                         arrows: true,
@@ -3971,7 +3890,7 @@
                         prevArrow: "<button type='button' class='mission-prev-arrow'></button>",
                         nextArrow: "<button type='button' class='mission-next-arrow'></button>"
                     });
-                }
+
 
                 handleLocationError(false, infoWindow,type);
 

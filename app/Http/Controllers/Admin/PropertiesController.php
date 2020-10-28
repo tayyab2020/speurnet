@@ -512,6 +512,13 @@ class PropertiesController extends MainAdminController
             }
 
         }
+        else
+        {
+            \File::delete(public_path() .'/upload/properties/'.$property->featured_image.'-b.jpg');
+            \File::delete(public_path() .'/upload/properties/'.$property->featured_image.'-s.jpg');
+
+            $property->featured_image = NULL;
+        }
 
         $p_count = 1;
 
