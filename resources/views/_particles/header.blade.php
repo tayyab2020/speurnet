@@ -84,7 +84,7 @@
 
     @media screen and (max-width: 767px)
     {
-        .below-btn{ margin-top: 10px;text-align: left !important; }
+        .below-btn{ margin-top: 10px;text-align: left !important; margin-left: 15px !important; }
     }
 
     a{outline: none !important;}
@@ -186,7 +186,7 @@
 
         .signup
         {
-            margin-left: 10px;
+            margin-left: 15px !important;
         }
     }
 
