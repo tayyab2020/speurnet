@@ -1040,9 +1040,9 @@ class PropertiesController extends MainAdminController
 
         }else{
 
-            $email = "tayyabkhurram62@gmail.com";
+            $email = "info@zoekjehuisje.nl";
             $user_name= Auth::user()->name;
-            
+
             Mail::send(array(), array(), function ($message) use($email,$user_name,$property_type) {
                 $message->to($email)
                     ->from(getcong('site_email'),getcong('site_name'))
