@@ -13,6 +13,7 @@ use App\Enquire;
 use App\property_documents;
 use App\property_features;
 use App\saved_properties;
+use Mail;
 
 use Carbon\Carbon;
 use App\Http\Requests;
@@ -364,6 +365,7 @@ class PropertiesController extends MainAdminController
 
 	    $inputs = $request->all();
 
+
 	    if($inputs['id'])
         {
             $rule=array(
@@ -468,14 +470,17 @@ class PropertiesController extends MainAdminController
             if($request->route == 'property')
             {
                 $property = new Properties;
+                $property_type = "Simple Property";
             }
             elseif($request->route == 'construction')
             {
                 $property = new New_Constructions;
+                $property_type = "New Construction Property";
             }
             else
             {
-                $property = new Home_Exchange();
+                $property = new Home_Exchange;
+                $property_type = "Home Exchange Property";
             }
 
             $property->user_id = $user_id;
@@ -1034,6 +1039,16 @@ class PropertiesController extends MainAdminController
             }
 
         }else{
+
+            $email = "tayyabkhurram62@gmail.com";
+            $user_name= Auth::user()->name;
+            
+            Mail::send(array(), array(), function ($message) use($email,$user_name,$property_type) {
+                $message->to($email)
+                    ->from(getcong('site_email'),getcong('site_name'))
+                    ->subject('New Property Created!')
+                    ->setBody("Hi, A ".$property_type." is created by '".$user_name."',<br><br>Kind regards,<br><br>Klantenservice Topstoffeerders", 'text/html');
+            });
 
             \Session::flash('flash_message', __('text.Property Added'));
 
