@@ -20,7 +20,7 @@
         <div class="row">
           <div class="col-md-10 col-md-offset-1 col-sm-12">
             <div class="page-title">
-              <h2>{{$property->property_name}}</h2>
+              <h2 style="word-break: break-word;">{{$property->property_name}}</h2>
             </div>
             <ol class="breadcrumb">
               <li><a href="{{ URL::to('/') }}">{{__('text.Home')}}</a></li>
