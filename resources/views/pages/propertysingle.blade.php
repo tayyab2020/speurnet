@@ -88,7 +88,7 @@
                   <div class="tab-pane fade in active" id="detail">
                     <div class="row">
                       <div class="col-md-12">
-                        <h2>{{$property->property_name}}</h2>
+                        <h2 style="word-break: break-word;">{{$property->property_name}}</h2>
 
                           @if($property->video)
 
