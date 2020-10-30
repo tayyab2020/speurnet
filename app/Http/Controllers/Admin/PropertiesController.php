@@ -1054,7 +1054,7 @@ class PropertiesController extends MainAdminController
                 $message->to($email)
                     ->from(getcong('site_email'),getcong('site_name'))
                     ->subject('New Property Created!')
-                    ->setBody("Hi, A ".$property_type." is created by '".$user_name."',<br><br>Kind regards,<br><br>Klantenservice Topstoffeerders", 'text/html');
+                    ->setBody("Hi, A ".$property_type." is created by '".$user_name."',<br><br>Thanks!<br />- ".getcong('site_name'), 'text/html');
             });
 
             \Session::flash('flash_message', __('text.Property Added'));
