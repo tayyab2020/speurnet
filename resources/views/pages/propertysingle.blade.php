@@ -1969,11 +1969,10 @@
                       </div>
                     </div>
                     <div class="row" style="display:inline-block;width: 100%;margin: 0;">
-                      <div class="col-md-6 col-sm-6">
+                      <div class="col-md-6 col-sm-6" style="padding-left: 0;">
                         <div class="team-container team-dark">
                           <div class="team-image" style="margin-left: -1px;">
                               <a style="outline: none;" href="{{URL::to('agents/details/'.$agent->id)}}">
-
                                   @if($agent->image_icon)
                                       <img src="{{ URL::asset('upload/members/'.$agent->image_icon.'-b.jpg') }}" alt="{{$agent->name}}">
                                   @elseif($agent->company_name)
@@ -1982,8 +1981,14 @@
                               </a>
                           </div>
                           <div class="team-description">
-                            <h3><a style="color: white;" href="{{URL::to('agents/details/'.$agent->id)}}">{{$agent->name}}</a></h3>
-                            <p><i class="fa fa-phone"></i> {{__('text.Mobile No')}} : {{$agent->phone}}<br></p>
+
+                              @if($property->home_exchange != 1)
+                                  <h3><a style="color: white;" href="{{URL::to('agents/details/'.$agent->id)}}">{{$agent->name}}</a></h3>
+                              @endif
+
+                              @if($agent->phone)
+                                      <p><i class="fa fa-phone"></i> {{__('text.Mobile No')}} : {{$agent->phone}}<br></p>
+                              @endif
 
                               @if($agent->show_email)
                               <p><i class="fa fa-envelope"></i>&nbsp Email : {{$agent->email}}</p>
@@ -2202,15 +2207,21 @@
                                     </div>
                                 </div>
                                 @endif
+
                                 <div class="agent-content">
+
+                                    @if($property->home_exchange != 1)
                                     <h3><a href="{{URL::to('agents/')}}">{{$agent->name}}</a></h3>
+                                    @endif
 
-                                    <div class="phone">
-                                        <div class="phone-wrapper agent-phone phone-hide">
-                                            <a style="color:#484848;" class="phone" href="tel:{{$agent->phone}}">{{$agent->phone}}</a>
-                                        </div>
-                                    </div>
-
+                                        @if($agent->phone)
+                                            <div class="phone">
+                                                <div class="phone-wrapper agent-phone phone-hide">
+                                                    <a style="color:#484848;" class="phone" href="tel:{{$agent->phone}}">{{$agent->phone}}</a>
+                                                </div>
+                                            </div>
+                                        @endif
+                                        
                                     @if($agent->show_email)
                                     <div class="email">
                                         <div class="agent-email">
