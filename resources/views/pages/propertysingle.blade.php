@@ -2221,7 +2221,7 @@
                                                 </div>
                                             </div>
                                         @endif
-                                        
+
                                     @if($agent->show_email)
                                     <div class="email">
                                         <div class="agent-email">

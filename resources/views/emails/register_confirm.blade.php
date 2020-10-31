@@ -78,7 +78,7 @@
 
             <p>We vragen je alleen nog om je e-mailadres te verifiëren door op de onderstaande link te klikken:</p>
             <p>{!! link_to('auth/confirm/' . $confirmation_code) !!}.<br></p>
-            <p>Vanaf nu kunt jij op elk moment reageren op voor jou interessante woningen.</p>
+            <p>Vanaf nu kunt jij op elk moment reageren op voor jouw interessante woningen.</p>
             <p>Wij wensen je succes met het vinden van jouw droomwoning!</p>
 
             <p>Het team van {{getcong('site_name')}}</p>
