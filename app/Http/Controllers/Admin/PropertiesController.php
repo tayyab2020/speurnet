@@ -505,7 +505,7 @@ class PropertiesController extends MainAdminController
 
                 $img = Image::make($featured_image);
 
-                $img->save($tmpFilePath.$hardPath.'-b.jpg');
+                $img->fit(1920, 1080)->save($tmpFilePath.$hardPath.'-b.jpg');
                 $img->fit(640, 425)->save($tmpFilePath.$hardPath.'-s.jpg');
 
                 $property->featured_image = $hardPath;
