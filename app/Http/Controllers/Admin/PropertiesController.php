@@ -441,9 +441,9 @@ class PropertiesController extends MainAdminController
 	   	 $validator = \Validator::make($data,$rule,$messages);
 
 
-        if ($validator->fails())
+        if($validator->fails())
         {
-                return redirect()->back()->withErrors($validator->messages())->withInput();
+            return redirect()->back()->withErrors($validator->messages())->withInput();
         }
 
 
@@ -574,11 +574,18 @@ class PropertiesController extends MainAdminController
 
                 if($filename)
                 {
+
                     $hardPath =  Str::slug($inputs['property_name'], '-').'-'.md5(rand(0,99999));
 
                     $target_file = $tmpFilePath . $hardPath . '-b.jpg';
 
-                    move_uploaded_file($_FILES["property_images"]["tmp_name"][$i],$target_file);
+                    $image = $_FILES['property_images']['tmp_name'][$i];
+
+                    $resize_image = Image::make($image);
+
+                    $resize_image->resize(1280, 800, function($constraint){
+                        $constraint->aspectRatio();
+                    })->save($target_file);
 
                     $check = 0;
 
