@@ -546,7 +546,7 @@ class PropertiesController extends MainAdminController
 
                     $img = Image::make($ac_image);
 
-                    $img->save($tmpFilePath.$hardPath.'-b.jpg');
+                    $img->fit(1280, 800)->save($tmpFilePath.$hardPath.'-b.jpg');
 
                     $property->$p1 = $hardPath;
                 }
