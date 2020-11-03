@@ -401,7 +401,7 @@
                                     @if($agent->image_icon)
                                         <img src="{{ URL::asset('upload/members/'.$agent->image_icon.'-b.jpg') }}" style="padding-top: 5px" alt="{{ $agent->name }}">
                                         @elseif($agent->company_name)
-                                            <h3 style="margin: 0;display: flex;align-items: center;justify-content: center;height: 200px;border: 1px solid;">{{$agent->company_name}}</h3>
+                                            <h3 style="margin: 0;display: flex;align-items: center;justify-content: center;height: 200px;border: 1px solid;text-align: center;">{{$agent->company_name}}</h3>
                                         @endif
                                     </a>
                                 </div>
