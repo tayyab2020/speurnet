@@ -140,6 +140,28 @@
 						</select>
                     </div>
                 </div>
+
+
+                <div class="form-group">
+                    <label for="" class="col-sm-3 control-label">Account Status</label>
+                    <div class="col-sm-4">
+                        <select name="status" id="basic" class="selectpicker show-tick form-control" data-live-search="true">
+                            @if(isset($user->status))
+
+                                <option value="0" @if($user->status==0) selected @endif>Not Active</option>
+                                <option value="1" @if($user->status==1) selected @endif>Active</option>
+
+                            @else
+
+                                <option value="0">Not Active</option>
+                                <option value="1">Active</option>
+
+                            @endif
+
+                        </select>
+                    </div>
+                </div>
+
 				<hr />
                 <div class="form-group">
                     <label for="" class="col-sm-3 control-label">Email</label>
