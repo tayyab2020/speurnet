@@ -3546,6 +3546,7 @@
 
                 if(!check)
                 {
+                    $(this).attr('disabled',true);
                     $("#property_form").submit();
                 }
                 else{

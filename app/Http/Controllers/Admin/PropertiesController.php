@@ -365,12 +365,9 @@ class PropertiesController extends MainAdminController
 
 	    $inputs = $request->all();
 
-
-	    if($inputs['id'])
-        {
             $rule=array(
                 'property_name' => 'required',
-                'property_slug' => 'unique:properties,property_slug,'.$inputs['id'],
+                /*'property_slug' => 'unique:properties,property_slug,'.$inputs['id'],*/
                 'description' => 'required',
                 'featured_image' => 'mimes:jpg,jpeg,gif,png|max:5000',
                 'property_images1' => 'mimes:jpg,jpeg,gif,png|max:3000',
@@ -385,33 +382,11 @@ class PropertiesController extends MainAdminController
                 'ground_floor' => 'mimes:jpg,jpeg,gif,png,pdf|max:5000',
                 'basement' => 'mimes:jpg,jpeg,gif,png,pdf|max:5000',
             );
-
-        }
-	    else
-        {
-            $rule=array(
-                'property_name' => 'required',
-                'property_slug' => 'unique:properties',
-                'description' => 'required',
-                'featured_image' => 'mimes:jpg,jpeg,gif,png|max:5000',
-                'property_images1' => 'mimes:jpg,jpeg,gif,png|max:3000',
-                'property_images2' => 'mimes:jpg,jpeg,gif,png|max:3000',
-                'property_images3' => 'mimes:jpg,jpeg,gif,png|max:3000',
-                'property_images4' => 'mimes:jpg,jpeg,gif,png|max:3000',
-                'property_images5' => 'mimes:jpg,jpeg,gif,png|max:3000',
-                'video' => 'mimetypes:video/x-ms-asf,video/x-flv,video/mp4,application/x-mpegURL,video/MP2T,video/3gpp,video/quicktime,video/x-msvideo,video/x-ms-wmv,video/avi|max:20000',
-                'documents.*' => 'mimes:pdf,doc,docx,txt,rtf,wpd,ppt,pptx',
-                'first_floor' => 'mimes:jpg,jpeg,gif,png,pdf|max:5000',
-                'second_floor' => 'mimes:jpg,jpeg,gif,png,pdf|max:5000',
-                'ground_floor' => 'mimes:jpg,jpeg,gif,png,pdf|max:5000',
-                'basement' => 'mimes:jpg,jpeg,gif,png,pdf|max:5000',
-            );
-        }
 
 
         $messages = [
             'property_name.required' => 'Property Name is required.',
-            'property_slug.unique' => 'This Property Slug is already been taken.',
+            /*'property_slug.unique' => 'This Property Slug is already been taken.',*/
             'description.required' => __('Description is required.'),
             'featured_image.mimes' => 'Featured Image must be a file of type: jpg, jpeg, gif, png.',
             'featured_image.max' => 'Featured Image may not be greater than 5mb.',
@@ -1057,12 +1032,12 @@ class PropertiesController extends MainAdminController
             $email = "info@zoekjehuisje.nl";
             $user_name= Auth::user()->name;
 
-            Mail::send(array(), array(), function ($message) use($email,$user_name,$property_type) {
+            /*Mail::send(array(), array(), function ($message) use($email,$user_name,$property_type) {
                 $message->to($email)
                     ->from(getcong('site_email'),getcong('site_name'))
                     ->subject('New Property Created!')
                     ->setBody("Hi, A ".$property_type." is created by '".$user_name."',<br><br>Thanks!<br />- ".getcong('site_name'), 'text/html');
-            });
+            });*/
 
             \Session::flash('flash_message', __('text.Property Added'));
 
