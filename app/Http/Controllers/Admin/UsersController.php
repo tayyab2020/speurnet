@@ -67,7 +67,7 @@ class UsersController extends MainAdminController
         {
             $rule=array(
                 'name' => 'required',
-                'email' => 'required|email|max:75|unique:users',
+                'email' => 'required|email|max:75|unique:users,id',
                 'image_icon' => 'mimes:jpg,jpeg,gif,png'
             );
         }
@@ -75,7 +75,7 @@ class UsersController extends MainAdminController
         {
             $rule=array(
                 'name' => 'required',
-                'email' => 'required|email|max:75|unique:users',
+                'email' => 'required|email|max:75|unique:users,id',
                 'password' => 'min:6|max:15',
                 'image_icon' => 'mimes:jpg,jpeg,gif,png'
             );
