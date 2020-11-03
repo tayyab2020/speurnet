@@ -63,12 +63,23 @@ class UsersController extends MainAdminController
 
 	    $inputs = $request->all();
 
-	    $rule=array(
-		        'name' => 'required',
-		        'email' => 'required|email|max:75|unique:users,id',
-		        'password' => 'min:6|max:15',
-		        'image_icon' => 'mimes:jpg,jpeg,gif,png'
-		   		 );
+        if(!empty($inputs['id']))
+        {
+            $rule=array(
+                'name' => 'required',
+                'email' => 'required|email|max:75|unique:users',
+                'image_icon' => 'mimes:jpg,jpeg,gif,png'
+            );
+        }
+        else
+        {
+            $rule=array(
+                'name' => 'required',
+                'email' => 'required|email|max:75|unique:users',
+                'password' => 'min:6|max:15',
+                'image_icon' => 'mimes:jpg,jpeg,gif,png'
+            );
+        }
 
 	   	 $validator = \Validator::make($data,$rule);
 
@@ -109,7 +120,18 @@ class UsersController extends MainAdminController
 
         }
 
+        if($request->usertype == 'Private')
+        {
+            $landlord = 1;
+            $inputs['usertype'] = 'Agents';
+        }
+        else
+        {
+            $landlord = 0;
+        }
+
 		$user->usertype = $inputs['usertype'];
+        $user->landlord = $landlord;
 		$user->name = $inputs['name'];
 		$user->email = $inputs['email'];
 		$user->phone = $inputs['phone'];

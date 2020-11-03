@@ -5,9 +5,9 @@
 <div id="main">
 	<div class="page-header">
 		<h2> {{ isset($user->name) ? 'Edit: '. $user->name : 'Add User' }}</h2>
-		
+
 		<a href="{{ URL::to('admin/users') }}" class="btn btn-default-light btn-xs"><i class="md md-backspace"></i> Back</a>
-	  
+
 	</div>
 	@if (count($errors) > 0)
     <div class="alert alert-danger">
@@ -25,13 +25,13 @@
 				        {{ Session::get('flash_message') }}
 				    </div>
 	@endif
-   
+
    	<div class="panel panel-default">
             <div class="panel-body">
-                {!! Form::open(array('url' => array('admin/users/adduser'),'class'=>'form-horizontal padding-15','name'=>'user_form','id'=>'user_form','role'=>'form','enctype' => 'multipart/form-data')) !!} 
+                {!! Form::open(array('url' => array('admin/users/adduser'),'class'=>'form-horizontal padding-15','name'=>'user_form','id'=>'user_form','role'=>'form','enctype' => 'multipart/form-data')) !!}
                 <input type="hidden" name="id" value="{{ isset($user->id) ? $user->id : null }}">
-                  
-                
+
+
                 <div class="form-group">
                     <label for="" class="col-sm-3 control-label">Name</label>
                     <div class="col-sm-9">
@@ -55,24 +55,24 @@
                     <div class="col-sm-4">
                         <select name="city" id="basic" class="selectpicker show-tick form-control" data-live-search="true">
 										@if(isset($user->city))
-										
-										@foreach($city_list as $city)  
+
+										@foreach($city_list as $city)
 										<option value="{{$city->city_name}}" @if($city->city_name==$user->city) selected @endif>{{$city->city_name}}</option>										    @endforeach
-										
+
 										@else
-											 
-											 @foreach($city_list as $city)  
-										<option value="{{$city->city_name}}">{{$city->city_name}}</option>										    
+
+											 @foreach($city_list as $city)
+										<option value="{{$city->city_name}}">{{$city->city_name}}</option>
 										@endforeach
-											 
-										@endif  
+
+										@endif
 								</select>
                     </div>
                 </div>
 				<div class="form-group">
                     <label for="" class="col-sm-3 control-label">About</label>
                     <div class="col-sm-9">
-                         
+
 						<textarea name="about" cols="50" rows="5" class="form-control">{{ isset($user->about) ? $user->about : null }}</textarea>
                     </div>
                 </div>
@@ -106,37 +106,37 @@
                         <div class="media">
                             <div class="media-left">
                                 @if(isset($user->image_icon))
-                                 
+
 									<img src="{{ URL::asset('upload/members/'.$user->image_icon.'-s.jpg') }}" width="80" alt="person">
 								@endif
-								                                
+
                             </div>
                             <div class="media-body media-middle">
-                                <input type="file" name="image_icon" class="filestyle"> 
+                                <input type="file" name="image_icon" class="filestyle">
                             </div>
                         </div>
-	
+
                     </div>
                 </div>
 				<div class="form-group">
                     <label for="" class="col-sm-3 control-label">User Type</label>
-                    <div class="col-sm-4"> 
+                    <div class="col-sm-4">
                         <select name="usertype" id="basic" class="selectpicker show-tick form-control" data-live-search="true">
 								@if(isset($user->usertype))
-								
-								<option value="Owner" @if($user->usertype=='Owner') selected @endif>Owner</option>
-								<option value="Agents" @if($user->usertype=='Agents') selected @endif>Agents</option>
-								<option value="Builder" @if($user->usertype=='Builder') selected @endif>Builder</option>
-								 
-								
+
+								<option value="Users" @if($user->usertype=='Users') selected @endif>User</option>
+								<option value="Agents" @if($user->usertype=='Agents' && $user->landlord == 0) selected @endif>Agents</option>
+								<option value="Private" @if($user->usertype=='Agents' && $user->landlord == 1) selected @endif>Private Landlord</option>
+
+
 								@else
-									    
-										<option value="Owner">Owner</option>
+
+										<option value="Users">User</option>
 										<option value="Agents">Agents</option>
-										<option value="Builder">Builder</option> 
-									 
+										<option value="Private">Private Landlord</option>
+
 								@endif
-								 
+
 						</select>
                     </div>
                 </div>
@@ -153,22 +153,22 @@
                         <input type="password" name="password" value="" class="form-control">
                     </div>
                 </div>
-                 
-                
-                 
+
+
+
                 <hr>
                 <div class="form-group">
                     <div class="col-md-offset-3 col-sm-9 ">
                     	<button type="submit" class="btn btn-primary">{{ isset($user->name) ? 'Edit User' : 'Add User' }}</button>
-                         
+
                     </div>
                 </div>
-                
-                {!! Form::close() !!} 
+
+                {!! Form::close() !!}
             </div>
         </div>
-   
-    
+
+
 </div>
 
 @endsection

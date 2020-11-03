@@ -57,10 +57,11 @@
                     @endif
 
                 </td>
-            	<td> @if($users->image_icon)
-
-									<img src="{{ URL::asset('upload/members/'.$users->image_icon.'-s.jpg') }}" width="80" alt="person">
-								@endif</td>
+            	<td>
+                    @if($users->image_icon)
+                        <img src="{{ URL::asset('upload/members/'.$users->image_icon.'-s.jpg') }}" width="80" alt="person">
+                    @endif
+                </td>
                 <td>{{ $users->name }}</td>
                 <td>{{ $users->email}}</td>
                 <td>{{ $users->phone}}</td>
