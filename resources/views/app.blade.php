@@ -63,7 +63,8 @@
 
   </head>
 
-  <body id="top">
+  <body id="top" class="body-padding-top">
+
 
   {{--
     {!! Form::open(array('url' => array('change-language'),'class'=>'form-horizontal padding-15','name'=>'lng_form','id'=>'lng_form','role'=>'form','enctype' => 'multipart/form-data')) !!}
@@ -155,6 +156,14 @@
 	  </script>
 
       <style>
+
+          @media screen and (min-width: 1201px)
+          {
+              .body-padding-top
+              {
+                  padding-top: 135px !important;
+              }
+          }
 
           @media screen and (min-width: 1201px)
           {
