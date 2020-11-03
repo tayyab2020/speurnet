@@ -76,11 +76,11 @@
 
             <div class="row">
               <div class="col-md-12 single-post">
-                <ul id="myTab" class="nav nav-tabs nav-justified">
-                  <li class="property-tab active"><a href="#detail" style="outline: none;" id="left-tab" class="tab-text" data-toggle="tab"><i style="margin-right: 5px;" class="fas fa-house-user"></i> {{__('text.Property Detail')}}</a></li>
+                <ul id="myTab" class="nav nav-tabs nav-justified" style="display: table;">
+                  <li class="property-tab active" style="width: auto;"><a href="#detail" style="outline: none;" id="left-tab" class="tab-text" data-toggle="tab"><i style="margin-right: 5px;" class="fas fa-house-user"></i> {{__('text.Property Detail')}}</a></li>
 
                     @if($property->new_construction != 1)
-                    <li class="contact-tab"><a href="#location" style="outline: none;" id="right-tab" data-toggle="tab"><i style="margin-right: 5px;" class="far fa-comment-dots"></i> Contact</a></li>
+                    <li class="contact-tab" style="width: auto;"><a href="#location" style="outline: none;" id="right-tab" data-toggle="tab"><i style="margin-right: 5px;" class="far fa-comment-dots"></i> Contact</a></li>
                         @endif
                 </ul>
 
