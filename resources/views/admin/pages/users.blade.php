@@ -37,7 +37,26 @@
             @foreach($allusers as $i => $users)
          	   <tr>
                    <td><a href="{{ url('admin/users/adduser/'.$users->id) }}">{{$users->id}}</a></td>
-            	<td>{{ $users->usertype }}</td>
+            	<td>
+                    @if(!$users->landlord)
+
+                        @if($users->usertype == 'Agents')
+
+                        Agent
+
+                        @else
+
+                        User
+
+                        @endif
+
+                    @else
+
+                        Private Landlord
+
+                    @endif
+
+                </td>
             	<td> @if($users->image_icon)
 
 									<img src="{{ URL::asset('upload/members/'.$users->image_icon.'-s.jpg') }}" width="80" alt="person">

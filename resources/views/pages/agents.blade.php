@@ -444,9 +444,9 @@
                                         <div class="col-sm-3">
                                             <p><i class="fa fa-phone" aria-hidden="true"></i>&nbsp&nbsp {{$agent->phone}}</p>
                                         </div>
-                                        <div class="col-sm-3">
+                                        {{--<div class="col-sm-3">
                                             <p><i class="fa fa-id-card" aria-hidden="true"></i>&nbsp&nbsp Contact</p>
-                                        </div>
+                                        </div>--}}
                                     </div>
 
                                     @endif
