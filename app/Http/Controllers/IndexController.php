@@ -20,6 +20,7 @@ use App\Testimonials;
 use App\Subscriber;
 use App\Partners;
 
+use Intervention\Image\Facades\Image;
 use Mail;
 use Crypt;
 
@@ -33,6 +34,52 @@ use Laravel\Socialite\Facades\Socialite;
 
 class IndexController extends Controller
 {
+
+    public function test()
+    {
+        return view('test');
+    }
+
+    public function testUpload(Request $request)
+    {
+
+        $property_images = $request->file('property_images');
+
+
+        if($property_images){
+
+            $countfiles = count($_FILES['property_images']['name']);
+
+            $tmpFilePath = 'upload/test/';
+
+            for($i=0;$i<$countfiles;$i++) {
+
+                $filename = $_FILES['property_images']['name'][$i];
+
+                if($filename)
+                {
+
+                    $hardPath =  Str::slug("Test Image", '-').'-'.md5(rand(0,99999));
+
+                    $target_file = $tmpFilePath . $hardPath . '-b.jpg';
+
+                    $image = $_FILES['property_images']['tmp_name'][$i];
+
+                    $resize_image = Image::make($image);
+
+                    $resize_image->resize(1280, 800, function($constraint){
+                        $constraint->aspectRatio();
+                    })->save($target_file);
+
+
+                }
+
+            }
+
+        }
+
+        echo "Images uploaded successfully!";
+    }
 
     public function redirect($service) {
         return Socialite::driver ( $service )->stateless()->redirect();
