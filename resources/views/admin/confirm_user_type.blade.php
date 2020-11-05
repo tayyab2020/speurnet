@@ -67,19 +67,19 @@
 
                                         <input class="checkbox-tools" type="radio" name="type" id="tool-1" value="Agents" >
                                         <label class="for-checkbox-tools" for="tool-1">
-                                            <i class="fas fa-user-edit" style="font-size: 24px;display: block;position:relative;top: 15px;"></i>
+                                            <i class="fas fa-user-edit" style="font-size: 24px;display: block;position:relative;margin-bottom: 10px;"></i>
                                             {{__('text.Agent')}}
                                         </label>
 
                                         <input class="checkbox-tools" type="radio" name="type" id="tool-3" value="landlord" >
                                         <label class="for-checkbox-tools" for="tool-3">
-                                            <i class="fas fa-user-edit" style="font-size: 24px;display: block;position:relative;top: 15px;"></i>
+                                            <i class="fas fa-user-edit" style="font-size: 24px;display: block;position:relative;margin-bottom: 10px;"></i>
                                             {{__('text.Private Landlord1')}}
                                         </label>
 
                                         <input class="checkbox-tools" type="radio" name="type" id="tool-2" value="Users">
-                                        <label class="for-checkbox-tools" for="tool-2">
-                                            <i class="fas fa-user" style="font-size: 24px;display: block;position:relative;top: 15px;"></i>
+                                        <label class="for-checkbox-tools" for="tool-2" style="margin-bottom: 25px !important;">
+                                            <i class="fas fa-user" style="font-size: 24px;display: block;position:relative;margin-bottom: 10px;"></i>
                                             {{__('text.User')}}
                                             <span style="font-size: 9px;line-height: 3;display: block;text-align: left;">{{__('text.User extra text')}}
                                         </span>
@@ -312,12 +312,12 @@
         padding: 20px;
         width: 300px;
         font-size: 14px;
-        line-height: 75px;
+        line-height: 2;
         letter-spacing: 1px;
         margin: 0 auto;
         margin-left: 5px;
         margin-right: 5px;
-        margin-bottom: 10px;
+        margin-bottom: 25px;
         text-align: center;
         border-radius: 4px;
         overflow: hidden;

@@ -821,7 +821,7 @@
                                 @if($property->new_construction != 1)
 
                                     <tr>
-                                        <td><strong>{{__('text.Contract')}}</strong> <img src="{{ URL::asset('assets/img/communications.png') }}" style="width: 18px;float: right;" /></td>
+                                        <td><strong>{{__('text.Contract')}}</strong></td>
                                         <td>{{__('text.'.$property->property_purpose)}}</td>
                                     </tr>
 
