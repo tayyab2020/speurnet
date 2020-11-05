@@ -61,7 +61,7 @@
 
                                   @if($temp->image)
 
-                                      <a href="@if($temp->url){{$temp->url}} @else {{URL::to('/')}} @endif">
+                                      <a target="_blank" href="@if($temp->url){{$temp->url}} @else {{URL::to('/')}} @endif">
 
                                           <img src="{{ URL::asset('upload/homepage_icons/'.$temp->image) }}">{{$temp->title}}
 
@@ -69,7 +69,7 @@
 
                                   @else
 
-                                      <a style="display: flex;justify-content: center;" href="@if($temp->url){{$temp->url}} @else {{URL::to('/')}} @endif">
+                                      <a target="_blank" style="display: flex;justify-content: center;" href="@if($temp->url){{$temp->url}} @else {{URL::to('/')}} @endif">
 
                                           {{$temp->title}}
 
