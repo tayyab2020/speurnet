@@ -248,8 +248,8 @@
                                 {
                                     .top-heading
                                     {
-                                        font-size: 25px !important;
-                                        bottom: 20px !important;
+                                        font-size: 23px !important;
+                                        bottom: 45px !important;
                                     }
                                 }
 
