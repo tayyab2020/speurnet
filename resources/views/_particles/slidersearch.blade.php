@@ -2,6 +2,9 @@
     <div id="header" class="header-slide">
 
         <div class="container" style="margin-top: 210px;">
+
+            <h2 style="margin: 0;text-align: center;color: white;text-shadow: -3px 2px 11px #252424;font-size: 36px;position: relative;bottom: 120px;" class="css-ce6ko1 top-heading">Van ‘te koop’ naar ‘verkocht!’ Van ‘te huur’ naar ‘verhuurd.’ Welkom thuis!</h2>
+
             <div class="row" style="display: flex;">
                 <div class="col-md-9 col-xs-12" style="margin: auto;padding: 0;">
                     <div class="quick-search" style="background:rgba(255, 255, 255, 0.59);">
@@ -240,6 +243,15 @@
                             </div>
 
                             <style>
+
+                                @media (max-width: 768px)
+                                {
+                                    .top-heading
+                                    {
+                                        font-size: 23px !important;
+                                        bottom: 20px !important;
+                                    }
+                                }
 
                                 #myModal
                                 {
