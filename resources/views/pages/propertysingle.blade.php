@@ -2154,7 +2154,7 @@
 
                                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" style="float: left;text-align: left;">
                                     <label>{{__('text.Preferred Maximum Rent')}}</label>
-                                    <p>{{getcong('currency_sign')}} {{$property->preferred_rent_max}}</p>
+                                    <p>{{getcong('currency_sign')}} {{number_format($property->preferred_rent_max, 0, ',', '.')}}</p>
                                 </div>
 
                                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" style="float: right;text-align: right;">
@@ -2395,7 +2395,7 @@
 
 
                                     <div class="large-10 columns nopad ftTop">
-                                        <h6 class="unitPrice" style="text-align: left;margin-top: 0;">€ @if($previous->sale_price){{$previous->sale_price}} @else{{$previous->rent_price}} @endif</h6>
+                                        <h6 class="unitPrice" style="text-align: left;margin-top: 0;">€ @if($previous->sale_price) {{number_format($previous->sale_price, 0, ',', '.')}} @else {{number_format($previous->rent_price, 0, ',', '.')}} @endif</h6>
                                         <!--<p class="unitRooms">2 kamers</p>-->
                                     </div>
 
@@ -2465,7 +2465,7 @@
                                     @endif
 
                                     <div class="large-10 columns nopad ftTop">
-                                        <h6 class="unitPrice" style="text-align: left;margin-top: 0;">€ @if($next->sale_price){{$next->sale_price}} @else{{$next->rent_price}} @endif</h6>
+                                        <h6 class="unitPrice" style="text-align: left;margin-top: 0;">€ @if($next->sale_price) {{number_format($next->sale_price, 0, ',', '.')}} @else {{number_format($next->rent_price, 0, ',', '.')}} @endif</h6>
                                         <!--<p class="unitRooms">2 kamers</p>-->
                                     </div>
 
