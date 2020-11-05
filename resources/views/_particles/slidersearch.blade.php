@@ -3,7 +3,7 @@
 
         <div class="container" style="margin-top: 210px;">
 
-            <h2 style="margin: 0;text-align: center;color: white;text-shadow: -3px 2px 11px #252424;font-size: 36px;position: relative;bottom: 120px;" class="css-ce6ko1 top-heading">Van ‘te koop’ naar ‘verkocht!’ Van ‘te huur’ naar ‘verhuurd.’ Welkom thuis!</h2>
+            <h2 style="margin: 0;text-align: center;color: white;text-shadow: -3px 2px 11px #252424;font-size: 36px;position: relative;bottom: 120px;" class="css-ce6ko1 top-heading">Van ‘te koop’ naar ‘verkocht!’<span class="narrow"> Van ‘te huur’ naar ‘verhuurd.’<span class="narrow"> Welkom thuis!</h2>
 
             <div class="row" style="display: flex;">
                 <div class="col-md-9 col-xs-12" style="margin: auto;padding: 0;">
@@ -244,8 +244,19 @@
 
                             <style>
 
+
                                 @media (max-width: 768px)
                                 {
+                                    #header .container
+                                    {
+                                        width: 100%;
+                                    }
+
+                                    .narrow
+                                    {
+                                        display: block
+                                    }
+
                                     .top-heading
                                     {
                                         font-size: 23px !important;
@@ -337,13 +348,13 @@
                                     {
                                         margin-top: 0px !important;
                                         position: absolute;
-                                        top: 125px;
+                                        top: 90px;
                                     }
 
                                     .quick-search
                                     {
                                         padding: 15px;
-                                        background: rgba(255, 255, 255, 0.91) !important;
+                                        /*background: rgba(255, 255, 255, 0.91) !important;*/
                                     }
 
                                     .search-bar
