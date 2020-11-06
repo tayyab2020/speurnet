@@ -1096,7 +1096,7 @@
                                 <div class="property-content description-content">
 
                                     <h3><a style="text-overflow: ellipsis;display: block;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;white-space: nowrap;" href="{{ url('blogs/'.$blog->id) }}">{{$blog->title}}</a>
-                                    <small style="color: #acacac;font-style: normal;">{{$date}}</small>
+                                    <small style="display: none;color: #acacac;font-style: normal;">{{$date}}</small>
                                     </h3>
 
                                     <p style="text-overflow: ellipsis;display: -webkit-box;width: 100%;visibility: visible;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;line-height: 2;font-size: 15px;margin-top: 15px;">{{$description}}</p>
