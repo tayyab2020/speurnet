@@ -1029,10 +1029,6 @@
 
                                                                         <img src="{{ URL::asset('upload/properties/'.$key->featured_image.'-b.jpg') }}" style="width: 100%;height: 200px;border-top-left-radius: 7px;border-bottom-left-radius: 7px;">
 
-                                                                    @else
-
-                                                                        <img src="{{ URL::asset('upload/noImage.png') }}" style="width: 100%;height: 200px;border-top-left-radius: 7px;border-bottom-left-radius: 7px;">
-
                                                                     @endif
 
                                                                 </div>

@@ -12,7 +12,6 @@
 
                             {!! Form::open(array('url' => array('searchproperties'),'name'=>'search_form','id'=>'search_form','role'=>'form')) !!}
 
-
                             <div class="col-md-12 col-sm-12 col-xs-12">
                                         <span style="display: inline-block;min-width: 75px;">
                                             <input class="search-input" type="radio" id="buy" name="purpose" value="Sale" style="width: 16px;height: 16px;position: relative;top: 1px;cursor: pointer;" checked>
