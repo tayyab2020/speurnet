@@ -272,7 +272,7 @@ class IndexController extends Controller
 
     	$city_list = City::where('status','1')->orderBy('city_name')->get();
 
-		$propertieslist = Properties::leftjoin('users','users.id','=','properties.user_id')->where('properties.status','1')->orderBy('properties.id', 'desc')->select('properties.id','users.company_name','properties.property_name','properties.description','properties.property_slug','properties.available_immediately','properties.is_sold','properties.is_rented','properties.is_negotiation','properties.is_under_offer','properties.video','properties.property_type','properties.property_purpose','properties.sale_price','properties.cost_for','properties.rent_price','properties.address','properties.bathrooms','properties.bedrooms','properties.area','properties.featured_image','properties.property_images1','properties.property_images2','properties.property_images3','properties.property_images4','properties.property_images5','properties.first_floor','properties.second_floor','properties.ground_floor','properties.basement','properties.open_date','properties.open_timeFrom','properties.open_timeTo','properties.created_at','users.image_icon','users.id as user_id','users.landlord')->get();
+		$propertieslist = Properties::leftjoin('users','users.id','=','properties.user_id')->where('properties.status','1')->orderBy('properties.id', 'desc')->select('properties.*','users.company_name','users.image_icon','users.id as user_id','users.landlord')->get();
 
 		/*$testimonials = Testimonials::orderBy('id', 'desc')->get();*/
 

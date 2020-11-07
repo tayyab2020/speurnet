@@ -2356,7 +2356,7 @@
                                                             }
                                                         else
                                                             {
-                                                                $limit = 19;
+                                                                $limit = 24;
                                                             }
 
                                                         for($i = 1; $i<=$limit; $i++)

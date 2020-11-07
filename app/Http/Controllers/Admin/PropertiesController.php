@@ -497,7 +497,16 @@ class PropertiesController extends MainAdminController
 
         $p_count = 1;
 
-        for($i=1; $i<=9; $i++)
+        if(Auth::user()->usertype == 'Users')
+        {
+            $limit = 5;
+        }
+        else
+        {
+            $limit = 24;
+        }
+
+        for($i=1; $i<=$limit; $i++)
         {
             $p = 'p_image'.$i;
             $d = 'p_remove'.$i;
@@ -564,7 +573,7 @@ class PropertiesController extends MainAdminController
 
                     $check = 0;
 
-                    for($x=1;$x<=9;$x++) {
+                    for($x=1;$x<=$limit;$x++) {
 
                         if(!$check)
                         {
