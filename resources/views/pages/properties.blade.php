@@ -278,7 +278,19 @@
 
                   $x = 0;
 
-                  if($property->featured_image){ $x = $x + 1;} if($property->property_images1){ $x = $x + 1;} if($property->property_images2){ $x = $x + 1;} if($property->property_images3){ $x = $x + 1;} if($property->property_images4){ $x = $x + 1;} if($property->property_images5){ $x = $x + 1;}
+                  if($property->featured_image){ $x = $x + 1;}
+
+                  for($l=0; $l<24; $l++){
+
+                      $var = 'property_images'.$l;
+
+                      if($property->$var){
+
+                          $x = $x + 1;
+
+                      }
+
+                  }
 
                   ?>
 
@@ -445,35 +457,15 @@
 
                       <a data-toggle="lightbox" data-gallery="hidden-images{{$i}}" href="{{ URL::asset('upload/properties/'.$property->featured_image.'-b.jpg') }}" style="color: white;"> <i class="fas fa-camera" style="font-size: 18px;"></i><span style="padding: 0px 6px;font-weight: 700;font-size: 18px;position: relative;bottom: 1px;margin-left: 5px;">{{$x}}</span></a>
 
-                          @if($property->property_images1)
+                          <?php for($p=1; $p<25; $p++){ $property_image = 'property_images'.$p; ?>
 
-                              <div style="display: none;" data-toggle="lightbox" data-gallery="hidden-images{{$i}}" data-remote="{{ URL::asset('upload/properties/'.$property->property_images1.'-b.jpg') }}"></div>
+                          @if($property->$property_image)
 
-                          @endif
-
-                          @if($property->property_images2)
-
-                              <div style="display: none;" data-toggle="lightbox" data-gallery="hidden-images{{$i}}" data-remote="{{ URL::asset('upload/properties/'.$property->property_images2.'-b.jpg') }}"></div>
+                              <div style="display: none;" data-toggle="lightbox" data-gallery="hidden-images{{$i}}" data-remote="{{ URL::asset('upload/properties/'.$property->$property_image.'-b.jpg') }}"></div>
 
                           @endif
 
-                          @if($property->property_images3)
-
-                              <div style="display: none;" data-toggle="lightbox" data-gallery="hidden-images{{$i}}" data-remote="{{ URL::asset('upload/properties/'.$property->property_images3.'-b.jpg') }}"></div>
-
-                          @endif
-
-                          @if($property->property_images4)
-
-                              <div style="display: none;" data-toggle="lightbox" data-gallery="hidden-images{{$i}}" data-remote="{{ URL::asset('upload/properties/'.$property->property_images4.'-b.jpg') }}"></div>
-
-                          @endif
-
-                          @if($property->property_images5)
-
-                              <div style="display: none;" data-toggle="lightbox" data-gallery="hidden-images{{$i}}" data-remote="{{ URL::asset('upload/properties/'.$property->property_images5.'-b.jpg') }}"></div>
-
-                          @endif
+                          <?php } ?>
 
                       <?php $i = $i + 1; ?>
 

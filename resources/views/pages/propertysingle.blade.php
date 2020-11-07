@@ -115,7 +115,24 @@
 
                           @endif
 
-                        <div id="slider-property" class="carousel slide" data-ride="carousel" style="margin-bottom: 0px;@if(!$property->featured_image && !$property->property_images1 && !$property->property_images2 && !$property->property_images3 && !$property->property_images4 && !$property->property_images5) display: none; @endif">
+                          <?php
+
+                          $flag = 0;
+
+                          for($p1=1; $p1<25; $p1++){
+
+                              $property_image = 'property_images'.$p1;
+
+                              if($property->$property_image)
+                              {
+                                  $flag = 1;
+                              }
+
+                          }
+
+                          ?>
+
+                        <div id="slider-property" class="carousel slide" data-ride="carousel" style="margin-bottom: 0px;@if(!$property->featured_image && !$flag) display: none; @endif">
 
                           <div class="carousel-inner">
 
@@ -140,35 +157,17 @@
                                       </div>
                               @endif
 
-                            @if($property->property_images1)
-                            <div class="item @if(!$check) <?php $check = 1; ?> active @endif">
-                              <img src="{{ URL::asset('upload/properties/'.$property->property_images1.'-b.jpg') }}" alt="">
-                            </div>
-                            @endif
+                                  <?php for($p=1; $p<25; $p++){ $property_image = 'property_images'.$p; ?>
 
-                             @if($property->property_images2)
-                            <div class="item @if(!$check) <?php $check = 1; ?> active @endif">
-                              <img src="{{ URL::asset('upload/properties/'.$property->property_images2.'-b.jpg') }}" alt="">
-                            </div>
-                            @endif
+                                  @if($property->$property_image)
 
-                             @if($property->property_images3)
-                            <div class="item @if(!$check) <?php $check = 1; ?> active @endif">
-                              <img src="{{ URL::asset('upload/properties/'.$property->property_images3.'-b.jpg') }}" alt="">
-                            </div>
-                            @endif
+                                      <div class="item @if(!$check) <?php $check = 1; ?> active @endif">
+                                          <img src="{{ URL::asset('upload/properties/'.$property->$property_image.'-b.jpg') }}" alt="">
+                                      </div>
 
-                             @if($property->property_images4)
-                            <div class="item @if(!$check) <?php $check = 1; ?> active @endif">
-                              <img src="{{ URL::asset('upload/properties/'.$property->property_images4.'-b.jpg') }}" alt="">
-                            </div>
-                            @endif
+                                  @endif
 
-                             @if($property->property_images5)
-                            <div class="item @if(!$check) <?php $check = 1; ?> active @endif">
-                              <img src="{{ URL::asset('upload/properties/'.$property->property_images5.'-b.jpg') }}" alt="">
-                            </div>
-                            @endif
+                                  <?php } ?>
 
                           </div>
 
