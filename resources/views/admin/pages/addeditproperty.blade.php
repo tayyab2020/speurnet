@@ -2349,7 +2349,17 @@
                                                         <?php
 
                                                         $x = 0;
-                                                        for($i = 1; $i<=9; $i++)
+
+                                                        if(Auth::user()->usertype == 'Users')
+                                                            {
+                                                                $limit = 5;
+                                                            }
+                                                        else
+                                                            {
+                                                                $limit = 19;
+                                                            }
+
+                                                        for($i = 1; $i<=$limit; $i++)
                                                             {
                                                                 $p = 'property_images'.$i;
 
@@ -2378,9 +2388,9 @@
 
                                                             <?php } ?>
 
-                                                            @if($x < 9)
+                                                            @if($x < $limit)
 
-                                                                <?php $y = 9 - $x; ?>
+                                                                <?php $y = $limit - $x; ?>
 
                                                                 <div id="property_images"></div>
 
