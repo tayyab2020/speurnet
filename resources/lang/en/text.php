@@ -516,4 +516,5 @@ return [
     'User extra text' => 'Extra option: Free placement of a home exchange advertisement',
     'Description is required.' => 'Description is required.',
     'All' => 'All',
+    'Max Images Size' => 'Beautiful and good photos are important. That is why we advise you to upload photos up to 7 MB.',
 ];

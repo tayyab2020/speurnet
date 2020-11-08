@@ -115,11 +115,11 @@ return [
     'and' => 'en',
     'Register an account for free' => 'Maak hier jouw account aan',
     'Register description' => 'Ben je makelaar of particuliere verhuurder/verkoper?
-    Plaats in 4 simpele stappen jouw advertentie.
+    Plaats gratis in 4 simpele stappen jouw advertentie.
 
-    Probeer het NU kosteloos en wie weet heb je in no time je huis verhuurd of verkocht. Leuke deal, toch?
+    Probeer het uit en wie weet heb je in no time je huis verhuurd of verkocht. Leuke deal, toch?
 
-    Ben je op zoek naar een woning? Geniet dan de toegankelijkheid van het aanbod en wie weet heb je in in een oogwenk jouw droomhuis gevonden. Hoe mooi zou dat zijn?',
+    Ben je op zoek naar een woning? Geniet dan gratis de toegankelijkheid van het aanbod en wie weet heb je in in een oogwenk jouw droomhuis gevonden. Hoe mooi zou dat zijn?',
     'Agent' => 'Makelaar',
     'Private Landlord' => 'Particuliere verhuurder/verkoper',
     'User' => 'Woningzoeker',
@@ -515,4 +515,5 @@ return [
     'User extra text' => 'Extra optie: Gratis plaatsen woningruil advertentie',
     'Description is required.' => 'Omschrijving is een verplicht veld',
     'All' => 'Alle soorten',
+    'Max Images Size' => 'Mooie en goede foto’s zijn belangrijk. Daarom adviseren wij je om foto’s te uploaden tot 7 MB.',
 ];
