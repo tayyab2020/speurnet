@@ -488,7 +488,7 @@ return [
     'Successfully subscribe' => 'Jouw e-mailadres is succesvol opgeslagen!',
     'The email field is required.' => 'Je hebt geen e-mailadres opgegeven',
     'Please link your facebook account with an email address.' => 'Koppel je Facebook-account aan een e-mailadres',
-    "Post property button" => "Je huisje is zó gevonden!",
+    "Post property button" => "Gratis onbeperkt plaatsen!",
     'Share ad text' => 'Misschien kan dit huis ook iets zijn voor je vrienden of collega\'s? Deel mij :-)',
     'Property Alert Created Successfully, You will now receive Emails for Similar Properties' => 'Jouw Huisalert is succesvol aangemaakt! Wij houden je via  e-mail op de hoogte.',
     'Price Description' => 'Prijsklasse',
