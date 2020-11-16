@@ -30,7 +30,7 @@
               <div class="blog-content" style="padding-top: 0;">
                 <!--<div class="the-team">-->
 
-                  <form id="search_form" method="GET" action="{{ URL::to('/agents') }}">
+                  <form id="search_form" method="GET" action="{{ URL::to('/makelaars') }}">
 
                       @csrf
 
@@ -397,7 +397,7 @@
                             <div class="row" style="background-color: white;padding: 20px;">
                             <div class="col-sm-3">
                                 <div class="team-image">
-                                    <a style="outline: none;" href="{{ URL::to('/agents/details/'.$agent->id) }}">
+                                    <a style="outline: none;" href="{{ URL::to('/makelaars/details/'.$agent->id) }}">
                                     @if($agent->image_icon)
                                         <img src="{{ URL::asset('upload/members/'.$agent->image_icon.'-b.jpg') }}" style="padding-top: 5px" alt="{{ $agent->name }}">
                                         @elseif($agent->company_name)
@@ -410,7 +410,7 @@
                                 <div class="team-description">
                                     <div class="row">
                                         <div class="col-sm-4">
-                                            <a href="{{ URL::to('/agents/details/'.$agent->id) }}">
+                                            <a href="{{ URL::to('/makelaars/details/'.$agent->id) }}">
                                             <h3>{{$agent->name}}</h3>
                                             </a>
                                         </div>

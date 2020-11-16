@@ -83,15 +83,15 @@
 
                    @if(Route::currentRouteName() == 'properties')
 
-                       <td><a href="{{URL::to('properties/'.$property->property_slug)}}">{{ $property->property_name }}</a>
+                       <td><a href="{{URL::to('woningaanbod/'.$property->property_slug)}}">{{ $property->property_name }}</a>
 
                    @elseif(Route::currentRouteName() == 'new_constructions')
 
-                       <td><a href="{{URL::to('new-constructions/'.$property->property_slug)}}">{{ $property->property_name }}</a>
+                       <td><a href="{{URL::to('nieuwbouwprojecten/'.$property->property_slug)}}">{{ $property->property_name }}</a>
 
                            @else
 
-                       <td><a href="{{ url('home-exchange/'.$property->property_slug) }}">{{ $property->property_name }}</a>
+                       <td><a href="{{ url('woningruil/'.$property->property_slug) }}">{{ $property->property_name }}</a>
 
                        @endif
 

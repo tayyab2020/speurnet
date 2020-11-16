@@ -10,7 +10,7 @@
                     <div class="quick-search" style="background:rgba(255, 255, 255, 0.59);">
                         <div class="row">
 
-                            {!! Form::open(array('url' => array('searchproperties'),'name'=>'search_form','id'=>'search_form','role'=>'form')) !!}
+                            {!! Form::open(array('url' => array('alle-woningen'),'name'=>'search_form','id'=>'search_form','role'=>'form')) !!}
 
                             <div class="col-md-12 col-sm-12 col-xs-12">
                                         <span style="display: inline-block;min-width: 75px;">

@@ -26,14 +26,14 @@
 
           <ul class="nav navbar-nav navbar-right">
             <li class="{{classActivePathPublic('')}}"><a href="{{ URL::to('/') }}">{{__('text.Home')}}</a></li>
-        	<li class="{{classActivePathPublic('properties')}}"><a href="{{ URL::to('properties/') }}">{{__('text.All Properties')}}</a></li>
+        	<li class="{{classActivePathPublic('woningaanbod')}}"><a href="{{route('properties-front')}}">{{__('text.All Properties')}}</a></li>
             {{--<li class="{{classActivePathPublic('featured')}}"><a href="{{ URL::to('featured/') }}">Featured</a></li>--}}
             {{--<li class="{{classActivePathPublic('sale')}}"><a href="{{ URL::to('sale/') }}">Sale</a></li>
             <li class="{{classActivePathPublic('rent')}}"><a href="{{ URL::to('rent/') }}">Rent</a></li>--}}
-            <li class="{{classActivePathPublic('agents')}}"><a href="{{ URL::to('agents/') }}">{{__('text.Agents')}}</a></li>
-            <li class="{{classActivePathPublic('new-constructions')}}"><a href="{{ URL::to('new-constructions/') }}">{{__('text.New Constructions')}}</a></li>
-            <li class="{{classActivePathPublic('homeexchange')}}"><a href="{{ URL::to('homeexchange') }}">{{__('text.Home Exchange')}}</a></li>
-            <li class="{{classActivePathPublic('moving-tips')}}"><a href="{{ URL::to('moving-tips/') }}">{{__('text.Moving Tips')}}</a></li>
+            <li class="{{classActivePathPublic('makelaars')}}"><a href="{{route('agents-front')}}">{{__('text.Agents')}}</a></li>
+            <li class="{{classActivePathPublic('nieuwbouwprojecten')}}"><a href="{{ route('newconstructions-front') }}">{{__('text.New Constructions')}}</a></li>
+            <li class="{{classActivePathPublic('woningruil')}}"><a href="{{ route('homeexchange-front') }}">{{__('text.Home Exchange')}}</a></li>
+            <li class="{{classActivePathPublic('verhuistips')}}"><a href="{{ route('front-moving-tips') }}">{{__('text.Moving Tips')}}</a></li>
             <li class="{{classActivePathPublic('expats')}}"><a href="{{ URL::to('expats/') }}">{{__('text.Expats')}}</a></li>
 
              @if(Auth::check())
@@ -66,7 +66,7 @@
                   <li>
                       <i style="font-size: 18px;border-left: 1px solid #a5a1a1;padding-left: 15px;" class="fas fa-user"></i>
                       <a href="{{ URL::to('login') }}" style="display: inline-block;padding-left: 5px;padding-right: 5px;">{{__('text.Sign in')}}</a><span> / </span>
-                      <a href="{{ URL::to('register') }}" style="display: inline-block;padding-left: 5px;padding-right: 5px;">{{__('text.Sign up')}}</a>
+                      <a href="{{ URL::to('accountaanmaken') }}" style="display: inline-block;padding-left: 5px;padding-right: 5px;">{{__('text.Sign up')}}</a>
                   </li>
             	<li><a href="{{ URL::to('login') }}" class="signup col-lg-12 col-md-3 col-sm-6 col-xs-6" style="margin-left: 0;float: none;">{{__('text.Post your Property')}}</a>
                     <span style="display: block;text-align: center;" class="below-btn">{{__('text.Post property button')}}</span>

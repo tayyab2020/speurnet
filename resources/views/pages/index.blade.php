@@ -435,7 +435,7 @@
                                             <h3 style="margin-bottom: 15px;margin-top: 0px;display: inline-block;width: 100%;">
 
                                                 <div style="display: inline-block;width: 100%;">
-                                                    <a style="text-overflow: ellipsis;display: block;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;white-space: nowrap;" href="{{URL::to('properties/'.$property->property_slug)}}">{{ Str::limit($property->property_name,35) }}</a>
+                                                    <a style="text-overflow: ellipsis;display: block;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;white-space: nowrap;" href="{{URL::to('woningaanbod/'.$property->property_slug)}}">{{ Str::limit($property->property_name,35) }}</a>
                                                 </div>
 
                                                 <small style="text-overflow: ellipsis;display: block;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;width: 50%;float: left;white-space: nowrap;">{{ Str::limit($property->address,40) }}</small>
@@ -467,7 +467,7 @@
 
                                             <div style="width: 40%;height: 100%;padding: 8px;padding-bottom: 2px;">
 
-                                                <a style="outline: none;" href="{{URL::to('agents/details/'.$property->user_id)}}">
+                                                <a style="outline: none;" href="{{URL::to('makelaars/details/'.$property->user_id)}}">
 
                                                 @if($property->image_icon)
                                                     <img style="width: 90%;height: 95%;float: right;" src="{{ URL::asset('upload/members/'.$property->image_icon.'-b.jpg') }}">
@@ -546,7 +546,7 @@
                             </div>
 
                             <div class="property-content">
-                                <h3 style="margin: 10px 0px;"><a style="text-overflow: ellipsis;display: block;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;white-space: nowrap;" href="{{URL::to('properties/'.$temp->property_slug)}}">{{ Str::limit($temp->property_name,35) }}</a> <small style="text-overflow: ellipsis;display: block;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;white-space: nowrap;">{{ Str::limit($temp->address,40) }}</small></h3>
+                                <h3 style="margin: 10px 0px;"><a style="text-overflow: ellipsis;display: block;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;white-space: nowrap;" href="{{URL::to('woningaanbod/'.$temp->property_slug)}}">{{ Str::limit($temp->property_name,35) }}</a> <small style="text-overflow: ellipsis;display: block;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;white-space: nowrap;">{{ Str::limit($temp->address,40) }}</small></h3>
                                 <small style="margin-top: 20px;font-weight: 600;">{{ getPropertyTypeName($property->property_type)->types }}</small>
                                 <small style="float: right;">€@if($property->sale_price) {{number_format($property->sale_price, 0, ',', '.')}} {{$temp->cost_for}} @else {{number_format($property->rent_price, 0, ',', '.')}} @endif</small>
                             </div>
@@ -583,7 +583,7 @@
                             <div class="property-container" style="margin: 10px auto;">
                                 <div class="property-image">
 
-                                    <a style="outline: none;" href="{{URL::to('agents/details/'.$temp->id)}}">
+                                    <a style="outline: none;" href="{{URL::to('makelaars/details/'.$temp->id)}}">
 
                                     @if($temp->image_icon)
 
@@ -604,7 +604,7 @@
                                 </div>
 
                                 <div class="property-content">
-                                    <h3><a style="text-overflow: ellipsis;display: block;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;white-space: nowrap;" href="{{URL::to('agents')}}">{{$temp->name}}</a> @if($temp->show_email == 1) <small style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;">{{$temp->email}}</small> @endif</h3>
+                                    <h3><a style="text-overflow: ellipsis;display: block;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;white-space: nowrap;" href="{{URL::to('makelaars/details/'.$temp->id)}}">{{$temp->name}}</a> @if($temp->show_email == 1) <small style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;">{{$temp->email}}</small> @endif</h3>
                                 </div>
                             </div>
                         </div>

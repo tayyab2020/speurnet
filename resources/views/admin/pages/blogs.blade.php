@@ -133,7 +133,7 @@
 
                                 @elseif(Route::currentRouteName() == 'moving-tips')
 
-                                    <a href="{{ url('moving-tips/'.$blog->id) }}">{{ $blog->title }}</a>
+                                    <a href="{{ url('verhuistips/'.$blog->id) }}">{{ $blog->title }}</a>
 
                                 @elseif(Route::currentRouteName() == 'expats')
 

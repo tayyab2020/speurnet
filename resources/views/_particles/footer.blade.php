@@ -7,11 +7,11 @@
             <div class="widget">
                 <h3>{{getcong('site_name')}}</h3>
                 <ul class="list-unstyled">
-                    <li><a href="{{ URL::to('about-us') }}">{{__('text.About Us')}}</a></li>
-                    <li><a href="{{ URL::to('contact-us') }}">{{__('text.Contact Us')}}</a></li>
-                    <li><a href="{{ URL::to('careers-with-us')}}">{{__('text.Careers with Us')}}</a></li>
-                    <li><a href="{{ URL::to('terms-conditions')}}">{{__('text.Terms & Conditions')}}</a></li>
-                    <li><a href="{{ URL::to('privacy-policy')}}">{{__('text.Privacy Policy')}}</a></li>
+                    <li><a href="{{ URL::to('over-ons') }}">{{__('text.About Us')}}</a></li>
+                    <li><a href="{{ URL::to('contact') }}">{{__('text.Contact Us')}}</a></li>
+                    <li><a href="{{ URL::to('cookieverklaring')}}">{{__('text.Careers with Us')}}</a></li>
+                    <li><a href="{{ URL::to('algemene-voorwaarden')}}">{{__('text.Terms & Conditions')}}</a></li>
+                    <li><a href="{{ URL::to('privacy-beleid')}}">{{__('text.Privacy Policy')}}</a></li>
                     @foreach($footer_content as $i => $key)
 
                         @if($key->heading_id == 0)

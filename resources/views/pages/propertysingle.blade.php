@@ -27,15 +27,15 @@
 
                 @if($property->new_construction == 1)
 
-                    <li><a href="{{ URL::to('new-constructions/') }}">{{__('text.New Constructions')}}</a></li>
+                    <li><a href="{{ URL::to('nieuwbouwprojecten/') }}">{{__('text.New Constructions')}}</a></li>
 
                     @elseif($property->home_exchange == 1)
 
-                    <li><a href="{{ URL::to('homeexchange/') }}">{{__('text.Home Exchange')}}</a></li>
+                    <li><a href="{{ URL::to('woningruil/') }}">{{__('text.Home Exchange')}}</a></li>
 
                              @else
 
-                    <li><a href="{{ URL::to('properties/') }}">{{__('text.Properties')}}</a></li>
+                    <li><a href="{{route('properties-front')}}">{{__('text.Properties')}}</a></li>
 
                              @endif
 
@@ -1971,7 +1971,7 @@
                       <div class="col-md-6 col-sm-6" style="padding-left: 0;">
                         <div class="team-container team-dark">
                           <div class="team-image" style="margin-left: -1px;">
-                              <a style="outline: none;" href="{{URL::to('agents/details/'.$agent->id)}}">
+                              <a style="outline: none;" href="{{URL::to('makelaars/details/'.$agent->id)}}">
                                   @if($agent->image_icon)
                                       <img src="{{ URL::asset('upload/members/'.$agent->image_icon.'-b.jpg') }}" alt="{{$agent->name}}">
                                   @elseif($agent->company_name)
@@ -1982,7 +1982,7 @@
                           <div class="team-description">
 
                               @if($property->home_exchange != 1)
-                                  <h3><a style="color: white;" href="{{URL::to('agents/details/'.$agent->id)}}">{{$agent->name}}</a></h3>
+                                  <h3><a style="color: white;" href="{{URL::to('makelaars/details/'.$agent->id)}}">{{$agent->name}}</a></h3>
                               @endif
 
                               @if($agent->phone)
@@ -2197,7 +2197,7 @@
                                 @if($agent->image_icon)
                                 <div class="agent-thumbnail" style="border-radius: 0;">
                                     <div class="agent-logo-wrapper" style="width: 100%;height: 100%;">
-                                        <a class="agent-logo" href="{{URL::to('agents/')}}">
+                                        <a class="agent-logo" href="{{URL::to('makelaars/')}}">
                                             <div class="image-wrapper image-loaded" style="height: 100%;">
 
                                                 <img style="width: 100%;height: 100%;" src="{{ URL::asset('upload/members/'.$agent->image_icon.'-b.jpg') }}" class="attachment-thumbnail size-thumbnail unveil-image" alt="{{$agent->name}}" >
@@ -2210,7 +2210,7 @@
                                 <div class="agent-content">
 
                                     @if($property->home_exchange != 1)
-                                    <h3><a href="{{URL::to('agents/')}}">{{$agent->name}}</a></h3>
+                                    <h3><a href="{{URL::to('makelaars/')}}">{{$agent->name}}</a></h3>
                                     @endif
 
                                         @if($agent->phone)
@@ -2349,7 +2349,7 @@
                                                                 <span><i class="fa fa-male"></i> {{$property->bathrooms}}</span>
                                                             </div>
                                                             <div class="property-content">
-                                                                <h3 style="margin: 10px 0px;"><a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;" href="{{URL::to('properties/'.$property->property_slug)}}">{{ Str::limit($property->property_name,35) }}</a> <small style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;">{{ Str::limit($property->address,40) }}</small></h3>
+                                                                <h3 style="margin: 10px 0px;"><a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;" href="{{URL::to('woningaanbod/'.$property->property_slug)}}">{{ Str::limit($property->property_name,35) }}</a> <small style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;">{{ Str::limit($property->address,40) }}</small></h3>
                                                                 <small style="margin-top: 20px;font-weight: 600;">@if($property->property_type == 0) Geen voorkeur @else {{ getPropertyTypeName($property->property_type)->types }} @endif</small>
                                                                 <small style="float: right;">€@if($property->sale_price) {{number_format($property->sale_price, 0, ',', '.')}} k.k. @else {{number_format($property->rent_price, 0, ',', '.')}} @endif</small>
                                                             </div>
@@ -2414,21 +2414,21 @@
 
                 @if($property->new_construction == 0 && $property->home_exchange == 0)
 
-                    <a href="{{URL::to('properties/'.$previous->property_slug)}}" class="btn btn-primary footer-button prev-property" style="left: 0px;margin-left: 0px;">
+                    <a href="{{URL::to('woningaanbod/'.$previous->property_slug)}}" class="btn btn-primary footer-button prev-property" style="left: 0px;margin-left: 0px;">
                         <i class="fa fa-angle-left" aria-hidden="true" style="margin-right: 10px;"></i>
                         <span>{{__('text.Previous House')}}</span>
                     </a>
 
                 @elseif($property->new_construction == 1)
 
-                    <a href="{{URL::to('new-constructions/'.$previous->property_slug)}}" class="btn btn-primary footer-button prev-property" style="left: 0px;margin-left: 0px;">
+                    <a href="{{URL::to('nieuwbouwprojecten/'.$previous->property_slug)}}" class="btn btn-primary footer-button prev-property" style="left: 0px;margin-left: 0px;">
                         <i class="fa fa-angle-left" aria-hidden="true" style="margin-right: 10px;"></i>
                         <span>{{__('text.Previous House')}}</span>
                     </a>
 
                 @else
 
-                    <a href="{{URL::to('home-exchange/'.$previous->property_slug)}}" class="btn btn-primary footer-button prev-property" style="left: 0px;margin-left: 0px;">
+                    <a href="{{URL::to('woningruil/'.$previous->property_slug)}}" class="btn btn-primary footer-button prev-property" style="left: 0px;margin-left: 0px;">
                         <i class="fa fa-angle-left" aria-hidden="true" style="margin-right: 10px;"></i>
                         <span>{{__('text.Previous House')}}</span>
                     </a>
@@ -2484,21 +2484,21 @@
 
                 @if($property->new_construction == 0 && $property->home_exchange == 0)
 
-                    <a href="{{URL::to('properties/'.$next->property_slug)}}" class="btn btn-primary footer-button next-property" style="left: auto;right: 0px;margin-left: 0px;">
+                    <a href="{{URL::to('woningaanbod/'.$next->property_slug)}}" class="btn btn-primary footer-button next-property" style="left: auto;right: 0px;margin-left: 0px;">
                         <i class="fa fa-angle-right" aria-hidden="true" style="margin-right: 10px;"></i>
                         <span>{{__('text.Next House')}}</span>
                     </a>
 
                 @elseif($property->new_construction == 1)
 
-                    <a href="{{URL::to('new-constructions/'.$next->property_slug)}}" class="btn btn-primary footer-button next-property" style="left: auto;right: 0px;margin-left: 0px;">
+                    <a href="{{URL::to('nieuwbouwprojecten/'.$next->property_slug)}}" class="btn btn-primary footer-button next-property" style="left: auto;right: 0px;margin-left: 0px;">
                         <i class="fa fa-angle-right" aria-hidden="true" style="margin-right: 10px;"></i>
                         <span>{{__('text.Next House')}}</span>
                     </a>
 
                 @else
 
-                    <a href="{{URL::to('home-exchange/'.$next->property_slug)}}" class="btn btn-primary footer-button next-property" style="left: auto;right: 0px;margin-left: 0px;">
+                    <a href="{{URL::to('woningruil/'.$next->property_slug)}}" class="btn btn-primary footer-button next-property" style="left: auto;right: 0px;margin-left: 0px;">
                         <i class="fa fa-angle-right" aria-hidden="true" style="margin-right: 10px;"></i>
                         <span>{{__('text.Next House')}}</span>
                     </a>

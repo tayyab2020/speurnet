@@ -124,7 +124,7 @@
                                 {!! Form::close() !!}
 
                                 <div class="form-group checkbox" style="margin-top: 30px;">
-                                    <p style="text-align: center;">{{__('text.Don\'t have account?')}} <a href="{{ URL::to('register') }}">{{__('text.Sign up here')}}</a>                <br/>
+                                    <p style="text-align: center;">{{__('text.Don\'t have account?')}} <a href="{{ URL::to('accountaanmaken') }}">{{__('text.Sign up here')}}</a>                <br/>
                                         <span class="search-span" style="position: relative;top: 3px;font-size: 14px;color: #575454;"><a href="{{ URL::asset('assets/terms-and-conditions-template.pdf') }}" target="_blank">{{__('text.Terms of Services')}}</a>&nbsp;{{__('text.and')}}&nbsp;<a href="{{ URL::asset('assets/privacy_policy.pdf') }}" target="_blank">{{__('text.Privacy Policy')}}</a></span>
                                     </p>
                                 </div>

@@ -73,7 +73,7 @@
 
                       @if(Route::currentRouteName() == 'properties-front')
 
-                          <form method="get" action="{{URL::to('properties/')}}">
+                          <form method="get" action="{{route('properties-front')}}">
 
                               @elseif(Route::currentRouteName() == 'agent-properties')
 
@@ -81,7 +81,7 @@
 
                                       @else
 
-                                          <form method="get" action="{{URL::to('new-constructions/')}}">
+                                          <form method="get" action="{{URL::to('nieuwbouwprojecten/')}}">
 
                                               @endif
 
@@ -161,7 +161,7 @@
 
                     @else
 
-                        <a href="{{URL::to('new-constructions/'.$property->property_slug)}}">
+                        <a href="{{URL::to('nieuwbouwprojecten/'.$property->property_slug)}}">
 
                     @endif
 
@@ -487,7 +487,7 @@
                                             <h3 style="margin-bottom: 15px;margin-top: 0px;display: inline-block;width: 100%;">
 
                                                 <div style="display: inline-block;width: 100%;">
-                                                    <a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;" href="{{URL::to('properties/'.$property->property_slug)}}">{{ Str::limit($property->property_name,35) }}</a>
+                                                    <a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;" href="{{URL::to('woningaanbod/'.$property->property_slug)}}">{{ Str::limit($property->property_name,35) }}</a>
                                                 </div>
 
                                                 <small style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;width: 50%;float: left;line-height: 15px;">{{ Str::limit($property->address,40) }}</small>
@@ -500,7 +500,7 @@
                                             <h3 style="margin-bottom: 15px;margin-top: 0px;display: inline-block;width: 100%;">
 
                                                 <div style="display: inline-block;width: 100%;">
-                                                    <a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;" href="{{URL::to('new-constructions/'.$property->property_slug)}}">{{ Str::limit($property->property_name,35) }}</a>
+                                                    <a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;" href="{{URL::to('nieuwbouwprojecten/'.$property->property_slug)}}">{{ Str::limit($property->property_name,35) }}</a>
                                                 </div>
 
                                                 <small style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;width: 50%;float: left;line-height: 15px;">{{ Str::limit($property->address,40) }}</small>
@@ -540,7 +540,7 @@
 
                         <div style="width: 50%;height: 100%;padding: 5px;">
 
-                        <a style="outline: none;" href="{{URL::to('agents/details/'.$property->user_id)}}">
+                        <a style="outline: none;" href="{{URL::to('makelaars/details/'.$property->user_id)}}">
 
                             @if($property->image_icon)
                                 <img style="width: 95%;height: 100%;float: right;" src="{{ URL::asset('upload/members/'.$property->image_icon.'-b.jpg') }}">

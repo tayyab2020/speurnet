@@ -68,15 +68,15 @@
 
                                 @if($property->home_exchange)
 
-                                    <a href="{{URL::to('home-exchange/'.$property->property_slug)}}">{{ $property->property_name }}</a>
+                                    <a href="{{URL::to('woningruil/'.$property->property_slug)}}">{{ $property->property_name }}</a>
 
                                 @elseif($property->new_construction)
 
-                                    <a href="{{URL::to('new-constructions/'.$property->property_slug)}}">{{ $property->property_name }}</a>
+                                    <a href="{{URL::to('nieuwbouwprojecten/'.$property->property_slug)}}">{{ $property->property_name }}</a>
 
                                 @else
 
-                                    <a href="{{URL::to('properties/'.$property->property_slug)}}">{{ $property->property_name }}</a>
+                                    <a href="{{URL::to('woningaanbod/'.$property->property_slug)}}">{{ $property->property_name }}</a>
 
                                 @endif
 

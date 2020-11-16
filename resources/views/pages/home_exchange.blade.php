@@ -46,14 +46,14 @@
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="padding: 0;display: flex;flex-direction: row;">
 
                                         <div style="background: url(<?php echo URL::asset('assets/img/photograph.png') ?>);background-color: #48cfad;min-width: 45px;height: 40px;background-size: 50% 50%;background-repeat: no-repeat;background-position: center;border-radius: 8px;float: left;"></div>
-                                        <small style="text-overflow: ellipsis;display: block;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;float: left;font-weight: 600;padding-left: 10px;white-space: nowrap;"><i style="color: #9b9b9b;margin-right: 5px;" class="fas fa-map-marker-alt" aria-hidden="true"></i> <a style="color: black;" href="{{URL::to('home-exchange/'.$temp->property_slug)}}">{{$temp->address}}</a> <br> <span style="font-weight: 500;">€ {{$temp->rent_per_month}}</span> <br> <?php if($temp->property_type == 0) { echo "Geen voorkeur"; } else { echo getPropertyTypeName($temp->property_type)->types; } ?></small>
+                                        <small style="text-overflow: ellipsis;display: block;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;float: left;font-weight: 600;padding-left: 10px;white-space: nowrap;"><i style="color: #9b9b9b;margin-right: 5px;" class="fas fa-map-marker-alt" aria-hidden="true"></i> <a style="color: black;" href="{{URL::to('woningruil/'.$temp->property_slug)}}">{{$temp->address}}</a> <br> <span style="font-weight: 500;">€ {{$temp->rent_per_month}}</span> <br> <?php if($temp->property_type == 0) { echo "Geen voorkeur"; } else { echo getPropertyTypeName($temp->property_type)->types; } ?></small>
 
                                     </div>
 
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="padding: 0;padding-left: 10px;display: flex;flex-direction: row;">
 
                                         <div style="background: url(<?php echo URL::asset('assets/img/exchange.png') ?>);background-color: #48514f;min-width: 41px;height: 40px;background-size: 50% 50%;background-repeat: no-repeat;background-position: center;border-radius: 100%;float: left;"></div>
-                                        <small style="text-overflow: ellipsis;display: block;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;float: left;font-weight: 600;padding-left: 10px;white-space: nowrap;"><i style="color: #9b9b9b;margin-right: 5px;" class="fas fa-map-marker-alt" aria-hidden="true"></i> <a style="color: black;" href="{{URL::to('home-exchange/'.$temp->property_slug)}}">{{$temp->preferred_place}}</a> <br> <span style="font-weight: 500;">€ {{$temp->preferred_rent_max}}</span> <br> <?php if($temp->preferred_kind == 0) { echo "Geen voorkeur"; } else { echo getPropertyTypeName($temp->preferred_kind)->types; } ?></small>
+                                        <small style="text-overflow: ellipsis;display: block;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;float: left;font-weight: 600;padding-left: 10px;white-space: nowrap;"><i style="color: #9b9b9b;margin-right: 5px;" class="fas fa-map-marker-alt" aria-hidden="true"></i> <a style="color: black;" href="{{URL::to('woningruil/'.$temp->property_slug)}}">{{$temp->preferred_place}}</a> <br> <span style="font-weight: 500;">€ {{$temp->preferred_rent_max}}</span> <br> <?php if($temp->preferred_kind == 0) { echo "Geen voorkeur"; } else { echo getPropertyTypeName($temp->preferred_kind)->types; } ?></small>
 
                                     </div>
 
@@ -80,7 +80,7 @@
 
                     <div style="background-color: white;border-radius: 10px;box-shadow: 1px 1px 14px 2px #e7e7e7;display: inline-block;">
 
-                        <form id="form" action="{{ URL::to('homeexchange/home-exchange-search') }}" method="GET">
+                        <form id="form" action="{{ URL::to('woningruil/home-exchange-search') }}" method="GET">
 
                             @csrf
 
@@ -1040,8 +1040,8 @@
                                                                         <?php $city = strrpos($key->address, ',');
                                                                         $city = $city === false ? $key->address : substr($key->address, $city + 1); ?>
 
-                                                                        <a class="res-title" href="{{URL::to('home-exchange/'.$key->property_slug)}}">{{ Str::limit($key->property_name,15) }}</a>
-                                                                        <a class="res-title1" href="{{URL::to('home-exchange/'.$key->property_slug)}}">{{ Str::limit($city,15) }}</a>
+                                                                        <a class="res-title" href="{{URL::to('woningruil/'.$key->property_slug)}}">{{ Str::limit($key->property_name,15) }}</a>
+                                                                        <a class="res-title1" href="{{URL::to('woningruil/'.$key->property_slug)}}">{{ Str::limit($city,15) }}</a>
 
                                                                     </h3>
 

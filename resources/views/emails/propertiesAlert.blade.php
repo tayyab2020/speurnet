@@ -160,7 +160,7 @@
 
                     <tr>
                         <td style="padding:5px 0 0 0">
-                            <a href="{{URL::to('properties/'.$property->property_slug)}}" target="_blank">{{$property->property_name}}</a>
+                            <a href="{{URL::to('woningaanbod/'.$property->property_slug)}}" target="_blank">{{$property->property_name}}</a>
                         </td>
                     </tr>
 
@@ -168,7 +168,7 @@
 
                         <tr>
                             <td style="padding:5px 0 0 0">
-                                <a href="{{URL::to('new-constructions/'.$property->property_slug)}}" target="_blank">{{$property->property_name}}</a>
+                                <a href="{{URL::to('nieuwbouwprojecten/'.$property->property_slug)}}" target="_blank">{{$property->property_name}}</a>
                             </td>
                         </tr>
 

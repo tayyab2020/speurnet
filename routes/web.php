@@ -193,9 +193,9 @@ Route::group(['middleware' => 'App\Http\Middleware\UserTypeMiddleware'], functio
 
     Route::get('blogs/{id}', 'IndexController@Blog')->name('front-blog');
 
-    Route::get('moving-tips', 'IndexController@MovingTips')->name('front-moving-tips');
+    Route::get('verhuistips', 'IndexController@MovingTips')->name('front-moving-tips');
 
-    Route::get('moving-tips/{id}', 'IndexController@MovingTip')->name('front-moving-tip');
+    Route::get('verhuistips/{id}', 'IndexController@MovingTip')->name('front-moving-tip');
 
     Route::get('expats', 'IndexController@Expats')->name('front-expats');
 
@@ -203,9 +203,9 @@ Route::group(['middleware' => 'App\Http\Middleware\UserTypeMiddleware'], functio
 
     Route::get('footer-pages/{id}', 'IndexController@FooterPage')->name('front-footer-pages');
 
-    Route::get('homeexchange', 'PropertiesController@homeexchange');
+    Route::get('woningruil', 'PropertiesController@homeexchange')->name('homeexchange-front');
 
-    Route::get('homeexchange/home-exchange-search', 'PropertiesController@HomeExchangeSearch');
+    Route::get('woningruil/home-exchange-search', 'PropertiesController@HomeExchangeSearch');
 
     Route::get('addproperty', 'PropertiesController@addeditproperty')->name('addproperty');
 
@@ -215,17 +215,17 @@ Route::group(['middleware' => 'App\Http\Middleware\UserTypeMiddleware'], functio
 
     Route::get('properties/alerts/delete/{id}', 'IndexController@unsubscribeAlert');
 
-    Route::get('about-us', 'IndexController@aboutus_page');
+    Route::get('over-ons', 'IndexController@aboutus_page');
 
-    Route::get('careers-with-us', 'IndexController@careers_with_page');
+    Route::get('cookieverklaring', 'IndexController@careers_with_page');
 
-    Route::get('terms-conditions', 'IndexController@terms_conditions_page');
+    Route::get('algemene-voorwaarden', 'IndexController@terms_conditions_page');
 
-    Route::get('privacy-policy', 'IndexController@privacy_policy_page');
+    Route::get('privacy-beleid', 'IndexController@privacy_policy_page');
 
-    Route::get('contact-us', 'IndexController@contact_us_page');
+    Route::get('contact', 'IndexController@contact_us_page');
 
-    Route::post('contact-us', 'IndexController@contact_us_sendemail');
+    Route::post('contact', 'IndexController@contact_us_sendemail');
 
 
 
@@ -233,20 +233,20 @@ Route::group(['middleware' => 'App\Http\Middleware\UserTypeMiddleware'], functio
     Route::post('subscribe', 'IndexController@subscribe');
     Route::post('cookie-save', 'IndexController@cookieSave');
 
-    Route::get('agents', 'AgentsController@index');
-    Route::post('agents/send-enquiry', 'AgentsController@SendEnquiry');
+    Route::get('makelaars', 'AgentsController@index')->name('agents-front');
+    Route::post('makelaars/send-enquiry', 'AgentsController@SendEnquiry');
 
-    Route::get('agents/details/{id}', 'AgentsController@employerDetail');
-    Route::get('agents/{id}/property', 'AgentsController@employerproperties');
-    Route::post('agents/searchbyName', 'AgentsController@searchByName');
-    Route::post('agents/searchbyCity', 'AgentsController@searchByCity');
-    Route::get('agents/filter/{alphabet}', 'AgentsController@filter');
+    Route::get('makelaars/details/{id}', 'AgentsController@employerDetail');
+    Route::get('makelaars/{id}/property', 'AgentsController@employerproperties');
+    Route::post('makelaars/searchbyName', 'AgentsController@searchByName');
+    Route::post('makelaars/searchbyCity', 'AgentsController@searchByCity');
+    Route::get('makelaars/filter/{alphabet}', 'AgentsController@filter');
 
     Route::get('builders', 'AgentsController@builder_list');
 
-    Route::get('properties', 'PropertiesController@index')->name('properties-front');
+    Route::get('woningaanbod', 'PropertiesController@index')->name('properties-front');
 
-    Route::get('new-constructions', 'PropertiesController@newconstructions')->name('newconstructions-front');
+    Route::get('nieuwbouwprojecten', 'PropertiesController@newconstructions')->name('newconstructions-front');
 
     Route::get('featured', 'PropertiesController@featuredproperties');
 
@@ -254,11 +254,11 @@ Route::group(['middleware' => 'App\Http\Middleware\UserTypeMiddleware'], functio
 
     Route::get('rent', 'PropertiesController@rentproperties');
 
-    Route::get('properties/{slug}', 'PropertiesController@propertysingle')->name('property-single');
+    Route::get('woningaanbod/{slug}', 'PropertiesController@propertysingle')->name('property-single');
 
-    Route::get('new-constructions/{slug}', 'PropertiesController@newconstructionsingle')->name('newconstruction-single');
+    Route::get('nieuwbouwprojecten/{slug}', 'PropertiesController@newconstructionsingle')->name('newconstruction-single');
 
-    Route::get('home-exchange/{slug}', 'PropertiesController@homeexchangesingle')->name('homeexchange-single');
+    Route::get('woningruil/{slug}', 'PropertiesController@homeexchangesingle')->name('homeexchange-single');
 
     Route::get('agent-properties/user/{id}/{property_id}', 'PropertiesController@propertiesUser')->name('agent-properties');
 
@@ -272,7 +272,7 @@ Route::group(['middleware' => 'App\Http\Middleware\UserTypeMiddleware'], functio
 
     Route::post('agentscontact', 'PropertiesController@agentscontact');
 
-    Route::post('searchproperties', 'PropertiesController@searchproperties')->name('searchproperties');
+    Route::post('alle-woningen', 'PropertiesController@searchproperties')->name('searchproperties');
 
     Route::post('searchnewconstructions', 'PropertiesController@searchnewconstructions')->name('searchnewconstructions');
 
@@ -304,8 +304,8 @@ Route::post('test-upload', 'IndexController@testUpload');
 Route::get('login', 'IndexController@login');
 Route::post('login', 'IndexController@postLogin');
 
-Route::get('register', 'IndexController@register');
-Route::post('register', 'IndexController@postRegister');
+Route::get('accountaanmaken', 'IndexController@register');
+Route::post('accountaanmaken', 'IndexController@postRegister');
 
 Route::get('logout', 'IndexController@logout');
 

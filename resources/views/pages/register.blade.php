@@ -44,7 +44,7 @@
 
                             </div>
                             <div class="col-md-12">
-                                {!! Form::open(array('url' => 'register','class'=>'','id'=>'registerform','role'=>'form')) !!}
+                                {!! Form::open(array('url' => 'accountaanmaken','class'=>'','id'=>'registerform','role'=>'form')) !!}
 
                                 <div class="form-group" style="margin-top: 20px;">
 

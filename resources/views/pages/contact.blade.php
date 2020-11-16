@@ -60,7 +60,7 @@
 
 							                    </div>
                     <div class="col-md-8 col-sm-7">
-                      {!! Form::open(array('url' => 'contact-us','class'=>'','id'=>'contactform','role'=>'form')) !!}
+                      {!! Form::open(array('url' => 'contact','class'=>'','id'=>'contactform','role'=>'form')) !!}
                         <div class="form-group">
                           <label for="name" class="sr-only">Jouw naam</label>
                           <input type="text" name="name" class="form-control" placeholder="Jouw naam">

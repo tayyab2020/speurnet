@@ -130,7 +130,7 @@
 
                                                         @elseif(Route::currentRouteName() == 'front-moving-tips')
 
-                                                            <a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;" href="{{ url('moving-tips/'.$blog->id) }}">{{$blog->title}}</a>
+                                                            <a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;" href="{{ url('verhuistips/'.$blog->id) }}">{{$blog->title}}</a>
 
                                                         @else
 

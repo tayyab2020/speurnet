@@ -15,7 +15,7 @@
 
                 @if(Route::currentRouteName() != 'newconstructions-front' && Route::currentRouteName() != 'searchnewconstructions' && Route::currentRouteName() != 'newconstruction-single')
 
-              {!! Form::open(array('url' => array('searchproperties'),'class'=>'advance-search','name'=>'search_form','id'=>'search_form','role'=>'form')) !!}
+              {!! Form::open(array('url' => array('alle-woningen'),'class'=>'advance-search','name'=>'search_form','id'=>'search_form','role'=>'form')) !!}
 
                 @else
 
@@ -362,7 +362,7 @@
 
                         @if(Route::currentRouteName() != 'newconstructions-front' && Route::currentRouteName() != 'searchnewconstructions' && Route::currentRouteName() != 'newconstruction-single')
 
-                            {!! Form::open(array('url' => array('searchproperties'),'class'=>'advance-search','name'=>'search_form','id'=>'search_form','role'=>'form')) !!}
+                            {!! Form::open(array('url' => array('alle-woningen'),'class'=>'advance-search','name'=>'search_form','id'=>'search_form','role'=>'form')) !!}
 
                         @else
 

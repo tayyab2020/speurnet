@@ -18,7 +18,7 @@
                     </div>
                     <ol class="breadcrumb">
                         <li><a href="{{ URL::to('/') }}">{{__('text.Home')}}</a></li>
-                        <li><a href="{{ URL::to('agents/') }}">{{__('text.Agents')}}</a></li>
+                        <li><a href="{{ URL::to('makelaars/') }}">{{__('text.Agents')}}</a></li>
                         <li class="active">{{$agent->name}}</li>
                     </ol>
                 </div>
@@ -67,7 +67,7 @@
 
                 </div>
                 <div class="team-description" style="display: inline-block;padding-top: 0;">
-                    <h3 style="margin-top: 0px;"><a style="color: black;" href="{{URL::to('agents/')}}">{{$agent->name}}</a></h3>
+                    <h3 style="margin-top: 0px;"><a style="color: black;" href="{{URL::to('makelaars/details/'.$agent->id)}}">{{$agent->name}}</a></h3>
                     @if($agent->phone)
                     <p><i class="fa fa-phone"></i>&nbsp {{$agent->phone}}<br></p>
                     @endif
@@ -292,7 +292,7 @@
 
                                         @endif
 
-                                    <form action="{{ URL::to('/agents/send-enquiry') }}" method="POST">
+                                    <form action="{{ URL::to('/makelaars/send-enquiry') }}" method="POST">
 
                                         @csrf
 
