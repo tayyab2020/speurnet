@@ -519,6 +519,23 @@ class PropertiesController extends MainAdminController
 
         }
 
+        if($inputs['property_slug']=="")
+        {
+            $property_slug  = Str::slug($inputs['property_name'], "-");
+        }
+        else
+        {
+            $property_slug = Str::slug($inputs['property_slug'], "-");
+        }
+
+        $slug = $property->where('property_slug',$property_slug)->first();
+
+        if($slug)
+        {
+            return redirect()->back()->withErrors('Property Name already taken!')->withInput();
+        }
+
+
 		//property featured image
 		$featured_image = $request->file('featured_image');
 
@@ -875,14 +892,14 @@ class PropertiesController extends MainAdminController
         }
 
 
-		if($inputs['property_slug']=="")
+		/*if($inputs['property_slug']=="")
 		{
 			$property_slug  = Str::slug($inputs['property_name'], "-");
 		}
 		else
 		{
 			$property_slug = Str::slug($inputs['property_slug'], "-");
-		}
+		}*/
 
 		$city = City::where('city_name', 'like', '%' . $request->city_name)->first();
 
