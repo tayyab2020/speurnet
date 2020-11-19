@@ -71,7 +71,29 @@ class IndexController extends Controller
             }
             else
             {
-                echo 'Create';
+                $password = Str::random(10);
+
+                $user = User::create([
+                    'name'     => $brokers['Name'],
+                    'email'    => 'tayyabkhurram62@gmail.com',
+                    'usertype' => 'Agents',
+                    'password' => bcrypt($password),
+                    'status' => 1,
+                    'address' => $brokers['AddressLine1'],
+                    'city' => $brokers['CityName'],
+                ]);
+
+                $user_name = $getInfo->name;
+                $user_email = $getInfo->email;
+
+                Mail::send('emails.social_register_confirm',
+                    array(
+                        'name' => $user_name,
+                    ), function($message) use ($user_name,$user_email)
+                    {
+                        $message->from(getcong('site_email'),getcong('site_name'));
+                        $message->to($user_email,$user_name)->subject(__('text.Registration Confirmation'));
+                    });
             }
 
         }
@@ -173,7 +195,7 @@ class IndexController extends Controller
         return redirect()->back();
     }
 
-    public  function createUser($getInfo,$provider){
+    public function createUser($getInfo,$provider){
 
         $user = User::where('provider_id', $getInfo->id)->orWhere('email',$getInfo->email)->first();
         if (!$user) {
