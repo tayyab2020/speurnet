@@ -34,7 +34,7 @@
 
                   <div class="col-md-9 col-sm-12 col-xs-12" style="margin: auto;">
 
-                  <a href="{{URL::to('properties/'.$most_viewed->property_slug)}}" style="padding: 0;margin: 0px;text-align: left;text-decoration: underline;cursor: pointer;color: black;font-size: 18px;font-weight: 600;"><img style="width: 30px;margin-right: 10px;margin-bottom: 2px;" src="{{ URL::asset('assets/img/eye.png') }}" />{{__('text.Most Viewed Ad')}}</a>
+                  <a href="{{URL::to('woningaanbod/'.$most_viewed->property_slug)}}" style="padding: 0;margin: 0px;text-align: left;text-decoration: underline;cursor: pointer;color: black;font-size: 18px;font-weight: 600;"><img style="width: 30px;margin-right: 10px;margin-bottom: 2px;" src="{{ URL::asset('assets/img/eye.png') }}" />{{__('text.Most Viewed Ad')}}</a>
 
                   </div>
 

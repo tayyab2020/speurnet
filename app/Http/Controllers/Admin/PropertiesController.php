@@ -1188,18 +1188,17 @@ class PropertiesController extends MainAdminController
 
 	public function delete($id)
     {
-
-
         $property = Properties::findOrFail($id);
 
 		\File::delete(public_path() .'/upload/properties/'.$property->featured_image.'-b.jpg');
 		\File::delete(public_path() .'/upload/properties/'.$property->featured_image.'-s.jpg');
 
-		\File::delete(public_path() .'/upload/properties/'.$property->property_images1.'-b.jpg');
-		\File::delete(public_path() .'/upload/properties/'.$property->property_images2.'-b.jpg');
-		\File::delete(public_path() .'/upload/properties/'.$property->property_images3.'-b.jpg');
-		\File::delete(public_path() .'/upload/properties/'.$property->property_images4.'-b.jpg');
-		\File::delete(public_path() .'/upload/properties/'.$property->property_images5.'-b.jpg');
+		for($i=1; $i<25; $i++)
+        {
+            $p = 'property_images'.$i;
+
+            \File::delete(public_path() .'/upload/properties/'.$property->$p.'-b.jpg');
+        }
 
 		$property->delete();
 
