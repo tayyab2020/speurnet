@@ -81,18 +81,29 @@ class IndexController extends Controller
                     'status' => 1,
                     'address' => $brokers['AddressLine1'],
                     'city' => $brokers['CityName'],
+                    'PostalCode' => $brokers['PostalCode'],
+                    'phone' => $brokers['PhoneNumber'],
+                    'fax' => $brokers['FaxNumber'],
+                    'Region' => $brokers['Region'],
+                    'SubRegion' => $brokers['SubRegion'],
+                    'CountryCode' => $brokers['CountryCode'],
+                    'WebAddress' => $brokers['WebAddress'],
+                    'MediaContractID' => $brokers['MediaContractID'],
+                    'RealtorID' => $brokers['RealtorID']
                 ]);
 
-                $user_name = $getInfo->name;
-                $user_email = $getInfo->email;
+                $user_name = $brokers['Name'];
+                $user_email = 'tayyabkhurram62@gmail.com';
 
-                Mail::send('emails.social_register_confirm',
+                Mail::send('emails.kolibri_registration',
                     array(
                         'name' => $user_name,
+                        'email' => $user_email,
+                        'password' => $password
                     ), function($message) use ($user_name,$user_email)
                     {
                         $message->from(getcong('site_email'),getcong('site_name'));
-                        $message->to($user_email,$user_name)->subject(__('text.Registration Confirmation'));
+                        $message->to($user_email,$user_name)->subject('Account Confirmation');
                     });
             }
 
