@@ -511,6 +511,7 @@ return [
     'Password should be greater than 3 characters' => 'Password should be greater than 3 characters',
     'Password & Confirm Password does not match' => 'Password & Confirm Password does not match',
     'Successfully updated!' => 'Successfully updated!',
+    'Property Deleted!' => 'Property Deleted!',
     'I wanted you to see this Property AD I just Found on zoekjehuisje.nl' => 'I wanted you to see this Property AD I just Found on zoekjehuisje.nl',
     'Featured Image is required.' => 'Featured Image is required.',
     'User extra text' => 'Extra option: Free placement of a home exchange advertisement',

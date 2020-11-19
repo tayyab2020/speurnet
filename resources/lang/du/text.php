@@ -510,6 +510,7 @@ return [
     'Password should be greater than 3 characters' => 'Het wachtwoord moet minimaal uit 3 karakters bestaan.',
     'Password & Confirm Password does not match' => 'Het wachtwoord komen niet overeen. ',
     'Successfully updated!' => 'Succesvol geüpdatet!',
+    'Property Deleted!' => 'Met succes verwijderd!',
     'I wanted you to see this Property AD I just Found on zoekjehuisje.nl' => 'Deze woning heb ik gevonden op Zoekjehuisje.nl, kijk zelf maar!',
     'Featured Image is required.' => 'Foto uploaden is verplicht',
     'User extra text' => 'Extra optie: Gratis plaatsen woningruil advertentie',

@@ -479,6 +479,9 @@ class PropertiesController extends MainAdminController
         }
 
 
+        $property_slug  = Str::slug($inputs['property_name'], "-");
+
+
 		if(!empty($inputs['id'])){
 
             if($request->route == 'property')
@@ -492,6 +495,13 @@ class PropertiesController extends MainAdminController
             else
             {
                 $property = Home_Exchange::findOrFail($inputs['id']);
+            }
+
+            $slug = $property->where('id','!=',$inputs['id'])->where('property_slug',$property_slug)->first();
+
+            if($slug)
+            {
+                return redirect()->back()->withErrors('Property Name already taken!')->withInput();
             }
 
 
@@ -517,22 +527,13 @@ class PropertiesController extends MainAdminController
 
             $property->user_id = $user_id;
 
-        }
+            $slug = $property->where('property_slug',$property_slug)->first();
 
-        if($inputs['property_slug']=="")
-        {
-            $property_slug  = Str::slug($inputs['property_name'], "-");
-        }
-        else
-        {
-            $property_slug = Str::slug($inputs['property_slug'], "-");
-        }
+            if($slug)
+            {
+                return redirect()->back()->withErrors('Property Name already taken!')->withInput();
+            }
 
-        $slug = $property->where('property_slug',$property_slug)->first();
-
-        if($slug)
-        {
-            return redirect()->back()->withErrors('Property Name already taken!')->withInput();
         }
 
 
@@ -1202,7 +1203,7 @@ class PropertiesController extends MainAdminController
 
 		$property->delete();
 
-        \Session::flash('flash_message', 'Property Deleted');
+        \Session::flash('flash_message', __('text.Property Deleted!'));
 
         return redirect()->back();
 
@@ -1224,7 +1225,7 @@ class PropertiesController extends MainAdminController
 
         $property->delete();
 
-        \Session::flash('flash_message', 'Property Deleted');
+        \Session::flash('flash_message', __('text.Property Deleted!'));
 
         return redirect()->back();
 
@@ -1246,7 +1247,7 @@ class PropertiesController extends MainAdminController
 
         $property->delete();
 
-        \Session::flash('flash_message', 'Property Deleted');
+        \Session::flash('flash_message', __('text.Property Deleted!'));
 
         return redirect()->back();
 
