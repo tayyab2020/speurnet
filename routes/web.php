@@ -299,6 +299,7 @@ Route::group(['middleware' => 'App\Http\Middleware\UserTypeMiddleware'], functio
 
 
 Route::get('/', 'IndexController@index');
+Route::get('kolibri', 'IndexController@kolibri');
 Route::get('test-upload', 'IndexController@test');
 Route::post('test-upload', 'IndexController@testUpload');
 Route::get('login', 'IndexController@login');

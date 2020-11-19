@@ -103,7 +103,7 @@
 
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 show-more-container" style="margin-bottom: 10px;text-align: right;">
-                        <a href="{{URL::to('properties')}}" style="background-color: transparent;color: black;border-width: 2px;" class="btn btn-success">{{__('text.Show More Properties')}}</a>
+                        <a href="{{URL::to('woningaanbod')}}" style="background-color: transparent;color: black;border-width: 2px;" class="btn btn-success">{{__('text.Show More Properties')}}</a>
                     </div>
                 </div>
 

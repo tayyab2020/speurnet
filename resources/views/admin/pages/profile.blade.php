@@ -668,8 +668,8 @@
                         <div class="col-sm-9">
 
                             <input type="text" id="address-input" placeholder="Enter Address" name="address" @if(Auth::user()->address) value="{{Auth::user()->address}}" @endif   class="form-control map-input">
-                            <input type="hidden" name="address_latitude" id="address-latitude" @if(Auth::user()->address_latitude) value="{{Auth::user()->address_latitude}}" @else value="52.3666969" @endif />
-                            <input type="hidden" name="address_longitude" id="address-longitude" @if(Auth::user()->address_longitude) value="{{Auth::user()->address_longitude}}" @else value="4.8945398"  @endif  />
+                            <input type="hidden" name="address_latitude" id="address-latitude" @if(Auth::user()->address_latitude) value="{{Auth::user()->address_latitude}}" @endif />
+                            <input type="hidden" name="address_longitude" id="address-longitude" @if(Auth::user()->address_longitude) value="{{Auth::user()->address_longitude}}" @endif  />
 
                         </div>
 
@@ -927,7 +927,7 @@
 
                     const input = locationInputs[i];
                     const fieldKey = input.id.replace("-input", "");
-                    const isEdit = document.getElementById(fieldKey + "-latitude").value != '' && document.getElementById(fieldKey + "-longitude").value != '';
+                    /*const isEdit = document.getElementById(fieldKey + "-latitude").value != '' && document.getElementById(fieldKey + "-longitude").value != '';*/
 
                     const latitude = parseFloat(document.getElementById(fieldKey + "-latitude").value) || 52.3666969;
                     const longitude = parseFloat(document.getElementById(fieldKey + "-longitude").value) || 4.8945398;
@@ -940,7 +940,6 @@
                     var base_url = window.location.origin;
 
                     var home_icon = base_url + '/assets/img/home_pin.png';
-
 
                     const marker = new google.maps.Marker({
                         map: map,
@@ -1035,7 +1034,7 @@
 
                     });
 
-                    marker.setVisible(isEdit);
+                    marker.setVisible(true);
 
                     const autocomplete = new google.maps.places.Autocomplete(input,options);
                     autocomplete.key = fieldKey;

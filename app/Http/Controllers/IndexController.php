@@ -35,6 +35,48 @@ use Laravel\Socialite\Facades\Socialite;
 class IndexController extends Controller
 {
 
+    public function kolibri()
+    {
+        $ch = curl_init();
+        $headers = array(
+            'Accept: application/json',
+            'Content-Type: application/json',
+
+        );
+        curl_setopt($ch, CURLOPT_URL, 'https://api.wazzupsoftware.com/ActivateService.svc/16/0/b37f7923-b6ZO-46JE-93HU-3442c7c81e76/mediacontract/?state=active');
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+
+        curl_setopt( $ch, CURLOPT_CUSTOMREQUEST, 'GET' );
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+        // Timeout in seconds
+        curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+
+        $response = curl_exec($ch);
+
+        $xml = simplexml_load_string($response);
+        $json = json_encode($xml);
+        $arr = json_decode($json,true);
+
+        $temp = array();
+
+        foreach($arr['ArrayOfMediaContractSnapshot'] as $k=> $brokers) {
+
+            $check = User::where('email',$brokers['EmailAddress'])->first();
+
+            if($check)
+            {
+                echo 'Already created';
+            }
+            else
+            {
+                echo 'Create';
+            }
+
+        }
+    }
+
     public function test()
     {
         return view('test');
