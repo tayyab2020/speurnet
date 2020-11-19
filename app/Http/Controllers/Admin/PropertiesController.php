@@ -721,10 +721,9 @@ class PropertiesController extends MainAdminController
             foreach ($find as $temp)
             {
                 \File::delete(public_path() .'/upload/properties/documents/'.$temp->document);
-
-                property_documents::where('property_id',$property->id)->delete();
             }
 
+            property_documents::where('property_id',$property->id)->delete();
 
 
             $tmpFilePath = 'upload/properties/documents/';
@@ -1199,6 +1198,21 @@ class PropertiesController extends MainAdminController
 
             \File::delete(public_path() .'/upload/properties/'.$property->$p.'-b.jpg');
         }
+
+        \File::delete(public_path() .'/upload/properties/'.$property->first_floor);
+        \File::delete(public_path() .'/upload/properties/'.$property->second_floor);
+        \File::delete(public_path() .'/upload/properties/'.$property->ground_floor);
+        \File::delete(public_path() .'/upload/properties/'.$property->basement);
+        \File::delete(public_path() .'/upload/properties/'.$property->video);
+
+        $find = property_documents::where('property_id',$id)->get();
+
+        foreach ($find as $temp)
+        {
+            \File::delete(public_path() .'/upload/properties/documents/'.$temp->document);
+        }
+
+        property_documents::where('property_id',$id)->delete();
 
 		$property->delete();
 
