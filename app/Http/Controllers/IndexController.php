@@ -224,7 +224,7 @@ class IndexController extends Controller
 
                         if($garage)
                         {
-                            if($garage['Available'])
+                            if($garage['Available'] == 'true')
                             {
                                 $garage = 1;
                             }
