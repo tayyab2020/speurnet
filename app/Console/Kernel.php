@@ -15,6 +15,7 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         Commands\DailyCron::class,
         Commands\WeeklyCron::class,
+        Commands\KolibriCron::class,
     ];
 
     /**
@@ -28,6 +29,8 @@ class Kernel extends ConsoleKernel
         $schedule->command('daily:cron')
             ->everyMinute();
         $schedule->command('weekly:cron')
+            ->everyMinute();
+        $schedule->command('kolibri:cron')
             ->everyMinute();
     }
 
