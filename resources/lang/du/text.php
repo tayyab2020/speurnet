@@ -517,4 +517,5 @@ return [
     'Description is required.' => 'Omschrijving is een verplicht veld',
     'All' => 'Alle soorten',
     'Max Images Size' => 'Mooie en goede foto’s zijn belangrijk. Daarom adviseren wij je om foto’s te uploaden tot 7 MB.',
+    'Sub Type' => 'Soort woning',
 ];

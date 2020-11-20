@@ -758,6 +758,16 @@
                                   <td><strong>{{__('text.Type')}}</strong> <img src="{{ URL::asset('assets/img/house.png') }}" style="width: 18px;float: right;" /></td>
                                   <td>@if($property->property_type == 0) Geen voorkeur @else {{ getPropertyTypeName($property->property_type)->types }} @endif</td>
                               </tr>
+
+                              @if($property->sub_type)
+
+                              <tr>
+                                  <td><strong>{{__('text.Sub Type')}}</strong></td>
+                                  <td> {{ $property->sub_type }}@if($property->sub_kind), {{$property->sub_kind}} @endif </td>
+                              </tr>
+
+                              @endif
+
                           </table>
 
                         <table class="table table-bordered">
