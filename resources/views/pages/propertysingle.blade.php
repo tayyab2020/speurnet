@@ -2340,15 +2340,33 @@
                                                     <div class="col-md-4 col-sm-6 col-xs-12">
                                                         <div class="property-container">
                                                             <div class="property-image">
-                                                                <img src="{{ URL::asset('upload/properties/'.$property->featured_image.'-s.jpg') }}" alt="{{ $property->property_name }}">
+
+                                                                @if($property->new_construction != 1)
+
+                                                                    <a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;" href="{{URL::to('woningaanbod/'.$property->property_slug)}}">
+
+                                                                        <img style="width: 100%;height: 200px;" src="{{ URL::asset('upload/properties/'.$property->featured_image.'-s.jpg') }}" alt="{{ $property->property_name }}">
+
+                                                                    </a>
+
+                                                                @else
+
+                                                                    <a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;" href="{{URL::to('nieuwbouwprojecten/'.$property->property_slug)}}">
+
+                                                                        <img style="width: 100%;height: 200px;" src="{{ URL::asset('upload/properties/'.$property->featured_image.'-s.jpg') }}" alt="{{ $property->property_name }}">
+
+                                                                    </a>
+
+                                                                @endif
+
                                                                 <div class="property-status">
                                                                     @if($property->new_construction != 1)
 
-                                                                        <span>For {{$property->property_purpose}}</span>
+                                                                        <span>{{__('text.For '.$property->property_purpose)}}</span>
 
                                                                     @else
 
-                                                                        <span>{{$property->kind_of_type}}</span>
+                                                                        <span>{{__('text.'.$property->kind_of_type)}}</span>
 
                                                                     @endif
                                                                 </div>
@@ -2359,9 +2377,31 @@
                                                                 <span><i class="fa fa-male"></i> {{$property->bathrooms}}</span>
                                                             </div>
                                                             <div class="property-content">
-                                                                <h3 style="margin: 10px 0px;"><a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;" href="{{URL::to('woningaanbod/'.$property->property_slug)}}">{{ Str::limit($property->property_name,35) }}</a> <small style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;">{{ Str::limit($property->address,40) }}</small></h3>
-                                                                <small style="margin-top: 20px;font-weight: 600;">@if($property->property_type == 0) Geen voorkeur @else {{ getPropertyTypeName($property->property_type)->types }} @endif</small>
-                                                                <small style="float: right;">€@if($property->sale_price) {{number_format($property->sale_price, 0, ',', '.')}} k.k. @else {{number_format($property->rent_price, 0, ',', '.')}} @endif</small>
+                                                                <h3 style="margin: 10px 0px;">
+
+                                                                    @if($property->new_construction != 1)
+
+                                                                        <a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;" href="{{URL::to('woningaanbod/'.$property->property_slug)}}">{{ Str::limit($property->property_name,35) }}</a>
+
+                                                                    @else
+
+                                                                        <a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;" href="{{URL::to('nieuwbouwprojecten/'.$property->property_slug)}}">{{ Str::limit($property->property_name,35) }}</a>
+
+                                                                    @endif
+
+                                                                    <small style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;">{{ Str::limit($property->address,40) }}</small></h3>
+                                                                    <small style="margin-top: 20px;font-weight: 600;">@if($property->property_type == 0) Geen voorkeur @else {{ getPropertyTypeName($property->property_type)->types }} @endif</small>
+
+                                                                @if($property->new_construction != 1)
+
+                                                                    <small style="float: right;">€@if($property->sale_price) {{number_format($property->sale_price, 0, ',', '.')}} k.k. @else {{number_format($property->rent_price, 0, ',', '.')}} @endif</small>
+
+                                                                @else
+
+                                                                    <small style="float: right;">€ {{$property->price_description}}</small>
+
+                                                                @endif
+
                                                             </div>
                                                         </div>
                                                     </div>

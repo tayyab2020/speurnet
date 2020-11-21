@@ -1088,19 +1088,20 @@ class PropertiesController extends Controller
             $months  = round($seconds / 2629440); //((365+365+365+365+366)/5/12)*24*60*60
             $years   = round($seconds / 31553280); //(365+365+365+365+366)/5 * 24 * 60 * 60
 
+
             if ($seconds <= 60){
 
-                $listed = "Just Now";
+                $listed = __('text.Listed just now');
 
             } else if ($minutes <= 60){
 
                 if ($minutes == 1){
 
-                    $listed = "one minute ago";
+                    $listed = __('text.Listed one minute ago');
 
                 } else {
 
-                    $listed = "$minutes minutes ago";
+                    $listed = __('text.Listed minutes ago',['minutes' => $minutes]);
 
                 }
 
@@ -1108,11 +1109,11 @@ class PropertiesController extends Controller
 
                 if ($hours == 1){
 
-                    $listed = "an hour ago";
+                    $listed = __('text.Listed an hour ago');
 
                 } else {
 
-                    $listed = "$hours hrs ago";
+                    $listed = __('text.Listed hrs ago',['hours' => $hours]);
 
                 }
 
@@ -1120,11 +1121,11 @@ class PropertiesController extends Controller
 
                 if ($days == 1){
 
-                    $listed = "yesterday";
+                    $listed = __('text.Listed yesterday');
 
                 } else {
 
-                    $listed = "$days days ago";
+                    $listed = __('text.Listed days ago',['days' => $days]);
 
                 }
 
@@ -1132,11 +1133,11 @@ class PropertiesController extends Controller
 
                 if ($weeks == 1){
 
-                    $listed = "this week";
+                    $listed = __('text.Listed this week');
 
                 } else {
 
-                    $listed = "this month";
+                    $listed = __('text.Listed this month');
 
                 }
 
@@ -1144,8 +1145,9 @@ class PropertiesController extends Controller
             else
             {
                 $listed = '';
-
             }
+
+
 
             $properties[$i]->listed = $listed;
 

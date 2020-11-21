@@ -270,7 +270,7 @@ return [
     'Ground Floor' => 'Begane grond',
     'Basement' => 'Kelder',
     'Remove' => 'Verwijderen',
-    'Related Properties' => 'Gerelateerde eigenschappen',
+    'Related Properties' => 'Vergelijkbare woningen',
     'Previous House' => 'Vorige huis',
     'Back to overview' => 'Terug naar het overzicht',
     'Next House' => 'Volgende huis',
