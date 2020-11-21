@@ -270,7 +270,18 @@ class KolibriCron extends Command
                                 $exists->sub_type = $get_sub_property_type->type;
                                 $exists->sub_kind = $get_sub_property_kind->type;
                                 $exists->property_purpose = $property_purpose;
-                                $exists->sale_price = $price;
+
+                                if($property_purpose == 'Sale')
+                                {
+                                    $exists->sale_price = $price;
+                                    $exists->rent_price = 0;
+                                }
+                                else
+                                {
+                                    $exists->rent_price = $price;
+                                    $exists->sale_price = 0;
+                                }
+
                                 $exists->address = $address;
                                 $exists->map_latitude = $address_latitude;
                                 $exists->map_longitude = $address_longitude;
@@ -337,6 +348,18 @@ class KolibriCron extends Command
                             $property->sub_type = $get_sub_property_type->type;
                             $property->sub_kind = $get_sub_property_kind->type;
                             $property->property_purpose = $property_purpose;
+
+                            if($property_purpose == 'Sale')
+                            {
+                                $property->sale_price = $price;
+                                $property->rent_price = 0;
+                            }
+                            else
+                            {
+                                $property->rent_price = $price;
+                                $property->sale_price = 0;
+                            }
+
                             $property->sale_price = $price;
                             $property->address = $address;
                             $property->map_latitude = $address_latitude;
