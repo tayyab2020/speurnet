@@ -555,4 +555,5 @@ return [
     'Acceptance' => 'Acceptance',
     'Located At' => 'Located At',
     'Plot Area' => 'Plot Area',
+    'Type Garage' => 'Garage Type',
 ];

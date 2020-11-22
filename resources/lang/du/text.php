@@ -554,4 +554,5 @@ return [
     'Acceptance' => 'Aanvaarding',
     'Located At' => 'Gelegen op woonlaag',
     'Plot Area' => 'Perceeloppervlakte',
+    'Type Garage' => 'Soort garage',
 ];

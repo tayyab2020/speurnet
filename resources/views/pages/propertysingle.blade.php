@@ -1084,8 +1084,8 @@
                             @if($property->garage_type)
 
                                 <tr>
-                                    <td><strong>Type Garage</strong></td>
-                                    <td>{{$property->garage_type}}</td>
+                                    <td><strong>{{__('text.Type Garage')}}</strong></td>
+                                    <td>{{__('text.'.$property->garage_type)}}</td>
                                 </tr>
 
                             @endif
