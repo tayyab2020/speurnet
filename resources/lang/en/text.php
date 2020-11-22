@@ -548,4 +548,11 @@ return [
     'CARPORT' => 'Carport',
     'PARKING_PLACE' => 'Parking Place',
     'GARAGE_WITH_CARPORT' => 'Garage with carport',
+    'Total Rooms' => 'Total Rooms',
+    'Garden Type' => 'Garden Type',
+    'Garden Size' => 'Garden Size',
+    'Status' => 'Status',
+    'Acceptance' => 'Acceptance',
+    'Located At' => 'Located At',
+    'Plot Area' => 'Plot Area',
 ];

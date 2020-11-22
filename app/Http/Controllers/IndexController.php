@@ -9,6 +9,7 @@ use App\footer_pages;
 use App\HomepageIcons;
 use App\moving_tips;
 use App\moving_tips_contents;
+use App\property_documents;
 use App\savedPropertyAlert;
 use App\Settings;
 use App\sub_kinds;
@@ -186,12 +187,6 @@ class IndexController extends Controller
                     {
                         $property_name = $property_details['RealEstateProperty']['Location']['Address']['AddressLine1']['Translation'];
 
-                        $org_slug = Str::slug($property_name, "-");
-
-                        if (Properties::where('property_slug',$org_slug)->exists()) {
-                            $org_slug = $this->incrementSlug($org_slug);
-                        }
-
                         $property_type = $property_details['RealEstateProperty']['Type']['PropertyTypes']['PropertyType'][0];
 
                         $get_property_type = Types::where('type_en',$property_type)->first();
@@ -299,7 +294,7 @@ class IndexController extends Controller
 
                         if(isset($property_details['RealEstateProperty']['Construction']['IsNewEstate']))
                         {
-                            if($property_details['RealEstateProperty']['Construction']['IsNewEstate'])
+                            if($property_details['RealEstateProperty']['Construction']['IsNewEstate'] == 'true')
                             {
                                 $construction = 'New';
                             }
@@ -333,6 +328,13 @@ class IndexController extends Controller
                         {
                             if($exists->kolibri_modification != $modification)
                             {
+
+                                $org_slug = Str::slug($property_name, "-");
+
+                                if (Properties::where('property_slug',$org_slug)->where('id','!=',$exists->id)->exists()) {
+                                    $org_slug = $this->incrementSlug($org_slug);
+                                }
+
                                 $exists->property_name = $property_name;
                                 $exists->property_slug = $org_slug;
                                 $exists->property_type = $get_property_type->id;
@@ -377,8 +379,11 @@ class IndexController extends Controller
                                 $exists->garage_type = $garage_type;
                                 $exists->kolibri_located_at = $floor_number;
 
+                                $i = 0;
+                                $y = 0;
+                                $docs = [];
 
-                                foreach ($property_details['RealEstateProperty']['Attachments']['Attachment'] as $i => $temp)
+                                foreach ($property_details['RealEstateProperty']['Attachments']['Attachment'] as $temp)
                                 {
                                     if($temp['Type'] == 'PHOTO' && $i<30)
                                     {
@@ -414,14 +419,66 @@ class IndexController extends Controller
 
                                             $exists->$p = $filename;
                                         }
+
+                                        $i++;
+                                    }
+                                    elseif($temp['Type'] == 'BROCHURE')
+                                    {
+                                        $document = $temp['URLNormalizedFile'];
+
+                                        $report = file_get_contents($document);
+
+                                        $find = property_documents::where('property_id',$exists->id)->get();
+
+                                        foreach ($find as $x)
+                                        {
+                                            \File::delete(public_path() .'/upload/properties/documents/'.$x->document);
+                                        }
+
+                                        property_documents::where('property_id',$exists->id)->delete();
+
+                                        $tmpFilePath = public_path().'/upload/properties/documents/';
+
+                                        $filename = $temp['Title']['Translation'];
+
+                                        $ext = pathinfo($filename, PATHINFO_EXTENSION);
+
+                                        $hardPath = Str::slug($property_name, '-').'-'.md5(rand(0,99999));
+
+                                        file_put_contents($tmpFilePath . $hardPath . '.' . $ext, $report);
+
+                                        $docs[$y] = $hardPath . "." . $ext;
+
+                                        $y++;
+
                                     }
                                 }
 
                                 $exists->save();
+
+                                if(count($docs) > 0)
+                                {
+                                    foreach ($docs as $key1)
+                                    {
+
+                                        $property_documents = new property_documents;
+                                        $property_documents->property_id = $exists->id;
+                                        $property_documents->document = $key1;
+                                        $property_documents->save();
+
+                                    }
+
+                                }
                             }
                         }
                         else
                         {
+
+                            $org_slug = Str::slug($property_name, "-");
+
+                            if (Properties::where('property_slug',$org_slug)->exists()) {
+                                $org_slug = $this->incrementSlug($org_slug);
+                            }
 
                             $property = new Properties;
                             $property->user_id = $user_id;
@@ -470,7 +527,11 @@ class IndexController extends Controller
                             $property->garage_type = $garage_type;
                             $property->kolibri_located_at = $floor_number;
 
-                            foreach ($property_details['RealEstateProperty']['Attachments']['Attachment'] as $i => $temp)
+                            $i = 0;
+                            $y = 0;
+                            $docs = [];
+
+                            foreach ($property_details['RealEstateProperty']['Attachments']['Attachment'] as $temp)
                             {
                                 if($temp['Type'] == 'PHOTO' && $i<30)
                                 {
@@ -501,10 +562,45 @@ class IndexController extends Controller
 
                                         $property->$p = $filename;
                                     }
+
+                                    $i++;
+                                }
+                                elseif($temp['Type'] == 'BROCHURE')
+                                {
+                                    $document = $temp['URLNormalizedFile'];
+
+                                    $report = file_get_contents($document);
+
+                                    $tmpFilePath = public_path().'/upload/properties/documents/';
+
+                                    $filename = $temp['Title']['Translation'];
+
+                                    $ext = pathinfo($filename, PATHINFO_EXTENSION);
+
+                                    $hardPath = Str::slug($property_name, '-').'-'.md5(rand(0,99999));
+
+                                    file_put_contents($tmpFilePath . $hardPath . '.' . $ext, $report);
+
+                                    $docs[$y] = $hardPath . "." . $ext;
+
                                 }
                             }
 
                             $property->save();
+
+                            if(count($docs) > 0)
+                            {
+                                foreach ($docs as $key1)
+                                {
+
+                                    $property_documents = new property_documents;
+                                    $property_documents->property_id = $property->id;
+                                    $property_documents->document = $key1;
+                                    $property_documents->save();
+
+                                }
+
+                            }
 
                         }
                     }

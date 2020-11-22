@@ -855,14 +855,33 @@
                             <td>{{$property->bedrooms}}</td>
                           </tr>
 
+                                @if($property->kolibri_rooms)
+
+                                    <tr>
+                                        <td><strong>{{__('text.Total Rooms')}}</strong></td>
+                                        <td>{{$property->kolibri_rooms}}</td>
+                                    </tr>
+
+                                @endif
+
+
+                                @if($property->floors)
+
+                                    <tr>
+                                        <td><strong>{{__('text.Floors')}}</strong></td>
+                                        <td>{{$property->floors}}</td>
+                                    </tr>
+
+                                @endif
+
                                 @if($property->area)
 
-                          <tr>
-                            <td><strong>{{__('text.Area')}} <small>(m2)</small></strong></td>
-                            <td>{{$property->area}} m2</td>
-                          </tr>
+                                    <tr>
+                                        <td><strong>{{__('text.Area')}} <small>(m2)</small></strong></td>
+                                        <td>{{$property->area}} m2</td>
+                                    </tr>
 
-                                    @endif
+                                @endif
 
                             @endif
 
@@ -954,6 +973,7 @@
 
                             @endif
 
+
                             @if($property->building_condition)
 
                                 <tr>
@@ -962,6 +982,7 @@
                                 </tr>
 
                             @endif
+
 
                             @if($property->volume)
 
@@ -972,18 +993,66 @@
 
                             @endif
 
-                                @if($property->home_exchange !=1)
 
-                                    @if($property->floors)
+                            @if($property->kolibri_plot_area)
 
-                                        <tr>
-                                            <td><strong>{{__('text.Floors')}}</strong></td>
-                                            <td>{{$property->floors}}</td>
-                                        </tr>
+                                <tr>
+                                    <td><strong>{{__('text.Plot Area')}} <small>(m2)</small></strong></td>
+                                    <td>{{$property->kolibri_plot_area}} m2</td>
+                                </tr>
 
-                                    @endif
+                            @endif
 
-                                @endif
+
+                            @if($property->kolibri_garden_type)
+
+                                 <tr>
+                                     <td><strong>{{__('text.Garden Type')}}</strong></td>
+                                     <td>{{__('text.'.$property->kolibri_garden_type)}}</td>
+                                 </tr>
+
+                            @endif
+
+
+                            @if($property->kolibri_garden_size)
+
+                                  <tr>
+                                      <td><strong>{{__('text.Garden Size')}}</strong></td>
+                                      <td>{{$property->kolibri_garden_size}}</td>
+                                  </tr>
+
+                            @endif
+
+
+                            @if($property->kolibri_status)
+
+                                  <tr>
+                                      <td><strong>{{__('text.Status')}}</strong></td>
+                                      <td>{{__('text.'.$property->kolibri_status)}}</td>
+                                  </tr>
+
+                            @endif
+
+
+                            @if($property->kolibri_acceptance)
+
+                                  <tr>
+                                      <td><strong>{{__('text.Acceptance')}}</strong></td>
+                                      <td>{{__('text.'.$property->kolibri_acceptance)}}</td>
+                                  </tr>
+
+                            @endif
+
+
+                            @if($property->kolibri_located_at)
+
+                                  <tr>
+                                      <td><strong>{{__('text.Located At')}}</strong></td>
+                                      <td>{{$property->kolibri_located_at}}</td>
+                                  </tr>
+
+                            @endif
+
 
                             @if($property->backyard)
 
