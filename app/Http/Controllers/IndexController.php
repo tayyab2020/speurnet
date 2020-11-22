@@ -325,7 +325,7 @@ class IndexController extends Controller
                             $property_purpose = 'Rent';
                             $price = $property_details['RealEstateProperty']['Financials']['RentPrice'];
                         }
-                        
+
 
                         $exists = Properties::where('kolibri_realtor_id',$realtor_id)->where('kolibri_property_id',$property_id)->first();
 
