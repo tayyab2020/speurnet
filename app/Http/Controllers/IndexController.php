@@ -167,7 +167,7 @@ class IndexController extends Controller
                         'Content-Type: application/json',
 
                     );
-                    curl_setopt($ch, CURLOPT_URL, 'https://api.wazzupsoftware.com/OutputService.svc/16/0/b37f7923-b6ZO-46JE-93HU-3442c7c81e76/realestate/?realtorid='.$realtor_id.'&id='.$property_id);
+                    curl_setopt($ch, CURLOPT_URL, 'https://api.wazzupsoftware.com/OutputService.svc/16/0/b37f7923-b6ZO-46JE-93HU-3442c7c81e76/realestate/?realtorid='.$realtor_id.'&id=3664426');
                     curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
                     curl_setopt($ch, CURLOPT_HEADER, 0);
 
@@ -270,9 +270,9 @@ class IndexController extends Controller
 
 
 
-                        if(isset($property_details['RealEstateProperty']['Gardens']['Garden']['Type']))
+                        if(isset($property_details['RealEstateProperty']['Gardens']['Garden']))
                         {
-                            $garden_type = $property_details['RealEstateProperty']['Gardens']['Garden']['Type'];
+                            $garden_type = $property_details['RealEstateProperty']['Gardens']['Garden'][0]['Type'];
                         }
                         else
                         {
@@ -280,16 +280,14 @@ class IndexController extends Controller
                         }
 
 
-
-                        if(isset($property_details['RealEstateProperty']['Garages']['Garage']['Type']))
+                        if(isset($property_details['RealEstateProperty']['Garages']['Garage']))
                         {
-                            $garage_type = $property_details['RealEstateProperty']['Garages']['Garage']['Type'];
+                            $garage_type = $property_details['RealEstateProperty']['Garages']['Garage'][0]['Type'];
                         }
                         else
                         {
                             $garage_type = NULL;
                         }
-
 
 
                         if(isset($property_details['RealEstateProperty']['Construction']['IsNewEstate']))
@@ -312,8 +310,17 @@ class IndexController extends Controller
 
                         if(isset($property_details['RealEstateProperty']['Offer']['IsForSale']))
                         {
-                            $property_purpose = 'Sale';
-                            $price = $property_details['RealEstateProperty']['Financials']['PurchasePrice'];
+                            if($property_details['RealEstateProperty']['Offer']['IsForSale'] == 'true')
+                            {
+                                $property_purpose = 'Sale';
+                                $price = $property_details['RealEstateProperty']['Financials']['PurchasePrice'];
+                            }
+                            else
+                            {
+                                $property_purpose = 'Rent';
+                                $price = $property_details['RealEstateProperty']['Financials']['RentPrice'];
+                            }
+
                         }
                         else
                         {
