@@ -166,7 +166,7 @@ class IndexController extends Controller
                         'Content-Type: application/json',
 
                     );
-                    curl_setopt($ch, CURLOPT_URL, 'https://api.wazzupsoftware.com/OutputService.svc/16/0/b37f7923-b6ZO-46JE-93HU-3442c7c81e76/realestate/?realtorid='.$brokers['RealtorID'].'&id='.$property_id);
+                    curl_setopt($ch, CURLOPT_URL, 'https://api.wazzupsoftware.com/OutputService.svc/16/0/b37f7923-b6ZO-46JE-93HU-3442c7c81e76/realestate/?realtorid='.$realtor_id.'&id='.$property_id);
                     curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
                     curl_setopt($ch, CURLOPT_HEADER, 0);
 
@@ -214,29 +214,106 @@ class IndexController extends Controller
 
                         $bedrooms = $property_details['RealEstateProperty']['Counts']['CountOfBedrooms'];
 
-                        $garage = isset($property_details['RealEstateProperty']['Facilities']['Garage']);
-
                         $area = $property_details['RealEstateProperty']['AreaTotals']['EffectiveArea'];
 
                         $volume = $property_details['RealEstateProperty']['Dimensions']['Content'];
 
                         $description = $property_details['RealEstateProperty']['Descriptions']['AdText']['Translation'] . "\n\n" . $property_details['RealEstateProperty']['Descriptions']['DetailsDescription']['Translation'];
 
-                        if($garage)
+                        $construction_year_from = $property_details['RealEstateProperty']['Construction']['ConstructionYearFrom'];
+
+                        $construction_year = $property_details['RealEstateProperty']['Construction']['ConstructionYearTo'];
+
+                        $construction_period = $property_details['RealEstateProperty']['Construction']['ConstructionPeriod'];
+
+                        $total_rooms = $property_details['RealEstateProperty']['Counts']['CountOfRooms'];
+
+                        $floors = $property_details['RealEstateProperty']['Counts']['CountOfFloors'];
+
+                        $garden_area = $property_details['RealEstateProperty']['Gardens']['Garden']['Dimensions']['Area'] . 'm² (' . $property_details['RealEstateProperty']['Gardens']['Garden']['Dimensions']['Length'] . 'm diep en ' . $property_details['RealEstateProperty']['Gardens']['Garden']['Dimensions']['Width'] . 'm breed';
+
+                        $status = $property_details['RealEstateProperty']['PropertyInfo']['Status'];
+
+                        $acceptance = $property_details['RealEstateProperty']['Offer']['Acceptance'];
+
+                        $city = City::where('city_name', 'like', '%' . $property_details['RealEstateProperty']['Location']['Address']['CityName']['Translation'])->first();
+
+                        if(isset($property_details['RealEstateProperty']['Dimensions']['Land']['Area']))
                         {
-                            if($property_details['RealEstateProperty']['Facilities']['Garage']['Available'])
+                            $plot_area = $property_details['RealEstateProperty']['Dimensions']['Land']['Area'];
+                        }
+                        else
+                        {
+                            $plot_area = NULL;
+                        }
+
+
+                        if($city)
+                        {
+                            $city_id = $city->id;
+                        }
+                        else
+                        {
+                            $city = new City;
+                            $city->city_name = $property_details['RealEstateProperty']['Location']['Address']['CityName']['Translation'];
+                            $city->status = 1;
+                            $city->save();
+
+                            $city_id = $city->id;
+                        }
+
+
+
+                        if(isset($property_details['RealEstateProperty']['Location']['FloorNumber']))
+                        {
+                            $floor_number = $property_details['RealEstateProperty']['Location']['FloorNumber'];
+                        }
+                        else
+                        {
+                            $floor_number = NULL;
+                        }
+
+
+
+                        if(isset($property_details['RealEstateProperty']['Gardens']['Garden']['Type']))
+                        {
+                            $garden_type = $property_details['RealEstateProperty']['Gardens']['Garden']['Type'];
+                        }
+                        else
+                        {
+                            $garden_type = NULL;
+                        }
+
+
+
+                        if(isset($property_details['RealEstateProperty']['Garages']['Garage']['Type']))
+                        {
+                            $garage_type = $property_details['RealEstateProperty']['Garages']['Garage']['Type'];
+                        }
+                        else
+                        {
+                            $garage_type = NULL;
+                        }
+
+
+
+                        if(isset($property_details['RealEstateProperty']['Construction']['IsNewEstate']))
+                        {
+                            if($property_details['RealEstateProperty']['Construction']['IsNewEstate'])
                             {
-                                $garage = 1;
+                                $construction = 'New';
                             }
                             else
                             {
-                                $garage = 0;
+                                $construction = 'Old';
                             }
                         }
                         else
                         {
-                            $garage = 0;
+                            $construction = 'Under Construction';
                         }
+
+
 
                         if(isset($property_details['RealEstateProperty']['Offer']['IsForSale']))
                         {
@@ -248,32 +325,58 @@ class IndexController extends Controller
                             $property_purpose = 'Rent';
                             $price = $property_details['RealEstateProperty']['Financials']['RentPrice'];
                         }
+                        
 
                         $exists = Properties::where('kolibri_realtor_id',$realtor_id)->where('kolibri_property_id',$property_id)->first();
 
                         if($exists)
                         {
-                            if(strcmp($exists->kolibri_modification,$modification) < 0)
+                            if($exists->kolibri_modification != $modification)
                             {
                                 $exists->property_name = $property_name;
                                 $exists->property_slug = $org_slug;
                                 $exists->property_type = $get_property_type->id;
                                 $exists->sub_type = $get_sub_property_type->type;
                                 $exists->sub_kind = $get_sub_property_kind->type;
+                                $exists->city_id = $city_id;
                                 $exists->property_purpose = $property_purpose;
-                                $exists->sale_price = $price;
+
+                                if($property_purpose == 'Sale')
+                                {
+                                    $exists->sale_price = $price;
+                                    $exists->rent_price = 0;
+                                }
+                                else
+                                {
+                                    $exists->rent_price = $price;
+                                    $exists->sale_price = 0;
+                                }
+
                                 $exists->address = $address;
                                 $exists->map_latitude = $address_latitude;
                                 $exists->map_longitude = $address_longitude;
                                 $exists->bathrooms = $bathrooms;
                                 $exists->bedrooms = $bedrooms;
-                                $exists->garage = $garage;
                                 $exists->area = $area;
                                 $exists->description = $description;
                                 $exists->volume = $volume;
                                 $exists->kolibri_realtor_id = $realtor_id;
                                 $exists->kolibri_property_id = $property_id;
                                 $exists->kolibri_modification = $modification;
+                                $exists->construction_type = $construction;
+                                $exists->year_construction = $construction_year;
+                                $exists->construction_year_from = $construction_year_from;
+                                $exists->construction_period = $construction_period;
+                                $exists->kolibri_plot_area = $plot_area;
+                                $exists->kolibri_rooms = $total_rooms;
+                                $exists->floors = $floors;
+                                $exists->kolibri_garden_type = $garden_type;
+                                $exists->kolibri_garden_size = $garden_area;
+                                $exists->kolibri_status = $status;
+                                $exists->kolibri_acceptance = $acceptance;
+                                $exists->garage_type = $garage_type;
+                                $exists->kolibri_located_at = $floor_number;
+
 
                                 foreach ($property_details['RealEstateProperty']['Attachments']['Attachment'] as $i => $temp)
                                 {
@@ -290,8 +393,8 @@ class IndexController extends Controller
 
                                             $report = file_get_contents($image);
 
-                                            file_put_contents('upload/properties/'.$filename.'-b.jpg', $report);
-                                            file_put_contents('upload/properties/'.$filename.'-s.jpg', $report);
+                                            file_put_contents(public_path().'/upload/properties/'.$filename.'-b.jpg', $report);
+                                            file_put_contents(public_path().'/upload/properties/'.$filename.'-s.jpg', $report);
 
                                             $exists->featured_image = $filename;
                                         }
@@ -307,7 +410,7 @@ class IndexController extends Controller
 
                                             $report = file_get_contents($image);
 
-                                            file_put_contents('upload/properties/'.$filename.'-b.jpg', $report);
+                                            file_put_contents(public_path().'/upload/properties/'.$filename.'-b.jpg', $report);
 
                                             $exists->$p = $filename;
                                         }
@@ -327,20 +430,45 @@ class IndexController extends Controller
                             $property->property_type = $get_property_type->id;
                             $property->sub_type = $get_sub_property_type->type;
                             $property->sub_kind = $get_sub_property_kind->type;
+                            $property->city_id = $city_id;
                             $property->property_purpose = $property_purpose;
+
+                            if($property_purpose == 'Sale')
+                            {
+                                $property->sale_price = $price;
+                                $property->rent_price = 0;
+                            }
+                            else
+                            {
+                                $property->rent_price = $price;
+                                $property->sale_price = 0;
+                            }
+
                             $property->sale_price = $price;
                             $property->address = $address;
                             $property->map_latitude = $address_latitude;
                             $property->map_longitude = $address_longitude;
                             $property->bathrooms = $bathrooms;
                             $property->bedrooms = $bedrooms;
-                            $property->garage = $garage;
                             $property->area = $area;
                             $property->description = $description;
                             $property->volume = $volume;
                             $property->kolibri_realtor_id = $realtor_id;
                             $property->kolibri_property_id = $property_id;
                             $property->kolibri_modification = $modification;
+                            $property->construction_type = $construction;
+                            $property->construction_year_from = $construction_year_from;
+                            $property->year_construction = $construction_year;
+                            $property->construction_period = $construction_period;
+                            $property->kolibri_plot_area = $plot_area;
+                            $property->kolibri_rooms = $total_rooms;
+                            $property->floors = $floors;
+                            $property->kolibri_garden_type = $garden_type;
+                            $property->kolibri_garden_size = $garden_area;
+                            $property->kolibri_status = $status;
+                            $property->kolibri_acceptance = $acceptance;
+                            $property->garage_type = $garage_type;
+                            $property->kolibri_located_at = $floor_number;
 
                             foreach ($property_details['RealEstateProperty']['Attachments']['Attachment'] as $i => $temp)
                             {
@@ -354,8 +482,8 @@ class IndexController extends Controller
 
                                         $report = file_get_contents($image);
 
-                                        file_put_contents('upload/properties/'.$filename.'-b.jpg', $report);
-                                        file_put_contents('upload/properties/'.$filename.'-s.jpg', $report);
+                                        file_put_contents(public_path().'/upload/properties/'.$filename.'-b.jpg', $report);
+                                        file_put_contents(public_path().'/upload/properties/'.$filename.'-s.jpg', $report);
 
                                         $property->featured_image = $filename;
                                     }
@@ -369,7 +497,7 @@ class IndexController extends Controller
 
                                         $report = file_get_contents($image);
 
-                                        file_put_contents('upload/properties/'.$filename.'-b.jpg', $report);
+                                        file_put_contents(public_path().'/upload/properties/'.$filename.'-b.jpg', $report);
 
                                         $property->$p = $filename;
                                     }

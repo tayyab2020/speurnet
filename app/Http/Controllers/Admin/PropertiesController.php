@@ -1192,7 +1192,7 @@ class PropertiesController extends MainAdminController
 		\File::delete(public_path() .'/upload/properties/'.$property->featured_image.'-b.jpg');
 		\File::delete(public_path() .'/upload/properties/'.$property->featured_image.'-s.jpg');
 
-		for($i=1; $i<25; $i++)
+		for($i=1; $i<30; $i++)
         {
             $p = 'property_images'.$i;
 
@@ -1230,11 +1230,27 @@ class PropertiesController extends MainAdminController
         \File::delete(public_path() .'/upload/properties/'.$property->featured_image.'-b.jpg');
         \File::delete(public_path() .'/upload/properties/'.$property->featured_image.'-s.jpg');
 
-        \File::delete(public_path() .'/upload/properties/'.$property->property_images1.'-b.jpg');
-        \File::delete(public_path() .'/upload/properties/'.$property->property_images2.'-b.jpg');
-        \File::delete(public_path() .'/upload/properties/'.$property->property_images3.'-b.jpg');
-        \File::delete(public_path() .'/upload/properties/'.$property->property_images4.'-b.jpg');
-        \File::delete(public_path() .'/upload/properties/'.$property->property_images5.'-b.jpg');
+        for($i=1; $i<30; $i++)
+        {
+            $p = 'property_images'.$i;
+
+            \File::delete(public_path() .'/upload/properties/'.$property->$p.'-b.jpg');
+        }
+
+        \File::delete(public_path() .'/upload/properties/'.$property->first_floor);
+        \File::delete(public_path() .'/upload/properties/'.$property->second_floor);
+        \File::delete(public_path() .'/upload/properties/'.$property->ground_floor);
+        \File::delete(public_path() .'/upload/properties/'.$property->basement);
+        \File::delete(public_path() .'/upload/properties/'.$property->video);
+
+        $find = property_documents::where('property_id',$id)->get();
+
+        foreach ($find as $temp)
+        {
+            \File::delete(public_path() .'/upload/properties/documents/'.$temp->document);
+        }
+
+        property_documents::where('property_id',$id)->delete();
 
         $property->delete();
 
@@ -1252,11 +1268,27 @@ class PropertiesController extends MainAdminController
         \File::delete(public_path() .'/upload/properties/'.$property->featured_image.'-b.jpg');
         \File::delete(public_path() .'/upload/properties/'.$property->featured_image.'-s.jpg');
 
-        \File::delete(public_path() .'/upload/properties/'.$property->property_images1.'-b.jpg');
-        \File::delete(public_path() .'/upload/properties/'.$property->property_images2.'-b.jpg');
-        \File::delete(public_path() .'/upload/properties/'.$property->property_images3.'-b.jpg');
-        \File::delete(public_path() .'/upload/properties/'.$property->property_images4.'-b.jpg');
-        \File::delete(public_path() .'/upload/properties/'.$property->property_images5.'-b.jpg');
+        for($i=1; $i<30; $i++)
+        {
+            $p = 'property_images'.$i;
+
+            \File::delete(public_path() .'/upload/properties/'.$property->$p.'-b.jpg');
+        }
+
+        \File::delete(public_path() .'/upload/properties/'.$property->first_floor);
+        \File::delete(public_path() .'/upload/properties/'.$property->second_floor);
+        \File::delete(public_path() .'/upload/properties/'.$property->ground_floor);
+        \File::delete(public_path() .'/upload/properties/'.$property->basement);
+        \File::delete(public_path() .'/upload/properties/'.$property->video);
+
+        $find = property_documents::where('property_id',$id)->get();
+
+        foreach ($find as $temp)
+        {
+            \File::delete(public_path() .'/upload/properties/documents/'.$temp->document);
+        }
+
+        property_documents::where('property_id',$id)->delete();
 
         $property->delete();
 
