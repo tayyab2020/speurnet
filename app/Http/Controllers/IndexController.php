@@ -258,7 +258,6 @@ class IndexController extends Controller
                         }
 
 
-
                         if(isset($property_details['RealEstateProperty']['Location']['FloorNumber']))
                         {
                             $floor_number = $property_details['RealEstateProperty']['Location']['FloorNumber'];
@@ -269,10 +268,16 @@ class IndexController extends Controller
                         }
 
 
-
                         if(isset($property_details['RealEstateProperty']['Gardens']['Garden']))
                         {
-                            $garden_type = $property_details['RealEstateProperty']['Gardens']['Garden'][0]['Type'];
+                            if(array_key_exists(0, $property_details['RealEstateProperty']['Gardens']['Garden']))
+                            {
+                                $garden_type = $property_details['RealEstateProperty']['Gardens']['Garden'][0]['Type'];
+                            }
+                            else
+                            {
+                                $garden_type = $property_details['RealEstateProperty']['Gardens']['Garden']['Type'];
+                            }
                         }
                         else
                         {
@@ -282,7 +287,14 @@ class IndexController extends Controller
 
                         if(isset($property_details['RealEstateProperty']['Garages']['Garage']))
                         {
-                            $garage_type = $property_details['RealEstateProperty']['Garages']['Garage'][0]['Type'];
+                            if(array_key_exists(0, $property_details['RealEstateProperty']['Garages']['Garage']))
+                            {
+                                $garage_type = $property_details['RealEstateProperty']['Garages']['Garage'][0]['Type'];
+                            }
+                            else
+                            {
+                                $garage_type = $property_details['RealEstateProperty']['Garages']['Garage']['Type'];
+                            }
                         }
                         else
                         {
