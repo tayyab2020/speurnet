@@ -409,6 +409,7 @@ class KolibriCron extends Command
 
                                 $i = 0;
                                 $y = 0;
+                                $z = 0;
                                 $docs = [];
 
                                 foreach ($property_details['RealEstateProperty']['Attachments']['Attachment'] as $temp)
@@ -478,6 +479,32 @@ class KolibriCron extends Command
                                         $docs[$y] = $hardPath . "." . $ext;
 
                                         $y++;
+
+                                    }
+                                    elseif($temp['Type'] == 'VIDEO')
+                                    {
+                                        if($z == 0)
+                                        {
+                                            \File::delete(public_path() .'/upload/properties/'.$exists->video);
+
+                                            $tmpFilePath = public_path().'/upload/properties/';
+
+                                            $hardPath = Str::slug($property_name, '-').'-'.md5(rand(0,99999));
+
+                                            $video_file_name = $temp['Title']['Translation'];
+
+                                            $ext = pathinfo($video_file_name, PATHINFO_EXTENSION);
+
+                                            $video = $temp['URLNormalizedFile'];
+
+                                            $report = file_get_contents($video);
+
+                                            file_put_contents($tmpFilePath . $hardPath . '.' . $ext, $report);
+
+                                            $exists->video = $hardPath . '.' . $ext;
+
+                                            $z++;
+                                        }
 
                                     }
                                 }
@@ -557,6 +584,7 @@ class KolibriCron extends Command
 
                             $i = 0;
                             $y = 0;
+                            $z = 0;
                             $docs = [];
 
                             foreach ($property_details['RealEstateProperty']['Attachments']['Attachment'] as $temp)
@@ -612,6 +640,31 @@ class KolibriCron extends Command
                                     $docs[$y] = $hardPath . "." . $ext;
 
                                 }
+                                elseif($temp['Type'] == 'VIDEO')
+                                {
+                                    if($z == 0)
+                                    {
+                                        $tmpFilePath = public_path().'/upload/properties/';
+
+                                        $hardPath = Str::slug($property_name, '-').'-'.md5(rand(0,99999));
+
+                                        $video_file_name = $temp['Title']['Translation'];
+
+                                        $ext = pathinfo($video_file_name, PATHINFO_EXTENSION);
+
+                                        $video = $temp['URLNormalizedFile'];
+
+                                        $report = file_get_contents($video);
+
+                                        file_put_contents($tmpFilePath . $hardPath . '.' . $ext, $report);
+
+                                        $property->video = $hardPath . '.' . $ext;
+
+                                        $z++;
+                                    }
+
+                                }
+
                             }
 
                             $property->save();
@@ -637,8 +690,7 @@ class KolibriCron extends Command
             }
 
         }
-
-
+        
         \Log::info("Kolibri Cron Job is working fine!");
 
 
