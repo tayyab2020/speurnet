@@ -42,7 +42,6 @@
 
     <p>Van ‘te koop’ naar ‘verkocht!’ Van ‘te huur’ naar ‘verhuurd.’ Welkom thuis!
         www.zoekjehuisje.nl
-        info@zoekjehuisje.nl
     </p>
     </body>
 
