@@ -67,7 +67,7 @@ class KolibriCron extends Command
                 $message->to($user_email,$user_name)->subject('Gefeliciteerd, je Zoekjehuisje.nl account is geactiveerd!');
             });
 
-        
+        exit();
 
         $ch = curl_init();
         $headers = array(
