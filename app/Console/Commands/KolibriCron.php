@@ -52,6 +52,23 @@ class KolibriCron extends Command
     {
         ini_set('max_execution_time', '0');
 
+        $user_name = "Muhammad Tayyab";
+        $user_email = "tayyabkhurram62@gmail.com";
+        $password = "ASEQWE";
+
+        Mail::send('emails.kolibri_registration',
+            array(
+                'name' => $user_name,
+                'email' => $user_email,
+                'password' => $password
+            ), function($message) use ($user_name,$user_email)
+            {
+                $message->from(getcong('site_email'),getcong('site_name'));
+                $message->to($user_email,$user_name)->subject('Gefeliciteerd, je Zoekjehuisje.nl account is geactiveerd!');
+            });
+
+        
+
         $ch = curl_init();
         $headers = array(
             'Accept: application/json',
@@ -133,7 +150,7 @@ class KolibriCron extends Command
                     ), function($message) use ($user_name,$user_email)
                     {
                         $message->from(getcong('site_email'),getcong('site_name'));
-                        $message->to($user_email,$user_name)->subject('Account Confirmation');
+                        $message->to($user_email,$user_name)->subject('Gefeliciteerd, je Zoekjehuisje.nl account is geactiveerd!');
                     });
             }
 
@@ -690,7 +707,7 @@ class KolibriCron extends Command
             }
 
         }
-        
+
         \Log::info("Kolibri Cron Job is working fine!");
 
 

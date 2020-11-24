@@ -124,7 +124,7 @@ class IndexController extends Controller
                     ), function($message) use ($user_name,$user_email)
                     {
                         $message->from(getcong('site_email'),getcong('site_name'));
-                        $message->to($user_email,$user_name)->subject('Account Confirmation');
+                        $message->to($user_email,$user_name)->subject('Gefeliciteerd, je Zoekjehuisje.nl account is geactiveerd!');
                     });
             }
 
