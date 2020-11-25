@@ -167,7 +167,7 @@
     {
         .kolibri-text
         {
-            font-size: 10px;
+            font-size: 11px;
             line-height: 1.5;
         }
 
