@@ -1,6 +1,6 @@
 @extends("app")
 
-@section('head_title', 'Agents | '.getcong('site_name') )
+@section('head_title', 'Makelaars | '.getcong('site_name') )
 @section('head_url', Request::url())
 
 @section("content")

@@ -1,6 +1,19 @@
 @extends("app")
 
-@section('head_title', 'All Properties | '.getcong('site_name') )
+@if(Route::currentRouteName() == 'properties-front')
+
+    @section('head_title', 'Woningaanbod | '.getcong('site_name') )
+
+@elseif(Route::currentRouteName() == 'agent-properties')
+
+    @section('head_title', 'Woningaanbod | '.getcong('site_name') )
+
+@else
+
+    @section('head_title', 'Nieuwbouwprojecten | '.getcong('site_name') )
+
+@endif
+
 @section('head_url', Request::url())
 
 @section("content")

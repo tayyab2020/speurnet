@@ -1,6 +1,6 @@
 @extends("app")
 
-@section('head_title', 'Contact Us | '.getcong('site_name') )
+@section('head_title', 'Contact | '.getcong('site_name') )
 @section('head_url', Request::url())
 
 @section("content")

@@ -1,6 +1,6 @@
 @extends("app")
 
-@section('head_title', 'Properties | '.getcong('site_name') )
+@section('head_title', 'Alle woningen | '.getcong('site_name') )
 @section('head_url', Request::url())
 
 @section("content")

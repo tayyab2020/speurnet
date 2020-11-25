@@ -1,6 +1,6 @@
 @extends("app")
 
-@section('head_title', 'Create a new account | '.getcong('site_name') )
+@section('head_title', 'Accountaanmaken | '.getcong('site_name') )
 @section('head_url', Request::url())
 
 @section("content")
