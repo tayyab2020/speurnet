@@ -1306,6 +1306,11 @@
 
         <style>
 
+            iframe
+            {
+                width: 100%;
+            }
+
             input[type=number]::-webkit-outer-spin-button,
             input[type=number]::-webkit-inner-spin-button {
                 -webkit-appearance: none;

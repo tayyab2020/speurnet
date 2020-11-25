@@ -12,8 +12,17 @@
 
         <div class="col-lg-5 col-md-6 col-sm-6 col-xs-12" style="padding: 0;">
 
-            <div class="blog-container" style="margin-bottom: 0;display: flex;">
-                <div class="blog-content col-lg-10 col-md-11 col-sm-11 col-xs-10" style="background: #fff;margin: 40px auto;padding: 30px 45px 30px 45px;font-family: 'Roboto', sans-serif;border-radius: 8px;box-shadow: 0px 0px 7px 5px #efefef;">
+            <div class="blog-container" style="margin-bottom: 0;display: flex;flex-direction: column;">
+
+                <div style="width: 85%;margin: auto;display: flex;justify-content: center;margin-top: 20px;">
+
+                    <span style="float: left;color: #253256;font-size: 13px;align-self: flex-end;margin-right: 10px;font-weight: 500;">Wij zijn gekoppeld met</span>
+                    <img src="{{ URL::asset('assets/img/kolibri_logo.png') }}" style="height: 40px;float: left;" />
+                    <span style="float: left;color: #253256;font-size: 13px;align-self: flex-end;margin-left: 10px;font-weight: 500;">CRM</span>
+
+                </div>
+
+                <div class="blog-content col-lg-10 col-md-11 col-sm-11 col-xs-10" style="background: #fff;margin: 40px auto;padding: 30px 45px 30px 45px;font-family: 'Roboto', sans-serif;border-radius: 8px;box-shadow: 0px 0px 7px 5px #efefef;margin-top: 5px;">
                     <div class="blog-title" style="text-align: center;padding: 0;">
 
                         <h3 style="font-family: 'Roboto', sans-serif;font-weight: 600;">{{__('text.Access to your account')}}</h3>

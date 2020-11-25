@@ -11,8 +11,17 @@
         <div class="col-lg-7 col-md-6 col-sm-6" style="background-image: url('{{ URL::asset('assets/img/hero_bg_2.jpg') }}');background-repeat: no-repeat;background-size: cover;background-position: center;position: relative;padding: 0;"></div>
         <div class="col-lg-5 col-md-6 col-sm-6 col-xs-12" style="padding: 0;">
 
-            <div class="blog-container" style="margin-bottom: 0;display: flex;">
-                <div class="blog-content col-lg-10 col-md-11 col-sm-11 col-xs-10" style="background: #fff;margin: 30px auto;padding: 15px 45px 15px 45px;font-family: 'Roboto', sans-serif;border-radius: 8px;box-shadow: 0px 0px 7px 5px #efefef;">
+            <div class="blog-container" style="margin-bottom: 0;display: flex;flex-direction: column;">
+
+                <div style="width: 85%;margin: auto;display: flex;justify-content: center;margin-top: 20px;">
+
+                    <span style="float: left;color: #253256;font-size: 13px;align-self: flex-end;margin-right: 10px;font-weight: 500;">Wij zijn gekoppeld met</span>
+                    <img src="{{ URL::asset('assets/img/kolibri_logo.png') }}" style="height: 40px;float: left;" />
+                    <span style="float: left;color: #253256;font-size: 13px;align-self: flex-end;margin-left: 10px;font-weight: 500;">CRM</span>
+
+                </div>
+
+                <div class="blog-content col-lg-10 col-md-11 col-sm-11 col-xs-10" style="background: #fff;margin: 30px auto;padding: 15px 45px 15px 45px;font-family: 'Roboto', sans-serif;border-radius: 8px;box-shadow: 0px 0px 7px 5px #efefef;margin-top: 5px;">
                     <div class="blog-title" style="padding: 0;margin-bottom: 0;">
                         <h4 style="font-family: 'Roboto', sans-serif;font-weight: bold;color: #18ace5;">{{__('text.Register an account for free')}}</h4>
                         <p>{!! nl2br(e(__('text.Register description')))!!}</p>
