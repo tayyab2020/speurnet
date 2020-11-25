@@ -15,9 +15,9 @@
 
                 <div style="width: 85%;margin: auto;display: flex;justify-content: center;margin-top: 20px;">
 
-                    <span style="float: left;color: #253256;font-size: 13px;align-self: flex-end;margin-right: 10px;font-weight: 500;">Wij zijn gekoppeld met</span>
-                    <img src="{{ URL::asset('assets/img/kolibri_logo.png') }}" style="height: 40px;float: left;" />
-                    <span style="float: left;color: #253256;font-size: 13px;align-self: flex-end;margin-left: 10px;font-weight: 500;">CRM</span>
+                    <span class="kolibri-text" style="margin-right: 10px;">Wij zijn gekoppeld met</span>
+                    <img class="kolibri-img" src="{{ URL::asset('assets/img/kolibri_logo.png') }}" style="height: 40px;float: left;" />
+                    <span class="kolibri-text" style="margin-left: 10px;">CRM</span>
 
                 </div>
 
@@ -281,8 +281,29 @@
 
     <style>
 
+        .kolibri-text
+        {
+            float: left;
+            color: #253256;
+            font-size: 13px;
+            align-self: flex-end;
+            font-weight: 500;
+        }
+
         @media (max-width: 500px)
         {
+
+            .kolibri-text
+            {
+                font-size: 10px;
+                line-height: 1.5;
+            }
+
+            .kolibri-img
+            {
+                height: 25px !important;
+            }
+
             .res-icon
             {
                 font-size: 17px !important;
