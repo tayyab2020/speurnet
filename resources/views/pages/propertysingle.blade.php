@@ -1108,15 +1108,6 @@
 
                             @endif
 
-                            @if($property->floor_option)
-
-                                <tr>
-                                    <td><strong>{{__('text.Floors')}}</strong></td>
-                                    <td>{{__('text.'.$property->floor_option)}}</td>
-                                </tr>
-
-                            @endif
-
                             @if($property->walls)
 
                                 <tr>

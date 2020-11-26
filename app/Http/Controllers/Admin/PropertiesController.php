@@ -1026,7 +1026,6 @@ class PropertiesController extends MainAdminController
         $property->garage_type = $request->garage_type;
         $property->energy_rating = $request->energy_rating;
         $property->solar_panel = $request->solar_panel;
-        $property->floor_option = $request->floor_option;
         $property->walls = $request->walls;
         $property->roof_insulation = $request->roof_insulation;
         $property->cook = $request->cook;

@@ -590,7 +590,7 @@
 
                                     <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 left-div" style="@if(Route::currentRouteName() != 'addnewconstruction') display: inline-block @else display:none @endif">
 
-                                        <label class="left-label" style="float: left;">{{__('text.Number of floors')}}</label>
+                                        <label class="left-label" style="float: left;">{{__('text.Floors')}}</label>
 
                                         <div  style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;border-right: 0;margin: auto">
 
@@ -804,33 +804,6 @@
 
                                     </div>
 
-                                    <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 left-div" style="display: inline-block;margin: 25px 0px;">
-
-                                        <label class="left-label" style="float: left;">{{__('text.Floors')}}</label>
-
-                                        <div style="width: 100%;display: inline-block;margin: auto">
-
-                                            @if(isset($property->floor))
-
-                                                <select name="floor_option" id="floor_option" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
-                                                    <option value="Yes" @if($property->floor == 'Yes') selected @endif>{{__('text.Yes')}}</option>
-                                                    <option value="No" @if($property->floor == 'No') selected @endif>{{__('text.No')}}</option>
-                                                    <option value="Partly" @if($property->floor == 'Partly') selected @endif>{{__('text.Partly')}}</option>
-                                                </select>
-
-                                                @else
-
-                                                <select name="floor_option" id="floor_option" class="selectpicker show-tick form-control" data-live-search="true" style="box-shadow: none;width: 100%;">
-                                                    <option value="Yes" @if(old('floor') == 'Yes') selected @endif>{{__('text.Yes')}}</option>
-                                                    <option value="No" @if(old('floor') == 'No') selected @endif>{{__('text.No')}}</option>
-                                                    <option value="Partly" @if(old('floor') == 'Partly') selected @endif>{{__('text.Partly')}}</option>
-                                                </select>
-
-                                                @endif
-
-                                        </div>
-
-                                    </div>
 
                                     <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 left-div" style="display: inline-block;float: right;margin: 25px 0px;">
 
