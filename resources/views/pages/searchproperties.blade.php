@@ -127,7 +127,7 @@
 
                                       @endif
 
-                                      <img src="{{ URL::asset('upload/properties/'.$property->featured_image.'-s.jpg') }}" alt="{{ $property->property_name }}">
+                                      <img style="width: 100%;height: 200px;" src="{{ URL::asset('upload/properties/'.$property->featured_image.'-s.jpg') }}" alt="{{ $property->property_name }}">
 
                                   </a>
 
@@ -150,7 +150,7 @@
 
                                   @endif
 
-                                  <div class="property-content">
+                                  <div class="property-content" style="padding: 10px 15px 20px 15px;">
                                       @if(Route::currentRouteName() != 'searchnewconstructions')
 
                                           <h3 style="margin: 10px 0px;"><a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;" href="{{URL::to('properties/'.$property->property_slug)}}">{{ Str::limit($property->property_name,35) }}</a> <small style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;line-height: 15px;">{{ Str::limit($property->address,40) }}</small></h3>
