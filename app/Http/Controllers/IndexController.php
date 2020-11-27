@@ -234,7 +234,7 @@ class IndexController extends Controller
 
                     if(isset($property_details['RealEstateProperty']['Offer']['IsForSale']) || isset($property_details['RealEstateProperty']['Offer']['IsForRent']))
                     {
-                        $property_name = $property_details['RealEstateProperty']['Location']['Address']['AddressLine1']['Translation'];
+                        $property_name = $property_details['RealEstateProperty']['LocationDetails']['GeoAddressDetails'][0]['FormattedAddress'];
 
                         $property_type = $property_details['RealEstateProperty']['Type']['PropertyTypes']['PropertyType'][0];
 
