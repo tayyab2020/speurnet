@@ -310,6 +310,35 @@ class KolibriCron extends Command
 
                     $acceptance = $property_details['RealEstateProperty']['Offer']['Acceptance'];
 
+                    if(isset($property_details['RealEstateProperty']['Offer']['AvailableUntilDate']))
+                    {
+                        $agreement_type = 'Temporarily';
+                        $agreement_until = $acceptance = $property_details['RealEstateProperty']['Offer']['AvailableUntilDate'];
+                        $time = strtotime($agreement_until);
+                        $agreement_until = date('d-m-Y',$time);
+                    }
+                    else
+                    {
+                        $agreement_type = 'Indefinitely';
+                        $agreement_until = NULL;
+                    }
+
+                    if(isset($property_details['RealEstateProperty']['Facilities']['FurnitureType']))
+                    {
+                        if($property_details['RealEstateProperty']['Facilities']['FurnitureType'] == 'FURNISHED')
+                        {
+                            $furnished = 'Furnished';
+                        }
+                        else
+                        {
+                            $furnished = 'Unfurnished';
+                        }
+                    }
+                    else
+                    {
+                        $furnished = NULL;
+                    }
+
                     $city = City::where('city_name', 'like', '%' . $property_details['RealEstateProperty']['Location']['Address']['CityName']['Translation'])->first();
 
                     if(isset($property_details['RealEstateProperty']['Dimensions']['Land']['Area']))
@@ -398,7 +427,6 @@ class KolibriCron extends Command
                     }
 
 
-
                     if(isset($property_details['RealEstateProperty']['Offer']['IsForSale']))
                     {
                         if($property_details['RealEstateProperty']['Offer']['IsForSale'] == 'true')
@@ -452,6 +480,9 @@ class KolibriCron extends Command
                                 $exists->sale_price = 0;
                             }
 
+                            $exists->agreement_type = $agreement_type;
+                            $exists->agreement_until = $agreement_until;
+                            $exists->property_furnished = $furnished;
                             $exists->address = $address;
                             $exists->map_latitude = $address_latitude;
                             $exists->map_longitude = $address_longitude;
@@ -626,7 +657,9 @@ class KolibriCron extends Command
                             $property->sale_price = 0;
                         }
 
-                        $property->sale_price = $price;
+                        $property->agreement_type = $agreement_type;
+                        $property->agreement_until = $agreement_until;
+                        $property->property_furnished = $furnished;
                         $property->address = $address;
                         $property->map_latitude = $address_latitude;
                         $property->map_longitude = $address_longitude;

@@ -833,7 +833,7 @@
 
                                     </div>
 
-                                    <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 left-div" style="display: inline-block;margin: 25px 0px;">
+                                    <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 right-div" style="display: inline-block;margin: 25px 0px;float: right;">
 
                                         <label class="left-label" style="float: left;">{{__('text.Roof Insulation')}}</label>
 
@@ -861,7 +861,6 @@
 
                                     </div>
 
-                                    <h3></h3>
 
                                     <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 left-div" style="display: inline-block;margin: 25px 0px;">
 
@@ -1127,7 +1126,6 @@
                                         @endif
 
                                     @endif
-
 
 
                                     <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 right-div" style="display: inline-block;float: right;margin: 20px 0px;">

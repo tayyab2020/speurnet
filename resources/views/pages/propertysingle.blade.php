@@ -743,8 +743,8 @@
 
                           <div class="row" style="margin: 30px 0px;">
                               <div class="col-lg-12 col-md-12 col-sm-12 col-sm-12" style="padding: 0;">
-                                  <label class="head-label" style="color: #434343;font-weight: 600;">{{__('text.Bedrooms')}}<img src="{{ URL::asset('assets/img/bed.png') }}" style="width: 25px;margin: 0px 13px;" /><span style="font-size: 20px;color: #4d4b4b;">{{$property->bedrooms}}</span></label>
-                                  <label class="mid-label" style="color: #434343;font-weight: 600;margin: 0px 65px;">{{__('text.Bathrooms')}}<img src="{{ URL::asset('assets/img/bathroom.png') }}" style="width: 25px;margin: 0px 13px;margin-bottom: 3px;" /><span style="font-size: 20px;color: #4d4b4b;">{{$property->bathrooms}}</span></label>
+                                  @if($property->bedrooms != 0) <label class="head-label first-label" style="color: #434343;font-weight: 600;margin-right: 65px;">{{__('text.Bedrooms')}}<img src="{{ URL::asset('assets/img/bed.png') }}" style="width: 25px;margin: 0px 13px;" /><span style="font-size: 20px;color: #4d4b4b;">{{$property->bedrooms}}</span></label> @endif
+                                  <label class="mid-label" style="color: #434343;font-weight: 600;margin: 0px 65px 0px 0px;">{{__('text.Bathrooms')}}<img src="{{ URL::asset('assets/img/bathroom.png') }}" style="width: 25px;margin: 0px 13px;margin-bottom: 3px;" /><span style="font-size: 20px;color: #4d4b4b;">{{$property->bathrooms}}</span></label>
                                   @if($property->area)
                                   <label class="head-label" style="color: #434343;font-weight: 600;">{{__('text.Area')}} <small>(m2)</small><img src="{{ URL::asset('assets/img/browser.png') }}" style="width: 20px;margin: 0px 13px;margin-bottom: 3px;" /><span style="font-size: 17px;color: #4d4b4b;">{{$property->area}} <small>m2</small></span></label>
                                   @endif
@@ -806,7 +806,7 @@
 
                                 <tr>
                                     <td><strong>{{__('text.Price')}}</strong> <img src="{{ URL::asset('assets/img/tag.png') }}" style="width: 18px;float: right;" /></td>
-                                    <td>€@if($property->sale_price) {{number_format($property->sale_price, 0, ',', '.')}} {{$property->cost_for}} @else {{number_format($property->rent_price, 0, ',', '.')}} @endif</td>
+                                    <td>€@if($property->sale_price) {{number_format($property->sale_price, 0, ',', '.')}} {{$property->cost_for}} @else {{number_format($property->rent_price, 0, ',', '.')}} per maand @endif</td>
                                 </tr>
 
                                     @if($property->property_purpose == 'Rent' && $property->service_costs)
@@ -850,10 +850,14 @@
                             <td>{{$property->bathrooms}}</td>
                           </tr>
 
-                          <tr>
-                            <td><strong>{{__('text.Bedrooms')}}</strong> <img src="{{ URL::asset('assets/img/bed.png') }}" style="width: 18px;float: right;" /></td>
-                            <td>{{$property->bedrooms}}</td>
-                          </tr>
+                                @if($property->bedrooms != 0)
+
+                                    <tr>
+                                        <td><strong>{{__('text.Bedrooms')}}</strong> <img src="{{ URL::asset('assets/img/bed.png') }}" style="width: 18px;float: right;" /></td>
+                                        <td>{{$property->bedrooms}}</td>
+                                    </tr>
+
+                                @endif
 
                                 @if($property->kolibri_rooms)
 
@@ -1146,24 +1150,28 @@
 
                             @endif
 
+
                                   @if($property->home_exchange != 1 && $property->new_construction != 1)
 
-                                    @if($property->rent_price)
+                                      @if($property->rent_price)
 
-                                          <tr>
-                                              <td><strong>{{__('text.Type of agreement')}}</strong></td>
-                                              <td>{{__('text.'.$property->agreement_type)}}</td>
-                                          </tr>
+                                          @if($property->agreement_type)
+                                              <tr>
+                                                  <td><strong>{{__('text.Type of agreement')}}</strong></td>
+                                                  <td>{{__('text.'.$property->agreement_type)}} @if($property->agreement_until){{$property->agreement_until}}@endif</td>
+                                              </tr>
+                                          @endif
 
-                                          <tr>
-                                              <td><strong>{{__('text.Property furnished')}}</strong></td>
-                                              <td>{{__('text.'.$property->property_furnished)}}</td>
-                                          </tr>
+                                          @if($property->property_furnished)
+                                               <tr>
+                                                   <td><strong>{{__('text.Property furnished')}}</strong></td>
+                                                   <td>{{__('text.'.$property->property_furnished)}}</td>
+                                               </tr>
+                                          @endif
 
-                                        @endif
+                                      @endif
 
                                   @endif
-
 
 
                                   @if($property->new_construction != 1)
@@ -1377,7 +1385,9 @@
 
                                       .head-label{width: 100%;}
 
-                                      .mid-label{margin: 20px 0px !important;width: 100%;}
+                                      .first-label{margin-bottom: 20px;}
+
+                                      .mid-label{margin: 0px 0px 20px 0px !important;width: 100%;}
 
                                   }
 
@@ -2454,7 +2464,7 @@
 
                                                                 @if($property->new_construction != 1)
 
-                                                                    <small style="float: right;">€@if($property->sale_price) {{number_format($property->sale_price, 0, ',', '.')}} k.k. @else {{number_format($property->rent_price, 0, ',', '.')}} @endif</small>
+                                                                    <small style="float: right;">€@if($property->sale_price) {{number_format($property->sale_price, 0, ',', '.')}} k.k. @else {{number_format($property->rent_price, 0, ',', '.')}} per maand @endif</small>
 
                                                                 @else
 
@@ -2504,7 +2514,7 @@
 
 
                                     <div class="large-10 columns nopad ftTop">
-                                        <h6 class="unitPrice" style="text-align: left;margin-top: 0;">€ @if($previous->sale_price) {{number_format($previous->sale_price, 0, ',', '.')}} @else {{number_format($previous->rent_price, 0, ',', '.')}} @endif</h6>
+                                        <h6 class="unitPrice" style="text-align: left;margin-top: 0;">€ @if($previous->sale_price) {{number_format($previous->sale_price, 0, ',', '.')}} @else {{number_format($previous->rent_price, 0, ',', '.')}} per maand @endif</h6>
                                         <!--<p class="unitRooms">2 kamers</p>-->
                                     </div>
 
@@ -2574,7 +2584,7 @@
                                     @endif
 
                                     <div class="large-10 columns nopad ftTop">
-                                        <h6 class="unitPrice" style="text-align: left;margin-top: 0;">€ @if($next->sale_price) {{number_format($next->sale_price, 0, ',', '.')}} @else {{number_format($next->rent_price, 0, ',', '.')}} @endif</h6>
+                                        <h6 class="unitPrice" style="text-align: left;margin-top: 0;">€ @if($next->sale_price) {{number_format($next->sale_price, 0, ',', '.')}} @else {{number_format($next->rent_price, 0, ',', '.')}} per maand @endif</h6>
                                         <!--<p class="unitRooms">2 kamers</p>-->
                                     </div>
 
