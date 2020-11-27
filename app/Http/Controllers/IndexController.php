@@ -65,7 +65,7 @@ class IndexController extends Controller
         $json = json_encode($xml);
         $arr = json_decode($json,true);
 
-        foreach($arr['ArrayOfMediaContractSnapshot'] as $k=> $brokers) {
+        foreach($arr['ArrayOfMediaContractSnapshot']['MediaContractSnapshot'] as $k=> $brokers) {
 
             $check = User::where('email',$brokers['EmailAddress'])->first();
 
@@ -77,12 +77,34 @@ class IndexController extends Controller
                 $check->address = $brokers['AddressLine1'];
                 $check->city = $brokers['CityName'];
                 $check->phone = $brokers['PhoneNumber'];
-                $check->fax = $brokers['FaxNumber'];
+
+                if(isset($brokers['FaxNumber']))
+                {
+                    $check->fax = $brokers['FaxNumber'];
+                }
+
                 $check->PostalCode = $brokers['PostalCode'];
-                $check->Region = $brokers['Region'];
-                $check->SubRegion = $brokers['SubRegion'];
-                $check->CountryCode = $brokers['CountryCode'];
-                $check->WebAddress = $brokers['WebAddress'];
+
+                if(isset($brokers['Region']))
+                {
+                    $check->Region = $brokers['Region'];
+                }
+
+                if(isset($brokers['SubRegion']))
+                {
+                    $check->SubRegion = $brokers['SubRegion'];
+                }
+
+                if(isset($brokers['CountryCode']))
+                {
+                    $check->CountryCode = $brokers['CountryCode'];
+                }
+
+                if(isset($brokers['WebAddress']))
+                {
+                    $check->WebAddress = $brokers['WebAddress'];
+                }
+
                 $check->save();
 
                 $user_id = $check->id;
@@ -103,11 +125,32 @@ class IndexController extends Controller
                 $user->city = $brokers['CityName'];
                 $user->PostalCode = $brokers['PostalCode'];
                 $user->phone = $brokers['PhoneNumber'];
-                $user->fax = $brokers['FaxNumber'];
-                $user->Region = $brokers['Region'];
-                $user->SubRegion = $brokers['SubRegion'];
-                $user->CountryCode = $brokers['CountryCode'];
-                $user->WebAddress = $brokers['WebAddress'];
+
+                if(isset($brokers['FaxNumber']))
+                {
+                    $user->fax = $brokers['FaxNumber'];
+                }
+
+                if(isset($brokers['Region']))
+                {
+                    $user->Region = $brokers['Region'];
+                }
+
+                if(isset($brokers['SubRegion']))
+                {
+                    $user->SubRegion = $brokers['SubRegion'];
+                }
+
+                if(isset($brokers['CountryCode']))
+                {
+                    $user->CountryCode = $brokers['CountryCode'];
+                }
+
+                if(isset($brokers['WebAddress']))
+                {
+                    $user->WebAddress = $brokers['WebAddress'];
+                }
+
                 $user->MediaContractID = $brokers['MediaContractID'];
                 $user->RealtorID = $brokers['RealtorID'];
                 $user->save();
@@ -151,11 +194,17 @@ class IndexController extends Controller
             $json = json_encode($xml);
             $properties = json_decode($json,true);
 
-            foreach ($properties['ArrayOfRealEstatePropertySummarySnapshot'] as $property)
+            if(array_key_exists(0, $properties['ArrayOfRealEstatePropertySummarySnapshot']['RealEstatePropertySummarySnapshot']))
             {
+                $properties = $properties['ArrayOfRealEstatePropertySummarySnapshot']['RealEstatePropertySummarySnapshot'];
+            }
+            else
+            {
+                $properties = $properties['ArrayOfRealEstatePropertySummarySnapshot'];
+            }
 
-                foreach ($property as $key)
-                {
+            foreach($properties as $key)
+            {
                     $modification = $key['ModificationDateTimeUtc'];
                     $property_id = $key['RealEstateProperyID'];
                     $realtor_id = $key['RealtorID'];
@@ -207,13 +256,27 @@ class IndexController extends Controller
 
                         $bathrooms = $property_details['RealEstateProperty']['Counts']['CountOfBathrooms'];
 
-                        $bedrooms = $property_details['RealEstateProperty']['Counts']['CountOfBedrooms'];
+                        if(isset($property_details['RealEstateProperty']['Counts']['CountOfBedrooms']))
+                        {
+                            $bedrooms = $property_details['RealEstateProperty']['Counts']['CountOfBedrooms'];
+                        }
+                        else
+                        {
+                            $bedrooms = 0;
+                        }
 
                         $area = $property_details['RealEstateProperty']['AreaTotals']['EffectiveArea'];
 
                         $volume = $property_details['RealEstateProperty']['Dimensions']['Content'];
 
-                        $description = $property_details['RealEstateProperty']['Descriptions']['AdText']['Translation'] . "\n\n" . $property_details['RealEstateProperty']['Descriptions']['DetailsDescription']['Translation'];
+                        if(is_array($property_details['RealEstateProperty']['Descriptions']['AdText']['Translation']) && array_key_exists(0, $property_details['RealEstateProperty']['Descriptions']['AdText']['Translation']))
+                        {
+                            $description = $property_details['RealEstateProperty']['Descriptions']['AdText']['Translation'][0] . "\n\n" . $property_details['RealEstateProperty']['Descriptions']['DetailsDescription']['Translation'][0];
+                        }
+                        else
+                        {
+                            $description = $property_details['RealEstateProperty']['Descriptions']['AdText']['Translation'] . "\n\n" . $property_details['RealEstateProperty']['Descriptions']['DetailsDescription']['Translation'];
+                        }
 
                         $construction_year_from = $property_details['RealEstateProperty']['Construction']['ConstructionYearFrom'];
 
@@ -225,7 +288,14 @@ class IndexController extends Controller
 
                         $floors = $property_details['RealEstateProperty']['Counts']['CountOfFloors'];
 
-                        $garden_area = $property_details['RealEstateProperty']['Gardens']['Garden']['Dimensions']['Area'] . 'm² (' . $property_details['RealEstateProperty']['Gardens']['Garden']['Dimensions']['Length'] . 'm diep en ' . $property_details['RealEstateProperty']['Gardens']['Garden']['Dimensions']['Width'] . 'm breed';
+                        if(isset($property_details['RealEstateProperty']['Gardens']))
+                        {
+                            $garden_area = $property_details['RealEstateProperty']['Gardens']['Garden']['Dimensions']['Area'] . 'm² (' . $property_details['RealEstateProperty']['Gardens']['Garden']['Dimensions']['Length'] . 'm diep en ' . $property_details['RealEstateProperty']['Gardens']['Garden']['Dimensions']['Width'] . 'm breed';
+                        }
+                        else
+                        {
+                            $garden_area = NULL;
+                        }
 
                         $status = $property_details['RealEstateProperty']['PropertyInfo']['Status'];
 
@@ -461,7 +531,7 @@ class IndexController extends Controller
 
                                         $filename = $temp['Title']['Translation'];
 
-                                        $ext = pathinfo($filename, PATHINFO_EXTENSION);
+                                        $ext = pathinfo(parse_url($document, PHP_URL_PATH), PATHINFO_EXTENSION);
 
                                         $hardPath = Str::slug($property_name, '-').'-'.md5(rand(0,99999));
 
@@ -484,11 +554,11 @@ class IndexController extends Controller
 
                                             $video_file_name = $temp['Title']['Translation'];
 
-                                            $ext = pathinfo($video_file_name, PATHINFO_EXTENSION);
-
                                             $video = $temp['URLNormalizedFile'];
 
                                             $report = file_get_contents($video);
+
+                                            $ext = pathinfo(parse_url($video, PHP_URL_PATH), PATHINFO_EXTENSION);
 
                                             file_put_contents($tmpFilePath . $hardPath . '.' . $ext, $report);
 
@@ -622,7 +692,7 @@ class IndexController extends Controller
 
                                     $filename = $temp['Title']['Translation'];
 
-                                    $ext = pathinfo($filename, PATHINFO_EXTENSION);
+                                    $ext = pathinfo(parse_url($document, PHP_URL_PATH), PATHINFO_EXTENSION);
 
                                     $hardPath = Str::slug($property_name, '-').'-'.md5(rand(0,99999));
 
@@ -641,11 +711,11 @@ class IndexController extends Controller
 
                                         $video_file_name = $temp['Title']['Translation'];
 
-                                        $ext = pathinfo($video_file_name, PATHINFO_EXTENSION);
-
                                         $video = $temp['URLNormalizedFile'];
 
                                         $report = file_get_contents($video);
+
+                                        $ext = pathinfo(parse_url($video, PHP_URL_PATH), PATHINFO_EXTENSION);
 
                                         file_put_contents($tmpFilePath . $hardPath . '.' . $ext, $report);
 
@@ -676,8 +746,6 @@ class IndexController extends Controller
 
                         }
                     }
-
-                }
             }
 
         }
