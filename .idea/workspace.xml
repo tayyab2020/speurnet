@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7fe7f36f-c82f-4504-8c0a-7874522d22c9" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/pages/searchproperties.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/searchproperties.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -292,7 +293,7 @@
       <workItem from="1606388181293" duration="1499000" />
       <workItem from="1606393738775" duration="1847000" />
       <workItem from="1606476358779" duration="6037000" />
-      <workItem from="1606495924743" duration="6629000" />
+      <workItem from="1606495924743" duration="7161000" />
     </task>
     <servers />
   </component>
