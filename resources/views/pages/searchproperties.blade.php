@@ -119,7 +119,7 @@
 
                                       @if(Route::currentRouteName() != 'searchnewconstructions')
 
-                                          <a href="{{URL::to('properties/'.$property->property_slug)}}">
+                                          <a href="{{URL::to('woningaanbod/'.$property->property_slug)}}">
 
                                       @else
 
