@@ -3815,6 +3815,8 @@
 
             $('.summernote').summernote({
                 height: 250,   //set editable area's height
+                toolbar:[["style",["style"]],["font",["bold","underline","clear"]],["fontname",["fontname"]],["fontsize", ["fontsize"]],["color",["color"]],["para",["ul","ol","paragraph"]],["table",["table"]],["insert",["link","picture","video"]],["view",["fullscreen","codeview","help"]]],
+                fontSizes: ['8', '9', '10', '11', '12', '14', '16', '18', '24', '36', '48' , '64', '82', '150'],
                 codemirror: { // codemirror options
                     theme: 'monokai'
                 }

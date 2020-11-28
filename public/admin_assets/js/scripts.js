@@ -3990,7 +3990,9 @@ var createSnackbar = (function() {
         if (typeof $.fn.summernote != 'undefined') {
 
             this.summernote({
-                height: 300
+                height: 300,
+                toolbar:[["style",["style"]],["font",["bold","underline","clear"]],["fontname",["fontname"]],["fontsize", ["fontsize"]],["color",["color"]],["para",["ul","ol","paragraph"]],["table",["table"]],["insert",["link","picture","video"]],["view",["fullscreen","codeview","help"]]],
+                fontSizes: ['8', '9', '10', '11', '12', '14', '16', '18', '24', '36', '48' , '64', '82', '150']
             });
 
         }
