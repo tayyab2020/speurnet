@@ -166,7 +166,8 @@
 
                                 <div class="property-container" style="border: 1px solid #48cfad;margin-bottom: 10px">
 
-                <div class="property-image">
+
+                                    <div class="property-image">
 
                     @if(Route::currentRouteName() != 'newconstructions-front')
 

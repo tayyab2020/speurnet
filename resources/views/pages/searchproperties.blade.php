@@ -147,7 +147,9 @@
                                       @if($property->bedrooms >= 1)
                                           <span><i class="fa fa-bed"></i> {{$property->bedrooms}}</span>
                                       @endif
+                                      @if($property->bathrooms >= 1)
                                       <span><i class="fa fa-male"></i> {{$property->bathrooms}}</span>
+                                      @endif
                                   </div>
 
                                   @endif
