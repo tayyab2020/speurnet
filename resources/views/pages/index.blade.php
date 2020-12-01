@@ -572,8 +572,12 @@
 
                             <div class="property-features">
                                 <span><i class="fa fa-home"></i> {{$temp->area}}</span>
-                                <span><i class="fa fa-bed"></i> {{$temp->bedrooms}}</span>
-                                <span><i class="fa fa-male"></i> {{$temp->bathrooms}}</span>
+                                @if($temp->bedrooms > 0)
+                                    <span><i class="fa fa-bed"></i> {{$temp->bedrooms}}</span>
+                                @endif
+                                @if($temp->bathrooms > 0)
+                                    <span><i class="fa fa-male"></i> {{$temp->bathrooms}}</span>
+                                @endif
                             </div>
 
                             <div class="property-content" style="padding: 10px 15px 20px 15px;">
