@@ -772,7 +772,7 @@
                           <div class="row" style="margin: 30px 0px;">
                               <div class="col-lg-12 col-md-12 col-sm-12 col-sm-12" style="padding: 0;">
                                   @if($property->bedrooms != 0) <label class="head-label first-label" style="color: #434343;font-weight: 600;margin-right: 65px;">{{__('text.Bedrooms')}}<img src="{{ URL::asset('assets/img/bed.png') }}" style="width: 25px;margin: 0px 13px;" /><span style="font-size: 20px;color: #4d4b4b;">{{$property->bedrooms}}</span></label> @endif
-                                  <label class="mid-label" style="color: #434343;font-weight: 600;margin: 0px 65px 0px 0px;">{{__('text.Bathrooms')}}<img src="{{ URL::asset('assets/img/bathroom.png') }}" style="width: 25px;margin: 0px 13px;margin-bottom: 3px;" /><span style="font-size: 20px;color: #4d4b4b;">{{$property->bathrooms}}</span></label>
+                                  @if($property->bathrooms != 0) <label class="mid-label" style="color: #434343;font-weight: 600;margin: 0px 65px 0px 0px;">{{__('text.Bathrooms')}}<img src="{{ URL::asset('assets/img/bathroom.png') }}" style="width: 25px;margin: 0px 13px;margin-bottom: 3px;" /><span style="font-size: 20px;color: #4d4b4b;">{{$property->bathrooms}}</span></label> @endif
                                   @if($property->area)
                                   <label class="head-label" style="color: #434343;font-weight: 600;">{{__('text.Area')}} <small>(m2)</small><img src="{{ URL::asset('assets/img/browser.png') }}" style="width: 20px;margin: 0px 13px;margin-bottom: 3px;" /><span style="font-size: 17px;color: #4d4b4b;">{{$property->area}} <small>m2</small></span></label>
                                   @endif
@@ -873,10 +873,14 @@
 
                             @if($property->new_construction != 1)
 
-                          <tr>
-                            <td><strong>{{__('text.Bathrooms')}}</strong> <img src="{{ URL::asset('assets/img/bathroom.png') }}" style="width: 18px;float: right;" /></td>
-                            <td>{{$property->bathrooms}}</td>
-                          </tr>
+                                @if($property->bathrooms != 0)
+
+                                    <tr>
+                                        <td><strong>{{__('text.Bathrooms')}}</strong> <img src="{{ URL::asset('assets/img/bathroom.png') }}" style="width: 18px;float: right;" /></td>
+                                        <td>{{$property->bathrooms}}</td>
+                                    </tr>
+                                    
+                                @endif
 
                                 @if($property->bedrooms != 0)
 
