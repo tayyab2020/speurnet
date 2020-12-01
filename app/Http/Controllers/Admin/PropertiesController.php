@@ -1054,7 +1054,7 @@ class PropertiesController extends MainAdminController
             $property->source = $request->source;
             $property->price_description = $request->price_description;
 
-            if (strpos($request->citation,'https://') === false){
+            if (strpos($request->citation,'https://') === false && strpos($request->citation,'http://') === false){
                 $request->citation = 'https://'.$request->citation;
             }
 

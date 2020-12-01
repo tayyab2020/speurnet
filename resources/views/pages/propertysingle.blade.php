@@ -92,24 +92,52 @@
 
                           @if($property->video)
 
+                              <?php
+
+                              $parsed = parse_url($property->video);
+
+                              if(isset($parsed['host']))
+                              {
+                                  if($parsed['host'] == 'www.youtube.com' || $parsed['host'] == 'youtube.com' || $parsed['host'] == 'youtu.be')
+                                  {
+                                      $youtube_video = 1;
+                                  }
+                                  else
+                                      {
+                                          $youtube_video = 0;
+                                          $ext = pathinfo($property->video, PATHINFO_EXTENSION);
+                                          $ext = strtolower($ext);
+                                      }
+                              }
+                              else
+                                  {
+                                      $youtube_video = 0;
+                                      $ext = pathinfo($property->video, PATHINFO_EXTENSION);
+                                      $ext = strtolower($ext);
+                                  }
+
+                              ?>
 
                               <div class="row" id="player-window" style="display: none;">
 
                                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="height: 100%;">
 
-                                      <?php $ext = pathinfo($property->video, PATHINFO_EXTENSION);
-
-                                      $ext = strtolower($ext);
-
-                                      ?>
-
-                                      <video id="player" playsinline controls style="object-fit: fill;">
-                                          <source src="{{ URL::asset('upload/properties/'.$property->video) }}" type="video/{{$ext}}" />
-                                          <source src="{{ URL::asset('upload/properties/'.$property->video) }}" type="video/mp4" />
-                                          <source src="{{ URL::asset('upload/properties/'.$property->video) }}" type="video/ogv" />
-                                          <source src="{{ URL::asset('upload/properties/'.$property->video) }}" type="video/webm" />
-
-                                      </video>
+                                      @if(!$youtube_video)
+                                          <video id="player" playsinline controls style="object-fit: fill;">
+                                              <source src="{{ URL::asset('upload/properties/'.$property->video) }}" type="video/{{$ext}}" />
+                                              <source src="{{ URL::asset('upload/properties/'.$property->video) }}" type="video/mp4" />
+                                              <source src="{{ URL::asset('upload/properties/'.$property->video) }}" type="video/ogv" />
+                                              <source src="{{ URL::asset('upload/properties/'.$property->video) }}" type="video/webm" />
+                                          </video>
+                                      @else
+                                          <div class="plyr__video-embed" id="player">
+                                              <iframe
+                                                  src="{{$property->video}}"
+                                                  allowfullscreen
+                                                  allowtransparency
+                                              ></iframe>
+                                          </div>
+                                      @endif
 
                                   </div></div>
 
@@ -140,9 +168,9 @@
 
                               <div class="video-wrapper-inner" style="position: absolute;margin-left: 15%;margin-top: 5%;">
                                   <a class="popup-video" style="cursor: pointer;">
-                    <span class="popup-video-inner">
-                        <i class="flaticon-play"></i>
-                    </span>
+                                      <span class="popup-video-inner">
+                                          <i class="flaticon-play"></i>
+                                      </span>
                                   </a>
                               </div>
 
@@ -1697,8 +1725,6 @@
 
                         {!! nl2br($property->description) !!}
 
-
-
                           @if($property->video)
 
 
@@ -1708,21 +1734,32 @@
 
                                   <h2>{{__('text.Property Video')}}</h2>
 
-                                  <?php $ext = pathinfo($property->video, PATHINFO_EXTENSION);
+                                  @if(!$youtube_video)
 
-                                  $ext = strtolower($ext);
+                                      <?php $ext = pathinfo($property->video, PATHINFO_EXTENSION);
 
+                                      $ext = strtolower($ext);
 
-                                  ?>
+                                      ?>
 
+                                      <video id="player1" playsinline controls>
+                                          <source src="{{ URL::asset('upload/properties/'.$property->video) }}" type="video/{{$ext}}" />
+                                          <source src="{{ URL::asset('upload/properties/'.$property->video) }}" type="video/mp4" />
+                                          <source src="{{ URL::asset('upload/properties/'.$property->video) }}" type="video/ogv" />
+                                          <source src="{{ URL::asset('upload/properties/'.$property->video) }}" type="video/webm" />
+                                      </video>
 
-                                  <video id="player1" playsinline controls>
-                                      <source src="{{ URL::asset('upload/properties/'.$property->video) }}" type="video/{{$ext}}" />
-                                      <source src="{{ URL::asset('upload/properties/'.$property->video) }}" type="video/mp4" />
-                                      <source src="{{ URL::asset('upload/properties/'.$property->video) }}" type="video/ogv" />
-                                      <source src="{{ URL::asset('upload/properties/'.$property->video) }}" type="video/webm" />
+                                  @else
 
-                                  </video>
+                                      <div class="plyr__video-embed" id="player1">
+                                          <iframe
+                                              src="{{$property->video}}"
+                                              allowfullscreen
+                                              allowtransparency
+                                          ></iframe>
+                                      </div>
+
+                                  @endif
 
                               </div></div>
 

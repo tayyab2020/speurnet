@@ -182,12 +182,42 @@
 
                         </a>
 
-                  <?php
+                                <?php
 
-                  preg_match('/<iframe.*src=\"(.*)\".*><\/iframe>/isU', $property->description, $matches);
-                  if(!empty($matches[1])){ $url = $matches[1];}else{ $url = '';}
+                                preg_match('/<iframe.*src=\"(.*)\".*><\/iframe>/isU', $property->description, $matches);
 
-                  ?>
+                                if(!empty($matches[1]))
+                                {
+                                    $url = $matches[1];
+                                }
+                                else
+                                {
+                                    $url = '';
+                                }
+
+
+                                if($property->video)
+                                {
+                                    $parsed = parse_url($property->video);
+
+                                    if(isset($parsed['host']))
+                                    {
+                                        if($parsed['host'] == 'www.youtube.com' || $parsed['host'] == 'youtube.com' || $parsed['host'] == 'youtu.be')
+                                        {
+                                            $youtube_video = 1;
+                                        }
+                                        else
+                                        {
+                                            $youtube_video = 0;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        $youtube_video = 0;
+                                    }
+                                }
+
+                                ?>
 
                   @if($url)
 
@@ -201,7 +231,7 @@
 
                       @if($property->video)
 
-                          <div style="display: none;" data-toggle="lightbox" data-type="video" data-gallery="videos{{$i}}" data-width="1280" data-remote="{{ URL::asset('upload/properties/'.$property->video) }}"></div>
+                          <div style="display: none;" data-toggle="lightbox" @if($youtube_video) data-type="youtube" data-remote="{{ $property->video }}" @else data-type="video" data-remote="{{ URL::asset('upload/properties/'.$property->video)  }}" @endif data-gallery="videos{{$i}}" data-width="1280"></div>
 
                       @endif
 
@@ -211,7 +241,7 @@
 
 
                           <div class="video-wrapper-inner" style="position: absolute;margin-right: 5%;margin-top: 5%;top: 0;right: 0;">
-                              <a data-width="1280" href="{{ URL::asset('upload/properties/'.$property->video) }}" data-type="video" data-gallery="videos{{$i}}" data-toggle="lightbox" class="popup-video" style="cursor: pointer;outline: none;">
+                              <a data-width="1280" @if($youtube_video) href="{{ $property->video }}" data-type="youtube" @else href="{{ URL::asset('upload/properties/'.$property->video) }}" data-type="video" @endif data-gallery="videos{{$i}}" data-toggle="lightbox" class="popup-video" style="cursor: pointer;outline: none;">
                                   <span class="popup-video-inner">
                                       <i class="flaticon-play"></i>
                                   </span>
