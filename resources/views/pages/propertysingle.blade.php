@@ -13,34 +13,37 @@
 
 
 
-
 <!-- begin:header -->
     <div id="header" class="heading" style="background-image: url({{ URL::asset('assets/img/img01.jpg') }});">
       <div class="container">
         <div class="row">
           <div class="col-md-10 col-md-offset-1 col-sm-12">
-            <div class="page-title">
-              <h2 style="word-break: break-word;">{{$property->property_name}}</h2>
-            </div>
-            <ol class="breadcrumb">
-              <li><a href="{{ URL::to('/') }}">{{__('text.Home')}}</a></li>
 
-                @if($property->new_construction == 1)
+              <div class="page-title">
+                  <h2 style="word-break: break-word;">{{$property->property_name}}</h2>
+              </div>
 
-                    <li><a href="{{ URL::to('nieuwbouwprojecten/') }}">{{__('text.New Constructions')}}</a></li>
+              <ol class="breadcrumb">
 
-                    @elseif($property->home_exchange == 1)
+                  <li><a href="{{ URL::to('/') }}">{{__('text.Home')}}</a></li>
 
-                    <li><a href="{{ URL::to('woningruil/') }}">{{__('text.Home Exchange')}}</a></li>
+                  @if($property->new_construction == 1)
 
-                             @else
+                      <li><a href="{{ URL::to('nieuwbouwprojecten/') }}">{{__('text.New Constructions')}}</a></li>
 
-                    <li><a href="{{route('properties-front')}}">{{__('text.Properties')}}</a></li>
+                  @elseif($property->home_exchange == 1)
 
-                             @endif
+                      <li><a href="{{ URL::to('woningruil/') }}">{{__('text.Home Exchange')}}</a></li>
 
-              <li class="active">{{$property->property_name}}</li>
-            </ol>
+                  @else
+
+                      <li><a href="{{route('properties-front')}}">{{__('text.Properties')}}</a></li>
+
+                  @endif
+
+                  <li class="active">{{$property->property_name}}</li>
+
+              </ol>
           </div>
         </div>
       </div>
@@ -101,6 +104,8 @@
                                   if($parsed['host'] == 'www.youtube.com' || $parsed['host'] == 'youtube.com' || $parsed['host'] == 'youtu.be')
                                   {
                                       $youtube_video = 1;
+                                      parse_str( parse_url( $property->video, PHP_URL_QUERY ), $my_array_of_vars );
+                                      $video_id = $my_array_of_vars['v'];
                                   }
                                   else
                                       {
@@ -130,13 +135,7 @@
                                               <source src="{{ URL::asset('upload/properties/'.$property->video) }}" type="video/webm" />
                                           </video>
                                       @else
-                                          <div class="plyr__video-embed" id="player">
-                                              <iframe
-                                                  src="{{$property->video}}"
-                                                  allowfullscreen
-                                                  allowtransparency
-                                              ></iframe>
-                                          </div>
+                                          <div id="player" data-plyr-provider="youtube" data-plyr-embed-id="{{$video_id}}"></div>
                                       @endif
 
                                   </div></div>
@@ -1453,6 +1452,12 @@
 
                                   @media (max-width: 645px){
 
+                                      .page-title{display: none !important;}
+
+                                      .breadcrumb{ font-weight: bold;font-size: 15px; }
+
+                                      #header{ min-height: auto !important; padding-bottom: 10px !important; }
+
                                       #street_view{display: none;}
 
                                       .accordion{padding: 5px;}
@@ -1731,7 +1736,6 @@
 
                           @if($property->video)
 
-
                           <div class="row" style="margin-top: 40px;">
 
                               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -1755,13 +1759,7 @@
 
                                   @else
 
-                                      <div class="plyr__video-embed" id="player1">
-                                          <iframe
-                                              src="{{$property->video}}"
-                                              allowfullscreen
-                                              allowtransparency
-                                          ></iframe>
-                                      </div>
+                                      <div id="player1" data-plyr-provider="youtube" data-plyr-embed-id="{{$video_id}}"></div>
 
                                   @endif
 
