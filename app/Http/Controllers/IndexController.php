@@ -159,7 +159,7 @@ class IndexController extends Controller
                 $user_name = $brokers['Name'];
                 $user_email = $brokers['EmailAddress'];
 
-                /*Mail::send('emails.kolibri_registration',
+                Mail::send('emails.kolibri_registration',
                     array(
                         'name' => $user_name,
                         'email' => $user_email,
@@ -168,7 +168,7 @@ class IndexController extends Controller
                     {
                         $message->from(getcong('site_email'),getcong('site_name'));
                         $message->to($user_email,$user_name)->subject('Gefeliciteerd, je Zoekjehuisje.nl account is geactiveerd!');
-                    });*/
+                    });
             }
 
 
@@ -194,7 +194,7 @@ class IndexController extends Controller
             $json = json_encode($xml);
             $properties = json_decode($json,true);
 
-            if(array_key_exists(0, $properties['ArrayOfRealEstatePropertySummarySnapshot']['RealEstatePropertySummarySnapshot']))
+            if(isset($properties['ArrayOfRealEstatePropertySummarySnapshot']['RealEstatePropertySummarySnapshot']) && array_key_exists(0, $properties['ArrayOfRealEstatePropertySummarySnapshot']['RealEstatePropertySummarySnapshot']))
             {
                 $properties = $properties['ArrayOfRealEstatePropertySummarySnapshot']['RealEstatePropertySummarySnapshot'];
             }
