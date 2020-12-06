@@ -25,6 +25,7 @@
 	            <tr>
                     <th>User ID</th>
 	                <th>Type</th>
+                    <th>Properties</th>
 	                <th>Image</th>
 	                <th>Name</th>
 	                <th>Email</th>
@@ -57,6 +58,7 @@
                     @endif
 
                 </td>
+                   <td>{{$users->properties_count}}</td>
             	<td>
                     @if($users->image_icon)
                         <img src="{{ URL::asset('upload/members/'.$users->image_icon.'-s.jpg') }}" width="80" alt="person">
