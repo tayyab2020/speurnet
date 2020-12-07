@@ -241,7 +241,14 @@ class KolibriCron extends Command
                 $json = json_encode($xml);
                 $property_details = json_decode($json,true);
 
-                $property_type = $property_details['RealEstateProperty']['Type']['PropertyTypes']['PropertyType'][0];
+                if(is_array($property_details['RealEstateProperty']['Type']['PropertyTypes']['PropertyType']))
+                {
+                    $property_type = $property_details['RealEstateProperty']['Type']['PropertyTypes']['PropertyType'][0];
+                }
+                else
+                {
+                    $property_type = $property_details['RealEstateProperty']['Type']['PropertyTypes']['PropertyType'];
+                }
 
                 if($property_type != 'PARKING')
                 {
@@ -251,33 +258,46 @@ class KolibriCron extends Command
 
                         $get_property_type = Types::where('type_en',$property_type)->first();
 
-                        if(isset($property_details['RealEstateProperty']['Type']['PropertyTypes']['PropertyType'][1]))
+                        $sub_property_type = NULL;
+                        $sub_property_kind = NULL;
+
+                        if(is_array($property_details['RealEstateProperty']['Type']['PropertyTypes']['PropertyType']))
                         {
-                            $sub_property_type = $property_details['RealEstateProperty']['Type']['PropertyTypes']['PropertyType'][1];
-                            $get_sub_property_type = sub_property_types::where('type_en',$sub_property_type)->first();
-                            $sub_property_type = $get_sub_property_type->type;
-                        }
-                        else
-                        {
-                            $sub_property_type = NULL;
+                            if(isset($property_details['RealEstateProperty']['Type']['PropertyTypes']['PropertyType'][1]))
+                            {
+                                $sub_property_type = $property_details['RealEstateProperty']['Type']['PropertyTypes']['PropertyType'][1];
+                                $get_sub_property_type = sub_property_types::where('type_en',$sub_property_type)->first();
+                                $sub_property_type = $get_sub_property_type->type;
+                            }
+
+                            if(isset($property_details['RealEstateProperty']['Type']['PropertyTypes']['PropertyType'][2]))
+                            {
+                                $sub_property_kind = $property_details['RealEstateProperty']['Type']['PropertyTypes']['PropertyType'][2];
+                                $get_sub_property_kind = sub_kinds::where('type_en',$sub_property_kind)->first();
+                                $sub_property_kind = $get_sub_property_kind->type;
+                            }
                         }
 
-                        if(isset($property_details['RealEstateProperty']['Type']['PropertyTypes']['PropertyType'][2]))
-                        {
-                            $sub_property_kind = $property_details['RealEstateProperty']['Type']['PropertyTypes']['PropertyType'][2];
-                            $get_sub_property_kind = sub_kinds::where('type_en',$sub_property_kind)->first();
-                            $sub_property_kind = $get_sub_property_kind->type;
-                        }
-                        else
-                        {
-                            $sub_property_kind = NULL;
-                        }
 
                         $address = $property_details['RealEstateProperty']['Location']['Address']['PostalCode'] . ' ' . $property_details['RealEstateProperty']['Location']['Address']['CityName']['Translation'];
 
-                        $address_latitude = $property_details['RealEstateProperty']['LocationDetails']['GeoAddressDetails'][0]['Coordinates']['Latitude'];
+                        if(isset($property_details['RealEstateProperty']['LocationDetails']['GeoAddressDetails'][0]['Coordinates']['Latitude']))
+                        {
+                            $address_latitude = $property_details['RealEstateProperty']['LocationDetails']['GeoAddressDetails'][0]['Coordinates']['Latitude'];
+                        }
+                        else
+                        {
+                            $address_latitude = NULL;
+                        }
 
-                        $address_longitude = $property_details['RealEstateProperty']['LocationDetails']['GeoAddressDetails'][0]['Coordinates']['Longitude'];
+                        if(isset($property_details['RealEstateProperty']['LocationDetails']['GeoAddressDetails'][0]['Coordinates']['Longitude']))
+                        {
+                            $address_longitude = $property_details['RealEstateProperty']['LocationDetails']['GeoAddressDetails'][0]['Coordinates']['Longitude'];
+                        }
+                        else
+                        {
+                            $address_longitude = NULL;
+                        }
 
                         if(isset($property_details['RealEstateProperty']['Counts']['CountOfBathrooms']))
                         {
@@ -297,28 +317,91 @@ class KolibriCron extends Command
                             $bedrooms = 0;
                         }
 
-                        $area = $property_details['RealEstateProperty']['AreaTotals']['EffectiveArea'];
-
-                        $volume = $property_details['RealEstateProperty']['Dimensions']['Content'];
-
-                        if(is_array($property_details['RealEstateProperty']['Descriptions']['AdText']['Translation']) && array_key_exists(0, $property_details['RealEstateProperty']['Descriptions']['AdText']['Translation']))
+                        if(isset($property_details['RealEstateProperty']['AreaTotals']['EffectiveArea']))
                         {
-                            $description = $property_details['RealEstateProperty']['Descriptions']['AdText']['Translation'][0] . "\n\n" . $property_details['RealEstateProperty']['Descriptions']['DetailsDescription']['Translation'][0];
+                            $area = $property_details['RealEstateProperty']['AreaTotals']['EffectiveArea'];
                         }
                         else
                         {
-                            $description = $property_details['RealEstateProperty']['Descriptions']['AdText']['Translation'] . "\n\n" . $property_details['RealEstateProperty']['Descriptions']['DetailsDescription']['Translation'];
+                            $area = NULL;
                         }
 
-                        $construction_year_from = $property_details['RealEstateProperty']['Construction']['ConstructionYearFrom'];
+                        if(isset($property_details['RealEstateProperty']['Dimensions']['Content']))
+                        {
+                            $volume = $property_details['RealEstateProperty']['Dimensions']['Content'];
+                        }
+                        else
+                        {
+                            $volume = NULL;
+                        }
 
-                        $construction_year = $property_details['RealEstateProperty']['Construction']['ConstructionYearTo'];
+                        if(is_array($property_details['RealEstateProperty']['Descriptions']['AdText']['Translation']) && array_key_exists(0, $property_details['RealEstateProperty']['Descriptions']['AdText']['Translation']))
+                        {
+                            if(isset($property_details['RealEstateProperty']['Descriptions']['DetailsDescription']['Translation'][0]))
+                            {
+                                $description = $property_details['RealEstateProperty']['Descriptions']['AdText']['Translation'][0] . "\n\n" . $property_details['RealEstateProperty']['Descriptions']['DetailsDescription']['Translation'][0];
+                            }
+                            else
+                            {
+                                $description = $property_details['RealEstateProperty']['Descriptions']['AdText']['Translation'][0];
+                            }
+                        }
+                        else
+                        {
+                            if(isset($property_details['RealEstateProperty']['Descriptions']['DetailsDescription']['Translation']))
+                            {
+                                $description = $property_details['RealEstateProperty']['Descriptions']['AdText']['Translation'] . "\n\n" . $property_details['RealEstateProperty']['Descriptions']['DetailsDescription']['Translation'];
+                            }
+                            else
+                            {
+                                $description = $property_details['RealEstateProperty']['Descriptions']['AdText']['Translation'];
+                            }
+                        }
 
-                        $construction_period = $property_details['RealEstateProperty']['Construction']['ConstructionPeriod'];
+                        if(isset($property_details['RealEstateProperty']['Construction']['ConstructionYearFrom']))
+                        {
+                            $construction_year_from = $property_details['RealEstateProperty']['Construction']['ConstructionYearFrom'];
+                        }
+                        else
+                        {
+                            $construction_year_from = NULL;
+                        }
 
-                        $total_rooms = $property_details['RealEstateProperty']['Counts']['CountOfRooms'];
+                        if(isset($property_details['RealEstateProperty']['Construction']['ConstructionYearTo']))
+                        {
+                            $construction_year = $property_details['RealEstateProperty']['Construction']['ConstructionYearTo'];
+                        }
+                        else
+                        {
+                            $construction_year = NULL;
+                        }
 
-                        $floors = $property_details['RealEstateProperty']['Counts']['CountOfFloors'];
+                        if(isset($property_details['RealEstateProperty']['Construction']['ConstructionPeriod']))
+                        {
+                            $construction_period = $property_details['RealEstateProperty']['Construction']['ConstructionPeriod'];
+                        }
+                        else
+                        {
+                            $construction_period = NULL;
+                        }
+
+                        if(isset($property_details['RealEstateProperty']['Counts']['CountOfRooms']))
+                        {
+                            $total_rooms = $property_details['RealEstateProperty']['Counts']['CountOfRooms'];
+                        }
+                        else
+                        {
+                            $total_rooms = NULL;
+                        }
+
+                        if(isset($property_details['RealEstateProperty']['Counts']['CountOfFloors']))
+                        {
+                            $floors = $property_details['RealEstateProperty']['Counts']['CountOfFloors'];
+                        }
+                        else
+                        {
+                            $floors = NULL;
+                        }
 
                         if(isset($property_details['RealEstateProperty']['Gardens']['Dimensions']))
                         {
@@ -676,8 +759,8 @@ class KolibriCron extends Command
                             $property->property_name = $property_name;
                             $property->property_slug = $org_slug;
                             $property->property_type = $get_property_type->id;
-                            $property->sub_type = $get_sub_property_type->type;
-                            $property->sub_kind = $get_sub_property_kind->type;
+                            $property->sub_type = $sub_property_type;
+                            $property->sub_kind = $sub_property_kind;
                             $property->city_id = $city_id;
                             $property->property_purpose = $property_purpose;
 
