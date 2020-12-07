@@ -194,9 +194,9 @@
 
                                                     <div class="video-wrapper-inner" style="position: absolute;margin-right: 5%;margin-top: 5%;top: 0;right: 0;">
                                                         <a data-width="1280" @if($youtube_video) href="{{ $property->video }}" data-type="youtube" @else href="{{ URL::asset('upload/properties/'.$property->video) }}" data-type="video" @endif data-gallery="videos{{$i}}" data-toggle="lightbox" class="popup-video" style="cursor: pointer;outline: none;">
-                                                    <span class="popup-video-inner">
-                                                    <i class="flaticon-play"></i>
-                                                    </span>
+                                                            <span class="popup-video-inner">
+                                                                <i class="flaticon-play"></i>
+                                                            </span>
                                                         </a>
                                                     </div>
 
@@ -470,7 +470,7 @@
                                                 </div>
 
                                                 <small style="text-overflow: ellipsis;display: block;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;width: 100%;float: left;white-space: nowrap;">{{ Str::limit($property->address,40) }}</small>
-                                                <small style="margin-top: 5px;float: right;font-weight: 600;width: 50%;text-align: right;">@if($property->sale_price) € {{number_format($property->sale_price, 0, ',', '.')}} {{$property->cost_for}} @elseif($property->rent_price) € {{number_format($property->rent_price, 0, ',', '.')}} per maand @endif</small>
+                                                <small style="min-height: 15px;margin-top: 5px;float: right;font-weight: 600;width: 50%;text-align: right;">@if($property->sale_price) € {{number_format($property->sale_price, 0, ',', '.')}} {{$property->cost_for}} @elseif($property->rent_price) € {{number_format($property->rent_price, 0, ',', '.')}} per maand @endif</small>
 
                                             </h3>
 

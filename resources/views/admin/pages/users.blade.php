@@ -38,27 +38,28 @@
             @foreach($allusers as $i => $users)
          	   <tr>
                    <td><a href="{{ url('admin/users/adduser/'.$users->id) }}">{{$users->id}}</a></td>
-            	<td>
+
                     @if(!$users->landlord)
 
                         @if($users->usertype == 'Agents')
 
-                        Agent
+                           <td>Agent</td>
+                           <td>{{$users->properties_count}}</td>
 
                         @else
 
-                        User
+                           <td>User</td>
+                           <td>{{$users->home_exchange_properties_count}}</td>
 
                         @endif
 
                     @else
 
-                        Private Landlord
+                       <td>Private Landlord</td>
+                       <td>{{$users->properties_count}}</td>
 
                     @endif
 
-                </td>
-                   <td>{{$users->properties_count}}</td>
             	<td>
                     @if($users->image_icon)
                         <img src="{{ URL::asset('upload/members/'.$users->image_icon.'-s.jpg') }}" width="80" alt="person">

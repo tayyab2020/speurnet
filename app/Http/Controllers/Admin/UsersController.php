@@ -35,8 +35,7 @@ class UsersController extends MainAdminController
 
         }
 
-        $allusers = User::where('usertype', '!=', 'Admin')->orderBy('id')->withCount('properties')->get();
-
+        $allusers = User::where('usertype', '!=', 'Admin')->orderBy('id')->withCount('properties')->withCount('home_exchange_properties')->get();
 
         return view('admin.pages.users',compact('allusers'));
     }

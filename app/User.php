@@ -53,6 +53,11 @@ class User extends Authenticatable
         return $this->hasMany(Properties::class, 'user_id');
     }
 
+    public function home_exchange_properties()
+    {
+        return $this->hasMany(Home_Exchange::class, 'user_id');
+    }
+
 }
 
 class CustomPassword extends ResetPassword
