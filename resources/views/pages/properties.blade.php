@@ -579,7 +579,7 @@
                     @if(!$property->landlord)
 
                         <div style="width: 50%;padding-left: 3px;">
-                            <span style="font-weight: 600;color: #808080;">{{__('text.Brought to you by')}}</span>
+                            <span class="extra-text" style="font-weight: 600;color: #808080;">{{__('text.Brought to you by')}}</span>
                         </div>
 
                         <div style="width: 50%;height: 100%;padding: 5px;">
@@ -589,7 +589,7 @@
                             @if($property->image_icon)
                                 <img style="width: 95%;height: 100%;float: right;" src="{{ URL::asset('upload/members/'.$property->image_icon.'-b.jpg') }}">
                             @elseif($property->company_name)
-                                <h3 style="margin: 0;display: flex;align-items: center;justify-content: center;height: 100%;">{{$property->company_name}}</h3>
+                                <h3 class="extra-text1" style="margin: 0;display: flex;align-items: center;justify-content: center;height: 100%;">{{$property->company_name}}</h3>
                             @endif
 
                         </a>
@@ -599,7 +599,7 @@
                         @else
 
                         <div style="width: 100%;text-align: center;">
-                            <span style="font-weight: 600;color: #808080;">{{__('text.Brought to you by')}} {{__('text.a private landlord')}}</span>
+                            <span class="extra-text" style="font-weight: 600;color: #808080;">{{__('text.Brought to you by')}} {{__('text.a private landlord')}}</span>
                         </div>
 
                     @endif
@@ -661,6 +661,16 @@
      }
 
      @media (max-width: 767px){
+
+         .extra-text
+         {
+             font-size: 10px !important;
+         }
+
+         .extra-text1
+         {
+             font-size: 16px !important;
+         }
 
          .res-box
          {

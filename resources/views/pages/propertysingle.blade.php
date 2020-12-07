@@ -91,7 +91,7 @@
                   <div class="tab-pane fade in active" id="detail">
                     <div class="row">
                       <div class="col-md-12">
-                        <h2 style="word-break: break-word;">{{$property->property_name}}</h2>
+                        <h2 class="extra-text" style="word-break: break-word;">{{$property->property_name}}</h2>
 
                           @if($property->video)
 
@@ -205,6 +205,8 @@
                             <style>
 
                                 @media (max-width: 991px){
+
+                                    .extra-text{ font-size: 18px !important;line-height: 1.5 !important;}
 
                                     .filter-button{display: block !important;}
                                     .properties-ordering-wrapper{float: left !important;display: block !important;width: 100% !important;}
@@ -327,9 +329,10 @@
                           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 10px 0px;padding-bottom: 0px;">
 
                                   <div class="col-lg-9 col-md-8 col-sm-8 col-xs-8" style="padding: 0;">
-                              <span style="margin-right: 10px;float: left;margin-bottom: 7px;"><img src="{{ URL::asset('assets/img/pin.png') }}" style="width: 15px;height: 15px;display: block;" /></span>
 
-                              <h5 style="margin: 0;float: left;margin-right: 20px;margin-bottom: 15px;">{{$property->address}}</h5>
+                                      <span style="margin-right: 10px;float: left;margin-bottom: 7px;"><img src="{{ URL::asset('assets/img/pin.png') }}" style="width: 15px;height: 15px;display: block;" /></span>
+
+                              <h5 class="extra-text1" style="margin: 0;float: left;margin-right: 20px;margin-bottom: 15px;">{{$property->address}}</h5>
 
                                       <div>
                                           <span style="margin-right: 10px;float: left;display: flex;"><i class="fa fa-eye" aria-hidden="true" style="font-size: 14px;"></i></span>
@@ -346,7 +349,7 @@
 
                                   <div class="col-lg-3 col-md-4 col-sm-4 col-xs-4" style="padding: 0;">
 
-                                      <span style="font-size: 12px;line-height: 1;vertical-align: top;float: right;">{{__('text.Posted on')}} {{$date}}</span>
+                                      <span style="font-size: 12px;line-height: 1;vertical-align: top;float: right;text-align: right;">{{__('text.Posted on')}} {{$date}}</span>
 
                                   </div>
 
@@ -1408,6 +1411,8 @@
                                   }
 
                                   @media (max-width: 680px){
+
+                                      .extra-text1{float: none !important;}
 
                                       td:nth-child(1)
                                       {

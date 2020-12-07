@@ -418,7 +418,7 @@
                                         @if($agent->properties_count >= 1)
 
                                             <div class="col-sm-3" style="float: right;">
-                                                <p style="color: red"><a style="text-decoration: none;color: red;" href="{{ URL::to('/agent-properties/user/'.$agent->id.'/0') }}" target="_blank">{{$agent->properties_count}} @if($agent->properties_count <= 1) {{__('text.Property')}} @else {{__('text.Properties')}} @endif</a></p>
+                                                <p><a style="text-decoration: none;color: #d6d63e;" href="{{ URL::to('/agent-properties/user/'.$agent->id.'/0') }}" target="_blank">{{$agent->properties_count}} @if($agent->properties_count <= 1) {{__('text.Property')}} @else {{__('text.Properties')}} @endif</a></p>
                                             </div>
 
                                         @endif
