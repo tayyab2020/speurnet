@@ -26,21 +26,23 @@
 
       <div class="container" style="width: 100%;">
 
-              @if($most_viewed)
+          {{--@if($most_viewed)
 
-          <div class="row">
+              <div class="row">
 
-              <div class="col-md-12 col-sm-12 col-xs-12" style="display: flex;margin-bottom: 20px;">
+                  <div class="col-md-12 col-sm-12 col-xs-12" style="display: flex;margin-bottom: 20px;">
 
-                  <div class="col-md-9 col-sm-12 col-xs-12" style="margin: auto;">
+                      <div class="col-md-9 col-sm-12 col-xs-12" style="margin: auto;">
 
-                  <a href="{{URL::to('woningaanbod/'.$most_viewed->property_slug)}}" style="padding: 0;margin: 0px;text-align: left;text-decoration: underline;cursor: pointer;color: black;font-size: 18px;font-weight: 600;"><img style="width: 30px;margin-right: 10px;margin-bottom: 2px;" src="{{ URL::asset('assets/img/eye.png') }}" />{{__('text.Most Viewed Ad')}}</a>
+                          <a href="{{URL::to('woningaanbod/'.$most_viewed->property_slug)}}" style="padding: 0;margin: 0px;text-align: left;text-decoration: underline;cursor: pointer;color: black;font-size: 18px;font-weight: 600;"><img style="width: 30px;margin-right: 10px;margin-bottom: 2px;" src="{{ URL::asset('assets/img/eye.png') }}" />{{__('text.Most Viewed Ad')}}</a>
+
+                      </div>
 
                   </div>
 
               </div>
 
-              @endif
+          @endif--}}
 
 
               @if(count($content))
@@ -522,11 +524,11 @@
 
                                     </div>
 
-                                    @if($property->listed)
+                                    {{--@if($property->listed)
 
                                         <div class="property-price" style="background: #d6d63e;position:relative;max-width: 100%;margin-bottom: 12px;font-size: 15px;padding: 2px 0px;border-radius: 5px;">{{$property->listed}}</div>
 
-                                    @endif
+                                    @endif--}}
 
                                 </div>
 

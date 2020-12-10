@@ -334,11 +334,11 @@
 
                               <h5 class="extra-text1" style="margin: 0;float: left;margin-right: 20px;margin-bottom: 15px;">{{$property->address}}</h5>
 
-                                      <div>
+                                      {{--<div>
                                           <span style="margin-right: 10px;float: left;display: flex;"><i class="fa fa-eye" aria-hidden="true" style="font-size: 14px;"></i></span>
 
                                           <h5 style="margin: 0;float: left;">{{$property->views}}</h5>
-                                      </div>
+                                      </div>--}}
 
                                   </div>
 

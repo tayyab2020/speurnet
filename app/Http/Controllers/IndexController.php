@@ -1167,7 +1167,7 @@ class IndexController extends Controller
 
     	$city_list = City::where('status','1')->orderBy('city_name')->get();
 
-		$propertieslist = Properties::leftjoin('users','users.id','=','properties.user_id')->where('properties.status','1')->orderBy('properties.id', 'desc')->select('properties.*','users.company_name','users.image_icon','users.id as user_id','users.landlord')->get();
+		$propertieslist = Properties::leftjoin('users','users.id','=','properties.user_id')->where('properties.status','1')->orderBy('properties.id', 'desc')->select('properties.*','users.company_name','users.image_icon','users.id as user_id','users.landlord')->take(3)->get();
 
 		/*$testimonials = Testimonials::orderBy('id', 'desc')->get();*/
 

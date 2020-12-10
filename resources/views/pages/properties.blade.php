@@ -610,7 +610,7 @@
 
             </div>
 
-                                @if(Route::currentRouteName() != 'newconstructions-front')
+                                {{--@if(Route::currentRouteName() != 'newconstructions-front')
 
                                     @if($property->listed)
 
@@ -618,7 +618,7 @@
 
                                     @endif
 
-                                @endif
+                                @endif--}}
 
           </div>
               <!-- break -->
