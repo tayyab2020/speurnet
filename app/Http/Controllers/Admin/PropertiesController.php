@@ -708,13 +708,11 @@ class PropertiesController extends MainAdminController
 
         $documents = $request->file('documents');
 
-        $countfiles = count($_FILES['documents']['name']);
-
         $docs = [];
-
 
         if($documents){
 
+            $countfiles = count($_FILES['documents']['name']);
 
             $find = property_documents::where('property_id',$property->id)->get();
 
