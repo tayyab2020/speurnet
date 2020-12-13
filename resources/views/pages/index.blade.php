@@ -170,7 +170,7 @@
 
                                             <a style="outline: none;" href="{{URL::to('woningaanbod/'.$property->property_slug)}}">
 
-                                            <img src="{{ URL::asset('upload/properties/'.$property->featured_image.'-b.jpg') }}" alt="{{ $property->property_name }}">
+                                            <img src="{{ URL::asset('upload/properties/'.$property->featured_image.'-s.jpg') }}" alt="{{ $property->property_name }}">
 
                                             </a>
 
