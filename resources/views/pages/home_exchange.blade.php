@@ -422,7 +422,7 @@
                                                 <a class="cd-faq__trigger" href="#0"><span>{{$key->question}}</span></a>
                                                 <div class="cd-faq__content">
                                                     <div class="text-component">
-                                                        <p>{!! $key->answer !!}</p>
+                                                        {!! $key->answer !!}
                                                     </div>
                                                 </div> <!-- cd-faq__content -->
                                             </li>
@@ -465,6 +465,14 @@
                         /*box-shadow: 0px 0px 18px -8px rgb(196 196 196);*/
                         border: 1px solid #efefef;
                         margin-bottom: 10px;
+                    }
+
+                    @media (min-width: 64rem)
+                    {
+                        .cd-faq__trigger
+                        {
+                            padding-right: 45px !important;
+                        }
                     }
 
                     .cd-faq__trigger

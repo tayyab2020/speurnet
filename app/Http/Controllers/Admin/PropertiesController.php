@@ -555,6 +555,33 @@ class PropertiesController extends MainAdminController
 
                 $img = Image::make($featured_image);
 
+                /*$image = imagecreatefromjpeg($featured_image);*/
+
+                /*$exif = exif_read_data($featured_image);
+
+                if (!empty($exif['Orientation'])) {
+                    $imageResource = imagecreatefromjpeg($featured_image); // provided that the image is jpeg. Use relevant function otherwise
+                    switch ($exif['Orientation']) {
+                        case 3:
+                            $image = imagerotate($imageResource, 180, 0);
+                            break;
+                        case 6:
+                            $image = imagerotate($imageResource, -90, 0);
+                            break;
+                        case 8:
+                            $image = imagerotate($imageResource, 90, 0);
+                            break;
+                        default:
+                            $image = $imageResource;
+                    }
+                }
+
+                imagejpeg($image, $tmpFilePath.$hardPath.'-b.jpg', 50);*/
+
+                /*$img->resize(1920, 1080, function($constraint){
+                    $constraint->aspectRatio();
+                })->save($tmpFilePath.$hardPath.'-b.jpg');*/
+
                 $img->fit(1920, 1080)->save($tmpFilePath.$hardPath.'-b.jpg');
                 $img->fit(640, 425)->save($tmpFilePath.$hardPath.'-s.jpg');
 
