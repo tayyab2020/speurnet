@@ -358,6 +358,110 @@ class PropertiesController extends MainAdminController
 
     }
 
+    // Compress image
+    public function compressImage($source, $destination, $quality) {
+
+        $info = getimagesize($source);
+
+        if ($info['mime'] == 'image/jpeg')
+        {
+            $image = imagecreatefromjpeg($source);
+
+            $exif = exif_read_data($source);
+
+            if (!empty($exif['Orientation'])) {
+
+                switch ($exif['Orientation']) {
+                    case 3:
+                        $image = imagerotate($image, 180, 0);
+                        break;
+                    case 6:
+                        $image = imagerotate($image, -90, 0);
+                        break;
+                    case 8:
+                        $image = imagerotate($image, 90, 0);
+                        break;
+                    default:
+                        $image = $image;
+                }
+            }
+
+            $img = Image::make($image);
+
+            if($quality == 30)
+            {
+                $img->resize(1920, 1080, function($constraint){
+                    $constraint->aspectRatio();
+                })->save($destination);
+            }
+            elseif($quality == 25)
+            {
+                $img->resize(1280, 800, function($constraint){
+                    $constraint->aspectRatio();
+                })->save($destination);
+            }
+            else
+            {
+                $img->resize(640, 425, function($constraint){
+                    $constraint->aspectRatio();
+                })->save($destination);
+            }
+
+
+            /*imagejpeg($image, $destination, $quality);*/
+        }
+
+        elseif ($info['mime'] == 'image/gif')
+        {
+            $image = imagecreatefromgif($source);
+            imagejpeg($image, $destination, $quality);
+        }
+
+        elseif ($info['mime'] == 'image/png')
+        {
+            $img = Image::make($source);
+
+            if($quality == 30)
+            {
+                $img->resize(1920, 1080, function($constraint){
+                    $constraint->aspectRatio();
+                })->save($destination);
+            }
+            elseif($quality == 25)
+            {
+                $img->resize(1280, 800, function($constraint){
+                    $constraint->aspectRatio();
+                })->save($destination);
+            }
+            else
+            {
+                $img->resize(640, 425, function($constraint){
+                    $constraint->aspectRatio();
+                })->save($destination);
+            }
+
+            /*$srcImage = imagecreatefrompng($source);
+
+            $targetImage = imagecreatetruecolor( $info[0], $info[1] );
+            imagealphablending( $targetImage, false );
+            imagesavealpha( $targetImage, true );
+
+            imagecopyresampled( $targetImage, $srcImage,
+                0, 0,
+                0, 0,
+                $info[0], $info[1],
+                $info[0], $info[1] );
+
+            $quality = 9 - ($quality/10);
+
+            imagepng(  $targetImage, $destination, $quality );*/
+
+        }
+
+        return;
+
+    }
+
     public function addnew(Request $request)
     {
 
@@ -553,37 +657,8 @@ class PropertiesController extends MainAdminController
 
                 $hardPath =  Str::slug($inputs['property_name'], '-').'-'.md5(rand(0,99999));
 
-                $img = Image::make($featured_image);
-
-                /*$image = imagecreatefromjpeg($featured_image);*/
-
-                /*$exif = exif_read_data($featured_image);
-
-                if (!empty($exif['Orientation'])) {
-                    $imageResource = imagecreatefromjpeg($featured_image); // provided that the image is jpeg. Use relevant function otherwise
-                    switch ($exif['Orientation']) {
-                        case 3:
-                            $image = imagerotate($imageResource, 180, 0);
-                            break;
-                        case 6:
-                            $image = imagerotate($imageResource, -90, 0);
-                            break;
-                        case 8:
-                            $image = imagerotate($imageResource, 90, 0);
-                            break;
-                        default:
-                            $image = $imageResource;
-                    }
-                }
-
-                imagejpeg($image, $tmpFilePath.$hardPath.'-b.jpg', 50);*/
-
-                /*$img->resize(1920, 1080, function($constraint){
-                    $constraint->aspectRatio();
-                })->save($tmpFilePath.$hardPath.'-b.jpg');*/
-
-                $img->fit(1920, 1080)->save($tmpFilePath.$hardPath.'-b.jpg');
-                $img->fit(640, 425)->save($tmpFilePath.$hardPath.'-s.jpg');
+                $this->compressImage($featured_image,$tmpFilePath.$hardPath.'-b.jpg',30);
+                $this->compressImage($featured_image,$tmpFilePath.$hardPath.'-s.jpg',20);
 
                 $property->featured_image = $hardPath;
             }
@@ -630,13 +705,7 @@ class PropertiesController extends MainAdminController
 
                     $hardPath =  Str::slug($inputs['property_name'], '-').'-'.md5(rand(0,99999));
 
-                    $img = Image::make($ac_image);
-
-                    $img->resize(1280, 800, function($constraint){
-                        $constraint->aspectRatio();
-                    })->save($tmpFilePath.$hardPath.'-b.jpg');
-
-                    /*$img->fit(1280, 800)->save($tmpFilePath.$hardPath.'-b.jpg');*/
+                    $this->compressImage($ac_image,$tmpFilePath.$hardPath.'-b.jpg',25);
 
                     $property->$p1 = $hardPath;
                 }
@@ -671,11 +740,7 @@ class PropertiesController extends MainAdminController
 
                     $image = $_FILES['property_images']['tmp_name'][$i];
 
-                    $resize_image = Image::make($image);
-
-                    $resize_image->resize(1280, 800, function($constraint){
-                        $constraint->aspectRatio();
-                    })->save($target_file);
+                    $this->compressImage($image,$target_file,25);
 
                     $check = 0;
 
