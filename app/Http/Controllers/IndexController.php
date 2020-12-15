@@ -181,6 +181,8 @@ class IndexController extends Controller
 
     public function images()
     {
+        exit();
+        
         $properties = Properties::where('kolibri_realtor_id','!=',NULL)->get();
 
         foreach ($properties as $key)
