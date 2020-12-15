@@ -39,6 +39,172 @@ use Laravel\Socialite\Facades\Socialite;
 class IndexController extends Controller
 {
 
+    public function compressImage($source, $destination, $quality) {
+
+        $info = getimagesize($source);
+
+        if ($info['mime'] == 'image/jpeg')
+        {
+            $image = imagecreatefromjpeg($source);
+
+            $exif = exif_read_data($source);
+
+            if (!empty($exif['Orientation'])) {
+
+                switch ($exif['Orientation']) {
+                    case 3:
+                        $image = imagerotate($image, 180, 0);
+                        break;
+                    case 6:
+                        $image = imagerotate($image, -90, 0);
+                        break;
+                    case 8:
+                        $image = imagerotate($image, 90, 0);
+                        break;
+                    default:
+                        $image = $image;
+                }
+            }
+
+            $img = Image::make($image);
+
+            if($quality == 30)
+            {
+                if($info[0] > 1920 && $info[1] > 1080)
+                {
+                    $img->resize(1920, 1080, function($constraint){
+                        $constraint->aspectRatio();
+                    })->save($destination);
+                }
+                else
+                {
+                    $img->save($destination);
+                }
+            }
+            elseif($quality == 25)
+            {
+                if($info[0] > 1280 && $info[1] > 800)
+                {
+                    $img->resize(1280, 800, function($constraint){
+                        $constraint->aspectRatio();
+                    })->save($destination);
+                }
+                else
+                {
+                    $img->save($destination);
+                }
+            }
+            else
+            {
+                if($info[0] > 640 && $info[1] > 425)
+                {
+                    $img->resize(640, 425, function($constraint){
+                        $constraint->aspectRatio();
+                    })->save($destination);
+                }
+                else
+                {
+                    $img->save($destination);
+                }
+            }
+
+
+            /*imagejpeg($image, $destination, $quality);*/
+        }
+
+        else
+        {
+            $img = Image::make($source);
+
+            if($quality == 30)
+            {
+                if($info[0] > 1920 && $info[1] > 1080)
+                {
+                    $img->resize(1920, 1080, function($constraint){
+                        $constraint->aspectRatio();
+                    })->save($destination);
+                }
+                else
+                {
+                    $img->save($destination);
+                }
+
+            }
+            elseif($quality == 25)
+            {
+                if($info[0] > 1280 && $info[1] > 800)
+                {
+                    $img->resize(1280, 800, function($constraint){
+                        $constraint->aspectRatio();
+                    })->save($destination);
+                }
+                else
+                {
+                    $img->save($destination);
+                }
+            }
+            else
+            {
+                if($info[0] > 640 && $info[1] > 425)
+                {
+                    $img->resize(640, 425, function($constraint){
+                        $constraint->aspectRatio();
+                    })->save($destination);
+                }
+                else
+                {
+                    $img->save($destination);
+                }
+            }
+
+            /*$srcImage = imagecreatefrompng($source);
+
+            $targetImage = imagecreatetruecolor( $info[0], $info[1] );
+            imagealphablending( $targetImage, false );
+            imagesavealpha( $targetImage, true );
+
+            imagecopyresampled( $targetImage, $srcImage,
+                0, 0,
+                0, 0,
+                $info[0], $info[1],
+                $info[0], $info[1] );
+
+            $quality = 9 - ($quality/10);
+
+            imagepng(  $targetImage, $destination, $quality );*/
+
+        }
+
+        return;
+
+    }
+
+    public function images()
+    {
+        $properties = Properties::where('kolibri_realtor_id','!=',NULL)->get();
+
+        foreach ($properties as $key)
+        {
+            $source = public_path().'/upload/properties/'.$key->featured_image.'-b.jpg';
+            $this->compressImage($source,public_path().'/upload/properties/'.$key->featured_image.'-b.jpg',30);
+
+            $source1 = public_path().'/upload/properties/'.$key->featured_image.'-s.jpg';
+            $this->compressImage($source1,public_path().'/upload/properties/'.$key->featured_image.'-s.jpg',20);
+
+            for ($i = 1; $i<=29; $i++)
+            {
+                $p = 'property_images'.$i;
+
+                if($key->$p)
+                {
+                    $source2 = public_path().'/upload/properties/'.$key->$p.'-b.jpg';
+                    $this->compressImage($source2,public_path().'/upload/properties/'.$key->$p.'-b.jpg',25);
+                }
+            }
+        }
+
+    }
+
     public function kolibri()
     {
         ini_set('max_execution_time', '0');
@@ -231,6 +397,7 @@ class IndexController extends Controller
                     $xml = simplexml_load_string($response);
                     $json = json_encode($xml);
                     $property_details = json_decode($json,true);
+
 
                     if(is_array($property_details['RealEstateProperty']['Type']['PropertyTypes']['PropertyType']))
                     {
@@ -489,7 +656,6 @@ class IndexController extends Controller
                                 $garden_type = NULL;
                             }
 
-
                             if(isset($property_details['RealEstateProperty']['Garages']['Garage']))
                             {
                                 if(array_key_exists(0, $property_details['RealEstateProperty']['Garages']['Garage']))
@@ -623,10 +789,13 @@ class IndexController extends Controller
 
                                                 $image = $temp['URLNormalizedFile'];
 
-                                                $report = file_get_contents($image);
+                                                /*$report = file_get_contents($image);*/
 
-                                                file_put_contents(public_path().'/upload/properties/'.$filename.'-b.jpg', $report);
-                                                file_put_contents(public_path().'/upload/properties/'.$filename.'-s.jpg', $report);
+                                                $this->compressImage($image,public_path().'/upload/properties/'.$filename.'-b.jpg',30);
+                                                $this->compressImage($image,public_path().'/upload/properties/'.$filename.'-s.jpg',20);
+
+                                                /*file_put_contents(public_path().'/upload/properties/'.$filename.'-b.jpg', $report);
+                                                file_put_contents(public_path().'/upload/properties/'.$filename.'-s.jpg', $report);*/
 
                                                 $exists->featured_image = $filename;
                                             }
@@ -640,9 +809,11 @@ class IndexController extends Controller
 
                                                 $image = $temp['URLNormalizedFile'];
 
-                                                $report = file_get_contents($image);
+                                                /*$report = file_get_contents($image);*/
 
-                                                file_put_contents(public_path().'/upload/properties/'.$filename.'-b.jpg', $report);
+                                                $this->compressImage($image,public_path().'/upload/properties/'.$filename.'-b.jpg',25);
+
+                                                /*file_put_contents(public_path().'/upload/properties/'.$filename.'-b.jpg', $report);*/
 
                                                 $exists->$p = $filename;
                                             }
@@ -809,10 +980,13 @@ class IndexController extends Controller
 
                                             $image = $temp['URLNormalizedFile'];
 
-                                            $report = file_get_contents($image);
+                                            /*$report = file_get_contents($image);*/
 
-                                            file_put_contents(public_path().'/upload/properties/'.$filename.'-b.jpg', $report);
-                                            file_put_contents(public_path().'/upload/properties/'.$filename.'-s.jpg', $report);
+                                            $this->compressImage($image,public_path().'/upload/properties/'.$filename.'-b.jpg',30);
+                                            $this->compressImage($image,public_path().'/upload/properties/'.$filename.'-s.jpg',20);
+
+                                            /*file_put_contents(public_path().'/upload/properties/'.$filename.'-b.jpg', $report);
+                                            file_put_contents(public_path().'/upload/properties/'.$filename.'-s.jpg', $report);*/
 
                                             $property->featured_image = $filename;
                                         }
@@ -824,9 +998,11 @@ class IndexController extends Controller
 
                                             $image = $temp['URLNormalizedFile'];
 
-                                            $report = file_get_contents($image);
+                                            /*$report = file_get_contents($image);*/
 
-                                            file_put_contents(public_path().'/upload/properties/'.$filename.'-b.jpg', $report);
+                                            $this->compressImage($image,public_path().'/upload/properties/'.$filename.'-b.jpg',25);
+
+                                            /*file_put_contents(public_path().'/upload/properties/'.$filename.'-b.jpg', $report);*/
 
                                             $property->$p = $filename;
                                         }

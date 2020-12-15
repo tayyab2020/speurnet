@@ -390,54 +390,91 @@ class PropertiesController extends MainAdminController
 
             if($quality == 30)
             {
-                $img->resize(1920, 1080, function($constraint){
-                    $constraint->aspectRatio();
-                })->save($destination);
+                if($info[0] > 1920 && $info[1] > 1080)
+                {
+                    $img->resize(1920, 1080, function($constraint){
+                        $constraint->aspectRatio();
+                    })->save($destination);
+                }
+                else
+                {
+                    $img->save($destination);
+                }
             }
             elseif($quality == 25)
             {
-                $img->resize(1280, 800, function($constraint){
-                    $constraint->aspectRatio();
-                })->save($destination);
+                if($info[0] > 1280 && $info[1] > 800)
+                {
+                    $img->resize(1280, 800, function($constraint){
+                        $constraint->aspectRatio();
+                    })->save($destination);
+                }
+                else
+                {
+                    $img->save($destination);
+                }
             }
             else
             {
-                $img->resize(640, 425, function($constraint){
-                    $constraint->aspectRatio();
-                })->save($destination);
+                if($info[0] > 640 && $info[1] > 425)
+                {
+                    $img->resize(640, 425, function($constraint){
+                        $constraint->aspectRatio();
+                    })->save($destination);
+                }
+                else
+                {
+                    $img->save($destination);
+                }
             }
 
 
             /*imagejpeg($image, $destination, $quality);*/
         }
 
-        elseif ($info['mime'] == 'image/gif')
-        {
-            $image = imagecreatefromgif($source);
-            imagejpeg($image, $destination, $quality);
-        }
-
-        elseif ($info['mime'] == 'image/png')
+        else
         {
             $img = Image::make($source);
 
             if($quality == 30)
             {
-                $img->resize(1920, 1080, function($constraint){
-                    $constraint->aspectRatio();
-                })->save($destination);
+                if($info[0] > 1920 && $info[1] > 1080)
+                {
+                    $img->resize(1920, 1080, function($constraint){
+                        $constraint->aspectRatio();
+                    })->save($destination);
+                }
+                else
+                {
+                    $img->save($destination);
+                }
+
             }
             elseif($quality == 25)
             {
-                $img->resize(1280, 800, function($constraint){
-                    $constraint->aspectRatio();
-                })->save($destination);
+                if($info[0] > 1280 && $info[1] > 800)
+                {
+                    $img->resize(1280, 800, function($constraint){
+                        $constraint->aspectRatio();
+                    })->save($destination);
+                }
+                else
+                {
+                    $img->save($destination);
+                }
             }
             else
             {
-                $img->resize(640, 425, function($constraint){
-                    $constraint->aspectRatio();
-                })->save($destination);
+                if($info[0] > 640 && $info[1] > 425)
+                {
+                    $img->resize(640, 425, function($constraint){
+                        $constraint->aspectRatio();
+                    })->save($destination);
+                }
+                else
+                {
+                    $img->save($destination);
+                }
             }
 
             /*$srcImage = imagecreatefrompng($source);
