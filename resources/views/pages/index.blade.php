@@ -710,7 +710,7 @@
 
         .extra-text span
         {
-            font-size: 10px !important;
+            font-size: 9px !important;
         }
 
         .extra-text img
