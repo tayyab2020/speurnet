@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7fe7f36f-c82f-4504-8c0a-7874522d22c9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/Console/Commands/KolibriCron.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Commands/KolibriCron.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/IndexController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/IndexController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/index.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -319,7 +320,9 @@
       <workItem from="1607888606511" duration="403000" />
       <workItem from="1607889430222" duration="10311000" />
       <workItem from="1608037949079" duration="894000" />
-      <workItem from="1608052676905" duration="9621000" />
+      <workItem from="1608052676905" duration="10867000" />
+      <workItem from="1608122418261" duration="124000" />
+      <workItem from="1608227559001" duration="828000" />
     </task>
     <servers />
   </component>

@@ -586,7 +586,7 @@
 
                                 <h3 style="margin: 15px 0px 0px 0px;"><a style="text-overflow: ellipsis;display: block;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;white-space: nowrap;" href="{{URL::to('woningaanbod/'.$temp->property_slug)}}">{{ Str::limit($temp->property_name,35) }}</a> <small style="text-overflow: ellipsis;display: block;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;white-space: nowrap;">{{ Str::limit($temp->address,40) }}</small></h3>
 
-                                <div style="min-height: 45px;display: flex;flex-direction: row;justify-content: space-between;align-items: flex-end;font-size: 90%;">
+                                <div class="bottom-text" style="min-height: 45px;display: flex;flex-direction: row;justify-content: space-between;align-items: flex-end;font-size: 90%;">
                                     <small style="font-weight: 600;">{{ getPropertyTypeName($temp->property_type)->types }}</small>
                                     <small>€@if($temp->sale_price) {{number_format($temp->sale_price, 0, ',', '.')}} {{$temp->cost_for}} @else {{number_format($temp->rent_price, 0, ',', '.')}} @endif</small>
                                 </div>
@@ -673,14 +673,30 @@
 
 <style>
 
-
     .ekko-lightbox .modal-dialog
     {
         margin: 10px;
     }
 
+    @media (max-width: 478px)
+    {
+        .bottom-text
+        {
+            min-height: 55px !important;
+            flex-direction: column !important;
+            justify-content: flex-end !important;
+            align-items: flex-start !important;
+        }
+
+        .bottom-text small
+        {
+            margin: 2px 0px;
+        }
+    }
+
     @media (max-width: 768px)
     {
+
         .property-content h3, .property-text h3
         {
             font-size: 15px;
