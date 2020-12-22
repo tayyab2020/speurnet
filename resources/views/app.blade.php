@@ -70,7 +70,7 @@
       {
           .body-padding-top
           {
-              padding-top: 135px !important;
+              padding-top: 85px !important;
           }
       }
   </style>
