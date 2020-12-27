@@ -165,7 +165,7 @@
 
                                     </div>
 
-                                    <div class="property-container" style="border: 1px solid #48cfad;margin-bottom: 10px;">
+                                    <div class="property-container" style="border: 1px solid #48cfad;margin-bottom: 10px;border-left-width: 0.9px;">
                                         <div class="property-image latest">
 
                                             <a style="outline: none;" href="{{URL::to('woningaanbod/'.$property->property_slug)}}">
@@ -732,14 +732,19 @@
         }
     }
 
-    @media (min-width: 1250px){
+    @media (max-width: 1299px){
         .latest-container{padding: 0px 95px;}
         .show-more-container{padding: 0px 120px;}
     }
 
-    @media (min-width: 1295px){
-        .latest-container{padding: 0px 120px;}
-        .show-more-container{padding: 0px 135px;}
+    @media (min-width: 1300px){
+        .latest-container{padding: 0px 200px;}
+        .show-more-container{padding: 0px 215px;}
+    }
+
+    @media (max-width: 1200px){
+        .latest-container{padding: 0px 15px;}
+        .show-more-container{padding: 0px 15px;}
     }
 
     .video-wrapper-inner .popup-video{position:relative;z-index:1;display:inline-block;width:50px;height:50px;line-height:50px;border-radius:50%;-webkit-border-radius:50%;-moz-border-radius:50%;-ms-border-radius:50%;-o-border-radius:50%;-webkit-transition:all 0.3s ease-in-out 0s;-o-transition:all 0.3s ease-in-out 0s;transition:all 0.3s ease-in-out 0s;font-size:18px;color:#fff;background:#f9424b;text-align:center}
