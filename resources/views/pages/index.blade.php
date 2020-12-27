@@ -1285,14 +1285,6 @@
 
 <style>
 
-    @media screen and (min-width: 1201px)
-    {
-        .body-padding-top
-        {
-            padding-top: 85px !important;
-        }
-    }
-
     .ck-cont
     {
         flex: 1;

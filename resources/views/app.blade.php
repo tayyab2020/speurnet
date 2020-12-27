@@ -66,13 +66,18 @@
   <body id="top" class="body-padding-top">
 
   <style>
-      @media screen and (min-width: 1201px)
+
+      .body-padding-top
       {
-          .body-padding-top
-          {
-              padding-top: 85px !important;
-          }
+              padding-top: 0 !important;
       }
+
+      .navbar-default
+      {
+          position: sticky;
+          margin: 0;
+      }
+
   </style>
 
 	  @include("_particles.header")

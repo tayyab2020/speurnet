@@ -197,7 +197,7 @@
         }
     }
 
-    h4 {
+    /*h4 {
         overflow: hidden;
         text-align: center;
         font-weight: 500;
@@ -223,7 +223,7 @@
     h4:after {
         left: 0.5em;
         margin-right: -50%;
-    }
+    }*/
 
     .social-button {
         background-position: 25px 0px;
