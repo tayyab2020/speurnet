@@ -1430,12 +1430,12 @@
 
                                     <div class="input-group col-lg-12 col-md-12 col-sm-12 col-xs-12 left-div" style="display: inline-block;">
 
-                                        <label class="left-label" style="float: left;">{{__('text.Property Name Heading')}} <span style="color: red;font-size: 20px;">*</span></label>
+                                        <label class="left-label" style="float: left;">{{__('text.Property Name Heading')}}</label>
 
                                         <div style="width: 100%;display: inline-block;border: 1px solid #d7d7d7;margin: auto">
 
 
-                                            <input type="text" placeholder="{{__('text.Property Title')}}" name="property_name" @if(old('property_name')) value="{{old('property_name')}}" @else value="{{ isset($property->property_name) ? $property->property_name : null }}" @endif style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control stepper-step-3-validate"  >
+                                            <input type="text" placeholder="{{__('text.Property Title')}}" name="property_name" @if(old('property_name')) value="{{old('property_name')}}" @else value="{{ isset($property->property_name) ? $property->property_name : null }}" @endif style="border: 0;margin: 0;float: left;width: 100%;left: 0;height: 37.5px;text-align: left;padding-left: 20px;box-shadow: none;"  class="form-control">
 
 
                                         </div>

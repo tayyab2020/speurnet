@@ -499,6 +499,42 @@ class PropertiesController extends MainAdminController
 
     }
 
+    public function incrementSlug($slug,$type) {
+
+        $original = $slug;
+
+        $count = 2;
+
+        if($type == 1)
+        {
+            while (Properties::where('property_slug',$slug)->exists()) {
+
+                $slug = "{$original}-" . $count++;
+            }
+
+            return $slug;
+        }
+        elseif($type == 2)
+        {
+            while (New_Constructions::where('property_slug',$slug)->exists()) {
+
+                $slug = "{$original}-" . $count++;
+            }
+
+            return $slug;
+        }
+        else
+        {
+            while (Home_Exchange::where('property_slug',$slug)->exists()) {
+
+                $slug = "{$original}-" . $count++;
+            }
+
+            return $slug;
+        }
+
+    }
+
     public function addnew(Request $request)
     {
 
@@ -507,7 +543,7 @@ class PropertiesController extends MainAdminController
 	    $inputs = $request->all();
 
             $rule=array(
-                'property_name' => 'required',
+                /*'property_name' => 'required',*/
                 /*'property_slug' => 'unique:properties,property_slug,'.$inputs['id'],*/
                 'description' => 'required',
                 'featured_image' => 'mimes:jpg,jpeg,gif,png|max:7000',
@@ -545,7 +581,7 @@ class PropertiesController extends MainAdminController
 
 
         $messages = [
-            'property_name.required' => 'Property Name is required.',
+            /*'property_name.required' => 'Property Name is required.',*/
             /*'property_slug.unique' => 'This Property Slug is already been taken.',*/
             'description.required' => __('Description is required.'),
             'featured_image.mimes' => 'Featured Image must be a file of type: jpg, jpeg, gif, png.',
@@ -619,8 +655,14 @@ class PropertiesController extends MainAdminController
             return redirect()->back()->withErrors($validator->messages())->withInput();
         }
 
-
-        $property_slug  = Str::slug($inputs['property_name'], "-");
+        if($request->property_name)
+        {
+            $property_name = $request->property_name;
+        }
+        else
+        {
+            $property_name = $request->address;
+        }
 
 
 		if(!empty($inputs['id'])){
@@ -628,22 +670,40 @@ class PropertiesController extends MainAdminController
             if($request->route == 'property')
             {
                 $property = Properties::findOrFail($inputs['id']);
+
+                $property_slug = Str::slug($property_name, "-");
+
+                if (Properties::where('property_slug',$property_slug)->where('id','!=',$inputs['id'])->exists()) {
+                    $property_slug = $this->incrementSlug($property_slug,1);
+                }
             }
             elseif($request->route == 'construction')
             {
                 $property = New_Constructions::findOrFail($inputs['id']);
+
+                $property_slug = Str::slug($property_name, "-");
+
+                if (Properties::where('property_slug',$property_slug)->where('id','!=',$inputs['id'])->exists()) {
+                    $property_slug = $this->incrementSlug($property_slug,2);
+                }
             }
             else
             {
                 $property = Home_Exchange::findOrFail($inputs['id']);
+
+                $property_slug = Str::slug($property_name, "-");
+
+                if (Properties::where('property_slug',$property_slug)->where('id','!=',$inputs['id'])->exists()) {
+                    $property_slug = $this->incrementSlug($property_slug,3);
+                }
             }
 
-            $slug = $property->where('id','!=',$inputs['id'])->where('property_slug',$property_slug)->first();
+            /*$slug = $property->where('id','!=',$inputs['id'])->where('property_slug',$property_slug)->first();
 
             if($slug)
             {
                 return redirect()->back()->withErrors('Property Name already taken!')->withInput();
-            }
+            }*/
 
 
         }else{
@@ -654,26 +714,44 @@ class PropertiesController extends MainAdminController
             {
                 $property = new Properties;
                 $property_type = "Simple Property";
+
+                $property_slug = Str::slug($property_name, "-");
+
+                if (Properties::where('property_slug',$property_slug)->exists()) {
+                    $property_slug = $this->incrementSlug($property_slug,1);
+                }
             }
             elseif($request->route == 'construction')
             {
                 $property = new New_Constructions;
                 $property_type = "New Construction Property";
+
+                $property_slug = Str::slug($property_name, "-");
+
+                if (Properties::where('property_slug',$property_slug)->exists()) {
+                    $property_slug = $this->incrementSlug($property_slug,2);
+                }
             }
             else
             {
                 $property = new Home_Exchange;
                 $property_type = "Home Exchange Property";
+
+                $property_slug = Str::slug($property_name, "-");
+
+                if (Properties::where('property_slug',$property_slug)->exists()) {
+                    $property_slug = $this->incrementSlug($property_slug,3);
+                }
             }
 
             $property->user_id = $user_id;
 
-            $slug = $property->where('property_slug',$property_slug)->first();
+            /*$slug = $property->where('property_slug',$property_slug)->first();
 
             if($slug)
             {
                 return redirect()->back()->withErrors('Property Name already taken!')->withInput();
-            }
+            }*/
 
         }
 
@@ -871,7 +949,6 @@ class PropertiesController extends MainAdminController
                 $docs[$i] = $hardPath . "." . $ext;
 
             }
-
 
         }
 
@@ -1124,7 +1201,7 @@ class PropertiesController extends MainAdminController
         }
 
 		$property->available_immediately = $request->available_immediately;
-		$property->property_name = $request->property_name;
+		$property->property_name = $property_name;
 		$property->property_slug = $property_slug;
 		$property->city_id = $city_id;
 		$property->property_type = $request->property_type;
