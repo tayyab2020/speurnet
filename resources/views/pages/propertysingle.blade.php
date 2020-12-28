@@ -187,9 +187,11 @@
 
                                   @endif
 
-                                  <?php for($p=1; $p<25; $p++){ $property_image = 'property_images'.$p; $info = getimagesize(public_path().'/upload/properties/'.$property->$property_image.'-b.jpg'); ?>
+                                  <?php for($p=1; $p<25; $p++){ $property_image = 'property_images'.$p; ?>
 
                                   @if($property->$property_image)
+
+                                      <?php $info = getimagesize(public_path().'/upload/properties/'.$property->$property_image.'-b.jpg'); ?>
 
                                       <div class="item @if(!$check) <?php $check = 1; ?> active @endif">
                                           <img @if($info[0] >= 900) style="width: 100%;" @else style="width: auto;margin: auto;" @endif src="{{ URL::asset('upload/properties/'.$property->$property_image.'-b.jpg') }}" alt="">
