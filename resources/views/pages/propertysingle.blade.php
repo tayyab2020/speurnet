@@ -175,21 +175,24 @@
 
                               @endif
 
-                                  <?php $check = 0; ?>
+                              <?php $check = 0; ?>
 
-                              @if($property->featured_image)
-                                  <?php $check = 1; ?>
-                                      <div class="item active">
-                                          <img src="{{ URL::asset('upload/properties/'.$property->featured_image.'-b.jpg') }}" alt="">
-                                      </div>
-                              @endif
+                                  @if($property->featured_image)
 
-                                  <?php for($p=1; $p<25; $p++){ $property_image = 'property_images'.$p; ?>
+                                      <?php $info = getimagesize(public_path().'/upload/properties/'.$property->featured_image.'-b.jpg'); $check = 1; ?>
+
+                                          <div class="item active">
+                                              <img @if($info[0] >= 900) style="width: 100%;" @else style="width: auto;margin: auto;" @endif src="{{ URL::asset('upload/properties/'.$property->featured_image.'-b.jpg') }}" alt="">
+                                          </div>
+
+                                  @endif
+
+                                  <?php for($p=1; $p<25; $p++){ $property_image = 'property_images'.$p; $info = getimagesize(public_path().'/upload/properties/'.$property->$property_image.'-b.jpg'); ?>
 
                                   @if($property->$property_image)
 
                                       <div class="item @if(!$check) <?php $check = 1; ?> active @endif">
-                                          <img src="{{ URL::asset('upload/properties/'.$property->$property_image.'-b.jpg') }}" alt="">
+                                          <img @if($info[0] >= 900) style="width: 100%;" @else style="width: auto;margin: auto;" @endif src="{{ URL::asset('upload/properties/'.$property->$property_image.'-b.jpg') }}" alt="">
                                       </div>
 
                                   @endif
@@ -203,6 +206,22 @@
                             <button type="button" href="#slider-property" data-slide="next" class="carousel-next arrow" style="display: block;" aria-disabled="true"><i class="flaticon-right-arrow" aria-hidden="true"></i></button>
 
                             <style>
+
+                                .flaticon-left-arrow-1
+                                {
+                                    color: #3f3d3d;
+                                }
+
+                                .flaticon-right-arrow
+                                {
+                                    color: #3f3d3d;
+                                }
+
+                                .arrow
+                                {
+                                    background-color: white !important;
+                                    box-shadow: 1px 1px 5px 1px #0000004a !important;
+                                }
 
                                 @media (max-width: 991px){
 
