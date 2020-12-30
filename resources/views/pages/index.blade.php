@@ -524,6 +524,16 @@
 
                                     </div>
 
+                                    @foreach($properties_headings as $h)
+
+                                        @if($h->heading_order == $i)
+
+                                            <div class="property-price" style="background: {{$h->color}};position:relative;max-width: 100%;margin-bottom: 12px;font-size: 15px;padding: 2px 0px;border-radius: 5px;">{{$h->title}}</div>
+
+                                        @endif
+
+                                    @endforeach
+
                                     {{--@if($property->listed)
 
                                         <div class="property-price" style="background: #d6d63e;position:relative;max-width: 100%;margin-bottom: 12px;font-size: 15px;padding: 2px 0px;border-radius: 5px;">{{$property->listed}}</div>

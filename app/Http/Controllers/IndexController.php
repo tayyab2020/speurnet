@@ -9,6 +9,7 @@ use App\footer_pages;
 use App\HomepageIcons;
 use App\moving_tips;
 use App\moving_tips_contents;
+use App\properties_headings;
 use App\property_documents;
 use App\savedPropertyAlert;
 use App\Settings;
@@ -1347,6 +1348,8 @@ class IndexController extends Controller
 
 		$propertieslist = Properties::leftjoin('users','users.id','=','properties.user_id')->where('properties.status','1')->orderBy('properties.id', 'desc')->select('properties.*','users.company_name','users.image_icon','users.id as user_id','users.landlord')->take(3)->get();
 
+		$properties_headings = properties_headings::all();
+
 		/*$testimonials = Testimonials::orderBy('id', 'desc')->get();*/
 
 		$partners = Partners::orderBy('id', 'desc')->get();
@@ -1451,7 +1454,7 @@ class IndexController extends Controller
 
         $cookie = cookies::where('ip',\Request::ip())->first();
 
-        return view('pages.index',compact('cookie','propertieslist','blogs', 'heading', 'most_viewed', 'partners','city_list','top_members','top_properties','content'));
+        return view('pages.index',compact('cookie','propertieslist','blogs', 'heading', 'most_viewed', 'partners','city_list','top_members','top_properties','content','properties_headings'));
     }
 
     public function Blogs()

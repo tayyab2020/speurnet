@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\footer_headings;
 use App\footer_pages;
+use App\properties_headings;
+use App\property_features;
 use Auth;
 use App\User;
 use App\Properties;
@@ -460,6 +462,138 @@ class DashboardController extends MainAdminController
 
         return redirect()->back();
 
+
+    }
+
+    public function propertiesHeadings()
+    {
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        $headings = properties_headings::all();
+
+        return view('admin.pages.properties_headings',compact('headings'));
+    }
+
+    public function addPropertiesHeading(){
+
+        if(Auth::User()->usertype!="Admin"){
+
+            Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        return view('admin.pages.add_property_heading');
+    }
+
+    public function postPropertiesHeading(Request $request)
+    {
+
+        $data =  \Request::except(array('_token')) ;
+
+        $inputs = $request->all();
+
+        $rule=array(
+            'heading' => 'required',
+            'color' => 'required',
+        );
+
+        $validator = \Validator::make($data,$rule);
+
+        if($validator->fails())
+        {
+            return redirect()->back()->withErrors($validator->messages());
+        }
+
+
+        if(!empty($inputs['id'])){
+
+            $check = properties_headings::where('heading_order',$request->heading_order)->where('id','!=',$inputs['id'])->first();
+
+            if(!$check)
+            {
+                $heading = properties_headings::findOrFail($inputs['id']);
+            }
+            else
+            {
+                return redirect()->back()->withErrors('Order number already assigned!');
+            }
+
+        }else{
+
+            $check = properties_headings::where('heading_order',$request->heading_order)->first();
+
+            if(!$check)
+            {
+                $heading = new properties_headings;
+            }
+            else
+            {
+                return redirect()->back()->withErrors('Order number already assigned!');
+            }
+
+        }
+
+        $heading->title = $request->heading;
+        $heading->heading_order = $request->heading_order;
+        $heading->color = $request->color;
+        $heading->save();
+
+        if(!empty($inputs['id'])){
+
+            \Session::flash('flash_message','Changes Saved');
+
+            return \Redirect::back();
+        }else{
+
+            \Session::flash('flash_message','Added');
+
+            return \Redirect::back();
+
+        }
+
+    }
+
+    public function editPropertiesHeading($id)
+    {
+
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        $heading = properties_headings::findOrFail($id);
+
+        return view('admin.pages.add_property_heading',compact('heading'));
+
+    }
+
+    public function deletePropertiesHeading($id)
+    {
+
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        properties_headings::where('id',$id)->delete();
+
+        \Session::flash('flash_message', 'Deleted');
+
+        return redirect()->back();
 
     }
 

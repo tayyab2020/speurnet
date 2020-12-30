@@ -57,6 +57,12 @@ Route::group(['middleware' => 'App\Http\Middleware\UserTypeMiddleware'], functio
         Route::get('faqs/addfaq/{id}', 'DashboardController@editfaq');
         Route::get('faqs/delete/{id}', 'DashboardController@delete');
 
+        Route::get('properties-headings', 'DashboardController@propertiesHeadings');
+        Route::get('properties-headings/add-properties-heading', 'DashboardController@addPropertiesHeading');
+        Route::post('properties-headings/add-properties-heading', 'DashboardController@postPropertiesHeading');
+        Route::get('properties-headings/add-properties-heading/{id}', 'DashboardController@editPropertiesHeading');
+        Route::get('properties-headings/delete/{id}', 'DashboardController@deletePropertiesHeading');
+
         Route::get('footer-headings', 'DashboardController@footerHeadings');
         Route::get('footer-headings/add-footer-heading', 'DashboardController@addFooterHeading');
         Route::post('footer-headings/add-footer-heading', 'DashboardController@postFooterHeading');

@@ -10,13 +10,13 @@
 
                 @if(Auth::user()->usertype =='Admin')
 
-                <a href="{{URL::to('admin/properties/addproperty')}}" class="btn btn-primary">Add Property <i class="fa fa-plus" style="margin-left: 8px;"></i></a>
+                    <a href="{{URL::to('admin/properties/addproperty')}}" class="btn btn-primary">Add Property <i class="fa fa-plus" style="margin-left: 8px;"></i></a>
 
-                    @elseif(Auth::user()->usertype =='Agents')
+                @elseif(Auth::user()->usertype =='Agents')
 
                     <a href="{{URL::to('addproperty')}}" class="btn btn-primary">@if(Auth::User()->usertype != "Admin"){{__('text.Place the house')}}@else Add Property @endif <i class="fa fa-plus" style="margin-left: 8px;"></i></a>
 
-                    @endif
+                @endif
 
 
             @elseif(Route::currentRouteName() == 'new_constructions')
@@ -26,10 +26,11 @@
             @else
 
                 @if(Auth::user()->usertype =='Users')
-                    <a href="{{URL::to('admin/properties/addhomeexchange')}}" class="btn btn-primary">@if(Auth::User()->usertype != "Admin"){{__('text.Place the house')}}@else Add Property @endif <i class="fa fa-plus" style="margin-left: 8px;"></i></a>
+                    <a style="background-color: #21b621;border-color: #21b621;" href="{{URL::to('admin/properties/addhomeexchange')}}" class="btn btn-primary">@if(Auth::User()->usertype != "Admin"){{__('text.Place the house')}}@else Add Property @endif <i class="fa fa-plus" style="margin-left: 8px;"></i></a>
                 @endif
 
-                @endif
+            @endif
+
         </div>
 
         <h2>@if(Route::currentRouteName() == 'properties') @if(Auth::User()->usertype != "Admin"){{__('text.My Properties')}}@else Properties @endif @elseif(Route::currentRouteName() == 'new_constructions') New Construction Properties @else @if(Auth::User()->usertype != "Admin"){{__('text.Home Exchange Properties')}}@else Home Exchange Properties @endif @endif</h2>
@@ -173,7 +174,7 @@
             	</td>
                 <td class="text-center">
                 <div class="btn-group">
-								<button type="button" class="btn btn-default-dark dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+								<button style="background-color: #e92e2e;" type="button" class="btn btn-default-dark dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                     @if(Auth::User()->usertype != "Admin"){{__('text.Action')}}s @else Actions @endif <span class="caret"></span>
 								</button>
 								<ul class="dropdown-menu dropdown-menu-right" role="menu">

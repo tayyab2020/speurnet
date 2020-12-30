@@ -11,10 +11,12 @@
 	<link rel="stylesheet" href="{{ URL::asset('admin_assets/css/style.css') }}">
     <link href="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/build/css/bootstrap-datetimepicker.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.css" rel="stylesheet">
+    <link href="{{asset('admin_assets/css/bootstrap-colorpicker.css')}}" rel="stylesheet">
 
 	<script src="{{ URL::asset('admin_assets/js/jquery.js') }}"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
     <script src="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/src/js/bootstrap-datetimepicker.js"></script>
+    <script src="{{asset('admin_assets/js/bootstrap-colorpicker.js')}}"></script>
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

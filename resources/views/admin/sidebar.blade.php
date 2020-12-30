@@ -36,6 +36,8 @@
 
                     <li class="{{classActivePath('footer-pages')}}"><a href="{{ URL::to('admin/footer-pages') }}"><i class="fa fa-list"></i> Footer Pages</a></li>
 
+                    <li class="{{classActivePath('properties-headings')}}"><a href="{{ URL::to('admin/properties-headings') }}"><i class="fa fa-list"></i> Homepage Properties Headings</a></li>
+
                     <li class="{{classActivePath('faqs')}}"><a href="{{ URL::to('admin/faqs') }}"><i class="fa fa-question"></i> FAQ's</a></li>
 
                     <li class="{{classActivePath('tickets')}}"><a href="{{ URL::to('admin/tickets') }}"><i class="fa fa-ticket"></i> Tickets</a></li>
@@ -46,7 +48,7 @@
 
                     <li class="{{classActivePath('new_constructions')}}"><a href="{{ URL::to('admin/new_constructions') }}"><i class="md md-pin-drop"></i>New Constructions</a></li>
 
-                    <li class="{{classActivePath('home_exchange')}}"><a href="{{ URL::to('admin/home_exchange') }}"><i class="md md-pin-drop"></i>Home Exchange Properties</a></li>
+                    <li style="background-color: #0e800e;" class="{{classActivePath('home_exchange')}}"><a style="color: white;" href="{{ URL::to('admin/home_exchange') }}"><i class="md md-pin-drop"></i>Home Exchange Properties</a></li>
 
 					<li class="{{classActivePath('featuredproperties')}}"><a href="{{ URL::to('admin/featuredproperties') }}"><i class="md md-star"></i>Featured</a></li>
 
@@ -91,7 +93,7 @@
 
                     @if(Auth::user()->usertype =='Users')
 
-                        <li class="{{classActivePath('home_exchange')}}"><a href="{{ URL::to('admin/home_exchange') }}"><i class="md md-pin-drop"></i>{{__('text.Home Exchange Properties')}}</a></li>
+                        <li style="background-color: #0e800e;" class="{{classActivePath('home_exchange')}}"><a style="color: white;" href="{{ URL::to('admin/home_exchange') }}"><i class="md md-pin-drop"></i>{{__('text.Home Exchange Properties')}}</a></li>
 
                     @endif
 
