@@ -1161,9 +1161,9 @@
                                     <a style="outline: none;" href="{{ url('blogs/'.$blog->id) }}">
 
                                     @if($blog->image)
-                                        <img src="{{ URL::asset('upload/blogs/'.$blog->image) }}" style="width: 100%;height: 200px;">
+                                        <img class="res-content" src="{{ URL::asset('upload/blogs/'.$blog->image) }}" style="width: 100%;height: 200px;">
                                         @else
-                                        <img src="{{ URL::asset('upload/noImage.png') }}" style="width: 100%;height: 200px;">
+                                        <img class="res-content" src="{{ URL::asset('upload/noImage.png') }}" style="width: 100%;height: 200px;">
                                     @endif
 
                                     </a>
