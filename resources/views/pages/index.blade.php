@@ -705,7 +705,7 @@
 
         .res-size
         {
-            height: 280px !important;
+            min-height: 280px !important;
         }
 
         .bottom-text
