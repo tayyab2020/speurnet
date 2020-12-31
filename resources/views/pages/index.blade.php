@@ -702,6 +702,12 @@
             font-size: 20px;
         }
 
+
+        .res-size
+        {
+            height: 280px !important;
+        }
+
         .bottom-text
         {
             min-height: 55px !important;
@@ -1155,7 +1161,7 @@
                         ?>
 
                         <div class="col-md-3 col-sm-12 col-xs-12 flex-box-div">
-                            <div class="property-container" style="margin: 10px auto;min-height: 380px;">
+                            <div class="property-container res-size" style="margin: 10px auto;min-height: 380px;">
                                 <div class="property-image">
 
                                     <a style="outline: none;" href="{{ url('blogs/'.$blog->id) }}">
