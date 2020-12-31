@@ -550,7 +550,7 @@
 
             </div>
 
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="display: inline-block;margin-top: 50px;padding: 0;">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 res-container" style="display: inline-block;margin-top: 50px;">
 
                 <div class="col-md-12 col-sm-12">
                     <div class="heading-title">
@@ -573,7 +573,7 @@
 
                                 <a style="outline: none;" href="{{URL::to('woningaanbod/'.$temp->property_slug)}}">
 
-                                    <img src="{{ URL::asset('upload/properties/'.$temp->featured_image.'-s.jpg') }}" alt="{{ $temp->property_name }}" style="width: 100%;height: 200px;">
+                                    <img class="res-content" src="{{ URL::asset('upload/properties/'.$temp->featured_image.'-s.jpg') }}" alt="{{ $temp->property_name }}" style="width: 100%;height: 200px;">
 
                                 </a>
 
@@ -594,7 +594,7 @@
 
                             <div class="property-content" style="padding: 0px 15px 10px 15px;">
 
-                                <h3 style="margin: 15px 0px 0px 0px;"><a style="text-overflow: ellipsis;display: block;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;white-space: nowrap;" href="{{URL::to('woningaanbod/'.$temp->property_slug)}}">{{ Str::limit($temp->property_name,35) }}</a> <small style="text-overflow: ellipsis;display: block;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;white-space: nowrap;">{{ Str::limit($temp->address,40) }}</small></h3>
+                                <h3 style="margin: 10px 0px 0px 0px;"><a style="text-overflow: ellipsis;display: block;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;white-space: nowrap;" href="{{URL::to('woningaanbod/'.$temp->property_slug)}}">{{ Str::limit($temp->property_name,35) }}</a> <small style="text-overflow: ellipsis;display: block;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;white-space: nowrap;">{{ Str::limit($temp->address,40) }}</small></h3>
 
                                 <div class="bottom-text" style="min-height: 45px;display: flex;flex-direction: row;justify-content: space-between;align-items: flex-end;font-size: 90%;">
                                     <small style="font-weight: 600;">{{ getPropertyTypeName($temp->property_type)->types }}</small>
@@ -615,7 +615,7 @@
 
             @if(count($top_members) > 0)
 
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="display: inline-block;margin-top: 50px;padding: 0;">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 res-container" style="display: inline-block;margin-top: 50px;">
 
                 <div class="col-md-12 col-sm-12">
                     <div class="heading-title">
@@ -639,11 +639,11 @@
 
                                     @if($temp->image_icon)
 
-                                        <img src="{{ URL::asset('upload/members/'.$temp->image_icon.'-b.jpg') }}" style="width: 100%;height: 200px;" >
+                                        <img class="res-content" src="{{ URL::asset('upload/members/'.$temp->image_icon.'-b.jpg') }}" style="width: 100%;height: 200px;" >
 
                                     @elseif($temp->company_name)
 
-                                        <h2 style="margin: 0;height: 200px;display: flex;justify-content: center;align-items: center;">{{$temp->company_name}}</h2>
+                                        <h2 class="res-content" style="margin: 0;height: 200px;display: flex;justify-content: center;align-items: center;text-align: center;">{{$temp->company_name}}</h2>
 
                                     @endif
 
@@ -690,6 +690,18 @@
 
     @media (max-width: 478px)
     {
+        .res-container
+        {
+            padding: 0 !important;
+        }
+
+
+        .res-content
+        {
+            height: 150px !important;
+            font-size: 20px;
+        }
+
         .bottom-text
         {
             min-height: 55px !important;
