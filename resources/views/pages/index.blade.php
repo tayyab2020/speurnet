@@ -550,7 +550,7 @@
 
             </div>
 
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="display: inline-block;margin-top: 50px;">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="display: inline-block;margin-top: 50px;padding: 0;">
 
                 <div class="col-md-12 col-sm-12">
                     <div class="heading-title">
@@ -615,7 +615,7 @@
 
             @if(count($top_members) > 0)
 
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="display: inline-block;margin-top: 50px;">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="display: inline-block;margin-top: 50px;padding: 0;">
 
                 <div class="col-md-12 col-sm-12">
                     <div class="heading-title">
