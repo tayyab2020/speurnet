@@ -1,6 +1,9 @@
 @extends("app")
 
-@section('head_title', 'Makelaars | '.getcong('site_name') )
+@section('head_title', 'Voor de juiste huurder of koper voor jouw woning ga je als makelaar naar Zoekjehuisje.nl')
+@section('head_keywords', 'gratis woning plaatsen, kosteloos woning plaatsen, snel woning plaatsen, snel woning verkopen, snel woning verhuren, snel een huurder vinden, snel een koper vinden')
+@section('head_description', 'Heb je slechts één woning in de verkoop of verhuur? Of heb je geregeld meerdere woningen, die je wilt verkopen of verhuren aan de juiste kandidaat? Ondervind dan het gemak van Zoekjehuisje.nl')
+
 @section('head_url', Request::url())
 
 @section("content")

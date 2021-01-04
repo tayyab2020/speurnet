@@ -1,4 +1,9 @@
 @extends("app")
+
+@section('head_title', 'Voor de beste verhuistips ga je snel naar Zoekjehuisje.nl')
+@section('head_keywords', 'verhuistips, wat te doen bij verhuizen, stappen bij verhuizen, gratis verhuistips, verhuisadvies, wat moet ik doen bij verhuizen, verhuizen, verhuizing')
+@section('head_description', 'Voor de een is verhuizen misschien de eerste verhuizing en voor de ander de zoveelste, maar we hebben alle zaken waaraan je moet denken voor je op een rij gezet. Lees de tips op Zoekjehuisje.nl')
+
 @section("content")
 
     <!-- begin:content -->

@@ -4,12 +4,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-    <meta name="description" content="@yield('head_description', getcong('site_description'))">
-    <meta property="keywords" content="@yield('head_keywords', getcong('site_keywords'))" />
+    <meta name="title" content="@yield('head_title')">
+    <meta name="description" content="@yield('head_description')">
+    <meta property="keywords" content="@yield('head_keywords')" />
 
     <meta property="og:type" content="article"/>
-    <meta property="og:title" content="@yield('head_title',  getcong('site_name'))"/>
-    <meta property="og:description" content="@yield('head_description', getcong('site_description'))"/>
+    <meta property="og:title" content="{{getcong('site_name')}}"/>
+    <meta property="og:description" content="{{getcong('site_description')}}" />
 
     <meta property="og:image" content="@yield('head_image', url('/upload/logo.png'))" />
     <meta property="og:url" content="@yield('head_url', url('/'))" />
@@ -17,7 +18,7 @@
 
     <link href="{{ URL::asset('upload/'.getcong('site_favicon')) }}" rel="icon" type="image/x-icon" />
 
-    <title>@yield('head_title', getcong('site_name'))</title>
+    <title>{{getcong('site_name')}}</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{{ URL::asset('assets/css/bootstrap.css') }}" rel="stylesheet">

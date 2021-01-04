@@ -1,4 +1,9 @@
 @extends("app")
+
+@section('head_title', 'Plaats gratis jouw woning of kamer op Zoekjehuisje.nl')
+@section('head_keywords', 'gratis kamer plaatsen, gratis woning plaatsen, nieuwbouwprojecten, woninrguil, gratis woningruil plaatsen, gratis reageren op kamers, gratis reageren op woningen, op zoek naar woningruil, op zoek naar kamer, op zoek naar een woning')
+@section('head_description', 'Wil jij jouw woning of kamer gratis plaatsen? Of ben je op zoek naar een huurwoning, koopwonig, nieuwbouwproject of woningruil? Bekijk snel ons platform en begin vandaag nog met het plaatsen of zoeken van een woning.')
+
 @section("content")
 
 @include("_particles.slidersearch")
