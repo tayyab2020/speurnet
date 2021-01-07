@@ -1356,9 +1356,9 @@ class IndexController extends Controller
 
         $blogs = Blogs::orderBy('id', 'desc')->get();
 
-		$top_members = User::withCount('properties')->where('users.usertype','=','Agents')->where('users.status',1)->where('users.landlord','!=',1)->having('properties_count', '>', 0)->orderBy('properties_count', 'desc')->get();
+		$top_members = User::withCount('properties')->where('users.usertype','=','Agents')->where('users.status',1)->where('users.landlord','!=',1)->having('properties_count', '>', 0)->orderBy('properties_count', 'desc')->take(10)->get();
 
-		$top_properties = Properties::orderBy('views', 'desc')->get();
+		$top_properties = Properties::orderBy('views', 'desc')->take(10)->get();
 
 		$content = HomepageIcons::orderBy('id','asc')->get();
 
