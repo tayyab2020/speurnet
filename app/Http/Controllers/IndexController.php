@@ -328,7 +328,7 @@ class IndexController extends Controller
                 $user_name = $brokers['Name'];
                 $user_email = $brokers['EmailAddress'];
 
-                Mail::send('emails.kolibri_registration',
+                /*Mail::send('emails.kolibri_registration',
                     array(
                         'name' => $user_name,
                         'email' => $user_email,
@@ -337,7 +337,7 @@ class IndexController extends Controller
                     {
                         $message->from(getcong('site_email'),getcong('site_name'));
                         $message->to($user_email,$user_name)->subject('Gefeliciteerd, je Zoekjehuisje.nl account is geactiveerd!');
-                    });
+                    });*/
             }
 
 
@@ -394,6 +394,9 @@ class IndexController extends Controller
 
                     // Timeout in seconds
                     curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+
+                    var_dump($realtor_id);
+                    var_dump($property_id);
 
                     $response = curl_exec($ch);
 
