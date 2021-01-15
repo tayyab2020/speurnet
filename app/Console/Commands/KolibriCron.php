@@ -396,7 +396,15 @@ class KolibriCron extends Command
                 {
                     if(isset($property_details['RealEstateProperty']['Offer']['IsForSale']) || isset($property_details['RealEstateProperty']['Offer']['IsForRent']))
                     {
-                        $property_name = $property_details['RealEstateProperty']['LocationDetails']['GeoAddressDetails'][0]['FormattedAddress'];
+
+                        if(array_key_exists(0,$property_details['RealEstateProperty']['LocationDetails']['GeoAddressDetails']))
+                        {
+                            $property_name = $property_details['RealEstateProperty']['LocationDetails']['GeoAddressDetails'][0]['FormattedAddress'];
+                        }
+                        else
+                        {
+                            $property_name = $property_details['RealEstateProperty']['LocationDetails']['GeoAddressDetails']['AdministrativeAreaLevel2'];
+                        }
 
                         $get_property_type = Types::where('type_en',$property_type)->first();
 
@@ -420,8 +428,14 @@ class KolibriCron extends Command
                             }
                         }
 
-
-                        $address = $property_details['RealEstateProperty']['Location']['Address']['PostalCode'] . ' ' . $property_details['RealEstateProperty']['Location']['Address']['CityName']['Translation'];
+                        if(isset($property_details['RealEstateProperty']['Location']['Address']['CityName']['Translation']))
+                        {
+                            $address = $property_details['RealEstateProperty']['Location']['Address']['PostalCode'] . ' ' . $property_details['RealEstateProperty']['Location']['Address']['CityName']['Translation'];
+                        }
+                        else
+                        {
+                            $address = $property_details['RealEstateProperty']['Location']['Address']['PostalCode'] . ' ' . $property_details['RealEstateProperty']['LocationDetails']['GeoAddressDetails']['Locality'];
+                        }
 
                         if(isset($property_details['RealEstateProperty']['LocationDetails']['GeoAddressDetails'][0]['Coordinates']['Latitude']))
                         {
@@ -587,7 +601,6 @@ class KolibriCron extends Command
                             $furnished = NULL;
                         }
 
-                        $city = City::where('city_name', 'like', '%' . $property_details['RealEstateProperty']['Location']['Address']['CityName']['Translation'])->first();
 
                         if(isset($property_details['RealEstateProperty']['Dimensions']['Land']['Area']))
                         {
@@ -598,6 +611,16 @@ class KolibriCron extends Command
                             $plot_area = NULL;
                         }
 
+                        if(isset($property_details['RealEstateProperty']['Location']['Address']['CityName']['Translation']))
+                        {
+                            $city_name = $property_details['RealEstateProperty']['Location']['Address']['CityName']['Translation'];
+                            $city = City::where('city_name', 'like', '%' . $city_name)->first();
+                        }
+                        else
+                        {
+                            $city_name = $property_details['RealEstateProperty']['LocationDetails']['GeoAddressDetails']['Locality'];
+                            $city = City::where('city_name', 'like', '%' . $city_name)->first();
+                        }
 
                         if($city)
                         {
@@ -606,7 +629,7 @@ class KolibriCron extends Command
                         else
                         {
                             $city = new City;
-                            $city->city_name = $property_details['RealEstateProperty']['Location']['Address']['CityName']['Translation'];
+                            $city->city_name = $city_name;
                             $city->status = 1;
                             $city->save();
 
@@ -644,11 +667,25 @@ class KolibriCron extends Command
                         {
                             if(array_key_exists(0, $property_details['RealEstateProperty']['Garages']['Garage']))
                             {
-                                $garage_type = $property_details['RealEstateProperty']['Garages']['Garage'][0]['Type'];
+                                if(isset($property_details['RealEstateProperty']['Garages']['Garage'][0]['Type']))
+                                {
+                                    $garage_type = $property_details['RealEstateProperty']['Garages']['Garage'][0]['Type'];
+                                }
+                                else
+                                {
+                                    $garage_type = null;
+                                }
                             }
                             else
                             {
-                                $garage_type = $property_details['RealEstateProperty']['Garages']['Garage']['Type'];
+                                if(isset($property_details['RealEstateProperty']['Garages']['Garage']['Type']))
+                                {
+                                    $garage_type = $property_details['RealEstateProperty']['Garages']['Garage']['Type'];
+                                }
+                                else
+                                {
+                                    $garage_type = null;
+                                }
                             }
                         }
                         else
@@ -760,7 +797,16 @@ class KolibriCron extends Command
                                 $z = 0;
                                 $docs = [];
 
-                                foreach ($property_details['RealEstateProperty']['Attachments']['Attachment'] as $temp)
+                                if(array_key_exists(0,$property_details['RealEstateProperty']['Attachments']['Attachment']))
+                                {
+                                    $files = $property_details['RealEstateProperty']['Attachments']['Attachment'];
+                                }
+                                else
+                                {
+                                    $files = array($property_details['RealEstateProperty']['Attachments']['Attachment']);
+                                }
+
+                                foreach ($files as $temp)
                                 {
                                     if($temp['Type'] == 'PHOTO' && $i<30)
                                     {
@@ -954,8 +1000,18 @@ class KolibriCron extends Command
                             $z = 0;
                             $docs = [];
 
-                            foreach ($property_details['RealEstateProperty']['Attachments']['Attachment'] as $temp)
+                            if(array_key_exists(0,$property_details['RealEstateProperty']['Attachments']['Attachment']))
                             {
+                                $files = $property_details['RealEstateProperty']['Attachments']['Attachment'];
+                            }
+                            else
+                            {
+                                $files = array($property_details['RealEstateProperty']['Attachments']['Attachment']);
+                            }
+
+                            foreach ($files as $temp)
+                            {
+
                                 if($temp['Type'] == 'PHOTO' && $i<30)
                                 {
                                     if($i == 0)
