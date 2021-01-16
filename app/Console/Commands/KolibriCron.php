@@ -380,6 +380,10 @@ class KolibriCron extends Command
                                 {
                                     $sub_property_type = $get_sub_property_type->type;
                                 }
+                                else
+                                {
+                                    $sub_property_type = null;
+                                }
                             }
 
                             if(isset($property_details['RealEstateProperty']['Type']['PropertyTypes']['PropertyType'][2]))
@@ -390,6 +394,10 @@ class KolibriCron extends Command
                                 if($get_sub_property_kind)
                                 {
                                     $sub_property_kind = $get_sub_property_kind->type;
+                                }
+                                else
+                                {
+                                    $sub_property_kind = null;
                                 }
                             }
                         }
