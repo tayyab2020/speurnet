@@ -810,7 +810,7 @@
                                   <td>@if($property->property_type == 0) Geen voorkeur @else {{ getPropertyTypeName($property->property_type)->types }} @endif</td>
                               </tr>
 
-                              @if($property->sub_type)
+                              @if($property->sub_type || $property->sub_kind)
 
                               <tr>
                                   <td><strong>{{__('text.Sub Type')}}</strong></td>
