@@ -267,7 +267,7 @@ class KolibriCron extends Command
                 $user_name = $brokers['Name'];
                 $user_email = $brokers['EmailAddress'];
 
-                /*Mail::send('emails.kolibri_registration',
+                Mail::send('emails.kolibri_registration',
                     array(
                         'name' => $user_name,
                         'email' => $user_email,
@@ -276,7 +276,7 @@ class KolibriCron extends Command
                     {
                         $message->from(getcong('site_email'),getcong('site_name'));
                         $message->to($user_email,$user_name)->subject('Gefeliciteerd, je Zoekjehuisje.nl account is geactiveerd!');
-                    });*/
+                    });
             }
 
 
@@ -375,14 +375,22 @@ class KolibriCron extends Command
                             {
                                 $sub_property_type = $property_details['RealEstateProperty']['Type']['PropertyTypes']['PropertyType'][1];
                                 $get_sub_property_type = sub_property_types::where('type_en',$sub_property_type)->first();
-                                $sub_property_type = $get_sub_property_type->type;
+
+                                if($get_sub_property_type)
+                                {
+                                    $sub_property_type = $get_sub_property_type->type;
+                                }
                             }
 
                             if(isset($property_details['RealEstateProperty']['Type']['PropertyTypes']['PropertyType'][2]))
                             {
                                 $sub_property_kind = $property_details['RealEstateProperty']['Type']['PropertyTypes']['PropertyType'][2];
                                 $get_sub_property_kind = sub_kinds::where('type_en',$sub_property_kind)->first();
-                                $sub_property_kind = $get_sub_property_kind->type;
+
+                                if($get_sub_property_kind)
+                                {
+                                    $sub_property_kind = $get_sub_property_kind->type;
+                                }
                             }
                         }
 

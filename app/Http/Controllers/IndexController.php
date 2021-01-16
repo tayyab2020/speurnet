@@ -393,10 +393,12 @@ class IndexController extends Controller
                                 if(isset($property_details['RealEstateProperty']['Type']['PropertyTypes']['PropertyType'][1]))
                                 {
                                     $sub_property_type = $property_details['RealEstateProperty']['Type']['PropertyTypes']['PropertyType'][1];
-                                    var_dump($sub_property_type);
                                     $get_sub_property_type = sub_property_types::where('type_en',$sub_property_type)->first();
 
-                                    $sub_property_type = $get_sub_property_type->type;
+                                    if($get_sub_property_type)
+                                    {
+                                        $sub_property_type = $get_sub_property_type->type;
+                                    }
                                 }
 
                                 if(isset($property_details['RealEstateProperty']['Type']['PropertyTypes']['PropertyType'][2]))
@@ -404,7 +406,10 @@ class IndexController extends Controller
                                     $sub_property_kind = $property_details['RealEstateProperty']['Type']['PropertyTypes']['PropertyType'][2];
                                     $get_sub_property_kind = sub_kinds::where('type_en',$sub_property_kind)->first();
 
-                                    $sub_property_kind = $get_sub_property_kind->type;
+                                    if($get_sub_property_kind)
+                                    {
+                                        $sub_property_kind = $get_sub_property_kind->type;
+                                    }
                                 }
                             }
 
