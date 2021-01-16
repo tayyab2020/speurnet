@@ -333,8 +333,8 @@ class IndexController extends Controller
             foreach($properties as $key)
             {
                 $modification = $key['ModificationDateTimeUtc'];
-                $property_id = 3748209;
-                $realtor_id = 7621;
+                $property_id = $key['RealEstateProperyID'];
+                $realtor_id = $key['RealtorID'];
                 $property_address = $key['AddressSummary'];
 
                     $ch = curl_init();
@@ -484,11 +484,16 @@ class IndexController extends Controller
                                 }
                                 else
                                 {
-                                    dd($property_details['RealEstateProperty']['Descriptions']['DetailsDescription']['Translation']);
-
                                     if(isset($property_details['RealEstateProperty']['Descriptions']['DetailsDescription']['Translation']))
                                     {
-                                        $description = $property_details['RealEstateProperty']['Descriptions']['AdText']['Translation'] . "\n\n" . $property_details['RealEstateProperty']['Descriptions']['DetailsDescription']['Translation'];
+                                        if(isset($property_details['RealEstateProperty']['Descriptions']['DetailsDescription']['Translation'][0]))
+                                        {
+                                            $description = $property_details['RealEstateProperty']['Descriptions']['AdText']['Translation'] . "\n\n" . $property_details['RealEstateProperty']['Descriptions']['DetailsDescription']['Translation'][0];
+                                        }
+                                        else
+                                        {
+                                            $description = $property_details['RealEstateProperty']['Descriptions']['AdText']['Translation'];
+                                        }
                                     }
                                     else
                                     {
