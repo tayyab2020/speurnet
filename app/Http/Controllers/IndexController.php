@@ -738,7 +738,6 @@ class IndexController extends Controller
                             {
                                 if($exists->kolibri_modification != $modification)
                                 {
-                                    exit();
 
                                     $org_slug = Str::slug($property_name, "-");
 
@@ -943,8 +942,6 @@ class IndexController extends Controller
                             }
                             else
                             {
-
-                                exit();
 
                                 $org_slug = Str::slug($property_name, "-");
 
