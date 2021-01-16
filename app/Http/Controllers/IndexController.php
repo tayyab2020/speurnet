@@ -734,11 +734,11 @@ class IndexController extends Controller
 
                             $exists = Properties::where('kolibri_realtor_id',$realtor_id)->where('kolibri_property_id',$property_id)->first();
 
-                            exit();
                             if($exists)
                             {
                                 if($exists->kolibri_modification != $modification)
                                 {
+                                    exit();
 
                                     $org_slug = Str::slug($property_name, "-");
 
@@ -943,6 +943,8 @@ class IndexController extends Controller
                             }
                             else
                             {
+
+                                exit();
 
                                 $org_slug = Str::slug($property_name, "-");
 
