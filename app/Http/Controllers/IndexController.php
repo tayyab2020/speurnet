@@ -383,8 +383,6 @@ class IndexController extends Controller
                                 $property_name = $property_details['RealEstateProperty']['LocationDetails']['GeoAddressDetails']['AdministrativeAreaLevel2'];
                             }
 
-                            var_dump($property_name);
-
                             $get_property_type = Types::where('type_en',$property_type)->first();
 
                             $sub_property_type = NULL;
@@ -396,15 +394,22 @@ class IndexController extends Controller
                                 {
                                     $sub_property_type = $property_details['RealEstateProperty']['Type']['PropertyTypes']['PropertyType'][1];
                                     $get_sub_property_type = sub_property_types::where('type_en',$sub_property_type)->first();
-                                    $sub_property_type = $get_sub_property_type->type;
+
+                                    if($get_sub_property_type)
+                                    {
+                                        $sub_property_type = $get_sub_property_type->type;
+                                    }
                                 }
 
                                 if(isset($property_details['RealEstateProperty']['Type']['PropertyTypes']['PropertyType'][2]))
                                 {
                                     $sub_property_kind = $property_details['RealEstateProperty']['Type']['PropertyTypes']['PropertyType'][2];
-                                    var_dump($sub_property_kind);
                                     $get_sub_property_kind = sub_kinds::where('type_en',$sub_property_kind)->first();
-                                    $sub_property_kind = $get_sub_property_kind->type;
+
+                                    if($get_sub_property_kind)
+                                    {
+                                        $sub_property_kind = $get_sub_property_kind->type;
+                                    }
                                 }
                             }
 
@@ -729,6 +734,7 @@ class IndexController extends Controller
 
                             $exists = Properties::where('kolibri_realtor_id',$realtor_id)->where('kolibri_property_id',$property_id)->first();
 
+                            exit();
                             if($exists)
                             {
                                 if($exists->kolibri_modification != $modification)
