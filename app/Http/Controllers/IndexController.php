@@ -333,12 +333,9 @@ class IndexController extends Controller
             foreach($properties as $key)
             {
                 $modification = $key['ModificationDateTimeUtc'];
-                $property_id = $key['RealEstateProperyID'];
-                $realtor_id = $key['RealtorID'];
+                $property_id = 3748209;
+                $realtor_id = 7621;
                 $property_address = $key['AddressSummary'];
-
-                var_dump($property_id);
-                var_dump($realtor_id);
 
                     $ch = curl_init();
                     $headers = array(
@@ -487,6 +484,8 @@ class IndexController extends Controller
                                 }
                                 else
                                 {
+                                    dd($property_details['RealEstateProperty']['Descriptions']['AdText']['Translation']);
+                                    
                                     if(isset($property_details['RealEstateProperty']['Descriptions']['DetailsDescription']['Translation']))
                                     {
                                         $description = $property_details['RealEstateProperty']['Descriptions']['AdText']['Translation'] . "\n\n" . $property_details['RealEstateProperty']['Descriptions']['DetailsDescription']['Translation'];
