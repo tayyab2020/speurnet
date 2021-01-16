@@ -225,35 +225,14 @@ class KolibriCron extends Command
                 $check->MediaContractID = $brokers['MediaContractID'];
                 $check->name = $brokers['Name'];
                 $check->address = $brokers['AddressLine1'];
-                $check->city = $brokers['CityName'];
-                $check->phone = $brokers['PhoneNumber'];
-
-                if(isset($brokers['FaxNumber']))
-                {
-                    $check->fax = $brokers['FaxNumber'];
-                }
-
-                $check->PostalCode = $brokers['PostalCode'];
-
-                if(isset($brokers['Region']))
-                {
-                    $check->Region = $brokers['Region'];
-                }
-
-                if(isset($brokers['SubRegion']))
-                {
-                    $check->SubRegion = $brokers['SubRegion'];
-                }
-
-                if(isset($brokers['CountryCode']))
-                {
-                    $check->CountryCode = $brokers['CountryCode'];
-                }
-
-                if(isset($brokers['WebAddress']))
-                {
-                    $check->WebAddress = $brokers['WebAddress'];
-                }
+                $check->city = isset($brokers['CityName']) ? $brokers['CityName'] : null;
+                $check->phone = isset($brokers['PhoneNumber']) ? $brokers['PhoneNumber'] : null;
+                $check->fax = isset($brokers['FaxNumber']) ? $brokers['FaxNumber'] : null;
+                $check->PostalCode = isset($brokers['PostalCode']) ? $brokers['PostalCode'] : null;
+                $check->Region = isset($brokers['Region']) ? $brokers['Region'] : null;
+                $check->SubRegion = isset($brokers['SubRegion']) ? $brokers['SubRegion'] : null;
+                $check->CountryCode = isset($brokers['CountryCode']) ? $brokers['CountryCode'] : null;
+                $check->WebAddress = isset($brokers['WebAddress']) ? $brokers['WebAddress'] : null;
 
                 $check->save();
 
