@@ -814,7 +814,7 @@
 
                               <tr>
                                   <td><strong>{{__('text.Sub Type')}}</strong></td>
-                                  <td> {{ $property->sub_type }}@if($property->sub_kind), {{$property->sub_kind}} @endif </td>
+                                  <td> @if($property->sub_type && $property->sub_kind) {{ $property->sub_type . ', ' . $property->sub_kind }} @elseif($property->sub_type) {{$property->sub_type}} @elseif($property->sub_kind) {{$property->sub_type}} @endif </td>
                               </tr>
 
                               @endif
