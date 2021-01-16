@@ -291,35 +291,14 @@ class IndexController extends Controller
                 $user->password = bcrypt($password);
                 $user->status = 1;
                 $user->address = $brokers['AddressLine1'];
-                $user->city = $brokers['CityName'];
-                $user->PostalCode = $brokers['PostalCode'];
-                $user->phone = $brokers['PhoneNumber'];
-
-                if(isset($brokers['FaxNumber']))
-                {
-                    $user->fax = $brokers['FaxNumber'];
-                }
-
-                if(isset($brokers['Region']))
-                {
-                    $user->Region = $brokers['Region'];
-                }
-
-                if(isset($brokers['SubRegion']))
-                {
-                    $user->SubRegion = $brokers['SubRegion'];
-                }
-
-                if(isset($brokers['CountryCode']))
-                {
-                    $user->CountryCode = $brokers['CountryCode'];
-                }
-
-                if(isset($brokers['WebAddress']))
-                {
-                    $user->WebAddress = $brokers['WebAddress'];
-                }
-
+                $user->city = $brokers['CityName'] ? $brokers['CityName'] : null;
+                $user->PostalCode = $brokers['PostalCode'] ? $brokers['PostalCode'] : null;
+                $user->phone = $brokers['PhoneNumber'] ? $brokers['PhoneNumber'] : null;
+                $user->fax = $brokers['FaxNumber'] ? $brokers['FaxNumber'] : null;
+                $user->Region = $brokers['Region'] ? $brokers['Region'] : null;
+                $user->SubRegion = $brokers['SubRegion'] ? $brokers['SubRegion'] : null;
+                $user->CountryCode = $brokers['CountryCode'] ? $brokers['CountryCode'] : null;
+                $user->WebAddress = $brokers['WebAddress'] ? $brokers['WebAddress'] : null;
                 $user->MediaContractID = $brokers['MediaContractID'];
                 $user->RealtorID = $brokers['RealtorID'];
                 $user->save();
