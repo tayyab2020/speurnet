@@ -328,7 +328,7 @@ class IndexController extends Controller
                 $user_name = $brokers['Name'];
                 $user_email = $brokers['EmailAddress'];
 
-                Mail::send('emails.kolibri_registration',
+                /*Mail::send('emails.kolibri_registration',
                     array(
                         'name' => $user_name,
                         'email' => $user_email,
@@ -337,7 +337,7 @@ class IndexController extends Controller
                     {
                         $message->from(getcong('site_email'),getcong('site_name'));
                         $message->to($user_email,$user_name)->subject('Gefeliciteerd, je Zoekjehuisje.nl account is geactiveerd!');
-                    });
+                    });*/
             }
 
 
@@ -824,126 +824,129 @@ class IndexController extends Controller
                                     $z = 0;
                                     $docs = [];
 
-                                    if(array_key_exists(0,$property_details['RealEstateProperty']['Attachments']['Attachment']))
+                                    if(isset($property_details['RealEstateProperty']['Attachments']['Attachment']))
                                     {
-                                        $files = $property_details['RealEstateProperty']['Attachments']['Attachment'];
-                                    }
-                                    else
-                                    {
-                                        $files = array($property_details['RealEstateProperty']['Attachments']['Attachment']);
-                                    }
-
-                                    foreach ($files as $temp)
-                                    {
-                                        if($temp['Type'] == 'PHOTO' && $i<30)
+                                        if(array_key_exists(0,$property_details['RealEstateProperty']['Attachments']['Attachment']))
                                         {
-                                            if($i == 0)
-                                            {
-                                                \File::delete(public_path() .'/upload/properties/'.$exists->featured_image.'-b.jpg');
-                                                \File::delete(public_path() .'/upload/properties/'.$exists->featured_image.'-s.jpg');
-
-                                                $filename = Str::slug($property_name, '-').'-'.md5(rand(0,99999));
-
-                                                $image = $temp['URLNormalizedFile'];
-
-                                                /*$report = file_get_contents($image);*/
-
-                                                $this->compressImage($image,public_path().'/upload/properties/'.$filename.'-b.jpg',30);
-                                                $this->compressImage($image,public_path().'/upload/properties/'.$filename.'-s.jpg',20);
-
-                                                /*file_put_contents(public_path().'/upload/properties/'.$filename.'-b.jpg', $report);
-                                                file_put_contents(public_path().'/upload/properties/'.$filename.'-s.jpg', $report);*/
-
-                                                $exists->featured_image = $filename;
-                                            }
-                                            else
-                                            {
-                                                $p = 'property_images'.$i;
-
-                                                \File::delete(public_path() .'/upload/properties/'.$exists->$p.'-b.jpg');
-
-                                                $filename = Str::slug($property_name, '-').'-'.md5(rand(0,99999));
-
-                                                $image = $temp['URLNormalizedFile'];
-
-                                                /*$report = file_get_contents($image);*/
-
-                                                $this->compressImage($image,public_path().'/upload/properties/'.$filename.'-b.jpg',25);
-
-                                                /*file_put_contents(public_path().'/upload/properties/'.$filename.'-b.jpg', $report);*/
-
-                                                $exists->$p = $filename;
-                                            }
-
-                                            $i++;
+                                            $files = $property_details['RealEstateProperty']['Attachments']['Attachment'];
                                         }
-                                        elseif($temp['Type'] == 'BROCHURE')
+                                        else
                                         {
-                                            $document = $temp['URLNormalizedFile'];
-
-                                            $report = file_get_contents($document);
-
-                                            $find = property_documents::where('property_id',$exists->id)->get();
-
-                                            foreach ($find as $x)
-                                            {
-                                                \File::delete(public_path() .'/upload/properties/documents/'.$x->document);
-                                            }
-
-                                            property_documents::where('property_id',$exists->id)->delete();
-
-                                            $tmpFilePath = public_path().'/upload/properties/documents/';
-
-                                            $filename = Str::slug($property_name, '-').'-'.md5(rand(0,99999));
-
-                                            $ext = pathinfo(parse_url($document, PHP_URL_PATH), PATHINFO_EXTENSION);
-
-                                            $hardPath = Str::slug($property_name, '-').'-'.md5(rand(0,99999));
-
-                                            file_put_contents($tmpFilePath . $hardPath . '.' . $ext, $report);
-
-                                            $docs[$y] = $hardPath . "." . $ext;
-
-                                            $y++;
-
+                                            $files = array($property_details['RealEstateProperty']['Attachments']['Attachment']);
                                         }
-                                        elseif($temp['Type'] == 'VIDEO')
+
+                                        foreach ($files as $temp)
                                         {
-                                            if($z == 0)
+                                            if($temp['Type'] == 'PHOTO' && $i<30)
                                             {
-                                                \File::delete(public_path() .'/upload/properties/'.$exists->video);
-
-                                                $tmpFilePath = public_path().'/upload/properties/';
-
-                                                $hardPath = Str::slug($property_name, '-').'-'.md5(rand(0,99999));
-
-                                                $video_file_name = $temp['Title']['Translation'];
-
-                                                $video = $temp['URLNormalizedFile'];
-
-                                                $parsed = parse_url($video);
-
-                                                if(isset($parsed['host']))
+                                                if($i == 0)
                                                 {
-                                                    if($parsed['host'] == 'www.youtube.com' || $parsed['host'] == 'youtube.com' || $parsed['host'] == 'youtu.be')
-                                                    {
-                                                        $exists->video = $video;
-                                                    }
+                                                    \File::delete(public_path() .'/upload/properties/'.$exists->featured_image.'-b.jpg');
+                                                    \File::delete(public_path() .'/upload/properties/'.$exists->featured_image.'-s.jpg');
+
+                                                    $filename = Str::slug($property_name, '-').'-'.md5(rand(0,99999));
+
+                                                    $image = $temp['URLNormalizedFile'];
+
+                                                    /*$report = file_get_contents($image);*/
+
+                                                    $this->compressImage($image,public_path().'/upload/properties/'.$filename.'-b.jpg',30);
+                                                    $this->compressImage($image,public_path().'/upload/properties/'.$filename.'-s.jpg',20);
+
+                                                    /*file_put_contents(public_path().'/upload/properties/'.$filename.'-b.jpg', $report);
+                                                    file_put_contents(public_path().'/upload/properties/'.$filename.'-s.jpg', $report);*/
+
+                                                    $exists->featured_image = $filename;
                                                 }
                                                 else
                                                 {
-                                                    $report = file_get_contents($video);
+                                                    $p = 'property_images'.$i;
 
-                                                    $ext = pathinfo(parse_url($video, PHP_URL_PATH), PATHINFO_EXTENSION);
+                                                    \File::delete(public_path() .'/upload/properties/'.$exists->$p.'-b.jpg');
 
-                                                    file_put_contents($tmpFilePath . $hardPath . '.' . $ext, $report);
+                                                    $filename = Str::slug($property_name, '-').'-'.md5(rand(0,99999));
 
-                                                    $exists->video = $hardPath . '.' . $ext;
+                                                    $image = $temp['URLNormalizedFile'];
+
+                                                    /*$report = file_get_contents($image);*/
+
+                                                    $this->compressImage($image,public_path().'/upload/properties/'.$filename.'-b.jpg',25);
+
+                                                    /*file_put_contents(public_path().'/upload/properties/'.$filename.'-b.jpg', $report);*/
+
+                                                    $exists->$p = $filename;
                                                 }
 
-                                                $z++;
+                                                $i++;
                                             }
+                                            elseif($temp['Type'] == 'BROCHURE')
+                                            {
+                                                $document = $temp['URLNormalizedFile'];
 
+                                                $report = file_get_contents($document);
+
+                                                $find = property_documents::where('property_id',$exists->id)->get();
+
+                                                foreach ($find as $x)
+                                                {
+                                                    \File::delete(public_path() .'/upload/properties/documents/'.$x->document);
+                                                }
+
+                                                property_documents::where('property_id',$exists->id)->delete();
+
+                                                $tmpFilePath = public_path().'/upload/properties/documents/';
+
+                                                $filename = Str::slug($property_name, '-').'-'.md5(rand(0,99999));
+
+                                                $ext = pathinfo(parse_url($document, PHP_URL_PATH), PATHINFO_EXTENSION);
+
+                                                $hardPath = Str::slug($property_name, '-').'-'.md5(rand(0,99999));
+
+                                                file_put_contents($tmpFilePath . $hardPath . '.' . $ext, $report);
+
+                                                $docs[$y] = $hardPath . "." . $ext;
+
+                                                $y++;
+
+                                            }
+                                            elseif($temp['Type'] == 'VIDEO')
+                                            {
+                                                if($z == 0)
+                                                {
+                                                    \File::delete(public_path() .'/upload/properties/'.$exists->video);
+
+                                                    $tmpFilePath = public_path().'/upload/properties/';
+
+                                                    $hardPath = Str::slug($property_name, '-').'-'.md5(rand(0,99999));
+
+                                                    $video_file_name = $temp['Title']['Translation'];
+
+                                                    $video = $temp['URLNormalizedFile'];
+
+                                                    $parsed = parse_url($video);
+
+                                                    if(isset($parsed['host']))
+                                                    {
+                                                        if($parsed['host'] == 'www.youtube.com' || $parsed['host'] == 'youtube.com' || $parsed['host'] == 'youtu.be')
+                                                        {
+                                                            $exists->video = $video;
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                                        $report = file_get_contents($video);
+
+                                                        $ext = pathinfo(parse_url($video, PHP_URL_PATH), PATHINFO_EXTENSION);
+
+                                                        file_put_contents($tmpFilePath . $hardPath . '.' . $ext, $report);
+
+                                                        $exists->video = $hardPath . '.' . $ext;
+                                                    }
+
+                                                    $z++;
+                                                }
+
+                                            }
                                         }
                                     }
 
@@ -1027,111 +1030,114 @@ class IndexController extends Controller
                                 $z = 0;
                                 $docs = [];
 
-                                if(array_key_exists(0,$property_details['RealEstateProperty']['Attachments']['Attachment']))
+                                if(isset($property_details['RealEstateProperty']['Attachments']['Attachment']))
                                 {
-                                    $files = $property_details['RealEstateProperty']['Attachments']['Attachment'];
-                                }
-                                else
-                                {
-                                    $files = array($property_details['RealEstateProperty']['Attachments']['Attachment']);
-                                }
-
-                                foreach ($files as $temp)
-                                {
-
-                                    if($temp['Type'] == 'PHOTO' && $i<30)
+                                    if(array_key_exists(0,$property_details['RealEstateProperty']['Attachments']['Attachment']))
                                     {
-                                        if($i == 0)
-                                        {
-                                            $filename = Str::slug($property_name, '-').'-'.md5(rand(0,99999));
-
-                                            $image = $temp['URLNormalizedFile'];
-
-                                            /*$report = file_get_contents($image);*/
-
-                                            $this->compressImage($image,public_path().'/upload/properties/'.$filename.'-b.jpg',30);
-                                            $this->compressImage($image,public_path().'/upload/properties/'.$filename.'-s.jpg',20);
-
-                                            /*file_put_contents(public_path().'/upload/properties/'.$filename.'-b.jpg', $report);
-                                            file_put_contents(public_path().'/upload/properties/'.$filename.'-s.jpg', $report);*/
-
-                                            $property->featured_image = $filename;
-                                        }
-                                        else
-                                        {
-                                            $p = 'property_images'.$i;
-
-                                            $filename = Str::slug($property_name, '-').'-'.md5(rand(0,99999));
-
-                                            $image = $temp['URLNormalizedFile'];
-
-                                            /*$report = file_get_contents($image);*/
-
-                                            $this->compressImage($image,public_path().'/upload/properties/'.$filename.'-b.jpg',25);
-
-                                            /*file_put_contents(public_path().'/upload/properties/'.$filename.'-b.jpg', $report);*/
-
-                                            $property->$p = $filename;
-                                        }
-
-                                        $i++;
+                                        $files = $property_details['RealEstateProperty']['Attachments']['Attachment'];
                                     }
-                                    elseif($temp['Type'] == 'BROCHURE')
+                                    else
                                     {
-                                        $document = $temp['URLNormalizedFile'];
-
-                                        $report = file_get_contents($document);
-
-                                        $tmpFilePath = public_path().'/upload/properties/documents/';
-
-                                        $filename = Str::slug($property_name, '-').'-'.md5(rand(0,99999));
-
-                                        $ext = pathinfo(parse_url($document, PHP_URL_PATH), PATHINFO_EXTENSION);
-
-                                        $hardPath = Str::slug($property_name, '-').'-'.md5(rand(0,99999));
-
-                                        file_put_contents($tmpFilePath . $hardPath . '.' . $ext, $report);
-
-                                        $docs[$y] = $hardPath . "." . $ext;
-
-                                        $y++;
-
+                                        $files = array($property_details['RealEstateProperty']['Attachments']['Attachment']);
                                     }
-                                    elseif($temp['Type'] == 'VIDEO')
+
+                                    foreach ($files as $temp)
                                     {
-                                        if($z == 0)
+
+                                        if($temp['Type'] == 'PHOTO' && $i<30)
                                         {
-                                            $tmpFilePath = public_path().'/upload/properties/';
-
-                                            $hardPath = Str::slug($property_name, '-').'-'.md5(rand(0,99999));
-
-                                            $video = $temp['URLNormalizedFile'];
-
-                                            $parsed = parse_url($video);
-
-                                            if(isset($parsed['host']))
+                                            if($i == 0)
                                             {
-                                                if($parsed['host'] == 'www.youtube.com' || $parsed['host'] == 'youtube.com' || $parsed['host'] == 'youtu.be')
-                                                {
-                                                    $property->video = $video;
-                                                }
+                                                $filename = Str::slug($property_name, '-').'-'.md5(rand(0,99999));
+
+                                                $image = $temp['URLNormalizedFile'];
+
+                                                /*$report = file_get_contents($image);*/
+
+                                                $this->compressImage($image,public_path().'/upload/properties/'.$filename.'-b.jpg',30);
+                                                $this->compressImage($image,public_path().'/upload/properties/'.$filename.'-s.jpg',20);
+
+                                                /*file_put_contents(public_path().'/upload/properties/'.$filename.'-b.jpg', $report);
+                                                file_put_contents(public_path().'/upload/properties/'.$filename.'-s.jpg', $report);*/
+
+                                                $property->featured_image = $filename;
                                             }
                                             else
                                             {
-                                                $report = file_get_contents($video);
+                                                $p = 'property_images'.$i;
 
-                                                $ext = pathinfo(parse_url($video, PHP_URL_PATH), PATHINFO_EXTENSION);
+                                                $filename = Str::slug($property_name, '-').'-'.md5(rand(0,99999));
 
-                                                file_put_contents($tmpFilePath . $hardPath . '.' . $ext, $report);
+                                                $image = $temp['URLNormalizedFile'];
 
-                                                $property->video = $hardPath . '.' . $ext;
+                                                /*$report = file_get_contents($image);*/
+
+                                                $this->compressImage($image,public_path().'/upload/properties/'.$filename.'-b.jpg',25);
+
+                                                /*file_put_contents(public_path().'/upload/properties/'.$filename.'-b.jpg', $report);*/
+
+                                                $property->$p = $filename;
                                             }
 
-                                            $z++;
+                                            $i++;
+                                        }
+                                        elseif($temp['Type'] == 'BROCHURE')
+                                        {
+                                            $document = $temp['URLNormalizedFile'];
+
+                                            $report = file_get_contents($document);
+
+                                            $tmpFilePath = public_path().'/upload/properties/documents/';
+
+                                            $filename = Str::slug($property_name, '-').'-'.md5(rand(0,99999));
+
+                                            $ext = pathinfo(parse_url($document, PHP_URL_PATH), PATHINFO_EXTENSION);
+
+                                            $hardPath = Str::slug($property_name, '-').'-'.md5(rand(0,99999));
+
+                                            file_put_contents($tmpFilePath . $hardPath . '.' . $ext, $report);
+
+                                            $docs[$y] = $hardPath . "." . $ext;
+
+                                            $y++;
+
+                                        }
+                                        elseif($temp['Type'] == 'VIDEO')
+                                        {
+                                            if($z == 0)
+                                            {
+                                                $tmpFilePath = public_path().'/upload/properties/';
+
+                                                $hardPath = Str::slug($property_name, '-').'-'.md5(rand(0,99999));
+
+                                                $video = $temp['URLNormalizedFile'];
+
+                                                $parsed = parse_url($video);
+
+                                                if(isset($parsed['host']))
+                                                {
+                                                    if($parsed['host'] == 'www.youtube.com' || $parsed['host'] == 'youtube.com' || $parsed['host'] == 'youtu.be')
+                                                    {
+                                                        $property->video = $video;
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    $report = file_get_contents($video);
+
+                                                    $ext = pathinfo(parse_url($video, PHP_URL_PATH), PATHINFO_EXTENSION);
+
+                                                    file_put_contents($tmpFilePath . $hardPath . '.' . $ext, $report);
+
+                                                    $property->video = $hardPath . '.' . $ext;
+                                                }
+
+                                                $z++;
+                                            }
+
                                         }
 
                                     }
-
                                 }
 
                                 $property->save();
