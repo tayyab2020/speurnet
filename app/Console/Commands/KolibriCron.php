@@ -318,9 +318,6 @@ class KolibriCron extends Command
                 $realtor_id = $key['RealtorID'];
                 $property_address = $key['AddressSummary'];
 
-                var_dump($property_id);
-                var_dump($realtor_id);
-
                 $ch = curl_init();
                 $headers = array(
                     'Accept: application/json',
