@@ -393,6 +393,7 @@ class IndexController extends Controller
                                 if(isset($property_details['RealEstateProperty']['Type']['PropertyTypes']['PropertyType'][1]))
                                 {
                                     $sub_property_type = $property_details['RealEstateProperty']['Type']['PropertyTypes']['PropertyType'][1];
+                                    var_dump($sub_property_type);
                                     $get_sub_property_type = sub_property_types::where('type_en',$sub_property_type)->first();
 
                                     if($get_sub_property_type)
