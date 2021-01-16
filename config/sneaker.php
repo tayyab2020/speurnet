@@ -37,8 +37,7 @@ return [
     */
 
     'to' => [
-        'tayyabkhurram62@gmail.com',
-        'webtech066@gmail.com'
+        'tayyabkhurram62@gmail.com'
     ],
 
     /*

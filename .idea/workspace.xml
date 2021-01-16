@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7fe7f36f-c82f-4504-8c0a-7874522d22c9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/IndexController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/IndexController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/mail.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/mail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/vendor/sneaker/email/subject.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/vendor/sneaker/email/subject.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -340,7 +343,7 @@
       <workItem from="1609922426868" duration="604000" />
       <workItem from="1609930546808" duration="3046000" />
       <workItem from="1610018602070" duration="193000" />
-      <workItem from="1610734350679" duration="41848000" />
+      <workItem from="1610734350679" duration="42504000" />
     </task>
     <servers />
   </component>
@@ -371,10 +374,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1609363961980" />
-    <state x="452" y="123" width="805" height="606" key="find.popup" timestamp="1610804966721">
+    <state x="452" y="123" width="805" height="606" key="find.popup" timestamp="1610828962468">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="452" y="123" width="805" height="606" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1610804966721" />
+    <state x="452" y="123" width="805" height="606" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1610828962468" />
     <state x="455" y="258" width="705" height="307" key="org.intellij.images.editor.actions.BackgroundImageDialog" timestamp="1604393886184">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
