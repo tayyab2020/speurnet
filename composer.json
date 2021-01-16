@@ -17,7 +17,8 @@
         "laravel/socialite": "^4.3",
         "laravel/tinker": "^1.0",
         "laravelcollective/html": "6.0",
-        "rachidlaasri/laravel-installer": "dev-master"
+        "rachidlaasri/laravel-installer": "dev-master",
+        "squareboat/sneaker": "^5.0"
     },
     "require-dev": {
         "facade/ignition": "^1.4",
