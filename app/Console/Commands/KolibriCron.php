@@ -191,7 +191,7 @@ class KolibriCron extends Command
      */
     public function handle()
     {
-        ini_set('max_execution_time', '0')
+        ini_set('max_execution_time', '0');
 
         $ch = curl_init();
         $headers = array(
