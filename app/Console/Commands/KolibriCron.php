@@ -473,7 +473,7 @@ class KolibriCron extends Command
                                     }
                                     else
                                     {
-                                        $description = $property_details['RealEstateProperty']['Descriptions']['AdText']['Translation'];
+                                        $description = $property_details['RealEstateProperty']['Descriptions']['AdText']['Translation'] . "\n\n" . $property_details['RealEstateProperty']['Descriptions']['DetailsDescription']['Translation'];
                                     }
                                 }
                                 else
