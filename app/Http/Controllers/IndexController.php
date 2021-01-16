@@ -484,8 +484,8 @@ class IndexController extends Controller
                                 }
                                 else
                                 {
-                                    dd($property_details['RealEstateProperty']['Descriptions']['AdText']['Translation']);
-                                    
+                                    dd($property_details['RealEstateProperty']['Descriptions']['DetailsDescription']['Translation']);
+
                                     if(isset($property_details['RealEstateProperty']['Descriptions']['DetailsDescription']['Translation']))
                                     {
                                         $description = $property_details['RealEstateProperty']['Descriptions']['AdText']['Translation'] . "\n\n" . $property_details['RealEstateProperty']['Descriptions']['DetailsDescription']['Translation'];
