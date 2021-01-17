@@ -694,7 +694,7 @@ class PropertiesController extends Controller
 
                     else {
 
-                        foreach ($properties->get() as $key) {
+                        foreach ($properties as $key) {
 
                             if(str_contains($key->preferred_place, $address))
                             {
