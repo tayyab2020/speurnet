@@ -569,7 +569,7 @@ class PropertiesController extends Controller
                     $property_latitude = $key->map_latitude;
                     $property_longitude = $key->map_longitude;
 
-                    $url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=" . urlencode($preferred_address_latitude) . "," . urlencode($preferred_address_longitude) . "&destinations=" . urlencode($property_latitude) . "," . urlencode($property_longitude) . "&key=AIzaSyDFPa3LVeBRpaGafuUtk4znrty6IIqtMUw";
+                    $url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=" . urlencode($preferred_address_latitude) . "," . urlencode($preferred_address_longitude) . "&destinations=" . urlencode($property_latitude) . "," . urlencode($property_longitude) . "&key=AIzaSyCwsd8DRjkbT4yeIYlBfvIN7rXfGxKYM2Q";
 
                     $result_string = file_get_contents($url);
                     $result = json_decode($result_string, true);
@@ -620,7 +620,7 @@ class PropertiesController extends Controller
                                 $property_longitude = $key->preferred_longitude;
                                 $property_preferred_radius = $key->preferred_radius;
 
-                                $url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=" . urlencode($address_latitude) . "," . urlencode($address_longitude) . "&destinations=" . urlencode($property_latitude) . "," . urlencode($property_longitude) . "&key=AIzaSyDFPa3LVeBRpaGafuUtk4znrty6IIqtMUw";
+                                $url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=" . urlencode($address_latitude) . "," . urlencode($address_longitude) . "&destinations=" . urlencode($property_latitude) . "," . urlencode($property_longitude) . "&key=AIzaSyCwsd8DRjkbT4yeIYlBfvIN7rXfGxKYM2Q";
 
                                 $result_string = file_get_contents($url);
                                 $result = json_decode($result_string, true);
@@ -774,17 +774,16 @@ class PropertiesController extends Controller
     	$property = Properties::where("property_slug", $slug)->first();
         $similar_properties = [];
 
+    	if(!$property){
+            abort('404');
+        }
 
-        $property->views =$property->views + 1;
+        $property->views = $property->views + 1;
         $property->save();
 
         $property = Properties::where("property_slug", $slug)->first();
 
-    	$property_documents = property_documents::where('property_id',$property->id)->get();
-
-    	if(!$property){
-            abort('404');
-        }
+        $property_documents = property_documents::where('property_id',$property->id)->get();
 
     	$agent = User::findOrFail($property->user_id);
 

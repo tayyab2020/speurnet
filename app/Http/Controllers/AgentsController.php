@@ -52,7 +52,7 @@ class AgentsController extends Controller
                         $agent_latitude = $key->address_latitude;
                         $agent_longitude = $key->address_longitude;
 
-                        $url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=".urlencode($address_latitude).",".urlencode($address_longitude)."&destinations=".urlencode($agent_latitude).",".urlencode($agent_longitude)."&key=AIzaSyDFPa3LVeBRpaGafuUtk4znrty6IIqtMUw";
+                        $url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=".urlencode($address_latitude).",".urlencode($address_longitude)."&destinations=".urlencode($agent_latitude).",".urlencode($agent_longitude)."&key=AIzaSyCwsd8DRjkbT4yeIYlBfvIN7rXfGxKYM2Q";
 
                         $result_string = file_get_contents($url);
                         $result = json_decode($result_string, true);
