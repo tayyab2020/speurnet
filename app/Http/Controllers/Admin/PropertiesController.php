@@ -755,10 +755,8 @@ class PropertiesController extends MainAdminController
 
         }
 
-
 		//property featured image
 		$featured_image = $request->file('featured_image');
-
 
         if($request->f_image)
         {
