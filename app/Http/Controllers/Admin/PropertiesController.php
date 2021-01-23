@@ -363,7 +363,7 @@ class PropertiesController extends MainAdminController
 
         $info = getimagesize($source);
 
-        if ($info['mime'] == 'image/jpeg')
+        if (isset($info['mime']) && $info['mime'] == 'image/jpeg')
         {
             $image = imagecreatefromjpeg($source);
 
