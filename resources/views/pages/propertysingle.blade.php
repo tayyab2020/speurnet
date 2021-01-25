@@ -1752,9 +1752,14 @@
 
                                             @endif
 
-                                            <h3 style="margin-top: 55px;">{{__('text.Property Description')}}</h3>
 
-                                            {!! nl2br($property->description) !!}
+                                            <div class="description-box">
+
+                                                <h3 style="margin-top: 55px;">{{__('text.Property Description')}}</h3>
+
+                                                {!! nl2br($property->description) !!}
+
+                                            </div>
 
                                             @if($property->video)
 
