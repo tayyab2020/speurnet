@@ -2700,6 +2700,11 @@
 
         <style>
 
+            .description-box p img
+            {
+                width: 100% !important;
+            }
+
             @media (max-width: 768px)
             {
                 .tab-text
