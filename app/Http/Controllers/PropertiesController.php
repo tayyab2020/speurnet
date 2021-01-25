@@ -495,6 +495,7 @@ class PropertiesController extends Controller
 
     public function HomeExchangeSearch(Request $request)
     {
+        ini_set('max_execution_time', '0');
 
         $types = Types::where('show_type','!=',3)->orderBy('types')->get();
 
@@ -1390,6 +1391,8 @@ class PropertiesController extends Controller
 
     public function searchnewconstructions(Request $request)
     {
+        ini_set('max_execution_time', '0');
+        
         $data =  \Request::except(array('_token')) ;
 
         $inputs = $request->all();
