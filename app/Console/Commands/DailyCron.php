@@ -95,7 +95,7 @@ class DailyCron extends Command
                             $property_latitude = $key->map_latitude;
                             $property_longitude = $key->map_longitude;
 
-                            $url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=".urlencode($address_latitude).",".urlencode($address_longitude)."&destinations=".urlencode($property_latitude).",".urlencode($property_longitude)."&key=AIzaSyCwsd8DRjkbT4yeIYlBfvIN7rXfGxKYM2Q";
+                            $url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=".urlencode($address_latitude).",".urlencode($address_longitude)."&destinations=".urlencode($property_latitude).",".urlencode($property_longitude)."&key=AIzaSyA3iRmrPEQ6Sr9UCzxYH1jKm23sx0JFY6s";
 
                             $result_string = file_get_contents($url);
                             $result = json_decode($result_string, true);
@@ -216,7 +216,7 @@ class DailyCron extends Command
                         $property_latitude = $key->map_latitude;
                         $property_longitude = $key->map_longitude;
 
-                        $url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=".urlencode($address_latitude).",".urlencode($address_longitude)."&destinations=".urlencode($property_latitude).",".urlencode($property_longitude)."&key=AIzaSyCwsd8DRjkbT4yeIYlBfvIN7rXfGxKYM2Q";
+                        $url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=".urlencode($address_latitude).",".urlencode($address_longitude)."&destinations=".urlencode($property_latitude).",".urlencode($property_longitude)."&key=AIzaSyA3iRmrPEQ6Sr9UCzxYH1jKm23sx0JFY6s";
 
                         $result_string = file_get_contents($url);
                         $result = json_decode($result_string, true);

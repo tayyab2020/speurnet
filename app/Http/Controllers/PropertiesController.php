@@ -569,7 +569,7 @@ class PropertiesController extends Controller
                     $property_latitude = $key->map_latitude;
                     $property_longitude = $key->map_longitude;
 
-                    $url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=" . urlencode($preferred_address_latitude) . "," . urlencode($preferred_address_longitude) . "&destinations=" . urlencode($property_latitude) . "," . urlencode($property_longitude) . "&key=AIzaSyCwsd8DRjkbT4yeIYlBfvIN7rXfGxKYM2Q";
+                    $url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=" . urlencode($preferred_address_latitude) . "," . urlencode($preferred_address_longitude) . "&destinations=" . urlencode($property_latitude) . "," . urlencode($property_longitude) . "&key=AIzaSyA3iRmrPEQ6Sr9UCzxYH1jKm23sx0JFY6s";
 
                     $result_string = file_get_contents($url);
                     $result = json_decode($result_string, true);
@@ -620,7 +620,7 @@ class PropertiesController extends Controller
                                 $property_longitude = $key->preferred_longitude;
                                 $property_preferred_radius = $key->preferred_radius;
 
-                                $url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=" . urlencode($address_latitude) . "," . urlencode($address_longitude) . "&destinations=" . urlencode($property_latitude) . "," . urlencode($property_longitude) . "&key=AIzaSyCwsd8DRjkbT4yeIYlBfvIN7rXfGxKYM2Q";
+                                $url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=" . urlencode($address_latitude) . "," . urlencode($address_longitude) . "&destinations=" . urlencode($property_latitude) . "," . urlencode($property_longitude) . "&key=AIzaSyA3iRmrPEQ6Sr9UCzxYH1jKm23sx0JFY6s";
 
                                 $result_string = file_get_contents($url);
                                 $result = json_decode($result_string, true);
@@ -1271,6 +1271,8 @@ class PropertiesController extends Controller
 
     public function searchproperties(Request $request)
     {
+        ini_set('max_execution_time', '0');
+
     	$data =  \Request::except(array('_token')) ;
 
 	    $inputs = $request->all();
@@ -1335,10 +1337,11 @@ class PropertiesController extends Controller
                      $property_longitude = $key->map_longitude;
 
 
-                     $url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=".urlencode($address_latitude).",".urlencode($address_longitude)."&destinations=".urlencode($property_latitude).",".urlencode($property_longitude)."&key=AIzaSyCwsd8DRjkbT4yeIYlBfvIN7rXfGxKYM2Q";
+                     $url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=".urlencode($address_latitude).",".urlencode($address_longitude)."&destinations=".urlencode($property_latitude).",".urlencode($property_longitude)."&key=AIzaSyA3iRmrPEQ6Sr9UCzxYH1jKm23sx0JFY6s";
 
                      $result_string = file_get_contents($url);
                      $result = json_decode($result_string, true);
+
 
                      if($result['rows'][0]['elements'][0]['status'] == 'OK')
                      {
@@ -1448,7 +1451,7 @@ class PropertiesController extends Controller
                     $property_longitude = $key->map_longitude;
 
 
-                    $url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=".urlencode($address_latitude).",".urlencode($address_longitude)."&destinations=".urlencode($property_latitude).",".urlencode($property_longitude)."&key=AIzaSyCwsd8DRjkbT4yeIYlBfvIN7rXfGxKYM2Q";
+                    $url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=".urlencode($address_latitude).",".urlencode($address_longitude)."&destinations=".urlencode($property_latitude).",".urlencode($property_longitude)."&key=AIzaSyA3iRmrPEQ6Sr9UCzxYH1jKm23sx0JFY6s";
 
                     $result_string = file_get_contents($url);
                     $result = json_decode($result_string, true);
