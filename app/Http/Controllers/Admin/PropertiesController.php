@@ -546,7 +546,7 @@ class PropertiesController extends MainAdminController
                 /*'property_name' => 'required',*/
                 /*'property_slug' => 'unique:properties,property_slug,'.$inputs['id'],*/
                 'description' => 'required',
-                'featured_image' => 'mimes:jpg,jpeg,gif,png|max:3000',
+                'featured_image' => 'mimes:jpg,jpeg,gif,png|max:7000',
                 'property_images1' => 'mimes:jpg,jpeg,gif,png|max:7000',
                 'property_images2' => 'mimes:jpg,jpeg,gif,png|max:7000',
                 'property_images3' => 'mimes:jpg,jpeg,gif,png|max:7000',
