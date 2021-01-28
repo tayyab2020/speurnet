@@ -1192,9 +1192,13 @@ class IndexController extends Controller
 
                     $resize_image = Image::make($image);
 
-                    $resize_image->resize(1280, 800, function($constraint){
+                    $resize_image->resize(1920, 1080, function($constraint){
                         $constraint->aspectRatio();
-                    })->save($target_file);
+                    });
+
+                    $resize_image->stream();
+
+                    \Storage::disk('local')->put($target_file, $resize_image, 'public');
 
 
                 }
