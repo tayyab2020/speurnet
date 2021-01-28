@@ -546,7 +546,7 @@ class PropertiesController extends MainAdminController
                 /*'property_name' => 'required',*/
                 /*'property_slug' => 'unique:properties,property_slug,'.$inputs['id'],*/
                 'description' => 'required',
-                'featured_image' => 'mimes:jpg,jpeg,gif,png|max:7000',
+                'featured_image' => 'mimes:jpg,jpeg,gif,png|max:3000',
                 'property_images1' => 'mimes:jpg,jpeg,gif,png|max:7000',
                 'property_images2' => 'mimes:jpg,jpeg,gif,png|max:7000',
                 'property_images3' => 'mimes:jpg,jpeg,gif,png|max:7000',
@@ -768,7 +768,7 @@ class PropertiesController extends MainAdminController
 
                 $tmpFilePath = 'upload/properties/';
 
-                $hardPath =  Str::slug($inputs['property_name'], '-').'-'.md5(rand(0,99999));
+                $hardPath = Str::slug($property_name, '-').'-'.md5(rand(0,99999));
 
                 $this->compressImage($featured_image,$tmpFilePath.$hardPath.'-b.jpg',30);
                 $this->compressImage($featured_image,$tmpFilePath.$hardPath.'-s.jpg',20);
@@ -816,7 +816,7 @@ class PropertiesController extends MainAdminController
 
                     $tmpFilePath = 'upload/properties/';
 
-                    $hardPath =  Str::slug($inputs['property_name'], '-').'-'.md5(rand(0,99999));
+                    $hardPath =  Str::slug($property_name, '-').'-'.md5(rand(0,99999));
 
                     $this->compressImage($ac_image,$tmpFilePath.$hardPath.'-b.jpg',25);
 
@@ -847,11 +847,11 @@ class PropertiesController extends MainAdminController
                 if($filename)
                 {
 
-                    $hardPath =  Str::slug($inputs['property_name'], '-').'-'.md5(rand(0,99999));
+                    $hardPath =  Str::slug($property_name, '-').'-'.md5(rand(0,99999));
 
                     $target_file = $tmpFilePath . $hardPath . '-b.jpg';
 
-                    $image = $_FILES['property_images']['tmp_name'][$i];
+                    $image = $request->file('property_images')[$i];
 
                     $this->compressImage($image,$target_file,25);
 
@@ -898,7 +898,7 @@ class PropertiesController extends MainAdminController
 
             $tmpFilePath = 'upload/properties/';
 
-            $hardPath =  Str::slug($inputs['property_name'], '-').'-'.md5(rand(0,99999));
+            $hardPath =  Str::slug($property_name, '-').'-'.md5(rand(0,99999));
 
 
             $target_file = $tmpFilePath . $hardPath . '.' . $ext;
@@ -937,7 +937,7 @@ class PropertiesController extends MainAdminController
 
                 $ext = pathinfo($filename, PATHINFO_EXTENSION);
 
-                $hardPath =  Str::slug($inputs['property_name'], '-').'-'.md5(rand(0,99999));
+                $hardPath =  Str::slug($property_name, '-').'-'.md5(rand(0,99999));
 
 
                 $target_file = $tmpFilePath . $hardPath . '.' . $ext;
@@ -964,7 +964,7 @@ class PropertiesController extends MainAdminController
 
             $tmpFilePath = 'upload/properties/';
 
-            $hardPath =  Str::slug($inputs['property_name'], '-').'-'.md5(rand(0,99999));
+            $hardPath =  Str::slug($property_name, '-').'-'.md5(rand(0,99999));
 
             if($ext == 'pdf' || $ext == 'PDF')
             {
@@ -1000,7 +1000,7 @@ class PropertiesController extends MainAdminController
 
             $tmpFilePath = 'upload/properties/';
 
-            $hardPath =  Str::slug($inputs['property_name'], '-').'-'.md5(rand(0,99999));
+            $hardPath =  Str::slug($property_name, '-').'-'.md5(rand(0,99999));
 
             if($ext == 'pdf' || $ext == 'PDF')
             {
@@ -1037,7 +1037,7 @@ class PropertiesController extends MainAdminController
 
             $tmpFilePath = 'upload/properties/';
 
-            $hardPath =  Str::slug($inputs['property_name'], '-').'-'.md5(rand(0,99999));
+            $hardPath =  Str::slug($property_name, '-').'-'.md5(rand(0,99999));
 
             if($ext == 'pdf' || $ext == 'PDF')
             {
@@ -1071,7 +1071,7 @@ class PropertiesController extends MainAdminController
 
             $tmpFilePath = 'upload/properties/';
 
-            $hardPath =  Str::slug($inputs['property_name'], '-').'-'.md5(rand(0,99999));
+            $hardPath =  Str::slug($property_name, '-').'-'.md5(rand(0,99999));
 
             if($ext == 'pdf' || $ext == 'PDF')
             {
