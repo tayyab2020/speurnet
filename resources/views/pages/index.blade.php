@@ -510,7 +510,7 @@
                                                 @if($property->image_icon)
                                                     <img style="width: 90%;height: 95%;float: right;" src="{{ URL::asset('upload/members/'.$property->image_icon.'-b.jpg') }}">
                                                 @elseif($property->company_name)
-                                                    <h3 style="margin: 0;display: flex;align-items: center;justify-content: center;height: 100%;">{{$property->company_name}}</h3>
+                                                    <h3 style="margin: 0;display: flex;align-items: center;justify-content: center;height: 100%;font-size: 16px;line-height: 20px;">{{$property->company_name}}</h3>
                                                 @endif
 
                                                 </a>
@@ -732,7 +732,8 @@
 
         .property-content h3, .property-text h3
         {
-            font-size: 15px;
+            font-size: 15px !important;
+            line-height: 18px !important;
         }
 
         .property-content h3 small, .property-text h3 small

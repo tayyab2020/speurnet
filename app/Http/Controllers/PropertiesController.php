@@ -1319,11 +1319,11 @@ class PropertiesController extends Controller
 
         if($wheelchair)
         {
-            $properties = Properties::SearchByKeyword($type,$purpose,$price,$min_price,$max_price,$min_area,$max_area,$bathrooms,$bedrooms,$type_of_construction,$keywords)->where('is_sold',0)->where('is_rented',0)->where('wheelchair',$wheelchair)->select('properties.*');
+            $properties = Properties::SearchByKeyword($type,$purpose,$price,$min_price,$max_price,$min_area,$max_area,$bathrooms,$bedrooms,$type_of_construction,$keywords)->where('is_sold',0)->where('is_rented',0)->where('wheelchair',$wheelchair)->orderBy('properties.id', 'desc')->select('properties.*');
         }
         else
         {
-            $properties = Properties::SearchByKeyword($type,$purpose,$price,$min_price,$max_price,$min_area,$max_area,$bathrooms,$bedrooms,$type_of_construction,$keywords)->where('is_sold',0)->where('is_rented',0)->select('properties.*');
+            $properties = Properties::SearchByKeyword($type,$purpose,$price,$min_price,$max_price,$min_area,$max_area,$bathrooms,$bedrooms,$type_of_construction,$keywords)->where('is_sold',0)->where('is_rented',0)->orderBy('properties.id', 'desc')->select('properties.*');
         }
 
 
@@ -1392,7 +1392,7 @@ class PropertiesController extends Controller
     public function searchnewconstructions(Request $request)
     {
         ini_set('max_execution_time', '0');
-        
+
         $data =  \Request::except(array('_token')) ;
 
         $inputs = $request->all();
