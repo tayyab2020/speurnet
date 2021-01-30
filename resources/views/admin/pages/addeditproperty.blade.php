@@ -2195,7 +2195,7 @@
                                 </div>
 
                                 <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-                                <script type="text/javascript" src="{{ URL::asset('assets/js/spartan-multi-image-picker.js?v=1.0') }}"></script>
+                                <script type="text/javascript" src="{{ URL::asset('assets/js/spartan-multi-image-picker.js?v=1.1') }}"></script>
 
                                 <h3 style="margin: 30px 0px;display: inline-block;font-size: 15px;font-weight: 600;">{{__('text.Max Images Size')}}</h3>
 

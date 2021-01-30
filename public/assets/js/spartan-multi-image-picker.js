@@ -49,7 +49,7 @@
          * @param {[type]} settings [description]
          * @param {[type]} el       [description]
          */
-        function addRow(settings, el){
+        function addRow(settings, el, edit = 0){
             last_index = count;
             var groupClassName = settings.groupClassName, rowHeight = settings.rowHeight, fieldName = settings.fieldName, placeholderImage = settings.placeholderImage, dropFileLabel = settings.dropFileLabel;
             var placeholderImageTarget = placeholderImage.image;
@@ -64,7 +64,7 @@
                 placeholderImageWidth = placeholderImage.width;
             }
 
-            if(settings.dataImage)
+            if(edit !== 1 && settings.dataImage)
             {
                 var template = `<div class="${groupClassName} spartan_item_wrapper" data-spartanindexrow="${count}" style="margin-bottom : 20px; ">`+
                     `<div style="position: relative;">`+
@@ -173,14 +173,17 @@
 
             if($(input).val() === "")
             {
-                $(input).prop("files", input.files);
+                if(input.files.length > 0)
+                {
+                    $(input).prop("files", input.files);
+                }
             }
 
             if(typeof input.files[0] === "undefined")
             {
                 $(parent).find('[data-spartanindexrow="'+index+'"]').remove();
                 if (last_index == index  || $(parent).find('img[data-spartanindeximage="'+last_index+'"]').is(":visible")  == true){
-                    addRow(settings, parent);
+                    addRow(settings, parent, 1);
                 }
                 total_count--;
                 settings.onRemoveRow.call(this, index);
