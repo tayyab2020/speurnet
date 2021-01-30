@@ -42,10 +42,10 @@
                     @if($agent->image_icon)
                         <img style="height: 200px;" src="{{ URL::asset('upload/members/'.$agent->image_icon.'-b.jpg') }}" alt="{{$agent->name}}">
                     @elseif($agent->company_name)
-                        <h3 style="margin: 0;display: flex;align-items: center;justify-content: center;height: 200px;border: 1px solid;">{{$agent->company_name}}</h3>
+                        <h3 style="margin: 0;display: flex;align-items: center;justify-content: center;height: 200px;border: 1px solid;text-align: center;">{{$agent->company_name}}</h3>
                     @endif
 
-                        <div class="team-social">
+                        <div class="team-social" style="display:flex;justify-content: center;">
 
                             @if($agent->twitter)
                                 <span><a href="{{$agent->twitter}}" title="Twitter" rel="tooltip" data-placement="top"><i style="color: #448fed;" class="fa fa-twitter"></i></a></span>
@@ -62,6 +62,14 @@
                             @if($agent->linkedin)
                                 <span><a href="{{$agent->linkedin}}" title="LinkedIn" rel="tooltip" data-placement="top"><i style="color: #4e4e99;" class="fa fa-linkedin"></i></a></span>
                             @endif
+
+                                @if($agent->instagram)
+                                    <span><a href="{{$agent->instagram}}" title="Instagram" rel="tooltip" data-placement="top"><i style="color: #cc3636;" class="fa fa-instagram"></i></a></span>
+                                @endif
+
+                                @if($agent->website)
+                                    <span><a href="{{$agent->website}}" title="Website" rel="tooltip" data-placement="top"><i style="color: #5a83c2;" class="fa fa-globe"></i></a></span>
+                                @endif
 
                         </div>
 

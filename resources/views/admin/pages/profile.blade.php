@@ -709,25 +709,37 @@
                     <div class="form-group">
                         <label for="" class="col-sm-3 control-label">Facebook</label>
                         <div class="col-sm-9">
-                            <input type="text" name="facebook" value="{{ Auth::user()->facebook }}" class="form-control" value="">
+                            <input type="text" name="facebook" value="{{ Auth::user()->facebook }}" class="form-control">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="" class="col-sm-3 control-label">Twitter</label>
                         <div class="col-sm-9">
-                            <input type="text" name="twitter" value="{{ Auth::user()->twitter }}" class="form-control" value="">
+                            <input type="text" name="twitter" value="{{ Auth::user()->twitter }}" class="form-control">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="" class="col-sm-3 control-label">Google Plus</label>
                         <div class="col-sm-9">
-                            <input type="text" name="gplus" value="{{ Auth::user()->gplus }}" class="form-control" value="">
+                            <input type="text" name="gplus" value="{{ Auth::user()->gplus }}" class="form-control">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="" class="col-sm-3 control-label">Linkedin</label>
                         <div class="col-sm-9">
-                            <input type="text" name="linkedin" value="{{ Auth::user()->linkedin }}" class="form-control" value="">
+                            <input type="text" name="linkedin" value="{{ Auth::user()->linkedin }}" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="col-sm-3 control-label">Instagram</label>
+                        <div class="col-sm-9">
+                            <input type="text" name="instagram" value="{{ Auth::user()->instagram }}" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="col-sm-3 control-label">Website</label>
+                        <div class="col-sm-9">
+                            <input type="text" name="website" value="{{ Auth::user()->website }}" class="form-control">
                         </div>
                     </div>
                     <hr>

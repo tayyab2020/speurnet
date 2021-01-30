@@ -396,8 +396,8 @@
 
                    @foreach($agents as $i => $agent)
                       <div class="row" style="margin: 20px 0px;">
-                          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="row" style="background-color: white;padding: 20px;">
+                          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 res-box">
+                            <div class="row res-box1" style="background-color: white;padding: 20px;">
                             <div class="col-sm-3">
                                 <div class="team-image">
                                     <a style="outline: none;" href="{{ URL::to('/makelaars/details/'.$agent->id) }}">
@@ -437,7 +437,7 @@
 
                                     <div class="row">
                                         <div class="col-sm-12">
-                                            <p> {{$agent->about}}</p>
+                                            <p class="addReadMore showlesscontent"> {{$agent->about}}</p>
                                         </div>
                                     </div>
 
@@ -477,4 +477,100 @@
       </div>
     </div>
     <!-- end:content -->
+
+    <style>
+        .addReadMore.showlesscontent .SecSec,
+        .addReadMore.showlesscontent .readLess {
+            display: none;
+        }
+
+        .addReadMore.showmorecontent .readMore {
+            display: none;
+        }
+
+        .addReadMore .readMore,
+        .addReadMore .readLess {
+            font-weight: bold;
+            margin-left: 2px;
+            color: #5c5cd1;
+            cursor: pointer;
+        }
+
+        .addReadMoreWrapTxt.showmorecontent .SecSec,
+        .addReadMoreWrapTxt.showmorecontent .readLess {
+            display: block;
+        }
+
+        @media (max-width: 468px)
+        {
+            ul.property-radios li
+            {
+                width: 100%;
+                height: 155px;
+            }
+
+            .type-holder-main
+            {
+                width: 100%;
+            }
+
+            ul.property-radios li label
+            {
+                display: flex;
+                align-items: center;
+            }
+
+            .res-box
+            {
+                padding: 5px;
+            }
+
+            .res-box1
+            {
+                padding: 20px 10px !important;
+            }
+
+            .team-description
+            {
+                padding: 15px 0;
+            }
+        }
+    </style>
+
+    <script>
+
+        function AddReadMore() {
+            //This limit you can set after how much characters you want to show Read More.
+            var carLmt = 280;
+            // Text to show when text is collapsed
+            var readMoreTxt = "Read More...";
+            // Text to show when text is expanded
+            var readLessTxt = " Read Less";
+
+
+            //Traverse all selectors with this class and manupulate HTML part to show Read More
+            $(".addReadMore").each(function() {
+                if ($(this).find(".firstSec").length)
+                    return;
+
+                var allstr = $(this).text();
+                if (allstr.length > carLmt) {
+                    var firstSet = allstr.substring(0, carLmt);
+                    var secdHalf = allstr.substring(carLmt, allstr.length);
+                    var strtoadd = firstSet + "<span class='SecSec'>" + secdHalf + "</span><span class='readMore'  title='Click to Show More'>" + readMoreTxt + "</span><span class='readLess' title='Click to Show Less'>" + readLessTxt + "</span>";
+                    $(this).html(strtoadd);
+                }
+
+            });
+            //Read More and Read Less Click Event binding
+            $(document).on("click", ".readMore,.readLess", function() {
+                $(this).closest(".addReadMore").toggleClass("showlesscontent showmorecontent");
+            });
+        }
+        $(function() {
+            //Calling function after Page Load
+            AddReadMore();
+        });
+
+    </script>
 @endsection

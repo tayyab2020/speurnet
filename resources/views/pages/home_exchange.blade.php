@@ -19,7 +19,8 @@
 
                     </div>
                     <ol class="breadcrumb">
-                        <li><a href="{{ URL::to('/') }}">{{__('text.Home')}}</a></li>
+                        <li><a style="color: #48cfad;" href="{{ URL::to('/') }}">{{__('text.Home')}}</a></li>
+                        <li class="active">{{__('text.Home Exchange')}}</li>
                     </ol>
                 </div>
             </div>
@@ -37,6 +38,12 @@
                 @if(!isset($properties))
 
                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 faq" style="margin-top: 60px;">
+
+                        <div id="recent-found" class="properties-ordering-wrapper">
+
+                            <div class="results-count" style="font-size: 18px;display: inline-block;padding-top: 5px;">{{__('text.Results')}} {{trans_choice('text.properties found',count($recent))}}</div>
+
+                        </div>
 
                         <div style="background: white;padding: 20px 10px 0px 10px;border-radius: 10px;box-shadow: 1px 1px 14px 2px #e7e7e7;">
 
@@ -451,6 +458,36 @@
                 <link href="{{ URL::asset('assets/css/style.css') }}" rel="stylesheet">
 
                 <style>
+
+                    @media (max-width: 500px) {
+                        #content
+                        {
+                            padding: 30px 0;
+                        }
+
+                        #header.heading
+                        {
+                            min-height: 155px;
+                            padding-top: 10px;
+                            padding-bottom: 0;
+                        }
+                    }
+
+                    @media (min-width: 768px)
+                    {
+                        #recent-found
+                        {
+                            display: none;
+                        }
+                    }
+
+                    @media (max-width: 767px)
+                    {
+                        #recent-found
+                        {
+                            display: block;
+                        }
+                    }
 
                     a:hover, a:focus
                     {

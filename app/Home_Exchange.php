@@ -25,8 +25,10 @@ class Home_Exchange extends Model
 
     public function scopeSearchByKeyword($query,$house_kind,$bedrooms,$area,$rent,$preferred_house_kind,$preferred_bedrooms,$preferred_area,$preferred_rent,$media)
     {
-
-        $query = $query->where("property_type", "$preferred_house_kind");
+        if($preferred_house_kind != 0)
+        {
+            $query = $query->where("property_type", "$preferred_house_kind");
+        }
 
         $query->where("bedrooms", '>=', $preferred_bedrooms);
 

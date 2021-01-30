@@ -88,14 +88,13 @@ class AdminController extends MainAdminController
             $user->image_icon = $hardPath;
         }
 
-if($request->herefor)
-{
-    $herefor = $request->herefor;
-}
-else
-{
-    $herefor = null;
-}
+        if($request->herefor)
+        {
+            $herefor = $request->herefor;
+        }
+        else {
+            $herefor = null;
+        }
 
         $user->name = $request->name;
         $user->email = $request->email;
@@ -113,6 +112,8 @@ else
         $user->twitter = $request->twitter;
         $user->gplus = $request->gplus;
         $user->linkedin = $request->linkedin;
+        $user->instagram = $request->instagram;
+        $user->website = $request->website;
 
         if(Auth::user()->usertype != 'Admin' && Auth::user()->usertype != 'Users')
         {
