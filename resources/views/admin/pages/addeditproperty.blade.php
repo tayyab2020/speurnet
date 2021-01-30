@@ -3514,8 +3514,6 @@
 
                 $('#' + step + ' .' + step + '-validate-new').map(function() {
 
-                    console.log($(this).next('input').val());
-
                     if(!$(this).next('input').val())
                     {
                         $(this).children().children().addClass('validate-error');
