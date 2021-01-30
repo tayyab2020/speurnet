@@ -764,7 +764,7 @@ class PropertiesController extends MainAdminController
             {
                 if(!$featured_image)
                 {
-                    return redirect()->back()->withErrors('Images upload were not successful. If you are using a browser other than google chrome than kindly select image instead of drag & drop.')->withInput();
+                    return redirect()->back()->withErrors('Image(s) upload were not successful. If you are using a browser other than google chrome than kindly select image instead of drag & drop.')->withInput();
                 }
 
                 \File::delete(public_path() .'/upload/properties/'.$property->featured_image.'-b.jpg');
@@ -819,7 +819,7 @@ class PropertiesController extends MainAdminController
                 {
                     if(!$ac_image)
                     {
-                        return redirect()->back()->withErrors('Images upload were not successful. If you are using a browser other than google chrome than kindly select image instead of drag & drop.')->withInput();
+                        return redirect()->back()->withErrors('Image(s) upload were not successful. If you are using a browser other than google chrome than kindly select image instead of drag & drop.')->withInput();
                     }
 
                     \File::delete(public_path() .'/upload/properties/'.$property->$p1.'-b.jpg');
@@ -855,7 +855,7 @@ class PropertiesController extends MainAdminController
 
                 if(!$image)
                 {
-                    return redirect()->back()->withErrors('Images upload were not successful. If you are using a browser other than google chrome than kindly select image instead of drag & drop.')->withInput();
+                    return redirect()->back()->withErrors('Image(s) upload were not successful. If you are using a browser other than google chrome than kindly select image instead of drag & drop.')->withInput();
                 }
 
                 $hardPath =  Str::slug($property_name, '-').'-'.md5(rand(0,99999));
