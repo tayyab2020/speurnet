@@ -171,6 +171,11 @@
         function loadImage(settings, input, parent){
             var index = $(input).data('spartanindexinput');
 
+            if($(input).val() === "")
+            {
+                $(input).prop("files", input.files);
+            }
+
             if(typeof input.files[0] === "undefined")
             {
                 $(parent).find('[data-spartanindexrow="'+index+'"]').remove();
@@ -184,7 +189,8 @@
                 $(parent).next('input').next('input').val(1);
             }
 
-            if (input.files && input.files[0]) {
+
+            if (input.files.length > 0 && typeof input.files[0] != "undefined") {
 
                 $(parent).next('input').val(input.files[0].name);
                 $(parent).next('input').next('input').val(0);

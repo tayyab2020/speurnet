@@ -762,6 +762,11 @@ class PropertiesController extends MainAdminController
         {
             if($request->f_image != $property->featured_image.'-s.jpg')
             {
+                if(!$featured_image)
+                {
+                    return redirect()->back()->withErrors('Images upload were not successful. If you are using a browser other than google chrome than kindly select image instead of drag & drop.')->withInput();
+                }
+
                 \File::delete(public_path() .'/upload/properties/'.$property->featured_image.'-b.jpg');
                 \File::delete(public_path() .'/upload/properties/'.$property->featured_image.'-s.jpg');
 
@@ -812,6 +817,11 @@ class PropertiesController extends MainAdminController
 
                 if($request->$p != $property->$p1.'-b.jpg')
                 {
+                    if(!$ac_image)
+                    {
+                        return redirect()->back()->withErrors('Images upload were not successful. If you are using a browser other than google chrome than kindly select image instead of drag & drop.')->withInput();
+                    }
+
                     \File::delete(public_path() .'/upload/properties/'.$property->$p1.'-b.jpg');
 
                     $tmpFilePath = 'upload/properties/';
@@ -833,41 +843,39 @@ class PropertiesController extends MainAdminController
 
         $property_images = $request->file('property_images');
 
-
         if($property_images){
 
-            $countfiles = count($_FILES['property_images']['name']);
+            $countfiles = count($property_images);
 
             $tmpFilePath = 'upload/properties/';
 
             for($i=0;$i<$countfiles;$i++) {
 
-                $filename = $_FILES['property_images']['name'][$i];
+                $image = $request->file('property_images')[$i];
 
-                if($filename)
+                if(!$image)
                 {
+                    return redirect()->back()->withErrors('Images upload were not successful. If you are using a browser other than google chrome than kindly select image instead of drag & drop.')->withInput();
+                }
 
-                    $hardPath =  Str::slug($property_name, '-').'-'.md5(rand(0,99999));
+                $hardPath =  Str::slug($property_name, '-').'-'.md5(rand(0,99999));
 
-                    $target_file = $tmpFilePath . $hardPath . '-b.jpg';
+                $target_file = $tmpFilePath . $hardPath . '-b.jpg';
 
-                    $image = $request->file('property_images')[$i];
+                $this->compressImage($image,$target_file,25);
 
-                    $this->compressImage($image,$target_file,25);
+                $check = 0;
 
-                    $check = 0;
+                for($x=1;$x<=$limit;$x++) {
 
-                    for($x=1;$x<=$limit;$x++) {
+                    if(!$check)
+                    {
+                        $w = 'property_images'.$x;
 
-                        if(!$check)
+                        if(is_null($property->$w))
                         {
-                            $w = 'property_images'.$x;
-
-                            if(is_null($property->$w))
-                            {
-                                $property->$w = $hardPath;
-                                $check = 1;
-                            }
+                            $property->$w = $hardPath;
+                            $check = 1;
                         }
                     }
                 }

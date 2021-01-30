@@ -3514,6 +3514,8 @@
 
                 $('#' + step + ' .' + step + '-validate-new').map(function() {
 
+                    console.log($(this).next('input').val());
+
                     if(!$(this).next('input').val())
                     {
                         $(this).children().children().addClass('validate-error');
@@ -3707,11 +3709,9 @@
                         geocoder.geocode({'placeId': place.place_id}, function (results, status) {
 
 
-
                             if (status === google.maps.GeocoderStatus.OK) {
 
                                 if (results[0]) {
-
 
                                     const lat = results[0].geometry.location.lat();
                                     const lng = results[0].geometry.location.lng();
