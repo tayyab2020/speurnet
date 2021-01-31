@@ -43,31 +43,33 @@ class AgentsController extends Controller
                 $agents = user::where('users.usertype','Agents')->where('users.landlord',0)->where('users.status',1)->where('users.name', 'like', '%' . $agent_name . '%')->withCount('properties')->orderBy('id', 'desc');
             }
 
-            if($address && $address_latitude && $address_longitude)
+            if($address)
             {
                 if($radius != 0)
                 {
                     foreach ($agents->get() as $index => $key)
                     {
-                        $agent_latitude = $key->address_latitude;
-                        $agent_longitude = $key->address_longitude;
+                        $from = $address;
+                        $to = $key->address;
 
-                        $url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=".urlencode($address_latitude).",".urlencode($address_longitude)."&destinations=".urlencode($agent_latitude).",".urlencode($agent_longitude)."&key=AIzaSyA3iRmrPEQ6Sr9UCzxYH1jKm23sx0JFY6s";
+                        $from = urlencode($from);
+                        $to = urlencode($to);
 
-                        $result_string = file_get_contents($url);
-                        $result = json_decode($result_string, true);
+                        $data = file_get_contents("https://maps.googleapis.com/maps/api/distancematrix/json?key=AIzaSyA3iRmrPEQ6Sr9UCzxYH1jKm23sx0JFY6s&origins=$from&destinations=$to&language=en-EN&sensor=false");
+                        $data = json_decode($data);
 
 
-                        if($result['rows'][0]['elements'][0]['status'] == 'OK')
+                        if($data->status == 'OK' && $data->rows[0]->elements[0]->status == 'OK')
                         {
-                            $agent_radius = $result['rows'][0]['elements'][0]['distance']['value'];
-                            $agent_radius = $agent_radius / 1000;
+                            $distance = 0;
 
-                            $agent_radius = round($agent_radius);
+                            foreach($data->rows[0]->elements as $road) {
+                                $distance += $road->distance->value;
+                            }
+                            $distance = $distance/1000;
 
 
-                            if($agent_radius >= $radius)
-                            {
+                            if ($distance > $radius) {
                                 $agents->where('users.id','!=',$key->id);
                             }
                         }

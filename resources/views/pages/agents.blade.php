@@ -410,9 +410,9 @@
                                 </div>
                             </div>
                             <div class="col-sm-9">
-                                <div class="team-description">
+                                <div class="team-description" style="padding-bottom: 0;">
                                     <div class="row">
-                                        <div class="col-sm-4">
+                                        <div class="col-sm-4" style="float: left;">
                                             <a href="{{ URL::to('/makelaars/details/'.$agent->id) }}">
                                             <h3>{{$agent->name}}</h3>
                                             </a>
@@ -427,32 +427,44 @@
                                         @endif
 
                                     </div>
+
+
                                     @if($agent->address)
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <p><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp&nbsp {{$agent->address}}</p>
+
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <p><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp&nbsp {{$agent->address}}</p>
+                                            </div>
                                         </div>
-                                    </div>
+
                                     @endif
 
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <p class="addReadMore showlesscontent"> {{$agent->about}}</p>
+
+                                    @if($agent->about)
+
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <p class="addReadMore showlesscontent"> {{$agent->about}}</p>
+                                                <input type="hidden" class="read-more-url" value="{{ URL::to('/makelaars/details/'.$agent->id) }}">
+                                            </div>
                                         </div>
-                                    </div>
+
+                                    @endif
+
 
                                     @if($agent->phone)
 
-                                    <div class="row">
-                                        <div class="col-sm-3">
-                                            <p><i class="fa fa-phone" aria-hidden="true"></i>&nbsp&nbsp {{$agent->phone}}</p>
+                                        <div class="row" style="margin-top: 10px;">
+                                            <div class="col-sm-3">
+                                                <p style="margin: 0;"><i class="fa fa-phone" aria-hidden="true"></i>&nbsp&nbsp {{$agent->phone}}</p>
+                                            </div>
+                                            {{--<div class="col-sm-3">
+                                                <p><i class="fa fa-id-card" aria-hidden="true"></i>&nbsp&nbsp Contact</p>
+                                            </div>--}}
                                         </div>
-                                        {{--<div class="col-sm-3">
-                                            <p><i class="fa fa-id-card" aria-hidden="true"></i>&nbsp&nbsp Contact</p>
-                                        </div>--}}
-                                    </div>
 
                                     @endif
+
 {{--                                    <div class="team-social">--}}
 {{--                                        <span><a href="{{$agent->twitter}}" title="Twitter" rel="tooltip" data-placement="top"><i class="fa fa-twitter"></i></a></span>--}}
 {{--                                        <span><a href="{{$agent->facebook}}" title="Facebook" rel="tooltip" data-placement="top"><i class="fa fa-facebook"></i></a></span>--}}
@@ -530,6 +542,11 @@
                 padding: 20px 10px !important;
             }
 
+            .team-image img
+            {
+                height: 150px;
+            }
+
             .team-description
             {
                 padding: 15px 0;
@@ -541,15 +558,18 @@
 
         function AddReadMore() {
             //This limit you can set after how much characters you want to show Read More.
-            var carLmt = 280;
+            var carLmt = 180;
             // Text to show when text is collapsed
-            var readMoreTxt = "Read More...";
+            var readMoreTxt = "Lees Meer...";
             // Text to show when text is expanded
             var readLessTxt = " Read Less";
 
 
             //Traverse all selectors with this class and manupulate HTML part to show Read More
             $(".addReadMore").each(function() {
+
+                var url = $(this).next('input').val();
+
                 if ($(this).find(".firstSec").length)
                     return;
 
@@ -557,13 +577,13 @@
                 if (allstr.length > carLmt) {
                     var firstSet = allstr.substring(0, carLmt);
                     var secdHalf = allstr.substring(carLmt, allstr.length);
-                    var strtoadd = firstSet + "<span class='SecSec'>" + secdHalf + "</span><span class='readMore'  title='Click to Show More'>" + readMoreTxt + "</span><span class='readLess' title='Click to Show Less'>" + readLessTxt + "</span>";
+                    var strtoadd = firstSet + "<span class='SecSec'>" + secdHalf + "</span><a href='"+url+"' class='readMore'>" + readMoreTxt + "</a><span class='readLess' title='Click to Show Less'>" + readLessTxt + "</span>";
                     $(this).html(strtoadd);
                 }
 
             });
             //Read More and Read Less Click Event binding
-            $(document).on("click", ".readMore,.readLess", function() {
+            $(document).on("click", ".readLess", function() {
                 $(this).closest(".addReadMore").toggleClass("showlesscontent showmorecontent");
             });
         }
