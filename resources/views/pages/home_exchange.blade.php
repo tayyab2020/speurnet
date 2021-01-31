@@ -41,7 +41,7 @@
 
                         <div id="recent-found" class="properties-ordering-wrapper">
 
-                            <div class="results-count" style="font-size: 18px;display: inline-block;padding-top: 5px;">{{__('text.Results')}} {{trans_choice('text.properties found',count($recent))}}</div>
+                            <div class="results-count" style="font-size: 18px;display: inline-block;padding-top: 5px;">{{__('text.Results')}} {{trans_choice('text.properties found',$recent->total())}}</div>
 
                         </div>
 
@@ -470,22 +470,6 @@
                             min-height: 155px;
                             padding-top: 10px;
                             padding-bottom: 0;
-                        }
-                    }
-
-                    @media (min-width: 768px)
-                    {
-                        #recent-found
-                        {
-                            display: none;
-                        }
-                    }
-
-                    @media (max-width: 767px)
-                    {
-                        #recent-found
-                        {
-                            display: block;
                         }
                     }
 
