@@ -123,6 +123,7 @@ class SettingsController extends MainAdminController
 		$settings->social_twitter = $inputs['social_twitter'];
 		$settings->social_linkedin = $inputs['social_linkedin'];
 		$settings->social_gplus = $inputs['social_gplus'];
+        $settings->social_insta = $inputs['social_insta'];
 
 
 	    $settings->save();

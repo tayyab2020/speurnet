@@ -6,7 +6,7 @@
 	<div class="page-header">
 		<h2> Settings</h2>
 		<a href="{{ URL::to('admin/dashboard') }}" class="btn btn-default-light btn-xs"><i class="md md-backspace"></i> Back</a>
-	  
+
 	</div>
 	@if (count($errors) > 0)
     <div class="alert alert-danger">
@@ -48,33 +48,33 @@
         <li role="presentation">
             <a href="#privacy_policy" aria-controls="privacy_policy" role="tab" data-toggle="tab">Privacy Policy</a>
         </li>
-        
+
         <li role="presentation">
             <a href="#other_Settings" aria-controls="other_Settings" role="tab" data-toggle="tab">Other Settings</a>
-        </li>        
+        </li>
         </li>
     </ul>
 
     <!-- Tab panes -->
     <div class="tab-content tab-content-default">
-        <div role="tabpanel" class="tab-pane active" id="account">             
+        <div role="tabpanel" class="tab-pane active" id="account">
             {!! Form::open(array('url' => 'admin/settings','class'=>'form-horizontal padding-15','name'=>'account_form','id'=>'account_form','role'=>'form','enctype' => 'multipart/form-data')) !!}
-                
+
                 <div class="form-group">
                     <label for="" class="col-sm-3 control-label">Site Style</label>
                     <div class="col-sm-4">
                         <select id="basic" name="site_style" class="selectpicker show-tick form-control">
-                        	 		 
+
 		                        	<option value="blue" @if($settings->site_style=='blue')selected @endif>Blue</option>
-		                        	 
+
 		                        	<option value="green" @if($settings->site_style=='green')selected @endif >Green</option>
-		                        	 
-									<option value="orange" @if($settings->site_style=='orange')selected @endif >Orange</option> 
-									
+
+									<option value="orange" @if($settings->site_style=='orange')selected @endif >Orange</option>
+
 									<option value="red" @if($settings->site_style=='red')selected @endif >Red</option>
 									<option value="yellow" @if($settings->site_style=='yellow')selected @endif >Yellow</option>
-			                        	 
-	                        	 
+
+
                         </select>
                     </div>
                 </div>
@@ -84,17 +84,17 @@
                         <div class="media">
                             <div class="media-left">
                                 @if($settings->site_logo)
-                                 
+
 									<img src="{{ URL::asset('upload/'.$settings->site_logo) }}" width="150" alt="person">
 								@endif
-								                                
+
                             </div>
                             <div class="media-body media-middle">
                                 <input type="file" name="site_logo" class="filestyle">
                                 <small class="text-muted bold">Size 200x75px</small>
                             </div>
                         </div>
-	
+
                     </div>
                 </div>
 				<div class="form-group">
@@ -103,17 +103,17 @@
                         <div class="media">
                             <div class="media-left">
                                 @if($settings->site_favicon)
-                                 
+
 									<img src="{{ URL::asset('upload/'.$settings->site_favicon) }}" alt="person">
 								@endif
-								                                
+
                             </div>
                             <div class="media-body media-middle">
                                 <input type="file" name="site_favicon" class="filestyle">
                                 <small class="text-muted bold">Size 16x16px</small>
                             </div>
                         </div>
-	
+
                     </div>
                 </div>
                 <div class="form-group">
@@ -174,49 +174,57 @@
                 <div class="form-group">
                     <div class="col-md-offset-3 col-sm-9 ">
                     	<button type="submit" class="btn btn-primary">Save Changes <i class="md md-lock-open"></i></button>
-                         
+
                     </div>
                 </div>
 
-            {!! Form::close() !!} 
+            {!! Form::close() !!}
         </div>
-        
+
         <div role="tabpanel" class="tab-pane" id="social_links">
-            
+
             {!! Form::open(array('url' => 'admin/social_links','class'=>'form-horizontal padding-15','name'=>'social_links_form','id'=>'social_links_form','role'=>'form')) !!}
-                 
-                
+
+
                 <div class="form-group">
                     <label for="" class="col-sm-3 control-label">Facebook URL</label>
-                    
+
                     <div class="col-sm-9">
-                        <input type="text" name="social_facebook" value="{{ $settings->social_facebook }}" class="form-control" value="">
+                        <input type="text" name="social_facebook" value="{{ $settings->social_facebook }}" class="form-control">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="" class="col-sm-3 control-label">Twitter URL</label>
-                    
+
                     <div class="col-sm-9">
-                        <input type="text" name="social_twitter" value="{{ $settings->social_twitter }}" class="form-control" value="">
+                        <input type="text" name="social_twitter" value="{{ $settings->social_twitter }}" class="form-control">
                     </div>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="" class="col-sm-3 control-label">Linkedin URL</label>
-                    
+
                     <div class="col-sm-9">
-                        <input type="text" name="social_linkedin" value="{{ $settings->social_linkedin }}" class="form-control" value="">
+                        <input type="text" name="social_linkedin" value="{{ $settings->social_linkedin }}" class="form-control">
                     </div>
                 </div>
-                
+
                 <div class="form-group">
                     <label for="" class="col-sm-3 control-label">GPlus URL</label>
-                    
+
                     <div class="col-sm-9">
-                        <input type="text" name="social_gplus" value="{{ $settings->social_gplus }}" class="form-control" value="">
+                        <input type="text" name="social_gplus" value="{{ $settings->social_gplus }}" class="form-control">
                     </div>
                 </div>
-                 
+
+            <div class="form-group">
+                <label for="" class="col-sm-3 control-label">Instagram URL</label>
+
+                <div class="col-sm-9">
+                    <input type="text" name="social_insta" value="{{ $settings->social_insta }}" class="form-control">
+                </div>
+            </div>
+
                 <hr>
                  <div class="form-group">
                     <div class="col-md-offset-3 col-sm-9 ">
@@ -224,22 +232,22 @@
                     </div>
                 </div>
 
-            {!! Form::close() !!} 
+            {!! Form::close() !!}
         </div>
-        
+
         <div role="tabpanel" class="tab-pane" id="share_comments">
-            
+
             {!! Form::open(array('url' => 'admin/addthisdisqus','class'=>'form-horizontal padding-15','name'=>'pass_form','id'=>'pass_form','role'=>'form')) !!}
-                
-                 
-                
+
+
+
                 <div class="form-group">
                     <label for="" class="col-sm-3 control-label">Disqus Code</label>
                     <div class="col-sm-9">
                         <textarea type="text" name="disqus_comment_code" class="form-control" rows="5">{{ $settings->disqus_comment_code }}</textarea>
                     </div>
                 </div>
-                 
+
                 <hr>
                 <div class="form-group">
                     <div class="col-md-offset-3 col-sm-9 ">
@@ -247,17 +255,17 @@
                     </div>
                 </div>
 
-            {!! Form::close() !!} 
+            {!! Form::close() !!}
         </div>
-        
+
         <div role="tabpanel" class="tab-pane" id="about_us">
-            
+
             {!! Form::open(array('url' => 'admin/about_us','class'=>'form-horizontal padding-15','name'=>'pass_form','id'=>'pass_form','role'=>'form')) !!}
-                
-                 
+
+
                 <div class="form-group">
                     <label for="" class="col-sm-3 control-label">About Title</label>
-                    
+
                     <div class="col-sm-9">
                         <input type="text" name="about_us_title" value="{{ $settings->about_us_title }}" class="form-control" value="">
                     </div>
@@ -268,7 +276,7 @@
                         <textarea type="text" name="about_us_description" class="form-control summernote" rows="5">{{ $settings->about_us_description }}</textarea>
                     </div>
                 </div>
-                 
+
                 <hr>
                 <div class="form-group">
                     <div class="col-md-offset-3 col-sm-9 ">
@@ -276,17 +284,17 @@
                     </div>
                 </div>
 
-            {!! Form::close() !!} 
+            {!! Form::close() !!}
         </div>
-        
+
         <div role="tabpanel" class="tab-pane" id="careers_with_us">
-            
+
             {!! Form::open(array('url' => 'admin/careers_with_us','class'=>'form-horizontal padding-15','name'=>'careers_with_us_form','id'=>'careers_with_us_form','role'=>'form')) !!}
-                
-                 
+
+
                 <div class="form-group">
                     <label for="" class="col-sm-3 control-label">Careers Title</label>
-                    
+
                     <div class="col-sm-9">
                         <input type="text" name="careers_with_us_title" value="{{ $settings->careers_with_us_title }}" class="form-control" value="">
                     </div>
@@ -297,7 +305,7 @@
                         <textarea type="text" name="careers_with_us_description" class="form-control summernote" rows="5">{{ $settings->careers_with_us_description }}</textarea>
                     </div>
                 </div>
-                 
+
                 <hr>
                 <div class="form-group">
                     <div class="col-md-offset-3 col-sm-9 ">
@@ -305,18 +313,18 @@
                     </div>
                 </div>
 
-            {!! Form::close() !!} 
+            {!! Form::close() !!}
         </div>
-        
-        
+
+
         <div role="tabpanel" class="tab-pane" id="terms_conditions">
-            
+
             {!! Form::open(array('url' => 'admin/terms_conditions','class'=>'form-horizontal padding-15','name'=>'terms_conditions_form','id'=>'terms_conditions_form','role'=>'form')) !!}
-                
-                 
+
+
                 <div class="form-group">
                     <label for="" class="col-sm-3 control-label">Terms Title</label>
-                    
+
                     <div class="col-sm-9">
                         <input type="text" name="terms_conditions_title" value="{{ $settings->terms_conditions_title }}" class="form-control" value="">
                     </div>
@@ -327,7 +335,7 @@
                         <textarea type="text" name="terms_conditions_description" class="form-control summernote" rows="5">{{ $settings->terms_conditions_description }}</textarea>
                     </div>
                 </div>
-                 
+
                 <hr>
                 <div class="form-group">
                     <div class="col-md-offset-3 col-sm-9 ">
@@ -335,18 +343,18 @@
                     </div>
                 </div>
 
-            {!! Form::close() !!} 
+            {!! Form::close() !!}
         </div>
-        
-        
+
+
         <div role="tabpanel" class="tab-pane" id="privacy_policy">
-            
+
             {!! Form::open(array('url' => 'admin/privacy_policy','class'=>'form-horizontal padding-15','name'=>'privacy_policy_form','id'=>'privacy_policy_form','role'=>'form')) !!}
-                
-                 
+
+
                 <div class="form-group">
                     <label for="" class="col-sm-3 control-label">Title</label>
-                    
+
                     <div class="col-sm-9">
                         <input type="text" name="privacy_policy_title" value="{{ $settings->privacy_policy_title }}" class="form-control" value="">
                     </div>
@@ -357,7 +365,7 @@
                         <textarea type="text" name="privacy_policy_description" class="form-control summernote" rows="5">{{ $settings->privacy_policy_description }}</textarea>
                     </div>
                 </div>
-                 
+
                 <hr>
                 <div class="form-group">
                     <div class="col-md-offset-3 col-sm-9 ">
@@ -365,13 +373,13 @@
                     </div>
                 </div>
 
-            {!! Form::close() !!} 
+            {!! Form::close() !!}
         </div>
         <div role="tabpanel" class="tab-pane" id="other_Settings">
-            
+
             {!! Form::open(array('url' => 'admin/headfootupdate','class'=>'form-horizontal padding-15','name'=>'pass_form','id'=>'pass_form','role'=>'form')) !!}
-                
-                 
+
+
                 <div class="form-group">
                     <label for="" class="col-sm-3 control-label">Header Code</label>
                     <div class="col-sm-9">
@@ -384,7 +392,7 @@
                         <textarea type="text" name="site_footer_code" class="form-control" rows="5" placeholder="You may want to add some html/css/js code to footer. ">{{ $settings->site_footer_code }}</textarea>
                     </div>
                 </div>
-                 
+
                 <hr>
                 <div class="form-group">
                     <div class="col-md-offset-3 col-sm-9 ">
@@ -392,9 +400,9 @@
                     </div>
                 </div>
 
-            {!! Form::close() !!} 
+            {!! Form::close() !!}
         </div>
-         
+
     </div>
 </div>
 </div>

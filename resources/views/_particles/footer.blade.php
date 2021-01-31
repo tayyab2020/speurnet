@@ -95,12 +95,16 @@
                   @endif
 
                     @if(getcong('social_linkedin'))
-                        <li><a href="{{getcong('social_linkedin')}}" class="icon-gplus" rel="tooltip" title="" data-placement="bottom" data-original-title="Linkedin" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+                        <li><a href="{{getcong('social_linkedin')}}" class="icon-linkedin" rel="tooltip" title="" data-placement="bottom" data-original-title="Linkedin" target="_blank"><i class="fa fa-linkedin"></i></a></li>
                     @endif
 
                     @if(getcong('social_gplus'))
                         <li><a href="{{getcong('social_gplus')}}" class="icon-gplus" rel="tooltip" title="" data-placement="bottom" data-original-title="Gplus" target="_blank"><i class="fa fa-google-plus"></i></a></li>
                     @endif
+
+                  @if(getcong('social_insta'))
+                      <li><a href="{{getcong('social_insta')}}" class="icon-insta" rel="tooltip" title="" data-placement="bottom" data-original-title="Instagram" target="_blank"><i class="fa fa-instagram"></i></a></li>
+                  @endif
 
               </ul>
 
@@ -121,6 +125,10 @@
     <!-- end:footer -->
 
 <style>
+
+    .copyright .social-links > li > .icon-linkedin:hover{ background: #4e4e99; }
+
+    .copyright .social-links > li > .icon-insta:hover{ background: #d54b4b; }
 
     .widget ul li a{color: #3bafda !important;}
 
