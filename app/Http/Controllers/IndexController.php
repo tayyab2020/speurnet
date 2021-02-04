@@ -657,8 +657,7 @@ class IndexController extends Controller
 
                             if(isset($property_details['RealEstateProperty']['Gardens']['Garden']))
                             {
-                                var_dump($property_id);
-                                var_dump($realtor_id);
+
                                 if(array_key_exists(0, $property_details['RealEstateProperty']['Gardens']['Garden']))
                                 {
                                     $garden_type = $property_details['RealEstateProperty']['Gardens']['Garden'][0]['Type'];
