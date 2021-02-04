@@ -314,8 +314,8 @@ class KolibriCron extends Command
             foreach($properties as $key)
             {
                 $modification = $key['ModificationDateTimeUtc'];
-                $property_id = "3777169";
-                $realtor_id = "8871";
+                $property_id = $key['RealEstateProperyID'];
+                $realtor_id = $key['RealtorID'];
                 $property_address = $key['AddressSummary'];
 
                 $ch = curl_init();
@@ -638,15 +638,20 @@ class KolibriCron extends Command
 
                         if(isset($property_details['RealEstateProperty']['Gardens']['Garden']))
                         {
-                            
-                            dd($property_details['RealEstateProperty']['Gardens']['Garden']);
                             if(array_key_exists(0, $property_details['RealEstateProperty']['Gardens']['Garden']))
                             {
                                 $garden_type = $property_details['RealEstateProperty']['Gardens']['Garden'][0]['Type'];
                             }
                             else
                             {
-                                $garden_type = $property_details['RealEstateProperty']['Gardens']['Garden']['Type'];
+                                if(isset($property_details['RealEstateProperty']['Gardens']['Garden']['Type']))
+                                {
+                                    $garden_type = $property_details['RealEstateProperty']['Gardens']['Garden']['Type'];
+                                }
+                                else
+                                {
+                                    $garden_type = NULL;
+                                }
                             }
                         }
                         else
