@@ -659,7 +659,14 @@ class IndexController extends Controller
                             {
                                 if(array_key_exists(0, $property_details['RealEstateProperty']['Gardens']['Garden']))
                                 {
-                                    $garden_type = $property_details['RealEstateProperty']['Gardens']['Garden'][0]['Type'];
+                                    if(isset($property_details['RealEstateProperty']['Gardens']['Garden'][0]['Type']))
+                                    {
+                                        $garden_type = $property_details['RealEstateProperty']['Gardens']['Garden'][0]['Type'];
+                                    }
+                                    else
+                                    {
+                                        $garden_type = NULL;
+                                    }
                                 }
                                 else
                                 {
