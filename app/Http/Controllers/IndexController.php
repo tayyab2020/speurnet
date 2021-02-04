@@ -663,7 +663,14 @@ class IndexController extends Controller
                                 }
                                 else
                                 {
-                                    $garden_type = $property_details['RealEstateProperty']['Gardens']['Garden']['Type'];
+                                    if(isset($property_details['RealEstateProperty']['Gardens']['Garden']['Type']))
+                                    {
+                                        $garden_type = $property_details['RealEstateProperty']['Gardens']['Garden']['Type'];
+                                    }
+                                    else
+                                    {
+                                        $garden_type = NULL;
+                                    }
                                 }
                             }
                             else
