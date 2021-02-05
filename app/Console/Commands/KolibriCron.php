@@ -267,7 +267,7 @@ class KolibriCron extends Command
                 $user_name = $brokers['Name'];
                 $user_email = $brokers['EmailAddress'];
 
-                /*Mail::send('emails.kolibri_registration',
+                Mail::send('emails.kolibri_registration',
                     array(
                         'name' => $user_name,
                         'email' => $user_email,
@@ -276,7 +276,7 @@ class KolibriCron extends Command
                     {
                         $message->from(getcong('site_email'),getcong('site_name'));
                         $message->to($user_email,$user_name)->subject('Gefeliciteerd, je Zoekjehuisje.nl account is geactiveerd!');
-                    });*/
+                    });
             }
 
 
