@@ -589,8 +589,6 @@ class PropertiesController extends Controller
                 }
 
                 $properties = $properties_search;
-                dd($properties);
-                exit();
 
             }
 
