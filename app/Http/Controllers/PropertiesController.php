@@ -560,7 +560,7 @@ class PropertiesController extends Controller
                 $properties = Home_Exchange::SearchByKeyword($house_kind,$bedrooms,$area,$rent,$preferred_house_kind,$preferred_bedrooms,$preferred_area,$preferred_rent,$media)->where('is_sold',0)->where('is_rented',0)->orderBy('properties.area', 'desc')->select('properties.*');
             }
 
-            dd($properties->get());
+            var_dump($properties->get());
             exit();
 
         if($preferred_address && $preferred_address_latitude && $preferred_address_longitude) {
