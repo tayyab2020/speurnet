@@ -31,10 +31,11 @@ class Home_Exchange extends Model
         }
 
         $query->where("bedrooms", '>=', $preferred_bedrooms);
-        dd($query->get());
-        exit();
 
         $query->where("rent_per_month" ,'<=', $preferred_rent);
+
+        dd($query->get());
+        exit();
 
         if($house_kind != 0)
         {
