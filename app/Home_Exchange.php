@@ -41,9 +41,6 @@ class Home_Exchange extends Model
 
         $query->where("preferred_bedrooms", '<=', $bedrooms);
 
-        dd($query->get());
-        exit();
-
         $query->where("preferred_rent_max" ,'>=', $rent);
 
         if($media)
