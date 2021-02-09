@@ -37,7 +37,7 @@ class Home_Exchange extends Model
         if($house_kind != 0)
         {
             $query->where("preferred_kind", "$house_kind");
-            var_dump($query->get());
+            var_dump($house_kind);
             exit();
         }
 
