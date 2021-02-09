@@ -43,12 +43,11 @@ class Home_Exchange extends Model
 
         $query->where("preferred_rent_max" ,'>=', $rent);
 
-        dd($query->get());
-        exit();
-
         if($media)
         {
             $query->where("featured_image",'!=',NULL)->orWhere('property_images1','!=',NULL)->orWhere('property_images2','!=',NULL)->orWhere('property_images3','!=',NULL)->orWhere('property_images4','!=',NULL)->orWhere('property_images5','!=',NULL)->orWhere('video','!=',NULL);
+            dd($query->get());
+            exit();
         }
 
 
