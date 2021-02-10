@@ -556,4 +556,6 @@ return [
     'Located At' => 'Located At',
     'Plot Area' => 'Plot Area',
     'Type Garage' => 'Garage Type',
+    'Corporation' => 'Corporation',
+    'My Home Exchange' => 'My Home Exchange',
 ];

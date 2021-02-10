@@ -38,15 +38,14 @@
 
              @if(Auth::check())
 
-             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{__('text.My Account')}} <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="{{ URL::to('admin/dashboard/') }}">{{__('text.Dashboard')}}</a></li>
-                <li><a href="{{ URL::to('admin/profile/') }}">{{__('text.Profile')}}</a></li>
-                <li><a href="{{ URL::to('logout') }}">{{__('text.Logout')}}</a></li>
-
-              </ul>
-            </li>
+                  <li class="dropdown">
+                      <a style="border: 1px solid #ff1818;padding: 20px;margin-top: 10px;margin-right: 10px;" href="#" class="my-account-btn dropdown-toggle" data-toggle="dropdown">{{__('text.My Account')}} <b class="caret"></b></a>
+                      <ul class="dropdown-menu">
+                          <li><a href="{{ URL::to('admin/dashboard/') }}">@if(Auth::user()->usertype=='Users') {{__('text.My Home Exchange')}} @else {{__('text.Dashboard')}} @endif</a></li>
+                          <li><a href="{{ URL::to('admin/profile/') }}">{{__('text.Profile')}}</a></li>
+                          <li><a href="{{ URL::to('logout') }}">{{__('text.Logout')}}</a></li>
+                      </ul>
+                  </li>
 
                   @if(Auth::user()->usertype=='Users')
 
@@ -81,6 +80,12 @@
    <!-- end:navbar -->
 
 <style>
+
+    .navbar.navbar-default .navbar-nav li.dropdown.open > .my-account-btn, .navbar.navbar-default .navbar-nav li.dropdown.open > .my-account-btn:hover
+    {
+        color: #656d78;
+        background-color: white;
+    }
 
     @media screen and (max-width: 767px)
     {

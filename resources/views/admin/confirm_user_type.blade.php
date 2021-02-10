@@ -71,6 +71,12 @@
                                             {{__('text.Agent')}}
                                         </label>
 
+                                        <input class="checkbox-tools" type="radio" name="type" id="tool-4" value="Corporation" >
+                                        <label class="for-checkbox-tools" for="tool-4">
+                                            <i class="fas fa-user-edit" style="font-size: 24px;display: block;position:relative;margin-bottom: 10px;"></i>
+                                            {{__('text.Corporation')}}
+                                        </label>
+
                                         <input class="checkbox-tools" type="radio" name="type" id="tool-3" value="landlord" >
                                         <label class="for-checkbox-tools" for="tool-3">
                                             <i class="fas fa-user-edit" style="font-size: 24px;display: block;position:relative;margin-bottom: 10px;"></i>
@@ -108,7 +114,6 @@
         $(".checkbox-tools").change(function() {
 
 
-
             Swal.fire({
                 title: "<?php echo __('text.Are you sure?'); ?>",
                 text: "<?php echo __("text.You won't be able to revert this!"); ?>",
@@ -133,6 +138,14 @@
     </script>
 
 <style>
+
+    @media (min-width: 1200px)
+    {
+        .container
+        {
+            width: 90%;
+        }
+    }
 
     .for-checkbox-tools
     {

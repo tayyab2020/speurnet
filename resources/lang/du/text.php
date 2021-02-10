@@ -119,7 +119,7 @@ return [
 
     Probeer het uit en wie weet heb je in no time je huis verhuurd of verkocht. Leuke deal, toch?
 
-    Ben je op zoek naar een woning? Geniet dan gratis de toegankelijkheid van het aanbod en wie weet heb je in in een oogwenk jouw droomhuis gevonden. Hoe mooi zou dat zijn?',
+    Ben je op zoek naar een woning? Geniet dan gratis de toegankelijkheid van het aanbod en wie weet heb je in een oogwenk jouw droomhuis gevonden. Hoe mooi zou dat zijn?',
     'Agent' => 'Makelaar',
     'Private Landlord' => 'Particuliere verhuurder/verkoper',
     'User' => 'Woningzoeker',
@@ -555,4 +555,6 @@ return [
     'Located At' => 'Gelegen op woonlaag',
     'Plot Area' => 'Perceeloppervlakte',
     'Type Garage' => 'Soort garage',
+    'Corporation' => 'Woningcorporatie',
+    'My Home Exchange' => 'Mijn woningruil'
 ];

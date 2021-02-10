@@ -50,6 +50,10 @@ class IndexController extends MainAdminController
         {
             $user = User::where('id',$request->user_id)->update(['usertype' => 'Agents', 'landlord' => 1]);
         }
+        elseif($request->type == 'Corporation')
+        {
+            $user = User::where('id',$request->user_id)->update(['usertype' => 'Agents', 'corporation' => 1]);
+        }
         else
         {
             $user = User::where('id',$request->user_id)->update(['usertype' => $request->type]);
