@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7fe7f36f-c82f-4504-8c0a-7874522d22c9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/Home_Exchange.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Home_Exchange.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/pages/addeditproperty.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/pages/addeditproperty.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/pages/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/pages/dashboard.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/agents.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/agents.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/agentsingle.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/agentsingle.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/properties.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/properties.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -355,7 +360,7 @@
       <workItem from="1612119375870" duration="838000" />
       <workItem from="1612174204258" duration="389000" />
       <workItem from="1612463861114" duration="17574000" />
-      <workItem from="1612895083789" duration="1325000" />
+      <workItem from="1612895083789" duration="7207000" />
     </task>
     <servers />
   </component>
@@ -386,10 +391,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1609363961980" />
-    <state x="452" y="123" width="805" height="606" key="find.popup" timestamp="1612119616492">
+    <state x="452" y="123" width="805" height="606" key="find.popup" timestamp="1612900551077">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="452" y="123" width="805" height="606" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1612119616492" />
+    <state x="452" y="123" width="805" height="606" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1612900551077" />
     <state x="455" y="258" width="705" height="307" key="org.intellij.images.editor.actions.BackgroundImageDialog" timestamp="1604393886184">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

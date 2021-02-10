@@ -801,6 +801,20 @@
 
         <style>
 
+            @media (max-width: 500px) {
+                #content
+                {
+                    padding: 30px 0;
+                }
+
+                #header.heading
+                {
+                    min-height: 155px;
+                    padding-top: 10px;
+                    padding-bottom: 0;
+                }
+            }
+
             @media (min-width: 1200px) {
                 .container1 {
                     width: 90%;

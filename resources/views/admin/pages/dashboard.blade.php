@@ -242,7 +242,7 @@
     </div>
     </a>
 
-    @else
+    @elseif(Auth::user()->usertype == 'Agents')
 
         <style>
 
@@ -378,6 +378,61 @@
                                 <i class="fa fa-send fa-4x" style="margin: 8px;"></i>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+    @else
+
+        <style>
+
+            @media (min-width: 992px)
+            {
+                .widgets-row{display: flex;margin: 0;}
+            }
+
+            .widgets-row .media-left{
+                width: 100%;
+                display: inline-block;
+                padding: 0;
+            }
+
+            .widgets-row .media-body
+            {
+                width: 30%;
+                display: inline-block;
+                float: left;
+            }
+
+            .widgets-row .width-100
+            {
+                width: 100%;
+            }
+
+            .widgets-row .width-150
+            {
+                width: 100%;
+            }
+
+            .panel{height: 75%;}
+
+            #graphWeek-a{margin-top: 5px;}
+
+        </style>
+
+        <div class="col-sm-6 col-md-3">
+            <a style="text-decoration: none;" href="{{ URL::to('admin/properties') }}">
+                <div style="background: #27ae27;" class="panel panel-orange panel-shadow">
+                    <div class="media">
+                        <div class="media-left">
+                            <div class="panel-body">
+                                <div class="width-100">
+                                    <h5 class="margin-none" id="graphWeek-y">Klik hier om woningruil te plaatsen</h5>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </a>
