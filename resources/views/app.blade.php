@@ -146,7 +146,7 @@
           @media screen and (max-width: 767px)
           {
               .navbar-nav {
-                  height: 70vh !important;
+                  height: 100vh !important;
                   overflow-y: auto;
               }
 
