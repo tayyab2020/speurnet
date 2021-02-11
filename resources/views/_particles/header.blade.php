@@ -186,7 +186,8 @@
         .navbar-right
         {
             float: none !important;
-            margin: 7.5px -15px;
+            margin: 7.5px 0;
+            width: 100%;
         }
 
         .signup

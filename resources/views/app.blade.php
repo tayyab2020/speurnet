@@ -146,13 +146,15 @@
           @media screen and (max-width: 767px)
           {
               .navbar-nav {
-                  height: 100vh !important;
+                  height: 75vh !important;
                   overflow-y: auto;
               }
 
               .collapse.in
               {
                   max-height: 100% !important;
+                  height: 100vh;
+                  overflow: hidden !important;
               }
 
               .collapsing
