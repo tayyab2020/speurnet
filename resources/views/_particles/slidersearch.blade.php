@@ -1,7 +1,7 @@
 <!-- begin:header -->
     <div id="header" class="header-slide">
 
-        <div class="container" style="margin-top: 155px;">
+        <div class="container">
 
             <h2 style="display: none;margin: 0;text-align: center;color: white;text-shadow: -3px 2px 11px #252424;font-size: 36px;position: relative;bottom: 120px;" class="css-ce6ko1 top-heading">Van ‘te koop’ naar ‘verkocht!’<span class="narrow"> Van ‘te huur’ naar ‘verhuurd.’<span class="narrow"> Welkom thuis!</h2>
 
@@ -243,6 +243,10 @@
 
                             <style>
 
+                                #header .container
+                                {
+                                    margin-top: 250px;
+                                }
 
                                 @media (max-width: 768px)
                                 {
@@ -345,9 +349,8 @@
 
                                     #header .container
                                     {
-                                        margin-top: 0px !important;
+                                        margin-top: 200px !important;
                                         position: absolute;
-                                        top: 90px;
                                     }
 
                                     .quick-search

@@ -422,7 +422,7 @@
         </style>
 
         <div class="col-sm-6 col-md-3">
-            <a style="text-decoration: none;" href="{{ URL::to('admin/properties') }}">
+            <a style="text-decoration: none;" href="{{ URL::to('admin/properties/addhomeexchange') }}">
                 <div style="background: #27ae27;" class="panel panel-orange panel-shadow">
                     <div class="media">
                         <div class="media-left">

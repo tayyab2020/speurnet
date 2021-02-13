@@ -143,8 +143,22 @@
               }
           }
 
+          .backstretch img{
+              width: 100% !important;
+              height: 100% !important;
+              left: 0 !important;
+              top: 0 !important;
+          }
+
           @media screen and (max-width: 767px)
           {
+              .backstretch img{
+                  width: auto !important;
+                  height: 100% !important;
+                  left: -750px !important;
+                  top: -52px !important;
+              }
+
               .navbar-nav {
                   height: 80vh !important;
                   overflow-y: auto;
@@ -192,13 +206,6 @@
           {
               width: 100% !important;
               height: 100% !important;
-          }
-
-          .backstretch img{
-              width: 100% !important;
-              height: 100% !important;
-              left: 0 !important;
-              top: 0px !important;
           }
 
       </style>
