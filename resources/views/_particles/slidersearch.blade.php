@@ -338,13 +338,13 @@
 
                                     .search-span
                                     {
-                                        top: 0px !important;
+                                        top: 0 !important;
                                         font-size: 10px !important;
                                     }
 
                                     #header
                                     {
-                                        height: 400px !important;
+                                        height: auto !important;
                                     }
 
                                     #header .container
