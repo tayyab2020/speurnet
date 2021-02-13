@@ -7,7 +7,7 @@
 
             <div class="row" style="display: flex;">
                 <div class="col-md-9 col-xs-12" style="margin: auto;padding: 0;">
-                    <div class="quick-search" style="background:rgba(255, 255, 255, 0.59);">
+                    <div class="quick-search" style="background:rgb(209 209 209 / 59%);">
                         <div class="row">
 
                             {!! Form::open(array('url' => array('alle-woningen'),'name'=>'search_form','id'=>'search_form','role'=>'form')) !!}
@@ -345,12 +345,13 @@
                                     #header
                                     {
                                         height: auto !important;
-                                        min-height: 315px;
+                                        min-height: 300px;
+                                        padding: 0;
                                     }
 
                                     #header .container
                                     {
-                                        margin-top: 135px !important;
+                                        margin-top: 156px !important;
                                         position: absolute;
                                     }
 
