@@ -9,7 +9,7 @@
 
 
     <!-- begin:header -->
-    <div id="header" class="heading" style="background-image: url({{ URL::asset('assets/img/img01.jpg') }});">
+    {{--<div id="header" class="heading" style="background-image: url({{ URL::asset('assets/img/img01.jpg') }});">
         <div class="container">
             <div class="row">
                 <div class="col-md-10 col-md-offset-1 col-sm-12">
@@ -24,7 +24,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>--}}
     <!-- end:header -->
 
     @if(Session::has('flash_message'))

@@ -25,7 +25,7 @@
 
 
     <!-- begin:header -->
-    <div id="header" class="heading" style="background-image: url({{ URL::asset('assets/img/img01.jpg') }});">
+    {{--<div id="header" class="heading" style="background-image: url({{ URL::asset('assets/img/img01.jpg') }});">
         <div class="container">
             <div class="row">
                 <div class="col-md-10 col-md-offset-1 col-sm-12">
@@ -34,12 +34,12 @@
                     </div>
                     <ol class="breadcrumb">
                         <li><a href="{{ URL::to('/') }}">{{__('text.Home')}}</a></li>
-                        {{--<li class="active">Add New Property</li>--}}
+                        --}}{{--<li class="active">Add New Property</li>--}}{{--
                     </ol>
                 </div>
             </div>
         </div>
-    </div>
+    </div>--}}
     <!-- end:header -->
 
     <div id="main" style="width: 60%;margin: auto;margin-top: 25px;">
