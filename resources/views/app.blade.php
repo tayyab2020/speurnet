@@ -155,7 +155,7 @@
               .backstretch img{
                   width: auto !important;
                   height: 100% !important;
-                  left: -700px !important;
+                  left: -595px !important;
                   top: -90px !important;
               }
 

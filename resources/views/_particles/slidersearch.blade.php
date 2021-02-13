@@ -345,6 +345,7 @@
                                     #header
                                     {
                                         height: auto !important;
+                                        min-height: 315px;
                                     }
 
                                     #header .container
