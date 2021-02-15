@@ -521,6 +521,7 @@ class IndexController extends Controller
                             {
                                 $description = null;
                             }
+                            $description = utf8_encode($description);
 
                             if(isset($property_details['RealEstateProperty']['Construction']['ConstructionYearFrom']))
                             {

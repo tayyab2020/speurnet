@@ -165,7 +165,6 @@ class IndexController extends MainAdminController
 
             return \Redirect::back();
 
-
     }
 
 
