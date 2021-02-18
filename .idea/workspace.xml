@@ -4,7 +4,7 @@
     <list default="true" id="7fe7f36f-c82f-4504-8c0a-7874522d22c9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Console/Commands/KolibriCron.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Commands/KolibriCron.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/IndexController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/IndexController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/PropertiesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/PropertiesController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/IndexController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/IndexController.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -362,7 +362,15 @@
       <workItem from="1613130482898" duration="3747000" />
       <workItem from="1613216620689" duration="7004000" />
       <workItem from="1613331657017" duration="941000" />
-      <workItem from="1613386259299" duration="8551000" />
+      <workItem from="1613386259299" duration="8883000" />
+      <workItem from="1613407178111" duration="699000" />
+      <workItem from="1613476149732" duration="1517000" />
+      <workItem from="1613482161279" duration="1280000" />
+      <workItem from="1613504646250" duration="145000" />
+      <workItem from="1613507099658" duration="49000" />
+      <workItem from="1613645963186" duration="1604000" />
+      <workItem from="1613655937879" duration="1066000" />
+      <workItem from="1613671071053" duration="282000" />
     </task>
     <servers />
   </component>
@@ -385,10 +393,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1609363961980" />
-    <state x="132" y="155" width="805" height="606" key="find.popup" timestamp="1613168874614">
+    <state x="132" y="155" width="805" height="606" key="find.popup" timestamp="1613671353496">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="132" y="155" width="805" height="606" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1613168874614" />
+    <state x="132" y="155" width="805" height="606" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1613671353496" />
     <state x="425" y="187" key="run.anything.popup" timestamp="1612098747964">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

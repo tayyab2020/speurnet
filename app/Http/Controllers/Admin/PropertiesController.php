@@ -367,7 +367,7 @@ class PropertiesController extends MainAdminController
         {
             $image = imagecreatefromjpeg($source);
 
-            $exif = exif_read_data($source);
+            $exif = @exif_read_data($source);
 
             if (!empty($exif['Orientation'])) {
 
