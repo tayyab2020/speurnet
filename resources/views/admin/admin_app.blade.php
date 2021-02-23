@@ -67,7 +67,7 @@
 
   <div class="overlay-disabled"></div>
 
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCa2tNnLK8OjdGb0jlMrKyll2wZnTDLsUk&libraries=places&region=nl" defer></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBNlftIg-4OOM7dicTvWaJm46DgD-Wz61Q&libraries=places&region=nl" defer></script>
 
   <!-- Plugins -->
   <script src="{{ URL::asset('admin_assets/js/plugins.min.js') }}"></script>

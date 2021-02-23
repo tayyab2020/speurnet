@@ -55,7 +55,7 @@ class AgentsController extends Controller
                         $from = urlencode($from);
                         $to = urlencode($to);
 
-                        $data = file_get_contents("https://maps.googleapis.com/maps/api/distancematrix/json?key=AIzaSyA3iRmrPEQ6Sr9UCzxYH1jKm23sx0JFY6s&origins=$from&destinations=$to&language=en-EN&sensor=false");
+                        $data = file_get_contents("https://maps.googleapis.com/maps/api/distancematrix/json?key=AIzaSyBNlftIg-4OOM7dicTvWaJm46DgD-Wz61Q&origins=$from&destinations=$to&language=en-EN&sensor=false");
                         $data = json_decode($data);
 
 

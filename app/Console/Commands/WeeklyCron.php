@@ -95,7 +95,7 @@ class WeeklyCron extends Command
                         $property_longitude = $key->map_longitude;
 
 
-                        $url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=".urlencode($address_latitude).",".urlencode($address_longitude)."&destinations=".urlencode($property_latitude).",".urlencode($property_longitude)."&key=AIzaSyA3iRmrPEQ6Sr9UCzxYH1jKm23sx0JFY6s";
+                        $url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=".urlencode($address_latitude).",".urlencode($address_longitude)."&destinations=".urlencode($property_latitude).",".urlencode($property_longitude)."&key=AIzaSyBNlftIg-4OOM7dicTvWaJm46DgD-Wz61Q";
 
                         $result_string = file_get_contents($url);
                         $result = json_decode($result_string, true);
@@ -217,7 +217,7 @@ class WeeklyCron extends Command
                         $property_longitude = $key->map_longitude;
 
 
-                        $url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=".urlencode($address_latitude).",".urlencode($address_longitude)."&destinations=".urlencode($property_latitude).",".urlencode($property_longitude)."&key=AIzaSyA3iRmrPEQ6Sr9UCzxYH1jKm23sx0JFY6s";
+                        $url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=".urlencode($address_latitude).",".urlencode($address_longitude)."&destinations=".urlencode($property_latitude).",".urlencode($property_longitude)."&key=AIzaSyBNlftIg-4OOM7dicTvWaJm46DgD-Wz61Q";
 
                         $result_string = file_get_contents($url);
                         $result = json_decode($result_string, true);
