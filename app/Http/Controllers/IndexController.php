@@ -1536,7 +1536,7 @@ class IndexController extends Controller
 
     public function Blog($id)
     {
-        $blog = Blogs::where('id',$id)->first();
+        $blog = Blogs::where('title',$id)->first();
 
         return view('pages.blog',compact('blog'));
     }
@@ -1805,7 +1805,7 @@ class IndexController extends Controller
 		        'password' => 'required|min:3|confirmed'
 		   		 );
 
-        $messages = [
+	    $messages = [
             'name.required' => __('text.Name is required.'),
             'email.unique' => __('text.Email is already been taken.'),
             'email.required' => __('text.The email field is required.'),

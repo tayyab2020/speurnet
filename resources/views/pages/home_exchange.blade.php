@@ -704,168 +704,152 @@
 
                 <script>
 
+                    function initMap()
+                    {
+                        const locationInputs = $('#address-input');
+
+                        var options = {
+
+                            componentRestrictions: {country: "nl"}
+
+                        };
+
+                        const autocompletes = [];
+                        const geocoder = new google.maps.Geocoder;
+
+                        for (let i = 0; i < locationInputs.length; i++) {
+
+                            const input = locationInputs[i];
+                            const fieldKey = input.id.replace("-input", "");
+
+                            const autocomplete = new google.maps.places.Autocomplete(input, options);
+                            autocomplete.key = fieldKey;
+                            autocompletes.push({input: input, autocomplete: autocomplete});
+                        }
+
+                        for (let i = 0; i < autocompletes.length; i++) {
+
+                            const input = autocompletes[i].input;
+                            const autocomplete = autocompletes[i].autocomplete;
+
+
+                            google.maps.event.addListener(autocomplete, 'place_changed', function () {
+
+                                const place = autocomplete.getPlace();
+
+                                geocoder.geocode({'placeId': place.place_id}, function (results, status) {
+
+
+                                    if (status === google.maps.GeocoderStatus.OK) {
+
+                                        if (results[0]) {
+
+                                            const lat = results[0].geometry.location.lat();
+                                            const lng = results[0].geometry.location.lng();
+
+
+                                            $(input).parent().children('#address-latitude').val(lat);
+                                            $(input).parent().children('#address-longitude').val(lng);
+
+                                            var value = $(input).val();
+
+                                        } else {
+
+                                            alert("No results found!");
+
+                                        }
+
+                                    }
+
+                                });
+
+                                if (!place.geometry) {
+                                    window.alert("No details available for input: '" + place.name + "'");
+                                    input.value = "";
+                                    return;
+                                }
+
+
+                            });
+                        }
+                    }
+
+
+                    function initMap1()
+                    {
+                        const locationInputs = $('#preferred-address-input');
+
+                        var options = {
+
+                            componentRestrictions: {country: "nl"}
+
+                        };
+
+                        const autocompletes = [];
+                        const geocoder = new google.maps.Geocoder;
+
+                        for (let i = 0; i < locationInputs.length; i++) {
+
+                            const input = locationInputs[i];
+                            const fieldKey = input.id.replace("-input", "");
+
+                            const autocomplete = new google.maps.places.Autocomplete(input, options);
+                            autocomplete.key = fieldKey;
+                            autocompletes.push({input: input, autocomplete: autocomplete});
+                        }
+
+                        for (let i = 0; i < autocompletes.length; i++) {
+
+                            const input = autocompletes[i].input;
+                            const autocomplete = autocompletes[i].autocomplete;
+
+
+                            google.maps.event.addListener(autocomplete, 'place_changed', function () {
+
+                                const place = autocomplete.getPlace();
+
+                                geocoder.geocode({'placeId': place.place_id}, function (results, status) {
+
+
+                                    if (status === google.maps.GeocoderStatus.OK) {
+
+                                        if (results[0]) {
+
+                                            const lat = results[0].geometry.location.lat();
+                                            const lng = results[0].geometry.location.lng();
+
+
+                                            $(input).parent().children('#preferred-address-latitude').val(lat);
+                                            $(input).parent().children('#preferred-address-longitude').val(lng);
+
+                                            var value = $(input).val();
+
+                                        } else {
+
+                                            alert("No results found!");
+
+                                        }
+
+                                    }
+
+                                });
+
+                                if (!place.geometry) {
+                                    window.alert("No details available for input: '" + place.name + "'");
+                                    input.value = "";
+                                    return;
+                                }
+
+
+                            });
+                        }
+                    }
+
                     $(document).ready(function() {
 
-                        $('#address-input').on('keyup keypress', function (e) {
+                        initMap();
+                        initMap1();
 
-
-                            var keyCode = e.keyCode || e.which;
-
-                            if (keyCode === 13) {
-                                e.preventDefault();
-                                return false;
-                            }
-
-                            const locationInputs = $(this);
-
-                            var options = {
-
-                                componentRestrictions: {country: "nl"}
-
-                            };
-
-                            const autocompletes = [];
-                            const geocoder = new google.maps.Geocoder;
-
-                            for (let i = 0; i < locationInputs.length; i++) {
-
-                                const input = locationInputs[i];
-                                const fieldKey = input.id.replace("-input", "");
-
-                                const autocomplete = new google.maps.places.Autocomplete(input, options);
-                                autocomplete.key = fieldKey;
-                                autocompletes.push({input: input, autocomplete: autocomplete});
-                            }
-
-                            for (let i = 0; i < autocompletes.length; i++) {
-
-                                const input = autocompletes[i].input;
-                                const autocomplete = autocompletes[i].autocomplete;
-
-
-                                google.maps.event.addListener(autocomplete, 'place_changed', function () {
-
-                                    const place = autocomplete.getPlace();
-
-                                    geocoder.geocode({'placeId': place.place_id}, function (results, status) {
-
-
-                                        if (status === google.maps.GeocoderStatus.OK) {
-
-                                            if (results[0]) {
-
-                                                const lat = results[0].geometry.location.lat();
-                                                const lng = results[0].geometry.location.lng();
-
-
-                                                $(input).parent().children('#address-latitude').val(lat);
-                                                $(input).parent().children('#address-longitude').val(lng);
-
-                                                var value = $(input).val();
-
-                                            } else {
-
-                                                alert("No results found!");
-
-                                            }
-
-                                        }
-
-                                    });
-
-                                    if (!place.geometry) {
-                                        window.alert("No details available for input: '" + place.name + "'");
-                                        input.value = "";
-                                        return;
-                                    }
-
-
-                                });
-                            }
-
-
-                        });
-
-
-                        $('#preferred-address-input').on('keyup keypress', function (e) {
-
-
-                            var keyCode = e.keyCode || e.which;
-
-                            if (keyCode === 13) {
-                                e.preventDefault();
-                                return false;
-                            }
-
-                            const locationInputs = $(this);
-
-                            var options = {
-
-                                componentRestrictions: {country: "nl"}
-
-                            };
-
-                            const autocompletes = [];
-                            const geocoder = new google.maps.Geocoder;
-
-                            for (let i = 0; i < locationInputs.length; i++) {
-
-                                const input = locationInputs[i];
-                                const fieldKey = input.id.replace("-input", "");
-
-                                const autocomplete = new google.maps.places.Autocomplete(input, options);
-                                autocomplete.key = fieldKey;
-                                autocompletes.push({input: input, autocomplete: autocomplete});
-                            }
-
-                            for (let i = 0; i < autocompletes.length; i++) {
-
-                                const input = autocompletes[i].input;
-                                const autocomplete = autocompletes[i].autocomplete;
-
-
-                                google.maps.event.addListener(autocomplete, 'place_changed', function () {
-
-                                    const place = autocomplete.getPlace();
-
-                                    geocoder.geocode({'placeId': place.place_id}, function (results, status) {
-
-
-                                        if (status === google.maps.GeocoderStatus.OK) {
-
-                                            if (results[0]) {
-
-                                                const lat = results[0].geometry.location.lat();
-                                                const lng = results[0].geometry.location.lng();
-
-
-                                                $(input).parent().children('#preferred-address-latitude').val(lat);
-                                                $(input).parent().children('#preferred-address-longitude').val(lng);
-
-                                                var value = $(input).val();
-
-                                            } else {
-
-                                                alert("No results found!");
-
-                                            }
-
-                                        }
-
-                                    });
-
-                                    if (!place.geometry) {
-                                        window.alert("No details available for input: '" + place.name + "'");
-                                        input.value = "";
-                                        return;
-                                    }
-
-
-                                });
-                            }
-
-
-                        });
 
                         function incrementValue(e) {
                             e.preventDefault();

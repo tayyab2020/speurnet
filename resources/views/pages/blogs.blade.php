@@ -126,7 +126,7 @@
 
                                                         @if(Route::currentRouteName() == 'front-blogs')
 
-                                                            <a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;" href="{{ url('blogs/'.$blog->id) }}">{{$blog->title}}</a>
+                                                            <a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;" href="{{ url('blogs/'.$blog->title) }}">{{$blog->title}}</a>
 
                                                         @elseif(Route::currentRouteName() == 'front-moving-tips')
 

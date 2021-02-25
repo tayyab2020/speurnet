@@ -430,96 +430,86 @@
 
 <script>
 
-    $( document ).ready(function() {
+    function initMap()
+    {
+        const locationInputs = $('.city-input');
 
 
-        $('.city-input').on('keyup keypress', function(e) {
+        var options = {
 
-            var keyCode = e.keyCode || e.which;
+            componentRestrictions: {country: "nl"}
 
-            if (keyCode === 13) {
-                e.preventDefault();
-                return false;
-            }
+        };
 
+        const autocompletes = [];
+        const geocoder = new google.maps.Geocoder;
 
+        for (let i = 0; i < locationInputs.length; i++) {
 
-            const locationInputs = $(this);
-
-
-            var options = {
-
-                componentRestrictions: {country: "nl"}
-
-            };
-
-            const autocompletes = [];
-            const geocoder = new google.maps.Geocoder;
-
-            for (let i = 0; i < locationInputs.length; i++) {
-
-                const input = locationInputs[i];
-                const fieldKey = input.id.replace("-input", "");
+            const input = locationInputs[i];
+            const fieldKey = input.id.replace("-input", "");
 
 
 
-                const autocomplete = new google.maps.places.Autocomplete(input,options);
-                autocomplete.key = fieldKey;
-                autocompletes.push({input: input, autocomplete: autocomplete});
-            }
+            const autocomplete = new google.maps.places.Autocomplete(input,options);
+            autocomplete.key = fieldKey;
+            autocompletes.push({input: input, autocomplete: autocomplete});
+        }
 
-            for (let i = 0; i < autocompletes.length; i++) {
+        for (let i = 0; i < autocompletes.length; i++) {
 
-                const input = autocompletes[i].input;
-                const autocomplete = autocompletes[i].autocomplete;
-
-
-                google.maps.event.addListener(autocomplete, 'place_changed', function () {
-
-                    const place = autocomplete.getPlace();
-
-                    geocoder.geocode({'placeId': place.place_id}, function (results, status) {
+            const input = autocompletes[i].input;
+            const autocomplete = autocompletes[i].autocomplete;
 
 
+            google.maps.event.addListener(autocomplete, 'place_changed', function () {
 
-                        if (status === google.maps.GeocoderStatus.OK) {
+                const place = autocomplete.getPlace();
 
-                            if (results[0]) {
-
-                                const lat = results[0].geometry.location.lat();
-                                const lng = results[0].geometry.location.lng();
+                geocoder.geocode({'placeId': place.place_id}, function (results, status) {
 
 
-                                $(input).parent().children('#city-latitude').val(lat);
-                                $(input).parent().children('#city-longitude').val(lng);
 
-                                var value = $(input).val();
+                    if (status === google.maps.GeocoderStatus.OK) {
 
-                            }
-                            else
-                            {
+                        if (results[0]) {
 
-                                alert("No results found!");
+                            const lat = results[0].geometry.location.lat();
+                            const lng = results[0].geometry.location.lng();
 
-                            }
+
+                            $(input).parent().children('#city-latitude').val(lat);
+                            $(input).parent().children('#city-longitude').val(lng);
+
+                            var value = $(input).val();
+
+                        }
+                        else
+                        {
+
+                            alert("No results found!");
 
                         }
 
-                    });
-
-                    if (!place.geometry) {
-                        window.alert("No details available for input: '" + place.name + "'");
-                        input.value = "";
-                        return;
                     }
 
-
-
                 });
-            }
+
+                if (!place.geometry) {
+                    window.alert("No details available for input: '" + place.name + "'");
+                    input.value = "";
+                    return;
+                }
 
 
-        });
+
+            });
+        }
+    }
+
+    $( document ).ready(function() {
+
+        initMap();
 
     });
 

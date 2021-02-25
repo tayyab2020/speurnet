@@ -1170,7 +1170,7 @@
                             <div class="property-container res-size" style="margin: 10px auto;min-height: 380px;">
                                 <div class="property-image">
 
-                                    <a style="outline: none;" href="{{ url('blogs/'.$blog->id) }}">
+                                    <a style="outline: none;" href="{{ url('blogs/'.$blog->title) }}">
 
                                     @if($blog->image)
                                         <img class="res-content" src="{{ URL::asset('upload/blogs/'.$blog->image) }}" style="width: 100%;height: 200px;">
@@ -1184,7 +1184,7 @@
 
                                 <div class="property-content description-content">
 
-                                    <h3><a style="text-overflow: ellipsis;display: block;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;white-space: nowrap;" href="{{ url('blogs/'.$blog->id) }}">{{$blog->title}}</a>
+                                    <h3><a style="text-overflow: ellipsis;display: block;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;white-space: nowrap;" href="{{ url('blogs/'.$blog->title) }}">{{$blog->title}}</a>
                                     <small style="display: none;color: #acacac;font-style: normal;">{{$date}}</small>
                                     </h3>
 
@@ -1416,8 +1416,6 @@
     $( document ).ready(function() {
 
         let previousScrollY = 0;
-
-
 
         var consent = $('#cookie-consent').val();
 

@@ -667,7 +667,8 @@
                         <label for="" class="col-sm-3 control-label">@if(Auth::User()->usertype != "Admin") {{__('text.Address')}} @else Address @endif</label>
                         <div class="col-sm-9">
 
-                            <input type="text" id="address-input" placeholder="Enter Address" name="address" @if(Auth::user()->address) value="{{Auth::user()->address}}" @endif   class="form-control map-input">
+                            <input type="text" id="address-input" placeholder="Enter Address" name="address" @if(Auth::user()->address) value="{{Auth::user()->address}}" @endif  class="form-control map-input">
+                            <input type="hidden" id="check_address" value="1">
                             <input type="hidden" name="address_latitude" id="address-latitude" @if(Auth::user()->address_latitude) value="{{Auth::user()->address_latitude}}" @endif />
                             <input type="hidden" name="address_longitude" id="address-longitude" @if(Auth::user()->address_longitude) value="{{Auth::user()->address_longitude}}" @endif  />
 
@@ -925,6 +926,7 @@
                         return false;
                     }
                 });
+
                 const locationInputs = document.getElementsByClassName("map-input");
 
                 var options = {
@@ -1164,6 +1166,23 @@
                     });
                 }
             }
+
+            $(".map-input").on('input',function(e){
+                $(this).next('input').val(0);
+            });
+
+            $(".map-input").focusout(function(){
+
+                var check = $(this).next('input').val();
+
+                if(check == 0)
+                {
+                    $(this).val('');
+                    $('#address-latitude').val('');
+                    $('#address-longitude').val('');
+                    $('#city_name').val('');
+                }
+            });
 
             function setLocationCoordinates(key, lat, lng) {
                 const latitudeField = document.getElementById(key + "-" + "latitude");

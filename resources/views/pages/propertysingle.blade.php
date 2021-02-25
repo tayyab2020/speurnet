@@ -3337,7 +3337,95 @@
 
     <script>
 
+        function initMap1()
+            {
+                const locationInputs = $('.loc-input');
+
+
+                var options = {
+
+                    componentRestrictions: {country: "nl"}
+
+                };
+
+                const autocompletes = [];
+                const geocoder = new google.maps.Geocoder;
+
+                for (let i = 0; i < locationInputs.length; i++) {
+
+                    const input = locationInputs[i];
+                    const fieldKey = input.id.replace("-input", "");
+
+
+                    const autocomplete = new google.maps.places.Autocomplete(input,options);
+                    autocomplete.key = fieldKey;
+                    autocompletes.push({input: input, autocomplete: autocomplete});
+                }
+
+                for (let i = 0; i < autocompletes.length; i++) {
+
+                    const input = autocompletes[i].input;
+                    const autocomplete = autocompletes[i].autocomplete;
+
+
+                    google.maps.event.addListener(autocomplete, 'place_changed', function () {
+
+                        const place = autocomplete.getPlace();
+
+                        geocoder.geocode({'placeId': place.place_id}, function (results, status) {
+
+
+
+                            if (status === google.maps.GeocoderStatus.OK) {
+
+                                if (results[0]) {
+
+                                    const lat = results[0].geometry.location.lat();
+                                    const lng = results[0].geometry.location.lng();
+
+
+                                    $(input).parent().children('#loc-latitude').val(lat);
+                                    $(input).parent().children('#loc-longitude').val(lng);
+
+                                    var value = $(input).val();
+                                    var name = $('#destination_name').val();
+
+                                    $(input).parent().children('#loc-real').val(value);
+
+                                    $(input).attr('disabled',true);
+
+                                    $(input).parent().children('.loc-remove').show();
+
+                                    $(".rui-button-brand").removeClass('rui-button-disabled');
+
+                                    $(".rui-button-brand").attr('disabled',false);
+
+
+                                }
+                                else
+                                {
+
+                                    alert("No results found!");
+
+                                }
+
+                            }
+
+                        });
+
+                        if (!place.geometry) {
+                            window.alert("No details available for input: '" + place.name + "'");
+                            input.value = "";
+                            return;
+                        }
+
+                    });
+                }
+            }
+
         $( document ).ready(function() {
+
+            initMap1();
 
             $('#myTab li').on('shown.bs.tab', function(event){
 
@@ -3850,6 +3938,7 @@
 
             });
 
+
             $('.loc-remove').click(function(e) {
 
                 $(this).parent().children('.loc-input').val("");
@@ -3863,105 +3952,6 @@
                 $(".rui-button-brand").attr('disabled',true);
 
             });
-
-            $('.loc-input').on('keyup keypress', function(e) {
-
-                var keyCode = e.keyCode || e.which;
-
-                if (keyCode === 13) {
-                    e.preventDefault();
-                    return false;
-                }
-
-
-
-                const locationInputs = $(this);
-
-
-                var options = {
-
-                    componentRestrictions: {country: "nl"}
-
-                };
-
-                const autocompletes = [];
-                const geocoder = new google.maps.Geocoder;
-
-                for (let i = 0; i < locationInputs.length; i++) {
-
-                    const input = locationInputs[i];
-                    const fieldKey = input.id.replace("-input", "");
-
-
-
-                    const autocomplete = new google.maps.places.Autocomplete(input,options);
-                    autocomplete.key = fieldKey;
-                    autocompletes.push({input: input, autocomplete: autocomplete});
-                }
-
-                for (let i = 0; i < autocompletes.length; i++) {
-
-                    const input = autocompletes[i].input;
-                    const autocomplete = autocompletes[i].autocomplete;
-
-
-                    google.maps.event.addListener(autocomplete, 'place_changed', function () {
-
-                        const place = autocomplete.getPlace();
-
-                        geocoder.geocode({'placeId': place.place_id}, function (results, status) {
-
-
-
-                            if (status === google.maps.GeocoderStatus.OK) {
-
-                                if (results[0]) {
-
-                                    const lat = results[0].geometry.location.lat();
-                                    const lng = results[0].geometry.location.lng();
-
-
-                                    $(input).parent().children('#loc-latitude').val(lat);
-                                    $(input).parent().children('#loc-longitude').val(lng);
-
-                                    var value = $(input).val();
-                                    var name = $('#destination_name').val();
-
-                                    $(input).parent().children('#loc-real').val(value);
-
-                                    $(input).attr('disabled',true);
-
-                                    $(input).parent().children('.loc-remove').show();
-
-                                    $(".rui-button-brand").removeClass('rui-button-disabled');
-
-                                    $(".rui-button-brand").attr('disabled',false);
-
-
-                                }
-                                else
-                                {
-
-                                    alert("No results found!");
-
-                                }
-
-                            }
-
-                        });
-
-                        if (!place.geometry) {
-                            window.alert("No details available for input: '" + place.name + "'");
-                            input.value = "";
-                            return;
-                        }
-
-                    });
-                }
-
-
-            });
-
 
 
 

@@ -98,7 +98,6 @@
 
                                         <input type="text" name="name" id="name" placeholder="{{__('text.Name Contact Person')}}" data-placeholder="{{__('text.Your Name')}}" style="box-shadow: none;border: 0;margin: 0;float: left;width: 85%;left: 0;height: 35px;text-align: left;" class="form-control res-inp">
 
-
                                     </div>
 
                                 </div>
@@ -227,6 +226,7 @@
                                         </div>
 
                                         <input type="text" class="form-control res-inp" autocomplete="off" name="city" id="city-input" placeholder="{{__('text.Place of establishment')}}" data-placeholder="{{__('text.Residence')}}" style="box-shadow: none;border: 0;margin: 0;float: left;width: 85%;left: 0;height: 35px;text-align: left;">
+                                        <input type="hidden" id="check_address" value="1">
 
                                     </div>
 
@@ -280,6 +280,11 @@
     <!-- end:content -->
 
     <style>
+
+        /*.pac-container
+        {
+            box-shadow: 0 2px 6px rgb(202 202 202 / 9%);
+        }*/
 
         .kolibri-text
         {
@@ -732,137 +737,141 @@
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
 
-    <script>
+<script>
 
-        $( document ).ready(function() {
+    function initMap() {
 
-            $('input[type=radio][name=usertype]').change(function() {
+        const locationInputs = $('#city-input');
 
-                var type = $(this).val();
+        var options = {
 
-                if(type == 'Agents' || type == 'landlord')
-                {
+            types: ['(cities)'],
+            componentRestrictions: {country: "nl"}
 
-                }
-                else
-                {
-                    $(".res-inp").each(function() {
+        };
 
-                        var placeholder = $(this).attr('placeholder');
-                        var new_placeholder = $(this).data('placeholder');
+        const autocompletes = [];
+        const geocoder = new google.maps.Geocoder;
 
-                        $(this).attr("placeholder", new_placeholder);
-                        $(this).data("placeholder", placeholder);
-                    });
-                }
+        for (let i = 0; i < locationInputs.length; i++) {
 
-            });
-
-            $('#city-input').on('keyup keypress', function(e) {
-
-                var keyCode = e.keyCode || e.which;
-
-                if (keyCode === 13) {
-                    e.preventDefault();
-                    return false;
-                }
+            const input = locationInputs[i];
+            const fieldKey = input.id.replace("-input", "");
 
 
 
-                const locationInputs = $(this);
+            const autocomplete = new google.maps.places.Autocomplete(input,options);
+            autocomplete.key = fieldKey;
+            autocompletes.push({input: input, autocomplete: autocomplete});
+        }
+
+        for (let i = 0; i < autocompletes.length; i++) {
+
+            const input = autocompletes[i].input;
+            const autocomplete = autocompletes[i].autocomplete;
 
 
-                var options = {
+            google.maps.event.addListener(autocomplete, 'place_changed', function () {
 
-                    componentRestrictions: {country: "nl"}
+                const place = autocomplete.getPlace();
 
-                };
-
-                const autocompletes = [];
-                const geocoder = new google.maps.Geocoder;
-
-                for (let i = 0; i < locationInputs.length; i++) {
-
-                    const input = locationInputs[i];
-                    const fieldKey = input.id.replace("-input", "");
-
-
-
-                    const autocomplete = new google.maps.places.Autocomplete(input,options);
-                    autocomplete.key = fieldKey;
-                    autocompletes.push({input: input, autocomplete: autocomplete});
-                }
-
-                for (let i = 0; i < autocompletes.length; i++) {
-
-                    const input = autocompletes[i].input;
-                    const autocomplete = autocompletes[i].autocomplete;
-
-
-                    google.maps.event.addListener(autocomplete, 'place_changed', function () {
-
-                        const place = autocomplete.getPlace();
-
-                        geocoder.geocode({'placeId': place.place_id}, function (results, status) {
+                geocoder.geocode({'placeId': place.place_id}, function (results, status) {
 
 
 
-                            if (status === google.maps.GeocoderStatus.OK) {
+                    if (status === google.maps.GeocoderStatus.OK) {
 
-                                if (results[0]) {
+                        if (results[0]) {
 
-                                    const lat = results[0].geometry.location.lat();
-                                    const lng = results[0].geometry.location.lng();
+                            const lat = results[0].geometry.location.lat();
+                            const lng = results[0].geometry.location.lng();
 
 
-                                }
-                                else
-                                {
+                        }
+                        else
+                        {
 
-                                    alert("No results found!");
+                            alert("No results found!");
 
-                                }
-
-                            }
-
-                        });
-
-                        if (!place.geometry) {
-                            window.alert("No details available for input: '" + place.name + "'");
-                            input.value = "";
-                            return;
                         }
 
+                    }
 
-
-                    });
-                }
-
-
-            });
-
-            $('.usertype').change(function() {
-
-                if (this.value == 'Users') {
-                    $('.company_name').hide();
-                }
-                else if (this.value == 'Agents' || this.value == 'landlord') {
-                    $('.company_name').show();
-                }
-            });
-
-            const labels = document.querySelectorAll('.label');
-            labels.forEach(label => {
-                const chars = label.textContent.split('');
-                label.innerHTML = '';
-                chars.forEach(char => {
-                    label.innerHTML += `<span>${char === ' ' ? '&nbsp' : char}</span>`;
                 });
+
+                if (!place.geometry) {
+                    window.alert("No details available for input: '" + place.name + "'");
+                    input.value = "";
+                    return;
+                }
+
             });
+        }
+
+    }
+
+    $( document ).ready(function() {
+
+        initMap();
+
+        $('input[type=radio][name=usertype]').change(function() {
+
+            var type = $(this).val();
+
+            if(type == 'Agents' || type == 'landlord')
+            {
+
+            }
+            else
+            {
+                $(".res-inp").each(function() {
+
+                    var placeholder = $(this).attr('placeholder');
+                    var new_placeholder = $(this).data('placeholder');
+
+                    $(this).attr("placeholder", new_placeholder);
+                    $(this).data("placeholder", placeholder);
+                });
+            }
 
         });
 
+        $("#city-input").on('input',function(e){
+            $(this).next('input').val(0);
+        });
 
-    </script>
+        $("#city-input").focusout(function(){
+
+            var check = $(this).next('input').val();
+
+            if(check == 0)
+            {
+                $(this).val('');
+            }
+        });
+
+        $('.usertype').change(function() {
+
+            if (this.value == 'Users') {
+                $('.company_name').hide();
+            }
+            else if (this.value == 'Agents' || this.value == 'landlord') {
+                $('.company_name').show();
+            }
+        });
+
+        const labels = document.querySelectorAll('.label');
+        labels.forEach(label => {
+            const chars = label.textContent.split('');
+            label.innerHTML = '';
+            chars.forEach(char => {
+                label.innerHTML += `<span>${char === ' ' ? '&nbsp' : char}</span>`;
+            });
+        });
+
+    });
+
+
+</script>
 
 @endsection
