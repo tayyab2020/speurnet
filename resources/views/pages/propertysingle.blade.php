@@ -1725,6 +1725,8 @@
 
                                             </div>
 
+                                            <a target="_blank" href="https://allecijfers.nl/" class="btn btn-danger">Check de cijfers van deze gemeente</a>
+
                                             @if($property_features)
 
                                                 <h3 style="margin-top: 55px;">{{__('text.Property Features')}}</h3>
