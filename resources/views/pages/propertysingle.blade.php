@@ -1725,7 +1725,7 @@
 
                                             </div>
 
-                                            <a target="_blank" href="{{$button_url}}" class="btn btn-danger">Check de cijfers van deze gemeente</a>
+                                            <a target="_blank" href="{{isset($button_url) ? $button_url : null}}" class="btn btn-danger">Check de cijfers van deze gemeente</a>
 
                                             @if($property_features)
 
