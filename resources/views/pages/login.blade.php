@@ -142,7 +142,7 @@
 
                                     <p style="font-weight: bold;font-size: 16px;">Woningen plaatsen als makelaar?</p>
                                     <p>
-                                        Je bent niets een goede makelaar.
+                                        Je bent niet voor niets een goede makelaar.
                                         <br>
                                         Plaats gratis jouw woningen binnen een paar seconden en wie weet heb je in no-time al je woningen verhuurf of verkocht.
                                         <br>
