@@ -137,6 +137,22 @@
                                         <span class="search-span" style="position: relative;top: 3px;font-size: 14px;color: #575454;"><a href="{{ URL::asset('assets/terms-and-conditions-template.pdf') }}" target="_blank">{{__('text.Terms of Services')}}</a>&nbsp;{{__('text.and')}}&nbsp;<a href="{{ URL::asset('assets/privacy_policy.pdf') }}" target="_blank">{{__('text.Privacy Policy')}}</a></span>
                                     </p>
                                 </div>
+
+                                <div style="margin-top: 25px;">
+
+                                    <p style="font-weight: bold;font-size: 16px;">Woningen plaatsen als makelaar?</p>
+                                    <p>
+                                        Je bent niets een goede makelaar.
+                                        <br>
+                                        Plaats gratis jouw woningen binnen een paar seconden en wie weet heb je in no-time al je woningen verhuurf of verkocht.
+                                        <br>
+                                        Hoe mooi is dat?
+                                    </p>
+
+                                    <a target="_blank" href="{{ url('footer-pages/26') }}" class="btn btn-danger">Ik ben benieuwd</a>
+
+                                </div>
+
                             </div>
 
                         </div>
