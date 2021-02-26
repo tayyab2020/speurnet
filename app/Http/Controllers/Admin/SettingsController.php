@@ -97,8 +97,7 @@ class SettingsController extends MainAdminController
 		$settings->footer_widget1 = $inputs['footer_widget1'];
 		$settings->footer_widget2 = $inputs['footer_widget2'];
 		$settings->footer_widget3 = $inputs['footer_widget3'];
-
-
+		$settings->button_url = $inputs['button_url'];
 
 	    $settings->save();
 
