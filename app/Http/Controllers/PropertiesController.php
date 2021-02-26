@@ -853,6 +853,7 @@ class PropertiesController extends Controller
     {
         $property = New_Constructions::where("property_slug", $slug)->first();
         $similar_properties = [];
+        $button_url = Settings::pluck('button_url')->first();
 
 
         $property->views =$property->views + 1;
@@ -923,7 +924,7 @@ class PropertiesController extends Controller
         $similar_properties=array_merge($similar_properties,json_decode($similar_property));
 
 
-        return view('pages.propertysingle',compact('property','previous','next','property_documents','agent','property_features','saved','properties_count','similar_properties'));
+        return view('pages.propertysingle',compact('button_url','property','previous','next','property_documents','agent','property_features','saved','properties_count','similar_properties'));
     }
 
 
@@ -931,6 +932,7 @@ class PropertiesController extends Controller
     {
         $property = Home_Exchange::where("property_slug", $slug)->first();
         $similar_properties = [];
+        $button_url = Settings::pluck('button_url')->first();
 
 
         $property->views =$property->views + 1;
@@ -1001,7 +1003,7 @@ class PropertiesController extends Controller
         $similar_properties = array_merge($similar_properties,json_decode($similar_property));
 
 
-        return view('pages.propertysingle',compact('property','previous','next','property_documents','agent','property_features','saved','properties_count','similar_properties'));
+        return view('pages.propertysingle',compact('button_url','property','previous','next','property_documents','agent','property_features','saved','properties_count','similar_properties'));
     }
 
     public function propertiesUser($id,$id2,Request $request)
