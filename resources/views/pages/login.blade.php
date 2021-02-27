@@ -145,7 +145,7 @@
                                     <p>
                                         Je bent niet voor niets een goede makelaar.
                                         <br>
-                                        Plaats gratis jouw woningen binnen een paar seconden en wie weet heb je in no-time al je woningen verhuurf of verkocht.
+                                        Plaats gratis jouw woningen binnen een paar seconden en wie weet heb je in no-time al je woningen verhuurd of verkocht.
                                         <br>
                                         Hoe mooi is dat?
                                     </p>
