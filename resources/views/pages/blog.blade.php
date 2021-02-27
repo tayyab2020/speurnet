@@ -129,7 +129,7 @@
                             <article>
 
                                 <div style="width: 100%;">
-                                    <div style="background-color: #ffd60a;text-align: center;font-size: 25px;font-weight: bold;color: black;padding: 10px 0;">Jouw koppeling is binnen no-time geregeld. Ideaal, toch?</div>
+                                    <div style="background-color: #ffd60a;text-align: center;font-size: 25px;font-weight: 600;color: black;padding: 10px 0;">Jouw koppeling is binnen no-time geregeld. Ideaal, toch?</div>
                                     <form action="" method="POST">
                                         <div style="background-color: #25a5ff;width: 100%;display: inline-block;padding: 10px;">
                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
