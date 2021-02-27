@@ -1545,7 +1545,16 @@ class IndexController extends Controller
     {
         $blog = footer_pages::where('id',$id)->first();
 
-        return view('pages.blog',compact('blog'));
+        if($blog->title == 'Voor makelaars ( CRM-systeem )')
+        {
+            $custom = 1;
+            return view('pages.blog',compact('blog','custom'));
+        }
+        else
+        {
+            $custom = 0;
+            return view('pages.blog',compact('blog','custom'));
+        }
     }
 
     public function MovingTips()

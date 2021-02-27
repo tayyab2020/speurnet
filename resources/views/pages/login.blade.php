@@ -141,6 +141,7 @@
                                 <div style="margin-top: 25px;">
 
                                     <p style="font-weight: bold;font-size: 16px;">Woningen plaatsen als makelaar?</p>
+
                                     <p>
                                         Je bent niet voor niets een goede makelaar.
                                         <br>
