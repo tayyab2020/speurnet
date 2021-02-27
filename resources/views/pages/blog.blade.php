@@ -87,7 +87,7 @@
 
                                 <div class="post_content description-content" style="margin-top: 40px;">
 
-                                    <p style="font-weight: bold;font-size: 30px;margin-bottom: 25px;">Heb je de voordelen van Zoekjehuisje.nl al ondervonden?</p>
+                                    <p style="font-weight: bold;font-size: 30px;margin-bottom: 25px;line-height: 1.3;">Heb je de voordelen van Zoekjehuisje.nl al ondervonden?</p>
 
                                     <p style="font-size: 28px;line-height: 1.5;">
                                         Van 'te koop' naar 'verkocht!' Van 'te huur' naar 'verhuurd.' Welkom thuis!
@@ -131,22 +131,22 @@
                                 <div style="width: 100%;">
                                     <div style="background-color: #ffd60a;text-align: center;font-size: 25px;font-weight: 600;color: black;padding: 10px 0;">Jouw koppeling is binnen no-time geregeld. Ideaal, toch?</div>
                                     <form action="" method="POST">
-                                        <div style="background-color: #25a5ff;width: 100%;display: inline-block;padding: 10px;">
-                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                        <div style="background-color: #25a5ff;width: 100%;display: inline-block;padding: 20px 10px;">
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                 <div class="form-group">
                                                     <label style="color: white;">Naam makelaarskantoor</label>
                                                     <input name="name" required style="background-color: transparent;border: 0;border-bottom: 1px solid #f6f6f6;box-shadow: none;color: white;" class="form-control" type="text">
                                                 </div>
                                             </div>
 
-                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                 <div class="form-group">
                                                     <label style="color: white;">E-mailadres</label>
                                                     <input name="email" required style="background-color: transparent;border: 0;border-bottom: 1px solid #f6f6f6;box-shadow: none;color: white;" class="form-control" type="email">
                                                 </div>
                                             </div>
 
-                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                 <div class="form-group">
                                                     <label style="color: white;">Telefoonnummer</label>
                                                     <input name="phone" required style="background-color: transparent;border: 0;border-bottom: 1px solid #f6f6f6;box-shadow: none;color: white;" class="form-control" type="text">
@@ -168,7 +168,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                 <div class="form-group">
                                                     <label style="color: white;">Opmerking</label>
                                                     <textarea required name="note" rows="6" style="background-color: white;color: black;resize: vertical;" class="form-control"></textarea>
