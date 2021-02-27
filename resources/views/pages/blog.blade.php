@@ -46,9 +46,9 @@
 
                         @else
 
-                            <h1 class="post_title" style="font-weight: 100;text-align: center;margin-bottom: 40px;">
+                            {{--<h1 class="post_title" style="font-weight: 100;text-align: center;margin-bottom: 40px;">
                                 {{$blog->title}}
-                            </h1>
+                            </h1>--}}
 
                             @if($blog->image)
 
