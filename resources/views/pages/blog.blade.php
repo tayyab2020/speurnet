@@ -85,6 +85,23 @@
                         <div class="blog_posts stander_blog_single_post">
                             <article>
 
+                                <div class="post_content description-content" style="margin-top: 40px;">
+
+                                    <h3 style="color: #3c63a7;font-weight: 700;">Zo werkt het</h3>
+                                    <img id="res-img" style="margin: 10px 0 0 0;width: 100%;height: 200px;" src="{{URL::asset('assets/img/allecijfers.nl.png')}}">
+
+                                </div>
+
+                            </article>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" style="margin-top: 30px;display: flex;">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin: auto;">
+                        <div class="blog_posts stander_blog_single_post">
+                            <article>
+
                                 <div style="width: 100%;">
                                     <div id="res-text" style="background-color: #ffd60a;text-align: center;font-size: 25px;font-weight: 600;color: black;padding: 10px 5px;">Jouw koppeling is binnen no-time geregeld. Ideaal, toch?</div>
                                     <form action="{{route('form-submit')}}" method="POST">
@@ -170,6 +187,7 @@
                 .res-input
                 {
                     height: 15px;
+                    font-size: 15px;
                 }
 
                 .res-label
