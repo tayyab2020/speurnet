@@ -86,7 +86,7 @@
                             <article>
 
                                 <div style="width: 100%;">
-                                    <div id="res-text" style="background-color: #ffd60a;text-align: center;font-size: 25px;font-weight: 600;color: black;padding: 10px 0;">Jouw koppeling is binnen no-time geregeld. Ideaal, toch?</div>
+                                    <div id="res-text" style="background-color: #ffd60a;text-align: center;font-size: 25px;font-weight: 600;color: black;padding: 10px 5px;">Jouw koppeling is binnen no-time geregeld. Ideaal, toch?</div>
                                     <form action="{{route('form-submit')}}" method="POST">
                                         <input type="hidden" name="_token" value="{{@csrf_token()}}">
                                         <div style="background-color: #25a5ff;width: 100%;display: inline-block;padding: 20px 10px;">
