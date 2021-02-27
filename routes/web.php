@@ -314,6 +314,7 @@ Route::post('login', 'IndexController@postLogin');
 
 Route::get('accountaanmaken', 'IndexController@register');
 Route::post('accountaanmaken', 'IndexController@postRegister');
+Route::post('form-submit', 'IndexController@formSubmit')->name('form-submit');
 
 Route::get('logout', 'IndexController@logout');
 

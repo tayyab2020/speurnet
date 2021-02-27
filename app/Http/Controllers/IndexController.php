@@ -1557,6 +1557,22 @@ class IndexController extends Controller
         }
     }
 
+    public function formSubmit(Request $request)
+    {
+        $email = $request->email;
+        $name = $request->name;
+        $phone = $request->phone;
+        $xml_link = $request->xml_link;
+        $note = $request->note;
+
+        \Mail::send(array(), array(), function ($message) use($email,$name,$phone,$xml_link,$note) {
+            $message->to(getcong('site_email'))
+                ->from(getcong('site_email'),getcong('site_name'))
+                ->subject('Form Submission')
+                ->setBody("<b>Email: </b>".$email."<br><b>Name: </b>".$name."<br><b>Phone: </b>".$phone."<br><b>Choice: </b>".$xml_link."<br><b>Note: </b>".$note."<br>Thanks!<br />- ".getcong('site_name'), 'text/html');
+        });
+    }
+
     public function MovingTips()
     {
         $m_e = moving_tips::orderBy('id', 'desc')->get();

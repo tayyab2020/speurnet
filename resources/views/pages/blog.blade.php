@@ -85,74 +85,32 @@
                         <div class="blog_posts stander_blog_single_post">
                             <article>
 
-                                <div class="post_content description-content" style="margin-top: 40px;">
-
-                                    <p style="font-weight: bold;font-size: 30px;margin-bottom: 25px;line-height: 1.3;">Heb je de voordelen van Zoekjehuisje.nl al ondervonden?</p>
-
-                                    <p style="font-size: 28px;line-height: 1.5;">
-                                        Van 'te koop' naar 'verkocht!' Van 'te huur' naar 'verhuurd.' Welkom thuis!
-                                        <br><br>
-                                        Heb je slechts één woning in de verkoop of verhuur? Of heb je geregeld meerdere woningen, die je wilt verkopen of verhuren aan de juiste kandidaat? Ondervind dan het gemak van Zoekjehuisje.nl.
-                                        <br><br>
-                                        Zoekjehuisje.nl is gekoppeld met verschillende XML koppelingen. Hierdoor kun je als makelaar binnen no time al je woningen automatisch doorzetten naar onze website. Ervaar het zelf en kom in contact mat de juiste huurder of koper voor jouw woning.
-                                        <br><br>
-                                        Uiteraard is het ook mogelijk om je woningen handmatig te plaatsen.
-                                        <br><br>
-                                        Nieuwsgierig? Proef dan vrijblijvend aan onze voordelen. En geniet de toegankelijkheid van het aanbod, waardoor jij én degene(n) die je zoekt sneller matchen.
-                                        <br><br>
-                                        Probeer ons platform kosteloos en maak je account aan. En wie weet heb je in no time al je woningen verhuurd of verkocht. Hoe mooi is dat?
-                                        <br><br>
-                                        Een account aanmaken iszo gepiept!
-                                        <br><br>
-                                        Bij vragen neem je contact op via info@zoekjehuisje.nl
-                                        <br><br>
-                                        Als makelaar wil je jouw woningen natuurlijk zo snel
-                                        <br>
-                                        mogelijk verkopen of verhuren. Vraag daarom jouw
-                                        <br>
-                                        koppeling NU aan en ga direct aan de slag.
-                                    </p>
-
-                                    <h3 style="color: #3c63a7;font-weight: 700;">Zo werkt het</h3>
-                                    <img id="res-img" style="margin: 10px 0 0 0;width: 100%;height: 200px;" src="{{URL::asset('assets/img/allecijfers.nl.png')}}">
-
-                                </div>
-
-                            </article>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row" style="margin-top: 30px;display: flex;">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin: auto;">
-                        <div class="blog_posts stander_blog_single_post">
-                            <article>
-
                                 <div style="width: 100%;">
-                                    <div style="background-color: #ffd60a;text-align: center;font-size: 25px;font-weight: 600;color: black;padding: 10px 0;">Jouw koppeling is binnen no-time geregeld. Ideaal, toch?</div>
-                                    <form action="" method="POST">
+                                    <div id="res-text" style="background-color: #ffd60a;text-align: center;font-size: 25px;font-weight: 600;color: black;padding: 10px 0;">Jouw koppeling is binnen no-time geregeld. Ideaal, toch?</div>
+                                    <form action="{{route('form-submit')}}" method="POST">
+                                        <input type="hidden" name="_token" value="{{@csrf_token()}}">
                                         <div style="background-color: #25a5ff;width: 100%;display: inline-block;padding: 20px 10px;">
                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                 <div class="form-group">
                                                     <label style="color: white;">Naam makelaarskantoor</label>
-                                                    <input name="name" required style="background-color: transparent;border: 0;border-bottom: 1px solid #f6f6f6;box-shadow: none;color: white;" class="form-control" type="text">
+                                                    <input name="name" required style="background-color: transparent;border: 0;border-bottom: 1px solid #f6f6f6;box-shadow: none;color: white;" class="form-control res-input" type="text">
                                                 </div>
                                             </div>
 
                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                 <div class="form-group">
                                                     <label style="color: white;">E-mailadres</label>
-                                                    <input name="email" required style="background-color: transparent;border: 0;border-bottom: 1px solid #f6f6f6;box-shadow: none;color: white;" class="form-control" type="email">
+                                                    <input name="email" required style="background-color: transparent;border: 0;border-bottom: 1px solid #f6f6f6;box-shadow: none;color: white;" class="form-control res-input" type="email">
                                                 </div>
                                             </div>
 
                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                 <div class="form-group">
                                                     <label style="color: white;">Telefoonnummer</label>
-                                                    <input name="phone" required style="background-color: transparent;border: 0;border-bottom: 1px solid #f6f6f6;box-shadow: none;color: white;" class="form-control" type="text">
+                                                    <input name="phone" required style="background-color: transparent;border: 0;border-bottom: 1px solid #f6f6f6;box-shadow: none;color: white;" class="form-control res-input" type="text">
                                                 </div>
                                                 <div class="form-group">
-                                                    <label style="color: white;font-size: 20px;margin-bottom: 10px;">Kies jouw XML koppeling</label>
+                                                    <label class="res-label" style="color: white;font-size: 20px;margin-bottom: 10px;">Kies jouw XML koppeling</label>
                                                     <span style="display: inline-block;width: 100%;">
                                                     <input required class="search-input" type="radio" id="real_works" name="xml_link" value="Realworks" style="width: 16px;height: 16px;position: relative;top: 1px;cursor: pointer;">
                                                     <label class="search-label" for="real_works" style="margin-left: 2px;font-size: 18px;cursor: pointer;color: white;font-weight: 400;">Realworks</label>
@@ -172,7 +130,7 @@
                                                 <div class="form-group">
                                                     <label style="color: white;">Opmerking</label>
                                                     <textarea required name="note" rows="6" style="background-color: white;color: black;resize: vertical;" class="form-control"></textarea>
-                                                    <button style="font-size: 20px;float: right;margin-top: 10px;" type="submit" class="btn btn-danger">Verzoek versturen</button>
+                                                    <button style="font-size: 20px;float: right;margin-top: 10px;" type="submit" class="btn btn-danger sub">Verzoek versturen</button>
                                                 </div>
                                             </div>
 
@@ -202,6 +160,31 @@
                 #res-img
                 {
                     height: 130px !important;
+                }
+
+                #res-text
+                {
+                    font-size: 18px !important;
+                }
+
+                .res-input
+                {
+                    height: 15px;
+                }
+
+                .res-label
+                {
+                    font-size: 17px !important;
+                }
+
+                textarea
+                {
+                    height: 100px !important;
+                }
+
+                .sub
+                {
+                    font-size: 14px !important;
                 }
             }
 
