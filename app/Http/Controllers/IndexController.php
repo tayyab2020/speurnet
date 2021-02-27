@@ -1536,16 +1536,16 @@ class IndexController extends Controller
 
     public function Blog($id)
     {
-        $blog = Blogs::where('title', 'like', '%' . $id . '%')->first();
+        $blog = Blogs::where('title','like', '%' . $id . '%')->first();
 
         return view('pages.blog',compact('blog'));
     }
 
     public function FooterPage($id)
     {
-        $blog = footer_pages::where('id',$id)->first();
+        $blog = footer_pages::where('title','like', '%' . $id . '%')->first();
 
-        if($blog->title == 'Voor makelaars ( CRM-systeem )')
+        if($id == 'Voor makelaars ( CRM-systeem )')
         {
             $custom = 1;
             return view('pages.blog',compact('blog','custom'));

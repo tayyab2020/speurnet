@@ -276,7 +276,7 @@
                                         Hoe mooi is dat?
                                     </p>
 
-                                    <a target="_blank" href="{{ url('footer-pages/26') }}" class="btn btn-danger">Ik ben benieuwd</a>
+                                    <a target="_blank" href="{{ url('footer-pages/Voor makelaars ( CRM-systeem )') }}" class="btn btn-danger">Ik ben benieuwd</a>
 
                                 </div>
 

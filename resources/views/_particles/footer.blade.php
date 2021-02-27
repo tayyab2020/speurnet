@@ -16,7 +16,7 @@
 
                         @if($key->heading_id == 0)
 
-                            <li><a href="{{ url('footer-pages/'.$key->id) }}">{{$key->title}}</a></li>
+                            <li><a href="{{ url('footer-pages/'.$key->title) }}">{{$key->title}}</a></li>
 
                         @endif
 
@@ -40,7 +40,7 @@
 
                                    @if($temp->id == $key->heading_id)
 
-                                       <li><a href="{{ url('footer-pages/'.$key->id) }}">{{$key->title}}</a></li>
+                                       <li><a href="{{ url('footer-pages/'.$key->title) }}">{{$key->title}}</a></li>
 
                                    @endif
 
