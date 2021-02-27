@@ -16,9 +16,9 @@
 
                 <div style="width: 85%;margin: auto;display: flex;justify-content: center;margin-top: 20px;">
 
-                    <span class="kolibri-text" style="margin-right: 10px;">Wij zijn gekoppeld met</span>
+                    {{--<span class="kolibri-text" style="margin-right: 10px;">Wij zijn gekoppeld met</span>
                     <img class="kolibri-img" src="{{ URL::asset('assets/img/kolibri_logo.png') }}" style="height: 40px;float: left;" />
-                    <span class="kolibri-text" style="margin-left: 10px;">CRM</span>
+                    <span class="kolibri-text" style="margin-left: 10px;">CRM</span>--}}
 
                 </div>
 

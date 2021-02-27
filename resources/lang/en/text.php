@@ -558,4 +558,5 @@ return [
     'Type Garage' => 'Garage Type',
     'Corporation' => 'Corporation',
     'My Home Exchange' => 'My Home Exchange',
+    'Message sent successfully' => 'Message sent successfully!',
 ];

@@ -128,18 +128,26 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="res-label" style="color: white;font-size: 20px;margin-bottom: 10px;">Kies jouw XML koppeling</label>
+
                                                     <span style="display: inline-block;width: 100%;">
-                                                    <input required class="search-input" type="radio" id="real_works" name="xml_link" value="Realworks" style="width: 16px;height: 16px;position: relative;top: 1px;cursor: pointer;">
-                                                    <label class="search-label" for="real_works" style="margin-left: 2px;font-size: 18px;cursor: pointer;color: white;font-weight: 400;">Realworks</label>
-                                                </span>
+                                                        <input required class="search-input" type="radio" id="real_works" name="xml_link" value="Eigen XML-koppeling" style="width: 16px;height: 16px;position: relative;top: 1px;cursor: pointer;">
+                                                        <label class="search-label" for="real_works" style="margin-left: 2px;font-size: 18px;cursor: pointer;color: white;font-weight: 400;">Eigen XML-koppeling</label>
+                                                    </span>
+
                                                     <span style="display: inline-block;width: 100%;">
-                                                    <input required class="search-input" type="radio" id="yes_co" name="xml_link" value="Yes-co" checked style="width: 16px;height: 16px;position: relative;top: 1px;cursor: pointer;">
-                                                    <label class="search-label" for="yes_co" style="margin-left: 2px;font-size: 18px;cursor: pointer;color: white;font-weight: 400;">Yes-co</label>
-                                                </span>
+                                                        <input required class="search-input" type="radio" id="real_works" name="xml_link" value="Realworks" style="width: 16px;height: 16px;position: relative;top: 1px;cursor: pointer;">
+                                                        <label class="search-label" for="real_works" style="margin-left: 2px;font-size: 18px;cursor: pointer;color: white;font-weight: 400;">Realworks</label>
+                                                    </span>
+
                                                     <span style="display: inline-block;width: 100%;">
-                                                    <input required class="search-input" type="radio" id="kolibri" name="xml_link" value="Kolibri" style="width: 16px;height: 16px;position: relative;top: 1px;cursor: pointer;">
-                                                    <label class="search-label" for="kolibri" style="margin-left: 2px;font-size: 18px;cursor: pointer;color: white;font-weight: 400;">Kolibri</label>
-                                                </span>
+                                                        <input required class="search-input" type="radio" id="yes_co" name="xml_link" value="Yes-co" checked style="width: 16px;height: 16px;position: relative;top: 1px;cursor: pointer;">
+                                                        <label class="search-label" for="yes_co" style="margin-left: 2px;font-size: 18px;cursor: pointer;color: white;font-weight: 400;">Yes-co</label>
+                                                    </span>
+
+                                                    <span style="display: inline-block;width: 100%;">
+                                                        <input required class="search-input" type="radio" id="kolibri" name="xml_link" value="Kolibri" style="width: 16px;height: 16px;position: relative;top: 1px;cursor: pointer;">
+                                                        <label class="search-label" for="kolibri" style="margin-left: 2px;font-size: 18px;cursor: pointer;color: white;font-weight: 400;">Kolibri</label>
+                                                    </span>
                                                 </div>
                                             </div>
 
@@ -147,7 +155,7 @@
                                                 <div class="form-group">
                                                     <label style="color: white;">Opmerking</label>
                                                     <textarea required name="note" rows="6" style="background-color: white;color: black;resize: vertical;" class="form-control"></textarea>
-                                                    <button style="font-size: 20px;float: right;margin-top: 10px;" type="submit" class="btn btn-danger sub">Verzoek versturen</button>
+                                                    <button style="font-size: 20px;float: right;margin-top: 30px;outline: none;" type="submit" class="btn btn-danger sub">Verzoek versturen</button>
                                                 </div>
                                             </div>
 
@@ -228,5 +236,14 @@
 
         </style>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <script>
+
+        $( document ).ready(function() {
+            $('.alert-box').delay(5000).fadeOut('slow');
+        });
+
+    </script>
 
 @endsection

@@ -556,5 +556,6 @@ return [
     'Plot Area' => 'Perceeloppervlakte',
     'Type Garage' => 'Soort garage',
     'Corporation' => 'Woningcorporatie',
-    'My Home Exchange' => 'Mijn woningruil'
+    'My Home Exchange' => 'Mijn woningruil',
+    'Message sent successfully' => 'Bericht succesvol verstuurd!',
 ];

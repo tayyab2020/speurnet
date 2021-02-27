@@ -15,9 +15,9 @@
 
                 <div style="width: 85%;margin: auto;display: flex;justify-content: center;margin-top: 20px;">
 
-                    <span class="kolibri-text" style="margin-right: 10px;">Wij zijn gekoppeld met</span>
+                    {{--<span class="kolibri-text" style="margin-right: 10px;">Wij zijn gekoppeld met</span>
                     <img class="kolibri-img" src="{{ URL::asset('assets/img/kolibri_logo.png') }}" style="height: 40px;float: left;" />
-                    <span class="kolibri-text" style="margin-left: 10px;">CRM</span>
+                    <span class="kolibri-text" style="margin-left: 10px;">CRM</span>--}}
 
                 </div>
 
@@ -262,7 +262,24 @@
                                 </div>
 
 
-                                {!! Form::close() !!} <br>
+                                {!! Form::close() !!}
+
+                                <div style="margin-top: 25px;margin-bottom: 10px;">
+
+                                    <p style="font-weight: bold;font-size: 16px;">Woningen plaatsen als makelaar?</p>
+
+                                    <p>
+                                        Je bent niet voor niets een goede makelaar.
+                                        <br>
+                                        Plaats gratis jouw woningen binnen een paar seconden en wie weet heb je in no-time al je woningen verhuurd of verkocht.
+                                        <br>
+                                        Hoe mooi is dat?
+                                    </p>
+
+                                    <a target="_blank" href="{{ url('footer-pages/26') }}" class="btn btn-danger">Ik ben benieuwd</a>
+
+                                </div>
+
                             </div>
 
                         </div>
