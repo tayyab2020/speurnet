@@ -1536,7 +1536,7 @@ class IndexController extends Controller
 
     public function Blog($id)
     {
-        $blog = Blogs::where('title',$id)->first();
+        $blog = Blogs::where('title', 'like', '%' . $id . '%')->first();
 
         return view('pages.blog',compact('blog'));
     }
