@@ -36,11 +36,11 @@
 
                             @if($blog->image)
 
-                                <img src="{{ URL::asset('upload/blogs/'.$blog->image) }}" style="width: 100%;" alt="{{$blog->title}}">
+                                <img class="blog-img" src="{{ URL::asset('upload/blogs/'.$blog->image) }}" style="width: 100%;height: 500px;" alt="{{$blog->title}}">
 
                             @else
 
-                                <img src="{{ URL::asset('upload/noImage.png') }}" style="width: 100%;" alt="{{$blog->title}}">
+                                <img class="blog-img" src="{{ URL::asset('upload/noImage.png') }}" style="width: 100%;height: 500px;" alt="{{$blog->title}}">
 
                             @endif
 
@@ -52,7 +52,7 @@
 
                             @if($blog->image)
 
-                                <img src="{{ URL::asset('upload/footer-pages/'.$blog->image) }}" style="width: 100%;" alt="{{$blog->title}}">
+                                <img class="blog-img" src="{{ URL::asset('upload/footer-pages/'.$blog->image) }}" style="width: 100%;height: 500px;" alt="{{$blog->title}}">
 
                             @endif
 
@@ -182,6 +182,11 @@
 
             @media (max-width: 768px)
             {
+                .blog-img
+                {
+                    height: auto !important;
+                }
+
                 #res-img
                 {
                     height: 130px !important;
