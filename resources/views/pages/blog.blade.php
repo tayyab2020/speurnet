@@ -186,7 +186,6 @@
 
                 .res-input
                 {
-                    height: 15px;
                     font-size: 15px;
                 }
 
