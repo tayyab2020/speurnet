@@ -15,7 +15,7 @@
 
                         <form id="search_form" method="GET" action="{{route('front-homes-inspiration')}}">
                             <input value="{{$search}}" autocomplete="off" name="search" type="search">
-                            <i id="form-submit" style="display: flex;justify-content: center;align-items: center;" class="fa fa-search"></i>
+                            <i id="form-submit" style="display: flex;justify-content: center;align-items: center;" class="fa fa-search search-icon"></i>
                         </form>
 
                     </div>
@@ -177,7 +177,7 @@
             padding: 0 20px;
         }
 
-        .fa{
+        .search-icon{
             box-sizing: border-box;
             padding: 10px;
             width: 42.5px;
