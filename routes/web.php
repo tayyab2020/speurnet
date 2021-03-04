@@ -75,6 +75,14 @@ Route::group(['middleware' => 'App\Http\Middleware\UserTypeMiddleware'], functio
         Route::get('footer-pages/add-footer-page/{id}', 'DashboardController@editFooterPage')->name('edit-footer-page');
         Route::get('footer-pages/delete/{id}', 'DashboardController@deleteFooterPage')->name('delete-footer-page');
 
+
+        Route::get('homes-inspiration', 'DashboardController@HomesInspiration')->name('homes-inspiration');
+        Route::get('homes-inspiration/add-homes-inspiration', 'DashboardController@addHomesInspiration')->name('add-homes-inspiration');
+        Route::post('homes-inspiration/add-homes-inspiration', 'DashboardController@postHomesInspiration')->name('post-homes-inspiration');
+        Route::get('homes-inspiration/add-homes-inspiration/{id}', 'DashboardController@editHomesInspiration')->name('edit-homes-inspiration');
+        Route::get('homes-inspiration/delete/{id}', 'DashboardController@deleteHomesInspiration')->name('delete-homes-inspiration');
+
+
         Route::get('tickets', 'DashboardController@tickets');
         Route::get('tickets/addticket', 'DashboardController@addeditticket');
         Route::post('tickets/addticket', 'DashboardController@postTicket');
@@ -129,7 +137,7 @@ Route::group(['middleware' => 'App\Http\Middleware\UserTypeMiddleware'], functio
         Route::get('favourite-properties', 'PropertiesController@favouriteProperties');
         Route::get('saved-properties/delete/{id}', 'PropertiesController@savedPropertyDelete');
 
-
+        Route::post('save-homes-inspiration', 'PropertiesController@saveInspiration');
 
         Route::get('properties/featuredproperty/{id}', 'PropertiesController@featuredproperty');
         Route::get('properties/featurednewconstruction/{id}', 'PropertiesController@featuredNewConstruction');
@@ -192,6 +200,8 @@ Route::group(['middleware' => 'App\Http\Middleware\UserTypeMiddleware'], functio
 
 
     Route::get('/', 'IndexController@index');
+
+    Route::get('homes-inspiration/{id?}', 'IndexController@HomesInspiration')->name('front-homes-inspiration');
 
     Route::post('change-language', 'IndexController@changeLanguage');
 

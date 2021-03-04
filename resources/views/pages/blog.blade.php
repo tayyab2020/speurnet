@@ -44,6 +44,15 @@
 
                             @endif
 
+
+                        @elseif(Route::currentRouteName() == 'front-homes-inspiration')
+
+                            @if($blog->image)
+
+                                <img class="blog-img" src="{{ URL::asset('upload/homes-inspiration/'.$blog->image) }}" style="width: 100%;height: 500px;" alt="{{$blog->title}}">
+
+                            @endif
+
                         @else
 
                             {{--<h1 class="post_title" style="font-weight: 100;text-align: center;margin-bottom: 40px;">

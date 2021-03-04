@@ -7,10 +7,12 @@ use App\cookies;
 use App\Expats;
 use App\footer_pages;
 use App\HomepageIcons;
+use App\homes_inspiration;
 use App\moving_tips;
 use App\moving_tips_contents;
 use App\properties_headings;
 use App\property_documents;
+use App\saved_inspirations;
 use App\savedPropertyAlert;
 use App\Settings;
 use App\sub_kinds;
@@ -1525,6 +1527,68 @@ class IndexController extends Controller
         $cookie = cookies::where('ip',\Request::ip())->first();
 
         return view('pages.index',compact('cookie','propertieslist','blogs', 'heading', 'most_viewed', 'partners','city_list','top_members','top_properties','content','properties_headings'));
+    }
+
+    public function HomesInspiration(Request $request,$id = '')
+    {
+        if($request->search)
+        {
+            $search = $request->search;
+
+            $blogs = homes_inspiration::where('title','like', '%' . $search . '%')->orWhere('description','like', '%' . $search . '%')->paginate(10);
+
+            $saved = [];
+
+            if(Auth::user())
+            {
+
+                foreach ($blogs as $key)
+                {
+                    $saved[] = saved_inspirations::where('ins_id',$key->id)->where('user_id',Auth::user()->id)->first();
+                }
+
+            }
+            else
+            {
+                $saved = "";
+            }
+
+            return view('pages.inspiration',compact('blogs','saved','search'));
+        }
+
+
+        if($id)
+        {
+            $blog = homes_inspiration::where('title','like', '%' . $id . '%')->first();
+            $blog->views = $blog->views + 1;
+            $blog->save();
+
+            return view('pages.blog',compact('blog'));
+        }
+        else
+        {
+            $search = '';
+
+            $blogs = homes_inspiration::paginate(10);
+
+            $saved = [];
+
+            if(Auth::user())
+            {
+
+                foreach ($blogs as $key)
+                {
+                    $saved[] = saved_inspirations::where('ins_id',$key->id)->where('user_id',Auth::user()->id)->first();
+                }
+
+            }
+            else
+            {
+                $saved = "";
+            }
+
+            return view('pages.inspiration',compact('blogs','saved','search'));
+        }
     }
 
     public function Blogs()

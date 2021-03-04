@@ -29,6 +29,14 @@
 
                 <h2>Expats</h2>
 
+            @elseif(Route::currentRouteName() == 'homes-inspiration')
+
+                <div class="pull-right">
+                    <a href="{{URL::to('admin/homes-inspiration/add-homes-inspiration')}}" class="btn btn-primary">Add Homes Inspiration <i style="margin-left: 5px;position: relative;top: 1px;" class="fa fa-plus"></i></a>
+                </div>
+
+                <h2>Homes Inspiration Articles</h2>
+
             @else
 
                 <div class="pull-right">
@@ -57,6 +65,12 @@
                     <tr>
                         <th>Image</th>
                         <th>Title</th>
+
+                        @if(Route::currentRouteName() == 'homes-inspiration')
+
+                        <th>Views</th>
+
+                        @endif
 
                         @if(Route::currentRouteName() == 'footer-pages')
 
@@ -109,6 +123,18 @@
 
                                     @endif
 
+                                @elseif(Route::currentRouteName() == 'homes-inspiration')
+
+                                    @if($blog->image)
+
+                                        <img src="{{ URL::asset('upload/homes-inspiration/'.$blog->image) }}" width="80" alt="">
+
+                                    @else
+
+                                        <img src="{{ URL::asset('upload/noImage.png') }}" width="80" alt="">
+
+                                    @endif
+
                                 @else
 
                                     @if($blog->image)
@@ -129,7 +155,7 @@
 
                                 @if(Route::currentRouteName() == 'blogs')
 
-                                <a href="{{ url('blogs/'.$blog->id) }}">{{ $blog->title }}</a>
+                                <a href="{{ url('blogs/'.$blog->title) }}">{{ $blog->title }}</a>
 
                                 @elseif(Route::currentRouteName() == 'moving-tips')
 
@@ -138,6 +164,10 @@
                                 @elseif(Route::currentRouteName() == 'expats')
 
                                     <a href="{{ url('expats/'.$blog->id) }}">{{ $blog->title }}</a>
+
+                                @elseif(Route::currentRouteName() == 'homes-inspiration')
+
+                                    <a href="{{ url('homes-inspiration/'.$blog->title) }}">{{ $blog->title }}</a>
 
                                 @else
 
@@ -166,6 +196,12 @@
                                 @endif
 
 
+                            @endif
+
+
+                            @if(Route::currentRouteName() == 'homes-inspiration')
+
+                                <td>{{$blog->views}}</td>
 
                             @endif
 
@@ -190,6 +226,11 @@
 
                                             <li><a href="{{ url('admin/expats/addexpat/'.$blog->id) }}"><i class="md md-edit"></i> Edit Editor</a></li>
                                             <li><a href="{{ url('admin/expats/delete/'.$blog->id) }}"><i class="md md-delete"></i> Delete</a></li>
+
+                                        @elseif(Route::currentRouteName() == 'homes-inspiration')
+
+                                            <li><a href="{{ url('admin/homes-inspiration/add-homes-inspiration/'.$blog->id) }}"><i class="md md-edit"></i> Edit Editor</a></li>
+                                            <li><a href="{{ url('admin/homes-inspiration/delete/'.$blog->id) }}"><i class="md md-delete"></i> Delete</a></li>
 
                                         @else
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\footer_headings;
 use App\footer_pages;
+use App\homes_inspiration;
 use App\properties_headings;
 use App\property_features;
 use Auth;
@@ -704,6 +705,194 @@ class DashboardController extends MainAdminController
 
         $footer_pages = footer_pages::where('heading_id',$id)->delete();
         $footer_heading = footer_headings::where('id',$id)->delete();
+
+        \Session::flash('flash_message', 'Deleted');
+
+        return redirect()->back();
+
+    }
+
+    public function HomesInspiration()
+    {
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        $allblogs = homes_inspiration::all();
+
+        return view('admin.pages.blogs',compact('allblogs'));
+    }
+
+    public function addHomesInspiration(){
+
+        if(Auth::User()->usertype!="Admin"){
+
+            Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        return view('admin.pages.addeditblog');
+    }
+
+    public function postHomesInspiration(Request $request)
+    {
+
+        $data =  \Request::except(array('_token')) ;
+
+        $inputs = $request->all();
+
+        $rule=array(
+            'title' => 'required',
+            'description' => 'required',
+            'image' => 'mimes:jpg,jpeg,gif,png'
+        );
+
+        $validator = \Validator::make($data,$rule);
+
+        if ($validator->fails())
+        {
+            return redirect()->back()->withErrors($validator->messages());
+        }
+
+
+        if(!empty($inputs['id'])){
+
+            $blog = homes_inspiration::findOrFail($inputs['id']);
+
+            //Slide image
+            $t_user_image = $request->file('image');
+
+            if($request->remove_image)
+            {
+                \File::delete(public_path() .'/upload/homes-inspiration/'.$blog->image);
+
+                $blog->image = '';
+            }
+
+            if($t_user_image){
+
+                \File::delete(public_path() .'/upload/homes-inspiration/'.$blog->image);
+
+                $tmpFilePath = 'upload/homes-inspiration/';
+
+                $filename = $_FILES['image']['name'];
+
+                $ext = pathinfo($filename, PATHINFO_EXTENSION);
+
+                $hardPath =  Str::slug($inputs['title'], '-').'-'.md5(time());
+
+                $image_file = $hardPath . '.' . $ext;
+
+                $target_file = $tmpFilePath . $image_file;
+
+                $img = Image::make($t_user_image);
+
+                $img->save($target_file);
+
+                $blog->image = $image_file;
+
+            }
+
+
+        }else{
+
+            $blog = new homes_inspiration;
+
+            //Slide image
+            $t_user_image = $request->file('image');
+
+            if($t_user_image){
+
+                \File::delete(public_path() .'/upload/homes-inspiration/'.$blog->image);
+
+                $tmpFilePath = 'upload/homes-inspiration/';
+
+                $filename = $_FILES['image']['name'];
+
+                $ext = pathinfo($filename, PATHINFO_EXTENSION);
+
+                $hardPath =  Str::slug($inputs['title'], '-').'-'.md5(time());
+
+                $image_file = $hardPath . '.' . $ext;
+
+                $target_file = $tmpFilePath . $image_file;
+
+                $img = Image::make($t_user_image);
+
+                $img->save($target_file);
+
+                $blog->image = $image_file;
+
+            }
+            else
+            {
+                $blog->image = '';
+            }
+
+        }
+
+
+        $blog->title = $inputs['title'];
+        $blog->description = $inputs['description'];
+
+        $blog->save();
+
+        if(!empty($inputs['id'])){
+
+            \Session::flash('flash_message', __('text.Changes Saved'));
+
+            return \Redirect::back();
+        }else{
+
+            \Session::flash('flash_message', __('text.Added'));
+
+            return \Redirect::back();
+
+        }
+
+
+    }
+
+    public function editHomesInspiration($id)
+    {
+
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        $blog = homes_inspiration::findOrFail($id);
+
+        return view('admin.pages.addeditblog',compact('blog'));
+
+    }
+
+    public function deleteHomesInspiration($id)
+    {
+
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        $blog = homes_inspiration::findOrFail($id);
+
+        \File::delete(public_path() .'/upload/homes-inspiration/'.$blog->image);
+
+
+        $blog->delete();
 
         \Session::flash('flash_message', 'Deleted');
 

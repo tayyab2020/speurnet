@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Home_Exchange;
+use App\homes_inspiration;
 use App\New_Constructions;
+use App\saved_inspirations;
 use Auth;
 use App\User;
 use App\City;
@@ -31,6 +33,42 @@ class PropertiesController extends MainAdminController
 
 		 parent::__construct();
 
+    }
+
+    public function saveInspiration(Request $request)
+    {
+        $existingInspirations = saved_inspirations::where('ins_id',$request->blog_id)->where('user_id',$request->user_id)->first();
+
+        if($existingInspirations){
+
+            $existingInspirations->delete();
+
+            $inspiration = homes_inspiration::where('id',$request->blog_id)->first();
+            $inspiration->saved = $inspiration->saved-1;
+            $inspiration->save();
+
+            /*Session::flash('flash_message', __('text.Property Removed from Your Saved Properties List!'));*/
+
+        }
+
+        else{
+
+            $inspiration = new saved_inspirations;
+            $inspiration->ins_id = $request->blog_id;
+            $inspiration->user_id = $request->user_id;
+            $inspiration->save();
+
+            $inspiration = homes_inspiration::where('id',$request->blog_id)->first();
+            $inspiration->saved = $inspiration->saved+1;
+            $inspiration->save();
+
+            /*$user=User::where('id',$request->user_id)->first();
+            $user->views=$user->views+1;
+            $user->save();*/
+            /*Session::flash('flash_message', __('text.Property Successfully Saved to Your Dashboard!'));*/
+
+        }
+        return redirect()->back();
     }
 
     public function saveProperty(Request $request)

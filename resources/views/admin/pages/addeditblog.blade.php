@@ -23,6 +23,12 @@
 
                 <a href="{{ URL::to('admin/expats') }}" class="btn btn-default-light btn-xs"><i class="md md-backspace"></i> Back</a>
 
+            @elseif(Route::currentRouteName() == 'add-homes-inspiration' || Route::currentRouteName() == 'edit-homes-inspiration')
+
+                <h2> {{ isset($blog->title) ? 'Edit: '. $blog->title : 'Add Homes Inspiration Article' }}</h2>
+
+                <a href="{{ URL::to('admin/homes-inspiration') }}" class="btn btn-default-light btn-xs"><i class="md md-backspace"></i> Back</a>
+
             @else
 
                 <h2> {{ isset($blog->title) ? 'Edit: '. $blog->title : 'Add Footer Page' }}</h2>
@@ -68,6 +74,11 @@
 
                     {!! Form::open(array('url' => array('admin/expats/addexpat'),'class'=>'form-horizontal padding-15','name'=>'addexpat_form','id'=>'addexpat_form','role'=>'form','enctype' => 'multipart/form-data')) !!}
                     <input type="hidden" name="page" value="expat">
+
+                @elseif(Route::currentRouteName() == 'add-homes-inspiration' || Route::currentRouteName() == 'edit-homes-inspiration')
+
+                    {!! Form::open(array('url' => array('admin/homes-inspiration/add-homes-inspiration'),'class'=>'form-horizontal padding-15','name'=>'add_homes_inspiration_form','id'=>'add_homes_inspiration_form','role'=>'form','enctype' => 'multipart/form-data')) !!}
+                    <input type="hidden" name="page" value="inspiration">
 
                 @else
 
@@ -182,6 +193,18 @@
 
                                         @endif
 
+                                    @elseif(Route::currentRouteName() == 'add-homes-inspiration' || Route::currentRouteName() == 'edit-homes-inspiration')
+
+                                        @if($blog->image)
+
+                                            <img src="{{ URL::asset('upload/homes-inspiration/'.$blog->image) }}" width="100">
+
+                                        @else
+
+                                            <img src="{{ URL::asset('upload/noImage.png') }}" width="100">
+
+                                        @endif
+
                                     @else
 
                                         <input name="remove_image" id="remove_image" type="hidden">
@@ -228,6 +251,10 @@
                         @elseif(Route::currentRouteName() == 'add-expat' || Route::currentRouteName() == 'edit-expat')
 
                             <button type="submit" class="btn btn-primary">{{ isset($blog->title) ? 'Edit Expat' : 'Add Expat' }}</button>
+
+                        @elseif(Route::currentRouteName() == 'add-homes-inspiration' || Route::currentRouteName() == 'edit-homes-inspiration')
+
+                            <button type="submit" class="btn btn-primary">{{ isset($blog->title) ? 'Edit Home Inspiration Article' : 'Add Home Inspiration Article' }}</button>
 
                         @else
 
