@@ -78,13 +78,13 @@
                                                                             @if($saved[$i])
 
                                                                                 <i class="fas fa-heart heart" style="vertical-align: middle;font-size: 16px;display: flex;color: black;" aria-hidden="true">
-                                                                                    <span style="display: block;margin-left: 7px;">{{$blog->saved}}</span>
+                                                                                    <span style="display: block;margin-left: 7px;">{{number_format($blog->saved, 0, ',', '.')}}</span>
                                                                                 </i>
 
                                                                             @else
 
                                                                                 <i class="far fa-heart heart" style="vertical-align: middle;font-size: 16px;display: flex;color: black;" aria-hidden="true">
-                                                                                    <span style="display: block;margin-left: 7px;">{{$blog->saved}}</span>
+                                                                                    <span style="display: block;margin-left: 7px;">{{number_format($blog->saved, 0, ',', '.')}}</span>
                                                                                 </i>
 
                                                                             @endif
@@ -99,14 +99,14 @@
                                                                     <a style="text-decoration: none;" href="{{ URL::to('/login') }}" title="{{__('text.Add Favorite')}}">
 
                                                                         <i class="far fa-heart heart" style="vertical-align: middle;font-size: 16px;display: flex;color: black;">
-                                                                            <span style="display: block;margin-left: 7px;">{{$blog->saved}}</span>
+                                                                            <span style="display: block;margin-left: 7px;">{{number_format($blog->saved, 0, ',', '.')}}</span>
                                                                         </i>
                                                                     </a>
 
                                                                 @endif
 
                                                                 <i class="far fa-eye" style="vertical-align: middle;font-size: 16px;display: flex;color: #37bc9b;" aria-hidden="true">
-                                                                    <span style="display: block;margin-left: 7px;">{{$blog->views}}</span>
+                                                                    <span style="display: block;margin-left: 7px;">{{number_format($blog->views, 0, ',', '.')}}</span>
                                                                 </i>
 
                                                             </div>
