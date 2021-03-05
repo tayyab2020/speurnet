@@ -195,6 +195,7 @@
             .res-span
             {
                 width: 100% !important;
+                margin-right: 0 !important;
             }
 
             #search_form
@@ -205,7 +206,7 @@
 
             .res-head
             {
-                font-size: 16px;
+                font-size: 14px;
             }
         }
 
