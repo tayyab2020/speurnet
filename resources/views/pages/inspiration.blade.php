@@ -1,6 +1,7 @@
 @extends("app")
 @section("content")
 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
     <!-- begin:content -->
     <div id="content">
@@ -11,12 +12,21 @@
 
                     <div class="row" style="margin: 0;margin-bottom: 20px;">
 
-                        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+                        <ul style="display:flex;align-items: flex-end;" class="nav nav-tabs res-ul">
 
-                        <form id="search_form" method="GET" action="{{route('front-homes-inspiration')}}">
-                            <input value="{{$search}}" autocomplete="off" name="search" type="search">
-                            <i id="form-submit" style="display: flex;justify-content: center;align-items: center;" class="fa fa-search search-icon"></i>
-                        </form>
+                            <span class="res-span" style="display: inline-block;width: 60%;margin-right: 30px;">
+                                <h4 class="res-head">De mooiste woontrens & inspiratie onder één dak.</h4>
+                                <p style="margin: 0;">Bekijk hier de mooiste en leukste woontreds en laat je inspireren. We hebben zowel de trends binnenshuis als buitenshuis voor je verzameld. Blijf ons volgen voor meer tips en ideeën.</p>
+                            </span>
+
+                            <li class="active"><a class="res-tab" data-toggle="tab" href="#home" aria-expanded="true">Binnenshuis</a></li>
+                            <li class=""><a class="res-tab" data-toggle="tab" href="#menu1" aria-expanded="false">Buitenshuis</a></li>
+
+                            <form style="margin-bottom: 10px;position: absolute;" id="search_form" method="GET" action="{{route('front-homes-inspiration')}}">
+                                <input value="{{$search}}" autocomplete="off" name="search" type="search">
+                                <i id="form-submit" style="display: flex;justify-content: center;align-items: center;" class="fa fa-search search-icon"></i>
+                            </form>
+                        </ul>
 
                     </div>
 
@@ -143,6 +153,75 @@
     <!-- end:content -->
 
     <style>
+
+        @media (min-width: 1200px)
+        {
+            .res-float:nth-child(3n+1) {
+                padding-left: 0;
+            }
+
+            .res-float:nth-child(3n+3) {
+                padding-right: 0;
+            }
+        }
+
+        @media (max-width: 1199px)
+        {
+            .res-float:nth-child(3n+1) {
+                padding-left: 0;
+            }
+
+            .res-float:nth-child(3n+2) {
+                padding-right: 0;
+            }
+        }
+
+        @media (max-width: 768px)
+        {
+            .res-float:nth-child(3n+1) {
+                padding-left: 15px;
+            }
+
+            .res-float:nth-child(3n+2) {
+                padding-right: 15px;
+            }
+
+            .res-ul
+            {
+                display: block !important;
+                position: relative;
+            }
+
+            .res-span
+            {
+                width: 100% !important;
+            }
+
+            #search_form
+            {
+                bottom: 3px;
+                margin-bottom: 0 !important;
+            }
+
+            .res-head
+            {
+                font-size: 16px;
+            }
+        }
+
+        .res-tab
+        {
+            border: 0 !important;
+            font-size: 18px;
+        }
+
+        .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus
+        {
+            background-color: transparent;
+            border: 0;
+            border-bottom: 3px solid #E42F8B !important;
+            padding: 10px 0 !important;
+        }
 
         .new-button{border:0 !important;background-color: transparent;padding: 0;}
 
