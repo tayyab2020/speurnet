@@ -128,6 +128,20 @@
                     </div>
                 </div>
 
+                    @if(Route::currentRouteName() == 'add-homes-inspiration' || Route::currentRouteName() == 'edit-homes-inspiration')
+
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">Type</label>
+                            <div class="col-sm-9">
+                                <select class="form-control" name="type">
+                                    <option value="1" {{isset($blog) ? ($blog->indoors ? "selected" : null) : null}}>Indoors</option>
+                                    <option value="2" {{isset($blog) ? ($blog->outdoors ? "selected" : null) : null}}>Outdoors</option>
+                                </select>
+                            </div>
+                        </div>
+
+                    @endif
+
                 <div class="form-group">
                     <label for="" class="col-sm-3 control-label">Description</label>
                     <div class="col-sm-9">

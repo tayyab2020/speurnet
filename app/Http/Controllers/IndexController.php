@@ -1531,11 +1531,25 @@ class IndexController extends Controller
 
     public function HomesInspiration(Request $request,$id = '')
     {
+
         if($request->search)
         {
             $search = $request->search;
+            $type = $request->type;
+            $type = strtolower($type);
 
-            $blogs = homes_inspiration::where('title','like', '%' . $search . '%')->orWhere('description','like', '%' . $search . '%')->paginate(10);
+            if($type == 'binnenshuis' || $type == null)
+            {
+                $blogs = homes_inspiration::where('type',1)->where(function($query) use($search) {
+                    $query->where('title','like', '%' . $search . '%')->orWhere('description','like', '%' . $search . '%');
+                })->paginate(10);
+            }
+            else
+            {
+                $blogs = homes_inspiration::where('type',2)->where(function($query) use($search) {
+                    $query->where('title','like', '%' . $search . '%')->orWhere('description','like', '%' . $search . '%');
+                })->paginate(10);
+            }
 
             $saved = [];
 
@@ -1553,7 +1567,7 @@ class IndexController extends Controller
                 $saved = "";
             }
 
-            return view('pages.inspiration',compact('blogs','saved','search'));
+            return view('pages.inspiration',compact('blogs','saved','search','type'));
         }
 
 
@@ -1568,8 +1582,17 @@ class IndexController extends Controller
         else
         {
             $search = '';
+            $type = $request->type;
+            $type = strtolower($type);
 
-            $blogs = homes_inspiration::paginate(10);
+            if($type == 'binnenshuis' || $type == null)
+            {
+                $blogs = homes_inspiration::where('type',1)->paginate(10);
+            }
+            else
+            {
+                $blogs = homes_inspiration::where('type',2)->paginate(10);
+            }
 
             $saved = [];
 
@@ -1587,7 +1610,7 @@ class IndexController extends Controller
                 $saved = "";
             }
 
-            return view('pages.inspiration',compact('blogs','saved','search'));
+            return view('pages.inspiration',compact('blogs','saved','search','type'));
         }
     }
 

@@ -839,6 +839,7 @@ class DashboardController extends MainAdminController
 
 
         $blog->title = $inputs['title'];
+        $blog->type = $inputs['type'];
         $blog->description = $inputs['description'];
 
         $blog->save();

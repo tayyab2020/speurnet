@@ -69,6 +69,7 @@
                         @if(Route::currentRouteName() == 'homes-inspiration')
 
                         <th>Views</th>
+                        <th>Type</th>
 
                         @endif
 
@@ -155,7 +156,7 @@
 
                                 @if(Route::currentRouteName() == 'blogs')
 
-                                <a href="{{ url('blogs/'.$blog->title) }}">{{ $blog->title }}</a>
+                                    <a href="{{ url('blogs/'.$blog->title) }}">{{ $blog->title }}</a>
 
                                 @elseif(Route::currentRouteName() == 'moving-tips')
 
@@ -202,6 +203,7 @@
                             @if(Route::currentRouteName() == 'homes-inspiration')
 
                                 <td>{{$blog->views}}</td>
+                                <td>{{$blog->type == 1 ? "Indoors" : "Outdoors"}}</td>
 
                             @endif
 
