@@ -134,8 +134,8 @@
                             <label for="" class="col-sm-3 control-label">Type</label>
                             <div class="col-sm-9">
                                 <select class="form-control" name="type">
-                                    <option value="1" {{isset($blog) ? ($blog->indoors ? "selected" : null) : null}}>Indoors</option>
-                                    <option value="2" {{isset($blog) ? ($blog->outdoors ? "selected" : null) : null}}>Outdoors</option>
+                                    <option value="1" {{isset($blog) ? ($blog->type == 1 ? "selected" : null) : null}}>Indoors</option>
+                                    <option value="2" {{isset($blog) ? ($blog->type == 2 ? "selected" : null) : null}}>Outdoors</option>
                                 </select>
                             </div>
                         </div>
