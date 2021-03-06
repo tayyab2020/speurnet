@@ -26,9 +26,9 @@
                                 {{$blog->title}}
                             </h1>
 
-                            <?php $date = $blog->created_at;
-                            $date = date("M d, Y", strtotime($date)); ?>
-
+                            <?php setlocale(LC_TIME, 'Dutch');
+                            $date = $blog->created_at->formatLocalized('%d %B %Y');
+                            ?>
 
                             <div class="post_meta_top" style="text-align: center;margin-bottom: 20px;">
                                 <span class="post_meta_date">{{$date}}</span>
@@ -44,6 +44,11 @@
 
                             @endif
 
+                            <span style="display: block;float: right;margin-top: 10px;">
+                                <i class="far fa-eye" style="vertical-align: middle;font-size: 16px;display: flex;color: #37bc9b;" aria-hidden="true">
+                                    <span style="display: block;margin-left: 7px;">{{number_format($blog->views, 0, ',', '.')}}</span>
+                                </i>
+                            </span>
 
                         @elseif(Route::currentRouteName() == 'front-homes-inspiration')
 
