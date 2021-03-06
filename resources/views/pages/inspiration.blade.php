@@ -165,6 +165,11 @@
 
     <style>
 
+        #content
+        {
+            background: #f4f4f45c;
+        }
+
         @media (min-width: 1200px)
         {
             .res-float:nth-child(3n+1) {
