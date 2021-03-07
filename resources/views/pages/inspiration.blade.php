@@ -16,7 +16,7 @@
 
                             <span class="res-span" style="display: inline-block;width: 60%;margin-right: 30px;">
                                 <h4 class="res-head">De mooiste woontrens & inspiratie onder één dak.</h4>
-                                <p style="margin: 0;">Bekijk hier de mooiste en leukste woontreds en laat je inspireren. We hebben zowel de trends binnenshuis als buitenshuis voor je verzameld. Blijf ons volgen voor meer tips en ideeën.</p>
+                                <p style="margin: 0;">Bekijk hier de mooiste en leukste woontrends en laat je inspireren. We hebben zowel de trends binnenshuis als buitenshuis voor je verzameld. Blijf ons volgen voor meer tips en ideeën.</p>
                             </span>
 
                             <li @if($type == 'binnenshuis' || $type == null) class="active" @endif><a style="cursor: pointer;" class="res-tab" href="{{url('wooninspiratie?type=binnenshuis')}}" aria-expanded="true">Binnenshuis</a></li>
