@@ -10,7 +10,7 @@
             <div class="row mobile-row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
-                    <div class="row" style="margin: 0;margin-bottom: 20px;">
+                    <div class="row" style="margin: 0;margin-bottom: 30px;">
 
                         <ul style="display:flex;align-items: flex-end;" class="nav nav-tabs res-ul">
 
