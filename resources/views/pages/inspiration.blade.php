@@ -50,7 +50,7 @@
 
                                             <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 res-float" style="margin: auto;">
                                                 <article style="margin-bottom: 45px;">
-                                                    <div class="property-container" style="margin: 0;min-height: 433px;border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;">
+                                                    <div class="property-container" style="margin: 0;min-height: 480px;border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;">
 
                                                         <?php $url = url('wooninspiratie/'.$blog->title); ?>
 
@@ -132,7 +132,7 @@
 
                                                             </div>
 
-                                                            <p style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 3;-webkit-box-orient: vertical;overflow: hidden;line-height: 2;font-size: 15px;margin-top: 15px;font-weight: 600;">{{$description}}</p>
+                                                            <p style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 5;-webkit-box-orient: vertical;overflow: hidden;line-height: 2;font-size: 15px;margin-top: 15px;font-weight: 600;">{{$description}}</p>
 
                                                         </div>
                                                     </div>
