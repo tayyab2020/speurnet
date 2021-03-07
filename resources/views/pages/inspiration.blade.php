@@ -132,7 +132,7 @@
 
                                                             </div>
 
-                                                            <p style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 4;-webkit-box-orient: vertical;overflow: hidden;line-height: 2;font-size: 15px;margin-top: 15px;font-weight: 700;">{{$description}}</p>
+                                                            <p style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 3;-webkit-box-orient: vertical;overflow: hidden;line-height: 2;font-size: 15px;margin-top: 15px;font-weight: 600;">{{$description}}</p>
 
                                                         </div>
                                                     </div>
