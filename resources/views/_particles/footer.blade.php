@@ -12,7 +12,6 @@
                     <li><a href="{{ URL::to('cookieverklaring')}}">{{__('text.Careers with Us')}}</a></li>
                     <li><a href="{{ URL::to('algemene-voorwaarden')}}">{{__('text.Terms & Conditions')}}</a></li>
                     <li><a href="{{ URL::to('privacy-beleid')}}">{{__('text.Privacy Policy')}}</a></li>
-                    <li><a href="{{ URL::to('wooninspiratie')}}">{{__('text.Nice to know')}}</a></li>
                     @foreach($footer_content as $i => $key)
 
                         @if($key->heading_id == 0)
@@ -22,6 +21,7 @@
                         @endif
 
                     @endforeach
+                    <li><a href="{{ URL::to('wooninspiratie')}}">{{__('text.Nice to know')}}</a></li>
                 </ul>
             </div>
           </div>
