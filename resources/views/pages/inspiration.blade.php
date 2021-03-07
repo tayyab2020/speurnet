@@ -212,6 +212,7 @@
             {
                 width: 100% !important;
                 margin-right: 0 !important;
+                margin-bottom: 20px;
             }
 
             #search_form
