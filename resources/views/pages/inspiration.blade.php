@@ -54,7 +54,7 @@
 
                                                         <?php $url = url('wooninspiratie/'.$blog->title); ?>
 
-                                                        <a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;" href="{{$url}}">
+                                                        <a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;" href="">
 
                                                             <div class="property-image">
 
