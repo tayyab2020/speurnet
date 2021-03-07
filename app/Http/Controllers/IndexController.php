@@ -1542,13 +1542,13 @@ class IndexController extends Controller
             {
                 $blogs = homes_inspiration::where('type',1)->where(function($query) use($search) {
                     $query->where('title','like', '%' . $search . '%')->orWhere('description','like', '%' . $search . '%');
-                })->paginate(10);
+                })->paginate(6);
             }
             else
             {
                 $blogs = homes_inspiration::where('type',2)->where(function($query) use($search) {
                     $query->where('title','like', '%' . $search . '%')->orWhere('description','like', '%' . $search . '%');
-                })->paginate(10);
+                })->paginate(6);
             }
 
             $saved = [];
@@ -1587,11 +1587,11 @@ class IndexController extends Controller
 
             if($type == 'binnenshuis' || $type == null)
             {
-                $blogs = homes_inspiration::where('type',1)->paginate(10);
+                $blogs = homes_inspiration::where('type',1)->paginate(6);
             }
             else
             {
-                $blogs = homes_inspiration::where('type',2)->paginate(10);
+                $blogs = homes_inspiration::where('type',2)->paginate(6);
             }
 
             $saved = [];
