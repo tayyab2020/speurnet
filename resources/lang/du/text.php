@@ -558,4 +558,5 @@ return [
     'Corporation' => 'Woningcorporatie',
     'My Home Exchange' => 'Mijn woningruil',
     'Message sent successfully' => 'Bericht succesvol verstuurd!',
+    'Nice to know' => 'Handig om te weten',
 ];
