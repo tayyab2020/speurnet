@@ -231,6 +231,7 @@
         {
             border: 0 !important;
             font-size: 18px;
+            padding-bottom: 14px !important;
         }
 
         .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus
