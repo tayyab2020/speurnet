@@ -19,8 +19,8 @@
                                 <p style="margin: 0;">Bekijk hier de mooiste en leukste woontreds en laat je inspireren. We hebben zowel de trends binnenshuis als buitenshuis voor je verzameld. Blijf ons volgen voor meer tips en ideeën.</p>
                             </span>
 
-                            <li @if($type == 'binnenshuis' || $type == null) class="active" @endif><a style="cursor: pointer;" class="res-tab" href="{{url('homes-inspiration?type=binnenshuis')}}" aria-expanded="true">Binnenshuis</a></li>
-                            <li @if($type == 'buitenshuis') class="active" @endif><a style="cursor: pointer;" class="res-tab" href="{{url('homes-inspiration?type=buitenshuis')}}" aria-expanded="false">Buitenshuis</a></li>
+                            <li @if($type == 'binnenshuis' || $type == null) class="active" @endif><a style="cursor: pointer;" class="res-tab" href="{{url('wooninspiratie?type=binnenshuis')}}" aria-expanded="true">Binnenshuis</a></li>
+                            <li @if($type == 'buitenshuis') class="active" @endif><a style="cursor: pointer;" class="res-tab" href="{{url('wooninspiratie?type=buitenshuis')}}" aria-expanded="false">Buitenshuis</a></li>
 
                             <form style="margin-bottom: 10px;position: absolute;" id="search_form" method="GET" action="{{route('front-homes-inspiration')}}">
                                 <input value="{{$type == 'binnenshuis' || $type == null ? 'binnenshuis' : 'buitenshuis'}}" name="type">
@@ -52,7 +52,7 @@
                                                 <article style="margin-bottom: 45px;">
                                                     <div class="property-container" style="margin: 0;min-height: 433px;border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;">
 
-                                                        <?php $url = url('homes-inspiration/'.$blog->title); ?>
+                                                        <?php $url = url('wooninspiratie/'.$blog->title); ?>
 
                                                         <a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;" href="{{$url}}">
 

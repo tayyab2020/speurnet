@@ -168,7 +168,7 @@
 
                                 @elseif(Route::currentRouteName() == 'homes-inspiration')
 
-                                    <a href="{{ url('homes-inspiration/'.$blog->title) }}">{{ $blog->title }}</a>
+                                    <a href="{{ url('wooninspiratie/'.$blog->title) }}">{{ $blog->title }}</a>
 
                                 @else
 
