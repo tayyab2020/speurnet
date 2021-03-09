@@ -638,7 +638,7 @@
 
                 .res-head
                 {
-                    font-size: 21px !important;
+                    font-size: 18px !important;
                 }
 
                 .bulgy-radios .label
