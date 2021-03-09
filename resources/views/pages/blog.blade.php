@@ -353,16 +353,16 @@
 
                                         </div>
 
-                                        <div style="width: 100%;">
+                                        <div style="width: 100%;display: flex;align-items: flex-end;padding: 0 20px;">
 
-                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                <img class="res-img-hide" style="margin-right: 20px;height: 55px;" src="{{URL::asset('assets/img/separate icons2.png')}}">
-                                                <img class="res-img-hide" style="margin-right: 20px;height: 55px;" src="{{URL::asset('assets/img/separate icons3.png')}}">
-                                                <img class="res-img-hide" style="height: 55px;" src="{{URL::asset('assets/img/separate icons4.png')}}">
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 img-hide">
+                                                <img style="margin-right: 20px;height: 55px;" src="{{URL::asset('assets/img/separate icons2.png')}}">
+                                                <img style="margin-right: 20px;height: 55px;" src="{{URL::asset('assets/img/separate icons3.png')}}">
+                                                <img style="height: 55px;" src="{{URL::asset('assets/img/separate icons4.png')}}">
                                             </div>
 
-                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 res-footer">
-                                                <div style="margin: 0;" class="form-group">
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                <div class="form-group">
 
                                                     <input name="terms" value="1" type="checkbox" required id="terms" style="position: relative;top: 2px;display: block;height: 0px;">
 
@@ -621,14 +621,14 @@
             @media (max-width: 768px)
             {
 
+                .img-hide
+                {
+                    display: none;
+                }
+
                 .res-radio
                 {
                     margin-top: 15px;
-                }
-
-                .res-footer
-                {
-                    margin-bottom: 10px;
                 }
 
                 .res-img-hide
