@@ -644,6 +644,7 @@
                 .bulgy-radios .label
                 {
                     font-size: 75%;
+                    padding: 10px ​10px 0 0;
                 }
 
                 .radio
