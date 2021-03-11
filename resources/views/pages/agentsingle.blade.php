@@ -35,14 +35,14 @@
         </div>
     @endif
 
-    <div class="row" style="margin: 0;margin-top: 11px;">
+    <div class="row" style="margin: 0;margin-top: 11px;border-bottom: 1px solid #ebebeb;">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 top-container" style="padding: 25px 80px;">
             <div class="team-container team-dark" style="border-color: transparent;background-color: white;color: #7a7878;">
                 <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12 team-image">
                     @if($agent->image_icon)
                         <img style="height: 200px;" src="{{ URL::asset('upload/members/'.$agent->image_icon.'-b.jpg') }}" alt="{{$agent->name}}">
                     @elseif($agent->company_name)
-                        <h3 style="margin: 0;display: flex;align-items: center;justify-content: center;height: 200px;border: 1px solid;text-align: center;">{{$agent->company_name}}</h3>
+                        <h3 style="margin: 0;display: flex;align-items: center;justify-content: center;height: 200px;border: 1px solid;text-align: center;word-break: break-word;">{{$agent->company_name}}</h3>
                     @endif
 
                         <div class="team-social" style="display:flex;justify-content: center;">
@@ -165,7 +165,7 @@
                 <div class="col-md-9 main-content">
                     <div class="row">
                         <div class="col-md-12 single-post">
-                            <ul id="myTab" class="nav nav-tabs nav-justified">
+                            <ul style="box-shadow: 0 0 15px 0 #b4b4b445;" id="myTab" class="nav nav-tabs nav-justified">
                                 <li class="property-tab active"><a href="#detail" id="left-tab" data-toggle="tab">{{__('text.Overview')}}</a></li>
 
                                 <li class="contact-tab"><a href="#location" id="right-tab" data-toggle="tab">{{__('text.Find On Map')}}</a></li>
@@ -254,7 +254,7 @@
 
                             </style>
 
-                            <div id="myTabContent" class="tab-content">
+                            <div style="box-shadow: 0 0 15px 0 #b4b4b445;border-bottom-right-radius: 10px;border-bottom-left-radius: 10px;" id="myTabContent" class="tab-content">
                                 <div class="tab-pane fade in active" id="detail">
 
                                     @if($agent->about)

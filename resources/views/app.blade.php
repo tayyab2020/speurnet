@@ -77,6 +77,7 @@
       {
           position: sticky;
           margin: 0;
+          border-bottom: 1px solid #f3f3f3;
       }
 
   </style>

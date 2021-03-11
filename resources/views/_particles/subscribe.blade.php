@@ -37,7 +37,7 @@
 
  </script>
 <!-- begin:subscribe -->
-    <div id="subscribe">
+    <div id="subscribe" style="background-color: #ffffff;">
       <div class="container">
         <div class="row">
           <div class="col-md-5 col-md-offset-2 col-sm-8 col-xs-12">

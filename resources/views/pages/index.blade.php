@@ -1139,7 +1139,7 @@
     </style>
 
 <!-- begin:blog -->
-<div id="partner" style="background: #f4f4f4;">
+<div id="partner">
     <div class="container" style="width: 100%;">
         <div class="row">
             <div class="col-md-12">

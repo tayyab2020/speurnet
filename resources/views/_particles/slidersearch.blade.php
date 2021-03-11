@@ -1,5 +1,5 @@
 <!-- begin:header -->
-    <div id="header" class="header-slide">
+    <div id="header" style="border-bottom: 1px solid #f3f3f3;" class="header-slide">
 
         <div class="container">
 

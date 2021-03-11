@@ -524,42 +524,42 @@ class PropertiesController extends Controller
         $properties_search = [];
         $final_results = [];
 
-            if($filter == 'newest')
-            {
-                $properties = Home_Exchange::SearchByKeyword($house_kind,$bedrooms,$area,$rent,$preferred_house_kind,$preferred_bedrooms,$preferred_area,$preferred_rent,$media)->where('is_sold',0)->where('is_rented',0)->orderBy('properties.id', 'desc')->select('properties.*');
-            }
-            if($filter == 'oldest')
-            {
-                $properties = Home_Exchange::SearchByKeyword($house_kind,$bedrooms,$area,$rent,$preferred_house_kind,$preferred_bedrooms,$preferred_area,$preferred_rent,$media)->where('is_sold',0)->where('is_rented',0)->orderBy('properties.id', 'asc')->select('properties.*');
-            }
-            if($filter == 'bedrooms')
-            {
-                $properties = Home_Exchange::SearchByKeyword($house_kind,$bedrooms,$area,$rent,$preferred_house_kind,$preferred_bedrooms,$preferred_area,$preferred_rent,$media)->where('is_sold',0)->where('is_rented',0)->orderBy('properties.bedrooms', 'asc')->select('properties.*');
-            }
-            if($filter == 'bathrooms')
-            {
-                $properties = Home_Exchange::SearchByKeyword($house_kind,$bedrooms,$area,$rent,$preferred_house_kind,$preferred_bedrooms,$preferred_area,$preferred_rent,$media)->where('is_sold',0)->where('is_rented',0)->orderBy('properties.bathrooms', 'asc')->select('properties.*');
-            }
-            if($filter == 'popularity')
-            {
-                $properties = Home_Exchange::SearchByKeyword($house_kind,$bedrooms,$area,$rent,$preferred_house_kind,$preferred_bedrooms,$preferred_area,$preferred_rent,$media)->where('is_sold',0)->where('is_rented',0)->orderBy('properties.views', 'desc')->select('properties.*');
-            }
-            if($filter == 'lowest_rent_price')
-            {
-                $properties = Home_Exchange::SearchByKeyword($house_kind,$bedrooms,$area,$rent,$preferred_house_kind,$preferred_bedrooms,$preferred_area,$preferred_rent,$media)->where('is_sold',0)->where('is_rented',0)->orderBy('properties.rent_per_month', 'asc')->select('properties.*');
-            }
-            if($filter == 'highest_rent_price')
-            {
-                $properties = Home_Exchange::SearchByKeyword($house_kind,$bedrooms,$area,$rent,$preferred_house_kind,$preferred_bedrooms,$preferred_area,$preferred_rent,$media)->where('is_sold',0)->where('is_rented',0)->orderBy('properties.rent_per_month', 'desc')->select('properties.*');
-            }
-            if($filter == 'lowest_area')
-            {
-                $properties = Home_Exchange::SearchByKeyword($house_kind,$bedrooms,$area,$rent,$preferred_house_kind,$preferred_bedrooms,$preferred_area,$preferred_rent,$media)->where('is_sold',0)->where('is_rented',0)->orderBy('properties.area', 'asc')->select('properties.*');
-            }
-            if($filter == 'highest_area')
-            {
-                $properties = Home_Exchange::SearchByKeyword($house_kind,$bedrooms,$area,$rent,$preferred_house_kind,$preferred_bedrooms,$preferred_area,$preferred_rent,$media)->where('is_sold',0)->where('is_rented',0)->orderBy('properties.area', 'desc')->select('properties.*');
-            }
+        if($filter == 'newest')
+        {
+            $properties = Home_Exchange::SearchByKeyword($house_kind,$bedrooms,$area,$rent,$preferred_house_kind,$preferred_bedrooms,$preferred_area,$preferred_rent,$media)->where('is_sold',0)->where('is_rented',0)->orderBy('properties.id', 'desc')->select('properties.*');
+        }
+        if($filter == 'oldest')
+        {
+            $properties = Home_Exchange::SearchByKeyword($house_kind,$bedrooms,$area,$rent,$preferred_house_kind,$preferred_bedrooms,$preferred_area,$preferred_rent,$media)->where('is_sold',0)->where('is_rented',0)->orderBy('properties.id', 'asc')->select('properties.*');
+        }
+        if($filter == 'bedrooms')
+        {
+            $properties = Home_Exchange::SearchByKeyword($house_kind,$bedrooms,$area,$rent,$preferred_house_kind,$preferred_bedrooms,$preferred_area,$preferred_rent,$media)->where('is_sold',0)->where('is_rented',0)->orderBy('properties.bedrooms', 'asc')->select('properties.*');
+        }
+        if($filter == 'bathrooms')
+        {
+            $properties = Home_Exchange::SearchByKeyword($house_kind,$bedrooms,$area,$rent,$preferred_house_kind,$preferred_bedrooms,$preferred_area,$preferred_rent,$media)->where('is_sold',0)->where('is_rented',0)->orderBy('properties.bathrooms', 'asc')->select('properties.*');
+        }
+        if($filter == 'popularity')
+        {
+            $properties = Home_Exchange::SearchByKeyword($house_kind,$bedrooms,$area,$rent,$preferred_house_kind,$preferred_bedrooms,$preferred_area,$preferred_rent,$media)->where('is_sold',0)->where('is_rented',0)->orderBy('properties.views', 'desc')->select('properties.*');
+        }
+        if($filter == 'lowest_rent_price')
+        {
+            $properties = Home_Exchange::SearchByKeyword($house_kind,$bedrooms,$area,$rent,$preferred_house_kind,$preferred_bedrooms,$preferred_area,$preferred_rent,$media)->where('is_sold',0)->where('is_rented',0)->orderBy('properties.rent_per_month', 'asc')->select('properties.*');
+        }
+        if($filter == 'highest_rent_price')
+        {
+            $properties = Home_Exchange::SearchByKeyword($house_kind,$bedrooms,$area,$rent,$preferred_house_kind,$preferred_bedrooms,$preferred_area,$preferred_rent,$media)->where('is_sold',0)->where('is_rented',0)->orderBy('properties.rent_per_month', 'desc')->select('properties.*');
+        }
+        if($filter == 'lowest_area')
+        {
+            $properties = Home_Exchange::SearchByKeyword($house_kind,$bedrooms,$area,$rent,$preferred_house_kind,$preferred_bedrooms,$preferred_area,$preferred_rent,$media)->where('is_sold',0)->where('is_rented',0)->orderBy('properties.area', 'asc')->select('properties.*');
+        }
+        if($filter == 'highest_area')
+        {
+            $properties = Home_Exchange::SearchByKeyword($house_kind,$bedrooms,$area,$rent,$preferred_house_kind,$preferred_bedrooms,$preferred_area,$preferred_rent,$media)->where('is_sold',0)->where('is_rented',0)->orderBy('properties.area', 'desc')->select('properties.*');
+        }
 
         if($preferred_address && $preferred_address_latitude && $preferred_address_longitude) {
 

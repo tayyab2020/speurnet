@@ -1,6 +1,6 @@
 <div class="{{$class ?? 'col-md-3 col-md-pull-9'}} sidebar">
 
-    <div class="widget widget-white">
+    <div style="border: 2px solid #ebebeb;" class="widget widget-white">
         <div class="widget-header">
             <h3>{{__('text.Advance Search')}}</h3>
         </div>

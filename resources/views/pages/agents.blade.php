@@ -402,7 +402,7 @@
                    @foreach($agents as $i => $agent)
                       <div class="row" style="margin: 20px 0px;">
                           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 res-box">
-                            <div class="row res-box1" style="background-color: white;padding: 20px;">
+                            <div class="row res-box1" style="background-color: white;padding: 20px;box-shadow: 0 0 15px 0 #b4b4b445;border-radius: 10px;">
                             <div class="col-sm-3">
                                 <div class="team-image">
                                     <a style="outline: none;" href="{{ URL::to('/makelaars/details/'.$agent->id) }}">

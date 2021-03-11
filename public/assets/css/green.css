@@ -2,7 +2,7 @@
 	========================================
 	TABLE OF CONTENT
 	========================================
-	
+
 	[1. GLOBAL STYLE]
 	[2. NAVBAR]
 	[3. HEADER]
@@ -21,7 +21,7 @@
 */
 
 
-/* 
+/*
 	==================
 	[1. GLOBAL STYLE]
 	==================
@@ -39,31 +39,31 @@ body{
 	scrollbar-face-color: #333;
 }
 
-::-moz-selection { 
-	color: #fff; 
-	text-shadow: none; 
-	background: #3498db; 
+::-moz-selection {
+	color: #fff;
+	text-shadow: none;
+	background: #3498db;
 }
 
-::-webkit-selection { 
-	color: #fff; 
-	text-shadow: none; 
-	background: #3498db; 
+::-webkit-selection {
+	color: #fff;
+	text-shadow: none;
+	background: #3498db;
 }
 
-::selection { 
-	color: #fff; 
-	text-shadow: none; 
-	background: #3498db; 
+::selection {
+	color: #fff;
+	text-shadow: none;
+	background: #3498db;
 }
 
 ::-webkit-scrollbar {
 	width: 10px;
-} 
+}
 
 ::-webkit-scrollbar-track {
 	background-color: #333;
-} 
+}
 
 ::-webkit-scrollbar-thumb {
 	background-color: #666;
@@ -71,11 +71,11 @@ body{
 	   -moz-border-radius: 2px;
 	     -o-border-radius: 2px;
 			border-radius: 2px;
-} 
+}
 
 ::-webkit-scrollbar-button {
 	display: none;
-} 
+}
 
 ::-webkit-scrollbar-corner {
 	background-color: #000000;
@@ -199,7 +199,7 @@ input[type="color"]:focus,
 }
 
 
-/* 
+/*
 	==================
 	[2. NAVBAR]
 	==================
@@ -415,7 +415,7 @@ input[type="color"]:focus,
 }
 
 
-/* 
+/*
 	==================
 	[3. HEADER]
 	==================
@@ -504,7 +504,7 @@ input[type="color"]:focus,
 }
 
 
-/* 
+/*
 	==================
 	[4. SERVICE]
 	==================
@@ -595,7 +595,7 @@ input[type="color"]:focus,
 }
 
 
-/* 
+/*
 	==================
 	[5. CONTENT]
 	==================
@@ -604,7 +604,7 @@ input[type="color"]:focus,
 	position: relative;
 	width: 100%;
 	padding: 60px 0;
-	background: #f4f4f4;
+	background: #ffffff;
 }
 
 .heading-title{
@@ -840,7 +840,7 @@ input[type="color"]:focus,
 }
 
 
-/* 
+/*
 	==================
 	[5.1 ARTICLE]
 	==================
@@ -854,18 +854,18 @@ input[type="color"]:focus,
 }
 
 /* pagination */
-.pagination > li > a, 
+.pagination > li > a,
 .pagination > li > span {
 	color: #48cfad;
 	background-color: #fff;
 	border: 1px solid #ddd;
 }
 
-.pagination > .active > a, 
-.pagination > .active > span, 
-.pagination > .active > a:hover, 
-.pagination > .active > span:hover, 
-.pagination > .active > a:focus, 
+.pagination > .active > a,
+.pagination > .active > span,
+.pagination > .active > a:hover,
+.pagination > .active > span:hover,
+.pagination > .active > a:focus,
 .pagination > .active > span:focus {
 	z-index: 2;
 	color: #fff;
@@ -975,7 +975,7 @@ input[type="color"]:focus,
 	padding-top: 20px;
 	padding-bottom: 20px;
 	padding-left: 15%;
-	padding-right: 15%; 
+	padding-right: 15%;
 }
 
 .blog-paged > .pager li > a:hover,
@@ -1089,7 +1089,7 @@ input[type="color"]:focus,
 }
 
 
-/* 
+/*
 	==================
 	[5.2 TEAM]
 	==================
@@ -1186,7 +1186,7 @@ input[type="color"]:focus,
 }
 
 
-/* 
+/*
 	==================
 	[5.3 SIDEBAR]
 	==================
@@ -1355,7 +1355,7 @@ input[type="color"]:focus,
 }
 
 
-/* 
+/*
 	==================
 	[6. TESTIMONY]
 	==================
@@ -1404,7 +1404,7 @@ input[type="color"]:focus,
     opacity: 1;
 }
 
-#testislider.carousel .active.left, 
+#testislider.carousel .active.left,
 #testislider.carousel .active.right {
 	z-index: 2;
 	opacity: 0;
@@ -1513,7 +1513,7 @@ input[type="color"]:focus,
 }
 
 
-/* 
+/*
 	==================
 	[7. NEWS]
 	==================
@@ -1663,14 +1663,14 @@ input[type="color"]:focus,
 			border-radius: 0;
 }
 
-#content .post-meta, 
+#content .post-meta,
 .post-single .post-meta span {
 	font-size: 13px;
 	line-height: 16px;
 	color: #888;
 }
 
-#content .post-meta, 
+#content .post-meta,
 .post-single .post-meta {
 	display: block;
 	padding-top: 20px;
@@ -1811,7 +1811,7 @@ input[type="color"]:focus,
 }
 
 
-/* 
+/*
 	==================
 	[8. SUBSCRIBE]
 	==================
@@ -1838,7 +1838,7 @@ input[type="color"]:focus,
 }
 
 
-/* 
+/*
 	==================
 	[9. PARTNER]
 	==================
@@ -1970,7 +1970,7 @@ input[type="color"]:focus,
 }
 
 
-/* 
+/*
 	==================
 	[10. FOOTER]
 	==================
@@ -2066,7 +2066,7 @@ input[type="color"]:focus,
 }
 
 
-/* 
+/*
 	==================
 	[11. COPYRIGHT]
 	==================
