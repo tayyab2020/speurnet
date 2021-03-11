@@ -1632,14 +1632,26 @@ class IndexController extends Controller
 
     public function FooterPage($id)
     {
-        $blog = footer_pages::where('title','like', '%' . $id . '%')->first();
+        if(is_numeric($id))
+        {
+            $blog = footer_pages::where('id',$id)->first();
+        }
+        else
+        {
+            $blog = footer_pages::where('title','like', '%' . $id . '%')->first();
+        }
 
-        if($id == 'Voor makelaars ( CRM-systeem )')
+        if(!$blog)
+        {
+            abort('404');
+        }
+
+        if($blog->title == 'Voor makelaars ( CRM-systeem )')
         {
             $custom = 1;
 
         }
-        elseif($id == 'Gratis waardebepaling')
+        elseif($blog->title == 'Gratis waardebepaling')
         {
             $custom = 2;
         }
