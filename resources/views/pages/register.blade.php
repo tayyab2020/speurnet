@@ -21,7 +21,7 @@
 
                 </div>
 
-                <div class="blog-content col-lg-10 col-md-11 col-sm-11 col-xs-10" style="background: #fff;margin: 30px auto;padding: 15px 45px 15px 45px;font-family: 'Roboto', sans-serif;border-radius: 8px;box-shadow: 0px 0px 7px 5px #efefef;margin-top: 5px;">
+                <div class="blog-content col-lg-10 col-md-11 col-sm-11 col-xs-11" style="background: #fff;margin: 30px auto;padding: 15px 45px 15px 45px;font-family: 'Roboto', sans-serif;border-radius: 8px;box-shadow: 0 0 5px 2px #d9d9d9a6;margin-top: 5px;">
                     <div class="blog-title" style="padding: 0;margin-bottom: 0;">
                         <h4 style="font-family: 'Roboto', sans-serif;font-weight: bold;color: #18ace5;">{{__('text.Register an account for free')}}</h4>
                         <p>{!! nl2br(e(__('text.Register description')))!!}</p>
@@ -467,12 +467,7 @@
             -o-transition: all .3s ease;
             transition: all .3s ease;
         }
-
-
-        #content
-        {
-            background: #f8f8f8;
-        }
+        
 
         [type="checkbox"]:not(:checked),
         [type="checkbox"]:checked {

@@ -22,7 +22,7 @@
 
                 </div>
 
-                <div class="blog-content col-lg-10 col-md-11 col-sm-11 col-xs-10" style="background: #fff;margin: 40px auto;padding: 30px 45px 30px 45px;font-family: 'Roboto', sans-serif;border-radius: 8px;box-shadow: 0px 0px 7px 5px #efefef;margin-top: 5px;">
+                <div class="blog-content col-lg-10 col-md-11 col-sm-11 col-xs-11" style="background: #fff;margin: 40px auto;padding: 30px 45px 30px 45px;font-family: 'Roboto', sans-serif;border-radius: 8px;box-shadow: 0 0 5px 2px #d9d9d9a6;margin-top: 5px;">
                     <div class="blog-title" style="text-align: center;padding: 0;">
 
                         <h3 style="font-family: 'Roboto', sans-serif;font-weight: 600;">{{__('text.Access to your account')}}</h3>
