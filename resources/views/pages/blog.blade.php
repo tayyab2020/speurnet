@@ -20,6 +20,8 @@
                 <div class="col-md-12">
                     <div class="post_img">
 
+                        <?php $img = 0; ?>
+
                         @if(Route::currentRouteName() == 'front-blog')
 
                             <h1 class="post_title" style="font-weight: 100;text-align: center;">
@@ -28,6 +30,7 @@
 
                             <?php setlocale(LC_TIME, 'Dutch');
                             $date = $blog->created_at->formatLocalized('%d %B %Y');
+                            $img = 1;
                             ?>
 
                             <div class="post_meta_top" style="text-align: center;margin-bottom: 20px;">
@@ -54,7 +57,9 @@
 
                             @if($blog->image)
 
-                                <img class="blog-img" src="{{ URL::asset('upload/homes-inspiration/'.$blog->image) }}" style="width: 100%;height: 500px;" alt="{{$blog->title}}">
+                                    <?php $img = 1; ?>
+
+                                    <img class="blog-img" src="{{ URL::asset('upload/homes-inspiration/'.$blog->image) }}" style="width: 100%;height: 500px;" alt="{{$blog->title}}">
 
                             @endif
 
@@ -66,7 +71,9 @@
 
                             @if($blog->image)
 
-                                <img class="blog-img" src="{{ URL::asset('upload/footer-pages/'.$blog->image) }}" style="width: 100%;height: 500px;" alt="{{$blog->title}}">
+                                    <?php $img = 1; ?>
+
+                                    <img class="blog-img" src="{{ URL::asset('upload/footer-pages/'.$blog->image) }}" style="width: 100%;height: 500px;" alt="{{$blog->title}}">
 
                             @endif
 
@@ -78,12 +85,12 @@
             </div>
 
 
-            <div class="row" style="margin-top: 30px;display: flex;">
+            <div class="row" @if($img) style="margin-top: 30px;display: flex;" @else style="display: flex;" @endif>
                 <div class="col-lg-10 col-md-12 col-sm-12 col-xs-12" style="margin: auto;">
                     <div class="blog_posts stander_blog_single_post">
                         <article>
 
-                            <div class="post_content description-content" style="margin-top: 40px;">
+                            <div class="post_content description-content">
                                 {!! $blog->description !!}
                             </div>
 
@@ -645,6 +652,13 @@
                 {
                     font-size: 75%;
                     padding: 9.5px 10px 0 0;
+                    white-space: normal;
+                    text-align: left;
+                }
+
+                .bulgy-radios label
+                {
+                    margin-bottom: 10px;
                 }
 
                 .radio
