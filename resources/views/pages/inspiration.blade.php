@@ -15,7 +15,7 @@
                         <ul style="display:flex;align-items: flex-end;" class="nav nav-tabs res-ul">
 
                             <span class="res-span" style="display: inline-block;width: 60%;margin-right: 30px;">
-                                <h4 class="res-head">De mooiste woontrens & inspiratie onder één dak.</h4>
+                                <h4 class="res-head">De mooiste woontrends & inspiratie onder één dak.</h4>
                                 <p style="margin: 0;">Bekijk hier de mooiste en leukste woontrends en laat je inspireren. We hebben zowel de trends binnenshuis als buitenshuis voor je verzameld. Blijf ons volgen voor meer tips en ideeën.</p>
                             </span>
 

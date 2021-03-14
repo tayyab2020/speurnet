@@ -467,7 +467,7 @@
             -o-transition: all .3s ease;
             transition: all .3s ease;
         }
-        
+
 
         [type="checkbox"]:not(:checked),
         [type="checkbox"]:checked {
