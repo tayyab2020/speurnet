@@ -2473,7 +2473,7 @@
 
                                                 @foreach($similar_properties as $i => $property)
                                                     <div class="col-md-4 col-sm-6 col-xs-12">
-                                                        <div class="property-container">
+                                                        <div style="margin-bottom: 0;" class="property-container">
                                                             <div class="property-image">
 
                                                                 @if($property->new_construction != 1)
@@ -2528,18 +2528,23 @@
 
                                                                     @endif
 
-                                                                    <small style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;">{{ Str::limit($property->address,40) }}</small></h3>
-                                                                <small style="margin-top: 20px;font-weight: 600;">@if($property->property_type == 0) Geen voorkeur @else {{ getPropertyTypeName($property->property_type)->types }} @endif</small>
+                                                                        <small style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;">{{ Str::limit($property->address,40) }}</small></h3>
 
-                                                                @if($property->new_construction != 1)
+                                                                <div class="bottom-text" style="min-height: 25px;display: flex;flex-direction: row;justify-content: space-between;align-items: flex-end;font-size: 90%;">
 
-                                                                    <small style="float: right;">€@if($property->sale_price) {{number_format($property->sale_price, 0, ',', '.')}} k.k. @else {{number_format($property->rent_price, 0, ',', '.')}} per maand @endif</small>
+                                                                    <small style="font-weight: 600;">@if($property->property_type == 0) Geen voorkeur @else {{ getPropertyTypeName($property->property_type)->types }} @endif</small>
 
-                                                                @else
+                                                                    @if($property->new_construction != 1)
 
-                                                                    <small style="float: right;">€ {{$property->price_description}}</small>
+                                                                        <small style="float: right;">€@if($property->sale_price) {{number_format($property->sale_price, 0, ',', '.')}} k.k. @else {{number_format($property->rent_price, 0, ',', '.')}} per maand @endif</small>
 
-                                                                @endif
+                                                                    @else
+
+                                                                        <small style="float: right;">€ {{$property->price_description}}</small>
+
+                                                                    @endif
+
+                                                                </div>
 
                                                             </div>
                                                         </div>
@@ -2700,6 +2705,37 @@
         </div>
 
         <style>
+
+            @media (max-width: 478px)
+            {
+                .bottom-text
+                {
+                    min-height: 55px !important;
+                    flex-direction: column !important;
+                    justify-content: flex-end !important;
+                    align-items: flex-start !important;
+                }
+
+                .bottom-text small
+                {
+                    margin: 2px 0;
+                }
+
+                .slick-slide img
+                {
+                    height: 130px !important;
+                }
+
+                .property-content h3
+                {
+                    margin: 0 !important;
+                }
+
+                .bottom-text small
+                {
+                    line-height: 15px;
+                }
+            }
 
             .description-box p img
             {
@@ -3299,6 +3335,8 @@
             .similarProperties .slick-list
             {
                 width: 100%;
+                padding-left: 30px !important;
+                padding-right: 30px !important;
             }
 
         }
