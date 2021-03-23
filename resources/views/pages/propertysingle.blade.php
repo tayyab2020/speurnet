@@ -3335,8 +3335,8 @@
             .similarProperties .slick-list
             {
                 width: 100%;
-                padding-left: 30px !important;
-                padding-right: 30px !important;
+                /*padding-left: 30px !important;
+                padding-right: 30px !important;*/
             }
 
         }
