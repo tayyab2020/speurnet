@@ -2723,7 +2723,7 @@
 
                 .slick-slide img
                 {
-                    height: 130px !important;
+                    height: 150px !important;
                 }
 
                 .property-content h3
