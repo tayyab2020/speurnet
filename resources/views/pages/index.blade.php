@@ -175,7 +175,7 @@
 
                                             <a style="outline: none;" href="{{URL::to('woningaanbod/'.$property->property_slug)}}">
 
-                                            <img src="{{ URL::asset('upload/properties/'.$property->featured_image.'-s.jpg') }}" alt="{{ $property->property_name }}">
+                                            <img src="{{ URL::asset('upload/properties/'.$property->featured_image.'-b.jpg') }}" alt="{{ $property->property_name }}">
 
                                             </a>
 
@@ -578,7 +578,7 @@
 
                                 <a style="outline: none;" href="{{URL::to('woningaanbod/'.$temp->property_slug)}}">
 
-                                    <img class="res-content" src="{{ URL::asset('upload/properties/'.$temp->featured_image.'-s.jpg') }}" alt="{{ $temp->property_name }}" style="width: 100%;height: 200px;">
+                                    <img class="res-content" src="{{ URL::asset('upload/properties/'.$temp->featured_image.'-b.jpg') }}" alt="{{ $temp->property_name }}" style="width: 100%;height: 200px;">
 
                                 </a>
 
