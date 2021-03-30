@@ -170,7 +170,7 @@
 
                                     </div>
 
-                                    <div class="property-container" style="border: 1px solid #48cfad;margin-bottom: 10px;border-left-width: 0.9px;">
+                                    <div class="property-container" style="margin-bottom: 10px;border-left-width: 0.9px;">
                                         <div class="property-image latest">
 
                                             <a style="outline: none;" href="{{URL::to('woningaanbod/'.$property->property_slug)}}">
@@ -469,61 +469,70 @@
                                           <span><i class="fa fa-male"></i> {{$property->bathrooms}}</span>
                                         </div>--}}
 
-                                        <div class="property-content">
+                                        <div style="display: inline-block;width: 100%;" class="property-content">
                                             <h3 style="margin-bottom: 15px;margin-top: 0px;display: inline-block;width: 100%;">
 
                                                 <div style="display: inline-block;width: 100%;">
-                                                    <a style="text-overflow: ellipsis;display: block;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;white-space: nowrap;" href="{{URL::to('woningaanbod/'.$property->property_slug)}}">{{ Str::limit($property->property_name,35) }}</a>
+                                                    <a style="font-size: 12px;text-overflow: ellipsis;display: block;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;white-space: nowrap;" href="{{URL::to('woningaanbod/'.$property->property_slug)}}">{{ Str::limit(str_replace(', Nederland', '', $property->property_name),45) }}</a>
                                                 </div>
 
-                                                <small style="text-overflow: ellipsis;display: block;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;width: 100%;float: left;white-space: nowrap;">{{ Str::limit($property->address,40) }}</small>
-                                                <small style="min-height: 15px;margin-top: 5px;float: right;font-weight: 600;width: 50%;text-align: right;">@if($property->sale_price) € {{number_format($property->sale_price, 0, ',', '.')}} {{$property->cost_for}} @elseif($property->rent_price) € {{number_format($property->rent_price, 0, ',', '.')}} per maand @endif</small>
+                                                <small style="text-overflow: ellipsis;display: block;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;width: 100%;float: left;white-space: nowrap;margin-top: 0;">{{ Str::limit($property->address,40) }}</small>
 
                                             </h3>
 
-                                            <div class="extra-text" style="display: flex;flex-direction: row;">
+                                            <div style="display: flex;flex-direction: row;align-items: center;height: 85px;">
 
-                                                <img style="width: 20px;height: 18px;float: left;margin-right: 10px;align-self: center;" src="{{ URL::asset('assets/img/browser.png') }}"><span style="font-weight: 600;">{{$property->area}} <small>m2</small></span>
+                                                <div style="width: 100%;">
 
-                                                @if($property->bedrooms >= 1)
+                                                    <div class="extra-text" style="display: flex;flex-direction: row;">
 
-                                                    <img style="width: 20px;height: 20px;float: left;margin-right: 10px;margin-left: 20px;align-self: center;" src="{{ URL::asset('assets/img/bed.png') }}"><span style="font-weight: 600;">{{$property->bedrooms}} @if($property->bedrooms == 1) {{__('text.room')}}  @else {{__('text.rooms')}} @endif</span>
+                                                        <img style="width: 14px;height: 12px;float: left;margin-right: 10px;align-self: center;" src="{{ URL::asset('assets/img/browser.png') }}"><span style="font-weight: 600;font-size: 12px;">{{$property->area}} <small>m2</small></span>
 
-                                                @endif
+                                                    </div>
 
-                                            </div>
+                                                    @if($property->bedrooms >= 1)
 
-                                        </div>
+                                                        <div class="extra-text" style="display: flex;flex-direction: row;">
 
-                                        <div class="property-content" style="border-top:1px solid #cacaca;display: flex;padding: 0;height: 85px;align-items: center;">
+                                                            <img style="width: 15px;height: 15px;float: left;margin-right: 10px;/* margin-left: 20px; */align-self: center;" src="{{ URL::asset('assets/img/bed.png') }}"><span style="font-weight: 600;font-size: 12px;">{{$property->bedrooms}} @if($property->bedrooms == 1) {{__('text.room')}}  @else {{__('text.rooms')}} @endif</span>
 
-                                            @if(!$property->landlord)
+                                                        </div>
 
-                                            <div class="extra-text" style="width: 60%;padding-left: 8px;">
-                                                <span style="font-weight: 600;color: #808080;">{{__('text.Brought to you by')}}</span>
-                                            </div>
+                                                    @endif
 
-                                            <div style="width: 40%;height: 100%;padding: 8px;padding-bottom: 2px;">
+                                                    <small style="min-height: 15px;margin-top: 5px;/* float: right; */font-weight: 600;width: 50%;">@if($property->sale_price) € {{number_format($property->sale_price, 0, ',', '.')}} {{$property->cost_for}} @elseif($property->rent_price) € {{number_format($property->rent_price, 0, ',', '.')}} per maand @endif</small>
 
-                                                <a style="outline: none;" href="{{URL::to('makelaars/details/'.$property->user_id)}}">
-
-                                                @if($property->image_icon)
-                                                    <img style="width: 90%;height: 95%;float: right;" src="{{ URL::asset('upload/members/'.$property->image_icon.'-b.jpg') }}">
-                                                @elseif($property->company_name)
-                                                    <h3 style="word-break: break-all;margin: 0;display: flex;align-items: center;justify-content: center;height: 100%;font-size: 16px;line-height: 20px;">{{$property->company_name}}</h3>
-                                                @endif
-
-                                                </a>
-
-                                            </div>
-
-                                            @else
-
-                                                <div class="extra-text" style="width: 100%;text-align: center;padding: 0px 5px;">
-                                                    <span style="font-weight: 600;color: #808080;">{{__('text.Brought to you by')}} {{__('text.a private landlord')}}</span>
                                                 </div>
 
-                                            @endif
+                                                @if(!$property->landlord)
+
+                                                    <div style="width: 100%;height: 100%;">
+
+                                                        <a style="outline: none;" href="{{URL::to('makelaars/details/'.$property->user_id)}}" tabindex="0">
+
+                                                            @if($property->image_icon)
+
+                                                                <img style="width: 100%;height: 100%;" src="{{ URL::asset('upload/members/'.$property->image_icon.'-b.jpg') }}">
+
+                                                            @elseif($property->company_name)
+
+                                                                <h3 style="word-break: break-all;margin: 0;display: flex;align-items: center;justify-content: center;height: 100%;font-size: 16px;line-height: 20px;">{{$property->company_name}}</h3>
+
+                                                            @endif
+
+                                                        </a>
+
+                                                    </div>
+
+                                                @else
+
+                                                    {{--<div class="extra-text" style="width: 100%;text-align: center;padding: 0px 5px;">
+                                                        <span style="font-weight: 600;color: #808080;">{{__('text.Brought to you by')}} {{__('text.a private landlord')}}</span>
+                                                    </div>--}}
+
+                                                @endif
+
+                                            </div>
 
                                         </div>
 
