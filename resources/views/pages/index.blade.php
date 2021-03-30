@@ -516,7 +516,7 @@
 
                                                             @elseif($property->company_name)
 
-                                                                <h3 style="word-break: break-all;margin: 0;display: flex;align-items: center;justify-content: center;height: 100%;font-size: 16px;line-height: 20px;">{{$property->company_name}}</h3>
+                                                                <h3 style="word-break: break-all;margin: 0;display: flex;align-items: center;justify-content: center;height: 100%;font-size: 14px;line-height: 20px;">{{$property->company_name}}</h3>
 
                                                             @endif
 
