@@ -524,12 +524,6 @@
 
                                                     </div>
 
-                                                @else
-
-                                                    {{--<div class="extra-text" style="width: 100%;text-align: center;padding: 0px 5px;">
-                                                        <span style="font-weight: 600;color: #808080;">{{__('text.Brought to you by')}} {{__('text.a private landlord')}}</span>
-                                                    </div>--}}
-
                                                 @endif
 
                                             </div>
@@ -749,11 +743,6 @@
         {
             font-size: 11px;
             margin-top: 5px;
-        }
-
-        .extra-text span
-        {
-            font-size: 9px !important;
         }
 
         .extra-text img
