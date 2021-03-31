@@ -469,7 +469,7 @@
                                           <span><i class="fa fa-male"></i> {{$property->bathrooms}}</span>
                                         </div>--}}
 
-                                        <div style="display: inline-block;width: 100%;" class="property-content">
+                                        <div style="display: inline-block;width: 100%;padding-bottom: 0;" class="property-content">
                                             <h3 style="margin-bottom: 0;margin-top: 0px;display: inline-block;width: 100%;">
 
                                                 <div style="display: inline-block;width: 100%;">
