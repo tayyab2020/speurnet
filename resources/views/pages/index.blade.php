@@ -853,7 +853,7 @@
 
     .latest
     {
-        height: 210px;
+        height: 170px;
     }
 
     .latest img
@@ -1045,6 +1045,8 @@
     $('.latestProperties').slick({
         dots: false,
         arrows: true,
+        centerMode: true,
+        centerPadding: '50px',
         slidesToShow: 3,
         slidesToScroll: 1,
         responsive: [
