@@ -500,11 +500,11 @@
 
                                                 </div>
 
-                                                <div style="display: flex;flex-direction: row;align-items: center;height: 40px;margin-top: 10px;">
+                                                <div style="display: flex;flex-direction: row;align-items: center;height: 40px;">
 
                                                     <div style="width: 100%;">
 
-                                                        <small style="margin-top: 5px;font-weight: 600;">@if($property->sale_price) € {{number_format($property->sale_price, 0, ',', '.')}} {{$property->cost_for}} @elseif($property->rent_price) € {{number_format($property->rent_price, 0, ',', '.')}} per maand @endif</small>
+                                                        <small style="margin-top: 0;font-weight: 600;font-size: 10px;">@if($property->sale_price) € {{number_format($property->sale_price, 0, ',', '.')}} {{$property->cost_for}} @elseif($property->rent_price) € {{number_format($property->rent_price, 0, ',', '.')}} per maand @endif</small>
 
                                                     </div>
 
@@ -520,7 +520,7 @@
 
                                                                 @elseif($property->company_name)
 
-                                                                    <h3 class="company-res" style="word-break: break-all;margin: 0;display: flex;align-items: center;justify-content: center;height: 100%;font-size: 14px;line-height: 20px;">{{$property->company_name}}</h3>
+                                                                    <h3 class="company-res" style="word-break: break-all;margin: 0;display: flex;align-items: center;justify-content: center;height: 100%;font-size: 12px;line-height: 20px;">{{$property->company_name}}</h3>
 
                                                                 @endif
 
