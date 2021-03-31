@@ -742,6 +742,11 @@
 
     @media (max-width: 768px)
     {
+        .latest
+        {
+            height: 200px !important;
+        }
+
         .property-content h3, .property-text h3
         {
             font-size: 15px !important;
@@ -853,7 +858,7 @@
 
     .latest
     {
-        height: 170px;
+        height: 155px;
     }
 
     .latest img
@@ -1046,7 +1051,7 @@
         dots: false,
         arrows: true,
         centerMode: true,
-        centerPadding: '50px',
+        centerPadding: '80px',
         slidesToShow: 3,
         slidesToScroll: 1,
         responsive: [
