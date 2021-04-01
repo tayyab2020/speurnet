@@ -756,7 +756,7 @@
 
         .property-content h3 .res-small
         {
-            font-size: 12px !important;
+            font-size: 10px !important;
         }
 
         .property-content h3 .res-span
