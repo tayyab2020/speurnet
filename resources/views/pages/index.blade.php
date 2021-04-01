@@ -482,7 +482,7 @@
 
                                                         <img style="width: 14px;height: 12px;float: left;margin-right: 10px;align-self: center;" src="{{ URL::asset('assets/img/browser.png') }}">
 
-                                                        <span style="font-weight: 600;font-size: 12px;display: flex;">{{$property->area}} <small class="res-small" style="margin-top: 0;display: flex;align-items: center;margin-left: 3px;">m2</small></span>
+                                                        <span class="res-span" style="font-weight: 600;font-size: 12px;display: flex;">{{$property->area}} <small class="res-small" style="margin-top: 0;display: flex;align-items: center;margin-left: 3px;">m2</small></span>
 
                                                     </div>
 
@@ -492,7 +492,7 @@
 
                                                             <img style="width: 14px;height: 14px;float: left;margin-right: 10px;align-self: center;" src="{{ URL::asset('assets/img/bed.png') }}">
 
-                                                            <span style="font-weight: 600;font-size: 12px;display: flex;">{{$property->bedrooms}} @if($property->bedrooms == 1) {{__('text.room')}}  @else {{__('text.rooms')}} @endif</span>
+                                                            <span class="res-span" style="font-weight: 600;font-size: 12px;display: flex;">{{$property->bedrooms}} @if($property->bedrooms == 1) {{__('text.room')}}  @else {{__('text.rooms')}} @endif</span>
 
                                                         </div>
 
@@ -756,7 +756,12 @@
 
         .property-content h3 .res-small
         {
-            font-size: 13px !important;
+            font-size: 12px !important;
+        }
+
+        .property-content h3 .res-span
+        {
+            font-size: 10px !important;
         }
 
         .property-content h3 small, .property-text h3 small
@@ -772,8 +777,8 @@
 
         .extra-text img
         {
-            /*width: 15px !important;
-            height: 15px !important;*/
+            width: 10px !important;
+            height: 10px !important;
             margin-right: 5px !important;
         }
 
