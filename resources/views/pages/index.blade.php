@@ -482,7 +482,7 @@
 
                                                         <img style="width: 14px;height: 12px;float: left;margin-right: 10px;align-self: center;" src="{{ URL::asset('assets/img/browser.png') }}">
 
-                                                        <span style="font-weight: 600;font-size: 12px;display: flex;">{{$property->area}} <small style="margin-top: 0;display: flex;align-items: center;margin-left: 3px;">m2</small></span>
+                                                        <span style="font-weight: 600;font-size: 12px;display: flex;">{{$property->area}} <small class="res-small" style="margin-top: 0;display: flex;align-items: center;margin-left: 3px;">m2</small></span>
 
                                                     </div>
 
@@ -502,7 +502,7 @@
 
                                                 <div style="display: flex;flex-direction: row;align-items: center;height: 40px;margin-bottom: 5px;">
 
-                                                    <div style="width: 100%;">
+                                                    <div style="min-width: 33%;margin-right: 3px;">
 
                                                         <small style="margin-top: 0;font-weight: 600;font-size: 10px;">@if($property->sale_price) € {{number_format($property->sale_price, 0, ',', '.')}} {{$property->cost_for}} @elseif($property->rent_price) € {{number_format($property->rent_price, 0, ',', '.')}} per maand @endif</small>
 
@@ -516,7 +516,7 @@
 
                                                                 @if($property->image_icon)
 
-                                                                    <img style="width: 60%;height: 100%;float: right;" src="{{ URL::asset('upload/members/'.$property->image_icon.'-b.jpg') }}">
+                                                                    <img style="width: 75px;height: 100%;float: right;" src="{{ URL::asset('upload/members/'.$property->image_icon.'-b.jpg') }}">
 
                                                                 @elseif($property->company_name)
 
@@ -753,6 +753,12 @@
             line-height: 18px !important;
         }
 
+
+        .property-content h3 .res-small
+        {
+            font-size: 13px !important;
+        }
+
         .property-content h3 small, .property-text h3 small
         {
             font-size: 11px;
@@ -766,8 +772,9 @@
 
         .extra-text img
         {
-            width: 15px !important;
-            height: 15px !important;
+            /*width: 15px !important;
+            height: 15px !important;*/
+            margin-right: 5px !important;
         }
 
         .property-content .company-res
