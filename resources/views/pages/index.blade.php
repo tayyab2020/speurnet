@@ -1070,7 +1070,7 @@
                 settings: {
                     arrows: false,
                     centerMode: true,
-                    centerPadding: '0px',
+                    centerPadding: '20px',
                     slidesToShow: 1.1,
                     infinite: false,
                 }
