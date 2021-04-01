@@ -500,7 +500,7 @@
 
                                                 </div>
 
-                                                <div style="display: flex;flex-direction: row;align-items: center;height: 40px;">
+                                                <div style="display: flex;flex-direction: row;align-items: center;height: 40px;margin-bottom: 5px;">
 
                                                     <div style="width: 100%;">
 
@@ -744,7 +744,7 @@
     {
         .latest
         {
-            height: 200px !important;
+            height: 185px !important;
         }
 
         .property-content h3, .property-text h3
@@ -858,7 +858,7 @@
 
     .latest
     {
-        height: 155px;
+        height: 210px;
     }
 
     .latest img
