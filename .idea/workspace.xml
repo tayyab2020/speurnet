@@ -2,7 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7fe7f36f-c82f-4504-8c0a-7874522d22c9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/resources/views/pages/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Console/Commands/DailyCron.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Commands/DailyCron.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Console/Commands/WeeklyCron.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Commands/WeeklyCron.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AgentsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AgentsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PropertiesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PropertiesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/admin_app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/admin_app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/app.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -385,7 +391,9 @@
       <workItem from="1616411810043" duration="6223000" />
       <workItem from="1616497416082" duration="214000" />
       <workItem from="1616939744321" duration="12883000" />
-      <workItem from="1617211945286" duration="10304000" />
+      <workItem from="1617211945286" duration="10694000" />
+      <workItem from="1617286531448" duration="43000" />
+      <workItem from="1617357393406" duration="3516000" />
     </task>
     <servers />
   </component>
@@ -400,6 +408,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1614855754822" />
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1617286561307">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1617286561307" />
     <state x="93" y="93" width="1350" height="638" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1614590254237">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -408,10 +420,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1609363961980" />
-    <state x="132" y="155" width="805" height="606" key="find.popup" timestamp="1617114066726">
+    <state x="132" y="155" width="805" height="616" key="find.popup" timestamp="1617362659866">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="132" y="155" width="805" height="606" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1617114066726" />
+    <state x="132" y="155" width="805" height="616" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1617362659866" />
     <state x="425" y="187" key="run.anything.popup" timestamp="1612098747964">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

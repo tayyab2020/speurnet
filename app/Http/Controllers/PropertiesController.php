@@ -570,7 +570,7 @@ class PropertiesController extends Controller
                     $property_latitude = $key->map_latitude;
                     $property_longitude = $key->map_longitude;
 
-                    $url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=" . urlencode($preferred_address_latitude) . "," . urlencode($preferred_address_longitude) . "&destinations=" . urlencode($property_latitude) . "," . urlencode($property_longitude) . "&key=AIzaSyBNlftIg-4OOM7dicTvWaJm46DgD-Wz61Q";
+                    $url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=" . urlencode($preferred_address_latitude) . "," . urlencode($preferred_address_longitude) . "&destinations=" . urlencode($property_latitude) . "," . urlencode($property_longitude) . "&key=AIzaSyCL20x57Ekftp0ZvZKImByPhZe7Tsb-G0E";
 
                     $result_string = file_get_contents($url);
                     $result = json_decode($result_string, true);
@@ -621,7 +621,7 @@ class PropertiesController extends Controller
                                 $property_longitude = $key->preferred_longitude;
                                 $property_preferred_radius = $key->preferred_radius;
 
-                                $url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=" . urlencode($address_latitude) . "," . urlencode($address_longitude) . "&destinations=" . urlencode($property_latitude) . "," . urlencode($property_longitude) . "&key=AIzaSyBNlftIg-4OOM7dicTvWaJm46DgD-Wz61Q";
+                                $url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=" . urlencode($address_latitude) . "," . urlencode($address_longitude) . "&destinations=" . urlencode($property_latitude) . "," . urlencode($property_longitude) . "&key=AIzaSyCL20x57Ekftp0ZvZKImByPhZe7Tsb-G0E";
 
                                 $result_string = file_get_contents($url);
                                 $result = json_decode($result_string, true);
@@ -1342,7 +1342,7 @@ class PropertiesController extends Controller
                      $property_longitude = $key->map_longitude;
 
 
-                     $url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=".urlencode($address_latitude).",".urlencode($address_longitude)."&destinations=".urlencode($property_latitude).",".urlencode($property_longitude)."&key=AIzaSyBNlftIg-4OOM7dicTvWaJm46DgD-Wz61Q";
+                     $url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=".urlencode($address_latitude).",".urlencode($address_longitude)."&destinations=".urlencode($property_latitude).",".urlencode($property_longitude)."&key=AIzaSyCL20x57Ekftp0ZvZKImByPhZe7Tsb-G0E";
 
                      $result_string = file_get_contents($url);
                      $result = json_decode($result_string, true);
@@ -1458,7 +1458,7 @@ class PropertiesController extends Controller
                     $property_longitude = $key->map_longitude;
 
 
-                    $url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=".urlencode($address_latitude).",".urlencode($address_longitude)."&destinations=".urlencode($property_latitude).",".urlencode($property_longitude)."&key=AIzaSyBNlftIg-4OOM7dicTvWaJm46DgD-Wz61Q";
+                    $url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=".urlencode($address_latitude).",".urlencode($address_longitude)."&destinations=".urlencode($property_latitude).",".urlencode($property_longitude)."&key=AIzaSyCL20x57Ekftp0ZvZKImByPhZe7Tsb-G0E";
 
                     $result_string = file_get_contents($url);
                     $result = json_decode($result_string, true);
