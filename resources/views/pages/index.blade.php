@@ -1084,6 +1084,7 @@
                     centerMode: true,
                     centerPadding: '40px',
                     slidesToShow: 1,
+                    initialSlide: 1,
                     infinite: false,
                 }
             }
