@@ -1063,7 +1063,7 @@
         dots: false,
         arrows: true,
         centerMode: true,
-        centerPadding: '80px',
+        centerPadding: '40px',
         slidesToShow: 3,
         slidesToScroll: 1,
         responsive: [
