@@ -516,7 +516,7 @@
 
                                                                 @if($property->image_icon)
 
-                                                                    <img style="width: 75px;height: 100%;float: right;" src="{{ URL::asset('upload/members/'.$property->image_icon.'-b.jpg') }}">
+                                                                    <img style="width: 100%;height: 100%;float: right;" src="{{ URL::asset('upload/members/'.$property->image_icon.'-b.jpg') }}">
 
                                                                 @elseif($property->company_name)
 
