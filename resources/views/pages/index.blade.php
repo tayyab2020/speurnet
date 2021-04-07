@@ -1063,10 +1063,24 @@
         dots: false,
         arrows: true,
         centerMode: true,
-        centerPadding: '40px',
+        centerPadding: '200px',
         slidesToShow: 3,
         slidesToScroll: 1,
         responsive: [
+            {
+                breakpoint: 2000,
+                settings: {
+                    centerMode: true,
+                    centerPadding: '200px',
+                }
+            },
+            {
+                breakpoint: 1600,
+                settings: {
+                    centerMode: true,
+                    centerPadding: '40px',
+                }
+            },
             {
                 breakpoint: 992,
                 settings: {
