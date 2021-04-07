@@ -172,7 +172,7 @@
 
                                 @else
 
-                                    <a href="{{ url('footer-pages/'.$blog->title) }}">{{ $blog->title }}</a>
+                                    <a href="{{ url('nl/'.$blog->title) }}">{{ $blog->title }}</a>
 
                                 @endif
 

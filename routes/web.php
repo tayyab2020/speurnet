@@ -217,7 +217,7 @@ Route::group(['middleware' => 'App\Http\Middleware\UserTypeMiddleware'], functio
 
     Route::get('expats/{id}', 'IndexController@Expat')->name('front-expat');
 
-    Route::get('footer-pages/{id}', 'IndexController@FooterPage')->name('front-footer-pages');
+    Route::get('nl/{id}', 'IndexController@FooterPage')->name('front-footer-pages');
 
     Route::get('woningruil', 'PropertiesController@homeexchange')->name('homeexchange-front');
 
