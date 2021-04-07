@@ -1075,7 +1075,7 @@
                 }
             },
             {
-                breakpoint: 1600,
+                breakpoint: 1650,
                 settings: {
                     centerMode: true,
                     centerPadding: '40px',
