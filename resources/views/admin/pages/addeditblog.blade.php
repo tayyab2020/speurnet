@@ -119,14 +119,56 @@
                             </div>
                         </div>
 
+
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">Meta Keywords</label>
+                            <div class="col-sm-9">
+                                <input type="text" name="meta_keywords" value="{{ isset($blog->meta_keywords) ? $blog->meta_keywords : null }}" class="form-control">
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">Meta Sub Keywords</label>
+                            <div class="col-sm-9">
+                                <input type="text" name="meta_sub_keywords" value="{{ isset($blog->meta_sub_keywords) ? $blog->meta_sub_keywords : null }}" class="form-control">
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">Meta Title</label>
+                            <div class="col-sm-9">
+                                <input type="text" name="meta_title" value="{{ isset($blog->meta_title) ? $blog->meta_title : null }}" class="form-control">
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">Meta Description</label>
+                            <div class="col-sm-9">
+                                <input type="text" name="meta_description" value="{{ isset($blog->meta_description) ? $blog->meta_description : null }}" class="form-control">
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="" class="col-sm-3 control-label">Meta URL</label>
+                            <div class="col-sm-9">
+                                <input type="text" name="meta_url" value="{{ isset($blog->meta_url) ? $blog->meta_url : null }}" class="form-control">
+                            </div>
+                        </div>
+
                     @endif
 
-                <div class="form-group">
-                    <label for="" class="col-sm-3 control-label">Title</label>
-                    <div class="col-sm-9">
-                        <input type="text" name="title" value="{{ isset($blog->title) ? $blog->title : null }}" class="form-control">
+
+                    <div class="form-group">
+                        <label for="" class="col-sm-3 control-label">Title</label>
+                        <div class="col-sm-9">
+                            <input type="text" name="title" value="{{ isset($blog->title) ? $blog->title : null }}" class="form-control">
+                        </div>
                     </div>
-                </div>
+
 
                     @if(Route::currentRouteName() == 'add-homes-inspiration' || Route::currentRouteName() == 'edit-homes-inspiration')
 
@@ -289,8 +331,6 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
-<!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <script>
 

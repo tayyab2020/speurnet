@@ -1,4 +1,15 @@
 @extends("app")
+
+@if(Route::currentRouteName() == 'front-footer-pages')
+
+    @section('head_title', $blog->meta_title)
+    @section('head_keywords', $blog->meta_keywords)
+    @section('head_sub_keywords', $blog->meta_sub_keywords)
+    @section('head_description', $blog->meta_description)
+    @section('head_url', $blog->meta_url)
+
+@endif
+
 @section("content")
 
     <!-- begin:content -->

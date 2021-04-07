@@ -1035,6 +1035,11 @@ class DashboardController extends MainAdminController
         $blog->title = $inputs['title'];
         $blog->description = $inputs['description'];
         $blog->heading_id = $inputs['heading'];
+        $blog->meta_keywords = $request->meta_keywords;
+        $blog->meta_sub_keywords = $request->meta_sub_keywords;
+        $blog->meta_title = $request->meta_title;
+        $blog->meta_description = $request->meta_description;
+        $blog->meta_url = $request->meta_url;
 
         $blog->save();
 

@@ -7,6 +7,7 @@
     <meta name="title" content="@yield('head_title')">
     <meta name="description" content="@yield('head_description')">
     <meta property="keywords" content="@yield('head_keywords')" />
+    <meta property="sub_keywords" content="@yield('head_sub_keywords')" />
 
     <meta property="og:type" content="article"/>
     <meta property="og:title" content="{{getcong('site_name')}}"/>
