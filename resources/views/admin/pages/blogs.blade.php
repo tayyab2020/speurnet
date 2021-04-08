@@ -172,7 +172,7 @@
 
                                 @else
 
-                                    <a href="{{ url('nl/'.$blog->title) }}">{{ $blog->title }}</a>
+                                    <a href="{{$blog->meta_url ? $blog->meta_url : url('nl/'.$blog->title) }}">{{ $blog->title }}</a>
 
                                 @endif
 
