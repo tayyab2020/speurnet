@@ -1638,7 +1638,7 @@ class IndexController extends Controller
         }
         else
         {
-            $blog = footer_pages::where('title','like', '%' . $id . '%')->first();
+            $blog = footer_pages::where('title','like', '%' . $id . '%')->orWhere('meta_url','like', '%' . $id . '%')->first();
         }
 
         if(!$blog)

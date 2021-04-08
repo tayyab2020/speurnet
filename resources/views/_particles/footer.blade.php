@@ -16,7 +16,7 @@
 
                         @if($key->heading_id == 0)
 
-                            <li><a href="{{ url('nl/'.$key->title) }}">{{$key->title}}</a></li>
+                            <li><a href="{{$key->meta_url ? $key->meta_url : url('nl/'.$key->title)}}">{{$key->title}}</a></li>
 
                         @endif
 
@@ -41,7 +41,7 @@
 
                                    @if($temp->id == $key->heading_id)
 
-                                       <li><a href="{{ url('nl/'.$key->title) }}">{{$key->title}}</a></li>
+                                       <li><a href="{{$key->meta_url ? $key->meta_url : url('nl/'.$key->title)}}">{{$key->title}}</a></li>
 
                                    @endif
 
