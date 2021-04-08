@@ -1,9 +1,8 @@
 @extends("app")
 
-@section('head_title', 'Ben jij op zoek naar woningruil? Ga vandaag nog naar Zoekjehuisje.nl')
-@section('head_keywords', 'op zoek naar woningruil, gratis woningruil plaatsen, woningruil Amsterdam, woningruil Utrecht, woningruil Den Haag, gratis woningruil, van huis ruilen, van woning ruilen')
-@section('head_description', 'Woon je te klein of te groot of wil je gewoon een woning met tuin of lift? Plaats gratis jouw woning of zoek gratis jouw nieuwe huis op Zoekjehuisje.nl. Bekijk snel het woningruilaanbod.')
-
+@section('head_title', 'Woningruil als alternatief in een krappe woningmarkt - Zoekjehuisje.nl')
+@section('head_keywords', 'woningruil')
+@section('head_description', 'Woningruil is een uitstekend alternatief op een huis kopen of huren in deze krappe woningmarkt. Zoekjehuisje.nl biedt diverse mogelijkheden')
 @section('head_url', Request::url())
 
 @section("content")
