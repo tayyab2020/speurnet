@@ -211,6 +211,7 @@
 
                                             @endif
 
+
                                             @if($property->is_sold)
 
                                                 <div class="property-price" style="top: 37px;left: -58px;border-radius: 5px;padding: 5px 10px;transform: rotate(-40deg);width: 240px;">
@@ -252,7 +253,6 @@
                                                 </div>
 
                                             @endif
-
 
 
                                             @if($property->available_immediately)
@@ -578,7 +578,7 @@
 
                 <div class="row" style="display: flex;width: 100%;margin: 0;">
 
-                    <div class="col-lg-10 col-md-12 col-sm-12 col-xs-12" style="margin: auto;">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 top-container1" style="margin: auto;">
 
                 <div class="topProperties">
 
@@ -643,7 +643,7 @@
 
                 <div class="row" style="display: flex;width: 100%;margin: 0;">
 
-                    <div class="col-lg-10 col-md-12 col-sm-12 col-xs-12" style="margin: auto;">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 members-container" style="margin: auto;">
 
                         <div class="topMembers">
 
@@ -803,16 +803,22 @@
 
     @media (max-width: 1299px){
         .latest-container{padding: 0px 95px;}
+        .top-container1{padding: 0px 95px;}
+        .members-container{padding: 0px 95px;}
         .show-more-container{padding: 0px 120px;}
     }
 
     @media (min-width: 1300px){
         .latest-container{padding: 0px 200px;}
+        .top-container1{padding: 0px 200px;}
+        .members-container{padding: 0px 200px;}
         .show-more-container{padding: 0px 215px;}
     }
 
     @media (max-width: 1200px){
         .latest-container{padding: 0px 15px;}
+        .top-container1{padding: 0px 15px;}
+        .members-container{padding: 0px 15px;}
         .show-more-container{padding: 0px 15px;}
     }
 
@@ -1063,7 +1069,7 @@
         dots: false,
         arrows: true,
         centerMode: true,
-        centerPadding: '200px',
+        centerPadding: '300px',
         slidesToShow: 3,
         slidesToScroll: 1,
         responsive: [
@@ -1110,15 +1116,31 @@
         $('.topProperties').slick({
             dots: false,
             arrows: true,
+            centerMode: true,
+            centerPadding: '300px',
             slidesToShow: 3,
             slidesToScroll: 1,
             responsive: [
+                {
+                    breakpoint: 2000,
+                    settings: {
+                        centerMode: true,
+                        centerPadding: '200px',
+                    }
+                },
+                {
+                    breakpoint: 1650,
+                    settings: {
+                        centerMode: false,
+                        centerPadding: 0,
+                    }
+                },
                 {
                     breakpoint: 768,
                     settings: {
                         arrows: true,
                         centerMode: false,
-                        centerPadding: '0px',
+                        centerPadding: 0,
                         slidesToShow: 2
                     }
                 },
@@ -1139,9 +1161,25 @@
         $('.topMembers').slick({
             dots: false,
             arrows: true,
+            centerMode: true,
+            centerPadding: '300px',
             slidesToShow: 3,
             slidesToScroll: 1,
             responsive: [
+                {
+                    breakpoint: 2000,
+                    settings: {
+                        centerMode: true,
+                        centerPadding: '200px',
+                    }
+                },
+                {
+                    breakpoint: 1650,
+                    settings: {
+                        centerMode: false,
+                        centerPadding: 0,
+                    }
+                },
                 {
                     breakpoint: 768,
                     settings: {
@@ -1204,7 +1242,7 @@
 
         <div class="row" style="display: flex;width: 100%;margin: 0;">
 
-            <div class="col-lg-10 col-md-12 col-sm-12 col-xs-12" style="margin: auto;">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 members-container" style="margin: auto;">
 
                 <div class="topMembers">
 
