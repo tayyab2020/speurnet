@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="7fe7f36f-c82f-4504-8c0a-7874522d22c9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/pages/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/index.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -391,7 +390,7 @@
       <workItem from="1617357393406" duration="4117000" />
       <workItem from="1617367251555" duration="438000" />
       <workItem from="1617445547154" duration="1615000" />
-      <workItem from="1617740980936" duration="24049000" />
+      <workItem from="1617740980936" duration="26530000" />
     </task>
     <servers />
   </component>
@@ -422,10 +421,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="777" y="433" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1617962928375" />
-    <state x="132" y="155" width="805" height="616" key="find.popup" timestamp="1617826544916">
+    <state x="132" y="155" width="805" height="616" key="find.popup" timestamp="1618038165207">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="132" y="155" width="805" height="616" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1617826544916" />
+    <state x="132" y="155" width="805" height="616" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1618038165207" />
     <state x="425" y="187" key="run.anything.popup" timestamp="1612098747964">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
