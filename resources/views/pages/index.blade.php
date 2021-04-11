@@ -875,7 +875,7 @@
 
     .css-48sroz img{color:#0ea800;width:110px !important;height:80px !important;margin-right:12px;}
 
-    @media(min-width:1021px){.css-48sroz img{display:block;margin:0 auto 20px auto;width:100% !important;height:155px !important;}}
+    @media(min-width:1021px){.css-48sroz img{display:block;margin:0 auto 20px auto;width:100% !important;height:125px !important;}}
 
     .css-jeyium{stroke-linejoin:round;stroke-linecap:round;fill:none;vertical-align:middle;width:24px;height:24px;}
 
