@@ -316,6 +316,9 @@ class KolibriCron extends Command
                 $modification = $key['ModificationDateTimeUtc'];
                 $property_id = $key['RealEstateProperyID'];
                 $realtor_id = $key['RealtorID'];
+
+                var_dump($property_id);
+                var_dump($realtor_id);
                 $property_address = $key['AddressSummary'];
 
                 $ch = curl_init();
