@@ -411,6 +411,8 @@ class KolibriCron extends Command
                             $address = $property_details['RealEstateProperty']['Location']['Address']['PostalCode'] . ' ' . $property_details['RealEstateProperty']['LocationDetails']['GeoAddressDetails']['Locality'];
                         }
 
+                        var_dump($property_details['RealEstateProperty']['LocationDetails']['GeoAddressDetails'][0]);
+
                         if(isset($property_details['RealEstateProperty']['LocationDetails']['GeoAddressDetails'][0]['Coordinates']['Latitude']))
                         {
                             $address_latitude = $property_details['RealEstateProperty']['LocationDetails']['GeoAddressDetails'][0]['Coordinates']['Latitude'];
