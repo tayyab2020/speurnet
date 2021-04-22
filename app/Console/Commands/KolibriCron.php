@@ -434,6 +434,8 @@ class KolibriCron extends Command
                         }
                         else
                         {
+                            var_dump($property_id);
+                            
                             if(isset($property_details['RealEstateProperty']['LocationDetails']['GeoAddressDetails']['Coordinates']['Latitude']))
                             {
                                 $address_latitude = $property_details['RealEstateProperty']['LocationDetails']['GeoAddressDetails']['Coordinates']['Latitude'];
