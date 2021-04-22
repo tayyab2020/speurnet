@@ -316,9 +316,6 @@ class KolibriCron extends Command
                 $modification = $key['ModificationDateTimeUtc'];
                 $property_id = $key['RealEstateProperyID'];
                 $realtor_id = $key['RealtorID'];
-
-                var_dump($property_id);
-                var_dump($realtor_id);
                 $property_address = $key['AddressSummary'];
 
                 $ch = curl_init();
@@ -723,19 +720,43 @@ class KolibriCron extends Command
                             if($property_details['RealEstateProperty']['Offer']['IsForSale'] == 'true')
                             {
                                 $property_purpose = 'Sale';
-                                $price = $property_details['RealEstateProperty']['Financials']['PurchasePrice'];
+
+                                if(isset($property_details['RealEstateProperty']['Financials']['PurchasePrice']))
+                                {
+                                    $price = $property_details['RealEstateProperty']['Financials']['PurchasePrice'];
+                                }
+                                else
+                                {
+                                    $price = 0;
+                                }
                             }
                             else
                             {
                                 $property_purpose = 'Rent';
-                                $price = $property_details['RealEstateProperty']['Financials']['RentPrice'];
+
+                                if(isset($property_details['RealEstateProperty']['Financials']['RentPrice']))
+                                {
+                                    $price = $property_details['RealEstateProperty']['Financials']['RentPrice'];
+                                }
+                                else
+                                {
+                                    $price = 0;
+                                }
                             }
 
                         }
                         else
                         {
                             $property_purpose = 'Rent';
-                            $price = $property_details['RealEstateProperty']['Financials']['RentPrice'];
+
+                            if(isset($property_details['RealEstateProperty']['Financials']['RentPrice']))
+                            {
+                                $price = $property_details['RealEstateProperty']['Financials']['RentPrice'];
+                            }
+                            else
+                            {
+                                $price = 0;
+                            }
                         }
 
 
