@@ -741,19 +741,43 @@ class IndexController extends Controller
                                 if($property_details['RealEstateProperty']['Offer']['IsForSale'] == 'true')
                                 {
                                     $property_purpose = 'Sale';
-                                    $price = $property_details['RealEstateProperty']['Financials']['PurchasePrice'];
+
+                                    if(isset($property_details['RealEstateProperty']['Financials']['PurchasePrice']))
+                                    {
+                                        $price = $property_details['RealEstateProperty']['Financials']['PurchasePrice'];
+                                    }
+                                    else
+                                    {
+                                        $price = 0;
+                                    }
                                 }
                                 else
                                 {
                                     $property_purpose = 'Rent';
-                                    $price = $property_details['RealEstateProperty']['Financials']['RentPrice'];
+
+                                    if(isset($property_details['RealEstateProperty']['Financials']['RentPrice']))
+                                    {
+                                        $price = $property_details['RealEstateProperty']['Financials']['RentPrice'];
+                                    }
+                                    else
+                                    {
+                                        $price = 0;
+                                    }
                                 }
 
                             }
                             else
                             {
                                 $property_purpose = 'Rent';
-                                $price = $property_details['RealEstateProperty']['Financials']['RentPrice'];
+
+                                if(isset($property_details['RealEstateProperty']['Financials']['RentPrice']))
+                                {
+                                    $price = $property_details['RealEstateProperty']['Financials']['RentPrice'];
+                                }
+                                else
+                                {
+                                    $price = 0;
+                                }
                             }
 
 

@@ -2340,7 +2340,7 @@
                                 <div class="contact-form-agent">
                                     <div class="agent-content-wrapper flex-middle">
                                         @if($agent->image_icon)
-                                            <div class="agent-thumbnail" style="border-radius: 0;">
+                                            <div class="agent-thumbnail" style="border-radius: 5px;">
                                                 <div class="agent-logo-wrapper" style="width: 100%;height: 100%;">
                                                     <a class="agent-logo" href="{{URL::to('makelaars/')}}">
                                                         <div class="image-wrapper image-loaded" style="height: 100%;">
