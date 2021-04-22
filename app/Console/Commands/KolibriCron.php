@@ -314,8 +314,8 @@ class KolibriCron extends Command
             foreach($properties as $key)
             {
                 $modification = $key['ModificationDateTimeUtc'];
-                $property_id = $key['RealEstateProperyID'];
-                $realtor_id = $key['RealtorID'];
+                $property_id = 3889243;
+                $realtor_id = 8297;
                 $property_address = $key['AddressSummary'];
 
                 $ch = curl_init();
