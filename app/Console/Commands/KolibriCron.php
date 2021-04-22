@@ -314,8 +314,8 @@ class KolibriCron extends Command
             foreach($properties as $key)
             {
                 $modification = $key['ModificationDateTimeUtc'];
-                $property_id = 3889243;
-                $realtor_id = 8297;
+                $property_id = $key['RealEstateProperyID'];
+                $realtor_id = $key['RealtorID'];
                 $property_address = $key['AddressSummary'];
 
                 $ch = curl_init();
@@ -411,25 +411,48 @@ class KolibriCron extends Command
                             $address = $property_details['RealEstateProperty']['Location']['Address']['PostalCode'] . ' ' . $property_details['RealEstateProperty']['LocationDetails']['GeoAddressDetails']['Locality'];
                         }
 
-                        var_dump($property_details['RealEstateProperty']['LocationDetails']['GeoAddressDetails'][0]);
 
-                        if(isset($property_details['RealEstateProperty']['LocationDetails']['GeoAddressDetails'][0]['Coordinates']['Latitude']))
+                        if(is_array($property_details['RealEstateProperty']['LocationDetails']['GeoAddressDetails']))
                         {
-                            $address_latitude = $property_details['RealEstateProperty']['LocationDetails']['GeoAddressDetails'][0]['Coordinates']['Latitude'];
+                            if(isset($property_details['RealEstateProperty']['LocationDetails']['GeoAddressDetails'][0]['Coordinates']['Latitude']))
+                            {
+                                $address_latitude = $property_details['RealEstateProperty']['LocationDetails']['GeoAddressDetails'][0]['Coordinates']['Latitude'];
+                            }
+                            else
+                            {
+                                $address_latitude = NULL;
+                            }
+
+                            if(isset($property_details['RealEstateProperty']['LocationDetails']['GeoAddressDetails'][0]['Coordinates']['Longitude']))
+                            {
+                                $address_longitude = $property_details['RealEstateProperty']['LocationDetails']['GeoAddressDetails'][0]['Coordinates']['Longitude'];
+                            }
+                            else
+                            {
+                                $address_longitude = NULL;
+                            }
                         }
                         else
                         {
-                            $address_latitude = NULL;
+                            if(isset($property_details['RealEstateProperty']['LocationDetails']['GeoAddressDetails']['Coordinates']['Latitude']))
+                            {
+                                $address_latitude = $property_details['RealEstateProperty']['LocationDetails']['GeoAddressDetails']['Coordinates']['Latitude'];
+                            }
+                            else
+                            {
+                                $address_latitude = NULL;
+                            }
+
+                            if(isset($property_details['RealEstateProperty']['LocationDetails']['GeoAddressDetails']['Coordinates']['Longitude']))
+                            {
+                                $address_longitude = $property_details['RealEstateProperty']['LocationDetails']['GeoAddressDetails']['Coordinates']['Longitude'];
+                            }
+                            else
+                            {
+                                $address_longitude = NULL;
+                            }
                         }
 
-                        if(isset($property_details['RealEstateProperty']['LocationDetails']['GeoAddressDetails'][0]['Coordinates']['Longitude']))
-                        {
-                            $address_longitude = $property_details['RealEstateProperty']['LocationDetails']['GeoAddressDetails'][0]['Coordinates']['Longitude'];
-                        }
-                        else
-                        {
-                            $address_longitude = NULL;
-                        }
 
                         if(isset($property_details['RealEstateProperty']['Counts']['CountOfBathrooms']))
                         {
