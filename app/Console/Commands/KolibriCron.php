@@ -412,7 +412,7 @@ class KolibriCron extends Command
                         }
 
 
-                        if(is_array($property_details['RealEstateProperty']['LocationDetails']['GeoAddressDetails']))
+                        if(is_array($property_details['RealEstateProperty']['LocationDetails']['GeoAddressDetails']) && array_key_exists(0,$property_details['RealEstateProperty']['LocationDetails']['GeoAddressDetails']))
                         {
                             if(isset($property_details['RealEstateProperty']['LocationDetails']['GeoAddressDetails'][0]['Coordinates']['Latitude']))
                             {
@@ -435,7 +435,7 @@ class KolibriCron extends Command
                         else
                         {
                             var_dump($property_details['RealEstateProperty']['LocationDetails']['GeoAddressDetails']['Coordinates']);
-                            
+
                             if(isset($property_details['RealEstateProperty']['LocationDetails']['GeoAddressDetails']['Coordinates']['Latitude']))
                             {
                                 $address_latitude = $property_details['RealEstateProperty']['LocationDetails']['GeoAddressDetails']['Coordinates']['Latitude'];
