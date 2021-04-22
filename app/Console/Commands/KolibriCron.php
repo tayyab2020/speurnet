@@ -451,6 +451,8 @@ class KolibriCron extends Command
                             {
                                 $address_longitude = NULL;
                             }
+
+                            var_dump($address_latitude);
                         }
 
 
