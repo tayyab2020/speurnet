@@ -30,7 +30,7 @@
     <!-- begin:content -->
     <div id="content">
 
-        <h1 style="text-align: center;">Woningruil als alternatief in een krappe woningmarkt </h1>
+        <h1 style="margin-bottom: 30px;color: #868686;font-weight: 600;text-align: center;margin-top: 0px;">Woningruil als alternatief in een krappe woningmarkt </h1>
 
 
         <div class="container" style="width: 100%;">

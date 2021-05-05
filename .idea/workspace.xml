@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7fe7f36f-c82f-4504-8c0a-7874522d22c9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/home_exchange.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/home_exchange.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -169,10 +168,10 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../truckloadpk" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/pages/s.blade.php" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.General" />
-    <property name="two.files.diff.last.used.file" value="$USER_HOME$/Downloads/agents.blade.php" />
+    <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/resources/views/pages/s.blade.php" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager">
@@ -399,12 +398,23 @@
       <workItem from="1619305323135" duration="155000" />
       <workItem from="1619724631048" duration="758000" />
       <workItem from="1620165901955" duration="608000" />
-      <workItem from="1620209029384" duration="3222000" />
+      <workItem from="1620209029384" duration="3507000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
