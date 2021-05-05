@@ -1,8 +1,8 @@
 @extends("app")
 
 @section('head_title', 'Woningruil als alternatief in een krappe woningmarkt - Zoekjehuisje.nl')
-@section('head_keywords', 'woningruil')
-@section('head_description', 'Woningruil is een uitstekend alternatief op een huis kopen of huren in deze krappe woningmarkt. Zoekjehuisje.nl biedt diverse mogelijkheden')
+@section('head_keywords', 'Woningruil, woningruilen, woning, ruil, ruilen, huurwoning, woningcorporatie, woonruimte, aanbieden, gevraagd, amsterdam, rotterdam, utrecht, den bosch, eindhoven, groningen')
+@section('head_description', 'Zoekjehuisje.nl gratis woningruil plaatsen | Woningruil is een uitstekend alternatief op een huis kopen of huren in deze krappe woningmarkt.')
 @section('head_url', Request::url())
 
 @section("content")
@@ -29,6 +29,9 @@
 
     <!-- begin:content -->
     <div id="content">
+
+        <h1 style="text-align: center;">Woningruil als alternatief in een krappe woningmarkt </h1>
+
 
         <div class="container" style="width: 100%;">
 
