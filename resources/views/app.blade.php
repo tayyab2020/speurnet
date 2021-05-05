@@ -14,6 +14,9 @@
     <meta property="og:description" content="{{getcong('site_description')}}" />
 
     <meta property="og:image" content="@yield('head_image', url('/upload/logo.png'))" />
+    <meta property="og:locale" content="nl_NL" />
+    <meta property="og:type" content="website" />
+    <link rel="canonical" href="{{url('/')}}" />
     <meta property="og:url" content="@yield('head_url', url('/'))" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
