@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
@@ -8,6 +8,7 @@
     <meta name="description" content="@yield('head_description')">
     <meta property="keywords" content="@yield('head_keywords')" />
     <meta property="sub_keywords" content="@yield('head_sub_keywords')" />
+    <meta property="og:site_name" content="@yield('head_site_name')" />
 
     <meta property="og:type" content="article"/>
     <meta property="og:title" content="{{getcong('site_name')}}"/>
