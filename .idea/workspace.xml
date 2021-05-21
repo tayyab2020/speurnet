@@ -20,7 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7fe7f36f-c82f-4504-8c0a-7874522d22c9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/s.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Console/Commands/DailyCron.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Commands/DailyCron.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Console/Commands/WeeklyCron.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Commands/WeeklyCron.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AgentsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AgentsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PropertiesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PropertiesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/admin_app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/admin_app.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/app.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -418,7 +423,11 @@
       <workItem from="1619724631048" duration="758000" />
       <workItem from="1620165901955" duration="608000" />
       <workItem from="1620209029384" duration="3810000" />
-      <workItem from="1620292534628" duration="610000" />
+      <workItem from="1620292534628" duration="1890000" />
+      <workItem from="1620652683679" duration="2920000" />
+      <workItem from="1620854857884" duration="933000" />
+      <workItem from="1621408810479" duration="667000" />
+      <workItem from="1621592206250" duration="451000" />
     </task>
     <servers />
   </component>
@@ -461,17 +470,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="777" y="433" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1617962928375" />
-    <state x="106" y="156" width="805" height="616" key="find.popup" timestamp="1620292842070">
+    <state x="106" y="156" width="805" height="616" key="find.popup" timestamp="1621592662589">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="106" y="156" width="805" height="616" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1620292842070" />
-    <state x="425" y="187" key="run.anything.popup" timestamp="1612098747964">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1612098747964" />
-    <state x="389" y="66" width="756" height="758" key="search.everywhere.popup" timestamp="1612010102450">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="389" y="66" width="756" height="758" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1612010102450" />
+    <state x="106" y="156" width="805" height="616" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1621592662589" />
   </component>
 </project>
