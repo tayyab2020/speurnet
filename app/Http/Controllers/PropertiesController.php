@@ -1348,7 +1348,7 @@ class PropertiesController extends Controller
 
                      if($result['rows'][0]['elements'][0]['status'] == 'OK')
                      {
-                         $property_radius = $result['resourceSets'][0]['resources'][0]['results'][0]['travelDistance'];
+                         $property_radius = $result['rows'][0]['elements'][0]['distance']['value'];
                          $property_radius = $property_radius / 1000;
 
                          $property_radius = round($property_radius);
