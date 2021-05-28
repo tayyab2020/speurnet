@@ -1363,13 +1363,14 @@ class PropertiesController extends Controller
 
                      if($property_latitude && $property_longitude)
                      {
+
                          $ch = curl_init();
                          $headers = array(
                              'Accept: application/json',
                              'Content-Type: application/json',
 
                          );
-                         curl_setopt($ch, CURLOPT_URL, "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=".urlencode($address_latitude).",".urlencode($address_longitude)."&destinations=".urlencode($property_latitude).",".urlencode($property_longitude)."&key=AIzaSyChgcpFYG5aLIvd_U0Xmx6ry7jlL9NI_BU");
+                         curl_setopt($ch, CURLOPT_URL, "https://dev.virtualearth.net/REST/v1/Routes/DistanceMatrix?origins=".urlencode($address_latitude).",".urlencode($address_longitude)."&destinations=".urlencode($property_latitude).",".urlencode($property_longitude)."&travelMode=driving&key=ApGfIF6Y_pCEfKLHWz7J4f60CkCs4XhRQW4DA95a_lI2ATGKnoZmF-aqCwANOQND");
                          curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
                          curl_setopt($ch, CURLOPT_HEADER, 0);
 
@@ -1380,10 +1381,8 @@ class PropertiesController extends Controller
                          curl_setopt($ch, CURLOPT_TIMEOUT, 30);
 
                          $response = curl_exec($ch);
-
-                         $xml = simplexml_load_string($response);
-                         $json = json_encode($xml);
-                         $result = json_decode($json,true);
+                         
+                         $result = json_decode($response,true);
 
                          if($result['statusCode'] == 200)
                          {
