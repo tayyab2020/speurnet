@@ -1365,7 +1365,6 @@ class PropertiesController extends Controller
 
                          $result_string = file_get_contents($url);
                          $result = json_decode($result_string, true);
-                         dd($result);
 
                          if($result['statusCode'] == 200)
                          {
