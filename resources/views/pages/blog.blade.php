@@ -110,7 +110,7 @@
                 </div>
             </div>
 
-            @if(isset($custom) && $custom == 1)
+            @if($blog->form == 1)
 
                 <div class="row" style="margin-top: 30px;display: flex;">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin: auto;">
@@ -203,7 +203,7 @@
                     </div>
                 </div>
 
-            @elseif(isset($custom) && $custom == 2)
+            @elseif($blog->form == 2)
 
                 <div class="row" style="margin-top: 30px;display: flex;">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin: auto;">

@@ -1040,6 +1040,7 @@ class DashboardController extends MainAdminController
         $blog->meta_title = $request->meta_title;
         $blog->meta_description = $request->meta_description;
         $blog->meta_url = $request->meta_url;
+        $blog->form = $request->show_form;
 
         $blog->save();
 

@@ -92,6 +92,23 @@
 
                     @if(Route::currentRouteName() == 'add-footer-page' || Route::currentRouteName() == 'edit-footer-page')
 
+                        <div style="display: none;" class="form-group">
+                            <label for="" class="col-sm-3 control-label">Form</label>
+                            <div class="col-sm-9">
+
+                                <select class="form-control" name="show_form">
+
+                                    <option {{(isset($blog) && $blog->form == 0) ? 'selected' : null}} value="0">None</option>
+
+                                    <option {{(isset($blog) && $blog->form == 1) ? 'selected' : null}} value="1">1</option>
+
+                                    <option {{(isset($blog) && $blog->form == 2) ? 'selected' : null}} value="2">2</option>
+
+                                </select>
+
+                            </div>
+                        </div>
+
                         <div class="form-group">
                             <label for="" class="col-sm-3 control-label">Heading</label>
                             <div class="col-sm-9">

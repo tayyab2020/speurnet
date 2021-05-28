@@ -1565,8 +1565,6 @@ class IndexController extends Controller
                 $listed = '';
             }
 
-
-
             $propertieslist[$i]->listed = $listed;
 
             $i = $i + 1;
@@ -1695,21 +1693,7 @@ class IndexController extends Controller
             abort('404');
         }
 
-        if($blog->title == 'Voor makelaars ( CRM-systeem )')
-        {
-            $custom = 1;
-
-        }
-        elseif($blog->title == 'Gratis waardebepaling')
-        {
-            $custom = 2;
-        }
-        else
-        {
-            $custom = 0;
-        }
-
-        return view('pages.blog',compact('blog','custom'));
+        return view('pages.blog',compact('blog'));
     }
 
     public function formSubmit(Request $request)
