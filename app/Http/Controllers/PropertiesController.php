@@ -1336,6 +1336,8 @@ class PropertiesController extends Controller
              if($radius != 0)
              {
 
+                 ini_set('max_execution_time', '0');
+                 
                  foreach ($properties->get() as $key)
                  {
                      $property_latitude = $key->map_latitude;
