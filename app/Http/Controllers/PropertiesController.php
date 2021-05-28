@@ -1346,7 +1346,7 @@ class PropertiesController extends Controller
                      $result_string = file_get_contents($url);
                      $result = json_decode($result_string, true);
 
-                     if($result['rows'][0]['elements'][0]['status'] == 'OK')
+                     /*if($result['rows'][0]['elements'][0]['status'] == 'OK')
                      {
                          $property_radius = $result['rows'][0]['elements'][0]['distance']['value'];
                          $property_radius = $property_radius / 1000;
@@ -1357,14 +1357,15 @@ class PropertiesController extends Controller
                          {
                              array_push($properties_search,$key);
                          }
-                     }
+                     }*/
 
-                     /*if($property_latitude && $property_longitude)
+                     if($property_latitude && $property_longitude)
                      {
                          $url = "https://dev.virtualearth.net/REST/v1/Routes/DistanceMatrix?origins=".urlencode($address_latitude).",".urlencode($address_longitude)."&destinations=".urlencode($property_latitude).",".urlencode($property_longitude)."&travelMode=driving&key=ApGfIF6Y_pCEfKLHWz7J4f60CkCs4XhRQW4DA95a_lI2ATGKnoZmF-aqCwANOQND";
 
                          $result_string = file_get_contents($url);
                          $result = json_decode($result_string, true);
+                         dd($result);
 
                          if($result['statusCode'] == 200)
                          {
@@ -1377,7 +1378,7 @@ class PropertiesController extends Controller
                                  array_push($properties_search,$key);
                              }
                          }
-                     }*/
+                     }
 
                  }
 
