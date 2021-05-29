@@ -1,4 +1,9 @@
 @extends("app")
+
+@section('head_title', 'Nieuwsgierig naar de laatste woontrends en woonstijlen? Bekijk alle interieurtips en woontrends voor jouw huis, kamer of tuin op Zoekjehuisje.nl')
+@section('head_keywords', 'woontrends, interieuradvies, interieurtips, laatste woontrends, huis inrichten, online interieur tips, online woontrends, interieur expert, woonstijl, keukentrends, tuintrends')
+@section('head_description', 'Op zoekjehuisje.nl vind je de laatste woontrends en woonstijlen. Benieuwd naar de woontrends van dit seizoen, de woontrends van dit jaar of wil je inspiratie opdoen voor jouw interieur in huis, kamer of tuin? De keuken of tuin misschien aanpakken? Check gelijk al onze interieurtips en woontrends.')
+
 @section("content")
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
@@ -15,8 +20,10 @@
                         <ul style="display:flex;align-items: flex-end;" class="nav nav-tabs res-ul">
 
                             <span class="res-span" style="display: inline-block;width: 60%;margin-right: 30px;">
-                                <h4 class="res-head">De mooiste woontrends & inspiratie onder één dak.</h4>
-                                <p style="margin: 0;">Bekijk hier de mooiste en leukste woontrends en laat je inspireren. We hebben zowel de trends binnenshuis als buitenshuis voor je verzameld. Blijf ons volgen voor meer tips en ideeën.</p>
+                                <h4 class="res-head">Benieuwd naar de nieuwste woontrends? </h4>
+                                <p style="margin: 0;">Waarom alle interieurwinkels en woontrends websites afgaan als Zoekjehuisje.nl de allerlaatste woontrends voor jou heeft verzameld, zodat je alle trends in wonen en tuin online kunt bekijken. Heb je binnenkort een nieuwe woning of ben je gewoon toe om je interieur of tuin een nieuwe look te geven volgens de nieuwe trends van 2021? Bekijk hier alle interieurtips en trends voor jouw woonkamer, slaapkamer, keuken of tuin. Laat je inspireren en bepaal zelf welke woontrend of stijl in jouw interieur past. Jouw woning is de laatste woontrend waard.
+                                    <br><br>
+                                    Wil je op de hoogte blijven van toekomstige woontrends? Volg Zoekjehuisje.nl en houd de website in de gaten, dan zorgen wij ervoor dat jij geen enkele woontrend of interieurtips meer mist.</p>
                             </span>
 
                             <li @if($type == 'binnenshuis' || $type == null) class="active" @endif><a style="cursor: pointer;" class="res-tab" href="{{url('wooninspiratie?type=binnenshuis')}}" aria-expanded="true">Binnenshuis</a></li>

@@ -30,7 +30,7 @@
     <!-- begin:content -->
     <div id="content">
 
-        <h1 style="margin-bottom: 30px;color: #868686;font-weight: 600;text-align: center;margin-top: 0px;">Woningruil als alternatief in een krappe woningmarkt </h1>
+        <h1 style="margin-bottom: 30px;color: #868686;font-weight: 600;text-align: center;margin-top: 0px;">Woningruil voor jouw huurwoning of kamer: bekijk alle woningruil advertenties.</h1>
 
 
         <div class="container" style="width: 100%;">
@@ -43,17 +43,17 @@
 
                         <div id="recent-found" class="properties-ordering-wrapper">
 
-                            <div class="results-count" style="font-size: 18px;display: inline-block;padding-top: 5px;">{{__('text.Results')}} {{trans_choice('text.properties found',$recent->total())}}</div>
+                            <div class="results-count" style="font-size: 18px;display: inline-block;padding-top: 5px;">{{__('text.Results')}} {{trans_choice('text.home exchange properties found',$recent->total())}}</div>
 
                         </div>
 
                         <div style="background: white;padding: 20px 10px 0px 10px;border-radius: 10px;box-shadow: 1px 1px 14px 2px #e7e7e7;">
 
-                            <h2 style="margin-bottom: 30px;color: #868686;font-weight: 600;text-align: center;margin-top: 0px;">{{__('text.Recent Ads')}}</h2>
+                            <h3 style="margin-bottom: 30px;color: #868686;font-weight: 600;text-align: center;margin-top: 0px;">{{__('text.Recent Ads')}}</h3>
 
                             @foreach($recent as $temp)
 
-                                <div class="row" style="margin: 0;border-bottom:1px solid #e5e5e5;margin-bottom: 20px;">
+                                <div class="row" style="margin: 0;{{count($recent) != 1 ? 'border-bottom:1px solid #e5e5e5;margin-bottom: 20px;' : null }}">
 
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="padding: 0;display: flex;flex-direction: row;">
 
@@ -88,7 +88,7 @@
 
                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
 
-                    <a href="{{ URL::to('addhomeexchange') }}" class="btn btn-success" style="float: right;font-size: 18px;margin-bottom: 20px;">{{__('text.Add Property')}}</a>
+                    <a href="{{ URL::to('addhomeexchange') }}" class="btn btn-success" style="float: right;font-size: 18px;margin-bottom: 20px;">{{__('text.Add Home Exchange Property')}}</a>
 
                     <div style="background-color: white;border-radius: 10px;box-shadow: 1px 1px 14px 2px #e7e7e7;display: inline-block;">
 
@@ -403,7 +403,7 @@
                                 </div>
 
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="text-align: center;margin-top: 20px;">
-                                    <button type="submit" class="btn btn-success" style="font-size: 17px;outline: none;"><i class="fas fa-search" style="margin-right: 5px;font-size: 17px;" aria-hidden="true"></i> {{__('text.Search')}}</button>
+                                    <button type="submit" class="btn btn-success" style="font-size: 17px;outline: none;"><i class="fas fa-search" style="margin-right: 5px;font-size: 17px;" aria-hidden="true"></i> {{__('text.Home Exchange Search')}}</button>
                                 </div>
 
                                 <input type="hidden" value="newest" name="filter" id="filter_orderby">
@@ -990,7 +990,7 @@
                     <!-- begin:article -->
                     <div class="properties-ordering-wrapper" style="box-shadow: 5px 7px 8px -7px #868686;background: linear-gradient(to right, #494949 0, #434343 100%);color: white;border: 0;">
                         <div class="results-count">
-                            <?php $count = count($properties); ?> {{trans_choice('text.properties found',$count)}}</div>
+                            <?php $count = count($properties); ?> {{trans_choice('text.home exchange properties found',$count)}}</div>
 
                         <div class="properties-ordering">
 
