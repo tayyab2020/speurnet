@@ -78,7 +78,7 @@ return [
     'Minimum Area' => 'Grootte van de woning (optioneel)',
     'Maximum Rent Per Month' => 'Jouw maximale huurprijs die je wilt betalen?',
     'Only show me homes with photos or videos' => "Laat mij alleen woningruil advertenties zien met foto’s of video’s",
-    'Recent Ads' => 'Net geplaatst: huurwoningen te ruil',
+    'Recent Ads' => 'Nieuw geplaatst: huurwoningen te ruil',
     'Posted on' => 'Geplaatst op',
     'Advance Search' => 'Uitgebreid zoeken',
     'City' => 'Plaats',
