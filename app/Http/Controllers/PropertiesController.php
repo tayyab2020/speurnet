@@ -1343,7 +1343,7 @@ class PropertiesController extends Controller
                      $property_longitude = $key->map_longitude;
 
                      $client = new \GuzzleHttp\Client();
-                     $response = $client->request('GET', "https://dev.virtualearth.net/REST/v1/Routes/DistanceMatrix?origins=".urlencode($address_latitude).",".urlencode($address_longitude)."&destinations=".urlencode($property_latitude).",".urlencode($property_longitude)."&travelMode=driving&key=ApGfIF6Y_pCEfKLHWz7J4f60CkCs4XhRQW4DA95a_lI2ATGKnoZmF-aqCwANOQND";);
+                     $response = $client->request('GET', "https://dev.virtualearth.net/REST/v1/Routes/DistanceMatrix?origins=".urlencode($address_latitude).",".urlencode($address_longitude)."&destinations=".urlencode($property_latitude).",".urlencode($property_longitude)."&travelMode=driving&key=ApGfIF6Y_pCEfKLHWz7J4f60CkCs4XhRQW4DA95a_lI2ATGKnoZmF-aqCwANOQND");
 
                      echo $response->getStatusCode(); // 200
                      echo $response->getHeaderLine('content-type'); // 'application/json; charset=utf8'
