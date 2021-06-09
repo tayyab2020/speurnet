@@ -194,6 +194,16 @@
 
     <style>
 
+        @media (max-width: 500px) {
+
+            #header.heading
+            {
+                padding: 0;
+                min-height: 150px;
+            }
+
+        }
+
         .property-container
         {
             display: inline-table;

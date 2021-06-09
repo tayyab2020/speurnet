@@ -462,9 +462,16 @@
                 <style>
 
                     @media (max-width: 500px) {
+
                         #content
                         {
                             padding: 30px 0;
+                        }
+
+                        #content h1
+                        {
+                            font-size: 20px;
+                            padding: 0 10px;
                         }
 
                         #header.heading

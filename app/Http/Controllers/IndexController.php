@@ -1460,7 +1460,6 @@ class IndexController extends Controller
 
     public function index()
     {
-
     	if(!$this->alreadyInstalled()) {
             return redirect('install');
         }
