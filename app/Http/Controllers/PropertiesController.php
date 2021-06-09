@@ -1338,7 +1338,6 @@ class PropertiesController extends Controller
 
                  foreach ($properties->get() as $z => $key)
                  {
-
                      $property_latitude = $key->map_latitude;
                      $property_longitude = $key->map_longitude;
 
@@ -1360,7 +1359,7 @@ class PropertiesController extends Controller
                          }
                      }*/
 
-                     /*$theta = $address_longitude - $property_longitude;
+                     $theta = $address_longitude - $property_longitude;
                      $dist = sin(deg2rad($address_latitude)) * sin(deg2rad($property_latitude)) +  cos(deg2rad($address_latitude)) * cos(deg2rad($property_latitude)) * cos(deg2rad($theta));
                      $dist = acos($dist);
                      $dist = rad2deg($dist);
@@ -1380,21 +1379,13 @@ class PropertiesController extends Controller
                      if($property_radius <= $radius)
                      {
                          array_push($properties_search,$key);
-                     }*/
+                     }
 
-                     if($property_latitude && $property_longitude)
+                     /*if($property_latitude && $property_longitude)
                      {
                          $url = "https://dev.virtualearth.net/REST/v1/Routes/DistanceMatrix?origins=".urlencode($address_latitude).",".urlencode($address_longitude)."&destinations=".urlencode($property_latitude).",".urlencode($property_longitude)."&travelMode=driving&key=ApGfIF6Y_pCEfKLHWz7J4f60CkCs4XhRQW4DA95a_lI2ATGKnoZmF-aqCwANOQND";
 
-                         $streamContext = stream_context_create(
-                             array('http'=>
-                                 array(
-                                     'timeout' => 120,  //120 seconds
-                                 )
-                             )
-                         );
-
-                         $result_string = file_get_contents($url,false, $streamContext);
+                         $result_string = file_get_contents($url);
                          $result = json_decode($result_string, true);
 
                          if($result['statusCode'] == 200)
@@ -1408,7 +1399,7 @@ class PropertiesController extends Controller
                                  array_push($properties_search,$key);
                              }
                          }
-                     }
+                     }*/
 
                  }
 
