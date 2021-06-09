@@ -1277,6 +1277,7 @@ class PropertiesController extends Controller
     public function searchproperties(Request $request)
     {
         ini_set('max_execution_time', '0');
+        ini_set('default_socket_timeout', 360);
 
     	$data =  \Request::except(array('_token')) ;
 
@@ -1338,10 +1339,6 @@ class PropertiesController extends Controller
 
                  foreach ($properties->get() as $z => $key)
                  {
-                     if($z%10 == 0)
-                     {
-                         sleep(10);
-                     }
 
                      $property_latitude = $key->map_latitude;
                      $property_longitude = $key->map_longitude;
@@ -1392,8 +1389,6 @@ class PropertiesController extends Controller
 
                          $result_string = file_get_contents($url);
                          $result = json_decode($result_string, true);
-
-                         dd($result);
 
                          if($result['statusCode'] == 200)
                          {
