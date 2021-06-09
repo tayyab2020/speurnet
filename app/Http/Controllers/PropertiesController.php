@@ -1345,8 +1345,8 @@ class PropertiesController extends Controller
                      $client = new \GuzzleHttp\Client();
                      $response = $client->request('GET', "https://dev.virtualearth.net/REST/v1/Routes/DistanceMatrix?origins=".urlencode($address_latitude).",".urlencode($address_longitude)."&destinations=".urlencode($property_latitude).",".urlencode($property_longitude)."&travelMode=driving&key=ApGfIF6Y_pCEfKLHWz7J4f60CkCs4XhRQW4DA95a_lI2ATGKnoZmF-aqCwANOQND");
 
-                     dd($response->getBody());
-                     
+                     dd($response);
+
 
                      /*$url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=".urlencode($address_latitude).",".urlencode($address_longitude)."&destinations=".urlencode($property_latitude).",".urlencode($property_longitude)."&key=AIzaSyA65DZUJgWuYMvWwfgDQ59mPlxiRQJ6TdA";
 
