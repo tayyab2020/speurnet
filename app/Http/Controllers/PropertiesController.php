@@ -1338,9 +1338,9 @@ class PropertiesController extends Controller
 
                  foreach ($properties->get() as $z => $key)
                  {
-                     if($z == 9)
+                     if($z%10 == 0)
                      {
-                         sleep(10);
+                         sleep(5);
                      }
 
                      $property_latitude = $key->map_latitude;
