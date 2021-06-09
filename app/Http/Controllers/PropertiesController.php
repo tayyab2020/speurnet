@@ -1338,9 +1338,8 @@ class PropertiesController extends Controller
 
                  foreach ($properties->get() as $z => $key)
                  {
-                     if($z == 99)
+                     if($z == 9)
                      {
-                         exit();
                          sleep(10);
                      }
 
