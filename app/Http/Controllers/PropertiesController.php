@@ -1338,8 +1338,9 @@ class PropertiesController extends Controller
 
                  foreach ($properties->get() as $z => $key)
                  {
-                     if($z%10 == 0)
+                     if($z%10 == 0 && $z != 0 && $z != 10)
                      {
+                         exit();
                          sleep(10);
                      }
 
@@ -1392,6 +1393,8 @@ class PropertiesController extends Controller
 
                          $result_string = file_get_contents($url);
                          $result = json_decode($result_string, true);
+
+                         dd($result);
 
                          if($result['statusCode'] == 200)
                          {
