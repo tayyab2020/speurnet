@@ -1340,7 +1340,7 @@ class PropertiesController extends Controller
                  {
                      if($z%10 == 0)
                      {
-                         sleep(5);
+                         sleep(10);
                      }
 
                      $property_latitude = $key->map_latitude;
