@@ -1385,10 +1385,27 @@ class PropertiesController extends Controller
 
                      if($property_latitude && $property_longitude)
                      {
-                         $url = "https://dev.virtualearth.net/REST/v1/Routes/DistanceMatrix?origins=".urlencode($address_latitude).",".urlencode($address_longitude)."&destinations=".urlencode($property_latitude).",".urlencode($property_longitude)."&travelMode=driving&key=ApGfIF6Y_pCEfKLHWz7J4f60CkCs4XhRQW4DA95a_lI2ATGKnoZmF-aqCwANOQND";
+                         $ch = curl_init();
+                         $headers = array(
+                             'Accept: application/json',
+                             'Content-Type: application/json',
 
-                         $result_string = file_get_contents($url);
-                         $result = json_decode($result_string, true);
+                         );
+                         curl_setopt($ch, CURLOPT_URL, "https://dev.virtualearth.net/REST/v1/Routes/DistanceMatrix?origins=".urlencode($address_latitude).",".urlencode($address_longitude)."&destinations=".urlencode($property_latitude).",".urlencode($property_longitude)."&travelMode=driving&key=ApGfIF6Y_pCEfKLHWz7J4f60CkCs4XhRQW4DA95a_lI2ATGKnoZmF-aqCwANOQND");
+                         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+                         curl_setopt($ch, CURLOPT_HEADER, 0);
+
+                         curl_setopt( $ch, CURLOPT_CUSTOMREQUEST, 'GET' );
+                         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+                         // Timeout in seconds
+                         curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+
+                         $response = curl_exec($ch);
+
+                         curl_close($ch);
+
+                         $result = json_decode($response, true);
 
                          if($result['statusCode'] == 200)
                          {
