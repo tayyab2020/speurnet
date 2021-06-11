@@ -23,6 +23,8 @@ class AgentsController extends Controller
 
     public function index(Request $request)
     {
+        ini_set('max_execution_time', '0');
+
         if($request->all())
         {
             $agent_name = $request->agent_name;
@@ -55,7 +57,76 @@ class AgentsController extends Controller
                         $from = urlencode($from);
                         $to = urlencode($to);
 
-                        $data = file_get_contents("https://maps.googleapis.com/maps/api/distancematrix/json?key=AIzaSyA65DZUJgWuYMvWwfgDQ59mPlxiRQJ6TdA&origins=$from&destinations=$to&language=en-EN&sensor=false");
+                        if($key->address_latitude && $key->address_longitude)
+                        {
+                            $agent_latitude = $key->address_latitude;
+                            $agent_longitude = $key->address_longitude;
+                        }
+                        else
+                        {
+                            $agent_coordinates = file_get_contents("https://maps.google.com/maps/api/geocode/json?address=$to&key=AIzaSyChgcpFYG5aLIvd_U0Xmx6ry7jlL9NI_BU");
+                            $agent_coordinates = json_decode($agent_coordinates, true);
+
+                            if($agent_coordinates['status'] == 'OK')
+                            {
+                                $agent_latitude = $agent_coordinates['results'][0]['geometry']['location']['lat'];
+                                $agent_longitude = $agent_coordinates['results'][0]['geometry']['location']['lng'];
+                            }
+                            else
+                            {
+                                $agent_latitude = 0;
+                                $agent_longitude = 0;
+                            }
+                        }
+
+                        if($agent_latitude != 0 && $agent_longitude != 0)
+                        {
+                            $theta = $address_longitude - $agent_longitude;
+                            $dist = sin(deg2rad($address_latitude)) * sin(deg2rad($agent_latitude)) +  cos(deg2rad($address_latitude)) * cos(deg2rad($agent_latitude)) * cos(deg2rad($theta));
+                            $dist = acos($dist);
+                            $dist = rad2deg($dist);
+                            $miles = $dist * 60 * 1.1515;
+                            $distance = $miles * 1.609344;
+                            $distance = round($distance);
+
+                            if($distance >= 100)
+                            {
+                                $distance = $distance + 30;
+                            }
+                            elseif($distance >= 30)
+                            {
+                                $distance = $distance + 15;
+                            }
+
+                            if ($distance > $radius) {
+                                $agents->where('users.id','!=',$key->id);
+                            }
+                        }
+
+                        /*if($agent_latitude && $agent_longitude)
+                        {
+                            $data = file_get_contents("https://dev.virtualearth.net/REST/v1/Routes/DistanceMatrix?origins=".urlencode($address_latitude).",".urlencode($address_longitude)."&destinations=".urlencode($agent_latitude).",".urlencode($agent_longitude)."&travelMode=driving&key=ApGfIF6Y_pCEfKLHWz7J4f60CkCs4XhRQW4DA95a_lI2ATGKnoZmF-aqCwANOQND");
+                            $data = json_decode($data, true);
+
+                            if($data['statusCode'] == 200)
+                            {
+                                $distance = $data['resourceSets'][0]['resources'][0]['results'][0]['travelDistance'];
+
+                                if ($distance > $radius) {
+                                    $agents->where('users.id','!=',$key->id);
+                                }
+                            }
+                            else
+                            {
+                                $agents->where('users.id','!=',$key->id);
+                            }
+                        }
+                        else
+                        {
+                            $agents->where('users.id','!=',$key->id);
+                        }*/
+
+                        /*$data = file_get_contents("https://maps.googleapis.com/maps/api/distancematrix/json?key=AIzaSyA65DZUJgWuYMvWwfgDQ59mPlxiRQJ6TdA&origins=$from&destinations=$to&language=en-EN&sensor=false");
                         $data = json_decode($data);
 
 
@@ -76,7 +147,7 @@ class AgentsController extends Controller
                         else
                         {
                             $agents->where('users.id','!=',$key->id);
-                        }
+                        }*/
 
                     }
 

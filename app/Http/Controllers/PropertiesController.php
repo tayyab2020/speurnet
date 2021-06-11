@@ -570,7 +570,48 @@ class PropertiesController extends Controller
                     $property_latitude = $key->map_latitude;
                     $property_longitude = $key->map_longitude;
 
-                    $url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=" . urlencode($preferred_address_latitude) . "," . urlencode($preferred_address_longitude) . "&destinations=" . urlencode($property_latitude) . "," . urlencode($property_longitude) . "&key=AIzaSyA65DZUJgWuYMvWwfgDQ59mPlxiRQJ6TdA";
+                    if($property_latitude && $property_longitude)
+                    {
+                        $theta = $preferred_address_longitude - $property_longitude;
+                        $dist = sin(deg2rad($preferred_address_latitude)) * sin(deg2rad($property_latitude)) +  cos(deg2rad($preferred_address_latitude)) * cos(deg2rad($property_latitude)) * cos(deg2rad($theta));
+                        $dist = acos($dist);
+                        $dist = rad2deg($dist);
+                        $miles = $dist * 60 * 1.1515;
+                        $property_radius = $miles * 1.609344;
+                        $property_radius = round($property_radius);
+
+                        if($property_radius >= 100)
+                        {
+                            $property_radius = $property_radius + 30;
+                        }
+                        elseif($property_radius >= 30)
+                        {
+                            $property_radius = $property_radius + 15;
+                        }
+
+                        if ($property_radius <= $preferred_radius) {
+                            array_push($properties_search, $key);
+                        }
+                    }
+
+                    /*$url = "https://dev.virtualearth.net/REST/v1/Routes/DistanceMatrix?origins=".urlencode($preferred_address_latitude).",".urlencode($preferred_address_longitude)."&destinations=".urlencode($property_latitude).",".urlencode($property_longitude)."&travelMode=driving&key=ApGfIF6Y_pCEfKLHWz7J4f60CkCs4XhRQW4DA95a_lI2ATGKnoZmF-aqCwANOQND";
+
+                    $result_string = file_get_contents($url);
+                    $result = json_decode($result_string, true);
+
+                    if($result['statusCode'] == 200)
+                    {
+                        $property_radius = $result['resourceSets'][0]['resources'][0]['results'][0]['travelDistance'];
+
+                        $property_radius = round($property_radius);
+
+                        if($property_radius <= $preferred_radius)
+                        {
+                            array_push($properties_search,$key);
+                        }
+                    }*/
+
+                    /*$url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=" . urlencode($preferred_address_latitude) . "," . urlencode($preferred_address_longitude) . "&destinations=" . urlencode($property_latitude) . "," . urlencode($property_longitude) . "&key=AIzaSyA65DZUJgWuYMvWwfgDQ59mPlxiRQJ6TdA";
 
                     $result_string = file_get_contents($url);
                     $result = json_decode($result_string, true);
@@ -584,7 +625,7 @@ class PropertiesController extends Controller
                         if ($property_radius <= $preferred_radius) {
                             array_push($properties_search, $key);
                         }
-                    }
+                    }*/
 
                 }
 
@@ -621,7 +662,149 @@ class PropertiesController extends Controller
                                 $property_longitude = $key->preferred_longitude;
                                 $property_preferred_radius = $key->preferred_radius;
 
-                                $url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=" . urlencode($address_latitude) . "," . urlencode($address_longitude) . "&destinations=" . urlencode($property_latitude) . "," . urlencode($property_longitude) . "&key=AIzaSyA65DZUJgWuYMvWwfgDQ59mPlxiRQJ6TdA";
+                                if($property_latitude && $property_longitude)
+                                {
+                                    if($property_preferred_radius != 0)
+                                    {
+                                        $theta = $address_longitude - $property_longitude;
+                                        $dist = sin(deg2rad($address_latitude)) * sin(deg2rad($property_latitude)) +  cos(deg2rad($address_latitude)) * cos(deg2rad($property_latitude)) * cos(deg2rad($theta));
+                                        $dist = acos($dist);
+                                        $dist = rad2deg($dist);
+                                        $miles = $dist * 60 * 1.1515;
+                                        $property_radius = $miles * 1.609344;
+                                        $property_radius = round($property_radius);
+
+                                        if($property_radius >= 100)
+                                        {
+                                            $property_radius = $property_radius + 30;
+                                        }
+                                        elseif($property_radius >= 30)
+                                        {
+                                            $property_radius = $property_radius + 15;
+                                        }
+
+                                        if ($property_radius <= $property_preferred_radius) {
+
+                                            if (Auth::user()) {
+
+                                                $saved = saved_properties::where('property_id', $key->id)->where('user_id', Auth::user()->id)->first();
+
+                                                if ($saved) {
+                                                    $saved_count = 1;
+                                                }
+                                                else {
+                                                    $saved_count = 0;
+                                                }
+
+                                                $key->saved_count = $saved_count;
+
+                                            }
+                                            else {
+                                                $key->saved_count = 0;
+                                            }
+
+                                            array_push($final_results, $key);
+                                        }
+
+                                    }
+                                    else
+                                    {
+
+                                        if(str_contains($key->preferred_place, $address))
+                                        {
+                                            if (Auth::user()) {
+
+                                                $saved = saved_properties::where('property_id', $key->id)->where('user_id', Auth::user()->id)->first();
+
+                                                if ($saved) {
+                                                    $saved_count = 1;
+                                                }
+                                                else {
+                                                    $saved_count = 0;
+                                                }
+
+                                                $key->saved_count = $saved_count;
+
+                                            }
+                                            else {
+                                                $key->saved_count = 0;
+                                            }
+
+                                            array_push($final_results, $key);
+
+                                        }
+
+                                    }
+                                }
+
+                                /*$url = "https://dev.virtualearth.net/REST/v1/Routes/DistanceMatrix?origins=".urlencode($address_latitude).",".urlencode($address_longitude)."&destinations=".urlencode($property_latitude).",".urlencode($property_longitude)."&travelMode=driving&key=ApGfIF6Y_pCEfKLHWz7J4f60CkCs4XhRQW4DA95a_lI2ATGKnoZmF-aqCwANOQND";
+
+                                $result_string = file_get_contents($url);
+                                $result = json_decode($result_string, true);
+
+                                if($result['statusCode'] == 200)
+                                {
+                                    if($property_preferred_radius != 0)
+                                    {
+                                        $property_radius = $result['resourceSets'][0]['resources'][0]['results'][0]['travelDistance'];
+
+                                        $property_radius = round($property_radius);
+
+                                        if ($property_radius <= $property_preferred_radius) {
+
+                                            if (Auth::user()) {
+
+                                                $saved = saved_properties::where('property_id', $key->id)->where('user_id', Auth::user()->id)->first();
+
+                                                if ($saved) {
+                                                    $saved_count = 1;
+                                                }
+                                                else {
+                                                    $saved_count = 0;
+                                                }
+
+                                                $key->saved_count = $saved_count;
+
+                                            }
+                                            else {
+                                                $key->saved_count = 0;
+                                            }
+
+                                            array_push($final_results, $key);
+                                        }
+
+                                    }
+                                    else
+                                    {
+
+                                        if(str_contains($key->preferred_place, $address))
+                                        {
+                                            if (Auth::user()) {
+
+                                                $saved = saved_properties::where('property_id', $key->id)->where('user_id', Auth::user()->id)->first();
+
+                                                if ($saved) {
+                                                    $saved_count = 1;
+                                                }
+                                                else {
+                                                    $saved_count = 0;
+                                                }
+
+                                                $key->saved_count = $saved_count;
+
+                                            }
+                                            else {
+                                                $key->saved_count = 0;
+                                            }
+
+                                            array_push($final_results, $key);
+
+                                        }
+
+                                    }
+                                }*/
+
+                                /*$url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=" . urlencode($address_latitude) . "," . urlencode($address_longitude) . "&destinations=" . urlencode($property_latitude) . "," . urlencode($property_longitude) . "&key=AIzaSyA65DZUJgWuYMvWwfgDQ59mPlxiRQJ6TdA";
 
                                 $result_string = file_get_contents($url);
                                 $result = json_decode($result_string, true);
@@ -686,7 +869,7 @@ class PropertiesController extends Controller
 
                                     }
 
-                                }
+                                }*/
                             }
 
                         $properties = $final_results;
@@ -1343,34 +1526,6 @@ class PropertiesController extends Controller
                      $property_latitude = $key->map_latitude;
                      $property_longitude = $key->map_longitude;
 
-                     /*$client = new \GuzzleHttp\Client();
-
-// Send an asynchronous request.
-                     $request = new \GuzzleHttp\Psr7\Request('GET', "https://dev.virtualearth.net/REST/v1/Routes/DistanceMatrix?origins=".urlencode($address_latitude).",".urlencode($address_longitude)."&destinations=".urlencode($property_latitude).",".urlencode($property_longitude)."&travelMode=driving&key=ApGfIF6Y_pCEfKLHWz7J4f60CkCs4XhRQW4DA95a_lI2ATGKnoZmF-aqCwANOQND");
-                     $promise = $client->sendAsync($request)->then(function ($response) {
-                         echo 'I completed! ' . $response->getBody();
-                     });
-
-                     $promise->wait();*/
-
-                     /*$url = "https://api.distancematrix.ai/maps/api/distancematrix/json?origins=".urlencode($address_latitude).",".urlencode($address_longitude)."&destinations=".urlencode($property_latitude).",".urlencode($property_longitude)."&departure_time=now&key=xcQcADyo575DfzrWRPolKDVprzD4z";
-
-                     $result_string = file_get_contents($url);
-                     $result = json_decode($result_string, true);
-
-                     if($result['rows'][0]['elements'][0]['status'] == 'OK')
-                     {
-                         $property_radius = $result['rows'][0]['elements'][0]['distance']['value'];
-                         $property_radius = $property_radius / 1000;
-
-                         $property_radius = round($property_radius);
-
-                         if($property_radius <= $radius)
-                         {
-                             array_push($properties_search,$key);
-                         }
-                     }*/
-
                      /*$url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=".urlencode($address_latitude).",".urlencode($address_longitude)."&destinations=".urlencode($property_latitude).",".urlencode($property_longitude)."&key=AIzaSyA65DZUJgWuYMvWwfgDQ59mPlxiRQJ6TdA";
 
                      $result_string = file_get_contents($url);
@@ -1389,30 +1544,30 @@ class PropertiesController extends Controller
                          }
                      }*/
 
-                     $theta = $address_longitude - $property_longitude;
-                     $dist = sin(deg2rad($address_latitude)) * sin(deg2rad($property_latitude)) +  cos(deg2rad($address_latitude)) * cos(deg2rad($property_latitude)) * cos(deg2rad($theta));
-                     $dist = acos($dist);
-                     $dist = rad2deg($dist);
-                     $miles = $dist * 60 * 1.1515;
-                     $property_radius = $miles * 1.609344;
-                     $property_radius = round($property_radius);
-
-                     if($property_radius >= 100)
+                     if($property_latitude && $property_longitude)
                      {
-                         $property_radius = $property_radius + 30;
+                         $theta = $address_longitude - $property_longitude;
+                         $dist = sin(deg2rad($address_latitude)) * sin(deg2rad($property_latitude)) +  cos(deg2rad($address_latitude)) * cos(deg2rad($property_latitude)) * cos(deg2rad($theta));
+                         $dist = acos($dist);
+                         $dist = rad2deg($dist);
+                         $miles = $dist * 60 * 1.1515;
+                         $property_radius = $miles * 1.609344;
+                         $property_radius = round($property_radius);
+
+                         if($property_radius >= 100)
+                         {
+                             $property_radius = $property_radius + 30;
+                         }
+                         elseif($property_radius >= 30)
+                         {
+                             $property_radius = $property_radius + 15;
+                         }
+
+                         if($property_radius <= $radius)
+                         {
+                             array_push($properties_search,$key);
+                         }
                      }
-                     elseif($property_radius >= 30)
-                     {
-                         $property_radius = $property_radius + 15;
-                     }
-
-                     if($property_radius <= $radius)
-                     {
-                         array_push($properties_search,$key);
-                     }
-
-
-
 
                      /*if($property_latitude && $property_longitude)
                      {
@@ -1528,8 +1683,32 @@ class PropertiesController extends Controller
                     $property_latitude = $key->map_latitude;
                     $property_longitude = $key->map_longitude;
 
+                    if($property_latitude && $property_longitude)
+                    {
+                        $theta = $address_longitude - $property_longitude;
+                        $dist = sin(deg2rad($address_latitude)) * sin(deg2rad($property_latitude)) +  cos(deg2rad($address_latitude)) * cos(deg2rad($property_latitude)) * cos(deg2rad($theta));
+                        $dist = acos($dist);
+                        $dist = rad2deg($dist);
+                        $miles = $dist * 60 * 1.1515;
+                        $property_radius = $miles * 1.609344;
+                        $property_radius = round($property_radius);
 
-                    $url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=".urlencode($address_latitude).",".urlencode($address_longitude)."&destinations=".urlencode($property_latitude).",".urlencode($property_longitude)."&key=AIzaSyA65DZUJgWuYMvWwfgDQ59mPlxiRQJ6TdA";
+                        if($property_radius >= 100)
+                        {
+                            $property_radius = $property_radius + 30;
+                        }
+                        elseif($property_radius >= 30)
+                        {
+                            $property_radius = $property_radius + 15;
+                        }
+
+                        if($property_radius <= $radius)
+                        {
+                            array_push($properties_search,$key);
+                        }
+                    }
+
+                    /*$url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=".urlencode($address_latitude).",".urlencode($address_longitude)."&destinations=".urlencode($property_latitude).",".urlencode($property_longitude)."&key=AIzaSyA65DZUJgWuYMvWwfgDQ59mPlxiRQJ6TdA";
 
                     $result_string = file_get_contents($url);
                     $result = json_decode($result_string, true);
@@ -1546,7 +1725,27 @@ class PropertiesController extends Controller
                         {
                             array_push($properties_search,$key);
                         }
-                    }
+                    }*/
+
+                    /*if($property_latitude && $property_longitude)
+                    {
+                        $url = "https://dev.virtualearth.net/REST/v1/Routes/DistanceMatrix?origins=".urlencode($address_latitude).",".urlencode($address_longitude)."&destinations=".urlencode($property_latitude).",".urlencode($property_longitude)."&travelMode=driving&key=ApGfIF6Y_pCEfKLHWz7J4f60CkCs4XhRQW4DA95a_lI2ATGKnoZmF-aqCwANOQND";
+
+                        $result_string = file_get_contents($url);
+                        $result = json_decode($result_string, true);
+
+                        if($result['statusCode'] == 200)
+                        {
+                            $property_radius = $result['resourceSets'][0]['resources'][0]['results'][0]['travelDistance'];
+
+                            $property_radius = round($property_radius);
+
+                            if($property_radius <= $radius)
+                            {
+                                array_push($properties_search,$key);
+                            }
+                        }
+                    }*/
 
 
                 }

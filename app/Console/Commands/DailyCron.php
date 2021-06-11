@@ -95,7 +95,30 @@ class DailyCron extends Command
                             $property_latitude = $key->map_latitude;
                             $property_longitude = $key->map_longitude;
 
-                            $url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=".urlencode($address_latitude).",".urlencode($address_longitude)."&destinations=".urlencode($property_latitude).",".urlencode($property_longitude)."&key=AIzaSyA65DZUJgWuYMvWwfgDQ59mPlxiRQJ6TdA";
+                            $theta = $address_longitude - $property_longitude;
+                            $dist = sin(deg2rad($address_latitude)) * sin(deg2rad($property_latitude)) +  cos(deg2rad($address_latitude)) * cos(deg2rad($property_latitude)) * cos(deg2rad($theta));
+                            $dist = acos($dist);
+                            $dist = rad2deg($dist);
+                            $miles = $dist * 60 * 1.1515;
+                            $property_radius = $miles * 1.609344;
+                            $property_radius = round($property_radius);
+
+                            if($property_radius >= 100)
+                            {
+                                $property_radius = $property_radius + 30;
+                            }
+                            elseif($property_radius >= 30)
+                            {
+                                $property_radius = $property_radius + 15;
+                            }
+
+                            if($property_radius <= $radius)
+                            {
+                                array_push($properties_search,$key);
+                                array_push($ids,$key->id);
+                            }
+
+                            /*$url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=".urlencode($address_latitude).",".urlencode($address_longitude)."&destinations=".urlencode($property_latitude).",".urlencode($property_longitude)."&key=AIzaSyA65DZUJgWuYMvWwfgDQ59mPlxiRQJ6TdA";
 
                             $result_string = file_get_contents($url);
                             $result = json_decode($result_string, true);
@@ -112,7 +135,7 @@ class DailyCron extends Command
                                     array_push($properties_search,$key);
                                     array_push($ids,$key->id);
                                 }
-                            }
+                            }*/
 
                         }
 
@@ -216,7 +239,30 @@ class DailyCron extends Command
                         $property_latitude = $key->map_latitude;
                         $property_longitude = $key->map_longitude;
 
-                        $url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=".urlencode($address_latitude).",".urlencode($address_longitude)."&destinations=".urlencode($property_latitude).",".urlencode($property_longitude)."&key=AIzaSyA65DZUJgWuYMvWwfgDQ59mPlxiRQJ6TdA";
+                        $theta = $address_longitude - $property_longitude;
+                        $dist = sin(deg2rad($address_latitude)) * sin(deg2rad($property_latitude)) +  cos(deg2rad($address_latitude)) * cos(deg2rad($property_latitude)) * cos(deg2rad($theta));
+                        $dist = acos($dist);
+                        $dist = rad2deg($dist);
+                        $miles = $dist * 60 * 1.1515;
+                        $property_radius = $miles * 1.609344;
+                        $property_radius = round($property_radius);
+
+                        if($property_radius >= 100)
+                        {
+                            $property_radius = $property_radius + 30;
+                        }
+                        elseif($property_radius >= 30)
+                        {
+                            $property_radius = $property_radius + 15;
+                        }
+
+                        if($property_radius <= $radius)
+                        {
+                            array_push($properties_search,$key);
+                            array_push($ids,$key->id);
+                        }
+
+                        /*$url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=".urlencode($address_latitude).",".urlencode($address_longitude)."&destinations=".urlencode($property_latitude).",".urlencode($property_longitude)."&key=AIzaSyA65DZUJgWuYMvWwfgDQ59mPlxiRQJ6TdA";
 
                         $result_string = file_get_contents($url);
                         $result = json_decode($result_string, true);
@@ -233,7 +279,7 @@ class DailyCron extends Command
                                 array_push($properties_search,$key);
                                 array_push($ids,$key->id);
                             }
-                        }
+                        }*/
 
                     }
 
