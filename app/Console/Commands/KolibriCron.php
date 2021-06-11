@@ -340,6 +340,7 @@ class KolibriCron extends Command
                 $json = json_encode($xml);
                 $property_details = json_decode($json,true);
 
+                var_dump($property_details['RealEstateProperty']['Type']['PropertyTypes']['PropertyType']);
 
                 if(is_array($property_details['RealEstateProperty']['Type']['PropertyTypes']['PropertyType']))
                 {
