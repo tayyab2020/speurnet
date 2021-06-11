@@ -64,13 +64,21 @@ class AgentsController extends Controller
                         }
                         else
                         {
-                            $agent_coordinates = file_get_contents("https://maps.google.com/maps/api/geocode/json?address=$to&key=AIzaSyChgcpFYG5aLIvd_U0Xmx6ry7jlL9NI_BU");
-                            $agent_coordinates = json_decode($agent_coordinates, true);
-
-                            if($agent_coordinates['status'] == 'OK')
+                            if($to)
                             {
-                                $agent_latitude = $agent_coordinates['results'][0]['geometry']['location']['lat'];
-                                $agent_longitude = $agent_coordinates['results'][0]['geometry']['location']['lng'];
+                                $agent_coordinates = file_get_contents("https://maps.google.com/maps/api/geocode/json?address=$to&key=AIzaSyChgcpFYG5aLIvd_U0Xmx6ry7jlL9NI_BU");
+                                $agent_coordinates = json_decode($agent_coordinates, true);
+
+                                if($agent_coordinates['status'] == 'OK')
+                                {
+                                    $agent_latitude = $agent_coordinates['results'][0]['geometry']['location']['lat'];
+                                    $agent_longitude = $agent_coordinates['results'][0]['geometry']['location']['lng'];
+                                }
+                                else
+                                {
+                                    $agent_latitude = 0;
+                                    $agent_longitude = 0;
+                                }
                             }
                             else
                             {
