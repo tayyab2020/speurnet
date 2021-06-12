@@ -335,9 +335,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
 
 Route::get('{slug}', function($slug) {
 
-    dd($_SERVER['HTTP_HOST']);
-
-    $blog = \App\footer_pages::where('meta_url','like', '%' . URL::to('/') .'/'. $slug . '%')->first();
+    $blog = \App\footer_pages::where('meta_url','like', '%' . URL::to('/') .'/'. $slug . '%')->orWhere('meta_url','like', '%' . 'https://www.' . $_SERVER['HTTP_HOST'] .'/'. $slug . '%')->first();
 
     if ( is_null($blog) )
 
@@ -348,7 +346,7 @@ Route::get('{slug}', function($slug) {
 
 Route::get('{slug}/{slug1}', function($slug,$slug1) {
 
-    $blog = \App\footer_pages::where('meta_url','like', '%' . URL::to('/') .'/'. $slug .'/'. $slug1 . '%')->first();
+    $blog = \App\footer_pages::where('meta_url','like', '%' . URL::to('/') .'/'. $slug .'/'. $slug1 . '%')->orWhere('meta_url','like', '%' . 'https://www.' . $_SERVER['HTTP_HOST'] .'/'. $slug .'/'. $slug1 . '%')->first();
 
     if ( is_null($blog) )
 
