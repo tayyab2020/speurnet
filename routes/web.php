@@ -335,7 +335,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
 
 Route::get('{slug}', function($slug) {
 
-    $blog = \App\footer_pages::where('meta_url', '=', URL::to('/') .'/'. $slug)->first();
+    $blog = \App\footer_pages::where('meta_url','like', '%' . URL::to('/') .'/'. $slug . '%')->first();
 
     if ( is_null($blog) )
 
@@ -346,7 +346,7 @@ Route::get('{slug}', function($slug) {
 
 Route::get('{slug}/{slug1}', function($slug,$slug1) {
 
-    $blog = \App\footer_pages::where('meta_url', '=', URL::to('/') .'/'. $slug .'/'. $slug1)->first();
+    $blog = \App\footer_pages::where('meta_url','like', '%' . URL::to('/') .'/'. $slug .'/'. $slug1 . '%')->first();
 
     if ( is_null($blog) )
 
