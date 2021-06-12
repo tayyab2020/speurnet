@@ -335,6 +335,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
 
 Route::get('{slug}', function($slug) {
 
+    dd($_SERVER['HTTP_HOST']);
+
     $blog = \App\footer_pages::where('meta_url','like', '%' . URL::to('/') .'/'. $slug . '%')->first();
 
     if ( is_null($blog) )
