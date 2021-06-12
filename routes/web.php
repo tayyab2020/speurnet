@@ -335,7 +335,11 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
 
 Route::get('{slug}', function($slug) {
 
-    $blog = \App\footer_pages::where('meta_url','like', '%' . URL::to('/') .'/'. $slug . '%')->orWhere('meta_url','like', '%' . 'https://www.' . $_SERVER['HTTP_HOST'] .'/'. $slug . '%')->first();
+    $url = URL::to('/');
+
+    $url = preg_replace('#^(http(s)?://)?w{3}\.#', '$1', $url);
+
+    $blog = \App\footer_pages::where('meta_url','like', '%' . $url .'/'. $slug . '%')->first();
 
     if ( is_null($blog) )
 
@@ -346,7 +350,11 @@ Route::get('{slug}', function($slug) {
 
 Route::get('{slug}/{slug1}', function($slug,$slug1) {
 
-    $blog = \App\footer_pages::where('meta_url','like', '%' . URL::to('/') .'/'. $slug .'/'. $slug1 . '%')->orWhere('meta_url','like', '%' . 'https://www.' . $_SERVER['HTTP_HOST'] .'/'. $slug .'/'. $slug1 . '%')->first();
+    $url = URL::to('/');
+
+    $url = preg_replace('#^(http(s)?://)?w{3}\.#', '$1', $url);
+
+    $blog = \App\footer_pages::where('meta_url','like', '%' . $url .'/'. $slug .'/'. $slug1 . '%')->first();
 
     if ( is_null($blog) )
 
