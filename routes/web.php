@@ -244,8 +244,6 @@ Route::group(['middleware' => 'App\Http\Middleware\UserTypeMiddleware'], functio
     Route::post('contact', 'IndexController@contact_us_sendemail');
 
 
-
-
     Route::post('subscribe', 'IndexController@subscribe');
     Route::post('cookie-save', 'IndexController@cookieSave');
 
@@ -322,6 +320,7 @@ Route::post('test-upload', 'IndexController@testUpload');
 Route::get('login', 'IndexController@login');
 Route::post('login', 'IndexController@postLogin');
 
+
 Route::get('accountaanmaken', 'IndexController@register');
 Route::post('accountaanmaken', 'IndexController@postRegister');
 Route::post('form-submit', 'IndexController@formSubmit')->name('form-submit');
@@ -332,4 +331,26 @@ Route::get('logout', 'IndexController@logout');
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::get('confirm-user-type', 'IndexController@ConfirmUserType');
     Route::post('confirm-type', 'IndexController@ConfirmType');
+});
+
+Route::get('{slug}', function($slug) {
+
+    $blog = \App\footer_pages::where('meta_url', '=', URL::to('/') .'/'. $slug)->first();
+
+    if ( is_null($blog) )
+
+        App::abort(404);
+
+    return view('pages.blog',compact('blog'));
+});
+
+Route::get('{slug}/{slug1}', function($slug,$slug1) {
+
+    $blog = \App\footer_pages::where('meta_url', '=', URL::to('/') .'/'. $slug .'/'. $slug1)->first();
+
+    if ( is_null($blog) )
+
+        App::abort(404);
+
+    return view('pages.blog',compact('blog'));
 });

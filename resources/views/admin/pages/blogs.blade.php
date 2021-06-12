@@ -63,23 +63,26 @@
                 <table id="data-table" class="table table-striped table-hover dt-responsive" cellspacing="0" width="100%">
                     <thead>
                     <tr>
+
                         <th>Image</th>
                         <th>Title</th>
 
                         @if(Route::currentRouteName() == 'homes-inspiration')
 
-                        <th>Views</th>
-                        <th>Type</th>
+                            <th>Views</th>
+                            <th>Type</th>
 
                         @endif
 
                         @if(Route::currentRouteName() == 'footer-pages')
 
-                        <th>Heading</th>
+                            <th>Heading</th>
+                            <th>URL</th>
 
                         @endif
 
                         <th class="text-center width-100">Action</th>
+
                     </tr>
                     </thead>
 
@@ -196,6 +199,9 @@
 
                                 @endif
 
+                                <td>
+                                    <a href="{{$blog->meta_url ? $blog->meta_url : url('nl/'.$blog->title) }}">{{$blog->meta_url ? $blog->meta_url : url('nl/'.$blog->title) }}</a>
+                                </td>
 
                             @endif
 
