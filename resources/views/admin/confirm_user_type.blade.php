@@ -72,7 +72,7 @@
                                         </label>
 
                                         <input class="checkbox-tools" type="radio" name="type" id="tool-4" value="Corporation" >
-                                        <label class="for-checkbox-tools" for="tool-4">
+                                        <label style="display: none !important;" class="for-checkbox-tools" for="tool-4">
                                             <i class="fas fa-user-edit" style="font-size: 24px;display: block;position:relative;margin-bottom: 10px;"></i>
                                             {{__('text.Corporation')}}
                                         </label>

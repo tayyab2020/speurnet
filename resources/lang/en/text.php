@@ -563,4 +563,5 @@ return [
     'My Home Exchange' => 'My Home Exchange',
     'Message sent successfully' => 'Message sent successfully!',
     'Nice to know' => 'Nice to know',
+    'Show More' => 'Show More',
 ];

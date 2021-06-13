@@ -125,7 +125,7 @@ return [
     Ben je op zoek naar een woning? Geniet dan gratis de toegankelijkheid van het aanbod en wie weet heb je in een oogwenk jouw droomhuis gevonden. Hoe mooi zou dat zijn?',
     'Agent' => 'Makelaar',
     'Private Landlord' => 'Particuliere verhuurder/verkoper',
-    'User' => 'Woningzoeker',
+    'User' => 'Woningruil plaatsen',
     'Name Contact Person' => 'Naam contactpersoon',
     'Your Name' => 'Jouw naam',
     'Company name' => 'Naam bedrijf',
@@ -562,4 +562,5 @@ return [
     'My Home Exchange' => 'Mijn woningruil',
     'Message sent successfully' => 'Bericht succesvol verstuurd!',
     'Nice to know' => 'Wooninspiratie',
+    'Show More' => 'Laat meer zien',
 ];

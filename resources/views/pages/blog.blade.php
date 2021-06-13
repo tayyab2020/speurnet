@@ -10,6 +10,15 @@
 
 @endif
 
+@if(Route::currentRouteName() == 'front-homes-inspiration')
+
+    @section('head_title', $blog->meta_title)
+    @section('head_keywords', $blog->meta_keywords)
+    @section('head_sub_keywords', $blog->meta_sub_keywords)
+    @section('head_description', $blog->meta_description)
+
+@endif
+
 @section("content")
 
     <!-- begin:content -->

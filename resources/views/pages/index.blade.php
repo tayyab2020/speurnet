@@ -1246,6 +1246,12 @@
         </div>
         <!-- break -->
 
+        <div class="row" style="margin-bottom: 20px;">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 show-more-container" style="margin-bottom: 10px;text-align: right;">
+                <a href="{{route('front-blogs')}}" style="background-color: transparent;color: black;border-width: 2px;" class="btn btn-success">{{__('text.Show More')}}</a>
+            </div>
+        </div>
+
         <div class="row" style="display: flex;width: 100%;margin: 0;">
 
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 members-container" style="margin: auto;">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\footer_headings;
 use App\footer_pages;
 use App\homes_inspiration;
+use App\manage_homes_inspiration;
 use App\properties_headings;
 use App\property_features;
 use Auth;
@@ -727,6 +728,62 @@ class DashboardController extends MainAdminController
         return view('admin.pages.blogs',compact('allblogs'));
     }
 
+    public function manageHomesInspiration(){
+
+        if(Auth::User()->usertype!="Admin"){
+
+            Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        $blog = manage_homes_inspiration::where('id',1)->first();
+
+        return view('admin.pages.manage_homes_inspiration',compact('blog'));
+    }
+
+    public function postManageHomesInspiration(Request $request)
+    {
+        $data =  \Request::except(array('_token')) ;
+
+        $inputs = $request->all();
+
+        $rule=array(
+            'title' => 'required',
+            'description' => 'required',
+        );
+
+        $validator = \Validator::make($data,$rule);
+
+        if ($validator->fails())
+        {
+            return redirect()->back()->withErrors($validator->messages());
+        }
+
+        $blog = manage_homes_inspiration::where('id',1)->first();
+
+        if(!$blog){
+
+            $blog = new manage_homes_inspiration;
+
+        }
+
+        $blog->title = $request->title;
+        $blog->description = $request->description;
+        $blog->meta_keywords = $request->meta_keywords;
+        $blog->meta_sub_keywords = $request->meta_sub_keywords;
+        $blog->meta_title = $request->meta_title;
+        $blog->meta_description = $request->meta_description;
+
+        $blog->save();
+
+        \Session::flash('flash_message', 'Task Successful!');
+
+        return \Redirect::back();
+
+    }
+
     public function addHomesInspiration(){
 
         if(Auth::User()->usertype!="Admin"){
@@ -841,6 +898,10 @@ class DashboardController extends MainAdminController
         $blog->title = $inputs['title'];
         $blog->type = $inputs['type'];
         $blog->description = $inputs['description'];
+        $blog->meta_keywords = $request->meta_keywords;
+        $blog->meta_sub_keywords = $request->meta_sub_keywords;
+        $blog->meta_title = $request->meta_title;
+        $blog->meta_description = $request->meta_description;
 
         $blog->save();
 

@@ -32,6 +32,7 @@
             @elseif(Route::currentRouteName() == 'homes-inspiration')
 
                 <div class="pull-right">
+                    <a style="margin-right: 10px;" href="{{URL::to('admin/homes-inspiration/manage-homes-inspiration')}}" class="btn btn-success">Manage Homes Inspiration <i style="margin-left: 5px;position: relative;top: 1px;" class="fa fa-plus"></i></a>
                     <a href="{{URL::to('admin/homes-inspiration/add-homes-inspiration')}}" class="btn btn-primary">Add Homes Inspiration <i style="margin-left: 5px;position: relative;top: 1px;" class="fa fa-plus"></i></a>
                 </div>
 

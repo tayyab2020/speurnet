@@ -90,51 +90,56 @@
                 <input type="hidden" name="id" value="{{ isset($blog->id) ? $blog->id : null }}">
 
 
-                    @if(Route::currentRouteName() == 'add-footer-page' || Route::currentRouteName() == 'edit-footer-page')
+                    @if(Route::currentRouteName() == 'add-footer-page' || Route::currentRouteName() == 'edit-footer-page' || Route::currentRouteName() == 'add-homes-inspiration' || Route::currentRouteName() == 'edit-homes-inspiration')
 
-                        <div style="display: none;" class="form-group">
-                            <label for="" class="col-sm-3 control-label">Form</label>
-                            <div class="col-sm-9">
 
-                                <select class="form-control" name="show_form">
+                        @if(Route::currentRouteName() == 'add-footer-page' || Route::currentRouteName() == 'edit-footer-page')
 
-                                    <option {{(isset($blog) && $blog->form == 0) ? 'selected' : null}} value="0">None</option>
+                            <div style="display: none;" class="form-group">
+                                <label for="" class="col-sm-3 control-label">Form</label>
+                                <div class="col-sm-9">
 
-                                    <option {{(isset($blog) && $blog->form == 1) ? 'selected' : null}} value="1">1</option>
+                                    <select class="form-control" name="show_form">
 
-                                    <option {{(isset($blog) && $blog->form == 2) ? 'selected' : null}} value="2">2</option>
+                                        <option {{(isset($blog) && $blog->form == 0) ? 'selected' : null}} value="0">None</option>
 
-                                </select>
+                                        <option {{(isset($blog) && $blog->form == 1) ? 'selected' : null}} value="1">1</option>
 
+                                        <option {{(isset($blog) && $blog->form == 2) ? 'selected' : null}} value="2">2</option>
+
+                                    </select>
+
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="form-group">
-                            <label for="" class="col-sm-3 control-label">Heading</label>
-                            <div class="col-sm-9">
+                            <div class="form-group">
+                                <label for="" class="col-sm-3 control-label">Heading</label>
+                                <div class="col-sm-9">
 
-                                <select class="form-control" name="heading">
+                                    <select class="form-control" name="heading">
 
-                                    <option value="0">Company</option>
+                                        <option value="0">Company</option>
 
-                                    @foreach($headings as $key)
+                                        @foreach($headings as $key)
 
-                                        @if(isset($blog->heading_id))
+                                            @if(isset($blog->heading_id))
 
-                                            <option value="{{$key->id}}" @if($blog->heading_id == $key->id) selected @endif>{{$key->heading}}</option>
+                                                <option value="{{$key->id}}" @if($blog->heading_id == $key->id) selected @endif>{{$key->heading}}</option>
 
-                                        @else
+                                            @else
 
-                                            <option value="{{$key->id}}">{{$key->heading}}</option>
+                                                <option value="{{$key->id}}">{{$key->heading}}</option>
 
-                                        @endif
+                                            @endif
 
-                                    @endforeach
+                                        @endforeach
 
-                                </select>
+                                    </select>
 
+                                </div>
                             </div>
-                        </div>
+
+                        @endif
 
 
                         <div class="form-group">
@@ -169,12 +174,16 @@
                         </div>
 
 
-                        <div class="form-group">
-                            <label for="" class="col-sm-3 control-label">Meta URL</label>
-                            <div class="col-sm-9">
-                                <input type="text" name="meta_url" value="{{ isset($blog->meta_url) ? $blog->meta_url : null }}" class="form-control">
-                            </div>
-                        </div>
+                            @if(Route::currentRouteName() == 'add-footer-page' || Route::currentRouteName() == 'edit-footer-page')
+
+                                <div class="form-group">
+                                    <label for="" class="col-sm-3 control-label">Meta URL</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" name="meta_url" value="{{ isset($blog->meta_url) ? $blog->meta_url : null }}" class="form-control">
+                                    </div>
+                                </div>
+
+                            @endif
 
                     @endif
 
