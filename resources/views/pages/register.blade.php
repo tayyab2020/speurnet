@@ -24,7 +24,9 @@
                 <div class="blog-content col-lg-10 col-md-11 col-sm-11 col-xs-11" style="background: #fff;margin: 30px auto;padding: 15px 45px 15px 45px;font-family: 'Roboto', sans-serif;border-radius: 8px;box-shadow: 0 0 5px 2px #d9d9d9a6;margin-top: 5px;">
                     <div class="blog-title" style="padding: 0;margin-bottom: 0;">
                         <h4 style="font-family: 'Roboto', sans-serif;font-weight: bold;color: #18ace5;">{{__('text.Register an account for free')}}</h4>
-                        <p>{!! nl2br(e(__('text.Register description')))!!}</p>
+                        <p class="agent-desc">{!! nl2br(e(__('text.Register description')))!!}</p>
+                        <p style="display: none;" class="landlord-desc">{!! nl2br(e(__('text.Register description1')))!!}</p>
+                        <p style="display: none;" class="user-desc">{!! nl2br(e(__('text.Register description2')))!!}</p>
                     </div>
 
                     <div class="blog-text contact" style="padding: 0;">
@@ -88,11 +90,11 @@
 
                                         <div class="icon-con" style="width:15%;float: left;text-align: center;vertical-align: middle;border-right: 1px solid #dbdbdb;display: flex;">
 
-                                    <span style="width: 100%;display: flex;justify-content: center;flex-direction: column;">
+                                            <span style="width: 100%;display: flex;justify-content: center;flex-direction: column;">
 
-                                        <i class="fas fa-user res-icon" style="font-size: 15px;" aria-hidden="true"></i>
+                                                <i class="fas fa-user res-icon" style="font-size: 15px;" aria-hidden="true"></i>
 
-                                    </span>
+                                            </span>
 
                                         </div>
 
@@ -830,20 +832,36 @@
 
             var type = $(this).val();
 
-            if(type == 'Agents' || type == 'landlord')
-            {
+            if (type == 'Users') {
 
-            }
-            else
-            {
+                $('.company_name').hide();
+                $('.agent-desc').hide();
+                $('.landlord-desc').hide();
+                $('.user-desc').show();
+
                 $(".res-inp").each(function() {
-
                     var placeholder = $(this).attr('placeholder');
                     var new_placeholder = $(this).data('placeholder');
 
                     $(this).attr("placeholder", new_placeholder);
                     $(this).data("placeholder", placeholder);
                 });
+
+            }
+            else if (type == 'Agents') {
+
+                $('.company_name').show();
+                $('.landlord-desc').hide();
+                $('.user-desc').hide();
+                $('.agent-desc').show();
+
+            }
+            else if(type == 'landlord')
+            {
+                $('.company_name').show();
+                $('.agent-desc').hide();
+                $('.user-desc').hide();
+                $('.landlord-desc').show();
             }
 
         });
@@ -862,15 +880,6 @@
             }
         });
 
-        $('.usertype').change(function() {
-
-            if (this.value == 'Users') {
-                $('.company_name').hide();
-            }
-            else if (this.value == 'Agents' || this.value == 'landlord') {
-                $('.company_name').show();
-            }
-        });
 
         const labels = document.querySelectorAll('.label');
         labels.forEach(label => {

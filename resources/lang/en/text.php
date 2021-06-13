@@ -117,12 +117,11 @@ return [
     'Terms of Services' => 'Terms of Services',
     'and' => 'and',
     'Register an account for free' => 'Register an account for free',
-    'Register description' => 'Are you a broker or private landlord/seller?
-    Place your ad in 4 simple steps.
+    'Register description' => 'Are you a broker? Place your ad(s) for free in 4 simple steps.
 
-    Try it NOW for free and who knows, you may have rented or sold your house in no time. Nice deal, right?
-
-    Are you looking for a home? Then enjoy the accessibility of the offer and who knows, you may have found your dream home in the blink of an eye. How nice would that be?',
+Try it out and who knows, you may have rented or sold your house, apartment or room in no time. Nice deal, right?',
+    'Register description1' => 'Are you a private owner and would you like to place your rental home, owner-occupied home or room for free? Your advertisement is online in 4 simple steps. Good luck!',
+    'Register description2' => 'Do you want to place a home exchange advertisement for free? Create your account and who knows, you may have found your ideal exchange candidate in the blink of an eye. How beautiful would that be?',
     'Agent' => 'Agent',
     'Private Landlord' => 'Private Landlord',
     'User' => 'User',

@@ -117,12 +117,11 @@ return [
     'Terms of Services' => 'Onze diensten',
     'and' => 'en',
     'Register an account for free' => 'Maak hier jouw account aan',
-    'Register description' => 'Ben je makelaar of particuliere verhuurder/verkoper?
-    Plaats gratis in 4 simpele stappen jouw advertentie.
+    'Register description' => 'Ben je makelaar? Plaats gratis in 4 simpele stappen jouw advertentie(s).
 
-    Probeer het uit en wie weet heb je in no time je huis verhuurd of verkocht. Leuke deal, toch?
-
-    Ben je op zoek naar een woning? Geniet dan gratis de toegankelijkheid van het aanbod en wie weet heb je in een oogwenk jouw droomhuis gevonden. Hoe mooi zou dat zijn?',
+    Probeer het uit en wie weet heb je in no time je huis, appartement of kamer  verhuurd of verkocht. Leuke deal, toch?',
+    'Register description1' => 'Ben je particuliere eigenaar en wil je graag jouw huurwoning, koopwoning of kamer gratis plaatsen? In 4 simpele stappen staat jouw advertentie online. Veel succes!',
+    'Register description2' => 'Wil je gratis een woningruiladvertentie plaatsen? Maak je account aan en wie weet heb je in een oogwenk jouw ideale ruilkandidaat gevonden. Hoe mooi zou dat zijn?',
     'Agent' => 'Makelaar',
     'Private Landlord' => 'Particuliere verhuurder/verkoper',
     'User' => 'Woningruil plaatsen',
