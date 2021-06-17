@@ -32,11 +32,18 @@
             @elseif(Route::currentRouteName() == 'homes-inspiration')
 
                 <div class="pull-right">
-                    <a style="margin-right: 10px;" href="{{URL::to('admin/homes-inspiration/manage-homes-inspiration')}}" class="btn btn-success">Manage Homes Inspiration <i style="margin-left: 5px;position: relative;top: 1px;" class="fa fa-plus"></i></a>
                     <a href="{{URL::to('admin/homes-inspiration/add-homes-inspiration')}}" class="btn btn-primary">Add Homes Inspiration <i style="margin-left: 5px;position: relative;top: 1px;" class="fa fa-plus"></i></a>
                 </div>
 
                 <h2>Homes Inspiration Articles</h2>
+
+            @elseif(Route::currentRouteName() == 'manage-pages')
+
+                <div class="pull-right">
+                    <a href="{{URL::to('admin/manage-pages/add-manage-pages')}}" class="btn btn-primary">Manage Page <i style="margin-left: 5px;position: relative;top: 1px;" class="fa fa-plus"></i></a>
+                </div>
+
+                <h2>Pages Content</h2>
 
             @else
 
@@ -65,7 +72,12 @@
                     <thead>
                     <tr>
 
-                        <th>Image</th>
+                        @if(Route::currentRouteName() != 'manage-pages')
+
+                            <th>Image</th>
+
+                        @endif
+
                         <th>Title</th>
 
                         @if(Route::currentRouteName() == 'homes-inspiration')
@@ -82,6 +94,15 @@
 
                         @endif
 
+
+                        @if(Route::currentRouteName() == 'manage-pages')
+
+                            <th>Page</th>
+                            <th>Page Description</th>
+                            <th>Bottom Description</th>
+
+                        @endif
+
                         <th class="text-center width-100">Action</th>
 
                     </tr>
@@ -90,71 +111,76 @@
                     <tbody>
                     @foreach($allblogs as $i => $blog)
                         <tr>
-                            <td>
 
-                                @if(Route::currentRouteName() == 'blogs')
+                            @if(Route::currentRouteName() != 'manage-pages')
 
-                                    @if($blog->image)
+                                <td>
 
-                                        <img src="{{ URL::asset('upload/blogs/'.$blog->image) }}" width="80" alt="">
+                                    @if(Route::currentRouteName() == 'blogs')
 
-                                    @else
+                                        @if($blog->image)
 
-                                        <img src="{{ URL::asset('upload/noImage.png') }}" width="80" alt="">
-
-                                    @endif
-
-                                @elseif(Route::currentRouteName() == 'moving-tips')
-
-                                    @if($blog->image)
-
-                                        <img src="{{ URL::asset('upload/moving-tips/'.$blog->image) }}" width="80" alt="">
+                                            <img src="{{ URL::asset('upload/blogs/'.$blog->image) }}" width="80" alt="">
 
                                         @else
 
-                                        <img src="{{ URL::asset('upload/noImage.png') }}" width="80" alt="">
+                                            <img src="{{ URL::asset('upload/noImage.png') }}" width="80" alt="">
 
-                                    @endif
+                                        @endif
 
-                                @elseif(Route::currentRouteName() == 'expats')
+                                    @elseif(Route::currentRouteName() == 'moving-tips')
 
-                                    @if($blog->image)
+                                        @if($blog->image)
 
-                                        <img src="{{ URL::asset('upload/expats/'.$blog->image) }}" width="80" alt="">
+                                            <img src="{{ URL::asset('upload/moving-tips/'.$blog->image) }}" width="80" alt="">
 
                                         @else
 
-                                        <img src="{{ URL::asset('upload/noImage.png') }}" width="80" alt="">
+                                            <img src="{{ URL::asset('upload/noImage.png') }}" width="80" alt="">
 
-                                    @endif
+                                        @endif
 
-                                @elseif(Route::currentRouteName() == 'homes-inspiration')
+                                    @elseif(Route::currentRouteName() == 'expats')
 
-                                    @if($blog->image)
+                                        @if($blog->image)
 
-                                        <img src="{{ URL::asset('upload/homes-inspiration/'.$blog->image) }}" width="80" alt="">
+                                            <img src="{{ URL::asset('upload/expats/'.$blog->image) }}" width="80" alt="">
+
+                                        @else
+
+                                            <img src="{{ URL::asset('upload/noImage.png') }}" width="80" alt="">
+
+                                        @endif
+
+                                    @elseif(Route::currentRouteName() == 'homes-inspiration')
+
+                                        @if($blog->image)
+
+                                            <img src="{{ URL::asset('upload/homes-inspiration/'.$blog->image) }}" width="80" alt="">
+
+                                        @else
+
+                                            <img src="{{ URL::asset('upload/noImage.png') }}" width="80" alt="">
+
+                                        @endif
 
                                     @else
 
-                                        <img src="{{ URL::asset('upload/noImage.png') }}" width="80" alt="">
+                                        @if($blog->image)
+
+                                            <img src="{{ URL::asset('upload/footer-pages/'.$blog->image) }}" width="80" alt="">
+
+                                        @else
+
+                                            <img src="{{ URL::asset('upload/noImage.png') }}" width="80" alt="">
+
+                                        @endif
 
                                     @endif
 
-                                @else
+                                </td>
 
-                                    @if($blog->image)
-
-                                        <img src="{{ URL::asset('upload/footer-pages/'.$blog->image) }}" width="80" alt="">
-
-                                    @else
-
-                                        <img src="{{ URL::asset('upload/noImage.png') }}" width="80" alt="">
-
-                                    @endif
-
-                                @endif
-
-                            </td>
+                            @endif
 
                             <td>
 
@@ -173,6 +199,10 @@
                                 @elseif(Route::currentRouteName() == 'homes-inspiration')
 
                                     <a href="{{ url('wooninspiratie/'.$blog->title) }}">{{ $blog->title }}</a>
+
+                                @elseif(Route::currentRouteName() == 'manage-pages')
+
+                                    <a href="{{ url($blog->page) }}">{{ $blog->title }}</a>
 
                                 @else
 
@@ -214,6 +244,27 @@
 
                             @endif
 
+
+                            @if(Route::currentRouteName() == 'manage-pages')
+
+                                    <?php
+
+                                    $description = $blog->description;
+
+                                    $description = preg_replace(array('#<[^>]+>#','#&nbsp;#'), ' ', $description);
+
+                                    $bottom_description = $blog->bottom_description;
+
+                                    $bottom_description = preg_replace(array('#<[^>]+>#','#&nbsp;#'), ' ', $bottom_description);
+
+                                    ?>
+
+                                    <td>{{$blog->page}}</td>
+                                    <td><div style="text-overflow: ellipsis;display: -webkit-box;width: 100%;visibility: visible;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;line-height: 2;font-size: 15px;">{!! $description !!}</div></td>
+                                    <td><div style="text-overflow: ellipsis;display: -webkit-box;width: 100%;visibility: visible;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;line-height: 2;font-size: 15px;">{!! $bottom_description !!}</div></td>
+
+                            @endif
+
                             <td class="text-center">
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-default-dark dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
@@ -240,6 +291,11 @@
 
                                             <li><a href="{{ url('admin/homes-inspiration/add-homes-inspiration/'.$blog->id) }}"><i class="md md-edit"></i> Edit Editor</a></li>
                                             <li><a href="{{ url('admin/homes-inspiration/delete/'.$blog->id) }}"><i class="md md-delete"></i> Delete</a></li>
+
+                                        @elseif(Route::currentRouteName() == 'manage-pages')
+
+                                            <li><a href="{{ url('admin/manage-pages/add-manage-pages/'.$blog->id) }}"><i class="md md-edit"></i> Edit Editor</a></li>
+                                            <li><a href="{{ url('admin/manage-pages/delete/'.$blog->id) }}"><i class="md md-delete"></i> Delete</a></li>
 
                                         @else
 

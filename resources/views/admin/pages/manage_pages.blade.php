@@ -5,9 +5,9 @@
     <div id="main">
         <div class="page-header">
 
-            <h2>Manage Homes Inspiration</h2>
+            <h2>Manage Page Content</h2>
 
-            <a href="{{ URL::to('admin/homes-inspiration') }}" class="btn btn-default-light btn-xs"><i class="md md-backspace"></i> Back</a>
+            <a href="{{ URL::to('admin/manage-pages') }}" class="btn btn-default-light btn-xs"><i class="md md-backspace"></i> Back</a>
 
         </div>
 
@@ -32,7 +32,16 @@
         <div class="panel panel-default">
             <div class="panel-body">
 
-                {!! Form::open(array('url' => array('admin/homes-inspiration/manage-homes-inspiration'),'class'=>'form-horizontal padding-15','name'=>'manage_homes_inspiration_form','id'=>'manage_homes_inspiration_form','role'=>'form','enctype' => 'multipart/form-data')) !!}
+                {!! Form::open(array('url' => array('admin/manage-pages/add-manage-pages'),'class'=>'form-horizontal padding-15','name'=>'manage_pages_form','id'=>'manage_pages_form','role'=>'form','enctype' => 'multipart/form-data')) !!}
+
+                <input type="hidden" name="page_id" value="{{ isset($blog) ? $blog->id : null }}">
+
+                <div class="form-group">
+                    <label for="" class="col-sm-3 control-label">Page*</label>
+                    <div class="col-sm-9">
+                        <input type="text" name="page" value="{{ isset($blog->page) ? $blog->page : null }}" class="form-control">
+                    </div>
+                </div>
 
 
                 <div class="form-group">
@@ -68,7 +77,7 @@
 
 
                 <div class="form-group">
-                    <label for="" class="col-sm-3 control-label">Title</label>
+                    <label for="" class="col-sm-3 control-label">Page Title</label>
                     <div class="col-sm-9">
                         <input type="text" name="title" value="{{ isset($blog->title) ? $blog->title : null }}" class="form-control">
                     </div>
@@ -76,10 +85,18 @@
 
 
                 <div class="form-group">
-                    <label for="" class="col-sm-3 control-label">Description</label>
+                    <label for="" class="col-sm-3 control-label">Page Description</label>
                     <div class="col-sm-9">
 
                         <textarea name="description" rows="10" class="form-control summernote">{{ isset($blog->description) ? $blog->description : null }}</textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="" class="col-sm-3 control-label">Page Bottom Description</label>
+                    <div class="col-sm-9">
+
+                        <textarea name="bottom_description" rows="10" class="form-control summernote">{{ isset($blog->bottom_description) ? $blog->bottom_description : null }}</textarea>
                     </div>
                 </div>
 
@@ -88,7 +105,7 @@
                 <div class="form-group">
                     <div class="col-md-offset-3 col-sm-9 ">
 
-                        <button type="submit" class="btn btn-primary">Manage Home Inspiration</button>
+                        <button type="submit" class="btn btn-primary">Manage Page Content</button>
 
                     </div>
                 </div>

@@ -76,13 +76,18 @@ Route::group(['middleware' => 'App\Http\Middleware\UserTypeMiddleware'], functio
         Route::get('footer-pages/delete/{id}', 'DashboardController@deleteFooterPage')->name('delete-footer-page');
 
 
+        Route::get('manage-pages', 'DashboardController@ManagePages')->name('manage-pages');
+        Route::get('manage-pages/add-manage-pages', 'DashboardController@addManagePage')->name('add-manage-page');
+        Route::post('manage-pages/add-manage-pages', 'DashboardController@postManagePage')->name('post-manage-page');
+        Route::get('manage-pages/add-manage-pages/{id}', 'DashboardController@editManagePage')->name('edit-manage-page');
+        Route::get('manage-pages/delete/{id}', 'DashboardController@deleteManagePage')->name('delete-manage-page');
+
+
         Route::get('homes-inspiration', 'DashboardController@HomesInspiration')->name('homes-inspiration');
         Route::get('homes-inspiration/add-homes-inspiration', 'DashboardController@addHomesInspiration')->name('add-homes-inspiration');
         Route::post('homes-inspiration/add-homes-inspiration', 'DashboardController@postHomesInspiration')->name('post-homes-inspiration');
         Route::get('homes-inspiration/add-homes-inspiration/{id}', 'DashboardController@editHomesInspiration')->name('edit-homes-inspiration');
         Route::get('homes-inspiration/delete/{id}', 'DashboardController@deleteHomesInspiration')->name('delete-homes-inspiration');
-        Route::get('homes-inspiration/manage-homes-inspiration', 'DashboardController@manageHomesInspiration')->name('manage-homes-inspiration');
-        Route::post('homes-inspiration/manage-homes-inspiration', 'DashboardController@postManageHomesInspiration')->name('post-manage-homes-inspiration');
 
 
         Route::get('tickets', 'DashboardController@tickets');

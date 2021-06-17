@@ -1,8 +1,9 @@
 @extends("app")
 
-@section('head_title', $data->meta_title)
-@section('head_keywords', $data->meta_keywords)
-@section('head_description', $data->meta_description)
+@section('head_title', isset($page_content->meta_title) ? $page_content->meta_title : 'Nieuwsgierig naar de laatste woontrends en woonstijlen? Bekijk alle interieurtips en woontrends voor jouw huis, kamer of tuin op Zoekjehuisje.nl')
+@section('head_keywords', isset($page_content->meta_keywords) ? $page_content->meta_keywords : 'woontrends, interieuradvies, interieurtips, laatste woontrends, huis inrichten, online interieur tips, online woontrends, interieur expert, woonstijl, keukentrends, tuintrends')
+@section('head_description', isset($page_content->meta_description) ? $page_content->meta_description : 'Op zoekjehuisje.nl vind je de laatste woontrends en woonstijlen. Benieuwd naar de woontrends van dit seizoen, de woontrends van dit jaar of wil je inspiratie opdoen voor jouw interieur in huis, kamer of tuin? De keuken of tuin misschien aanpakken? Check gelijk al onze interieurtips en woontrends.')
+@section('head_sub_keywords', isset($page_content->meta_sub_keywords) ? $page_content->meta_sub_keywords : '')
 
 @section("content")
 
@@ -20,8 +21,8 @@
                         <ul style="display:flex;align-items: flex-end;" class="nav nav-tabs res-ul">
 
                             <span class="res-span" style="display: inline-block;width: 60%;margin-right: 30px;">
-                                <h4 class="res-head">{{$data->title}}</h4>
-                                <p style="margin: 0;">{!! $data->description !!}</p>
+                                <h4 class="res-head">{{isset($page_content->title) ? $page_content->title : ''}}</h4>
+                                <p style="margin: 0;">{!! isset($page_content->description) ? $page_content->description : '' !!}</p>
                             </span>
 
                             <li @if($type == 'binnenshuis' || $type == null) class="active" @endif><a style="cursor: pointer;" class="res-tab" href="{{url('wooninspiratie?type=binnenshuis')}}" aria-expanded="true">Binnenshuis</a></li>

@@ -1,8 +1,9 @@
 @extends("app")
 
-@section('head_title', 'Voor de beste verhuistips ga je snel naar Zoekjehuisje.nl')
-@section('head_keywords', 'verhuistips, wat te doen bij verhuizen, stappen bij verhuizen, gratis verhuistips, verhuisadvies, wat moet ik doen bij verhuizen, verhuizen, verhuizing')
-@section('head_description', 'Voor de een is verhuizen misschien de eerste verhuizing en voor de ander de zoveelste, maar we hebben alle zaken waaraan je moet denken voor je op een rij gezet. Lees de tips op Zoekjehuisje.nl')
+@section('head_title', isset($page_content->meta_title) ? $page_content->meta_title : 'Voor de beste verhuistips ga je snel naar Zoekjehuisje.nl')
+@section('head_keywords', isset($page_content->meta_keywords) ? $page_content->meta_keywords : 'verhuistips, wat te doen bij verhuizen, stappen bij verhuizen, gratis verhuistips, verhuisadvies, wat moet ik doen bij verhuizen, verhuizen, verhuizing')
+@section('head_description', isset($page_content->meta_description) ? $page_content->meta_description : 'Voor de een is verhuizen misschien de eerste verhuizing en voor de ander de zoveelste, maar we hebben alle zaken waaraan je moet denken voor je op een rij gezet. Lees de tips op Zoekjehuisje.nl')
+@section('head_sub_keywords', isset($page_content->meta_sub_keywords) ? $page_content->meta_sub_keywords : '')
 
 @section("content")
 

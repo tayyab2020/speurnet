@@ -87,13 +87,13 @@
 
   </style>
 
-	  @include("_particles.header")
+  @include("_particles.header")
 
+  @yield("content")
 
-	  @yield("content")
+  @include("_particles.page_content")
 
-
-	  @include("_particles.footer")
+  @include("_particles.footer")
 
 
 <!-- Bootstrap core JavaScript

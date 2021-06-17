@@ -1,6 +1,9 @@
 @extends("app")
 
-@section('head_title', getcong('terms_conditions_title').' | '.getcong('site_name') )
+@section('head_title', isset($page_content->meta_title) ? $page_content->meta_title : getcong('terms_conditions_title').' | '.getcong('site_name'))
+@section('head_keywords', isset($page_content->meta_keywords) ? $page_content->meta_keywords : '')
+@section('head_description', isset($page_content->meta_description) ? $page_content->meta_description : '')
+@section('head_sub_keywords', isset($page_content->meta_sub_keywords) ? $page_content->meta_sub_keywords : '')
 @section('head_url', Request::url())
 
 @section("content")
@@ -28,7 +31,7 @@
           <div class="col-md-12">
             <div class="blog-container">
               <div class="blog-content" style="padding-top:0px;">
-                  
+
                		<div class="blog-text" style="padding-top:0px;">
 						{!!getcong('terms_conditions_description')!!}
 					</div>
@@ -39,5 +42,5 @@
       </div>
     </div>
     <!-- end:content -->
- 
+
 @endsection

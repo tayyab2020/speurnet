@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\footer_headings;
 use App\footer_pages;
 use App\homes_inspiration;
-use App\manage_homes_inspiration;
+use App\manage_pages;
 use App\properties_headings;
 use App\property_features;
 use Auth;
@@ -728,7 +728,7 @@ class DashboardController extends MainAdminController
         return view('admin.pages.blogs',compact('allblogs'));
     }
 
-    public function manageHomesInspiration(){
+    public function ManagePages(){
 
         if(Auth::User()->usertype!="Admin"){
 
@@ -738,20 +738,46 @@ class DashboardController extends MainAdminController
 
         }
 
-        $blog = manage_homes_inspiration::where('id',1)->first();
+        $allblogs = manage_pages::all();
 
-        return view('admin.pages.manage_homes_inspiration',compact('blog'));
+        return view('admin.pages.blogs',compact('allblogs'));
     }
 
-    public function postManageHomesInspiration(Request $request)
+
+    public function addManagePage()
+    {
+        if(Auth::User()->usertype!="Admin"){
+
+            Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        return view('admin.pages.manage_pages');
+    }
+
+    public function editManagePage($id)
+    {
+        if(Auth::User()->usertype!="Admin"){
+
+            Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        $blog = manage_pages::where('id',$id)->first();
+
+        return view('admin.pages.manage_pages',compact('blog'));
+    }
+
+    public function postManagePage(Request $request)
     {
         $data =  \Request::except(array('_token')) ;
 
-        $inputs = $request->all();
-
         $rule=array(
-            'title' => 'required',
-            'description' => 'required',
+            'page' => 'required',
         );
 
         $validator = \Validator::make($data,$rule);
@@ -761,16 +787,18 @@ class DashboardController extends MainAdminController
             return redirect()->back()->withErrors($validator->messages());
         }
 
-        $blog = manage_homes_inspiration::where('id',1)->first();
+        $blog = manage_pages::where('id',$request->page_id)->first();
 
         if(!$blog){
 
-            $blog = new manage_homes_inspiration;
+            $blog = new manage_pages;
 
         }
 
+        $blog->page = $request->page;
         $blog->title = $request->title;
         $blog->description = $request->description;
+        $blog->bottom_description = $request->bottom_description;
         $blog->meta_keywords = $request->meta_keywords;
         $blog->meta_sub_keywords = $request->meta_sub_keywords;
         $blog->meta_title = $request->meta_title;
@@ -783,6 +811,28 @@ class DashboardController extends MainAdminController
         return \Redirect::back();
 
     }
+
+
+    public function deleteManagePage($id)
+    {
+
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        $blog = manage_pages::findOrFail($id);
+        $blog->delete();
+
+        \Session::flash('flash_message', 'Deleted');
+
+        return redirect()->back();
+
+    }
+
 
     public function addHomesInspiration(){
 

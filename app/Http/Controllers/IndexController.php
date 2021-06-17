@@ -8,7 +8,7 @@ use App\Expats;
 use App\footer_pages;
 use App\HomepageIcons;
 use App\homes_inspiration;
-use App\manage_homes_inspiration;
+use App\manage_pages;
 use App\moving_tips;
 use App\moving_tips_contents;
 use App\properties_headings;
@@ -1578,9 +1578,6 @@ class IndexController extends Controller
 
     public function HomesInspiration(Request $request,$id = '')
     {
-
-        $data = manage_homes_inspiration::where('id',1)->first();
-
         if($request->search)
         {
             $search = $request->search;
@@ -1659,7 +1656,7 @@ class IndexController extends Controller
                 $saved = "";
             }
 
-            return view('pages.inspiration',compact('blogs','saved','search','type','data'));
+            return view('pages.inspiration',compact('blogs','saved','search','type'));
         }
     }
 

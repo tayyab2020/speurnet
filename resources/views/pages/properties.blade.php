@@ -3,21 +3,24 @@
 
 @if(Route::currentRouteName() == 'properties-front')
 
-    @section('head_title', 'Ben jij op zoek naar een huurwoning of koopwoning? Bekijk eens ons woningaanbod!')
-    @section('head_keywords', 'woningaanbod Nederland, woningaanbod Amsterdam, woningaanbod Utrecht, woning zoeken, huis zoeken, kamer zoeken, appartement zoeken, gratis woningaanbod')
-    @section('head_description', 'Of je nu op zoek bent naar een tussenwoning, een luxe appartement, een kamer in Amsterdam of gewoon een tijdelijke woning, Zoekjehuisje.nl heeft het allemaal voor jou in huis. Kijk snel of er een leuke woning voor jou tussen zit!')
+    @section('head_title', isset($page_content->meta_title) ? $page_content->meta_title : 'Ben jij op zoek naar een huurwoning of koopwoning? Bekijk eens ons woningaanbod!')
+    @section('head_keywords', isset($page_content->meta_keywords) ? $page_content->meta_keywords : 'woningaanbod Nederland, woningaanbod Amsterdam, woningaanbod Utrecht, woning zoeken, huis zoeken, kamer zoeken, appartement zoeken, gratis woningaanbod')
+    @section('head_description', isset($page_content->meta_description) ? $page_content->meta_description : 'Of je nu op zoek bent naar een tussenwoning, een luxe appartement, een kamer in Amsterdam of gewoon een tijdelijke woning, Zoekjehuisje.nl heeft het allemaal voor jou in huis. Kijk snel of er een leuke woning voor jou tussen zit!')
+    @section('head_sub_keywords', isset($page_content->meta_sub_keywords) ? $page_content->meta_sub_keywords : '')
 
 @elseif(Route::currentRouteName() == 'agent-properties')
 
-    @section('head_title', 'Ben jij op zoek naar een huurwoning of koopwoning? Bekijk eens ons woningaanbod!')
-    @section('head_keywords', 'woningaanbod Nederland, woningaanbod Amsterdam, woningaanbod Utrecht, woning zoeken, huis zoeken, kamer zoeken, appartement zoeken, gratis woningaanbod')
-    @section('head_description', 'Of je nu op zoek bent naar een tussenwoning, een luxe appartement, een kamer in Amsterdam of gewoon een tijdelijke woning, Zoekjehuisje.nl heeft het allemaal voor jou in huis. Kijk snel of er een leuke woning voor jou tussen zit!')
+    @section('head_title', isset($page_content->meta_title) ? $page_content->meta_title : 'Ben jij op zoek naar een huurwoning of koopwoning? Bekijk eens ons woningaanbod!')
+    @section('head_keywords', isset($page_content->meta_keywords) ? $page_content->meta_keywords : 'woningaanbod Nederland, woningaanbod Amsterdam, woningaanbod Utrecht, woning zoeken, huis zoeken, kamer zoeken, appartement zoeken, gratis woningaanbod')
+    @section('head_description', isset($page_content->meta_description) ? $page_content->meta_description : 'Of je nu op zoek bent naar een tussenwoning, een luxe appartement, een kamer in Amsterdam of gewoon een tijdelijke woning, Zoekjehuisje.nl heeft het allemaal voor jou in huis. Kijk snel of er een leuke woning voor jou tussen zit!')
+    @section('head_sub_keywords', isset($page_content->meta_sub_keywords) ? $page_content->meta_sub_keywords : '')
 
 @else
 
-    @section('head_title', 'Bekijk op Zoekjehuisje.nl welke nieuwbouwprojecten er gebouwd gaan worden.')
-    @section('head_keywords', 'nieuwbouwprojecten Nederland, alle nieuwbouwprojecten, koop nieuwbouwprojecten, gratis nieuwbouwprojecten zoeken, zoek alle nieuwbouwprojecten, nieuwbouwprojecten Amsterdam, nieuwbouwprojecten Rotterdam, Nieuwbouwprojecten Leiden, nieuwbouwprojecten Den Haag')
-    @section('head_description', 'Ben jij benieuwd naar welke huurprojecten in de sociale en vrije sector of welke nieuwbouwprojecten in de sociale huursector, in de vrije sector en koopwoningen eraan komen? Bekijk ze op Zoekjehuisje.nl')
+    @section('head_title', isset($page_content->meta_title) ? $page_content->meta_title : 'Bekijk op Zoekjehuisje.nl welke nieuwbouwprojecten er gebouwd gaan worden.')
+    @section('head_keywords', isset($page_content->meta_keywords) ? $page_content->meta_keywords : 'nieuwbouwprojecten Nederland, alle nieuwbouwprojecten, koop nieuwbouwprojecten, gratis nieuwbouwprojecten zoeken, zoek alle nieuwbouwprojecten, nieuwbouwprojecten Amsterdam, nieuwbouwprojecten Rotterdam, Nieuwbouwprojecten Leiden, nieuwbouwprojecten Den Haag')
+    @section('head_description', isset($page_content->meta_description) ? $page_content->meta_description : 'Ben jij benieuwd naar welke huurprojecten in de sociale en vrije sector of welke nieuwbouwprojecten in de sociale huursector, in de vrije sector en koopwoningen eraan komen? Bekijk ze op Zoekjehuisje.nl')
+    @section('head_sub_keywords', isset($page_content->meta_sub_keywords) ? $page_content->meta_sub_keywords : '')
 
 @endif
 

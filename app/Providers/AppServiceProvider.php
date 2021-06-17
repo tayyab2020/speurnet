@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\footer_pages;
+use App\manage_pages;
 use App\Observers\PropertiesObserver;
 use App\Properties;
 use App\user_languages;
@@ -75,10 +76,13 @@ class AppServiceProvider extends ServiceProvider
             \App::setLocale($language->lang);
         }*/
 
+        $page_content = manage_pages::where('page',\Request::segment(1))->first();
 
         $footer_content = footer_pages::all();
 
         $footer_headings = footer_headings::all();
+
+        View::share('page_content', $page_content);
 
         View::share('footer_headings', $footer_headings);
 
