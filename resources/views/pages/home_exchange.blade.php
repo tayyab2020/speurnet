@@ -1,8 +1,9 @@
 @extends("app")
 
-@section('head_title', 'Woningruil als alternatief in een krappe woningmarkt - Zoekjehuisje.nl')
-@section('head_keywords', 'Woningruil, woningruilen, woning, ruil, ruilen, huurwoning, woningcorporatie, woonruimte, aanbieden, gevraagd, amsterdam, rotterdam, utrecht, den bosch, eindhoven, groningen')
-@section('head_description', 'Zoekjehuisje.nl gratis woningruil plaatsen | Woningruil is een uitstekend alternatief op een huis kopen of huren in deze krappe woningmarkt.')
+@section('head_title', isset($page_content->meta_title) ? $page_content->meta_title : 'Woningruil als alternatief in een krappe woningmarkt - Zoekjehuisje.nl')
+@section('head_keywords', isset($page_content->meta_keywords) ? $page_content->meta_keywords : 'Woningruil, woningruilen, woning, ruil, ruilen, huurwoning, woningcorporatie, woonruimte, aanbieden, gevraagd, amsterdam, rotterdam, utrecht, den bosch, eindhoven, groningen')
+@section('head_description', isset($page_content->meta_description) ? $page_content->meta_description : 'Zoekjehuisje.nl gratis woningruil plaatsen | Woningruil is een uitstekend alternatief op een huis kopen of huren in deze krappe woningmarkt.')
+@section('head_sub_keywords', isset($page_content->meta_sub_keywords) ? $page_content->meta_sub_keywords : '')
 @section('head_url', Request::url())
 
 @section("content")

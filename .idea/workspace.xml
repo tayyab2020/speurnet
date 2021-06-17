@@ -20,7 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7fe7f36f-c82f-4504-8c0a-7874522d22c9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/resources/views/pages/searchproperties.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/searchproperties.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/agents.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/agents.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/agentsingle.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/agentsingle.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/home_exchange.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/home_exchange.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -436,7 +439,7 @@
       <workItem from="1623524457074" duration="6191000" />
       <workItem from="1623596772329" duration="11883000" />
       <workItem from="1623671814620" duration="72000" />
-      <workItem from="1623921158027" duration="10391000" />
+      <workItem from="1623921158027" duration="11032000" />
     </task>
     <servers />
   </component>

@@ -1,7 +1,9 @@
 @extends("app")
 
-@section('head_title', $agent->name .' | '.getcong('site_name') )
-@section('head_description', substr(strip_tags($agent->description),0,200))
+@section('head_title', isset($page_content->meta_title) ? $page_content->meta_title : $agent->name .' | '.getcong('site_name'))
+@section('head_keywords', isset($page_content->meta_keywords) ? $page_content->meta_keywords : '')
+@section('head_description', isset($page_content->meta_description) ? $page_content->meta_description : substr(strip_tags($agent->description),0,200))
+@section('head_sub_keywords', isset($page_content->meta_sub_keywords) ? $page_content->meta_sub_keywords : '')
 @section('head_image', asset('/upload/members/'.$agent->image_icon.'-b.jpg'))
 @section('head_url', Request::url())
 
