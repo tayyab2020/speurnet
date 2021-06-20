@@ -563,4 +563,5 @@ Try it out and who knows, you may have rented or sold your house, apartment or r
     'Message sent successfully' => 'Message sent successfully!',
     'Nice to know' => 'Nice to know',
     'Show More' => 'Show More',
+    'Our Tips' => 'Our Tips',
 ];

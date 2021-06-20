@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Settings;
+use App\tips;
 use Auth;
 use App\User;
 use App\Slider;
@@ -68,6 +69,16 @@ class SliderController extends MainAdminController
         return \Redirect::back();
     }
 
+
+    public function ourTips()
+    {
+        $all = tips::orderBy('id')->get();
+
+        return view('admin.pages.homepage_icons',compact('all'));
+
+    }
+
+
     public function homepageIcons()
     {
         $all = HomepageIcons::orderBy('id')->get();
@@ -76,7 +87,7 @@ class SliderController extends MainAdminController
 
     }
 
-	 public function addeditSlide()    {
+	 public function addeditSlide(){
 
         if(Auth::User()->usertype!="Admin"){
 
@@ -176,7 +187,6 @@ class SliderController extends MainAdminController
 
     public function addnewContent(Request $request)
     {
-
         $data =  \Request::except(array('_token')) ;
 
         $inputs = $request->all();
@@ -195,20 +205,36 @@ class SliderController extends MainAdminController
 
         if(!empty($inputs['id'])){
 
-            $slide = HomepageIcons::findOrFail($inputs['id']);
+            if(\Route::currentRouteName() == 'post-homepage')
+            {
+                $slide = HomepageIcons::findOrFail($inputs['id']);
+            }
+            else
+            {
+                $slide = tips::findOrFail($inputs['id']);
+            }
 
             //Slide image
             $slide_image = $request->file('image');
 
             if($slide_image){
 
-                \File::delete(public_path() .'/upload/homepage_icons/'.$slide->image);
+                if(\Route::currentRouteName() == 'post-homepage')
+                {
+                    \File::delete(public_path() .'/upload/homepage_icons/'.$slide->image);
+
+                    $tmpFilePath = 'upload/homepage_icons/';
+                }
+                else
+                {
+                    \File::delete(public_path() .'/upload/tips/'.$slide->image);
+
+                    $tmpFilePath = 'upload/tips/';
+                }
 
                 $filename = $_FILES['image']['name'];
 
                 $ext = pathinfo($filename, PATHINFO_EXTENSION);
-
-                $tmpFilePath = 'upload/homepage_icons/';
 
                 $hardPath =  Str::slug($inputs['title'], '-').'-'.md5(time()) .'.'.$ext;
 
@@ -222,20 +248,36 @@ class SliderController extends MainAdminController
 
         }else{
 
-            $slide = new HomepageIcons();
+            if(\Route::currentRouteName() == 'post-homepage')
+            {
+                $slide = new HomepageIcons;
+            }
+            else
+            {
+                $slide = new tips;
+            }
 
             //Slide image
             $slide_image = $request->file('image');
 
             if($slide_image){
 
-                \File::delete(public_path() .'/upload/homepage_icons/'.$slide->image);
+                if(\Route::currentRouteName() == 'post-homepage')
+                {
+                    \File::delete(public_path() .'/upload/homepage_icons/'.$slide->image);
+
+                    $tmpFilePath = 'upload/homepage_icons/';
+                }
+                else
+                {
+                    \File::delete(public_path() .'/upload/tips/'.$slide->image);
+
+                    $tmpFilePath = 'upload/tips/';
+                }
 
                 $filename = $_FILES['image']['name'];
 
                 $ext = pathinfo($filename, PATHINFO_EXTENSION);
-
-                $tmpFilePath = 'upload/homepage_icons/';
 
                 $hardPath =  Str::slug($inputs['title'], '-').'-'.md5(time()) .'.'.$ext;
 
@@ -303,7 +345,15 @@ class SliderController extends MainAdminController
 
         }
 
-        $slide = HomepageIcons::findOrFail($id);
+
+        if(\Route::currentRouteName() == 'edit-homepage')
+        {
+            $slide = HomepageIcons::findOrFail($id);
+        }
+        else
+        {
+            $slide = tips::findOrFail($id);
+        }
 
         return view('admin.pages.addeditcontent',compact('slide'));
 
@@ -343,9 +393,18 @@ class SliderController extends MainAdminController
 
         }
 
-        $slide = HomepageIcons::findOrFail($id);
+        if(\Route::currentRouteName() == 'delete-homepage')
+        {
+            $slide = HomepageIcons::findOrFail($id);
 
-        \File::delete(public_path() .'/upload/homepage_icons/'.$slide->image);
+            \File::delete(public_path() .'/upload/homepage_icons/'.$slide->image);
+        }
+        else
+        {
+            $slide = tips::findOrFail($id);
+
+            \File::delete(public_path() .'/upload/tips/'.$slide->image);
+        }
 
         $slide->delete();
 

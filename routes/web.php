@@ -194,11 +194,19 @@ Route::group(['middleware' => 'App\Http\Middleware\UserTypeMiddleware'], functio
         Route::get('types/addtypes/{id}', 'TypesController@edittypes');
         Route::get('types/delete/{id}', 'TypesController@delete');
 
-        Route::get('homepage-icons', 'SliderController@homepageIcons');
-        Route::get('homepage-icons/addcontent', 'SliderController@addeditContent');
-        Route::post('homepage-icons/addcontent', 'SliderController@addnewContent');
-        Route::get('homepage-icons/addcontent/{id}', 'SliderController@editContent');
-        Route::get('homepage-icons/delete/{id}', 'SliderController@deleteContent');
+
+        Route::get('our-tips', 'SliderController@ourTips')->name('our-tips');
+        Route::get('our-tips/addcontent', 'SliderController@addeditContent')->name('add-tips');
+        Route::post('our-tips/addcontent', 'SliderController@addnewContent')->name('post-tips');
+        Route::get('our-tips/addcontent/{id}', 'SliderController@editContent')->name('edit-tips');
+        Route::get('our-tips/delete/{id}', 'SliderController@deleteContent')->name('delete-tips');
+
+
+        Route::get('homepage-icons', 'SliderController@homepageIcons')->name('homepage-icons');
+        Route::get('homepage-icons/addcontent', 'SliderController@addeditContent')->name('add-homepage');
+        Route::post('homepage-icons/addcontent', 'SliderController@addnewContent')->name('post-homepage');
+        Route::get('homepage-icons/addcontent/{id}', 'SliderController@editContent')->name('edit-homepage');
+        Route::get('homepage-icons/delete/{id}', 'SliderController@deleteContent')->name('delete-homepage');
 
         Route::get('homepage-icons/changeheading', 'SliderController@changeHeading');
         Route::post('homepage-icons/changeheading', 'SliderController@SaveChangeHeading');

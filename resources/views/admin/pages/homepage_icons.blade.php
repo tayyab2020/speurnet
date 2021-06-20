@@ -5,10 +5,22 @@
         <div class="page-header">
 
             <div class="pull-right">
-                <a href="{{URL::to('admin/homepage-icons/changeheading')}}" class="btn btn-success">Change Heading Text<i class="fa fa-edit" style="margin-left: 8px;"></i></a>
-                <a href="{{URL::to('admin/homepage-icons/addcontent')}}" class="btn btn-primary">Add Content <i class="fa fa-plus" style="margin-left: 8px;"></i></a>
+
+                @if(Route::currentRouteName() == 'homepage-icons')
+
+                    <a href="{{URL::to('admin/homepage-icons/changeheading')}}" class="btn btn-success">Change Heading Text<i class="fa fa-edit" style="margin-left: 8px;"></i></a>
+                    <a href="{{URL::to('admin/homepage-icons/addcontent')}}" class="btn btn-primary">Add Content <i class="fa fa-plus" style="margin-left: 8px;"></i></a>
+
+                @else
+
+                    <a href="{{URL::to('admin/our-tips/addcontent')}}" class="btn btn-primary">Add Content <i class="fa fa-plus" style="margin-left: 8px;"></i></a>
+
+                @endif
+
             </div>
-            <h2>While you are here content</h2>
+
+            <h2>@if(Route::currentRouteName() == 'homepage-icons') While you are here content @else Our Tips @endif</h2>
+
         </div>
         @if(Session::has('flash_message'))
             <div class="alert alert-success">
@@ -39,7 +51,15 @@
 
                                 @if($slide->image)
 
-                                    <img src="{{ URL::asset('upload/homepage_icons/'.$slide->image) }}" width="80" alt="">
+                                    @if(Route::currentRouteName() == 'homepage-icons')
+
+                                        <img src="{{ URL::asset('upload/homepage_icons/'.$slide->image) }}" width="80" alt="">
+
+                                    @else
+
+                                        <img src="{{ URL::asset('upload/tips/'.$slide->image) }}" width="80" alt="">
+
+                                    @endif
 
                                 @else
 
@@ -57,8 +77,19 @@
                                         Actions <span class="caret"></span>
                                     </button>
                                     <ul class="dropdown-menu dropdown-menu-right" role="menu">
-                                        <li><a href="{{ url('admin/homepage-icons/addcontent/'.$slide->id) }}"><i class="md md-edit"></i> Edit Editor</a></li>
-                                        <li><a href="{{ url('admin/homepage-icons/delete/'.$slide->id) }}"><i class="md md-delete"></i> Delete</a></li>
+
+                                        @if(Route::currentRouteName() == 'homepage-icons')
+
+                                            <li><a href="{{ url('admin/homepage-icons/addcontent/'.$slide->id) }}"><i class="md md-edit"></i> Edit Editor</a></li>
+                                            <li><a href="{{ url('admin/homepage-icons/delete/'.$slide->id) }}"><i class="md md-delete"></i> Delete</a></li>
+
+                                        @else
+
+                                            <li><a href="{{ url('admin/our-tips/addcontent/'.$slide->id) }}"><i class="md md-edit"></i> Edit Editor</a></li>
+                                            <li><a href="{{ url('admin/our-tips/delete/'.$slide->id) }}"><i class="md md-delete"></i> Delete</a></li>
+
+                                        @endif
+
                                     </ul>
                                 </div>
 

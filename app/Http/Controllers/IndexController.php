@@ -18,6 +18,7 @@ use App\savedPropertyAlert;
 use App\Settings;
 use App\sub_kinds;
 use App\sub_property_types;
+use App\tips;
 use App\Types;
 use App\user_languages;
 use Auth;
@@ -1479,9 +1480,11 @@ class IndexController extends Controller
 
 		$top_members = User::withCount('properties')->where('users.usertype','=','Agents')->where('users.status',1)->where('users.landlord','!=',1)->having('properties_count', '>', 0)->orderBy('properties_count', 'desc')->take(10)->get();
 
-		$top_properties = Properties::orderBy('views', 'desc')->take(10)->get();
+		/*$top_properties = Properties::orderBy('views', 'desc')->take(10)->get();*/
 
 		$content = HomepageIcons::orderBy('id','asc')->get();
+
+        $tips = tips::orderBy('id','asc')->get();
 
 		$most_viewed = Properties::orderBy('views','desc')->first();
 
@@ -1573,7 +1576,7 @@ class IndexController extends Controller
 
         $cookie = cookies::where('ip',\Request::ip())->first();
 
-        return view('pages.index',compact('cookie','propertieslist','blogs', 'heading', 'most_viewed', 'partners','city_list','top_members','top_properties','content','properties_headings'));
+        return view('pages.index',compact('cookie','propertieslist','blogs', 'heading', 'most_viewed', 'partners','city_list','top_members','content','properties_headings','tips'));
     }
 
     public function HomesInspiration(Request $request,$id = '')

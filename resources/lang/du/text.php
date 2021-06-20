@@ -562,4 +562,5 @@ return [
     'Message sent successfully' => 'Bericht succesvol verstuurd!',
     'Nice to know' => 'Wooninspiratie',
     'Show More' => 'Laat meer zien',
+    'Our Tips' => 'Onze Tips',
 ];

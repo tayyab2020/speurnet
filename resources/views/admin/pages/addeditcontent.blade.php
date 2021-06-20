@@ -6,7 +6,15 @@
         <div class="page-header">
             <h2> {{ isset($slide->name) ? 'Edit: '. $slide->name : 'Add Content' }}</h2>
 
-            <a href="{{ URL::to('admin/homepage-icons') }}" class="btn btn-default-light btn-xs"><i class="md md-backspace"></i> Back</a>
+            @if(Route::currentRouteName() == 'add-homepage' || Route::currentRouteName() == 'edit-homepage')
+
+                <a href="{{ URL::to('admin/homepage-icons') }}" class="btn btn-default-light btn-xs"><i class="md md-backspace"></i> Back</a>
+
+            @else
+
+                <a href="{{ URL::to('admin/our-tips') }}" class="btn btn-default-light btn-xs"><i class="md md-backspace"></i> Back</a>
+
+            @endif
 
         </div>
         @if (count($errors) > 0)
@@ -28,7 +36,17 @@
 
         <div class="panel panel-default">
             <div class="panel-body">
-                {!! Form::open(array('url' => array('admin/homepage-icons/addcontent'),'class'=>'form-horizontal padding-15','name'=>'user_form','id'=>'user_form','role'=>'form','enctype' => 'multipart/form-data')) !!}
+
+                @if(Route::currentRouteName() == 'add-homepage' || Route::currentRouteName() == 'edit-homepage')
+
+                    {!! Form::open(array('url' => array('admin/homepage-icons/addcontent'),'class'=>'form-horizontal padding-15','name'=>'user_form','id'=>'user_form','role'=>'form','enctype' => 'multipart/form-data')) !!}
+
+                @else
+
+                    {!! Form::open(array('url' => array('admin/our-tips/addcontent'),'class'=>'form-horizontal padding-15','name'=>'user_form','id'=>'user_form','role'=>'form','enctype' => 'multipart/form-data')) !!}
+
+                @endif
+
                 <input type="hidden" name="id" value="{{ isset($slide->id) ? $slide->id : null }}">
 
 
@@ -55,7 +73,15 @@
 
                                     @if($slide->image)
 
-                                        <img src="{{ URL::asset('upload/homepage_icons/'.$slide->image) }}" width="200" alt="person">
+                                        @if(Route::currentRouteName() == 'add-homepage' || Route::currentRouteName() == 'edit-homepage')
+
+                                            <img src="{{ URL::asset('upload/homepage_icons/'.$slide->image) }}" width="200" alt="person">
+
+                                        @else
+
+                                            <img src="{{ URL::asset('upload/tips/'.$slide->image) }}" width="200" alt="person">
+
+                                        @endif
 
                                     @else
 
@@ -72,8 +98,6 @@
 
                     </div>
                 </div>
-
-
 
 
                 <hr>
