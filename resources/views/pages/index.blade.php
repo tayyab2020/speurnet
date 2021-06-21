@@ -568,108 +568,112 @@
 
             </div>
 
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 res-container" style="display: inline-block;margin-top: 50px;">
+            @if(count($tips))
 
-                <div class="col-md-12 col-sm-12">
-                    <div class="heading-title">
-                        <h2>{{__('text.Our Tips')}}</h2>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 res-container" style="display: inline-block;margin-top: 50px;">
+
+                    <div class="col-md-12 col-sm-12">
+                        <div class="heading-title">
+                            <h2>{{__('text.Our Tips')}}</h2>
+                        </div>
                     </div>
-                </div>
 
-                <div class="row" style="display: flex;width: 100%;margin: 0;">
+                    <div class="row" style="display: flex;width: 100%;margin: 0;">
 
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="display: flex;">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="display: flex;">
 
-                        <div style="margin-top: 20px;margin-bottom: 20px;" data-testid="key-services" class="css-htlmaj col-lg-9 col-md-12 col-sm-12 col-xs-12">
-                            <div>
-                                <div class="domain-home_ down is-visible">
+                            <div style="margin-top: 20px;margin-bottom: 20px;" data-testid="key-services" class="css-htlmaj col-lg-9 col-md-12 col-sm-12 col-xs-12">
+                                <div>
+                                    <div class="domain-home_ down is-visible">
 
-                                    <ul class="css-48sroz" style="list-style: none;padding: 0;">
+                                        <ul class="css-48sroz" style="list-style: none;padding: 0;">
 
-                                        @foreach($tips as $tip)
+                                            @foreach($tips as $tip)
 
-                                            <li>
+                                                <li>
 
-                                                @if($tip->image)
+                                                    @if($tip->image)
 
-                                                    <a target="_blank" href="@if($tip->url){{$tip->url}} @else {{URL::to('/')}} @endif">
+                                                        <a target="_blank" href="@if($tip->url){{$tip->url}} @else {{URL::to('/')}} @endif">
 
-                                                        <img src="{{ URL::asset('upload/tips/'.$tip->image) }}">{{$tip->title}}
+                                                            <img src="{{ URL::asset('upload/tips/'.$tip->image) }}">{{$tip->title}}
 
-                                                    </a>
+                                                        </a>
 
-                                                @else
+                                                    @else
 
-                                                    <a target="_blank" style="display: flex;justify-content: center;" href="@if($tip->url){{$tip->url}} @else {{URL::to('/')}} @endif">
+                                                        <a target="_blank" style="display: flex;justify-content: center;" href="@if($tip->url){{$tip->url}} @else {{URL::to('/')}} @endif">
 
-                                                        {{$tip->title}}
+                                                            {{$tip->title}}
 
-                                                    </a>
+                                                        </a>
+
+                                                    @endif
+
+                                                </li>
+
+                                            @endforeach
+
+
+                                        </ul></div></div></div>
+
+                        </div>
+
+                        {{--<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 top-container1" style="margin: auto;">
+
+                            <div class="topProperties">
+
+                                @foreach($top_properties as $temp)
+
+                                    <div class="col-md-3 col-sm-12 col-xs-12">
+
+                                        <div class="property-container" style="margin: 10px auto;">
+
+                                            <div class="property-image">
+
+                                                <a style="outline: none;" href="{{URL::to('woningaanbod/'.$temp->property_slug)}}">
+
+                                                    <img class="res-content" src="{{ URL::asset('upload/properties/'.$temp->featured_image.'-b.jpg') }}" alt="{{ $temp->property_name }}" style="width: 100%;height: 200px;">
+
+                                                </a>
+
+                                                <div class="property-status">
+                                                    <span>{{__('text.For '.$temp->property_purpose)}}</span>
+                                                </div>
+
+                                            </div>
+
+
+                                            <div class="property-features">
+
+                                                <span><i class="fa fa-home"></i> {{$temp->area}}</span>
+
+                                                @if($temp->bedrooms > 0)
+
+                                                    <span><i class="fa fa-bed"></i> {{$temp->bedrooms}}</span>
 
                                                 @endif
 
-                                            </li>
 
-                                        @endforeach
+                                                @if($temp->bathrooms > 0)
 
+                                                    <span><i class="fa fa-male"></i> {{$temp->bathrooms}}</span>
 
-                                    </ul></div></div></div>
+                                                @endif
 
-                    </div>
-
-                    {{--<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 top-container1" style="margin: auto;">
-
-                        <div class="topProperties">
-
-                            @foreach($top_properties as $temp)
-
-                                <div class="col-md-3 col-sm-12 col-xs-12">
-
-                                    <div class="property-container" style="margin: 10px auto;">
-
-                                        <div class="property-image">
-
-                                            <a style="outline: none;" href="{{URL::to('woningaanbod/'.$temp->property_slug)}}">
-
-                                                <img class="res-content" src="{{ URL::asset('upload/properties/'.$temp->featured_image.'-b.jpg') }}" alt="{{ $temp->property_name }}" style="width: 100%;height: 200px;">
-
-                                            </a>
-
-                                            <div class="property-status">
-                                                <span>{{__('text.For '.$temp->property_purpose)}}</span>
                                             </div>
 
-                                        </div>
 
+                                            <div class="property-content" style="padding: 0px 15px 10px 15px;">
 
-                                        <div class="property-features">
+                                                <h3 style="margin: 10px 0px 0px 0px;"><a style="text-overflow: ellipsis;display: block;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;white-space: nowrap;" href="{{URL::to('woningaanbod/'.$temp->property_slug)}}">{{ Str::limit($temp->property_name,35) }}</a> <small style="text-overflow: ellipsis;display: block;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;white-space: nowrap;">{{ Str::limit($temp->address,40) }}</small></h3>
 
-                                            <span><i class="fa fa-home"></i> {{$temp->area}}</span>
+                                                <div class="bottom-text" style="min-height: 45px;display: flex;flex-direction: row;justify-content: space-between;align-items: flex-end;font-size: 90%;">
 
-                                            @if($temp->bedrooms > 0)
+                                                    <small style="font-weight: 600;">{{ getPropertyTypeName($temp->property_type)->types }}</small>
+                                                    <small>€@if($temp->sale_price) {{number_format($temp->sale_price, 0, ',', '.')}} {{$temp->cost_for}} @else {{number_format($temp->rent_price, 0, ',', '.')}} @endif</small>
 
-                                                <span><i class="fa fa-bed"></i> {{$temp->bedrooms}}</span>
-
-                                            @endif
-
-
-                                            @if($temp->bathrooms > 0)
-
-                                                <span><i class="fa fa-male"></i> {{$temp->bathrooms}}</span>
-
-                                            @endif
-
-                                        </div>
-
-
-                                        <div class="property-content" style="padding: 0px 15px 10px 15px;">
-
-                                            <h3 style="margin: 10px 0px 0px 0px;"><a style="text-overflow: ellipsis;display: block;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;white-space: nowrap;" href="{{URL::to('woningaanbod/'.$temp->property_slug)}}">{{ Str::limit($temp->property_name,35) }}</a> <small style="text-overflow: ellipsis;display: block;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;white-space: nowrap;">{{ Str::limit($temp->address,40) }}</small></h3>
-
-                                            <div class="bottom-text" style="min-height: 45px;display: flex;flex-direction: row;justify-content: space-between;align-items: flex-end;font-size: 90%;">
-
-                                                <small style="font-weight: 600;">{{ getPropertyTypeName($temp->property_type)->types }}</small>
-                                                <small>€@if($temp->sale_price) {{number_format($temp->sale_price, 0, ',', '.')}} {{$temp->cost_for}} @else {{number_format($temp->rent_price, 0, ',', '.')}} @endif</small>
+                                                </div>
 
                                             </div>
 
@@ -677,17 +681,17 @@
 
                                     </div>
 
-                                </div>
+                                @endforeach
 
-                            @endforeach
+                            </div>
 
-                        </div>
+                        </div>--}}
 
-                    </div>--}}
+                    </div>
 
                 </div>
-
-            </div>
+                
+            @endif
 
             @if(count($top_members) > 0)
 
