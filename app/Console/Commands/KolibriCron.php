@@ -46,79 +46,15 @@ class KolibriCron extends Command
 
     public function compressImage($source, $destination, $quality) {
 
-        $info = getimagesize($source);
+        $info = @exif_read_data($source);
 
-        $exif = @exif_read_data($source);
-
-        $img = Image::make($source);
-
-        if (!empty($exif['Orientation'])) {
-
-            switch ($exif['Orientation']) {
-                case 3:
-                    $img = imagerotate($img, 180, 0);
-                    break;
-                case 6:
-                    $img = imagerotate($img, -90, 0);
-                    break;
-                case 8:
-                    $img = imagerotate($img, 90, 0);
-                    break;
-                default:
-                    $img = $img;
-            }
-        }
-
-        if($quality == 30)
-        {
-            if($info[0] > 1920 && $info[1] > 1080)
-            {
-                $img->resize(1920, 1080, function($constraint){
-                    $constraint->aspectRatio();
-                })->save($destination);
-            }
-            else
-            {
-                $img->save($destination);
-            }
-
-        }
-        elseif($quality == 25)
-        {
-            if($info[0] > 1280 && $info[1] > 800)
-            {
-                $img->resize(1280, 800, function($constraint){
-                    $constraint->aspectRatio();
-                })->save($destination);
-            }
-            else
-            {
-                $img->save($destination);
-            }
-        }
-        else
-        {
-            if($info[0] > 640 && $info[1] > 425)
-            {
-                $img->resize(640, 425, function($constraint){
-                    $constraint->aspectRatio();
-                })->save($destination);
-            }
-            else
-            {
-                $img->save($destination);
-            }
-        }
-
-        /*if(isset($info['mime']) && $info['mime'] == 'image/jpeg')
+        if (isset($info['MimeType']) && $info['MimeType'] == 'image/jpeg')
         {
             $image = imagecreatefromjpeg($source);
 
-            $exif = @exif_read_data($source);
+            if (!empty($info['Orientation'])) {
 
-            if (!empty($exif['Orientation'])) {
-
-                switch ($exif['Orientation']) {
+                switch ($info['Orientation']) {
                     case 3:
                         $image = imagerotate($image, 180, 0);
                         break;
@@ -137,7 +73,7 @@ class KolibriCron extends Command
 
             if($quality == 30)
             {
-                if($info[0] > 1920 && $info[1] > 1080)
+                if($info['COMPUTED']['Width'] > 1920 && $info['COMPUTED']['Height'] > 1080)
                 {
                     $img->resize(1920, 1080, function($constraint){
                         $constraint->aspectRatio();
@@ -150,7 +86,7 @@ class KolibriCron extends Command
             }
             elseif($quality == 25)
             {
-                if($info[0] > 1280 && $info[1] > 800)
+                if($info['COMPUTED']['Width'] > 1280 && $info['COMPUTED']['Height'] > 800)
                 {
                     $img->resize(1280, 800, function($constraint){
                         $constraint->aspectRatio();
@@ -163,7 +99,7 @@ class KolibriCron extends Command
             }
             else
             {
-                if($info[0] > 640 && $info[1] > 425)
+                if($info['COMPUTED']['Width'] > 640 && $info['COMPUTED']['Height'] > 425)
                 {
                     $img->resize(640, 425, function($constraint){
                         $constraint->aspectRatio();
@@ -176,7 +112,7 @@ class KolibriCron extends Command
             }
 
 
-            //imagejpeg($image, $destination, $quality);
+            /*imagejpeg($image, $destination, $quality);*/
         }
         else
         {
@@ -184,7 +120,7 @@ class KolibriCron extends Command
 
             if($quality == 30)
             {
-                if($info[0] > 1920 && $info[1] > 1080)
+                if($info['COMPUTED']['Width'] > 1920 && $info['COMPUTED']['Height'] > 1080)
                 {
                     $img->resize(1920, 1080, function($constraint){
                         $constraint->aspectRatio();
@@ -198,7 +134,7 @@ class KolibriCron extends Command
             }
             elseif($quality == 25)
             {
-                if($info[0] > 1280 && $info[1] > 800)
+                if($info['COMPUTED']['Width'] > 1280 && $info['COMPUTED']['Height'] > 800)
                 {
                     $img->resize(1280, 800, function($constraint){
                         $constraint->aspectRatio();
@@ -211,7 +147,7 @@ class KolibriCron extends Command
             }
             else
             {
-                if($info[0] > 640 && $info[1] > 425)
+                if($info['COMPUTED']['Width'] > 640 && $info['COMPUTED']['Height'] > 425)
                 {
                     $img->resize(640, 425, function($constraint){
                         $constraint->aspectRatio();
@@ -223,23 +159,23 @@ class KolibriCron extends Command
                 }
             }
 
-            //{$srcImage = imagecreatefrompng($source);
+            /*$srcImage = imagecreatefrompng($source);
 
-            //$targetImage = imagecreatetruecolor( $info[0], $info[1] );
-            //imagealphablending( $targetImage, false );
-            //imagesavealpha( $targetImage, true );
+            $targetImage = imagecreatetruecolor( $info[0], $info[1] );
+            imagealphablending( $targetImage, false );
+            imagesavealpha( $targetImage, true );
 
-            //imagecopyresampled( $targetImage, $srcImage,
-                //0, 0,
-                //0, 0,
-                //$info[0], $info[1],
-                //$info[0], $info[1] );
+            imagecopyresampled( $targetImage, $srcImage,
+                0, 0,
+                0, 0,
+                $info[0], $info[1],
+                $info[0], $info[1] );
 
-            //$quality = 9 - ($quality/10);
+            $quality = 9 - ($quality/10);
 
-            //imagepng(  $targetImage, $destination, $quality );}
+            imagepng(  $targetImage, $destination, $quality );*/
 
-        }*/
+        }
         
         return;
 
