@@ -47,7 +47,6 @@ class KolibriCron extends Command
     public function compressImage($source, $destination, $quality) {
 
         $info = getimagesize($source);
-        dd($info);
 
         if (isset($info['mime']) && $info['mime'] == 'image/jpeg')
         {
