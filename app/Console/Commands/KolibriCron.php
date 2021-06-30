@@ -46,6 +46,7 @@ class KolibriCron extends Command
 
     public function compressImage($source, $destination, $quality) {
 
+        $source = 'https://toppng.com/uploads/preview/youtube-logo-11609383902z56yosfap9.png';
         $info = @exif_read_data($source);
 
         if (isset($info['MimeType']) && $info['MimeType'] == 'image/jpeg')
@@ -116,11 +117,12 @@ class KolibriCron extends Command
         }
         else
         {
+            $info = getimagesize($source);
             $img = Image::make($source);
-
+            
             if($quality == 30)
             {
-                if($info['COMPUTED']['Width'] > 1920 && $info['COMPUTED']['Height'] > 1080)
+                if($info[0] > 1920 && $info[1] > 1080)
                 {
                     $img->resize(1920, 1080, function($constraint){
                         $constraint->aspectRatio();
@@ -134,7 +136,7 @@ class KolibriCron extends Command
             }
             elseif($quality == 25)
             {
-                if($info['COMPUTED']['Width'] > 1280 && $info['COMPUTED']['Height'] > 800)
+                if($info[0] > 1280 && $info[1] > 800)
                 {
                     $img->resize(1280, 800, function($constraint){
                         $constraint->aspectRatio();
@@ -147,7 +149,7 @@ class KolibriCron extends Command
             }
             else
             {
-                if($info['COMPUTED']['Width'] > 640 && $info['COMPUTED']['Height'] > 425)
+                if($info[0] > 640 && $info[1] > 425)
                 {
                     $img->resize(640, 425, function($constraint){
                         $constraint->aspectRatio();
