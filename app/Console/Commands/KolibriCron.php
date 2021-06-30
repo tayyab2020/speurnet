@@ -45,12 +45,12 @@ class KolibriCron extends Command
     }
 
     public function compressImage($source, $destination, $quality) {
-        
+
         $info = @exif_read_data($source);
 
-        if (isset($info['MimeType']) && $info['MimeType'] == 'image/jpeg')
+        if(isset($info['MimeType']) && $info['MimeType'] == 'image/jpeg')
         {
-            $image = imagecreatefromjpeg($source);
+            $image = @imagecreatefromjpeg($source);
 
             if (!empty($info['Orientation'])) {
 
@@ -116,7 +116,7 @@ class KolibriCron extends Command
         }
         else
         {
-            $info = getimagesize($source);
+            $info = @getimagesize($source);
             $img = Image::make($source);
 
             if($quality == 30)
