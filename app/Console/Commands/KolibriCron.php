@@ -46,11 +46,11 @@ class KolibriCron extends Command
 
     public function compressImage($source, $destination, $quality) {
 
-        $info = getimagesize($source);
+        $info = @getimagesize($source);
 
         if(isset($info['mime']) && $info['mime'] == 'image/jpeg')
         {
-            $image = imagecreatefromjpeg($source);
+            $image = @imagecreatefromjpeg($source);
 
             $exif = @exif_read_data($source);
 
