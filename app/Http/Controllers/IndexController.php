@@ -1462,6 +1462,13 @@ class IndexController extends Controller
 
     public function index()
     {
+        /*\Mail::send(array(), array(), function ($message) {
+            $message->to('tayyabkhurram62@gmail.com')
+                ->from('info@pieppiep.com')
+                ->subject('Test')
+                ->setBody('Hi', 'text/html');
+        });*/
+
     	if(!$this->alreadyInstalled()) {
             return redirect('install');
         }

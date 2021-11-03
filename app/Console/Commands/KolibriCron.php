@@ -213,6 +213,7 @@ class KolibriCron extends Command
         $xml = simplexml_load_string($response);
         $json = json_encode($xml);
         $arr = json_decode($json,true);
+        dd($arr['ArrayOfMediaContractSnapshot']);
 
         foreach($arr['ArrayOfMediaContractSnapshot']['MediaContractSnapshot'] as $k=> $brokers) {
 
