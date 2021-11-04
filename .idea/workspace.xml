@@ -20,9 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7fe7f36f-c82f-4504-8c0a-7874522d22c9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Console/Commands/KolibriCron.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Commands/KolibriCron.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/IndexController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/IndexController.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -469,7 +467,7 @@
       <workItem from="1634577368132" duration="90000" />
       <workItem from="1634997210555" duration="1540000" />
       <workItem from="1635931827495" duration="507000" />
-      <workItem from="1635939652616" duration="4772000" />
+      <workItem from="1635939652616" duration="5047000" />
     </task>
     <servers />
   </component>

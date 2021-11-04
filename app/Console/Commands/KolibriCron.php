@@ -190,13 +190,6 @@ class KolibriCron extends Command
      */
     public function handle()
     {
-        \Mail::send(array(), array(), function ($message) {
-            $message->to('tayyabkhurram62@gmail.com')
-                ->from('info@zoekjehuisje.nl')
-                ->subject('Test')
-                ->setBody('Hi', 'text/html');
-        });
-        exit();
         ini_set('max_execution_time', '0');
 
         $ch = curl_init();
