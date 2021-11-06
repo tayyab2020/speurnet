@@ -9,6 +9,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.2",
+        "albertcht/invisible-recaptcha": "^1.9",
         "fideloper/proxy": "^4.0",
         "intervention/image": "dev-master",
         "jenssegers/date": "^4.0",

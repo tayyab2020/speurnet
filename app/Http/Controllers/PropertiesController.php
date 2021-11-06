@@ -1354,19 +1354,33 @@ class PropertiesController extends Controller
 
 	    $inputs = $request->all();
 
-	    $rule=array(
-		        'name' => 'required',
-				'email' => 'required',
-		        'message' => 'required'
-		   		 );
-
-	   	 $validator = \Validator::make($data,$rule);
-
-        if ($validator->fails())
+	    if($inputs['form_no'] == 111)
         {
-                return redirect()->back()->withErrors($validator->messages());
-        }
+            $rules=array(
+                'name_1' => 'required',
+                'email_1' => 'required',
+                'message_1' => 'required',
+            );
 
+            $customMessages = [
+                'name_1.required' => 'The name field is required.',
+                'email_1.required' => 'The email field is required.',
+                'message_1.required' => 'The message field is required.'
+            ];
+
+            $this->validate($request, $rules, $customMessages);
+        }
+	    else
+        {
+            $rules=array(
+                'name' => 'required',
+                'email' => 'required',
+                'message' => 'required',
+                'g-recaptcha-response' => 'required|captcha'
+            );
+
+            $this->validate($request, $rules);
+        }
 
     	$enquire = new Enquire;
 

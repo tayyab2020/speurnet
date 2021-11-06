@@ -13,7 +13,6 @@
 
 @section("content")
 
-
     <!-- begin:header -->
     {{--<div id="header" class="heading" style="background-image: url({{ URL::asset('assets/img/img01.jpg') }});">
         <div class="container">
@@ -2167,20 +2166,8 @@
                                                 </div>
                                             </div>
                                         </div>
+
                                         <div class="col-md-6 col-sm-6">
-
-                                            {!! Form::open(array('url'=>'agentscontact','method'=>'POST', 'id'=>'agent_contact_form')) !!}
-                                            <meta name="_token" content="{!! csrf_token() !!}"/>
-
-                                            <input type="hidden" name="property_id" value="{{$property->id}}">
-
-                                            <input type="hidden" name="home_exchange" value="{{$property->home_exchange}}">
-
-                                            <input type="hidden" name="agent_id" value="{{$agent->id}}">
-
-                                            <input type="hidden" name="property_name" value="{{$property->property_name}}">
-
-                                            <div id="ajax" style="color: #db2424"></div>
 
                                             <div class="form-group">
 
@@ -2189,13 +2176,13 @@
                                                     <div class="bulgy-radios" role="radiogroup" aria-labelledby="bulgy-radios-label" style="width: 100%;min-height: 50px;text-align: left;">
 
                                                         <label style="margin-left: 5px;float: left;max-width: 80px;">
-                                                            <input type="radio" name="gender" value="Mr." checked />
+                                                            <input type="radio" name="gender" class="gender_radio" value="Mr." checked />
                                                             <span class="radio"></span>
                                                             <span class="label">{{__('text.Mr.')}}</span>
                                                         </label>
 
                                                         <label>
-                                                            <input type="radio" name="gender" value="Ms." />
+                                                            <input type="radio" name="gender" class="gender_radio" value="Ms." />
                                                             <span class="radio"></span>
                                                             <span class="label">{{__('text.Ms.')}}</span>
                                                         </label>
@@ -2208,25 +2195,23 @@
 
                                             <div class="form-group">
                                                 <label for="name">{{__('text.Name')}}</label>
-                                                <input type="text" name="name" class="form-control input-lg" placeholder="{{__('text.Name')}}">
+                                                <input type="text" name="name" id="name_field" data-id="name_1" class="form-control input-lg" placeholder="{{__('text.Name')}}">
                                             </div>
                                             <div class="form-group">
                                                 <label for="email">{{__('text.Email Address')}}</label>
-                                                <input type="email" name="email" class="form-control input-lg" placeholder="E-mail">
+                                                <input type="email" name="email" id="email_field" data-id="email_1" class="form-control input-lg" placeholder="E-mail">
                                             </div>
                                             <div class="form-group">
                                                 <label for="telp">{{__('text.Mobile No')}}</label>
-                                                <input type="text" name="phone" class="form-control input-lg" placeholder="{{__('text.Mobile No')}}">
+                                                <input type="text" name="phone" id="phone_field" data-id="phone_1" class="form-control input-lg" placeholder="{{__('text.Mobile No')}}">
                                             </div>
                                             <div class="form-group">
                                                 <label for="message">{{__('text.Message')}}</label>
-                                                <textarea name="message" class="form-control input-lg" rows="7" placeholder="{{__('text.Message')}}"></textarea>
+                                                <textarea name="message" id="message_field" data-id="message_1" class="form-control input-lg" rows="7" placeholder="{{__('text.Message')}}"></textarea>
                                             </div>
                                             <div class="form-group">
-                                                <input style="outline: none;" type="submit" name="submit" value="{{__('text.Send Message')}}" class="btn btn-primary btn-lg">
+                                                <input style="outline: none;" type="button" id="contact-form" value="{{__('text.Send Message')}}" class="btn btn-primary btn-lg">
                                             </div>
-                                            {!! Form::close() !!}
-
 
                                         </div>
 
@@ -2378,8 +2363,22 @@
 
                                         </div>
                                     </div>
-                                    {!! Form::open(array('url'=>'agentscontact','method'=>'POST', 'id'=>'agent_contact_form')) !!}
-                                    <meta name="_token" content="{!! csrf_token() !!}"/>
+
+                                    {!! Form::open(array('url'=>'agentscontact','method'=>'POST', 'id'=>'agent_contact_form1')) !!}
+
+                                    @captcha
+
+                                    <input type="hidden" name="form_no" id="form_no" value="2">
+
+                                    <input type="hidden" name="gender_1" id="gender_1">
+
+                                    <input type="hidden" name="name_1" id="name_1">
+
+                                    <input type="hidden" name="email_1" id="email_1">
+
+                                    <input type="hidden" name="phone_1" id="phone_1">
+
+                                    <input type="hidden" name="message_1" id="message_1">
 
                                     <input type="hidden" name="property_id" value="{{$property->id}}">
 
@@ -2440,11 +2439,11 @@
                                         <textarea class="contact-control" name="message" placeholder="{{__('text.Message')}}" required="required"></textarea>
                                     </div><!-- /.form-group -->
 
-
-                                    <button type="submit" class="button btn btn-theme btn-block" name="contact-form" style="outline: none;">{{__('text.Send Message')}}</button>
+                                    <button type="submit" class="button btn btn-theme btn-block" id="contact-form1" style="outline: none;">{{__('text.Send Message')}}</button>
                                     {!! Form::close() !!}
                                 </div>
-                            </aside>			   		</div>
+                            </aside>
+                        </div>
                     </div>
 
                 @endif
@@ -2708,6 +2707,12 @@
 
         <style>
 
+            .g-recaptcha
+            {
+                position: relative;
+                z-index: 1;
+            }
+
             @media (max-width: 478px)
             {
                 .bottom-text
@@ -2820,6 +2825,26 @@
 
         <script>
 
+            $('#contact-form').click(function (e) {
+
+                $('#form_no').val(111);
+                $('#agent_contact_form1').submit();
+
+            });
+
+            $('.gender_radio').change(function (e) {
+
+                $('#gender_1').val($(this).val());
+
+            });
+
+            $(document).on("input", "#name_field, #email_field, #phone_field, #message_field", function () {
+
+                var id = $(this).data('id');
+                $('#'+id).val($(this).val());
+
+            });
+
             $('.next-property').hover(function (e) {
 
                 if($('.nxt').hasClass('show'))
@@ -2848,7 +2873,6 @@
 
 
         </script>
-
 
 
     </div>
