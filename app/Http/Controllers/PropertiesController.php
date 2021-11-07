@@ -1370,6 +1370,7 @@ class PropertiesController extends Controller
 
             $this->validate($request, $rules, $customMessages);
 
+            $inputs['gender'] = $inputs['gender_1'];
             $inputs['name'] = $inputs['name_1'];
             $inputs['email'] = $inputs['email_1'];
             $inputs['phone'] = $inputs['phone_1'];
@@ -1399,7 +1400,6 @@ class PropertiesController extends Controller
 	    $enquire->save();
 
 
-
         $broker = User::where('id',$request->agent_id)->first();
 
         $broker_email = $broker->email;
@@ -1408,13 +1408,13 @@ class PropertiesController extends Controller
 
         $broker_phone = $broker->phone;
 
-        $customer_email = $request->email;
+        $customer_email = $inputs['email'];
 
         $admin_email = getcong('site_email');
 
         $landlord = $broker->landlord;
 
-        if($landlord || $request->home_exchange)
+        if($landlord || $inputs['home_exchange'])
         {
             $user_type = 1;
         }
@@ -1425,13 +1425,13 @@ class PropertiesController extends Controller
 
         Mail::send('emails.inquiry',
             array(
-                'gender' => $request->gender,
+                'gender' => $inputs['gender'],
                 'broker_name' => $broker_name,
-                'username' => $request->name,
-                'email' => $request->email,
-                'inquiry' => $request->message,
-                'phone' => $request->phone,
-                'property_name' => $request->property_name,
+                'username' => $inputs['name'],
+                'email' => $inputs['email'],
+                'inquiry' => $inputs['message'],
+                'phone' => $inputs['phone'],
+                'property_name' => $inputs['property_name'],
                 'user_type' => $user_type,
             ),  function ($message) use($request,$customer_email) {
                 $message->from(getcong('site_email'),getcong('site_name'));
@@ -1440,13 +1440,13 @@ class PropertiesController extends Controller
 
         Mail::send('emails.agent_inquiry',
             array(
-                'gender' => $request->gender,
+                'gender' => $inputs['gender'],
                 'broker_name' => $broker_name,
-                'username' => $request->name,
-                'email' => $request->email,
-                'phone' => $request->phone,
-                'inquiry' => $request->message,
-                'property_name' => $request->property_name,
+                'username' => $inputs['name'],
+                'email' => $inputs['email'],
+                'phone' => $inputs['phone'],
+                'inquiry' => $inputs['message'],
+                'property_name' => $inputs['property_name'],
                 'user_type' => $user_type,
             ),  function ($message) use($request,$broker_email) {
                 $message->from(getcong('site_email'),getcong('site_name'));
@@ -1455,15 +1455,15 @@ class PropertiesController extends Controller
 
         Mail::send('emails.admin_inquiry',
             array(
-                'gender' => $request->gender,
+                'gender' => $inputs['gender'],
                 'broker_name' => $broker_name,
                 'broker_email' => $broker_email,
                 'broker_phone' => $broker_phone,
-                'username' => $request->name,
-                'email' => $request->email,
-                'phone' => $request->phone,
-                'inquiry' => $request->message,
-                'property_name' => $request->property_name,
+                'username' => $inputs['name'],
+                'email' => $inputs['email'],
+                'phone' => $inputs['phone'],
+                'inquiry' => $inputs['message'],
+                'property_name' => $inputs['property_name'],
             ),  function ($message) use($request,$admin_email) {
                 $message->from(getcong('site_email'),getcong('site_name'));
                 $message->to($admin_email)
