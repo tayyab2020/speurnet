@@ -1369,6 +1369,11 @@ class PropertiesController extends Controller
             ];
 
             $this->validate($request, $rules, $customMessages);
+
+            $inputs['name'] = $inputs['name_1'];
+            $inputs['email'] = $inputs['email_1'];
+            $inputs['phone'] = $inputs['phone_1'];
+            $inputs['message'] = $inputs['message_1'];
         }
 	    else
         {
