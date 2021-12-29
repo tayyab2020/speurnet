@@ -211,9 +211,54 @@ class PropertiesController extends MainAdminController
 
     }
 
+    public function rowsAction(Request $request)
+    {
+        if($request->ids)
+        {
+            $ids = explode(',', $request->ids);
+
+            foreach($ids as $key)
+            {
+                if($request->type == 0)
+                {
+                    if($request->route == 'properties')
+                    {
+                        $this->delete($key,1);
+                    }
+                    elseif($request->route == 'new_constructions')
+                    {
+                        $this->deleteNewConstruction($key,1);
+                    }
+                    else
+                    {
+                        $this->deleteHomeExchange($key,1);
+                    }
+                }
+                else
+                {
+                    if($request->route == 'properties')
+                    {
+                        $this->status($key,1);
+                    }
+                    elseif($request->route == 'new_constructions')
+                    {
+                        $this->statusNewConstruction($key,1);
+                    }
+                    else
+                    {
+                        $this->statusHomeExchange($key,1);
+                    }
+                }
+            }
+        }
+
+        \Session::flash('flash_message', 'Task completed successfully!');
+
+        return \Redirect::back();
+    }
+
     public function propertieslist()
     {
-
 
     	if(Auth::user()->usertype=='Admin')
         {
@@ -226,8 +271,6 @@ class PropertiesController extends MainAdminController
 			$propertieslist = Properties::where('user_id',$user_id)->orderBy('id','desc')->withCount(['enquiries'])->withCount(['viewings'])->get();
 
 		}
-
-
 
         return view('admin.pages.properties',compact('propertieslist'));
     }
@@ -1432,14 +1475,14 @@ class PropertiesController extends MainAdminController
     }
 
 
-	public function delete($id)
+	public function delete($id, $type = NULL)
     {
         $property = Properties::findOrFail($id);
 
-		\File::delete(public_path() .'/upload/properties/'.$property->featured_image.'-b.jpg');
-		\File::delete(public_path() .'/upload/properties/'.$property->featured_image.'-s.jpg');
+        \File::delete(public_path() .'/upload/properties/'.$property->featured_image.'-b.jpg');
+        \File::delete(public_path() .'/upload/properties/'.$property->featured_image.'-s.jpg');
 
-		for($i=1; $i<30; $i++)
+        for($i=1; $i<30; $i++)
         {
             $p = 'property_images'.$i;
 
@@ -1461,17 +1504,19 @@ class PropertiesController extends MainAdminController
 
         property_documents::where('property_id',$id)->delete();
 
-		$property->delete();
+        $property->delete();
 
-        \Session::flash('flash_message', __('text.Property Deleted!'));
+        if(!$type)
+        {
+            \Session::flash('flash_message', __('text.Property Deleted!'));
 
-        return redirect()->back();
+            return redirect()->back();
+        }
 
     }
 
-    public function deleteNewConstruction($id)
+    public function deleteNewConstruction($id, $type = NULL)
     {
-
         $property = New_Constructions::findOrFail($id);
 
         \File::delete(public_path() .'/upload/properties/'.$property->featured_image.'-b.jpg');
@@ -1501,15 +1546,17 @@ class PropertiesController extends MainAdminController
 
         $property->delete();
 
-        \Session::flash('flash_message', __('text.Property Deleted!'));
+        if(!$type)
+        {
+            \Session::flash('flash_message', __('text.Property Deleted!'));
 
-        return redirect()->back();
+            return redirect()->back();
+        }
 
     }
 
-    public function deleteHomeExchange($id)
+    public function deleteHomeExchange($id, $type = NULL)
     {
-
         $property = Home_Exchange::findOrFail($id);
 
         \File::delete(public_path() .'/upload/properties/'.$property->featured_image.'-b.jpg');
@@ -1539,19 +1586,22 @@ class PropertiesController extends MainAdminController
 
         $property->delete();
 
-        \Session::flash('flash_message', __('text.Property Deleted!'));
+        if(!$type)
+        {
+            \Session::flash('flash_message', __('text.Property Deleted!'));
 
-        return redirect()->back();
+            return redirect()->back();
+        }
 
     }
 
 
-	public function status($id)
+	public function status($id, $type = NULL)
     {
         $property = Properties::findOrFail($id);
 
-       	if(Auth::User()->id!=$property->user_id and Auth::User()->usertype!="Admin")
-       	{
+        if(Auth::User()->id!=$property->user_id and Auth::User()->usertype!="Admin")
+        {
 
             \Session::flash('flash_message', 'Access denied!');
 
@@ -1559,26 +1609,34 @@ class PropertiesController extends MainAdminController
 
         }
 
-		if($property->status==1)
-		{
-			$property->status='0';
-	   		$property->save();
+        if(!$type)
+        {
+            if($property->status==1)
+            {
+                $property->status='0';
+                $property->save();
 
-	   		\Session::flash('flash_message', 'Unpublished');
-		}
-		else
-		{
-			$property->status='1';
-	   		$property->save();
+                \Session::flash('flash_message', 'Unpublished');
+            }
+            else
+            {
+                $property->status='1';
+                $property->save();
 
-	   		\Session::flash('flash_message', 'Published');
-		}
+                \Session::flash('flash_message', 'Published');
+            }
 
-        return redirect()->back();
+            return redirect()->back();
+        }
+        else
+        {
+            $property->status='0';
+            $property->save();
+        }
 
     }
 
-    public function statusNewConstruction($id)
+    public function statusNewConstruction($id, $type = NULL)
     {
         $property = New_Constructions::findOrFail($id);
 
@@ -1591,26 +1649,34 @@ class PropertiesController extends MainAdminController
 
         }
 
-        if($property->status==1)
+        if(!$type)
         {
-            $property->status='0';
-            $property->save();
+            if($property->status==1)
+            {
+                $property->status='0';
+                $property->save();
 
-            \Session::flash('flash_message', 'Unpublished');
+                \Session::flash('flash_message', 'Unpublished');
+            }
+            else
+            {
+                $property->status='1';
+                $property->save();
+
+                \Session::flash('flash_message', 'Published');
+            }
+
+            return redirect()->back();
         }
         else
         {
-            $property->status='1';
+            $property->status='0';
             $property->save();
-
-            \Session::flash('flash_message', 'Published');
         }
-
-        return redirect()->back();
 
     }
 
-    public function statusHomeExchange($id)
+    public function statusHomeExchange($id, $type = NULL)
     {
         $property = Home_Exchange::findOrFail($id);
 
@@ -1623,22 +1689,30 @@ class PropertiesController extends MainAdminController
 
         }
 
-        if($property->status==1)
+        if(!$type)
         {
-            $property->status='0';
-            $property->save();
+            if($property->status==1)
+            {
+                $property->status='0';
+                $property->save();
 
-            \Session::flash('flash_message', 'Unpublished');
+                \Session::flash('flash_message', 'Unpublished');
+            }
+            else
+            {
+                $property->status='1';
+                $property->save();
+
+                \Session::flash('flash_message', 'Published');
+            }
+
+            return redirect()->back();
         }
         else
         {
-            $property->status='1';
+            $property->status='0';
             $property->save();
-
-            \Session::flash('flash_message', 'Published');
         }
-
-        return redirect()->back();
 
     }
 

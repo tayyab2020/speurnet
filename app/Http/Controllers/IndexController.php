@@ -1889,7 +1889,6 @@ class IndexController extends Controller
 	    });
 
 
-
  		 return redirect()->back()->with('flash_message', 'Thanks for contacting us!');
     }
 

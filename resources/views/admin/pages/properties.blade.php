@@ -77,9 +77,23 @@
 
          	   <tr>
 
-				<td style="padding-left: 20px;">{{ $property->id }}</td>
+				<td style="padding-left: 20px;">
+                    @if(Auth::user()->usertype=='Admin')
+
+                        <ul style="list-style: none;padding: 0;margin: 0;">
+                            <li>
+                                <input value="{{$property->id}}" class="row_checkboxes" name="row_checkbox[]" id="row_checkbox{{$i}}" type="checkbox" style="position: relative;top: 2px;">
+                                <label style="font-size: 15px;font-weight: 500;" for="row_checkbox{{$i}}">{{ $property->id }}</label>
+                            </li>
+                        </ul>
+
+                    @endif
+                </td>
+
                    @if(Auth::user()->usertype=='Admin')
-				<td>{{ getUserInfo($property->user_id)->name }}</td>
+
+                       <td>{{ getUserInfo($property->user_id)->name }}</td>
+
                    @endif
 
                    @if(Route::currentRouteName() == 'properties')
@@ -269,7 +283,27 @@
 
             </tbody>
         </table>
+
     </div>
+
+    @if(Auth::user()->usertype=='Admin')
+
+        <div style="padding-left: 10px;margin-bottom: 20px;">
+            <button id="delete-rows" class="btn btn-danger">Delete</button>
+            <button id="unpublish-rows" class="btn btn-warning">Unpublish</button>
+        </div>
+
+        <form style="display: none;" id="rows-form" action="{{URL::to('admin/rows-action')}}" method="POST">
+
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            <input type="hidden" name="type" id="form-type">
+            <input type="hidden" name="route" value="{{Route::currentRouteName()}}">
+            <input type="hidden" name="ids" id="ids">
+
+        </form>
+
+    @endif
+
     <div class="clearfix"></div>
 </div>
 
@@ -280,14 +314,33 @@
 <script>
     $(document).ready(function(){
 
+        $('#delete-rows, #unpublish-rows').click(function () {
+
+            var id = $(this).attr('id');
+
+            if(id == 'delete-rows')
+            {
+                $('#form-type').val(0);
+            }
+            else
+            {
+                $('#form-type').val(1);
+            }
+
+            var ids = $(".row_checkboxes:checked").map(function(){
+                return $(this).val();
+            }).get();
+
+            $('#ids').val(ids);
+
+            $('#rows-form').submit();
+        });
 
         $("input:checkbox").change( function(){
-
-
             $(this).closest('form').submit();
         });
 
-        $('#data-table1 tr').click(function () {
+        $('#data-table1 tbody tr').click(function () {
 
             if($(this).hasClass("bg_color"))
             {
@@ -305,7 +358,7 @@
         @if(Auth::User()->usertype == "Admin")
 
         $('#data-table1').dataTable({
-            "lengthChange": false,
+            "lengthChange": true,
             "order": [[ 0, "desc" ]] // Order on init. # is the column, starting at 0
         });
 
@@ -331,6 +384,22 @@
 </script>
 
 <style>
+
+    div.dataTables_paginate .ellipsis
+    {
+        position: relative;
+        float: left;
+        padding: 6px 12px;
+        line-height: 1.42857143;
+        text-decoration: none;
+        color: #bdbdbd;
+        background-color: none;
+        border: 1px solid transparent;
+        margin-left: -1px;
+        font-weight: 600;
+        border-radius: 4px;
+        display: inline-block;
+    }
 
     @media (max-width: 768px)
     {
