@@ -198,63 +198,66 @@ class AgentsController extends Controller
 
     public function SendEnquiry(Request $request)
     {
-        $post = new agent_enquiry();
-        $post->agent_id = $request->agent_id;
-        $post->message = $request->message;
-        if($request->selling)
+        if($request->email != 'grejo@live.nl')
         {
-            $post->selling = 1;
-        }
-        if($request->leasing)
-        {
-            $post->leasing = 1;
-        }
-        if($request->rent_property)
-        {
-            $post->rent_property = 1;
-        }
-        if($request->property_appraisal)
-        {
-            $post->property_appraisal = 1;
-        }
-        if($request->buy_property)
-        {
-            $post->buy_property = 1;
-        }
-        if($request->another_topic)
-        {
-            $post->another_topic = 1;
-        }
-        $post->first_name= $request->first_name;
-        $post->last_name = $request->last_name;
-        $post->email = $request->email;
-        $post->phone = $request->phone;
-        $post->postcode = $request->postcode;
+            $post = new agent_enquiry();
+            $post->agent_id = $request->agent_id;
+            $post->message = $request->message;
+            if($request->selling)
+            {
+                $post->selling = 1;
+            }
+            if($request->leasing)
+            {
+                $post->leasing = 1;
+            }
+            if($request->rent_property)
+            {
+                $post->rent_property = 1;
+            }
+            if($request->property_appraisal)
+            {
+                $post->property_appraisal = 1;
+            }
+            if($request->buy_property)
+            {
+                $post->buy_property = 1;
+            }
+            if($request->another_topic)
+            {
+                $post->another_topic = 1;
+            }
+            $post->first_name= $request->first_name;
+            $post->last_name = $request->last_name;
+            $post->email = $request->email;
+            $post->phone = $request->phone;
+            $post->postcode = $request->postcode;
 
-        $post->save();
+            $post->save();
 
-        $parameters = $request;
+            $parameters = $request;
 
-        Mail::send('emails.profileEnquiry',
-            array(
-                'parameters' => $parameters,
-            ),  function ($message) use($parameters) {
-                $message->from(getcong('site_email'),getcong('site_name'));
-                $message->to($parameters->agent_email)
-                    ->subject(__('text.Enquiry request posted by ') . $parameters->first_name . " " . $parameters->last_name);
-            });
+            Mail::send('emails.profileEnquiry',
+                array(
+                    'parameters' => $parameters,
+                ),  function ($message) use($parameters) {
+                    $message->from(getcong('site_email'),getcong('site_name'));
+                    $message->to($parameters->agent_email)
+                        ->subject(__('text.Enquiry request posted by ') . $parameters->first_name . " " . $parameters->last_name);
+                });
 
-        Mail::send('emails.profileEnquiryCopy',
-            array(
-                'parameters' => $parameters,
-            ),  function ($message) use($parameters) {
-                $message->from(getcong('site_email'),getcong('site_name'));
-                $message->to($parameters->email)
-                    ->subject(__('text.Enquiry request posted to Agent Mr/Mrs, ') . $parameters->agent_name);
-            });
+            Mail::send('emails.profileEnquiryCopy',
+                array(
+                    'parameters' => $parameters,
+                ),  function ($message) use($parameters) {
+                    $message->from(getcong('site_email'),getcong('site_name'));
+                    $message->to($parameters->email)
+                        ->subject(__('text.Enquiry request posted to Agent Mr/Mrs, ') . $parameters->agent_name);
+                });
 
 
-        Session::flash('flash_message', __('text.Your Enquiry has been submitted successfully!'));
+            Session::flash('flash_message', __('text.Your Enquiry has been submitted successfully!'));
+        }
 
         return redirect()->back();
 
