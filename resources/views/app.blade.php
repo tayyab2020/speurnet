@@ -58,13 +58,13 @@
 
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4WYHP0M78D"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5TT1FVL6GD"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
 
-        gtag('config', 'G-4WYHP0M78D');
+        gtag('config', 'G-5TT1FVL6GD');
     </script>
 
 
