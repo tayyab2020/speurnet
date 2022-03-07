@@ -1,3 +1,158 @@
+
+<div style="margin: 0;padding-top: 10px;" class="row">
+
+    <div style="display: flex;justify-content: flex-start;align-items: center;" class="col-lg-3">
+        <a style="padding: 10px 20px;border-radius: 50px;border: 3px solid #E8D9D0;color: #b38e78;" href="#"><i style="margin-right: 5px;" class="fa fa-angle-left"></i> All Blogs</a>
+    </div>
+
+    <div style="display: flex;justify-content: center;align-items: center;" class="col-lg-6">
+        <a href="#"><img src="{{ URL::asset('assets/img/owl-logo1--removebg-preview.png') }}" style="width: 80px;height: 45px;"></a>
+    </div>
+
+    <div style="display: flex;justify-content: flex-end;align-items: center;" class="col-lg-3">
+        <a style="display: flex;align-items: center;" href="#">
+            <img src="{{ URL::asset('assets/img/FrontSpeur_Page1_4211_-removebg-preview.png') }}" style="width: 50px;height: 47px;">
+            <span style="font-weight: 700;color: black;margin-left: 5px;margin-top: 5px;">Bedrijf vermelden?</span>
+        </a>
+    </div>
+
+</div>
+
+<div style="margin: 0;padding-top: 40px;display: flex;align-items: center;" class="row">
+
+    <div style="display: flex;justify-content: flex-start;align-items: center;" class="col-lg-3"></div>
+
+    <div style="display: flex;justify-content: center;align-items: center;" class="col-lg-6">
+        <h1 class="grad">Speurnet.nl</h1>
+    </div>
+
+    <div style="display: flex;justify-content: flex-end;align-items: center;" class="col-lg-3">
+        <div id="wrap">
+            <form style="display: flex;align-items: center;" action="" autocomplete="on">
+                <input class="search-btn" id="search_submit" value="Rechercher" type="submit">
+                <input class="search-bar" id="search" name="search" type="text" placeholder="What're we looking for ?">
+            </form>
+        </div>
+    </div>
+
+</div>
+
+<div style="margin: 0;padding-top: 40px;display: flex;align-items: center;" class="row">
+
+    <div style="display: flex;justify-content: flex-start;align-items: center;" class="col-lg-2">
+        <a style="padding: 5px 20px;border-radius: 50px;color: white;background-color: #096086;" href="#">See directory <i style="margin-left: 5px;" class="fa fa-arrow-right"></i></a>
+    </div>
+
+    <div style="display: flex;justify-content: flex-start;align-items: center;" class="col-lg-2">
+        <a style="padding: 5px 20px;border-radius: 50px;color: white;background-color: #4A3988;" href="#">Find out more <i style="margin-left: 5px;" class="fa fa-arrow-right"></i></a>
+    </div>
+
+    <div style="display: flex;justify-content: flex-start;align-items: center;" class="col-lg-2">
+        <a style="padding: 5px 20px;border-radius: 50px;color: white;background-color: #9D2634;" href="#">Read more <i style="margin-left: 5px;" class="fa fa-arrow-right"></i></a>
+    </div>
+
+    <div style="display: flex;justify-content: flex-start;align-items: center;" class="col-lg-2">
+        <a style="padding: 5px 20px;border-radius: 50px;color: white;background-color: #9D2634;" href="#">Read more <i style="margin-left: 5px;" class="fa fa-arrow-right"></i></a>
+    </div>
+
+</div>
+
+<div style="margin: 0;padding-top: 40px;display: flex;align-items: center;" class="row">
+
+    <div style="display: flex;justify-content: flex-start;align-items: center;" class="col-lg-2">
+        <a style="height: 150px;border: 1px solid #343333;padding: 25px;color: black;" href="#">
+            <span style="font-weight: bold;font-size: 15px;">Hebbeding van de week</span>
+        </a>
+    </div>
+
+    <div style="display: flex;justify-content: flex-start;align-items: center;" class="col-lg-2">
+        <a style="height: 150px;border: 1px solid #343333;padding: 25px;color: black;" href="#">
+            <span style="font-weight: bold;font-size: 15px;">Hebbeding van de week</span>
+        </a>
+    </div>
+
+    <div style="display: flex;justify-content: flex-start;align-items: center;" class="col-lg-2">
+        <a style="height: 150px;border: 1px solid #343333;padding: 25px;color: black;" href="#">
+            <span style="font-weight: bold;font-size: 15px;">Winactie van de week</span>
+        </a>
+    </div>
+
+    <div style="display: flex;justify-content: flex-start;align-items: center;" class="col-lg-2">
+        <a style="height: 150px;border: 1px solid #343333;padding: 25px;color: black;" href="#">
+            <span style="font-weight: bold;font-size: 15px;">Winactie van de week</span>
+        </a>
+    </div>
+
+    <div style="display: flex;justify-content: flex-start;align-items: center;" class="col-lg-2">
+        <a style="height: 150px;" href="#">
+            <img src="{{ URL::asset('assets/img/istockphoto-1196145495-612x612.jpg') }}" style="width: 100%;height: 100%;">
+        </a>
+    </div>
+
+</div>
+
+<style>
+
+    .grad {
+        background: rgb(255,255,255);
+        background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 70%, #fae053 50%, #fae053 100%);
+        display: inline;
+        color: black;
+        font-family: system-ui;
+        margin: 0;
+        font-size: 45px;
+        font-weight: 900;
+    }
+
+    #wrap {
+        display: inline-block;
+        padding: 0;
+        position: relative;
+    }
+
+    .search-bar {
+        font-size: 25px;
+        display: inline-block;
+        font-family: "Lato";
+        font-weight: 100;
+        border: none;
+        outline: none;
+        color: #555;
+        padding: 3px;
+        background: none;
+        transition: width .4s cubic-bezier(0.000, 0.795, 0.000, 1.000);
+        width: 100%;
+        z-index: 1;
+        cursor: text;
+        margin-left: 5px;
+    }
+
+    .search-bar:focus {
+        border-bottom: 1px solid #BBB;
+    }
+
+    .search-btn {
+        height: 40px;
+        width: 45px;
+        display: inline-block;
+        color:red;
+        background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAMAAABg3Am1AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAADNQTFRFU1NT9fX1lJSUXl5e1dXVfn5+c3Nz6urqv7+/tLS0iYmJqampn5+fysrK39/faWlp////Vi4ZywAAABF0Uk5T/////////////////////wAlrZliAAABLklEQVR42rSWWRbDIAhFHeOUtN3/ags1zaA4cHrKZ8JFRHwoXkwTvwGP1Qo0bYObAPwiLmbNAHBWFBZlD9j0JxflDViIObNHG/Do8PRHTJk0TezAhv7qloK0JJEBh+F8+U/hopIELOWfiZUCDOZD1RADOQKA75oq4cvVkcT+OdHnqqpQCITWAjnWVgGQUWz12lJuGwGoaWgBKzRVBcCypgUkOAoWgBX/L0CmxN40u6xwcIJ1cOzWYDffp3axsQOyvdkXiH9FKRFwPRHYZUaXMgPLeiW7QhbDRciyLXJaKheCuLbiVoqx1DVRyH26yb0hsuoOFEPsoz+BVE0MRlZNjGZcRQyHYkmMp2hBTIzdkzCTc/pLqOnBrk7/yZdAOq/q5NPBH1f7x7fGP4C3AAMAQrhzX9zhcGsAAAAASUVORK5CYII=) center center no-repeat;
+        background-size: 45%;
+        text-indent: -10000px;
+        z-index: 2;
+        opacity: 0.4;
+        cursor: pointer;
+        transition: opacity .4s ease;
+        border: 1px solid gray;
+        border-radius: 15px;
+    }
+
+    .search-btn:hover {
+        opacity: 0.8;
+    }
+
+</style>
+
 <!-- begin:navbar -->
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container container-header">
