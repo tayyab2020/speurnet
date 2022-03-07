@@ -35,24 +35,21 @@ class SettingsController extends MainAdminController
 
     public function settingsUpdates(Request $request)
     {
-
     	$settings = Settings::findOrFail('1');
 
+	    $data = \Request::except(array('_token')) ;
 
-	    $data =  \Request::except(array('_token')) ;
-
-	    $rule=array(
-		        'site_name' => 'required',
-		        'site_email' => 'required'
-		   		 );
+	    $rule = array(
+		    'site_name' => 'required',
+		    'site_email' => 'required'
+		);
 
 	   	 $validator = \Validator::make($data,$rule);
 
-            if ($validator->fails())
-            {
-                    return redirect()->back()->withErrors($validator->messages());
-            }
-
+        if ($validator->fails())
+        {
+            return redirect()->back()->withErrors($validator->messages());
+    	}
 
 	    $inputs = $request->all();
 
@@ -64,7 +61,7 @@ class SettingsController extends MainAdminController
 
         if($icon){
 
-            unlink(public_path().'/upload/' . $settings->site_logo);
+			\File::delete(public_path().'/upload/' . $settings->site_logo);
 
             $icon_name = "logo" . time() . ".png";
 
@@ -77,7 +74,7 @@ class SettingsController extends MainAdminController
         //Favicon
         if($icon_favicon){
 
-            unlink(public_path().'/upload/' . $settings->site_favicon);
+			\File::delete(public_path().'/upload/' . $settings->site_favicon);
 
             $favicon_name = "favicon" . time() . ".png";
 
