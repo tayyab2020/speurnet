@@ -1,5 +1,5 @@
 
-<div style="margin: 0;padding-top: 10px;" class="row">
+<div style="margin: 0;padding-top: 10px;" class="row top-bar">
 
     <div style="display: flex;justify-content: flex-start;align-items: center;" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
         <a class="top-left-link" style="padding: 10px 20px;border-radius: 50px;border: 3px solid #E8D9D0;color: #b38e78;" href="#"><i style="margin-right: 5px;" class="fa fa-angle-left"></i> All Blogs</a>
@@ -85,17 +85,16 @@
 
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-top">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="{{ URL::to('/') }}" style="padding-right: 0px;">
 
-          @if(getcong('site_logo')) <img src="{{ URL::asset('upload/'.getcong('site_logo')) }}" alt=""> @else {{getcong('site_name')}} @endif
+            <h1 style="margin-top: 20px;margin-left: 10px;" class="grad">Speurnet.nl</h1>
 
-          </a>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-top">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -247,19 +246,25 @@
         display: none;
     }
 
+    .navbar-header .grad{ display: none; }
+
     @media screen and (max-width: 767px)
     {
         .below-btn{ margin-top: 10px;text-align: left !important; margin-left: 15px !important; }
 
-        .top-left-link{ padding: 5px 10px !important;font-size: 12px; }
+        /*.top-left-link{ padding: 5px 10px !important;font-size: 12px; }*/
 
         .grad{ font-size: 30px; }
 
-        .top-right-link{ font-size: 12px;line-height: 1.5; }
+        .top-bar{ display: none; }
 
-        .top-right-link img{ width: 40px !important;height: 30px !important; }
+        .navbar-header .grad{ display: inline-block; }
 
-        .top-right-link span{ margin-top: 0 !important; }
+        /*.top-right-link{ font-size: 12px;line-height: 1.5; }*/
+
+        /*.top-right-link img{ width: 40px !important;height: 30px !important; }*/
+
+        /*.top-right-link span{ margin-top: 0 !important; }*/
     }
 
     a{outline: none !important;}
