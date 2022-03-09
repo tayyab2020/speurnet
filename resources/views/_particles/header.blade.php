@@ -255,6 +255,8 @@
 
         .navbar-header .grad{ display: inline-block; }
 
+        #wrap form{ padding: 10px 0 !important; }
+
         /*.top-right-link{ font-size: 12px;line-height: 1.5; }*/
 
         /*.top-right-link img{ width: 40px !important;height: 30px !important; }*/
