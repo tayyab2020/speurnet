@@ -1,91 +1,18 @@
 
 <div style="margin: 0;padding-top: 10px;" class="row">
 
-    <div style="display: flex;justify-content: flex-start;align-items: center;" class="col-lg-3">
-        <a style="padding: 10px 20px;border-radius: 50px;border: 3px solid #E8D9D0;color: #b38e78;" href="#"><i style="margin-right: 5px;" class="fa fa-angle-left"></i> All Blogs</a>
+    <div style="display: flex;justify-content: flex-start;align-items: center;" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+        <a class="top-left-link" style="padding: 10px 20px;border-radius: 50px;border: 3px solid #E8D9D0;color: #b38e78;" href="#"><i style="margin-right: 5px;" class="fa fa-angle-left"></i> All Blogs</a>
     </div>
 
-    <div style="display: flex;justify-content: center;align-items: center;" class="col-lg-6">
-        <a href="#"><img src="{{ URL::asset('assets/img/owl-logo1--removebg-preview.png') }}" style="width: 80px;height: 45px;"></a>
-    </div>
-
-    <div style="display: flex;justify-content: flex-end;align-items: center;" class="col-lg-3">
-        <a style="display: flex;align-items: center;" href="#">
-            <img src="{{ URL::asset('assets/img/FrontSpeur_Page1_4211_-removebg-preview.png') }}" style="width: 50px;height: 47px;">
-            <span style="font-weight: 700;color: black;margin-left: 5px;margin-top: 5px;">Bedrijf vermelden?</span>
-        </a>
-    </div>
-
-</div>
-
-<div style="margin: 0;padding-top: 40px;display: flex;align-items: center;" class="row">
-
-    <div style="display: flex;justify-content: flex-start;align-items: center;" class="col-lg-3"></div>
-
-    <div style="display: flex;justify-content: center;align-items: center;" class="col-lg-6">
+    <div style="display: flex;justify-content: center;align-items: center;" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
         <h1 class="grad">Speurnet.nl</h1>
     </div>
 
-    <div style="display: flex;justify-content: flex-end;align-items: center;" class="col-lg-3">
-        <div id="wrap">
-            <form style="display: flex;align-items: center;" action="" autocomplete="on">
-                <input class="search-btn" id="search_submit" value="Rechercher" type="submit">
-                <input class="search-bar" id="search" name="search" type="text" placeholder="What're we looking for ?">
-            </form>
-        </div>
-    </div>
-
-</div>
-
-<div style="margin: 0;padding-top: 40px;display: flex;align-items: center;" class="row">
-
-    <div style="display: flex;justify-content: flex-start;align-items: center;" class="col-lg-2">
-        <a style="padding: 5px 20px;border-radius: 50px;color: white;background-color: #096086;" href="#">See directory <i style="margin-left: 5px;" class="fa fa-arrow-right"></i></a>
-    </div>
-
-    <div style="display: flex;justify-content: flex-start;align-items: center;" class="col-lg-2">
-        <a style="padding: 5px 20px;border-radius: 50px;color: white;background-color: #4A3988;" href="#">Find out more <i style="margin-left: 5px;" class="fa fa-arrow-right"></i></a>
-    </div>
-
-    <div style="display: flex;justify-content: flex-start;align-items: center;" class="col-lg-2">
-        <a style="padding: 5px 20px;border-radius: 50px;color: white;background-color: #9D2634;" href="#">Read more <i style="margin-left: 5px;" class="fa fa-arrow-right"></i></a>
-    </div>
-
-    <div style="display: flex;justify-content: flex-start;align-items: center;" class="col-lg-2">
-        <a style="padding: 5px 20px;border-radius: 50px;color: white;background-color: #9D2634;" href="#">Read more <i style="margin-left: 5px;" class="fa fa-arrow-right"></i></a>
-    </div>
-
-</div>
-
-<div style="margin: 0;padding-top: 40px;display: flex;align-items: center;" class="row">
-
-    <div style="display: flex;justify-content: flex-start;align-items: center;" class="col-lg-2">
-        <a style="height: 150px;border: 1px solid #343333;padding: 25px;color: black;" href="#">
-            <span style="font-weight: bold;font-size: 15px;">Hebbeding van de week</span>
-        </a>
-    </div>
-
-    <div style="display: flex;justify-content: flex-start;align-items: center;" class="col-lg-2">
-        <a style="height: 150px;border: 1px solid #343333;padding: 25px;color: black;" href="#">
-            <span style="font-weight: bold;font-size: 15px;">Hebbeding van de week</span>
-        </a>
-    </div>
-
-    <div style="display: flex;justify-content: flex-start;align-items: center;" class="col-lg-2">
-        <a style="height: 150px;border: 1px solid #343333;padding: 25px;color: black;" href="#">
-            <span style="font-weight: bold;font-size: 15px;">Winactie van de week</span>
-        </a>
-    </div>
-
-    <div style="display: flex;justify-content: flex-start;align-items: center;" class="col-lg-2">
-        <a style="height: 150px;border: 1px solid #343333;padding: 25px;color: black;" href="#">
-            <span style="font-weight: bold;font-size: 15px;">Winactie van de week</span>
-        </a>
-    </div>
-
-    <div style="display: flex;justify-content: flex-start;align-items: center;" class="col-lg-2">
-        <a style="height: 150px;" href="#">
-            <img src="{{ URL::asset('assets/img/istockphoto-1196145495-612x612.jpg') }}" style="width: 100%;height: 100%;">
+    <div style="display: flex;justify-content: flex-end;align-items: center;" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+        <a class="top-right-link" style="display: flex;align-items: center;" href="#">
+            <img src="{{ URL::asset('assets/img/FrontSpeur_Page1_4211_-removebg-preview.png') }}" style="width: 50px;height: 47px;">
+            <span style="font-weight: 700;color: black;margin-left: 5px;margin-top: 5px;">Bedrijf vermelden?</span>
         </a>
     </div>
 
@@ -111,7 +38,7 @@
     }
 
     .search-bar {
-        font-size: 25px;
+        font-size: 20px;
         display: inline-block;
         font-family: "Lato";
         font-weight: 100;
@@ -153,8 +80,7 @@
 
 </style>
 
-<!-- begin:navbar -->
-    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+<nav class="navbar navbar-default navbar-fixed-top mobile-nav" role="navigation">
       <div class="container container-header">
 
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -179,56 +105,130 @@
                 <i class="fa fa-close"></i>
             </button>
 
-          <ul class="nav navbar-nav navbar-right">
-            <li class="{{classActivePathPublic('')}}"><a href="{{ URL::to('/') }}">{{__('text.Home')}}</a></li>
-        	<li class="{{classActivePathPublic('woningaanbod')}}"><a href="{{route('properties-front')}}">{{__('text.All Properties')}}</a></li>
-            {{--<li class="{{classActivePathPublic('featured')}}"><a href="{{ URL::to('featured/') }}">Featured</a></li>--}}
-            {{--<li class="{{classActivePathPublic('sale')}}"><a href="{{ URL::to('sale/') }}">Sale</a></li>
-            <li class="{{classActivePathPublic('rent')}}"><a href="{{ URL::to('rent/') }}">Rent</a></li>--}}
-            <li class="{{classActivePathPublic('makelaars')}}"><a href="{{route('agents-front')}}">{{__('text.Agents')}}</a></li>
-            <li class="{{classActivePathPublic('nieuwbouwprojecten')}}"><a href="{{ route('newconstructions-front') }}">{{__('text.New Constructions')}}</a></li>
-            <li class="{{classActivePathPublic('woningruil')}}"><a href="{{ route('homeexchange-front') }}">{{__('text.Home Exchange')}}</a></li>
-            <li class="{{classActivePathPublic('verhuistips')}}"><a href="{{ route('front-moving-tips') }}">{{__('text.Moving Tips')}}</a></li>
-            <li class="{{classActivePathPublic('expats')}}"><a href="{{ URL::to('expats/') }}">{{__('text.Expats')}}</a></li>
+            <ul style="margin-right: 0;" class="nav navbar-nav navbar-right">
 
-             @if(Auth::check())
+                <li class="{{classActivePathPublic('')}}"><a href="{{ URL::to('/') }}">{{__('text.Home')}}</a></li>
+                <li class="{{classActivePathPublic('woningaanbod')}}"><a href="{{route('properties-front')}}">{{__('text.All Properties')}}</a></li>
+                {{--<li class="{{classActivePathPublic('featured')}}"><a href="{{ URL::to('featured/') }}">Featured</a></li>--}}
+                {{--<li class="{{classActivePathPublic('sale')}}"><a href="{{ URL::to('sale/') }}">Sale</a></li>
+                <li class="{{classActivePathPublic('rent')}}"><a href="{{ URL::to('rent/') }}">Rent</a></li>--}}
+                <li class="{{classActivePathPublic('makelaars')}}"><a href="{{route('agents-front')}}">{{__('text.Agents')}}</a></li>
+                <li class="{{classActivePathPublic('nieuwbouwprojecten')}}"><a href="{{ route('newconstructions-front') }}">{{__('text.New Constructions')}}</a></li>
+                <li class="{{classActivePathPublic('woningruil')}}"><a href="{{ route('homeexchange-front') }}">{{__('text.Home Exchange')}}</a></li>
+                <li class="{{classActivePathPublic('verhuistips')}}"><a href="{{ route('front-moving-tips') }}">{{__('text.Moving Tips')}}</a></li>
+                <li class="{{classActivePathPublic('expats')}}"><a href="{{ URL::to('expats/') }}">{{__('text.Expats')}}</a></li>
 
-                  <li class="dropdown">
-                      <a style="border: 1px solid #ff1818;padding: 20px;margin-top: 10px;margin-right: 10px;" href="#" class="my-account-btn dropdown-toggle" data-toggle="dropdown">{{__('text.My Account')}} <b class="caret"></b></a>
-                      <ul class="dropdown-menu">
-                          <li><a href="{{ URL::to('admin/dashboard/') }}">@if(Auth::user()->usertype=='Users') {{__('text.My Home Exchange')}} @else {{__('text.Dashboard')}} @endif</a></li>
-                          <li><a href="{{ URL::to('admin/profile/') }}">{{__('text.Profile')}}</a></li>
-                          <li><a href="{{ URL::to('logout') }}">{{__('text.Logout')}}</a></li>
-                      </ul>
-                  </li>
-
-                  @if(Auth::user()->usertype=='Users')
-
-                      <li><a href="{{ URL::to('addhomeexchange') }}" class="signup col-lg-12 col-md-3 col-sm-6 col-xs-6" style="margin-left: 0;float: none;">{{__('text.Post your Property')}}</a>
-                          <span style="display: block;text-align: center;" class="below-btn">{{__('text.Post property button')}}</span>
-                      </li>
-
-                  @else
-
-                      <li><a href="{{ URL::to('addproperty') }}" class="signup col-lg-12 col-md-3 col-sm-6 col-xs-6" style="margin-left: 0;float: none;">{{__('text.Post your Property')}}</a>
-                          <span style="display: block;text-align: center;" class="below-btn">{{__('text.Post property button')}}</span>
-                      </li>
-
-                  @endif
-
-             @else
-                  <li>
-                      <i style="font-size: 18px;border-left: 1px solid #a5a1a1;padding-left: 15px;" class="fas fa-user"></i>
-                      <a href="{{ URL::to('login') }}" style="display: inline-block;padding-left: 5px;padding-right: 5px;">{{__('text.Sign in')}}</a><span> / </span>
-                      <a href="{{ URL::to('accountaanmaken') }}" style="display: inline-block;padding-left: 5px;padding-right: 5px;">{{__('text.Sign up')}}</a>
-                  </li>
-            	<li><a href="{{ URL::to('login') }}" class="signup col-lg-12 col-md-3 col-sm-6 col-xs-6" style="margin-left: 0;float: none;">{{__('text.Post your Property')}}</a>
-                    <span style="display: block;text-align: center;" class="below-btn">{{__('text.Post property button')}}</span>
+                <li id="wrap">
+                    <form style="display: flex;align-items: center;padding: 20px;" action="" autocomplete="on">
+                        <input class="search-btn" id="search_submit" value="Rechercher" type="submit">
+                        <input class="search-bar" id="search" name="search" type="text" placeholder="What're we looking for ?">
+                    </form>
                 </li>
-             @endif
+
+            </ul>
+
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container -->
+    </nav>
+   <!-- end:navbar -->
+
+@if(count($content))
+
+    <div class="row" style="margin: 40px 0 0 0;">
+
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="display: flex;">
+
+            <div style="margin: 0;" data-testid="key-services" class="css-htlmaj col-lg-10 col-md-12 col-sm-12 col-xs-12">
+                <div>
+                    <div class="domain-home_ down is-visible">
+
+                        <h2 class="css-ce6ko1">{{$heading->wyh_heading}}</h2>
+
+                        <ul class="css-48sroz" style="list-style: none;padding: 0;">
+
+                            @foreach($content as $temp)
+
+                                <li>
+
+                                    @if($temp->image)
+
+                                        <a target="_blank" href="@if($temp->url){{$temp->url}} @else {{URL::to('/')}} @endif">
+
+                                            <img src="{{ URL::asset('upload/homepage_icons/'.$temp->image) }}">{{$temp->title}}
+
+                                        </a>
+
+                                    @else
+
+                                        <a target="_blank" style="display: flex;justify-content: center;" href="@if($temp->url){{$temp->url}} @else {{URL::to('/')}} @endif">
+
+                                            {{$temp->title}}
+
+                                        </a>
+
+                                    @endif
+
+                                </li>
+
+                            @endforeach
 
 
-          </ul>
+                        </ul></div></div></div>
+
+        </div>
+
+    </div>
+
+@endif
+
+<!-- begin:navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top desktop-nav" role="navigation">
+      <div class="container container-header">
+
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-top">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="{{ URL::to('/') }}" style="padding-right: 0px;">
+
+          @if(getcong('site_logo')) <img src="{{ URL::asset('upload/'.getcong('site_logo')) }}" alt=""> @else {{getcong('site_name')}} @endif
+
+          </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="navbar-top" style="margin: 0;padding: 0;">
+
+            <button style="border: 0;position: absolute;right: 15px;z-index: 10000;margin-top: 0;" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-top" aria-expanded="true">
+                <i class="fa fa-close"></i>
+            </button>
+
+            <ul style="margin-right: 0;width: 100%;" class="nav navbar-nav navbar-right">
+
+                <li style="margin-left: 50px;" class="{{classActivePathPublic('')}}"><a href="{{ URL::to('/') }}">{{__('text.Home')}}</a></li>
+                <li class="{{classActivePathPublic('woningaanbod')}}"><a href="{{route('properties-front')}}">{{__('text.All Properties')}}</a></li>
+                {{--<li class="{{classActivePathPublic('featured')}}"><a href="{{ URL::to('featured/') }}">Featured</a></li>--}}
+                {{--<li class="{{classActivePathPublic('sale')}}"><a href="{{ URL::to('sale/') }}">Sale</a></li>
+                <li class="{{classActivePathPublic('rent')}}"><a href="{{ URL::to('rent/') }}">Rent</a></li>--}}
+                <li class="{{classActivePathPublic('makelaars')}}"><a href="{{route('agents-front')}}">{{__('text.Agents')}}</a></li>
+                <li class="{{classActivePathPublic('nieuwbouwprojecten')}}"><a href="{{ route('newconstructions-front') }}">{{__('text.New Constructions')}}</a></li>
+                <li class="{{classActivePathPublic('woningruil')}}"><a href="{{ route('homeexchange-front') }}">{{__('text.Home Exchange')}}</a></li>
+                <li class="{{classActivePathPublic('verhuistips')}}"><a href="{{ route('front-moving-tips') }}">{{__('text.Moving Tips')}}</a></li>
+                <li class="{{classActivePathPublic('expats')}}"><a href="{{ URL::to('expats/') }}">{{__('text.Expats')}}</a></li>
+
+                <li style="float: right;" id="wrap">
+                    <form style="display: flex;align-items: center;padding: 20px;" action="" autocomplete="on">
+                        <input class="search-btn" id="search_submit" value="Rechercher" type="submit">
+                        <input class="search-bar" id="search" name="search" type="text" placeholder="What're we looking for ?">
+                    </form>
+                </li>
+
+            </ul>
+
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container -->
     </nav>
@@ -242,9 +242,24 @@
         background-color: white;
     }
 
+    .mobile-nav
+    {
+        display: none;
+    }
+
     @media screen and (max-width: 767px)
     {
         .below-btn{ margin-top: 10px;text-align: left !important; margin-left: 15px !important; }
+
+        .top-left-link{ padding: 5px 10px !important;font-size: 12px; }
+
+        .grad{ font-size: 30px; }
+
+        .top-right-link{ font-size: 12px;line-height: 1.5; }
+
+        .top-right-link img{ width: 40px !important;height: 30px !important; }
+
+        .top-right-link span{ margin-top: 0 !important; }
     }
 
     a{outline: none !important;}
@@ -256,6 +271,16 @@
 
     @media (max-width: 1200px)
     {
+        .desktop-nav
+        {
+            display: none;
+        }
+
+        .mobile-nav
+        {
+            display: block;
+        }
+
         .navbar-collapse.collapse
         {
             display: none !important;
@@ -316,7 +341,7 @@
         .container-header
         {
             padding: 0;
-            width: 95%;
+            width: 100%;
         }
     }
 
