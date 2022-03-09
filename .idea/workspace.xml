@@ -221,6 +221,7 @@
       <find>$(this).ekkoLightbox({</find>
       <find>jquer</find>
       <find>&lt;script src=&quot;https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js&quot;&gt;&lt;/script&gt;</find>
+      <find>.grad</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
