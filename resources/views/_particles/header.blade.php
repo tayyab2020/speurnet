@@ -192,11 +192,6 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="{{ URL::to('/') }}" style="padding-right: 0px;">
-
-          @if(getcong('site_logo')) <img src="{{ URL::asset('upload/'.getcong('site_logo')) }}" alt=""> @else {{getcong('site_name')}} @endif
-
-          </a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
