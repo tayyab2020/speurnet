@@ -48,7 +48,7 @@
         padding: 3px;
         background: none;
         transition: width .4s cubic-bezier(0.000, 0.795, 0.000, 1.000);
-        width: 100%;
+        /*width: 100%;*/
         z-index: 1;
         cursor: text;
         margin-left: 5px;
@@ -131,17 +131,28 @@
     </nav>
    <!-- end:navbar -->
 
+@include("_particles.slidersearch")
+
 @if(count($content))
 
     <div class="row" style="margin: 40px 0 0 0;">
 
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="display: flex;">
 
-            <div style="margin: 0;" data-testid="key-services" class="css-htlmaj col-lg-10 col-md-12 col-sm-12 col-xs-12">
+            <div style="margin: 0;" data-testid="key-services" class="css-htlmaj col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div>
                     <div class="domain-home_ down is-visible">
 
-                        <h2 class="css-ce6ko1">{{$heading->wyh_heading}}</h2>
+                        <div style="margin: 0;display: flex;justify-content: space-between;align-items: center;" class="row">
+
+                            <h2 style="width: 100%;" class="css-ce6ko1">{{$heading->wyh_heading}}</h2>
+
+                            <form class="desktop-search" style="display: flex;align-items: center;justify-content: flex-end;padding: 20px 0;width: 100%;" action="" autocomplete="on">
+                                <input class="search-btn" id="search_submit" value="Rechercher" type="submit">
+                                <input class="search-bar" id="search" name="search" type="text" placeholder="What're we looking for ?">
+                            </form>
+
+                        </div>
 
                         <ul class="css-48sroz" style="list-style: none;padding: 0;">
 
@@ -171,8 +182,11 @@
 
                             @endforeach
 
+                        </ul>
 
-                        </ul></div></div></div>
+                    </div>
+                </div>
+            </div>
 
         </div>
 
@@ -213,13 +227,6 @@
                 <li class="{{classActivePathPublic('woningruil')}}"><a href="{{ route('homeexchange-front') }}">{{__('text.Home Exchange')}}</a></li>
                 <li class="{{classActivePathPublic('verhuistips')}}"><a href="{{ route('front-moving-tips') }}">{{__('text.Moving Tips')}}</a></li>
                 <li class="{{classActivePathPublic('expats')}}"><a href="{{ URL::to('expats/') }}">{{__('text.Expats')}}</a></li>
-
-                <li style="float: right;" id="wrap">
-                    <form style="display: flex;align-items: center;padding: 20px;" action="" autocomplete="on">
-                        <input class="search-btn" id="search_submit" value="Rechercher" type="submit">
-                        <input class="search-bar" id="search" name="search" type="text" placeholder="What're we looking for ?">
-                    </form>
-                </li>
 
             </ul>
 
@@ -273,6 +280,11 @@
 
     @media (max-width: 1200px)
     {
+        .desktop-search
+        {
+            display: none !important;
+        }
+        
         .desktop-nav
         {
             display: none;
