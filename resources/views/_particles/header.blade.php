@@ -1,5 +1,5 @@
 
-<div style="margin: 0;padding-top: 10px;" class="row top-bar">
+<div style="margin: 0 0 30px 0;padding-top: 10px;" class="row top-bar">
 
     <div style="display: flex;justify-content: flex-start;align-items: center;" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
         <a class="top-left-link" style="padding: 10px 20px;border-radius: 50px;border: 3px solid #E8D9D0;color: #b38e78;" href="#"><i style="margin-right: 5px;" class="fa fa-angle-left"></i> All Blogs</a>
