@@ -7,7 +7,7 @@
 @section("content")
 
 <!-- begin:content -->
-    <div id="content" style="padding: 30px 0 0 0;">
+    <div id="content" style="padding: 30px 0 20px 0;">
 
         @if(Session::has('flash_message'))
             <div class="alert alert-success alert-box" style="text-align: center;font-size: 16px;position: fixed;top: 20%;z-index: 1000;padding-right: 35px;background-color: rgb(0 0 0);color: rgb(255 255 255);border: 0;max-width: 400px;border-radius: 0;">
@@ -378,6 +378,8 @@
     #footer
     {
         background-color: white;
+        border-top: 1px solid #686868;
+        padding: 20px 0 0;
     }
 
     #footer .widget h3
