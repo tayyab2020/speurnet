@@ -75,137 +75,137 @@
 
             <div style="margin-top: 30px;" class="col-lg-7 col-md-6 col-sm-12 col-xs-12">
 
-                <div style="margin: 0;display: flex;justify-content: flex-start;flex-wrap: wrap;" class="row">
+                <div class="row company-boxes">
 
-                    <a href="#" style="height: 160px;padding: 5px;" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
-                        <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;margin: 0;background-color: #F7D5D9;border-radius: 10px;width: 100%;height: 100%;" class="row">
-                            <span style="color: #6C6CA4;font-weight: 600;font-size: 18px;">Company Title</span>
+                    <a href="#" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
+                        <div style="background-color: #F7D5D9;" class="row">
+                            <span>Company Title</span>
                         </div>
                     </a>
 
-                    <a href="#" style="height: 160px;padding: 5px;" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
-                        <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;margin: 0;background-color: #F5DEF3;border-radius: 10px;width: 100%;height: 100%;" class="row">
-                            <span style="color: #6C6CA4;font-weight: 600;font-size: 18px;">Company Title</span>
+                    <a href="#" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
+                        <div style="background-color: #F5DEF3;" class="row">
+                            <span>Company Title</span>
                         </div>
                     </a>
 
-                    <a href="#" style="height: 160px;padding: 5px;" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
-                        <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;margin: 0;background-color: #C2EEEB;border-radius: 10px;width: 100%;height: 100%;" class="row">
-                            <span style="color: #6C6CA4;font-weight: 600;font-size: 18px;">Company Title</span>
+                    <a href="#" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
+                        <div style="background-color: #C2EEEB;" class="row">
+                            <span>Company Title</span>
                         </div>
                     </a>
 
-                    <a href="#" style="height: 160px;padding: 5px;" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
-                        <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;margin: 0;background-color: #C2EEEB;border-radius: 10px;width: 100%;height: 100%;" class="row">
-                            <span style="color: #6C6CA4;font-weight: 600;font-size: 18px;">Company Title</span>
+                    <a href="#" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
+                        <div style="background-color: #C2EEEB;" class="row">
+                            <span>Company Title</span>
                         </div>
                     </a>
 
-                    <a href="#" style="height: 160px;padding: 5px;" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
-                        <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;margin: 0;background-color: #DAF4D9;border-radius: 10px;width: 100%;height: 100%;" class="row">
-                            <span style="color: #6C6CA4;font-weight: 600;font-size: 18px;">Company Title</span>
+                    <a href="#" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
+                        <div style="background-color: #DAF4D9;" class="row">
+                            <span>Company Title</span>
                         </div>
                     </a>
 
-                    <a href="#" style="height: 160px;padding: 5px;" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
-                        <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;margin: 0;background-color: #F4E4BD;border-radius: 10px;width: 100%;height: 100%;" class="row">
-                            <span style="color: #6C6CA4;font-weight: 600;font-size: 18px;">Company Title</span>
+                    <a href="#" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
+                        <div style="background-color: #F4E4BD;" class="row">
+                            <span>Company Title</span>
                         </div>
                     </a>
 
-                    <a href="#" style="height: 160px;padding: 5px;" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
-                        <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;margin: 0;background-color: #F7D5D9;border-radius: 10px;width: 100%;height: 100%;" class="row">
-                            <span style="color: #6C6CA4;font-weight: 600;font-size: 18px;">Company Title</span>
+                    <a href="#" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
+                        <div style="background-color: #F7D5D9;" class="row">
+                            <span>Company Title</span>
                         </div>
                     </a>
 
-                    <a href="#" style="height: 160px;padding: 5px;" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
-                        <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;margin: 0;background-color: #F5DEF3;border-radius: 10px;width: 100%;height: 100%;" class="row">
-                            <span style="color: #6C6CA4;font-weight: 600;font-size: 18px;">Company Title</span>
+                    <a href="#" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
+                        <div style="background-color: #F5DEF3;" class="row">
+                            <span>Company Title</span>
                         </div>
                     </a>
 
-                    <a href="#" style="height: 160px;padding: 5px;" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
-                        <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;margin: 0;background-color: #C2EEEB;border-radius: 10px;width: 100%;height: 100%;" class="row">
-                            <span style="color: #6C6CA4;font-weight: 600;font-size: 18px;">Company Title</span>
+                    <a href="#" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
+                        <div style="background-color: #C2EEEB;" class="row">
+                            <span>Company Title</span>
                         </div>
                     </a>
 
-                    <a href="#" style="height: 160px;padding: 5px;" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
-                        <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;margin: 0;background-color: #C2EEEB;border-radius: 10px;width: 100%;height: 100%;" class="row">
-                            <span style="color: #6C6CA4;font-weight: 600;font-size: 18px;">Company Title</span>
+                    <a href="#" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
+                        <div style="background-color: #C2EEEB;" class="row">
+                            <span>Company Title</span>
                         </div>
                     </a>
 
-                    <a href="#" style="height: 160px;padding: 5px;" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
-                        <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;margin: 0;background-color: #DAF4D9;border-radius: 10px;width: 100%;height: 100%;" class="row">
-                            <span style="color: #6C6CA4;font-weight: 600;font-size: 18px;">Company Title</span>
+                    <a href="#" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
+                        <div style="background-color: #DAF4D9;" class="row">
+                            <span>Company Title</span>
                         </div>
                     </a>
 
-                    <a href="#" style="height: 160px;padding: 5px;" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
-                        <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;margin: 0;background-color: #F4E4BD;border-radius: 10px;width: 100%;height: 100%;" class="row">
-                            <span style="color: #6C6CA4;font-weight: 600;font-size: 18px;">Company Title</span>
+                    <a href="#" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
+                        <div style="background-color: #F4E4BD;" class="row">
+                            <span>Company Title</span>
                         </div>
                     </a>
 
-                    <a href="#" style="height: 160px;padding: 5px;" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
-                        <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;margin: 0;background-color: #F7D5D9;border-radius: 10px;width: 100%;height: 100%;" class="row">
-                            <span style="color: #6C6CA4;font-weight: 600;font-size: 18px;">Company Title</span>
+                    <a href="#" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
+                        <div style="background-color: #F7D5D9;" class="row">
+                            <span>Company Title</span>
                         </div>
                     </a>
 
-                    <a href="#" style="height: 160px;padding: 5px;" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
-                        <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;margin: 0;background-color: #F5DEF3;border-radius: 10px;width: 100%;height: 100%;" class="row">
-                            <span style="color: #6C6CA4;font-weight: 600;font-size: 18px;">Company Title</span>
+                    <a href="#" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
+                        <div style="background-color: #F5DEF3;" class="row">
+                            <span>Company Title</span>
                         </div>
                     </a>
 
-                    <a href="#" style="height: 160px;padding: 5px;" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
-                        <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;margin: 0;background-color: #C2EEEB;border-radius: 10px;width: 100%;height: 100%;" class="row">
-                            <span style="color: #6C6CA4;font-weight: 600;font-size: 18px;">Company Title</span>
+                    <a href="#" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
+                        <div style="background-color: #C2EEEB;" class="row">
+                            <span>Company Title</span>
                         </div>
                     </a>
 
-                    <a href="#" style="height: 160px;padding: 5px;" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
-                        <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;margin: 0;background-color: #C2EEEB;border-radius: 10px;width: 100%;height: 100%;" class="row">
-                            <span style="color: #6C6CA4;font-weight: 600;font-size: 18px;">Company Title</span>
+                    <a href="#" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
+                        <div style="background-color: #C2EEEB;" class="row">
+                            <span>Company Title</span>
                         </div>
                     </a>
 
-                    <a href="#" style="height: 160px;padding: 5px;" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
-                        <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;margin: 0;background-color: #DAF4D9;border-radius: 10px;width: 100%;height: 100%;" class="row">
-                            <span style="color: #6C6CA4;font-weight: 600;font-size: 18px;">Company Title</span>
+                    <a href="#" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
+                        <div style="background-color: #DAF4D9;" class="row">
+                            <span>Company Title</span>
                         </div>
                     </a>
 
-                    <a href="#" style="height: 160px;padding: 5px;" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
-                        <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;margin: 0;background-color: #F4E4BD;border-radius: 10px;width: 100%;height: 100%;" class="row">
-                            <span style="color: #6C6CA4;font-weight: 600;font-size: 18px;">Company Title</span>
+                    <a href="#" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
+                        <div style="background-color: #F4E4BD;" class="row">
+                            <span>Company Title</span>
                         </div>
                     </a>
 
-                    <a href="#" style="height: 160px;padding: 5px;" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
-                        <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;margin: 0;background-color: #F7D5D9;border-radius: 10px;width: 100%;height: 100%;" class="row">
-                            <span style="color: #6C6CA4;font-weight: 600;font-size: 18px;">Company Title</span>
+                    <a href="#" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
+                        <div style="background-color: #F7D5D9;" class="row">
+                            <span>Company Title</span>
                         </div>
                     </a>
 
-                    <a href="#" style="height: 160px;padding: 5px;" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
-                        <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;margin: 0;background-color: #F5DEF3;border-radius: 10px;width: 100%;height: 100%;" class="row">
-                            <span style="color: #6C6CA4;font-weight: 600;font-size: 18px;">Company Title</span>
+                    <a href="#" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
+                        <div style="background-color: #F5DEF3;" class="row">
+                            <span>Company Title</span>
                         </div>
                     </a>
 
-                    <a href="#" style="height: 160px;padding: 5px;" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
-                        <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;margin: 0;background-color: #C2EEEB;border-radius: 10px;width: 100%;height: 100%;" class="row">
-                            <span style="color: #6C6CA4;font-weight: 600;font-size: 18px;">Company Title</span>
+                    <a href="#" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
+                        <div style="background-color: #C2EEEB;" class="row">
+                            <span>Company Title</span>
                         </div>
                     </a>
 
-                    <a href="#" style="height: 160px;padding: 5px;" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
-                        <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;margin: 0;background-color: #C2EEEB;border-radius: 10px;width: 100%;height: 100%;" class="row">
-                            <span style="color: #6C6CA4;font-weight: 600;font-size: 18px;">Company Title</span>
+                    <a href="#" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
+                        <div style="background-color: #C2EEEB;" class="row">
+                            <span>Company Title</span>
                         </div>
                     </a>
 
@@ -330,6 +330,39 @@
     {
         font-weight: 600;
         text-align: center;
+    }
+
+    .company-boxes
+    {
+        margin: 0;
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .company-boxes a
+    {
+        height: 160px;
+        padding: 5px;
+    }
+
+    .company-boxes div
+    {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin: 0;
+        border-radius: 10px;
+        width: 100%;
+        height: 100%;
+    }
+
+    .company-boxes span
+    {
+        color: #6C6CA4;
+        font-weight: 600;
+        font-size: 18px;
     }
 
     .ekko-lightbox .modal-dialog

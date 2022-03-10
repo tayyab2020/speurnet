@@ -20,7 +20,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7fe7f36f-c82f-4504-8c0a-7874522d22c9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/pages/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/index.blade.php" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/vendor/albertcht/invisible-recaptcha/" />
@@ -199,16 +198,36 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/pages/index.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="353">
-              <caret line="995" column="29" selection-start-line="995" selection-start-column="29" selection-end-line="995" selection-end-column="29" />
+            <state relative-caret-position="395">
+              <caret line="336" column="8" selection-start-line="336" selection-start-column="8" selection-end-line="336" selection-end-column="8" />
               <folding>
                 <element signature="e#2416#2460#0#HTML" expanded="true" />
                 <element signature="e#2513#2540#0#HTML" expanded="true" />
                 <element signature="e#4250#4364#0#HTML" expanded="true" />
-                <element signature="e#4583#4659#0#HTML" expanded="true" />
-                <element signature="e#4706#4741#0#HTML" expanded="true" />
-                <element signature="e#4816#4986#0#HTML" expanded="true" />
-                <element signature="e#5034#5090#0#HTML" expanded="true" />
+                <element signature="e#4488#4513#0#HTML" expanded="true" />
+                <element signature="e#4025#4104#0#HTML" expanded="true" />
+                <element signature="e#4291#4325#0#HTML" expanded="true" />
+                <element signature="e#4557#4591#0#HTML" expanded="true" />
+                <element signature="e#4823#4857#0#HTML" expanded="true" />
+                <element signature="e#5089#5123#0#HTML" expanded="true" />
+                <element signature="e#5355#5389#0#HTML" expanded="true" />
+                <element signature="e#5621#5655#0#HTML" expanded="true" />
+                <element signature="e#5887#5921#0#HTML" expanded="true" />
+                <element signature="e#6153#6187#0#HTML" expanded="true" />
+                <element signature="e#6419#6453#0#HTML" expanded="true" />
+                <element signature="e#6685#6719#0#HTML" expanded="true" />
+                <element signature="e#6951#6985#0#HTML" expanded="true" />
+                <element signature="e#7217#7251#0#HTML" expanded="true" />
+                <element signature="e#7483#7517#0#HTML" expanded="true" />
+                <element signature="e#7749#7783#0#HTML" expanded="true" />
+                <element signature="e#8015#8049#0#HTML" expanded="true" />
+                <element signature="e#8281#8315#0#HTML" expanded="true" />
+                <element signature="e#8547#8581#0#HTML" expanded="true" />
+                <element signature="e#8813#8847#0#HTML" expanded="true" />
+                <element signature="e#9079#9113#0#HTML" expanded="true" />
+                <element signature="e#9345#9379#0#HTML" expanded="true" />
+                <element signature="e#9611#9645#0#HTML" expanded="true" />
+                <element signature="e#15693#15745#0#HTML" expanded="true" />
                 <element signature="n#style#0;n#button#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#button#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#button#0;n#!!top" expanded="true" />
@@ -254,6 +273,15 @@
       <find>.backstretch</find>
       <find>&lt;styl</find>
       <find>fav-articles</find>
+      <find>992</find>
+      <find>@me</find>
+      <find>trending</find>
+      <find>style=&quot;display: flex;justify-content: center;align-items: center;flex-direction: column;margin: 0;background-color: #F7D5D9;border-radius: 10px;width: 100%;height: 100%;&quot;</find>
+      <find>display: flex;justify-content: center;align-items: center;flex-direction: column;margin: 0;</find>
+      <find>border-radius: 10px;width: 100%;height: 100%;</find>
+      <find>style=&quot;height: 160px;padding: 5px;&quot;</find>
+      <find>style=&quot;color: #6C6CA4;font-weight: 600;font-size: 18px;&quot;</find>
+      <find>.fav</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -802,12 +830,12 @@
       <workItem from="1646910532995" duration="1626000" />
       <workItem from="1646913091844" duration="1902000" />
       <workItem from="1646915028271" duration="1608000" />
-      <workItem from="1646917926728" duration="772000" />
+      <workItem from="1646917926728" duration="1094000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25317000" />
+    <option name="totallyTimeSpent" value="25639000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1721" height="927" extended-state="6" />
@@ -915,16 +943,36 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/pages/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="353">
-          <caret line="995" column="29" selection-start-line="995" selection-start-column="29" selection-end-line="995" selection-end-column="29" />
+        <state relative-caret-position="395">
+          <caret line="336" column="8" selection-start-line="336" selection-start-column="8" selection-end-line="336" selection-end-column="8" />
           <folding>
             <element signature="e#2416#2460#0#HTML" expanded="true" />
             <element signature="e#2513#2540#0#HTML" expanded="true" />
             <element signature="e#4250#4364#0#HTML" expanded="true" />
-            <element signature="e#4583#4659#0#HTML" expanded="true" />
-            <element signature="e#4706#4741#0#HTML" expanded="true" />
-            <element signature="e#4816#4986#0#HTML" expanded="true" />
-            <element signature="e#5034#5090#0#HTML" expanded="true" />
+            <element signature="e#4488#4513#0#HTML" expanded="true" />
+            <element signature="e#4025#4104#0#HTML" expanded="true" />
+            <element signature="e#4291#4325#0#HTML" expanded="true" />
+            <element signature="e#4557#4591#0#HTML" expanded="true" />
+            <element signature="e#4823#4857#0#HTML" expanded="true" />
+            <element signature="e#5089#5123#0#HTML" expanded="true" />
+            <element signature="e#5355#5389#0#HTML" expanded="true" />
+            <element signature="e#5621#5655#0#HTML" expanded="true" />
+            <element signature="e#5887#5921#0#HTML" expanded="true" />
+            <element signature="e#6153#6187#0#HTML" expanded="true" />
+            <element signature="e#6419#6453#0#HTML" expanded="true" />
+            <element signature="e#6685#6719#0#HTML" expanded="true" />
+            <element signature="e#6951#6985#0#HTML" expanded="true" />
+            <element signature="e#7217#7251#0#HTML" expanded="true" />
+            <element signature="e#7483#7517#0#HTML" expanded="true" />
+            <element signature="e#7749#7783#0#HTML" expanded="true" />
+            <element signature="e#8015#8049#0#HTML" expanded="true" />
+            <element signature="e#8281#8315#0#HTML" expanded="true" />
+            <element signature="e#8547#8581#0#HTML" expanded="true" />
+            <element signature="e#8813#8847#0#HTML" expanded="true" />
+            <element signature="e#9079#9113#0#HTML" expanded="true" />
+            <element signature="e#9345#9379#0#HTML" expanded="true" />
+            <element signature="e#9611#9645#0#HTML" expanded="true" />
+            <element signature="e#15693#15745#0#HTML" expanded="true" />
             <element signature="n#style#0;n#button#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#button#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#button#0;n#!!top" expanded="true" />
