@@ -7,7 +7,7 @@
 @section("content")
 
 <!-- begin:content -->
-    <div id="content" style="padding: 10px 0px 0px 0px;">
+    <div id="content" style="padding: 30px 0 0 0;">
 
         @if(Session::has('flash_message'))
             <div class="alert alert-success alert-box" style="text-align: center;font-size: 16px;position: fixed;top: 20%;z-index: 1000;padding-right: 35px;background-color: rgb(0 0 0);color: rgb(255 255 255);border: 0;max-width: 400px;border-radius: 0;">
@@ -33,657 +33,264 @@
 
         <div class="row" style="margin: 0;">
 
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="display: inline-block;">
+            <div style="margin-top: 30px;" class="col-lg-2 col-md-2 col-sm-10 col-xs-10">
 
-                <div class="col-md-12 col-sm-12">
-                    <div class="heading-title" style="margin-bottom: 45px;">
-                        <h2>{{__('text.Latest Properties')}}</h2>
+                <h4 style="font-weight: 500;text-align: center;">OUR FAVOURITES THIS WEEK</h4>
+
+                <div style="margin: 20px 0 0 0;" class="row">
+
+                    <div style="margin: 20px 0;display: flex;justify-content: center;align-items: center;flex-direction: column;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                        <img style="width: 100px;height: 100px;border-radius: 100%;" src="{{ URL::asset('assets/img/img16.jpg') }}">
+                        <span style="margin-top: 20px;">NEW TO THE ROCKS</span>
+                        <h4 style="font-weight: 600;">Bay Nine Omakase</h4>
+
+                    </div>
+
+                    <div style="margin: 20px 0;display: flex;justify-content: center;align-items: center;flex-direction: column;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                        <img style="width: 100px;height: 100px;border-radius: 100%;" src="{{ URL::asset('assets/img/img17.jpg') }}">
+                        <span style="margin-top: 20px;">BERNIE DIETER'S</span>
+                        <h4 style="font-weight: 600;">Club Kabarett</h4>
+
+                    </div>
+
+                    <div style="margin: 20px 0;display: flex;justify-content: center;align-items: center;flex-direction: column;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                        <img style="width: 100px;height: 100px;border-radius: 100%;" src="{{ URL::asset('assets/img/img01.jpg') }}">
+                        <span style="margin-top: 20px;">INSPIRED</span>
+                        <h4 style="font-weight: 600;">Immersive Art</h4>
+
+                    </div>
+
+                    <div style="margin: 20px 0;display: flex;justify-content: center;align-items: center;flex-direction: column;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                        <a href="#" style="background-color: transparent;color: #000;padding: 10px 0;width: 85%;border-radius: 10px;font-weight: 600;" class="btn btn-primary">More</a>
+
                     </div>
 
                 </div>
-
-                <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 show-more-container" style="margin-bottom: 10px;text-align: right;">
-                        <a href="{{URL::to('woningaanbod')}}" style="background-color: transparent;color: black;border-width: 2px;" class="btn btn-success">{{__('text.Show More Properties')}}</a>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 latest-container">
-
-                        <div class="latestProperties">
-
-                            <?php $i = 0; ?>
-
-                            @foreach($propertieslist as $i => $property)
-
-                                    <?php preg_match('/<iframe.*src=\"(.*)\".*><\/iframe>/isU', $property->description, $matches);
-
-
-                                    if(!empty($matches[1]))
-                                    {
-                                        $url = $matches[1];
-                                    }
-                                    else
-                                        {
-                                            $url = '';
-                                        }
-
-
-                                    if($property->video)
-                                        {
-                                            $parsed = parse_url($property->video);
-
-                                            if(isset($parsed['host']))
-                                                {
-                                                    if($parsed['host'] == 'www.youtube.com' || $parsed['host'] == 'youtube.com' || $parsed['host'] == 'youtu.be')
-                                                    {
-                                                        $youtube_video = 1;
-                                                    }
-                                                    else
-                                                    {
-                                                        $youtube_video = 0;
-                                                    }
-                                                }
-                                            else
-                                                {
-                                                    $youtube_video = 0;
-                                                }
-                                        }
-
-                                    ?>
-
-                                <div class="col-md-4 col-sm-12 col-xs-12">
-
-                                    <div style="min-height: 55px;display: flex;">
-                                        @if($property->open_date)
-                                            <div class="property-price" style="min-height: 28px;position:relative;max-width: 100%;font-size: 11px;padding: 3px 5px;margin: auto 0;width: 100%;border-radius: 5px;"><span>{{__('text.Open House')}} {{$property->open_date}} {{$property->open_timeFrom}} to {{$property->open_timeTo}}</span></div>
-                                        @else
-                                            <div class="property-price" style="background: transparent;min-height: 28px;position:relative;max-width: 100%;font-size: 11px;padding: 3px 5px;margin: auto 0;width: 100%;border-radius: 5px;"></div>
-                                        @endif
-
-                                    </div>
-
-                                    <div class="property-container" style="margin-bottom: 10px;border-left-width: 0.9px;">
-                                        <div class="property-image latest">
-
-                                            <a style="outline: none;" href="{{URL::to('woningaanbod/'.$property->property_slug)}}">
-
-                                            <img src="{{ URL::asset('upload/properties/'.$property->featured_image.'-b.jpg') }}" alt="{{ $property->property_name }}">
-
-                                            </a>
-
-                                            @if($url)
-
-                                                <div class="video-wrapper-inner" style="position: absolute;margin-right: 5%;margin-top: 5%;top: 0;right: 0;">
-                                                    <a data-width="1280" href="{{$url}}" data-gallery="videos{{$i}}" data-toggle="lightbox" class="popup-video" style="cursor: pointer;outline: none;">
-                                                    <span class="popup-video-inner">
-                                                    <i class="flaticon-play"></i>
-                                                    </span>
-                                                    </a>
-                                                </div>
-
-                                                @if($property->video)
-
-                                                    <div style="display: none;" data-toggle="lightbox" @if($youtube_video) data-type="youtube" data-remote="{{ $property->video }}" @else data-type="video" data-remote="{{ URL::asset('upload/properties/'.$property->video)  }}" @endif data-gallery="videos{{$i}}" data-width="1280"></div>
-
-                                                @endif
-
-                                            @else
-
-                                                @if($property->video)
-
-                                                    <div class="video-wrapper-inner" style="position: absolute;margin-right: 5%;margin-top: 5%;top: 0;right: 0;">
-                                                        <a data-width="1280" @if($youtube_video) href="{{ $property->video }}" data-type="youtube" @else href="{{ URL::asset('upload/properties/'.$property->video) }}" data-type="video" @endif data-gallery="videos{{$i}}" data-toggle="lightbox" class="popup-video" style="cursor: pointer;outline: none;">
-                                                            <span class="popup-video-inner">
-                                                                <i class="flaticon-play"></i>
-                                                            </span>
-                                                        </a>
-                                                    </div>
-
-                                                @endif
-
-                                            @endif
-
-
-                                            @if($property->is_sold)
-
-                                                <div class="property-price" style="top: 37px;left: -58px;border-radius: 5px;padding: 5px 10px;transform: rotate(-40deg);width: 240px;">
-
-                                                    <span>{{__('text.Sold')}}</span>
-
-                                                </div>
-
-                                            @elseif($property->is_rented)
-
-                                                <div class="property-price" style="top: 37px;left: -58px;border-radius: 5px;padding: 5px 10px;transform: rotate(-40deg);width: 240px;">
-
-                                                    <span>{{__('text.Rented')}}</span>
-
-                                                </div>
-
-                                            @elseif($property->is_negotiation)
-
-                                                <div class="property-price" style="top: 37px;left: -58px;border-radius: 5px;padding: 5px 10px;transform: rotate(-40deg);width: 240px;">
-
-                                                    <span style="font-size: 14px;">{{__('text.Under Negotiation')}}</span>
-
-                                                </div>
-
-                                            @elseif($property->is_under_offer)
-
-                                                <div class="property-price" style="top: 37px;left: -58px;border-radius: 5px;padding: 5px 10px;transform: rotate(-40deg);width: 240px;">
-
-                                                    <span style="font-size: 16px;">{{__('text.Under Offer')}}</span>
-
-                                                </div>
-
-                                            @else
-
-                                                <div class="property-price" style="top: 12px;left: 12px;border-radius: 5px;padding: 5px 10px;">
-                                                    <span>{{__('text.For '.$property->property_purpose)}}</span>
-                                                    {{--<h4>{{ getPropertyTypeName($property->property_type)->types }}</h4>
-                                                    <span>{{getcong('currency_sign')}}@if($property->sale_price) {{$property->sale_price}} @else {{$property->rent_price}} @endif</span>--}}
-                                                </div>
-
-                                            @endif
-
-
-                                            @if($property->available_immediately)
-
-                                                <div class="property-status status-responsive" style="background:#48cfad;width:170px;bottom: 12px;left: 12px;border-radius: 5px;padding: 0px;text-align: center;">
-                                                    <span>{{__('text.Available Immediately')}}</span>
-                                                </div>
-
-                                            @endif
-
-                                            <?php
-
-                                            $x = 0;
-
-                                            if($property->featured_image){ $x = $x + 1;}
-
-                                            for($l=0; $l<24; $l++){
-
-                                                $var = 'property_images'.$l;
-
-                                                if($property->$var){
-
-                                                    $x = $x + 1;
-
-                                                }
-
-                                            }
-
-                                            ?>
-
-                                            <div class="property-status" style="bottom: 12px;right: 12px;background: rgba(0,0,0,.5);border-radius: 7%;padding: 5px 6px 5px 10px;">
-
-                                                @if($property->first_floor || $property->second_floor || $property->ground_floor || $property->basement)
-
-                                                    <?php $check = 0; ?>
-
-
-                                                    @if($property->first_floor)
-
-                                                        <?php $ext = pathinfo($property->first_floor, PATHINFO_EXTENSION);
-
-                                                        $ext = strtolower($ext);
-
-                                                        ?>
-
-                                                        @if($ext == 'pdf')
-
-                                                            <a data-gallery="floor-images{{$i}}" href=" {{ URL::asset('upload/properties/'.$property->first_floor) }} " style="color: white;" data-toggle="lightbox"> <img style="width: 20px;margin-right: 10px;position: relative;bottom: 2px;" src="{{ URL::asset('assets/img/blueprint.png') }}" > </a>
-
-                                                        @else
-
-                                                            <a data-gallery="floor-images{{$i}}" href="{{ URL::asset('upload/properties/'.$property->first_floor) }}" style="color: white;" data-toggle="lightbox"> <img style="width: 20px;margin-right: 10px;position: relative;bottom: 2px;" src="{{ URL::asset('assets/img/blueprint.png') }}" > </a>
-
-                                                        @endif
-
-
-
-                                                        <?php $check = 1; ?>
-
-                                                    @endif
-
-                                                    @if($property->second_floor)
-
-                                                        <?php $ext = pathinfo($property->second_floor, PATHINFO_EXTENSION);
-
-                                                        $ext = strtolower($ext);
-
-                                                        ?>
-
-
-                                                        @if($check)
-
-                                                            @if($ext == 'pdf')
-
-                                                                <div style="display: none;" data-toggle="lightbox" data-gallery="floor-images{{$i}}" data-remote=" {{ URL::asset('upload/properties/'.$property->second_floor) }} "></div>
-
-                                                            @else
-
-                                                                <div style="display: none;" data-toggle="lightbox" data-gallery="floor-images{{$i}}" data-remote="{{ URL::asset('upload/properties/'.$property->second_floor) }}"></div>
-
-                                                            @endif
-
-
-
-                                                        @else
-
-                                                            @if($ext == 'pdf')
-
-                                                                <a data-gallery="floor-images{{$i}}" href="{{ URL::asset('upload/properties/'.$property->second_floor) }}" style="color: white;" data-toggle="lightbox"> <img style="width: 20px;margin-right: 10px;position: relative;bottom: 2px;" src=" {{ URL::asset('assets/img/blueprint.png') }} " > </a>
-
-                                                            @else
-
-                                                                <a data-gallery="floor-images{{$i}}" href="{{ URL::asset('upload/properties/'.$property->second_floor) }}" style="color: white;" data-toggle="lightbox"> <img style="width: 20px;margin-right: 10px;position: relative;bottom: 2px;" src="{{ URL::asset('assets/img/blueprint.png') }}" > </a>
-
-                                                            @endif
-
-
-                                                            <?php $check = 1; ?>
-
-                                                        @endif
-
-
-                                                    @endif
-
-
-                                                    @if($property->ground_floor)
-
-                                                        <?php $ext = pathinfo($property->ground_floor, PATHINFO_EXTENSION);
-
-                                                        $ext = strtolower($ext);
-
-                                                        ?>
-
-                                                        @if($check)
-
-                                                            @if($ext == 'pdf')
-
-                                                                <div style="display: none;" data-toggle="lightbox" data-gallery="floor-images{{$i}}" data-remote=" {{ URL::asset('upload/properties/'.$property->ground_floor) }} "></div>
-
-                                                            @else
-
-                                                                <div style="display: none;" data-toggle="lightbox" data-gallery="floor-images{{$i}}" data-remote="{{ URL::asset('upload/properties/'.$property->ground_floor) }}"></div>
-
-                                                            @endif
-
-
-
-                                                        @else
-
-                                                            @if($ext == 'pdf')
-
-                                                                <a data-gallery="floor-images{{$i}}" href=" {{ URL::asset('upload/properties/'.$property->ground_floor) }} " style="color: white;" data-toggle="lightbox"> <img style="width: 20px;margin-right: 10px;position: relative;bottom: 2px;" src="{{ URL::asset('assets/img/blueprint.png') }}" > </a>
-
-                                                            @else
-
-                                                                <a data-gallery="floor-images{{$i}}" href="{{ URL::asset('upload/properties/'.$property->ground_floor) }}" style="color: white;" data-toggle="lightbox"> <img style="width: 20px;margin-right: 10px;position: relative;bottom: 2px;" src="{{ URL::asset('assets/img/blueprint.png') }}" > </a>
-
-                                                            @endif
-
-                                                            <?php $check = 1; ?>
-
-                                                        @endif
-
-
-                                                    @endif
-
-
-                                                    @if($property->basement)
-
-                                                        <?php $ext = pathinfo($property->basement, PATHINFO_EXTENSION);
-
-                                                        $ext = strtolower($ext);
-
-                                                        ?>
-
-                                                        @if($check)
-
-                                                            @if($ext == 'pdf')
-
-                                                                <div style="display: none;" data-toggle="lightbox" data-gallery="floor-images{{$i}}" data-remote=" {{ URL::asset('upload/properties/'.$property->basement) }} "></div>
-
-                                                            @else
-
-                                                                <div style="display: none;" data-toggle="lightbox" data-gallery="floor-images{{$i}}" data-remote="{{ URL::asset('upload/properties/'.$property->basement) }}"></div>
-
-                                                            @endif
-
-
-
-                                                        @else
-
-                                                            @if($ext == 'pdf')
-
-                                                                <a data-gallery="floor-images{{$i}}" href=" {{ URL::asset('upload/properties/'.$property->basement) }} " style="color: white;" data-toggle="lightbox"> <img style="width: 20px;margin-right: 10px;position: relative;bottom: 2px;" src="{{ URL::asset('assets/img/blueprint.png') }}" > </a>
-
-                                                            @else
-
-                                                                <a data-gallery="floor-images{{$i}}" href="{{ URL::asset('upload/properties/'.$property->basement) }}" style="color: white;" data-toggle="lightbox"> <img style="width: 20px;margin-right: 10px;position: relative;bottom: 2px;" src="{{ URL::asset('assets/img/blueprint.png') }}" > </a>
-
-                                                            @endif
-
-                                                            <?php $check = 1; ?>
-
-                                                        @endif
-
-
-                                                    @endif
-
-                                                @endif
-
-
-                                                <a data-toggle="lightbox" data-gallery="hidden-images{{$i}}" href="{{ URL::asset('upload/properties/'.$property->featured_image.'-b.jpg') }}" style="color: white;"> <i class="fas fa-camera" style="font-size: 18px;"></i><span style="padding: 0px 6px;font-weight: 700;font-size: 18px;position: relative;bottom: 1px;margin-left: 5px;">{{$x}}</span></a>
-
-                                                    <?php for($p=1; $p<25; $p++){ $property_image = 'property_images'.$p; ?>
-
-                                                        @if($property->$property_image)
-
-                                                            <div style="display: none;" data-toggle="lightbox" data-gallery="hidden-images{{$i}}" data-remote="{{ URL::asset('upload/properties/'.$property->$property_image.'-b.jpg') }}"></div>
-
-                                                        @endif
-
-                                                    <?php } ?>
-
-
-                                                <?php $i = $i + 1; ?>
-
-
-                                            </div>
-                                        </div>
-
-                                        {{--<div class="property-features">
-                                          <span><i class="fa fa-home"></i> {{$property->area}}</span>
-                                          <span><i class="fa fa-hdd-o"></i> {{$property->bedrooms}}</span>
-                                          <span><i class="fa fa-male"></i> {{$property->bathrooms}}</span>
-                                        </div>--}}
-
-                                        <div style="display: inline-block;width: 100%;padding-bottom: 0;" class="property-content">
-                                            <h3 style="margin-bottom: 0;margin-top: 0px;display: inline-block;width: 100%;">
-
-                                                <div style="display: inline-block;width: 100%;">
-                                                    <a style="font-size: 12px;text-overflow: ellipsis;display: block;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;white-space: nowrap;" href="{{URL::to('woningaanbod/'.$property->property_slug)}}">{{ Str::limit(str_replace(', Nederland', '', $property->property_name),45) }}</a>
-                                                </div>
-
-                                                <div style="display: inline-block;width: 100%;">
-
-                                                    <div class="extra-text" style="display: flex;flex-direction: row;float: left;">
-
-                                                        <img style="width: 14px;height: 12px;float: left;margin-right: 10px;align-self: center;" src="{{ URL::asset('assets/img/browser.png') }}">
-
-                                                        <span class="res-span" style="font-weight: 600;font-size: 12px;display: flex;">{{$property->area}} <small class="res-small" style="margin-top: 0;display: flex;align-items: center;margin-left: 3px;">m2</small></span>
-
-                                                    </div>
-
-                                                    @if($property->bedrooms >= 1)
-
-                                                        <div class="extra-text" style="display: flex;flex-direction: row;float: left;margin-left: 10px;">
-
-                                                            <img style="width: 14px;height: 14px;float: left;margin-right: 10px;align-self: center;" src="{{ URL::asset('assets/img/bed.png') }}">
-
-                                                            <span class="res-span" style="font-weight: 600;font-size: 12px;display: flex;">{{$property->bedrooms}} @if($property->bedrooms == 1) {{__('text.room')}}  @else {{__('text.rooms')}} @endif</span>
-
-                                                        </div>
-
-                                                    @endif
-
-                                                </div>
-
-                                                <div style="display: flex;flex-direction: row;align-items: center;height: 40px;margin-bottom: 5px;">
-
-                                                    <div style="min-width: 33%;margin-right: 3px;">
-
-                                                        <small style="margin-top: 0;font-weight: 600;font-size: 10px;">@if($property->sale_price) € {{number_format($property->sale_price, 0, ',', '.')}} {{$property->cost_for}} @elseif($property->rent_price) € {{number_format($property->rent_price, 0, ',', '.')}} per maand @endif</small>
-
-                                                    </div>
-
-                                                    @if(!$property->landlord)
-
-                                                        <div style="width: 100%;height: 100%;">
-
-                                                            <a style="outline: none;" href="{{URL::to('makelaars/details/'.$property->user_id)}}" tabindex="0">
-
-                                                                @if($property->image_icon)
-
-                                                                    <img style="width: 100%;height: 100%;float: right;" src="{{ URL::asset('upload/members/'.$property->image_icon.'-b.jpg') }}">
-
-                                                                @elseif($property->company_name)
-
-                                                                    <h3 class="company-res" style="word-break: break-all;margin: 0;display: flex;align-items: center;justify-content: center;height: 100%;font-size: 12px;line-height: 20px;">{{$property->company_name}}</h3>
-
-                                                                @endif
-
-                                                            </a>
-
-                                                        </div>
-
-                                                    @endif
-
-
-                                                </div>
-
-
-                                                {{--<small style="text-overflow: ellipsis;display: block;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;width: 100%;float: left;white-space: nowrap;margin-top: 0;">{{ Str::limit($property->address,40) }}</small>--}}
-
-                                            </h3>
-
-                                        </div>
-
-                                    </div>
-
-                                    @foreach($properties_headings as $h)
-
-                                        @if($h->heading_order == $i)
-
-                                            <div class="property-price" style="background: {{$h->color}};position:relative;max-width: 100%;margin-bottom: 12px;font-size: 15px;padding: 2px 0px;border-radius: 5px;">{{$h->title}}</div>
-
-                                        @endif
-
-                                    @endforeach
-
-                                    {{--@if($property->listed)
-
-                                        <div class="property-price" style="background: #d6d63e;position:relative;max-width: 100%;margin-bottom: 12px;font-size: 15px;padding: 2px 0px;border-radius: 5px;">{{$property->listed}}</div>
-
-                                    @endif--}}
-
-                                </div>
-
-                            @endforeach
-
-
-                        </div>
-                    </div></div>
 
             </div>
 
-            @if(count($tips))
+            <div style="margin-top: 30px;" class="col-lg-7 col-md-7 col-sm-10 col-xs-10">
 
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 res-container" style="display: inline-block;margin-top: 50px;">
+                <div style="margin: 0;display: flex;justify-content: flex-start;flex-wrap: wrap;" class="row">
 
-                    <div class="col-md-12 col-sm-12">
-                        <div class="heading-title">
-                            <h2>{{__('text.Our Tips')}}</h2>
+                    <a href="#" style="height: 160px;padding: 5px;" class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                        <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;margin: 0;background-color: #F7D5D9;border-radius: 10px;width: 100%;height: 100%;" class="row">
+                            <span style="color: #6C6CA4;font-weight: 600;font-size: 18px;">Company Title</span>
                         </div>
-                    </div>
+                    </a>
 
-                    <div class="row" style="display: flex;width: 100%;margin: 0;">
-
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="display: flex;">
-
-                            <div style="margin-top: 20px;margin-bottom: 20px;" data-testid="key-services" class="css-htlmaj col-lg-9 col-md-12 col-sm-12 col-xs-12">
-                                <div>
-                                    <div class="domain-home_ down is-visible">
-
-                                        <ul class="css-48sroz" style="list-style: none;padding: 0;">
-
-                                            @foreach($tips as $tip)
-
-                                                <li>
-
-                                                    @if($tip->image)
-
-                                                        <a target="_blank" href="@if($tip->url){{$tip->url}} @else {{URL::to('/')}} @endif">
-
-                                                            <img src="{{ URL::asset('upload/tips/'.$tip->image) }}">{{$tip->title}}
-
-                                                        </a>
-
-                                                    @else
-
-                                                        <a target="_blank" style="display: flex;justify-content: center;" href="@if($tip->url){{$tip->url}} @else {{URL::to('/')}} @endif">
-
-                                                            {{$tip->title}}
-
-                                                        </a>
-
-                                                    @endif
-
-                                                </li>
-
-                                            @endforeach
-
-
-                                        </ul></div></div></div>
-
+                    <a href="#" style="height: 160px;padding: 5px;" class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                        <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;margin: 0;background-color: #F5DEF3;border-radius: 10px;width: 100%;height: 100%;" class="row">
+                            <span style="color: #6C6CA4;font-weight: 600;font-size: 18px;">Company Title</span>
                         </div>
+                    </a>
 
-                        {{--<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 top-container1" style="margin: auto;">
+                    <a href="#" style="height: 160px;padding: 5px;" class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                        <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;margin: 0;background-color: #C2EEEB;border-radius: 10px;width: 100%;height: 100%;" class="row">
+                            <span style="color: #6C6CA4;font-weight: 600;font-size: 18px;">Company Title</span>
+                        </div>
+                    </a>
 
-                            <div class="topProperties">
+                    <a href="#" style="height: 160px;padding: 5px;" class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                        <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;margin: 0;background-color: #C2EEEB;border-radius: 10px;width: 100%;height: 100%;" class="row">
+                            <span style="color: #6C6CA4;font-weight: 600;font-size: 18px;">Company Title</span>
+                        </div>
+                    </a>
 
-                                @foreach($top_properties as $temp)
+                    <a href="#" style="height: 160px;padding: 5px;" class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                        <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;margin: 0;background-color: #DAF4D9;border-radius: 10px;width: 100%;height: 100%;" class="row">
+                            <span style="color: #6C6CA4;font-weight: 600;font-size: 18px;">Company Title</span>
+                        </div>
+                    </a>
 
-                                    <div class="col-md-3 col-sm-12 col-xs-12">
+                    <a href="#" style="height: 160px;padding: 5px;" class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                        <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;margin: 0;background-color: #F4E4BD;border-radius: 10px;width: 100%;height: 100%;" class="row">
+                            <span style="color: #6C6CA4;font-weight: 600;font-size: 18px;">Company Title</span>
+                        </div>
+                    </a>
 
-                                        <div class="property-container" style="margin: 10px auto;">
+                    <a href="#" style="height: 160px;padding: 5px;" class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                        <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;margin: 0;background-color: #F7D5D9;border-radius: 10px;width: 100%;height: 100%;" class="row">
+                            <span style="color: #6C6CA4;font-weight: 600;font-size: 18px;">Company Title</span>
+                        </div>
+                    </a>
 
-                                            <div class="property-image">
+                    <a href="#" style="height: 160px;padding: 5px;" class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                        <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;margin: 0;background-color: #F5DEF3;border-radius: 10px;width: 100%;height: 100%;" class="row">
+                            <span style="color: #6C6CA4;font-weight: 600;font-size: 18px;">Company Title</span>
+                        </div>
+                    </a>
 
-                                                <a style="outline: none;" href="{{URL::to('woningaanbod/'.$temp->property_slug)}}">
+                    <a href="#" style="height: 160px;padding: 5px;" class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                        <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;margin: 0;background-color: #C2EEEB;border-radius: 10px;width: 100%;height: 100%;" class="row">
+                            <span style="color: #6C6CA4;font-weight: 600;font-size: 18px;">Company Title</span>
+                        </div>
+                    </a>
 
-                                                    <img class="res-content" src="{{ URL::asset('upload/properties/'.$temp->featured_image.'-b.jpg') }}" alt="{{ $temp->property_name }}" style="width: 100%;height: 200px;">
+                    <a href="#" style="height: 160px;padding: 5px;" class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                        <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;margin: 0;background-color: #C2EEEB;border-radius: 10px;width: 100%;height: 100%;" class="row">
+                            <span style="color: #6C6CA4;font-weight: 600;font-size: 18px;">Company Title</span>
+                        </div>
+                    </a>
 
-                                                </a>
+                    <a href="#" style="height: 160px;padding: 5px;" class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                        <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;margin: 0;background-color: #DAF4D9;border-radius: 10px;width: 100%;height: 100%;" class="row">
+                            <span style="color: #6C6CA4;font-weight: 600;font-size: 18px;">Company Title</span>
+                        </div>
+                    </a>
 
-                                                <div class="property-status">
-                                                    <span>{{__('text.For '.$temp->property_purpose)}}</span>
-                                                </div>
+                    <a href="#" style="height: 160px;padding: 5px;" class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                        <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;margin: 0;background-color: #F4E4BD;border-radius: 10px;width: 100%;height: 100%;" class="row">
+                            <span style="color: #6C6CA4;font-weight: 600;font-size: 18px;">Company Title</span>
+                        </div>
+                    </a>
 
-                                            </div>
+                    <a href="#" style="height: 160px;padding: 5px;" class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                        <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;margin: 0;background-color: #F7D5D9;border-radius: 10px;width: 100%;height: 100%;" class="row">
+                            <span style="color: #6C6CA4;font-weight: 600;font-size: 18px;">Company Title</span>
+                        </div>
+                    </a>
 
+                    <a href="#" style="height: 160px;padding: 5px;" class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                        <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;margin: 0;background-color: #F5DEF3;border-radius: 10px;width: 100%;height: 100%;" class="row">
+                            <span style="color: #6C6CA4;font-weight: 600;font-size: 18px;">Company Title</span>
+                        </div>
+                    </a>
 
-                                            <div class="property-features">
+                    <a href="#" style="height: 160px;padding: 5px;" class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                        <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;margin: 0;background-color: #C2EEEB;border-radius: 10px;width: 100%;height: 100%;" class="row">
+                            <span style="color: #6C6CA4;font-weight: 600;font-size: 18px;">Company Title</span>
+                        </div>
+                    </a>
 
-                                                <span><i class="fa fa-home"></i> {{$temp->area}}</span>
+                    <a href="#" style="height: 160px;padding: 5px;" class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                        <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;margin: 0;background-color: #C2EEEB;border-radius: 10px;width: 100%;height: 100%;" class="row">
+                            <span style="color: #6C6CA4;font-weight: 600;font-size: 18px;">Company Title</span>
+                        </div>
+                    </a>
 
-                                                @if($temp->bedrooms > 0)
+                    <a href="#" style="height: 160px;padding: 5px;" class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                        <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;margin: 0;background-color: #DAF4D9;border-radius: 10px;width: 100%;height: 100%;" class="row">
+                            <span style="color: #6C6CA4;font-weight: 600;font-size: 18px;">Company Title</span>
+                        </div>
+                    </a>
 
-                                                    <span><i class="fa fa-bed"></i> {{$temp->bedrooms}}</span>
+                    <a href="#" style="height: 160px;padding: 5px;" class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                        <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;margin: 0;background-color: #F4E4BD;border-radius: 10px;width: 100%;height: 100%;" class="row">
+                            <span style="color: #6C6CA4;font-weight: 600;font-size: 18px;">Company Title</span>
+                        </div>
+                    </a>
 
-                                                @endif
+                    <a href="#" style="height: 160px;padding: 5px;" class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                        <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;margin: 0;background-color: #F7D5D9;border-radius: 10px;width: 100%;height: 100%;" class="row">
+                            <span style="color: #6C6CA4;font-weight: 600;font-size: 18px;">Company Title</span>
+                        </div>
+                    </a>
 
+                    <a href="#" style="height: 160px;padding: 5px;" class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                        <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;margin: 0;background-color: #F5DEF3;border-radius: 10px;width: 100%;height: 100%;" class="row">
+                            <span style="color: #6C6CA4;font-weight: 600;font-size: 18px;">Company Title</span>
+                        </div>
+                    </a>
 
-                                                @if($temp->bathrooms > 0)
+                    <a href="#" style="height: 160px;padding: 5px;" class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                        <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;margin: 0;background-color: #C2EEEB;border-radius: 10px;width: 100%;height: 100%;" class="row">
+                            <span style="color: #6C6CA4;font-weight: 600;font-size: 18px;">Company Title</span>
+                        </div>
+                    </a>
 
-                                                    <span><i class="fa fa-male"></i> {{$temp->bathrooms}}</span>
-
-                                                @endif
-
-                                            </div>
-
-
-                                            <div class="property-content" style="padding: 0px 15px 10px 15px;">
-
-                                                <h3 style="margin: 10px 0px 0px 0px;"><a style="text-overflow: ellipsis;display: block;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;white-space: nowrap;" href="{{URL::to('woningaanbod/'.$temp->property_slug)}}">{{ Str::limit($temp->property_name,35) }}</a> <small style="text-overflow: ellipsis;display: block;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;white-space: nowrap;">{{ Str::limit($temp->address,40) }}</small></h3>
-
-                                                <div class="bottom-text" style="min-height: 45px;display: flex;flex-direction: row;justify-content: space-between;align-items: flex-end;font-size: 90%;">
-
-                                                    <small style="font-weight: 600;">{{ getPropertyTypeName($temp->property_type)->types }}</small>
-                                                    <small>€@if($temp->sale_price) {{number_format($temp->sale_price, 0, ',', '.')}} {{$temp->cost_for}} @else {{number_format($temp->rent_price, 0, ',', '.')}} @endif</small>
-
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-
-                                @endforeach
-
-                            </div>
-
-                        </div>--}}
-
-                    </div>
+                    <a href="#" style="height: 160px;padding: 5px;" class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                        <div style="display: flex;justify-content: center;align-items: center;flex-direction: column;margin: 0;background-color: #C2EEEB;border-radius: 10px;width: 100%;height: 100%;" class="row">
+                            <span style="color: #6C6CA4;font-weight: 600;font-size: 18px;">Company Title</span>
+                        </div>
+                    </a>
 
                 </div>
-
-            @endif
-
-            @if(count($top_members) > 0)
-
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 res-container" style="display: inline-block;">
-
-                <div class="col-md-12 col-sm-12">
-                    <div class="heading-title">
-                        <h2>{{__('text.Top Members')}}</h2>
-                    </div>
-                </div>
-
-                <div class="row" style="display: flex;width: 100%;margin: 0;">
-
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 members-container" style="margin: auto;">
-
-                        <div class="topMembers">
-
-                    @foreach($top_members as $temp)
-
-                        <div class="col-md-3 col-sm-12 col-xs-12 flex-box-div">
-                            <div class="property-container" style="margin: 10px auto;">
-                                <div class="property-image">
-
-                                    <a style="outline: none;" href="{{URL::to('makelaars/details/'.$temp->id)}}">
-
-                                    @if($temp->image_icon)
-
-                                        <img class="res-content" src="{{ URL::asset('upload/members/'.$temp->image_icon.'-b.jpg') }}" style="width: 100%;height: 200px;" >
-
-                                    @elseif($temp->company_name)
-
-                                        <h2 class="res-content" style="margin: 0;height: 200px;display: flex;justify-content: center;align-items: center;text-align: center;">{{$temp->company_name}}</h2>
-
-                                    @endif
-
-                                    </a>
-
-                                </div>
-
-                                <div class="property-features">
-                                    <span><i class="fa fa-home"></i> {{$temp->properties_count}}</span>
-                                </div>
-
-                                <div class="property-content">
-                                    <h3><a style="text-overflow: ellipsis;display: block;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;white-space: nowrap;" href="{{URL::to('makelaars/details/'.$temp->id)}}">{{$temp->name}}</a> @if($temp->show_email == 1) <small style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;">{{$temp->email}}</small> @endif</h3>
-                                </div>
-                            </div>
-                        </div>
-
-                    @endforeach
-
-                </div>
-                    </div></div>
 
             </div>
 
-                @endif
+            <div class="col-lg-3 col-md-3 col-sm-10 col-xs-10">
 
+                <h4 style="font-weight: 600;text-align: left;margin: 0;">Trending right now</h4>
+
+                <div style="margin: 0;" class="row">
+
+                    <div style="background-color: #FFEFDF;margin: 15px 0 5px 0;display: flex;justify-content: center;align-items: center;padding: 20px 10px;border-radius: 10px;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                        <span>What is Ecommerce? E commerce Definitions and Best Practices 2021</span>
+
+                    </div>
+
+                    <div style="background-color: #FFEFDF;margin: 15px 0 5px 0;display: flex;justify-content: center;align-items: center;padding: 20px 10px;border-radius: 10px;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                        <span>What are the Best Dropshipping Suppliers in 2022 (Dropshipping Companies & Free Suppliers List) for Ecommerce</span>
+
+                    </div>
+
+                    <div style="background-color: #FFEFDF;margin: 15px 0 5px 0;display: flex;justify-content: center;align-items: center;padding: 20px 10px;border-radius: 10px;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                        <span>7 Best Ecommerce Platforms in 2022: Wix vs Shopify vs BigCommerce vs Square Online vs Ecwid vs Squarespace vs Big Cartel</span>
+
+                    </div>
+
+                    <div style="background-color: #FFEFDF;margin: 15px 0 5px 0;display: flex;justify-content: center;align-items: center;padding: 20px 10px;border-radius: 10px;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                        <span>How to Create a Facebook Shop Page (Jan 2022): 5 Step Guide - Learn How to Sell on Facebook</span>
+
+                    </div>
+
+                    <div style="margin: 10px 0;display: flex;justify-content: flex-start;align-items: center;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                        <a href="#" style="display: flex;align-items: center;background-color: transparent;color: #000;padding: 10px 20px;width: auto;border-radius: 10px;font-weight: 600;min-width: 50%;min-height: 60px;" class="btn btn-primary">
+                            <img style="width: 40px;height: 40px;" src="{{ URL::asset('assets/img/truck.png') }}">
+                            <span style="margin-left: 5px;">Supply Chain</span>
+                        </a>
+
+                    </div>
+
+                    <div style="margin: 10px 0;display: flex;justify-content: flex-start;align-items: center;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                        <a href="#" style="display: flex;align-items: center;background-color: transparent;color: #000;padding: 10px 20px;width: auto;border-radius: 10px;font-weight: 600;min-width: 50%;min-height: 60px;" class="btn btn-primary">
+                            <img style="width: 40px;height: 40px;" src="{{ URL::asset('assets/img/stethoscope.png') }}">
+                            <span style="margin-left: 5px;">Healthcare</span>
+                        </a>
+
+                    </div>
+
+                    <div style="margin: 10px 0;display: flex;justify-content: flex-start;align-items: center;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                        <a href="#" style="display: flex;align-items: center;background-color: transparent;color: #000;padding: 10px 20px;width: auto;border-radius: 10px;font-weight: 600;min-width: 50%;min-height: 60px;" class="btn btn-primary">
+                            <img style="width: 30px;height: 30px;" src="{{ URL::asset('assets/img/worldwide.png') }}">
+                            <span style="margin-left: 5px;">Media</span>
+                        </a>
+
+                    </div>
+
+                    <div style="margin: 10px 0;display: flex;justify-content: flex-start;align-items: center;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                        <a href="#" style="display: flex;align-items: center;background-color: transparent;color: #000;padding: 10px 20px;width: auto;border-radius: 10px;font-weight: 600;min-width: 50%;min-height: 60px;" class="btn btn-primary">
+                            <img style="width: 30px;height: 30px;" src="{{ URL::asset('assets/img/clapperboard.png') }}">
+                            <span style="margin-left: 5px;">Media</span>
+                        </a>
+
+                    </div>
+
+                    <div style="margin: 10px 0;display: flex;justify-content: flex-start;align-items: center;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                        <a href="#" style="display: flex;align-items: center;background-color: transparent;color: #000;padding: 10px 20px;width: auto;border-radius: 10px;font-weight: 600;min-width: 50%;min-height: 60px;" class="btn btn-primary">
+                            <img style="width: 30px;height: 30px;" src="{{ URL::asset('assets/img/mortarboard.png') }}">
+                            <span style="margin-left: 5px;">Education</span>
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
 
         </div>
         <!-- end:latest -->
@@ -1209,102 +816,6 @@
     });
 
 </script>
-
-
-@if(count($blogs) >= 1)
-
-    <style>
-
-        .description-content blockquote:before
-        {
-            content: '\f10d';
-            font-family: 'FontAwesome';
-            position: relative;
-            left: -1em;
-            top: 0;
-            display: block;
-            width: 20px;
-            height: 20px;
-            color: black;
-            font-size: 10px;
-        }
-
-    </style>
-
-<!-- begin:blog -->
-<div id="partner">
-    <div class="container" style="width: 100%;">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="heading-title" style="margin-top: 20px;">
-                    <h2>{{__('text.Our Blogs')}}</h2>
-                </div>
-            </div>
-        </div>
-        <!-- break -->
-
-        <div class="row" style="margin-bottom: 20px;">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 show-more-container" style="margin-bottom: 10px;text-align: right;">
-                <a href="{{route('front-blogs')}}" style="background-color: transparent;color: black;border-width: 2px;" class="btn btn-success">{{__('text.Show More')}}</a>
-            </div>
-        </div>
-
-        <div class="row" style="display: flex;width: 100%;margin: 0;">
-
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 members-container" style="margin: auto;">
-
-                <div class="topMembers">
-
-                    @foreach($blogs as $blog)
-
-                        <?php $description = $blog->description;
-
-                        $description = preg_replace(array('#<[^>]+>#','#&nbsp;#'), ' ', $description);
-
-                        $date = $blog->created_at;
-                        $date = date("M d, Y", strtotime($date));
-                        ?>
-
-                        <div class="col-md-3 col-sm-12 col-xs-12 flex-box-div">
-                            <div class="property-container res-size" style="margin: 10px auto;min-height: 380px;">
-                                <div class="property-image">
-
-                                    <a style="outline: none;" href="{{ url('blogs/'.$blog->title) }}">
-
-                                    @if($blog->image)
-                                        <img class="res-content" src="{{ URL::asset('upload/blogs/'.$blog->image) }}" style="width: 100%;height: 200px;">
-                                        @else
-                                        <img class="res-content" src="{{ URL::asset('upload/noImage.png') }}" style="width: 100%;height: 200px;">
-                                    @endif
-
-                                    </a>
-
-                                </div>
-
-                                <div class="property-content description-content">
-
-                                    <h3><a style="text-overflow: ellipsis;display: block;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;white-space: nowrap;" href="{{ url('blogs/'.$blog->title) }}">{{$blog->title}}</a>
-                                    <small style="display: none;color: #acacac;font-style: normal;">{{$date}}</small>
-                                    </h3>
-
-                                    <p style="text-overflow: ellipsis;display: -webkit-box;width: 100%;visibility: visible;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;line-height: 2;font-size: 15px;margin-top: 15px;">{{$description}}</p>
-
-                                </div>
-                            </div>
-                        </div>
-
-                    @endforeach
-
-
-                </div>
-            </div></div>
-
-
-    </div>
-</div>
-<!-- end:blog -->
-
-@endif
 
 <input type="hidden" id="cookie-consent" value="{{$cookie}}">
 

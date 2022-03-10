@@ -107,15 +107,17 @@
             <ul style="margin-right: 0;" class="nav navbar-nav navbar-right">
 
                 <li class="{{classActivePathPublic('')}}"><a href="{{ URL::to('/') }}">{{__('text.Home')}}</a></li>
-                <li class="{{classActivePathPublic('woningaanbod')}}"><a href="{{route('properties-front')}}">{{__('text.All Properties')}}</a></li>
-                {{--<li class="{{classActivePathPublic('featured')}}"><a href="{{ URL::to('featured/') }}">Featured</a></li>--}}
-                {{--<li class="{{classActivePathPublic('sale')}}"><a href="{{ URL::to('sale/') }}">Sale</a></li>
-                <li class="{{classActivePathPublic('rent')}}"><a href="{{ URL::to('rent/') }}">Rent</a></li>--}}
-                <li class="{{classActivePathPublic('makelaars')}}"><a href="{{route('agents-front')}}">{{__('text.Agents')}}</a></li>
-                <li class="{{classActivePathPublic('nieuwbouwprojecten')}}"><a href="{{ route('newconstructions-front') }}">{{__('text.New Constructions')}}</a></li>
-                <li class="{{classActivePathPublic('woningruil')}}"><a href="{{ route('homeexchange-front') }}">{{__('text.Home Exchange')}}</a></li>
-                <li class="{{classActivePathPublic('verhuistips')}}"><a href="{{ route('front-moving-tips') }}">{{__('text.Moving Tips')}}</a></li>
-                <li class="{{classActivePathPublic('expats')}}"><a href="{{ URL::to('expats/') }}">{{__('text.Expats')}}</a></li>
+                <li><a href="#"><i style="font-size: 12px;" class="fa fa-heart"></i><span style="margin-left: 5px;">Saved</span></a></li>
+                <li><a href="#">Electronics</a></li>
+                <li><a href="#">Motors</a></li>
+                <li><a href="#">Home & Garden</a></li>
+                <li><a href="#">Clothing & Accessories</a></li>
+                <li><a href="#">Sports</a></li>
+                <li><a href="#">Health & Beauty</a></li>
+                <li><a href="#">Toys</a></li>
+                <li><a href="#">Business & Industrial</a></li>
+                <li><a href="#">Food & Grocery</a></li>
+                <li><a href="#">Deals & Sales</a></li>
 
                 <li id="wrap">
                     <form style="display: flex;align-items: center;padding: 20px;" action="" autocomplete="on">
@@ -217,16 +219,29 @@
 
             <ul style="margin-right: 0;width: 100%;" class="nav navbar-nav navbar-right">
 
-                <li style="margin-left: 50px;" class="{{classActivePathPublic('')}}"><a href="{{ URL::to('/') }}">{{__('text.Home')}}</a></li>
-                <li class="{{classActivePathPublic('woningaanbod')}}"><a href="{{route('properties-front')}}">{{__('text.All Properties')}}</a></li>
-                {{--<li class="{{classActivePathPublic('featured')}}"><a href="{{ URL::to('featured/') }}">Featured</a></li>--}}
-                {{--<li class="{{classActivePathPublic('sale')}}"><a href="{{ URL::to('sale/') }}">Sale</a></li>
-                <li class="{{classActivePathPublic('rent')}}"><a href="{{ URL::to('rent/') }}">Rent</a></li>--}}
-                <li class="{{classActivePathPublic('makelaars')}}"><a href="{{route('agents-front')}}">{{__('text.Agents')}}</a></li>
-                <li class="{{classActivePathPublic('nieuwbouwprojecten')}}"><a href="{{ route('newconstructions-front') }}">{{__('text.New Constructions')}}</a></li>
-                <li class="{{classActivePathPublic('woningruil')}}"><a href="{{ route('homeexchange-front') }}">{{__('text.Home Exchange')}}</a></li>
-                <li class="{{classActivePathPublic('verhuistips')}}"><a href="{{ route('front-moving-tips') }}">{{__('text.Moving Tips')}}</a></li>
-                <li class="{{classActivePathPublic('expats')}}"><a href="{{ URL::to('expats/') }}">{{__('text.Expats')}}</a></li>
+                <li style="margin-left: 30px;" class="{{classActivePathPublic('')}}"><a href="{{ URL::to('/') }}">{{__('text.Home')}}</a></li>
+                <li><a style="display: flex;align-items: center;" href="#"><i style="font-size: 10px;" class="fa fa-heart"></i><span style="margin-left: 5px;">Saved</span></a></li>
+                <li><a href="#">Electronics</a></li>
+                <li><a href="#">Motors</a></li>
+                <li><a href="#">Home & Garden</a></li>
+                <li><a href="#">Clothing & Accessories</a></li>
+                <li><a href="#">Sports</a></li>
+                <li><a href="#">Health & Beauty</a></li>
+                <li><a href="#">Toys</a></li>
+
+                <li style="float: right;">
+                    <a style="display: flex;align-items: center;" href="#">
+                        <img style="width: 30px;height: 30px;" src="{{ URL::asset('assets/img/calendar1.png') }}">
+                        <span style="margin-left: 5px;font-size: 15px;font-weight: 600;">{{date('M d, Y')}}</span>
+                    </a>
+                </li>
+
+                <li style="float: right;">
+                    <a style="display: flex;align-items: center;" href="#">
+                        <img style="width: 30px;height: 30px;" src="{{ URL::asset('assets/img/cloudy.png') }}">
+                        <span style="margin-left: 5px;font-size: 15px;font-weight: 600;">Right Now</span>
+                    </a>
+                </li>
 
             </ul>
 
@@ -284,7 +299,7 @@
         {
             display: none !important;
         }
-        
+
         .desktop-nav
         {
             display: none;
