@@ -292,17 +292,157 @@
 
             </div>
 
+            <div style="display: flex;align-items: flex-end;flex-wrap: wrap;margin: 20px 0;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                <div style="display: flex;justify-content: flex-start;align-items: center;padding: 0;" class="col-lg-2 col-md-12 col-sm-12 col-xs-12">
+                    <a class="top-left-link" style="padding: 10px;color: black;font-weight: 600;" href="#">Explore our Services <i style="margin-left: 5px;" class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                </div>
+
+                <div class="col-lg-7 col-md-12 col-sm-12 col-xs-12 bottom-list" style="padding: 0;display: flex;justify-content: center;align-items: center;">
+
+                    <ul style="list-style: none;display: inline-block;padding: 0;margin: 0;">
+
+                        <li><a href="{{url('/')}}">Thuis</a></li>
+                        <li><a style="display: flex;align-items: center;" href="#"><i style="font-size: 10px;" class="fa fa-heart" aria-hidden="true"></i><span style="margin-left: 5px;">Saved</span></a></li>
+                        <li><a href="#">Electronics</a></li>
+                        <li><a href="#">Motors</a></li>
+                        <li><a href="#">Home & Garden</a></li>
+                        <li><a href="#">Clothing & Accessories</a></li>
+                        <li><a href="#">Sports</a></li>
+
+                    </ul>
+
+                </div>
+
+                <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 wrapper2-container" style="padding: 0;display: flex;justify-content: center;align-items: center;margin-top: 20px;">
+                    <section class="wrapper2">
+                        <div class="content">
+                            <input type="hidden" name="_token" value="{{csrf_token()}}"/>
+                            <section>
+                                <p><span>Join over 120K</span> Ecommerce business who get fresh content and tips from us</p>
+                            </section>
+                            <footer>
+                                <input type="email" id="email_id" name="email" placeholder="{{__('text.Enter your mail')}}">
+                                <button type="button" onClick="subscribe_user()">Subscribe</button>
+                            </footer>
+                        </div>
+                    </section>
+                </div>
+
+            </div>
+
         </div>
         <!-- end:latest -->
-
 
       </div>
     </div>
     <!-- end:content -->
 
+<!-- begin:modal-message -->
+<div class="modal fade" id="modal-error" tabindex="-1" role="dialog" aria-labelledby="modal-signin" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header" style="border-bottom:none;">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+
+            </div>
+            <div class="modal-body">
+                <div id="ajax" style="color: #db2424"></div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- end:modal-message -->
+
 <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/css/flaticon.css') }}"/>
 
 <style>
+
+    .bottom-list li
+    {
+        float: left;
+        margin: 10px;
+    }
+
+    .bottom-list li a
+    {
+        color: black;
+    }
+
+    .bottom-list li a:hover
+    {
+        color: #3bafda;
+    }
+
+    #footer
+    {
+        background-color: white;
+    }
+
+    #footer .widget h3
+    {
+        color: black;
+    }
+
+    .copyright .social-links > li > a > .fa
+    {
+        color: white;
+    }
+
+    .wrapper2 {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .wrapper2 .content {
+        background: #FFE870;
+        padding: 30px;
+        width: 100%;
+        max-width: 500px;
+        min-width: 200px;
+        border-radius: 10px;
+        text-align: center;
+    }
+    .wrapper2 .content p
+    {
+        color: black;
+        text-align: left;
+    }
+    .wrapper2 .content p span {
+        color: #685905;
+        font-size: 20px;
+        font-weight: 900;
+    }
+    .wrapper2 .content section {
+        color: #929da6;
+        font-size: 15px;
+    }
+    .wrapper2 .content footer input {
+        border: unset;
+        background-color: #FFF5BF;
+        padding: 15px;
+        font-size: 13px;
+        border-radius: 10px;
+        width: 100%;
+    }
+    .wrapper2 .content footer button {
+        background-color: #685905;
+        color: #fff;
+        border: unset;
+        width: 100%;
+        border-radius: 10px;
+        padding: 15px;
+        margin-top: 10px;
+        cursor: pointer;
+    }
+
+    .wrapper2 .content footer input:focus, .wrapper2 .content footer button:focus {
+        outline: none;
+    }
 
     .fav-articles
     {
@@ -708,6 +848,36 @@
 
 <script>
 
+    function subscribe_user()
+
+    {
+
+        $.ajax({
+
+            type: "POST",
+            //url: "http://localhost/laravel_divine_home/public/subscribe",
+            url:"{{URL::to('subscribe/')}}",
+            data: {'email':$('input[name=email]').val(), '_token': $('input[name=_token]').val()},
+            success: function(msg)
+            {
+                //$('body,html').animate({ scrollTop: 0 }, 200);
+                if(msg.substring(1,7) != 'script')
+                {
+
+                    $('#modal-error').modal('show');
+                    $("#ajax").html(msg);
+                    $("#email_id").val('');
+                }
+                else
+                {
+                    $("#ajax").html(msg);
+                }
+            }
+
+        });
+
+    }
+
     $(document).on('click', '[data-toggle="lightbox"]', function(event) {
         event.preventDefault();
         $(this).ekkoLightbox({
@@ -729,150 +899,6 @@
             }
 
         }
-
-    });
-
-    $(document).ready(function() {
-
-        $('.alert-box').delay(5000).fadeOut('slow');
-
-    $('.latestProperties').slick({
-        dots: false,
-        arrows: true,
-        centerMode: true,
-        centerPadding: '300px',
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        responsive: [
-            {
-                breakpoint: 2000,
-                settings: {
-                    centerMode: true,
-                    centerPadding: '200px',
-                }
-            },
-            {
-                breakpoint: 1650,
-                settings: {
-                    centerMode: true,
-                    centerPadding: '40px',
-                }
-            },
-            {
-                breakpoint: 992,
-                settings: {
-                    arrows: true,
-                    centerMode: false,
-                    centerPadding: '0px',
-                    slidesToShow: 2.1,
-                    infinite: false,
-                }
-            },
-            {
-                breakpoint: 720,
-                settings: {
-                    arrows: false,
-                    centerMode: true,
-                    centerPadding: '40px',
-                    slidesToShow: 1,
-                    initialSlide: 1,
-                    infinite: false,
-                }
-            }
-        ],
-        prevArrow: "<button class='slick-arrow slick-prev' data-role='none' type='button' style='display: block;'><svg class='domain-icon css-oee40j' viewBox='0 0 24 24' aria-hidden='true'><path fill='none' stroke='currentColor' stroke-width='2' d='M15 5l-7 7 7 7'></path></svg><span class='css-16q9xmc'>Prev</span></button>",
-        nextArrow: "<button class='slick-arrow slick-next' data-role='none' type='button' style='display: block;'><svg class='domain-icon css-oee40j' viewBox='0 0 24 24' aria-hidden='true'><path fill='none' stroke='currentColor' stroke-width='2' d='M9 5l7 7-7 7'></path></svg><span class='css-16q9xmc'>Next</span></button>"
-    });
-
-        $('.topProperties').slick({
-            dots: false,
-            arrows: true,
-            centerMode: true,
-            centerPadding: '300px',
-            slidesToShow: 3,
-            slidesToScroll: 1,
-            responsive: [
-                {
-                    breakpoint: 2000,
-                    settings: {
-                        centerMode: true,
-                        centerPadding: '200px',
-                    }
-                },
-                {
-                    breakpoint: 1650,
-                    settings: {
-                        centerMode: false,
-                        centerPadding: 0,
-                    }
-                },
-                {
-                    breakpoint: 768,
-                    settings: {
-                        arrows: true,
-                        centerMode: false,
-                        centerPadding: 0,
-                        slidesToShow: 2
-                    }
-                },
-                {
-                    breakpoint: 480,
-                    settings: {
-                        arrows: false,
-                        centerMode: true,
-                        centerPadding: '40px',
-                        slidesToShow: 1
-                    }
-                }
-            ],
-            prevArrow: "<button class='slick-arrow slick-prev' data-role='none' type='button' style='display: block;'><svg class='domain-icon css-oee40j' viewBox='0 0 24 24' aria-hidden='true'><path fill='none' stroke='currentColor' stroke-width='2' d='M15 5l-7 7 7 7'></path></svg><span class='css-16q9xmc'>Prev</span></button>",
-            nextArrow: "<button class='slick-arrow slick-next' data-role='none' type='button' style='display: block;'><svg class='domain-icon css-oee40j' viewBox='0 0 24 24' aria-hidden='true'><path fill='none' stroke='currentColor' stroke-width='2' d='M9 5l7 7-7 7'></path></svg><span class='css-16q9xmc'>Next</span></button>"
-        });
-
-        $('.topMembers').slick({
-            dots: false,
-            arrows: true,
-            centerMode: true,
-            centerPadding: '300px',
-            slidesToShow: 3,
-            slidesToScroll: 1,
-            responsive: [
-                {
-                    breakpoint: 2000,
-                    settings: {
-                        centerMode: true,
-                        centerPadding: '200px',
-                    }
-                },
-                {
-                    breakpoint: 1650,
-                    settings: {
-                        centerMode: false,
-                        centerPadding: 0,
-                    }
-                },
-                {
-                    breakpoint: 768,
-                    settings: {
-                        arrows: true,
-                        centerMode: false,
-                        centerPadding: '0px',
-                        slidesToShow: 2
-                    }
-                },
-                {
-                    breakpoint: 480,
-                    settings: {
-                        arrows: false,
-                        centerMode: true,
-                        centerPadding: '40px',
-                        slidesToShow: 1
-                    }
-                }
-            ],
-            prevArrow: "<button class='slick-arrow slick-prev' data-role='none' type='button' style='display: block;'><svg class='domain-icon css-oee40j' viewBox='0 0 24 24' aria-hidden='true'><path fill='none' stroke='currentColor' stroke-width='2' d='M15 5l-7 7 7 7'></path></svg><span class='css-16q9xmc'>Prev</span></button>",
-            nextArrow: "<button class='slick-arrow slick-next' data-role='none' type='button' style='display: block;'><svg class='domain-icon css-oee40j' viewBox='0 0 24 24' aria-hidden='true'><path fill='none' stroke='currentColor' stroke-width='2' d='M9 5l7 7-7 7'></path></svg><span class='css-16q9xmc'>Next</span></button>"
-        });
 
     });
 
@@ -1028,6 +1054,26 @@
         {
             margin-top: 30px;
         }
+
+        .bottom-list
+        {
+            justify-content: flex-start !important;
+        }
+
+        .bottom-list li
+        {
+            float: none;
+        }
+
+        .wrapper2-container
+        {
+            justify-content: flex-start !important;
+        }
+
+        .wrapper2
+        {
+            width: auto !important;
+        }
     }
 
     @media (max-width: 1200px)
@@ -1164,15 +1210,6 @@
     });
 
 </script>
-
-@if(count($partners) != 0)
-
-@include("_particles.partners")
-
-@endif
-
-@include("_particles.subscribe")
-
 
 
 @endsection

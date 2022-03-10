@@ -20,6 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7fe7f36f-c82f-4504-8c0a-7874522d22c9" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/_particles/subscribe.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/_particles/subscribe.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/pages/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/index.blade.php" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/vendor/albertcht/invisible-recaptcha/" />
@@ -171,7 +173,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/_particles/header.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1617">
+            <state relative-caret-position="21">
               <caret line="1" column="30" selection-start-line="1" selection-start-column="30" selection-end-line="1" selection-end-column="30" />
             </state>
           </provider>
@@ -198,46 +200,24 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/pages/index.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="395">
-              <caret line="336" column="8" selection-start-line="336" selection-start-column="8" selection-end-line="336" selection-end-column="8" />
+            <state relative-caret-position="626">
+              <caret line="379" column="31" selection-start-line="379" selection-start-column="31" selection-end-line="379" selection-end-column="31" />
               <folding>
-                <element signature="e#2416#2460#0#HTML" expanded="true" />
-                <element signature="e#2513#2540#0#HTML" expanded="true" />
-                <element signature="e#4250#4364#0#HTML" expanded="true" />
-                <element signature="e#4488#4513#0#HTML" expanded="true" />
-                <element signature="e#4025#4104#0#HTML" expanded="true" />
-                <element signature="e#4291#4325#0#HTML" expanded="true" />
-                <element signature="e#4557#4591#0#HTML" expanded="true" />
-                <element signature="e#4823#4857#0#HTML" expanded="true" />
-                <element signature="e#5089#5123#0#HTML" expanded="true" />
-                <element signature="e#5355#5389#0#HTML" expanded="true" />
-                <element signature="e#5621#5655#0#HTML" expanded="true" />
-                <element signature="e#5887#5921#0#HTML" expanded="true" />
-                <element signature="e#6153#6187#0#HTML" expanded="true" />
-                <element signature="e#6419#6453#0#HTML" expanded="true" />
-                <element signature="e#6685#6719#0#HTML" expanded="true" />
-                <element signature="e#6951#6985#0#HTML" expanded="true" />
-                <element signature="e#7217#7251#0#HTML" expanded="true" />
-                <element signature="e#7483#7517#0#HTML" expanded="true" />
-                <element signature="e#7749#7783#0#HTML" expanded="true" />
-                <element signature="e#8015#8049#0#HTML" expanded="true" />
-                <element signature="e#8281#8315#0#HTML" expanded="true" />
-                <element signature="e#8547#8581#0#HTML" expanded="true" />
-                <element signature="e#8813#8847#0#HTML" expanded="true" />
-                <element signature="e#9079#9113#0#HTML" expanded="true" />
-                <element signature="e#9345#9379#0#HTML" expanded="true" />
-                <element signature="e#9611#9645#0#HTML" expanded="true" />
-                <element signature="e#15693#15745#0#HTML" expanded="true" />
-                <element signature="n#style#0;n#button#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#button#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#button#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#button#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#button#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#button#0;n#!!top" expanded="true" />
+                <element signature="e#15857#15912#0#HTML" expanded="true" />
+                <element signature="e#16604#16698#0#HTML" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#button#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="e#528#535#1" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/_particles/subscribe.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1029">
+              <caret line="49" column="14" selection-start-line="49" selection-start-column="14" selection-end-line="49" selection-end-column="75" />
             </state>
           </provider>
         </entry>
@@ -255,8 +235,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>.container-header</find>
-      <find>container-header</find>
       <find>grad</find>
       <find>sneak</find>
       <find>jquery</find>
@@ -273,7 +251,6 @@
       <find>.backstretch</find>
       <find>&lt;styl</find>
       <find>fav-articles</find>
-      <find>992</find>
       <find>@me</find>
       <find>trending</find>
       <find>style=&quot;display: flex;justify-content: center;align-items: center;flex-direction: column;margin: 0;background-color: #F7D5D9;border-radius: 10px;width: 100%;height: 100%;&quot;</find>
@@ -282,6 +259,12 @@
       <find>style=&quot;height: 160px;padding: 5px;&quot;</find>
       <find>style=&quot;color: #6C6CA4;font-weight: 600;font-size: 18px;&quot;</find>
       <find>.fav</find>
+      <find>subscribe_user</find>
+      <find>submitbutton</find>
+      <find>_token</find>
+      <find>ajax</find>
+      <find>992</find>
+      <find>wrapper2</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -294,6 +277,7 @@
         <option value="$PROJECT_DIR$/resources/views/_particles/slidersearch.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/app.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/_particles/header.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/_particles/subscribe.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/pages/index.blade.php" />
       </list>
     </option>
@@ -830,18 +814,22 @@
       <workItem from="1646910532995" duration="1626000" />
       <workItem from="1646913091844" duration="1902000" />
       <workItem from="1646915028271" duration="1608000" />
-      <workItem from="1646917926728" duration="1094000" />
+      <workItem from="1646917926728" duration="1781000" />
+      <workItem from="1646919740383" duration="1572000" />
+      <workItem from="1646921554332" duration="1279000" />
+      <workItem from="1646932647283" duration="1791000" />
+      <workItem from="1646934461179" duration="340000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25639000" />
+    <option name="totallyTimeSpent" value="31308000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1721" height="927" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.31366646" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3305238" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -915,7 +903,7 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/resources/views/_particles/header.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1617">
+        <state relative-caret-position="21">
           <caret line="1" column="30" selection-start-line="1" selection-start-column="30" selection-end-line="1" selection-end-column="30" />
         </state>
       </provider>
@@ -934,6 +922,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/_particles/subscribe.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1029">
+          <caret line="49" column="14" selection-start-line="49" selection-start-column="14" selection-end-line="49" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/_particles/slidersearch.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="21">
@@ -943,42 +938,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/pages/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="395">
-          <caret line="336" column="8" selection-start-line="336" selection-start-column="8" selection-end-line="336" selection-end-column="8" />
+        <state relative-caret-position="626">
+          <caret line="379" column="31" selection-start-line="379" selection-start-column="31" selection-end-line="379" selection-end-column="31" />
           <folding>
-            <element signature="e#2416#2460#0#HTML" expanded="true" />
-            <element signature="e#2513#2540#0#HTML" expanded="true" />
-            <element signature="e#4250#4364#0#HTML" expanded="true" />
-            <element signature="e#4488#4513#0#HTML" expanded="true" />
-            <element signature="e#4025#4104#0#HTML" expanded="true" />
-            <element signature="e#4291#4325#0#HTML" expanded="true" />
-            <element signature="e#4557#4591#0#HTML" expanded="true" />
-            <element signature="e#4823#4857#0#HTML" expanded="true" />
-            <element signature="e#5089#5123#0#HTML" expanded="true" />
-            <element signature="e#5355#5389#0#HTML" expanded="true" />
-            <element signature="e#5621#5655#0#HTML" expanded="true" />
-            <element signature="e#5887#5921#0#HTML" expanded="true" />
-            <element signature="e#6153#6187#0#HTML" expanded="true" />
-            <element signature="e#6419#6453#0#HTML" expanded="true" />
-            <element signature="e#6685#6719#0#HTML" expanded="true" />
-            <element signature="e#6951#6985#0#HTML" expanded="true" />
-            <element signature="e#7217#7251#0#HTML" expanded="true" />
-            <element signature="e#7483#7517#0#HTML" expanded="true" />
-            <element signature="e#7749#7783#0#HTML" expanded="true" />
-            <element signature="e#8015#8049#0#HTML" expanded="true" />
-            <element signature="e#8281#8315#0#HTML" expanded="true" />
-            <element signature="e#8547#8581#0#HTML" expanded="true" />
-            <element signature="e#8813#8847#0#HTML" expanded="true" />
-            <element signature="e#9079#9113#0#HTML" expanded="true" />
-            <element signature="e#9345#9379#0#HTML" expanded="true" />
-            <element signature="e#9611#9645#0#HTML" expanded="true" />
-            <element signature="e#15693#15745#0#HTML" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#!!top" expanded="true" />
+            <element signature="e#15857#15912#0#HTML" expanded="true" />
+            <element signature="e#16604#16698#0#HTML" expanded="true" />
             <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#button#0;n#div#0;n#!!top" expanded="true" />
             <element signature="e#528#535#1" expanded="true" />

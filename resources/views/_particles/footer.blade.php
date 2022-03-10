@@ -131,8 +131,8 @@
 
     .copyright .social-links > li > .icon-insta:hover{ background: #d54b4b; }
 
-    .widget ul li a{color: #3bafda !important;}
+    .widget ul li a{color: #aaaaaa !important;}
 
-    .widget ul li a:hover{color: #fff !important;}
+    .widget ul li a:hover{color: #000 !important;}
 
 </style>

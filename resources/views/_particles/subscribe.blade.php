@@ -47,7 +47,7 @@
 
             <div class="input-group">
 
-              <meta name="_token" content="{!! csrf_token() !!}"/>
+              <input type="hidden" name="_token" value="{{csrf_token()}}"/>
               <input type="text" name="email" id="email_id" class="form-control input-lg" placeholder="{{__('text.Enter your mail')}}">
               <span class="input-group-btn">
                 <div id="submitbutton"><button class="btn btn-primary btn-lg" type="submit" onClick="subscribe_user()"><i class="fa fa-envelope"></i></button></div>
