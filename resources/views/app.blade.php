@@ -174,8 +174,8 @@
               .backstretch img{
                   width: auto !important;
                   height: 100% !important;
-                  left: -555px !important;
-                  top: -90px !important;
+                  /* left: -555px !important;
+                  top: -90px !important; */
               }
 
               .navbar-nav {
