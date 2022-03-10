@@ -6,6 +6,8 @@
 
 @section("content")
 
+@include("_particles.slidersearch")
+
 <!-- begin:content -->
     <div id="content" style="padding: 10px 0px 0px 0px;">
 
