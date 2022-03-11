@@ -77,137 +77,70 @@
 
                 <div class="row company-boxes">
 
-                    <a href="#" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
-                        <div style="background-color: #F7D5D9;" class="row">
-                            <span>Company Title</span>
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 sub">
+                        <h1 style="font-size: 20px;" class="grad">Speurnet.nl</h1>
+                        <div class="row">
+                            <a href="#">Company Title</a>
+                            <a href="#">Company Title</a>
+                            <a href="#">Company Title</a>
+                            <a href="#">Company Title</a>
+                            <a href="#">Company Title</a>
+                            <a href="#">Company Title</a>
+                            <a href="#">Company Title</a>
+                            <a href="#">Company Title</a>
+                            <a href="#">Company Title</a>
+                            <a href="#">Company Title</a>
                         </div>
-                    </a>
+                    </div>
 
-                    <a href="#" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
-                        <div style="background-color: #F5DEF3;" class="row">
-                            <span>Company Title</span>
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 sub">
+                        <h1 style="font-size: 20px;" class="grad">Speurnet.nl</h1>
+                        <div class="row">
+                            <a href="#">Company Title</a>
                         </div>
-                    </a>
+                    </div>
 
-                    <a href="#" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
-                        <div style="background-color: #C2EEEB;" class="row">
-                            <span>Company Title</span>
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 sub">
+                        <h1 style="font-size: 20px;" class="grad">Speurnet.nl</h1>
+                        <div class="row">
+                            <a href="#">Company Title</a>
                         </div>
-                    </a>
+                    </div>
 
-                    <a href="#" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
-                        <div style="background-color: #C2EEEB;" class="row">
-                            <span>Company Title</span>
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 sub">
+                        <h1 style="font-size: 20px;" class="grad">Speurnet.nl</h1>
+                        <div class="row">
+                            <a href="#">Company Title</a>
                         </div>
-                    </a>
+                    </div>
 
-                    <a href="#" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
-                        <div style="background-color: #DAF4D9;" class="row">
-                            <span>Company Title</span>
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 sub">
+                        <h1 style="font-size: 20px;" class="grad">Speurnet.nl</h1>
+                        <div class="row">
+                            <a href="#">Company Title</a>
                         </div>
-                    </a>
+                    </div>
 
-                    <a href="#" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
-                        <div style="background-color: #F4E4BD;" class="row">
-                            <span>Company Title</span>
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 sub">
+                        <h1 style="font-size: 20px;" class="grad">Speurnet.nl</h1>
+                        <div class="row">
+                            <a href="#">Company Title</a>
                         </div>
-                    </a>
+                    </div>
 
-                    <a href="#" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
-                        <div style="background-color: #F7D5D9;" class="row">
-                            <span>Company Title</span>
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 sub">
+                        <h1 style="font-size: 20px;" class="grad">Speurnet.nl</h1>
+                        <div class="row">
+                            <a href="#">Company Title</a>
                         </div>
-                    </a>
+                    </div>
 
-                    <a href="#" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
-                        <div style="background-color: #F5DEF3;" class="row">
-                            <span>Company Title</span>
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 sub">
+                        <h1 style="font-size: 20px;" class="grad">Speurnet.nl</h1>
+                        <div class="row">
+                            <a href="#">Company Title</a>
                         </div>
-                    </a>
-
-                    <a href="#" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
-                        <div style="background-color: #C2EEEB;" class="row">
-                            <span>Company Title</span>
-                        </div>
-                    </a>
-
-                    <a href="#" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
-                        <div style="background-color: #C2EEEB;" class="row">
-                            <span>Company Title</span>
-                        </div>
-                    </a>
-
-                    <a href="#" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
-                        <div style="background-color: #DAF4D9;" class="row">
-                            <span>Company Title</span>
-                        </div>
-                    </a>
-
-                    <a href="#" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
-                        <div style="background-color: #F4E4BD;" class="row">
-                            <span>Company Title</span>
-                        </div>
-                    </a>
-
-                    <a href="#" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
-                        <div style="background-color: #F7D5D9;" class="row">
-                            <span>Company Title</span>
-                        </div>
-                    </a>
-
-                    <a href="#" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
-                        <div style="background-color: #F5DEF3;" class="row">
-                            <span>Company Title</span>
-                        </div>
-                    </a>
-
-                    <a href="#" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
-                        <div style="background-color: #C2EEEB;" class="row">
-                            <span>Company Title</span>
-                        </div>
-                    </a>
-
-                    <a href="#" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
-                        <div style="background-color: #C2EEEB;" class="row">
-                            <span>Company Title</span>
-                        </div>
-                    </a>
-
-                    <a href="#" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
-                        <div style="background-color: #DAF4D9;" class="row">
-                            <span>Company Title</span>
-                        </div>
-                    </a>
-
-                    <a href="#" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
-                        <div style="background-color: #F4E4BD;" class="row">
-                            <span>Company Title</span>
-                        </div>
-                    </a>
-
-                    <a href="#" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
-                        <div style="background-color: #F7D5D9;" class="row">
-                            <span>Company Title</span>
-                        </div>
-                    </a>
-
-                    <a href="#" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
-                        <div style="background-color: #F5DEF3;" class="row">
-                            <span>Company Title</span>
-                        </div>
-                    </a>
-
-                    <a href="#" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
-                        <div style="background-color: #C2EEEB;" class="row">
-                            <span>Company Title</span>
-                        </div>
-                    </a>
-
-                    <a href="#" class="col-lg-3 col-md-4 col-sm-6 col-xs-6">
-                        <div style="background-color: #C2EEEB;" class="row">
-                            <span>Company Title</span>
-                        </div>
-                    </a>
+                    </div>
 
                 </div>
 
@@ -482,25 +415,28 @@
         flex-wrap: wrap;
     }
 
-    .company-boxes a
+    .company-boxes .sub
     {
-        height: 160px;
-        padding: 5px;
+        padding: 15px;
+        margin-top: 10px;
     }
 
-    .company-boxes div
+    .company-boxes .row
     {
         display: flex;
-        justify-content: center;
-        align-items: center;
+        justify-content: flex-start;
+        align-items: flex-start;
         flex-direction: column;
         margin: 0;
         border-radius: 10px;
         width: 100%;
-        height: 100%;
+        min-height: 160px;
+        border: 2px solid black;
+        padding: 10px;
+        margin-top: 10px;
     }
 
-    .company-boxes span
+    .company-boxes a
     {
         color: #6C6CA4;
         font-weight: 600;
