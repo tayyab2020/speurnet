@@ -79,65 +79,56 @@
 
                     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 sub">
                         <h1 style="font-size: 20px;" class="grad">Speurnet.nl</h1>
-                        <div class="row">
-                            <a href="#">Company Title</a>
-                            <a href="#">Company Title</a>
-                            <a href="#">Company Title</a>
-                            <a href="#">Company Title</a>
-                            <a href="#">Company Title</a>
-                            <a href="#">Company Title</a>
-                            <a href="#">Company Title</a>
-                            <a href="#">Company Title</a>
-                            <a href="#">Company Title</a>
+                        <div style="background-color: #F5DEF3;" class="row">
                             <a href="#">Company Title</a>
                         </div>
                     </div>
 
                     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 sub">
                         <h1 style="font-size: 20px;" class="grad">Speurnet.nl</h1>
-                        <div class="row">
+                        <div style="background-color: #C2EEEB;" class="row">
                             <a href="#">Company Title</a>
                         </div>
                     </div>
 
                     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 sub">
                         <h1 style="font-size: 20px;" class="grad">Speurnet.nl</h1>
-                        <div class="row">
+                        <div style="background-color: #C2EEEB;" class="row">
                             <a href="#">Company Title</a>
                         </div>
                     </div>
 
                     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 sub">
                         <h1 style="font-size: 20px;" class="grad">Speurnet.nl</h1>
-                        <div class="row">
+                        <div style="background-color: #DAF4D9;" class="row">
                             <a href="#">Company Title</a>
                         </div>
                     </div>
 
                     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 sub">
                         <h1 style="font-size: 20px;" class="grad">Speurnet.nl</h1>
-                        <div class="row">
+                        <div style="background-color: #F4E4BD;" class="row">
                             <a href="#">Company Title</a>
                         </div>
                     </div>
 
                     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 sub">
                         <h1 style="font-size: 20px;" class="grad">Speurnet.nl</h1>
-                        <div class="row">
+                        <div style="background-color: #F7D5D9;" class="row">
                             <a href="#">Company Title</a>
                         </div>
                     </div>
 
                     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 sub">
                         <h1 style="font-size: 20px;" class="grad">Speurnet.nl</h1>
-                        <div class="row">
+                        <div style="background-color: #F5DEF3;" class="row">
                             <a href="#">Company Title</a>
                         </div>
                     </div>
 
                     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 sub">
                         <h1 style="font-size: 20px;" class="grad">Speurnet.nl</h1>
-                        <div class="row">
+                        <div style="background-color: #C2EEEB;" class="row">
                             <a href="#">Company Title</a>
                         </div>
                     </div>
@@ -417,21 +408,21 @@
 
     .company-boxes .sub
     {
-        padding: 15px;
+        padding: 10px;
         margin-top: 10px;
     }
 
     .company-boxes .row
     {
         display: flex;
-        justify-content: flex-start;
-        align-items: flex-start;
+        justify-content: center;
+        align-items: center;
         flex-direction: column;
         margin: 0;
         border-radius: 10px;
         width: 100%;
         min-height: 160px;
-        border: 2px solid black;
+        /*border: 2px solid black;*/
         padding: 10px;
         margin-top: 10px;
     }

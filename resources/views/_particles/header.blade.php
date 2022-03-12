@@ -219,7 +219,7 @@
 
             <ul style="margin-right: 0;width: 100%;" class="nav navbar-nav navbar-right">
 
-                <li style="margin-left: 30px;" class="{{classActivePathPublic('')}}"><a href="{{ URL::to('/') }}">{{__('text.Home')}}</a></li>
+                <li style="margin-left: 100px;" class="{{classActivePathPublic('')}}"><a href="{{ URL::to('/') }}">{{__('text.Home')}}</a></li>
                 <li><a style="display: flex;align-items: center;" href="#"><i style="font-size: 10px;" class="fa fa-heart"></i><span style="margin-left: 5px;">Saved</span></a></li>
                 <li><a href="#">Electronics</a></li>
                 <li><a href="#">Motors</a></li>
