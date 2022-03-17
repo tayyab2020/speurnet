@@ -139,7 +139,7 @@
 
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="display: flex;justify-content: center;flex-wrap: wrap;padding: 0;">
 
-        <div style="display: flex;align-items: center;justify-content: center;" class="col-lg-4 col-md-4 col-sm-4 col-xs-9 con">
+        <div style="display: flex;align-items: center;justify-content: center;" class="col-lg-4 col-md-4 col-sm-4 col-xs-10 con">
 
             <div class="left-tab tab">
                 <h2>Shirts</h2>
@@ -151,7 +151,7 @@
 
         </div>
 
-        <div style="display: flex;align-items: center;justify-content: center;" class="col-lg-4 col-md-4 col-sm-4 col-xs-9 con">
+        <div style="display: flex;align-items: center;justify-content: center;" class="col-lg-4 col-md-4 col-sm-4 col-xs-10 con">
 
             <div class="left-tab1 tab">
                 <h2>Shirts</h2>
@@ -163,7 +163,7 @@
 
         </div>
 
-        <div style="display: flex;align-items: center;justify-content: center;" class="col-lg-4 col-md-4 col-sm-4 col-xs-9 con">
+        <div style="display: flex;align-items: center;justify-content: center;" class="col-lg-4 col-md-4 col-sm-4 col-xs-10 con">
 
             <div class="left-tab2 tab">
                 <h2>Shirts</h2>
