@@ -137,9 +137,9 @@
 
 <div class="row" style="margin: 40px 0 0 0;">
 
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="display: flex;padding: 0;">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="display: flex;justify-content: center;flex-wrap: wrap;padding: 0;">
 
-        <div style="display: flex;align-items: center;justify-content: center;" class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+        <div style="display: flex;align-items: center;justify-content: center;" class="col-lg-4 col-md-4 col-sm-4 col-xs-9 con">
 
             <div class="left-tab tab">
                 <h2>Shirts</h2>
@@ -151,7 +151,7 @@
 
         </div>
 
-        <div style="display: flex;align-items: center;justify-content: center;" class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+        <div style="display: flex;align-items: center;justify-content: center;" class="col-lg-4 col-md-4 col-sm-4 col-xs-9 con">
 
             <div class="left-tab1 tab">
                 <h2>Shirts</h2>
@@ -163,7 +163,7 @@
 
         </div>
 
-        <div style="display: flex;align-items: center;justify-content: center;" class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+        <div style="display: flex;align-items: center;justify-content: center;" class="col-lg-4 col-md-4 col-sm-4 col-xs-9 con">
 
             <div class="left-tab2 tab">
                 <h2>Shirts</h2>
@@ -265,6 +265,7 @@
     {
         width: 65%;
         height: 100%;
+        z-index: 1000;
     }
 
     .tab:before
@@ -312,6 +313,63 @@
     .right-tab:before, .right-tab1:before, .right-tab2:before {
         -webkit-box-shadow: 40px 0 0 0 #f1e1ca;
         box-shadow: 40px 0 0 0 #f1e1ca;
+    }
+
+    @media screen and (max-width: 1500px)
+    {
+        .tab
+        {
+            width: 35%;
+        }
+
+        .tab1
+        {
+            width: 60%;
+        }
+
+        .tab, .tab1
+        {
+            height: 120px;
+        }
+    }
+
+    @media screen and (max-width: 992px)
+    {
+        .tab, .tab1
+        {
+            height: 90px;
+        }
+
+        .tab h2
+        {
+            font-size: 16px;
+            margin: 10px 0 0 0;
+        }
+
+        .tab a
+        {
+            font-size: 10px;
+        }
+
+        .tab1
+        {
+            border-bottom-left-radius: 45px;
+        }
+
+        .tab1:before
+        {
+            border-radius: 0 25px 0 0;
+            -moz-border-radius: 0 25px 0 0;
+            -webkit-border-radius: 0 25px 0 0;
+        }
+    }
+
+    @media screen and (max-width: 768px)
+    {
+        .con
+        {
+            margin-top: 20px;
+        }
     }
 
 </style>
