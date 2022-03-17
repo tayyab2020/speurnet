@@ -44,6 +44,11 @@ use Laravel\Socialite\Facades\Socialite;
 class IndexController extends Controller
 {
 
+    public function page1()
+    {
+        return view('pages.page1');
+    }
+
     public function compressImage($source, $destination, $quality) {
 
         $info = getimagesize($source);

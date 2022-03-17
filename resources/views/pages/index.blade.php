@@ -459,7 +459,7 @@
     .company-boxes .sub
     {
         padding: 10px;
-        margin-top: 10px;
+        /*margin-top: 10px;*/
     }
 
     .company-boxes .row

@@ -217,6 +217,8 @@ Route::group(['middleware' => 'App\Http\Middleware\UserTypeMiddleware'], functio
 
     Route::get('/', 'IndexController@index');
 
+    Route::get('page1', 'IndexController@page1')->name('page1');
+
     Route::get('wooninspiratie/{id?}', 'IndexController@HomesInspiration')->name('front-homes-inspiration');
 
     Route::post('change-language', 'IndexController@changeLanguage');

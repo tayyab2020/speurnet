@@ -100,7 +100,11 @@
 
   </style>
 
-  @include("_particles.header")
+  @if(Route::currentRouteName() != 'page1')
+
+      @include("_particles.header")
+
+  @endif
 
   @yield("content")
 
@@ -206,9 +210,7 @@
               border-right: .3em solid transparent;
               border-bottom: 0;
               border-left: .3em solid transparent;
-
           }
-
 
           .dropdown-menu a{
               display: block;
