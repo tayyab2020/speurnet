@@ -135,6 +135,187 @@
 
 @include("_particles.slidersearch")
 
+<div class="row" style="margin: 40px 0 0 0;">
+
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="display: flex;padding: 0;">
+
+        <div style="display: flex;align-items: center;justify-content: center;" class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+
+            <div class="left-tab tab">
+                <h2>Shirts</h2>
+                <a href="#">View All</a>
+            </div>
+            <div class="right-tab tab1">
+                <img src="{{ URL::asset('assets/img/tshirt_PNG5450.png') }}">
+            </div>
+
+        </div>
+
+        <div style="display: flex;align-items: center;justify-content: center;" class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+
+            <div class="left-tab1 tab">
+                <h2>Shirts</h2>
+                <a href="#">View All</a>
+            </div>
+            <div class="right-tab1 tab1">
+                <img src="{{ URL::asset('assets/img/tshirt_PNG5450.png') }}">
+            </div>
+
+        </div>
+
+        <div style="display: flex;align-items: center;justify-content: center;" class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+
+            <div class="left-tab2 tab">
+                <h2>Shirts</h2>
+                <a href="#">View All</a>
+            </div>
+            <div class="right-tab2 tab1">
+                <img src="{{ URL::asset('assets/img/tshirt_PNG5450.png') }}">
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<style>
+
+    .tab, .tab1
+    {
+        padding: 10px 15px;
+        height: 150px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .tab
+    {
+        -webkit-border-top-left-radius: 75px;
+        -webkit-border-top-right-radius: 45px;
+        -webkit-border-bottom-left-radius: 75px;
+        -webkit-border-bottom-right-radius: 0;
+        -moz-border-radius-topleft: 75px;
+        -moz-border-radius-topright: 45px;
+        -moz-border-radius-bottomleft: 75px;
+        -moz-border-radius-bottomright: 0;
+        border-top-left-radius: 75px;
+        border-top-right-radius: 45px;
+        border-bottom-left-radius: 75px;
+        border-bottom-right-radius: 0;
+        margin-right: 10px;
+        width: 30%;
+    }
+
+    .tab h2
+    {
+        color: #765bbe;
+        margin: 5px 0;
+    }
+
+    .tab a
+    {
+        color: #000000;
+        font-weight: 600;
+        font-size: 15px;
+    }
+
+    .tab1
+    {
+        padding: 0;
+        -webkit-border-top-left-radius: 0;
+        -webkit-border-top-right-radius: 70px;
+        -webkit-border-bottom-left-radius: 30px;
+        -webkit-border-bottom-right-radius: 70px;
+        -moz-border-radius-topleft: 0;
+        -moz-border-radius-topright: 70px;
+        -moz-border-radius-bottomleft: 30px;
+        -moz-border-radius-bottomright: 70px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 70px;
+        border-bottom-left-radius: 30px;
+        border-bottom-right-radius: 70px;
+        width: 55%;
+    }
+
+    .left-tab
+    {
+        background: #AFE1FF;
+    }
+
+    .left-tab1 {
+
+        background: #DCBEFA;
+    }
+
+    .left-tab2 {
+
+        background: #BFFFAE;
+    }
+
+    .right-tab, .right-tab1, .right-tab2
+    {
+        background: #F1E1CA;
+    }
+
+    .tab1 img
+    {
+        width: 65%;
+        height: 100%;
+    }
+
+    .tab:before
+    {
+        content: "";
+        position: absolute;
+        height: 30px;
+        width: 55px;
+        bottom: 0;
+        right: -47px;
+        border-radius: 150px 0 145px 0;
+        -moz-border-radius: 150px 0 145px 0;
+        -webkit-border-radius: 150px 0 145px 0;
+        transform: rotateY(135deg);
+    }
+
+    .left-tab:before {
+        -webkit-box-shadow: 30px 0 0 0 #AFE1FF;
+        box-shadow: 30px 0 0 0 #AFE1FF;
+    }
+
+    .left-tab1:before {
+        -webkit-box-shadow: 30px 0 0 0 #dcbefa;
+        box-shadow: 30px 0 0 0 #dcbefa;
+    }
+
+    .left-tab2:before {
+        -webkit-box-shadow: 30px 0 0 0 #BFFFAE;
+        box-shadow: 30px 0 0 0 #BFFFAE;
+    }
+
+    .tab1:before
+    {
+        content: "";
+        position: absolute;
+        height: 35px;
+        width: 80px;
+        top: 0;
+        left: -80px;
+        border-radius: 0 100px 0 0;
+        -moz-border-radius: 0 100px 0 0;
+        -webkit-border-radius: 0 100px 0 0;
+    }
+
+    .right-tab:before, .right-tab1:before, .right-tab2:before {
+        -webkit-box-shadow: 40px 0 0 0 #f1e1ca;
+        box-shadow: 40px 0 0 0 #f1e1ca;
+    }
+
+</style>
+
 @if(count($content))
 
     <div class="row" style="margin: 40px 0 0 0;">

@@ -22,7 +22,6 @@
     <list default="true" id="7fe7f36f-c82f-4504-8c0a-7874522d22c9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/_particles/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/_particles/header.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/pages/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/index.blade.php" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/vendor/albertcht/invisible-recaptcha/" />
     <ignored path="$PROJECT_DIR$/vendor/composer/" />
@@ -173,11 +172,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/_particles/header.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="221" column="42" selection-start-line="221" selection-start-column="42" selection-end-line="221" selection-end-column="42" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="2259">
+              <caret line="293" column="39" selection-start-line="293" selection-start-column="39" selection-end-line="293" selection-end-column="39" />
             </state>
           </provider>
         </entry>
@@ -212,21 +208,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/pages/index.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="8610">
-              <caret line="410" column="19" selection-start-line="410" selection-start-column="19" selection-end-line="410" selection-end-column="19" />
-              <folding>
-                <element signature="e#4116#4150#0#HTML" expanded="true" />
-                <element signature="e#4461#4495#0#HTML" expanded="true" />
-                <element signature="e#4833#4867#0#HTML" expanded="true" />
-                <element signature="e#5185#5219#0#HTML" expanded="true" />
-                <element signature="e#5537#5571#0#HTML" expanded="true" />
-                <element signature="e#5889#5923#0#HTML" expanded="true" />
-                <element signature="e#6241#6275#0#HTML" expanded="true" />
-                <element signature="e#6593#6627#0#HTML" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#button#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="e#528#535#1" expanded="true" />
-              </folding>
+            <state relative-caret-position="378">
+              <caret line="18" selection-start-line="18" selection-end-line="18" />
             </state>
           </provider>
         </entry>
@@ -253,7 +236,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>&lt;script src=&quot;https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js&quot;&gt;&lt;/script&gt;</find>
       <find>.grad</find>
       <find>#head</find>
       <find>.backstretch img</find>
@@ -283,6 +265,7 @@
       <find>sub</find>
       <find>.company-boxes .sub</find>
       <find>company-boxes</find>
+      <find>&lt;img</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -454,7 +437,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -502,6 +484,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="ProjectViewState">
@@ -843,18 +826,28 @@
       <workItem from="1646998895112" duration="859000" />
       <workItem from="1647004705813" duration="627000" />
       <workItem from="1647013414449" duration="34000" />
-      <workItem from="1647104601303" duration="968000" />
+      <workItem from="1647104601303" duration="1080000" />
+      <workItem from="1647436329038" duration="825000" />
+      <workItem from="1647439766304" duration="1234000" />
+      <workItem from="1647450239398" duration="600000" />
+      <workItem from="1647452106384" duration="685000" />
+      <workItem from="1647456775294" duration="1520000" />
+      <workItem from="1647458594582" duration="594000" />
+      <workItem from="1647462682431" duration="1715000" />
+      <workItem from="1647465602523" duration="981000" />
+      <workItem from="1647501379734" duration="1513000" />
+      <workItem from="1647503329876" duration="640000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36049000" />
+    <option name="totallyTimeSpent" value="46468000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1721" height="927" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3564118" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16375677" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -926,6 +919,13 @@
     <state x="106" y="156" width="805" height="616" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1636200257469" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/resources/views/_particles/header.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2259">
+          <caret line="293" column="39" selection-start-line="293" selection-start-column="39" selection-end-line="293" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/Exceptions/Handler.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="735">
@@ -947,6 +947,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/pages/index.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/_particles/subscribe.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1029">
@@ -958,36 +965,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="21">
           <caret line="1" column="28" selection-start-line="1" selection-start-column="28" selection-end-line="1" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/pages/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8610">
-          <caret line="410" column="19" selection-start-line="410" selection-start-column="19" selection-end-line="410" selection-end-column="19" />
-          <folding>
-            <element signature="e#4116#4150#0#HTML" expanded="true" />
-            <element signature="e#4461#4495#0#HTML" expanded="true" />
-            <element signature="e#4833#4867#0#HTML" expanded="true" />
-            <element signature="e#5185#5219#0#HTML" expanded="true" />
-            <element signature="e#5537#5571#0#HTML" expanded="true" />
-            <element signature="e#5889#5923#0#HTML" expanded="true" />
-            <element signature="e#6241#6275#0#HTML" expanded="true" />
-            <element signature="e#6593#6627#0#HTML" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="e#528#535#1" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/_particles/header.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="221" column="42" selection-start-line="221" selection-start-column="42" selection-end-line="221" selection-end-column="42" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
