@@ -137,9 +137,59 @@
 
             </div>
 
-            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 trending">
+            <div style="margin-top: 30px;" class="col-lg-3 col-md-3 col-sm-12 col-xs-12 trending">
 
-                <h4 style="font-weight: 600;text-align: left;margin: 0;">Trending right now</h4>
+                @if(count($content))
+
+                    <div style="margin: 0;" class="row">
+
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="display: flex;padding: 0;">
+
+                            <div style="margin: 0;padding: 0;" data-testid="key-services" class="css-htlmaj col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div>
+                                    <div class="domain-home_ down is-visible">
+
+                                        <ul class="css-48sroz" style="list-style: none;padding: 0;">
+
+                                            @foreach($content as $temp)
+
+                                                <li>
+
+                                                    @if($temp->image)
+
+                                                        <a target="_blank" href="@if($temp->url){{$temp->url}} @else {{URL::to('/')}} @endif">
+
+                                                            <img src="{{ URL::asset('upload/homepage_icons/'.$temp->image) }}">{{$temp->title}}
+
+                                                        </a>
+
+                                                    @else
+
+                                                        <a target="_blank" style="display: flex;justify-content: center;" href="@if($temp->url){{$temp->url}} @else {{URL::to('/')}} @endif">
+
+                                                            {{$temp->title}}
+
+                                                        </a>
+
+                                                    @endif
+
+                                                </li>
+
+                                            @endforeach
+
+                                        </ul>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                @endif
+
+                <h4 style="font-weight: 600;text-align: left;margin: 30px 0 0 0;">Trending right now</h4>
 
                 <div style="margin: 0;" class="row">
 
@@ -167,50 +217,50 @@
 
                     </div>
 
-                    <div style="margin: 10px 0;display: flex;justify-content: flex-start;align-items: center;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+{{--                    <div style="margin: 10px 0;display: flex;justify-content: flex-start;align-items: center;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">--}}
 
-                        <a href="#" style="display: flex;align-items: center;background-color: transparent;color: #000;padding: 10px 20px;width: auto;border-radius: 10px;font-weight: 600;min-width: 50%;min-height: 60px;" class="btn btn-primary">
-                            <img style="width: 40px;height: 40px;" src="{{ URL::asset('assets/img/truck.png') }}">
-                            <span style="margin-left: 5px;">Supply Chain</span>
-                        </a>
+{{--                        <a href="#" style="display: flex;align-items: center;background-color: transparent;color: #000;padding: 10px 20px;width: auto;border-radius: 10px;font-weight: 600;min-width: 50%;min-height: 60px;" class="btn btn-primary">--}}
+{{--                            <img style="width: 40px;height: 40px;" src="{{ URL::asset('assets/img/truck.png') }}">--}}
+{{--                            <span style="margin-left: 5px;">Supply Chain</span>--}}
+{{--                        </a>--}}
 
-                    </div>
+{{--                    </div>--}}
 
-                    <div style="margin: 10px 0;display: flex;justify-content: flex-start;align-items: center;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+{{--                    <div style="margin: 10px 0;display: flex;justify-content: flex-start;align-items: center;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">--}}
 
-                        <a href="#" style="display: flex;align-items: center;background-color: transparent;color: #000;padding: 10px 20px;width: auto;border-radius: 10px;font-weight: 600;min-width: 50%;min-height: 60px;" class="btn btn-primary">
-                            <img style="width: 40px;height: 40px;" src="{{ URL::asset('assets/img/stethoscope.png') }}">
-                            <span style="margin-left: 5px;">Healthcare</span>
-                        </a>
+{{--                        <a href="#" style="display: flex;align-items: center;background-color: transparent;color: #000;padding: 10px 20px;width: auto;border-radius: 10px;font-weight: 600;min-width: 50%;min-height: 60px;" class="btn btn-primary">--}}
+{{--                            <img style="width: 40px;height: 40px;" src="{{ URL::asset('assets/img/stethoscope.png') }}">--}}
+{{--                            <span style="margin-left: 5px;">Healthcare</span>--}}
+{{--                        </a>--}}
 
-                    </div>
+{{--                    </div>--}}
 
-                    <div style="margin: 10px 0;display: flex;justify-content: flex-start;align-items: center;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+{{--                    <div style="margin: 10px 0;display: flex;justify-content: flex-start;align-items: center;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">--}}
 
-                        <a href="#" style="display: flex;align-items: center;background-color: transparent;color: #000;padding: 10px 20px;width: auto;border-radius: 10px;font-weight: 600;min-width: 50%;min-height: 60px;" class="btn btn-primary">
-                            <img style="width: 30px;height: 30px;" src="{{ URL::asset('assets/img/worldwide.png') }}">
-                            <span style="margin-left: 5px;">Media</span>
-                        </a>
+{{--                        <a href="#" style="display: flex;align-items: center;background-color: transparent;color: #000;padding: 10px 20px;width: auto;border-radius: 10px;font-weight: 600;min-width: 50%;min-height: 60px;" class="btn btn-primary">--}}
+{{--                            <img style="width: 30px;height: 30px;" src="{{ URL::asset('assets/img/worldwide.png') }}">--}}
+{{--                            <span style="margin-left: 5px;">Media</span>--}}
+{{--                        </a>--}}
 
-                    </div>
+{{--                    </div>--}}
 
-                    <div style="margin: 10px 0;display: flex;justify-content: flex-start;align-items: center;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+{{--                    <div style="margin: 10px 0;display: flex;justify-content: flex-start;align-items: center;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">--}}
 
-                        <a href="#" style="display: flex;align-items: center;background-color: transparent;color: #000;padding: 10px 20px;width: auto;border-radius: 10px;font-weight: 600;min-width: 50%;min-height: 60px;" class="btn btn-primary">
-                            <img style="width: 30px;height: 30px;" src="{{ URL::asset('assets/img/clapperboard.png') }}">
-                            <span style="margin-left: 5px;">Media</span>
-                        </a>
+{{--                        <a href="#" style="display: flex;align-items: center;background-color: transparent;color: #000;padding: 10px 20px;width: auto;border-radius: 10px;font-weight: 600;min-width: 50%;min-height: 60px;" class="btn btn-primary">--}}
+{{--                            <img style="width: 30px;height: 30px;" src="{{ URL::asset('assets/img/clapperboard.png') }}">--}}
+{{--                            <span style="margin-left: 5px;">Media</span>--}}
+{{--                        </a>--}}
 
-                    </div>
+{{--                    </div>--}}
 
-                    <div style="margin: 10px 0;display: flex;justify-content: flex-start;align-items: center;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+{{--                    <div style="margin: 10px 0;display: flex;justify-content: flex-start;align-items: center;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">--}}
 
-                        <a href="#" style="display: flex;align-items: center;background-color: transparent;color: #000;padding: 10px 20px;width: auto;border-radius: 10px;font-weight: 600;min-width: 50%;min-height: 60px;" class="btn btn-primary">
-                            <img style="width: 30px;height: 30px;" src="{{ URL::asset('assets/img/mortarboard.png') }}">
-                            <span style="margin-left: 5px;">Education</span>
-                        </a>
+{{--                        <a href="#" style="display: flex;align-items: center;background-color: transparent;color: #000;padding: 10px 20px;width: auto;border-radius: 10px;font-weight: 600;min-width: 50%;min-height: 60px;" class="btn btn-primary">--}}
+{{--                            <img style="width: 30px;height: 30px;" src="{{ URL::asset('assets/img/mortarboard.png') }}">--}}
+{{--                            <span style="margin-left: 5px;">Education</span>--}}
+{{--                        </a>--}}
 
-                    </div>
+{{--                    </div>--}}
 
                 </div>
 
@@ -582,6 +632,8 @@
 
     .css-ce6ko1{font-size:25px;font-weight:bold;margin-bottom:30px;}
 
+    .css-48sroz{ align-items: center;justify-content: center;flex-direction: column; }
+
     @media(min-width:624px){.css-48sroz{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-pack:justify;-webkit-justify-content:flex-start;-ms-flex-pack:justify;justify-content:flex-start;}}
 
     @media(min-width:1021px){.css-48sroz{border-radius:3px;-webkit-flex-wrap:nowrap;-ms-flex-wrap:nowrap;flex-wrap:nowrap;}}
@@ -594,7 +646,7 @@
 
     @media(min-width:1021px){
 
-    .css-48sroz li{-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;-webkit-flex-basis:24%;-ms-flex-preferred-size:24%;flex-basis:24%;font-size:18px;text-align:center;box-shadow:0 1px 3px 0 rgba(30,41,61,0.1),0 1px 2px 0 rgba(30,41,61,0.2);border-right:1px solid #e6e9ed;margin-top:-1px;margin-bottom:-1px;}
+    .css-48sroz li{width: 70%;-webkit-box-flex:0;-webkit-flex-grow:0;-ms-flex-positive:0;flex-grow:0;-webkit-flex-basis:24%;-ms-flex-preferred-size:24%;flex-basis:24%;font-size:18px;text-align:center;box-shadow:0 1px 3px 0 rgba(30,41,61,0.1),0 1px 2px 0 rgba(30,41,61,0.2);border-right:1px solid #e6e9ed;margin-top:-1px;margin-bottom:-1px;}
 
     .css-48sroz li:last-child{border-right-width:0;}
 

@@ -374,66 +374,14 @@
 
 </style>
 
-@if(count($content))
+<div style="margin: 40px 0 0 0;display: flex;justify-content: space-between;align-items: center;" class="row">
 
-    <div class="row" style="margin: 40px 0 0 0;">
+    <form class="desktop-search" style="display: flex;align-items: center;justify-content: flex-end;padding: 20px 0;width: 100%;" action="" autocomplete="on">
+        <input class="search-btn" id="search_submit" value="Rechercher" type="submit">
+        <input class="search-bar" id="search" name="search" type="text" placeholder="What're we looking for ?">
+    </form>
 
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="display: flex;">
-
-            <div style="margin: 0;" data-testid="key-services" class="css-htlmaj col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div>
-                    <div class="domain-home_ down is-visible">
-
-                        <div style="margin: 0;display: flex;justify-content: space-between;align-items: center;" class="row">
-
-                            <h2 style="width: 100%;" class="css-ce6ko1">{{$heading->wyh_heading}}</h2>
-
-                            <form class="desktop-search" style="display: flex;align-items: center;justify-content: flex-end;padding: 20px 0;width: 100%;" action="" autocomplete="on">
-                                <input class="search-btn" id="search_submit" value="Rechercher" type="submit">
-                                <input class="search-bar" id="search" name="search" type="text" placeholder="What're we looking for ?">
-                            </form>
-
-                        </div>
-
-                        <ul class="css-48sroz" style="list-style: none;padding: 0;">
-
-                            @foreach($content as $temp)
-
-                                <li>
-
-                                    @if($temp->image)
-
-                                        <a target="_blank" href="@if($temp->url){{$temp->url}} @else {{URL::to('/')}} @endif">
-
-                                            <img src="{{ URL::asset('upload/homepage_icons/'.$temp->image) }}">{{$temp->title}}
-
-                                        </a>
-
-                                    @else
-
-                                        <a target="_blank" style="display: flex;justify-content: center;" href="@if($temp->url){{$temp->url}} @else {{URL::to('/')}} @endif">
-
-                                            {{$temp->title}}
-
-                                        </a>
-
-                                    @endif
-
-                                </li>
-
-                            @endforeach
-
-                        </ul>
-
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-    </div>
-
-@endif
+</div>
 
 <!-- begin:navbar -->
     <nav class="navbar navbar-default navbar-fixed-top desktop-nav" role="navigation">
