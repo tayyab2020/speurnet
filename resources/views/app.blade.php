@@ -173,33 +173,6 @@
               top: 0 !important;
           }
 
-          @media screen and (max-width: 767px)
-          {
-              .backstretch img{
-                  width: auto !important;
-                  height: 100% !important;
-                  /* left: -555px !important;
-                  top: -90px !important; */
-              }
-
-              .navbar-nav {
-                  height: 80vh !important;
-                  overflow-y: auto;
-              }
-
-              .collapse.in
-              {
-                  max-height: 100% !important;
-                  height: 100vh;
-                  overflow: hidden !important;
-              }
-
-              .collapsing
-              {
-                  max-height: 100% !important;
-              }
-          }
-
           .dropdown button::after
           {
               display: inline-block;

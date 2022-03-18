@@ -96,52 +96,12 @@
 
             <h1 style="margin-top: 20px;margin-left: 10px;" class="grad">Speurnet.nl</h1>
 
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-top">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-
         </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="navbar-top" style="margin: 0;padding: 0;">
-
-            <button style="border: 0;position: absolute;right: 15px;z-index: 10000;margin-top: 0;" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-top" aria-expanded="true">
-                <i class="fa fa-close"></i>
-            </button>
-
-            <ul style="margin-right: 0;" class="nav navbar-nav navbar-right">
-
-                <li class="{{classActivePathPublic('')}}"><a href="{{ URL::to('/') }}">{{__('text.Home')}}</a></li>
-                <li><a href="#"><i style="font-size: 12px;" class="fa fa-heart"></i><span style="margin-left: 5px;">Saved</span></a></li>
-                <li><a href="#">Electronics</a></li>
-                <li><a href="#">Motors</a></li>
-                <li><a href="#">Home & Garden</a></li>
-                <li><a href="#">Clothing & Accessories</a></li>
-                <li><a href="#">Sports</a></li>
-                <li><a href="#">Health & Beauty</a></li>
-                <li><a href="#">Toys</a></li>
-                <li><a href="#">Business & Industrial</a></li>
-                <li><a href="#">Food & Grocery</a></li>
-                <li><a href="#">Deals & Sales</a></li>
-
-                <li id="wrap">
-                    <form style="display: flex;align-items: center;padding: 20px;" action="" autocomplete="on">
-                        <input class="search-btn" id="search_submit" value="Rechercher" type="submit">
-                        <input class="search-bar" id="search" name="search" type="text" placeholder="What're we looking for ?">
-                    </form>
-                </li>
-
-            </ul>
-
-        </div><!-- /.navbar-collapse -->
     </div><!-- /.container -->
 </nav>
 <!-- end:navbar -->
 
-<div style="margin: 40px 0 0 0;display: flex;justify-content: flex-start;align-items: center;" class="row">
+<div style="margin: 40px 0 0 0;display: flex;justify-content: flex-start;align-items: center;" class="row top-con">
 
     <div id="sidebar">
         <ul data-accordion class="bx--accordion">
@@ -179,9 +139,11 @@
         <input class="search-bar" id="search" name="search" type="text" placeholder="What're we looking for ?">
     </form>
 
-    <div style="margin-left: 10px;margin-bottom: 40px;">
-        <label>Jouw stad, provincie of gemeente</label>
-        <input type="text" class="form-control">
+    <div class="city-con" style="margin-left: 10px;margin-bottom: 40px;">
+        <div class="city-box">
+            <label>Jouw stad, provincie of gemeente</label>
+            <input type="text" class="form-control">
+        </div>
     </div>
 
 </div>
@@ -289,6 +251,38 @@
 
     .navbar-header .grad{ display: none; }
 
+    @media screen and (max-width: 867px)
+    {
+        .top-con{
+            flex-direction: column;
+            margin: 20px 0 0 0 !important;
+        }
+
+        #sidebar
+        {
+            width: 100%;
+        }
+
+        .desktop-search
+        {
+            width: 100%;
+            margin-left: 0 !important;
+            justify-content: flex-end;
+        }
+
+        .city-con{
+            margin: 0 !important;
+            width: 100%;
+        }
+
+        .city-box{
+            display: flex;
+            flex-direction: column;
+            float: right;
+            margin-right: 20px;
+        }
+    }
+
     @media screen and (max-width: 767px)
     {
         .below-btn{ margin-top: 10px;text-align: left !important; margin-left: 15px !important; }
@@ -319,11 +313,6 @@
 
     @media (max-width: 1200px)
     {
-        .desktop-search
-        {
-            display: none !important;
-        }
-
         .desktop-nav
         {
             display: none;
