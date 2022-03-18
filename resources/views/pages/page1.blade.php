@@ -265,7 +265,7 @@
 
         .desktop-search
         {
-            width: 95%;
+            width: 100%;
             margin-left: 0 !important;
             justify-content: flex-end;
         }
