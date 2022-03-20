@@ -100,7 +100,7 @@
 
   </style>
 
-  @if(Route::currentRouteName() != 'page1')
+  @if(Route::currentRouteName() != 'page1' && Route::currentRouteName() != 'blog1')
 
       @include("_particles.header")
 
