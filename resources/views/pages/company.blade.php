@@ -96,42 +96,7 @@
 
             <h1 style="margin-top: 20px;margin-left: 10px;" class="grad">Speurnet.nl</h1>
 
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-top">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-
         </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="navbar-top" style="margin: 0;padding: 0;">
-
-            <button style="border: 0;position: absolute;right: 15px;z-index: 10000;margin-top: 0;" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-top" aria-expanded="true">
-                <i class="fa fa-close"></i>
-            </button>
-
-            <ul style="margin: 0;border-bottom: 1px solid #eaeaea;padding-bottom: 30px;" class="nav navbar-nav navbar-right">
-
-                <li id="wrap">
-                    <form style="display: flex;align-items: center;margin-top: 20px;" action="" autocomplete="on">
-                        <input class="search-btn" id="search_submit" value="Rechercher" type="submit">
-                        <input class="search-bar" id="search" name="search" type="text" placeholder="What're we looking for ?">
-                    </form>
-
-                    <div>
-                        <div>
-                            <label>Jouw stad, provincie of gemeente</label>
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
-                </li>
-
-            </ul>
-
-        </div><!-- /.navbar-collapse -->
-
     </div><!-- /.container -->
 </nav>
 <!-- end:navbar -->
@@ -286,18 +251,6 @@
 
     .navbar-header .grad{ display: none; }
 
-    @media screen and (max-width: 767px)
-    {
-        .desktop-search
-        {
-            display: none !important;
-        }
-
-        .city-con{
-            display: none;
-        }
-    }
-
     @media screen and (max-width: 867px)
     {
         .top-con{
@@ -308,6 +261,25 @@
         #sidebar
         {
             width: 100%;
+        }
+
+        .desktop-search
+        {
+            width: 100%;
+            margin-left: 0 !important;
+            justify-content: flex-end;
+        }
+
+        .city-con{
+            margin: 0 !important;
+            width: 100%;
+        }
+
+        .city-box{
+            display: flex;
+            flex-direction: column;
+            float: right;
+            margin-right: 20px;
         }
     }
 
@@ -489,70 +461,48 @@
 
             <div class="col-lg-9 col-md-6 col-sm-12 col-xs-12">
 
-                <div class="row company-boxes">
+                <div class="row" style="margin: 0;margin-top: 11px;">
 
-                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 sub">
-{{--                        <h1 style="font-size: 20px;" class="grad">Speurnet.nl</h1>--}}
-                        <div style="background-image: url({{url('assets/img/img171.jpg')}});background-size: 100% 100%;" class="row"></div>
-                        <span style="margin-top: 10px;display: block;"><i class="fa fa-map-marker-alt" style="margin-right: 5px;"></i> Kamerlingh Onnesweg 72/6, 122JL</span>
-                    </div>
+                    <div class="team-description" style="padding-bottom: 0;">
 
-                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 sub">
-                        <div style="background-color: #C2EEEB;" class="row">
-                            <a href="#">Company Title</a>
-                            <span style="margin-top: 5px;"><i class="fa fa-map-marker-alt" style="margin-right: 5px;"></i> Kamerlingh Onnesweg 72/6, 122JL</span>
-                            <h5 style="margin-left: 15px;">Hilversum</h5>
+                        <div class="row">
+                            <div class="col-sm-4" style="float: left;">
+                                <a href="#">
+                                    <img style="height: 200px;" src="{{url('assets/img/img17.jpg')}}">
+                                    <h3 style="margin-top: 20px;">Felix de makelaar van Amstelveen</h3>
+                                </a>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 sub">
-                        <div style="background-color: #C2EEEB;" class="row">
-                            <a href="#">Company Title</a>
-                            <span style="margin-top: 5px;"><i class="fa fa-map-marker-alt" style="margin-right: 5px;"></i> Kamerlingh Onnesweg 72/6, 122JL</span>
-                            <h5 style="margin-left: 15px;">Hilversum</h5>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <p><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp; Nelly Bodenheimhof 9</p>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 sub">
-                        <div style="background-color: #DAF4D9;" class="row">
-                            <a href="#">Company Title</a>
-                            <span style="margin-top: 5px;"><i class="fa fa-map-marker-alt" style="margin-right: 5px;"></i> Kamerlingh Onnesweg 72/6, 122JL</span>
-                            <h5 style="margin-left: 15px;">Hilversum</h5>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <p class="addReadMore showlesscontent">
+                                    Maak kennis met de beste makelaar van Amstelveen e.o.
+                                    Ik ben Felix, dé makelaar van Amstelveen e.o. Wat mij drijft, is jouw.
+                                    Maak kennis met de beste makelaar van Amstelveen e.o.
+                                    Ik ben Felix, dé makelaar van Amstelveen e.o. Wat mij drijft, is jouw.
+                                    Maak kennis met de beste makelaar van Amstelveen e.o.
+                                    Ik ben Felix, dé makelaar van Amstelveen e.o. Wat mij drijft, is jouw.
+                                    Maak kennis met de beste makelaar van Amstelveen e.o.
+                                    Ik ben Felix, dé makelaar van Amstelveen e.o. Wat mij drijft, is jouw.
+                                </p>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 sub">
-                        <div style="background-color: #F4E4BD;" class="row">
-                            <a href="#">Company Title</a>
-                            <span style="margin-top: 5px;"><i class="fa fa-map-marker-alt" style="margin-right: 5px;"></i> Kamerlingh Onnesweg 72/6, 122JL</span>
-                            <h5 style="margin-left: 15px;">Hilversum</h5>
+                        <div class="row" style="margin-top: 10px;">
+                            <div class="col-sm-3">
+                                <p style="margin: 0;"><i class="fa fa-phone" aria-hidden="true"></i>&nbsp;&nbsp; 0621969500</p>
+                            </div>
+
                         </div>
-                    </div>
 
-                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 sub">
-                        <div style="background-color: #F7D5D9;" class="row">
-                            <a href="#">Company Title</a>
-                            <span style="margin-top: 5px;"><i class="fa fa-map-marker-alt" style="margin-right: 5px;"></i> Kamerlingh Onnesweg 72/6, 122JL</span>
-                            <h5 style="margin-left: 15px;">Hilversum</h5>
-                        </div>
                     </div>
-
-                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 sub">
-                        <div style="background-color: #F5DEF3;" class="row">
-                            <a href="#">Company Title</a>
-                            <span style="margin-top: 5px;"><i class="fa fa-map-marker-alt" style="margin-right: 5px;"></i> Kamerlingh Onnesweg 72/6, 122JL</span>
-                            <h5 style="margin-left: 15px;">Hilversum</h5>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 sub">
-                        <div style="background-color: #C2EEEB;" class="row">
-                            <a href="#">Company Title</a>
-                            <span style="margin-top: 5px;"><i class="fa fa-map-marker-alt" style="margin-right: 5px;"></i> Kamerlingh Onnesweg 72/6, 122JL</span>
-                            <h5 style="margin-left: 15px;">Hilversum</h5>
-                        </div>
-                    </div>
-
                 </div>
 
             </div>
@@ -774,7 +724,7 @@
     {
         display: flex;
         justify-content: center;
-        align-items: flex-start;
+        align-items: center;
         flex-direction: column;
         margin: 0;
         border-radius: 10px;
