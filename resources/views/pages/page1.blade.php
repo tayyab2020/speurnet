@@ -465,15 +465,13 @@
 
                     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 sub">
                         <h1 style="font-size: 20px;" class="grad">Speurnet.nl</h1>
-                        <div style="background-color: #F5DEF3;" class="row">
-                            <a href="#">Company Title</a>
-                            <span style="margin-top: 5px;"><i class="fa fa-map-marker-alt" style="margin-right: 5px;"></i> Kamerlingh Onnesweg 72/6, 122JL</span>
-                            <h5 style="margin-left: 15px;">Hilversum</h5>
+                        <div style="background-image: url({{url('assets/img/img17.jpg')}});background-size: 100% 100%;" class="row">
+                            
                         </div>
+                        <span style="margin-top: 10px;display: block;"><i class="fa fa-map-marker-alt" style="margin-right: 5px;"></i> Kamerlingh Onnesweg 72/6, 122JL</span>
                     </div>
 
                     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 sub">
-                        <h1 style="font-size: 20px;" class="grad">Speurnet.nl</h1>
                         <div style="background-color: #C2EEEB;" class="row">
                             <a href="#">Company Title</a>
                             <span style="margin-top: 5px;"><i class="fa fa-map-marker-alt" style="margin-right: 5px;"></i> Kamerlingh Onnesweg 72/6, 122JL</span>
@@ -482,7 +480,6 @@
                     </div>
 
                     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 sub">
-                        <h1 style="font-size: 20px;" class="grad">Speurnet.nl</h1>
                         <div style="background-color: #C2EEEB;" class="row">
                             <a href="#">Company Title</a>
                             <span style="margin-top: 5px;"><i class="fa fa-map-marker-alt" style="margin-right: 5px;"></i> Kamerlingh Onnesweg 72/6, 122JL</span>
@@ -491,7 +488,6 @@
                     </div>
 
                     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 sub">
-                        <h1 style="font-size: 20px;" class="grad">Speurnet.nl</h1>
                         <div style="background-color: #DAF4D9;" class="row">
                             <a href="#">Company Title</a>
                             <span style="margin-top: 5px;"><i class="fa fa-map-marker-alt" style="margin-right: 5px;"></i> Kamerlingh Onnesweg 72/6, 122JL</span>
@@ -500,7 +496,6 @@
                     </div>
 
                     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 sub">
-                        <h1 style="font-size: 20px;" class="grad">Speurnet.nl</h1>
                         <div style="background-color: #F4E4BD;" class="row">
                             <a href="#">Company Title</a>
                             <span style="margin-top: 5px;"><i class="fa fa-map-marker-alt" style="margin-right: 5px;"></i> Kamerlingh Onnesweg 72/6, 122JL</span>
@@ -509,7 +504,6 @@
                     </div>
 
                     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 sub">
-                        <h1 style="font-size: 20px;" class="grad">Speurnet.nl</h1>
                         <div style="background-color: #F7D5D9;" class="row">
                             <a href="#">Company Title</a>
                             <span style="margin-top: 5px;"><i class="fa fa-map-marker-alt" style="margin-right: 5px;"></i> Kamerlingh Onnesweg 72/6, 122JL</span>
@@ -518,7 +512,6 @@
                     </div>
 
                     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 sub">
-                        <h1 style="font-size: 20px;" class="grad">Speurnet.nl</h1>
                         <div style="background-color: #F5DEF3;" class="row">
                             <a href="#">Company Title</a>
                             <span style="margin-top: 5px;"><i class="fa fa-map-marker-alt" style="margin-right: 5px;"></i> Kamerlingh Onnesweg 72/6, 122JL</span>
@@ -527,7 +520,6 @@
                     </div>
 
                     <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 sub">
-                        <h1 style="font-size: 20px;" class="grad">Speurnet.nl</h1>
                         <div style="background-color: #C2EEEB;" class="row">
                             <a href="#">Company Title</a>
                             <span style="margin-top: 5px;"><i class="fa fa-map-marker-alt" style="margin-right: 5px;"></i> Kamerlingh Onnesweg 72/6, 122JL</span>
