@@ -49,9 +49,9 @@ class IndexController extends Controller
         return view('pages.page1');
     }
 
-    public function blog1()
+    public function company()
     {
-        return view('pages.blog1');
+        return view('pages.company');
     }
 
     public function compressImage($source, $destination, $quality) {
