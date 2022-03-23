@@ -51,21 +51,6 @@
                             </div>
 
                             <div class="row">
-                                <div class="col-sm-12">
-                                    <p class="addReadMore showlesscontent">
-                                        Maak kennis met de beste makelaar van Amstelveen e.o.
-                                        Ik ben Felix, dé makelaar van Amstelveen e.o. Wat mij drijft, is jouw.
-                                        Maak kennis met de beste makelaar van Amstelveen e.o.
-                                        Ik ben Felix, dé makelaar van Amstelveen e.o. Wat mij drijft, is jouw.
-                                        Maak kennis met de beste makelaar van Amstelveen e.o.
-                                        Ik ben Felix, dé makelaar van Amstelveen e.o. Wat mij drijft, is jouw.
-                                        Maak kennis met de beste makelaar van Amstelveen e.o.
-                                        Ik ben Felix, dé makelaar van Amstelveen e.o. Wat mij drijft, is jouw.
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="row" style="margin-top: 10px;">
 
                                 <div class="col-sm-3">
                                     <a href="#" style="margin: 0;"><i class="fa fa-phone" aria-hidden="true"></i>&nbsp;&nbsp; 0621969500</a>

@@ -35,11 +35,11 @@
 
                         <div style="display: flex;flex-direction: row;justify-content: center;align-items: flex-start;flex-wrap: wrap;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub">
 
-                            <div style="border: 1px solid #dfdfdf;padding: 0;height: 100%;" class="col-lg-3 col-md-3 col-sm-10 col-xs-12 img-con">
+                            <div style="border: 1px solid #dfdfdf;padding: 0;height: 100%;" class="col-lg-3 col-md-3 col-sm-3 col-xs-12 img-con">
                                 <img style="width: 100%;height: 100%;" src="{{url('assets/img/img171.jpg')}}">
                             </div>
 
-                            <div style="display: flex;flex-direction: column;" class="col-lg-9 col-md-9 col-sm-10 col-xs-12">
+                            <div style="display: flex;flex-direction: column;" class="col-lg-9 col-md-9 col-sm-9 col-xs-12 text-con">
 
                                 <div>
                                     <span style="color: #16ab16;float: left;font-weight: 600;">How To</span>
@@ -58,11 +58,11 @@
 
                         <div style="display: flex;flex-direction: row;justify-content: center;align-items: flex-start;flex-wrap: wrap;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub">
 
-                            <div style="border: 1px solid #dfdfdf;padding: 0;height: 100%;" class="col-lg-3 col-md-3 col-sm-10 col-xs-12 img-con">
+                            <div style="border: 1px solid #dfdfdf;padding: 0;height: 100%;" class="col-lg-3 col-md-3 col-sm-3 col-xs-12 img-con">
                                 <img style="width: 100%;height: 100%;" src="{{url('assets/img/img171.jpg')}}">
                             </div>
 
-                            <div style="display: flex;flex-direction: column;" class="col-lg-9 col-md-9 col-sm-10 col-xs-12">
+                            <div style="display: flex;flex-direction: column;" class="col-lg-9 col-md-9 col-sm-9 col-xs-12 text-con">
 
                                 <div>
                                     <span style="color: #16ab16;float: left;font-weight: 600;">How To</span>
@@ -81,11 +81,11 @@
 
                         <div style="display: flex;flex-direction: row;justify-content: center;align-items: flex-start;flex-wrap: wrap;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub">
 
-                            <div style="border: 1px solid #dfdfdf;padding: 0;height: 100%;" class="col-lg-3 col-md-3 col-sm-10 col-xs-12 img-con">
+                            <div style="border: 1px solid #dfdfdf;padding: 0;height: 100%;" class="col-lg-3 col-md-3 col-sm-3 col-xs-12 img-con">
                                 <img style="width: 100%;height: 100%;" src="{{url('assets/img/img171.jpg')}}">
                             </div>
 
-                            <div style="display: flex;flex-direction: column;" class="col-lg-9 col-md-9 col-sm-10 col-xs-12">
+                            <div style="display: flex;flex-direction: column;" class="col-lg-9 col-md-9 col-sm-9 col-xs-12 text-con">
 
                                 <div>
                                     <span style="color: #16ab16;float: left;font-weight: 600;">How To</span>
@@ -120,6 +120,30 @@
                         </div>
                     </section>
                 </div>
+
+            </div>
+
+            <div class="row" style="margin: 20px 0 10px 0;display: flex;justify-content: center;">
+
+                <div style="border: 1px solid #dadada;border-radius: 10px;" class="col-lg-10 col-md-10 col-sm-11 col-xs-11">
+                    <h4 style="border-bottom: 1px solid #e4e4e4;padding-bottom: 5px;">Beschrijing</h4>
+                    <p class="addReadMore showlesscontent">
+                        Maak kennis met de beste makelaar van Amstelveen e.o.
+                        Ik ben Felix, dé makelaar van Amstelveen e.o. Wat mij drijft, is jouw.
+                        Maak kennis met de beste makelaar van Amstelveen e.o.
+                        Ik ben Felix, dé makelaar van Amstelveen e.o. Wat mij drijft, is jouw.
+                        Maak kennis met de beste makelaar van Amstelveen e.o.
+                        Ik ben Felix, dé makelaar van Amstelveen e.o. Wat mij drijft, is jouw.
+                        Maak kennis met de beste makelaar van Amstelveen e.o.
+                        Ik ben Felix, dé makelaar van Amstelveen e.o. Wat mij drijft, is jouw.
+                        Maak kennis met de beste makelaar van Amstelveen e.o.
+                        Ik ben Felix, dé makelaar van Amstelveen e.o. Wat mij drijft, is jouw.
+                    </p>
+                </div>
+
+            </div>
+
+            <div style="margin: 0;" class="row">
 
                 <div style="display: flex;align-items: flex-end;flex-wrap: wrap;margin: 20px 0;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
@@ -332,6 +356,20 @@
         .ekko-lightbox .modal-dialog
         {
             margin: 10px;
+        }
+
+        @media (max-width: 768px)
+        {
+            .img-con
+            {
+                height: auto !important;
+                margin-bottom: 10px;
+            }
+
+            .text-con
+            {
+                padding: 0;
+            }
         }
 
         @media (max-width: 478px)
