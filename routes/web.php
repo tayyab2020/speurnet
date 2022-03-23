@@ -221,11 +221,13 @@ Route::group(['middleware' => 'App\Http\Middleware\UserTypeMiddleware'], functio
 
     Route::get('company', 'IndexController@company')->name('company');
 
+    Route::get('blogs', 'IndexController@NewBlogs')->name('blogs');
+
     Route::get('wooninspiratie/{id?}', 'IndexController@HomesInspiration')->name('front-homes-inspiration');
 
     Route::post('change-language', 'IndexController@changeLanguage');
 
-    Route::get('blogs', 'IndexController@Blogs')->name('front-blogs');
+    // Route::get('blogs', 'IndexController@Blogs')->name('front-blogs');
 
     Route::get('blogs/{id}', 'IndexController@Blog')->name('front-blog');
 

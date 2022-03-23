@@ -116,12 +116,17 @@
                         <input class="search-bar" id="search" name="search" type="text" placeholder="What're we looking for ?">
                     </form>
 
-                    <div>
+                    @if(Route::currentRouteName() != 'blogs')
+
                         <div>
-                            <label>Jouw stad, provincie of gemeente</label>
-                            <input type="text" class="form-control">
+                            <div>
+                                <label>Jouw stad, provincie of gemeente</label>
+                                <input type="text" class="form-control">
+                            </div>
                         </div>
-                    </div>
+
+                    @endif
+
                 </li>
 
             </ul>
@@ -173,12 +178,16 @@
         <input class="search-bar" id="search" name="search" type="text" placeholder="What're we looking for ?">
     </form>
 
-    <div class="city-con" style="margin-left: 10px;margin-bottom: 40px;">
-        <div class="city-box">
-            <label>Jouw stad, provincie of gemeente</label>
-            <input type="text" class="form-control">
+    @if(Route::currentRouteName() != 'blogs')
+
+        <div class="city-con" style="margin-left: 10px;margin-bottom: 40px;">
+            <div class="city-box">
+                <label>Jouw stad, provincie of gemeente</label>
+                <input type="text" class="form-control">
+            </div>
         </div>
-    </div>
+
+    @endif
 
 </div>
 

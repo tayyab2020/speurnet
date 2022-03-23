@@ -54,6 +54,11 @@ class IndexController extends Controller
         return view('pages.company');
     }
 
+    public function NewBlogs()
+    {
+        return view('pages.new_blogs');
+    }
+
     public function compressImage($source, $destination, $quality) {
 
         $info = getimagesize($source);

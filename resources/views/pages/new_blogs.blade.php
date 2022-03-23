@@ -33,31 +33,92 @@
 
                     <div class="row company-boxes">
 
-                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-9 sub">
-                            {{--                        <h1 style="font-size: 20px;" class="grad">Speurnet.nl</h1>--}}
-                            <div style="background-image: url({{url('assets/img/img171.jpg')}});background-size: 100% 100%;border: 1px solid #dfdfdf;" class="row"></div>
-                            <span style="margin-top: 10px;display: block;"><i class="fa fa-map-marker-alt" style="margin-right: 5px;"></i> Kamerlingh Onnesweg 72/6, 122JL</span>
+                        <div style="display: flex;flex-direction: row;justify-content: center;align-items: flex-start;flex-wrap: wrap;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub">
+
+                            <div style="border: 1px solid #dfdfdf;padding: 0;height: 100%;" class="col-lg-3 col-md-3 col-sm-10 col-xs-12 img-con">
+                                <img style="width: 100%;height: 100%;" src="{{url('assets/img/img171.jpg')}}">
+                            </div>
+
+                            <div style="display: flex;flex-direction: column;" class="col-lg-9 col-md-9 col-sm-10 col-xs-12">
+
+                                <div>
+                                    <span style="color: #16ab16;float: left;font-weight: 600;">How To</span>
+                                    <span style="float: right;">22 Feburari 2022</span>
+                                </div>
+
+                                <h3 style="font-weight: 600;">Hoe behoud je bestaande klanten? 3 handige tips voor het inzetten van loyalty content</h3>
+
+                                <span style="color: gray;font-weight: 600;margin-bottom: 10px;">Kim Pot</span>
+
+                                <span style="font-family: sans-serif;"><i style="margin-right: 5px;" class="fa fa-eye"></i> 650</span>
+
+                            </div>
+
+                        </div>
+
+                        <div style="display: flex;flex-direction: row;justify-content: center;align-items: flex-start;flex-wrap: wrap;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub">
+
+                            <div style="border: 1px solid #dfdfdf;padding: 0;height: 100%;" class="col-lg-3 col-md-3 col-sm-10 col-xs-12 img-con">
+                                <img style="width: 100%;height: 100%;" src="{{url('assets/img/img171.jpg')}}">
+                            </div>
+
+                            <div style="display: flex;flex-direction: column;" class="col-lg-9 col-md-9 col-sm-10 col-xs-12">
+
+                                <div>
+                                    <span style="color: #16ab16;float: left;font-weight: 600;">How To</span>
+                                    <span style="float: right;">22 Feburari 2022</span>
+                                </div>
+
+                                <h3 style="font-weight: 600;">Hoe behoud je bestaande klanten? 3 handige tips voor het inzetten van loyalty content</h3>
+
+                                <span style="color: gray;font-weight: 600;margin-bottom: 10px;">Kim Pot</span>
+
+                                <span style="font-family: sans-serif;"><i style="margin-right: 5px;" class="fa fa-eye"></i> 650</span>
+
+                            </div>
+
+                        </div>
+
+                        <div style="display: flex;flex-direction: row;justify-content: center;align-items: flex-start;flex-wrap: wrap;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub">
+
+                            <div style="border: 1px solid #dfdfdf;padding: 0;height: 100%;" class="col-lg-3 col-md-3 col-sm-10 col-xs-12 img-con">
+                                <img style="width: 100%;height: 100%;" src="{{url('assets/img/img171.jpg')}}">
+                            </div>
+
+                            <div style="display: flex;flex-direction: column;" class="col-lg-9 col-md-9 col-sm-10 col-xs-12">
+
+                                <div>
+                                    <span style="color: #16ab16;float: left;font-weight: 600;">How To</span>
+                                    <span style="float: right;">22 Feburari 2022</span>
+                                </div>
+
+                                <h3 style="font-weight: 600;">Hoe behoud je bestaande klanten? 3 handige tips voor het inzetten van loyalty content</h3>
+
+                                <span style="color: gray;font-weight: 600;margin-bottom: 10px;">Kim Pot</span>
+
+                                <span style="font-family: sans-serif;"><i style="margin-right: 5px;" class="fa fa-eye"></i> 650</span>
+
+                            </div>
+
                         </div>
 
                     </div>
 
                 </div>
 
-                <div style="padding: 0 20px;" class="col-lg-3 col-md-3 col-sm-12 col-xs-12 trending">
-
-                    <h4 style="font-weight: 600;text-align: left;color: black;">Looking for a job that has it all?</h4>
-
-                    <div style="display: flex;flex-direction: column;">
-
-                        <span style="color: black;">We'll match you with jobs that have to pick work that fits your schedule</span>
-
-                        <div style="display: flex;align-items: center;width: 100%;">
-                            <button style="padding: 15px;border-radius: 45px;width: 45%;background: white;border: 1px solid black;color: black;font-weight: 600;margin-top: 10px;">Start Working</button>
-                            <img src="{{ URL::asset('assets/img/rocket.png') }}" style="width: 50px;height: 50px;margin-left: 10px;">
+                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 wrapper2-container" style="padding: 0 20px;display: flex;justify-content: center;align-items: center;">
+                    <section class="wrapper2">
+                        <div class="content">
+                            <input type="hidden" name="_token" value="{{csrf_token()}}"/>
+                            <section>
+                                <p style="font-size: 24px;font-weight: 500;text-align: center;">Subscribe for events, guides & offers</p>
+                            </section>
+                            <footer style="display: flex;justify-content: space-between;">
+                                <button style="background-color: black;border-radius: 30px;width: 45%;" type="button" onClick="subscribe_user()">Subscribe</button>
+                                <button style="width: 45%;background-color: transparent;border: 2px solid black;border-radius: 30px;color: black;font-weight: 600;" type="button">No Thanks</button>
+                            </footer>
                         </div>
-
-                    </div>
-
+                    </section>
                 </div>
 
                 <div style="display: flex;align-items: flex-end;flex-wrap: wrap;margin: 20px 0;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -80,21 +141,6 @@
 
                         </ul>
 
-                    </div>
-
-                    <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 wrapper2-container" style="padding: 0;display: flex;justify-content: center;align-items: center;margin-top: 20px;">
-                        <section class="wrapper2">
-                            <div class="content">
-                                <input type="hidden" name="_token" value="{{csrf_token()}}"/>
-                                <section>
-                                    <p><span>Join over 120K</span> Ecommerce business who get fresh content and tips from us</p>
-                                </section>
-                                <footer>
-                                    <input type="email" id="email_id" name="email" placeholder="{{__('text.Enter your mail')}}">
-                                    <button type="button" onClick="subscribe_user()">Subscribe</button>
-                                </footer>
-                            </div>
-                        </section>
                     </div>
 
                 </div>
@@ -126,6 +172,11 @@
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/css/flaticon.css') }}"/>
 
     <style>
+
+        .bx--accordion
+        {
+            margin: 0;
+        }
 
         .bottom-list li
         {
