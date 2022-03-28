@@ -39,6 +39,48 @@
                             <span style="margin-top: 10px;display: block;"><i class="fa fa-map-marker-alt" style="margin-right: 5px;"></i> Kamerlingh Onnesweg 72/6, 122JL</span>
                         </div>
 
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-9 sub">
+                            {{--                        <h1 style="font-size: 20px;" class="grad">Speurnet.nl</h1>--}}
+                            <div style="background-image: url({{url('assets/img/img171.jpg')}});background-size: 100% 100%;border: 1px solid #dfdfdf;" class="row"></div>
+                            <span style="margin-top: 10px;display: block;"><i class="fa fa-map-marker-alt" style="margin-right: 5px;"></i> Kamerlingh Onnesweg 72/6, 122JL</span>
+                        </div>
+
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-9 sub">
+                            {{--                        <h1 style="font-size: 20px;" class="grad">Speurnet.nl</h1>--}}
+                            <div style="background-image: url({{url('assets/img/img171.jpg')}});background-size: 100% 100%;border: 1px solid #dfdfdf;" class="row"></div>
+                            <span style="margin-top: 10px;display: block;"><i class="fa fa-map-marker-alt" style="margin-right: 5px;"></i> Kamerlingh Onnesweg 72/6, 122JL</span>
+                        </div>
+
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-9 sub">
+                            {{--                        <h1 style="font-size: 20px;" class="grad">Speurnet.nl</h1>--}}
+                            <div style="background-image: url({{url('assets/img/img171.jpg')}});background-size: 100% 100%;border: 1px solid #dfdfdf;" class="row"></div>
+                            <span style="margin-top: 10px;display: block;"><i class="fa fa-map-marker-alt" style="margin-right: 5px;"></i> Kamerlingh Onnesweg 72/6, 122JL</span>
+                        </div>
+
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-9 sub">
+                            {{--                        <h1 style="font-size: 20px;" class="grad">Speurnet.nl</h1>--}}
+                            <div style="background-image: url({{url('assets/img/img171.jpg')}});background-size: 100% 100%;border: 1px solid #dfdfdf;" class="row"></div>
+                            <span style="margin-top: 10px;display: block;"><i class="fa fa-map-marker-alt" style="margin-right: 5px;"></i> Kamerlingh Onnesweg 72/6, 122JL</span>
+                        </div>
+
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-9 sub">
+                            {{--                        <h1 style="font-size: 20px;" class="grad">Speurnet.nl</h1>--}}
+                            <div style="background-image: url({{url('assets/img/img171.jpg')}});background-size: 100% 100%;border: 1px solid #dfdfdf;" class="row"></div>
+                            <span style="margin-top: 10px;display: block;"><i class="fa fa-map-marker-alt" style="margin-right: 5px;"></i> Kamerlingh Onnesweg 72/6, 122JL</span>
+                        </div>
+
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-9 sub">
+                            {{--                        <h1 style="font-size: 20px;" class="grad">Speurnet.nl</h1>--}}
+                            <div style="background-image: url({{url('assets/img/img171.jpg')}});background-size: 100% 100%;border: 1px solid #dfdfdf;" class="row"></div>
+                            <span style="margin-top: 10px;display: block;"><i class="fa fa-map-marker-alt" style="margin-right: 5px;"></i> Kamerlingh Onnesweg 72/6, 122JL</span>
+                        </div>
+
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-9 sub">
+                            {{--                        <h1 style="font-size: 20px;" class="grad">Speurnet.nl</h1>--}}
+                            <div style="background-image: url({{url('assets/img/img171.jpg')}});background-size: 100% 100%;border: 1px solid #dfdfdf;" class="row"></div>
+                            <span style="margin-top: 10px;display: block;"><i class="fa fa-map-marker-alt" style="margin-right: 5px;"></i> Kamerlingh Onnesweg 72/6, 122JL</span>
+                        </div>
+
                     </div>
 
                 </div>
@@ -68,7 +110,7 @@
 
                     <div class="col-lg-7 col-md-12 col-sm-12 col-xs-12 bottom-list" style="padding: 0;display: flex;justify-content: center;align-items: center;">
 
-                        <ul style="list-style: none;display: inline-block;padding: 0;margin: 0;">
+                        <!-- <ul style="list-style: none;display: inline-block;padding: 0;margin: 0;">
 
                             <li><a href="{{url('/')}}">Thuis</a></li>
                             <li><a style="display: flex;align-items: center;" href="#"><i style="font-size: 10px;" class="fa fa-heart" aria-hidden="true"></i><span style="margin-left: 5px;">Saved</span></a></li>
@@ -78,7 +120,7 @@
                             <li><a href="#">Clothing & Accessories</a></li>
                             <li><a href="#">Sports</a></li>
 
-                        </ul>
+                        </ul> -->
 
                     </div>
 
@@ -246,7 +288,7 @@
         {
             margin: 0;
             display: flex;
-            justify-content: center;
+            justify-content: flex-start;
             flex-wrap: wrap;
         }
 

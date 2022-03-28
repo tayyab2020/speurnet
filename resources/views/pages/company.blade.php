@@ -138,7 +138,7 @@
 
                     <div class="col-lg-7 col-md-12 col-sm-12 col-xs-12 bottom-list" style="padding: 0;display: flex;justify-content: center;align-items: center;">
 
-                        <ul style="list-style: none;display: inline-block;padding: 0;margin: 0;">
+                        <!-- <ul style="list-style: none;display: inline-block;padding: 0;margin: 0;">
 
                             <li><a href="{{url('/')}}">Thuis</a></li>
                             <li><a style="display: flex;align-items: center;" href="#"><i style="font-size: 10px;" class="fa fa-heart" aria-hidden="true"></i><span style="margin-left: 5px;">Saved</span></a></li>
@@ -148,7 +148,7 @@
                             <li><a href="#">Clothing & Accessories</a></li>
                             <li><a href="#">Sports</a></li>
 
-                        </ul>
+                        </ul> -->
 
                     </div>
 

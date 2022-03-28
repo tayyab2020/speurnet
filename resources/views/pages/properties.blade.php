@@ -1176,10 +1176,10 @@
 
             $(document).ready(function () {
 
-
                 $('.orderby').select2({
                     minimumResultsForSearch: Infinity,
                 });
+
             });
 
             $(document).on('click', '[data-toggle="lightbox"]', function (event) {
