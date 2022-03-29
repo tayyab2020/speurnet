@@ -20,10 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7fe7f36f-c82f-4504-8c0a-7874522d22c9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/IndexController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/IndexController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/education_single.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/education_single.blade.php" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/vendor/albertcht/invisible-recaptcha/" />
     <ignored path="$PROJECT_DIR$/vendor/composer/" />
@@ -201,10 +198,15 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/pages/education_single.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="206">
-              <caret line="85" column="153" selection-start-line="85" selection-start-column="153" selection-end-line="85" selection-end-column="153" />
+            <state relative-caret-position="563">
+              <caret line="105" column="41" selection-start-line="105" selection-start-column="41" selection-end-line="105" selection-end-column="41" />
               <folding>
+                <element signature="e#3414#3471#0#HTML" expanded="true" />
                 <element signature="e#3485#3566#0#HTML" expanded="true" />
+                <element signature="e#3995#4103#0#HTML" expanded="true" />
+                <element signature="e#4570#4678#0#HTML" expanded="true" />
+                <element signature="e#5171#5272#0#HTML" expanded="true" />
+                <element signature="e#5694#5791#0#HTML" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -923,12 +925,12 @@
       <workItem from="1648579414778" duration="1778000" />
       <workItem from="1648581228302" duration="1781000" />
       <workItem from="1648583106232" duration="1779000" />
-      <workItem from="1648584919360" duration="134000" />
+      <workItem from="1648584919360" duration="463000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="83944000" />
+    <option name="totallyTimeSpent" value="84273000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1721" height="927" extended-state="6" />
@@ -1117,10 +1119,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/pages/education_single.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="85" column="153" selection-start-line="85" selection-start-column="153" selection-end-line="85" selection-end-column="153" />
+        <state relative-caret-position="563">
+          <caret line="105" column="41" selection-start-line="105" selection-start-column="41" selection-end-line="105" selection-end-column="41" />
           <folding>
+            <element signature="e#3414#3471#0#HTML" expanded="true" />
             <element signature="e#3485#3566#0#HTML" expanded="true" />
+            <element signature="e#3995#4103#0#HTML" expanded="true" />
+            <element signature="e#4570#4678#0#HTML" expanded="true" />
+            <element signature="e#5171#5272#0#HTML" expanded="true" />
+            <element signature="e#5694#5791#0#HTML" expanded="true" />
           </folding>
         </state>
       </provider>

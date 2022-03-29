@@ -56,7 +56,7 @@
 
                     <div style="margin: 30px 0 0 0;display: flex;flex-wrap: wrap;" class="row">
 
-                        <div style="padding: 0;display: flex;justify-content: flex-start;margin-bottom: 20px;" class="col-lg-4 col-md-4 col-sm-4 col-xs-6 res-icons">
+                        <div style="padding: 0;display: flex;justify-content: flex-start;margin-bottom: 30px;" class="col-lg-4 col-md-4 col-sm-4 col-xs-6 res-icons">
 
                             <img style="width: 30px;height: 30px;" src="{{url('assets/img/hourglass.png')}}">
                             <div style="font-size: 20px;">
@@ -65,7 +65,7 @@
 
                         </div>
 
-                        <div style="padding: 0;display: flex;justify-content: center;border-left: 1px solid #bebebe;margin-bottom: 20px;" class="col-lg-4 col-md-4 col-sm-4 col-xs-6 res-icons1">
+                        <div style="padding: 0;display: flex;justify-content: center;border-left: 1px solid #bebebe;margin-bottom: 30px;" class="col-lg-4 col-md-4 col-sm-4 col-xs-6 res-icons1">
 
                             <img style="width: 30px;height: 30px;" src="{{url('assets/img/globe.png')}}">
                             <div style="font-size: 20px;margin-left: 10px;">
@@ -74,7 +74,7 @@
 
                         </div>
 
-                        <div style="padding: 0;display: flex;justify-content: center;border-left: 1px solid #bebebe;margin-bottom: 20px;" class="col-lg-4 col-md-4 col-sm-4 col-xs-6 res-icons">
+                        <div style="padding: 0;display: flex;justify-content: center;border-left: 1px solid #bebebe;margin-bottom: 30px;" class="col-lg-4 col-md-4 col-sm-4 col-xs-6 res-icons">
 
                             <img style="width: 30px;height: 30px;" src="{{url('assets/img/infinity.png')}}">
                             <div style="font-size: 20px;margin-left: 10px;">
@@ -83,7 +83,7 @@
 
                         </div>
 
-                        <div style="padding: 0;display: flex;justify-content: flex-start;align-items: center;" class="col-lg-4 col-md-4 col-sm-4 col-xs-6 res-icons1">
+                        <div style="padding: 0;display: flex;justify-content: flex-start;align-items: center;margin-bottom: 30px;" class="col-lg-4 col-md-4 col-sm-4 col-xs-6 res-icons1">
 
                             <img style="width: 40px;height: 40px;" src="{{url('assets/img/graduation-cap.png')}}">
                             <div style="font-size: 18px;margin-left: 10px;">
@@ -92,7 +92,7 @@
 
                         </div>
 
-                        <div style="padding: 0;display: flex;justify-content: center;align-items: center;" class="col-lg-4 col-md-4 col-sm-4 col-xs-6 res-icons">
+                        <div style="padding: 0;display: flex;justify-content: center;align-items: center;margin-bottom: 30px;" class="col-lg-4 col-md-4 col-sm-4 col-xs-6 res-icons">
 
                             <img style="width: 40px;height: 40px;" src="{{url('assets/img/award.png')}}">
                             <div style="font-size: 18px;margin-left: 10px;">
@@ -103,7 +103,7 @@
 
                     </div>
 
-                    <div style="margin: 50px 0 0 0;" class="row">
+                    <div style="margin: 20px 0 0 0;" class="row">
 
                         <div style="padding: 0;display: flex;justify-content: flex-start;align-items: center;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
