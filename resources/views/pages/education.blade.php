@@ -29,19 +29,22 @@
 
             <div class="row" style="margin: 0;">
 
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div style="padding: 0;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
-                    <div style="margin: 0;display: flex;justify-content: space-between;" class="row">
+                    <div style="margin: 0;display: flex;justify-content: space-between;flex-wrap: wrap;" class="row">
 
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        <div style="margin-bottom: 15px;" class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <h3 style="margin: 0;">Upcoming Events</h3>
                         </div>
 
-                        <div style="display: flex;justify-content: flex-end;align-items: center;" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        <div style="display: flex;justify-content: flex-end;align-items: center;margin-bottom: 15px;" class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <div style="color: #3f3f3f;font-size: 16px;padding: 0;font-weight: 800;margin-right: 10px;" class="label">{{__('text.Sort by:')}}</div>
 
                             <select name="filter_orderby" class="orderby" data-placeholder="Sort by" tabindex="-1" aria-hidden="true">
-                                <option value="Startdatum">Startdatum</option>
+                                <option value="Price Highest">Price Highest</option>
+                                <option value="Price Lowest">Price Lowest</option>
+                                <option value="Earliest">Earliest</option>
+                                <option value="Oldest">Oldest</option>
                             </select>
                         </div>
 
@@ -50,7 +53,7 @@
                     <div class="row company-boxes">
 
                         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 sub">
-                            {{--                        <h1 style="font-size: 20px;" class="grad">Speurnet.nl</h1>--}}
+
                             <div style="border: 1px solid #dfdfdf;display: flex;justify-content: flex-start;flex-direction: column;" class="row">
                                 <div style="display: flex;justify-content: space-between;padding: 0;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <h4>Warmup Match</h4>
@@ -75,7 +78,7 @@
 
                                     <div style="padding: 0;display: flex;justify-content: space-between;align-items: center;margin-top: 10px;padding-right: 10px;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
-                                        <button style="background-color: white;border-color: #62CDF2;color: #62CDF2;font-weight: 600;width: 30%;font-size: 12px;" class="btn btn-primary">View Details</button>
+                                        <button style="background-color: white;border-color: #62CDF2;color: #62CDF2;font-weight: 600;font-size: 12px;" class="btn btn-primary">View Details</button>
                                         <span style="font-weight: 100;">13 andere data</span>
 
                                     </div>
@@ -85,7 +88,7 @@
                         </div>
 
                         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 sub">
-                            {{--                        <h1 style="font-size: 20px;" class="grad">Speurnet.nl</h1>--}}
+
                             <div style="border: 1px solid #dfdfdf;display: flex;justify-content: flex-start;flex-direction: column;" class="row">
                                 <div style="display: flex;justify-content: space-between;padding: 0;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <h4>Warmup Match</h4>
@@ -110,7 +113,7 @@
 
                                     <div style="padding: 0;display: flex;justify-content: space-between;align-items: center;margin-top: 10px;padding-right: 10px;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
-                                        <button style="background-color: white;border-color: #62CDF2;color: #62CDF2;font-weight: 600;width: 30%;font-size: 12px;" class="btn btn-primary">View Details</button>
+                                        <button style="background-color: white;border-color: #62CDF2;color: #62CDF2;font-weight: 600;font-size: 12px;" class="btn btn-primary">View Details</button>
                                         <span style="font-weight: 100;">13 andere data</span>
 
                                     </div>
@@ -120,7 +123,7 @@
                         </div>
 
                         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 sub">
-                            {{--                        <h1 style="font-size: 20px;" class="grad">Speurnet.nl</h1>--}}
+
                             <div style="border: 1px solid #dfdfdf;display: flex;justify-content: flex-start;flex-direction: column;" class="row">
                                 <div style="display: flex;justify-content: space-between;padding: 0;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <h4>Warmup Match</h4>
@@ -145,7 +148,7 @@
 
                                     <div style="padding: 0;display: flex;justify-content: space-between;align-items: center;margin-top: 10px;padding-right: 10px;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
-                                        <button style="background-color: white;border-color: #62CDF2;color: #62CDF2;font-weight: 600;width: 30%;font-size: 12px;" class="btn btn-primary">View Details</button>
+                                        <button style="background-color: white;border-color: #62CDF2;color: #62CDF2;font-weight: 600;font-size: 12px;" class="btn btn-primary">View Details</button>
                                         <span style="font-weight: 100;">13 andere data</span>
 
                                     </div>
@@ -155,7 +158,7 @@
                         </div>
 
                         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 sub">
-                            {{--                        <h1 style="font-size: 20px;" class="grad">Speurnet.nl</h1>--}}
+
                             <div style="border: 1px solid #dfdfdf;display: flex;justify-content: flex-start;flex-direction: column;" class="row">
                                 <div style="display: flex;justify-content: space-between;padding: 0;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <h4>Warmup Match</h4>
@@ -180,7 +183,7 @@
 
                                     <div style="padding: 0;display: flex;justify-content: space-between;align-items: center;margin-top: 10px;padding-right: 10px;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
-                                        <button style="background-color: white;border-color: #62CDF2;color: #62CDF2;font-weight: 600;width: 30%;font-size: 12px;" class="btn btn-primary">View Details</button>
+                                        <button style="background-color: white;border-color: #62CDF2;color: #62CDF2;font-weight: 600;font-size: 12px;" class="btn btn-primary">View Details</button>
                                         <span style="font-weight: 100;">13 andere data</span>
 
                                     </div>
@@ -190,7 +193,7 @@
                         </div>
 
                         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 sub">
-                            {{--                        <h1 style="font-size: 20px;" class="grad">Speurnet.nl</h1>--}}
+
                             <div style="border: 1px solid #dfdfdf;display: flex;justify-content: flex-start;flex-direction: column;" class="row">
                                 <div style="display: flex;justify-content: space-between;padding: 0;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <h4>Warmup Match</h4>
@@ -215,7 +218,7 @@
 
                                     <div style="padding: 0;display: flex;justify-content: space-between;align-items: center;margin-top: 10px;padding-right: 10px;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
-                                        <button style="background-color: white;border-color: #62CDF2;color: #62CDF2;font-weight: 600;width: 30%;font-size: 12px;" class="btn btn-primary">View Details</button>
+                                        <button style="background-color: white;border-color: #62CDF2;color: #62CDF2;font-weight: 600;font-size: 12px;" class="btn btn-primary">View Details</button>
                                         <span style="font-weight: 100;">13 andere data</span>
 
                                     </div>
@@ -225,7 +228,7 @@
                         </div>
 
                         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 sub">
-                            {{--                        <h1 style="font-size: 20px;" class="grad">Speurnet.nl</h1>--}}
+
                             <div style="border: 1px solid #dfdfdf;display: flex;justify-content: flex-start;flex-direction: column;" class="row">
                                 <div style="display: flex;justify-content: space-between;padding: 0;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <h4>Warmup Match</h4>
@@ -250,7 +253,7 @@
 
                                     <div style="padding: 0;display: flex;justify-content: space-between;align-items: center;margin-top: 10px;padding-right: 10px;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
-                                        <button style="background-color: white;border-color: #62CDF2;color: #62CDF2;font-weight: 600;width: 30%;font-size: 12px;" class="btn btn-primary">View Details</button>
+                                        <button style="background-color: white;border-color: #62CDF2;color: #62CDF2;font-weight: 600;font-size: 12px;" class="btn btn-primary">View Details</button>
                                         <span style="font-weight: 100;">13 andere data</span>
 
                                     </div>
@@ -260,7 +263,7 @@
                         </div>
 
                         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 sub">
-                            {{--                        <h1 style="font-size: 20px;" class="grad">Speurnet.nl</h1>--}}
+
                             <div style="border: 1px solid #dfdfdf;display: flex;justify-content: flex-start;flex-direction: column;" class="row">
                                 <div style="display: flex;justify-content: space-between;padding: 0;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <h4>Warmup Match</h4>
@@ -285,7 +288,7 @@
 
                                     <div style="padding: 0;display: flex;justify-content: space-between;align-items: center;margin-top: 10px;padding-right: 10px;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
-                                        <button style="background-color: white;border-color: #62CDF2;color: #62CDF2;font-weight: 600;width: 30%;font-size: 12px;" class="btn btn-primary">View Details</button>
+                                        <button style="background-color: white;border-color: #62CDF2;color: #62CDF2;font-weight: 600;font-size: 12px;" class="btn btn-primary">View Details</button>
                                         <span style="font-weight: 100;">13 andere data</span>
 
                                     </div>
@@ -295,7 +298,7 @@
                         </div>
 
                         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 sub">
-                            {{--                        <h1 style="font-size: 20px;" class="grad">Speurnet.nl</h1>--}}
+
                             <div style="border: 1px solid #dfdfdf;display: flex;justify-content: flex-start;flex-direction: column;" class="row">
                                 <div style="display: flex;justify-content: space-between;padding: 0;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <h4>Warmup Match</h4>
@@ -320,7 +323,7 @@
 
                                     <div style="padding: 0;display: flex;justify-content: space-between;align-items: center;margin-top: 10px;padding-right: 10px;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
-                                        <button style="background-color: white;border-color: #62CDF2;color: #62CDF2;font-weight: 600;width: 30%;font-size: 12px;" class="btn btn-primary">View Details</button>
+                                        <button style="background-color: white;border-color: #62CDF2;color: #62CDF2;font-weight: 600;font-size: 12px;" class="btn btn-primary">View Details</button>
                                         <span style="font-weight: 100;">13 andere data</span>
 
                                     </div>
