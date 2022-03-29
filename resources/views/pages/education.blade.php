@@ -69,7 +69,7 @@
 
                                     </div>
 
-                                    <div style="padding: 0;display: flex;flex-direction: column;align-items: flex-end;padding-right: 10px;" class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                                    <div style="padding: 0;display: flex;flex-direction: column;align-items: flex-end;padding-right: 10px;justify-content: center;" class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
 
                                         <span style="width: 50px;height: 50px;border-radius: 100%;background-color: #cdf2dc;color: #45D87B;display: flex;justify-content: center;align-items: center;font-size: 18px;font-weight: bold;font-family: monospace;">14</span>
                                         <span style="font-weight: 600;">May, 2019</span>
@@ -104,7 +104,7 @@
 
                                     </div>
 
-                                    <div style="padding: 0;display: flex;flex-direction: column;align-items: flex-end;padding-right: 10px;" class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                                    <div style="padding: 0;display: flex;flex-direction: column;align-items: flex-end;padding-right: 10px;justify-content: center;" class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
 
                                         <span style="width: 50px;height: 50px;border-radius: 100%;background-color: #cdf2dc;color: #45D87B;display: flex;justify-content: center;align-items: center;font-size: 18px;font-weight: bold;font-family: monospace;">14</span>
                                         <span style="font-weight: 600;">May, 2019</span>
@@ -139,7 +139,7 @@
 
                                     </div>
 
-                                    <div style="padding: 0;display: flex;flex-direction: column;align-items: flex-end;padding-right: 10px;" class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                                    <div style="padding: 0;display: flex;flex-direction: column;align-items: flex-end;padding-right: 10px;justify-content: center;" class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
 
                                         <span style="width: 50px;height: 50px;border-radius: 100%;background-color: #cdf2dc;color: #45D87B;display: flex;justify-content: center;align-items: center;font-size: 18px;font-weight: bold;font-family: monospace;">14</span>
                                         <span style="font-weight: 600;">May, 2019</span>
@@ -174,7 +174,7 @@
 
                                     </div>
 
-                                    <div style="padding: 0;display: flex;flex-direction: column;align-items: flex-end;padding-right: 10px;" class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                                    <div style="padding: 0;display: flex;flex-direction: column;align-items: flex-end;padding-right: 10px;justify-content: center;" class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
 
                                         <span style="width: 50px;height: 50px;border-radius: 100%;background-color: #cdf2dc;color: #45D87B;display: flex;justify-content: center;align-items: center;font-size: 18px;font-weight: bold;font-family: monospace;">14</span>
                                         <span style="font-weight: 600;">May, 2019</span>
@@ -209,7 +209,7 @@
 
                                     </div>
 
-                                    <div style="padding: 0;display: flex;flex-direction: column;align-items: flex-end;padding-right: 10px;" class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                                    <div style="padding: 0;display: flex;flex-direction: column;align-items: flex-end;padding-right: 10px;justify-content: center;" class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
 
                                         <span style="width: 50px;height: 50px;border-radius: 100%;background-color: #cdf2dc;color: #45D87B;display: flex;justify-content: center;align-items: center;font-size: 18px;font-weight: bold;font-family: monospace;">14</span>
                                         <span style="font-weight: 600;">May, 2019</span>
@@ -244,7 +244,7 @@
 
                                     </div>
 
-                                    <div style="padding: 0;display: flex;flex-direction: column;align-items: flex-end;padding-right: 10px;" class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                                    <div style="padding: 0;display: flex;flex-direction: column;align-items: flex-end;padding-right: 10px;justify-content: center;" class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
 
                                         <span style="width: 50px;height: 50px;border-radius: 100%;background-color: #cdf2dc;color: #45D87B;display: flex;justify-content: center;align-items: center;font-size: 18px;font-weight: bold;font-family: monospace;">14</span>
                                         <span style="font-weight: 600;">May, 2019</span>
@@ -279,7 +279,7 @@
 
                                     </div>
 
-                                    <div style="padding: 0;display: flex;flex-direction: column;align-items: flex-end;padding-right: 10px;" class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                                    <div style="padding: 0;display: flex;flex-direction: column;align-items: flex-end;padding-right: 10px;justify-content: center;" class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
 
                                         <span style="width: 50px;height: 50px;border-radius: 100%;background-color: #cdf2dc;color: #45D87B;display: flex;justify-content: center;align-items: center;font-size: 18px;font-weight: bold;font-family: monospace;">14</span>
                                         <span style="font-weight: 600;">May, 2019</span>
@@ -314,7 +314,7 @@
 
                                     </div>
 
-                                    <div style="padding: 0;display: flex;flex-direction: column;align-items: flex-end;padding-right: 10px;" class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                                    <div style="padding: 0;display: flex;flex-direction: column;align-items: flex-end;padding-right: 10px;justify-content: center;" class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
 
                                         <span style="width: 50px;height: 50px;border-radius: 100%;background-color: #cdf2dc;color: #45D87B;display: flex;justify-content: center;align-items: center;font-size: 18px;font-weight: bold;font-family: monospace;">14</span>
                                         <span style="font-weight: 600;">May, 2019</span>

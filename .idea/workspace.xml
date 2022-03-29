@@ -19,10 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7fe7f36f-c82f-4504-8c0a-7874522d22c9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/pages/education.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/education.blade.php" afterDir="false" />
-    </list>
+    <list default="true" id="7fe7f36f-c82f-4504-8c0a-7874522d22c9" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/vendor/albertcht/invisible-recaptcha/" />
     <ignored path="$PROJECT_DIR$/vendor/composer/" />
     <ignored path="$PROJECT_DIR$/vendor/dnoegel/php-xdg-base-dir/" />
@@ -199,8 +196,29 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/pages/education.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="462">
-              <caret line="46" column="53" selection-start-line="46" selection-start-column="53" selection-end-line="46" selection-end-column="53" />
+            <state relative-caret-position="453">
+              <caret line="71" column="48" lean-forward="true" selection-start-line="71" selection-start-column="48" selection-end-line="71" selection-end-column="48" />
+              <folding>
+                <element signature="e#1811#1890#0#HTML" expanded="true" />
+                <element signature="e#1934#1962#0#HTML" expanded="true" />
+                <element signature="e#2142#2230#0#HTML" expanded="true" />
+                <element signature="e#4254#4352#0#HTML" expanded="true" />
+                <element signature="e#5060#5173#0#HTML" expanded="true" />
+                <element signature="e#5502#7955#0#HTML" />
+                <element signature="e#7563#7665#0#HTML" expanded="true" />
+                <element signature="e#7981#10434#0#HTML" />
+                <element signature="e#10042#10144#0#HTML" expanded="true" />
+                <element signature="e#10460#12913#0#HTML" />
+                <element signature="e#12521#12623#0#HTML" expanded="true" />
+                <element signature="e#12939#15392#0#HTML" />
+                <element signature="e#15000#15102#0#HTML" expanded="true" />
+                <element signature="e#15418#17871#0#HTML" />
+                <element signature="e#17479#17581#0#HTML" expanded="true" />
+                <element signature="e#17897#20350#0#HTML" />
+                <element signature="e#19958#20060#0#HTML" expanded="true" />
+                <element signature="e#20376#22829#0#HTML" />
+                <element signature="e#22437#22539#0#HTML" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -914,12 +932,12 @@
       <workItem from="1648483995210" duration="1328000" />
       <workItem from="1648485895956" duration="1140000" />
       <workItem from="1648577283457" duration="912000" />
-      <workItem from="1648579414778" duration="421000" />
+      <workItem from="1648579414778" duration="812000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="78893000" />
+    <option name="totallyTimeSpent" value="79284000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1721" height="927" extended-state="6" />
@@ -1101,8 +1119,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/pages/education.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="46" column="53" selection-start-line="46" selection-start-column="53" selection-end-line="46" selection-end-column="53" />
+        <state relative-caret-position="453">
+          <caret line="71" column="48" lean-forward="true" selection-start-line="71" selection-start-column="48" selection-end-line="71" selection-end-column="48" />
+          <folding>
+            <element signature="e#1811#1890#0#HTML" expanded="true" />
+            <element signature="e#1934#1962#0#HTML" expanded="true" />
+            <element signature="e#2142#2230#0#HTML" expanded="true" />
+            <element signature="e#4254#4352#0#HTML" expanded="true" />
+            <element signature="e#5060#5173#0#HTML" expanded="true" />
+            <element signature="e#5502#7955#0#HTML" />
+            <element signature="e#7563#7665#0#HTML" expanded="true" />
+            <element signature="e#7981#10434#0#HTML" />
+            <element signature="e#10042#10144#0#HTML" expanded="true" />
+            <element signature="e#10460#12913#0#HTML" />
+            <element signature="e#12521#12623#0#HTML" expanded="true" />
+            <element signature="e#12939#15392#0#HTML" />
+            <element signature="e#15000#15102#0#HTML" expanded="true" />
+            <element signature="e#15418#17871#0#HTML" />
+            <element signature="e#17479#17581#0#HTML" expanded="true" />
+            <element signature="e#17897#20350#0#HTML" />
+            <element signature="e#19958#20060#0#HTML" expanded="true" />
+            <element signature="e#20376#22829#0#HTML" />
+            <element signature="e#22437#22539#0#HTML" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
