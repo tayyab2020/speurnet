@@ -221,6 +221,8 @@ Route::group(['middleware' => 'App\Http\Middleware\UserTypeMiddleware'], functio
 
     Route::get('education', 'IndexController@education')->name('education');
 
+    Route::get('education-single', 'IndexController@educationSingle')->name('education-single');
+
     Route::get('company', 'IndexController@company')->name('company');
 
     Route::get('blogs', 'IndexController@NewBlogs')->name('blogs');

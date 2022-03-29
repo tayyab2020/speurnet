@@ -19,7 +19,12 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7fe7f36f-c82f-4504-8c0a-7874522d22c9" name="Default Changelist" comment="" />
+    <list default="true" id="7fe7f36f-c82f-4504-8c0a-7874522d22c9" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/IndexController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/IndexController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/vendor/albertcht/invisible-recaptcha/" />
     <ignored path="$PROJECT_DIR$/vendor/composer/" />
     <ignored path="$PROJECT_DIR$/vendor/dnoegel/php-xdg-base-dir/" />
@@ -167,15 +172,6 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/pages/index.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="6" selection-start-line="6" selection-end-line="6" selection-end-column="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/IndexController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="336">
@@ -193,31 +189,22 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/pages/education.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="453">
-              <caret line="71" column="48" lean-forward="true" selection-start-line="71" selection-start-column="48" selection-end-line="71" selection-end-column="48" />
+            <state relative-caret-position="6972">
+              <caret line="332" column="30" selection-start-line="332" selection-start-column="30" selection-end-line="332" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/pages/education_single.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="206">
+              <caret line="85" column="153" selection-start-line="85" selection-start-column="153" selection-end-line="85" selection-end-column="153" />
               <folding>
-                <element signature="e#1811#1890#0#HTML" expanded="true" />
-                <element signature="e#1934#1962#0#HTML" expanded="true" />
-                <element signature="e#2142#2230#0#HTML" expanded="true" />
-                <element signature="e#4254#4352#0#HTML" expanded="true" />
-                <element signature="e#5060#5173#0#HTML" expanded="true" />
-                <element signature="e#5502#7955#0#HTML" />
-                <element signature="e#7563#7665#0#HTML" expanded="true" />
-                <element signature="e#7981#10434#0#HTML" />
-                <element signature="e#10042#10144#0#HTML" expanded="true" />
-                <element signature="e#10460#12913#0#HTML" />
-                <element signature="e#12521#12623#0#HTML" expanded="true" />
-                <element signature="e#12939#15392#0#HTML" />
-                <element signature="e#15000#15102#0#HTML" expanded="true" />
-                <element signature="e#15418#17871#0#HTML" />
-                <element signature="e#17479#17581#0#HTML" expanded="true" />
-                <element signature="e#17897#20350#0#HTML" />
-                <element signature="e#19958#20060#0#HTML" expanded="true" />
-                <element signature="e#20376#22829#0#HTML" />
-                <element signature="e#22437#22539#0#HTML" expanded="true" />
+                <element signature="e#3485#3566#0#HTML" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -281,11 +268,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>.bx--accordion</find>
-      <find>.bx--accordion__item</find>
-      <find>&lt;img</find>
-      <find>.collapse</find>
-      <find>&lt;st</find>
       <find>.desktop-search</find>
       <find>desktop-search</find>
       <find>company-box</find>
@@ -298,7 +280,6 @@
       <find>.top-bar</find>
       <find>@medi</find>
       <find>(min-width: 768px)</find>
-      <find>@media</find>
       <find>img-con</find>
       <find>.img</find>
       <find>text-con</find>
@@ -311,6 +292,12 @@
       <find>orderby</find>
       <find>company-boxes</find>
       <find>.company-boxes .row</find>
+      <find>@media</find>
+      <find>768</find>
+      <find>res-icon</find>
+      <find>res-icons</find>
+      <find>.res-ic</find>
+      <find>res-icons1</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -335,6 +322,7 @@
         <option value="$PROJECT_DIR$/resources/views/pages/properties.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/pages/page1.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/pages/education.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/pages/education_single.blade.php" />
       </list>
     </option>
   </component>
@@ -932,18 +920,21 @@
       <workItem from="1648483995210" duration="1328000" />
       <workItem from="1648485895956" duration="1140000" />
       <workItem from="1648577283457" duration="912000" />
-      <workItem from="1648579414778" duration="812000" />
+      <workItem from="1648579414778" duration="1778000" />
+      <workItem from="1648581228302" duration="1781000" />
+      <workItem from="1648583106232" duration="1779000" />
+      <workItem from="1648584919360" duration="134000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="79284000" />
+    <option name="totallyTimeSpent" value="83944000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1721" height="927" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.217941" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2269717" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -1075,6 +1066,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/pages/education.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6972">
+          <caret line="332" column="30" selection-start-line="332" selection-start-column="30" selection-end-line="332" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/pages/company.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1428">
@@ -1117,30 +1115,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/pages/education.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/pages/education_single.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="453">
-          <caret line="71" column="48" lean-forward="true" selection-start-line="71" selection-start-column="48" selection-end-line="71" selection-end-column="48" />
+        <state relative-caret-position="206">
+          <caret line="85" column="153" selection-start-line="85" selection-start-column="153" selection-end-line="85" selection-end-column="153" />
           <folding>
-            <element signature="e#1811#1890#0#HTML" expanded="true" />
-            <element signature="e#1934#1962#0#HTML" expanded="true" />
-            <element signature="e#2142#2230#0#HTML" expanded="true" />
-            <element signature="e#4254#4352#0#HTML" expanded="true" />
-            <element signature="e#5060#5173#0#HTML" expanded="true" />
-            <element signature="e#5502#7955#0#HTML" />
-            <element signature="e#7563#7665#0#HTML" expanded="true" />
-            <element signature="e#7981#10434#0#HTML" />
-            <element signature="e#10042#10144#0#HTML" expanded="true" />
-            <element signature="e#10460#12913#0#HTML" />
-            <element signature="e#12521#12623#0#HTML" expanded="true" />
-            <element signature="e#12939#15392#0#HTML" />
-            <element signature="e#15000#15102#0#HTML" expanded="true" />
-            <element signature="e#15418#17871#0#HTML" />
-            <element signature="e#17479#17581#0#HTML" expanded="true" />
-            <element signature="e#17897#20350#0#HTML" />
-            <element signature="e#19958#20060#0#HTML" expanded="true" />
-            <element signature="e#20376#22829#0#HTML" />
-            <element signature="e#22437#22539#0#HTML" expanded="true" />
+            <element signature="e#3485#3566#0#HTML" expanded="true" />
           </folding>
         </state>
       </provider>
