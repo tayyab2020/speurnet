@@ -59,7 +59,7 @@
                         <div style="padding: 0;display: flex;justify-content: flex-start;margin-bottom: 30px;" class="col-lg-4 col-md-4 col-sm-4 col-xs-6 res-icons">
 
                             <img style="width: 30px;height: 30px;" src="{{url('assets/img/hourglass.png')}}">
-                            <div style="font-size: 20px;">
+                            <div class="res-icons-text" style="font-size: 20px;">
                                 <span>Duration</span> <br> <span style="font-weight: 600;">5 weeks</span>
                             </div>
 
@@ -68,7 +68,7 @@
                         <div style="padding: 0;display: flex;justify-content: center;border-left: 1px solid #bebebe;margin-bottom: 30px;" class="col-lg-4 col-md-4 col-sm-4 col-xs-6 res-icons1">
 
                             <img style="width: 30px;height: 30px;" src="{{url('assets/img/globe.png')}}">
-                            <div style="font-size: 20px;margin-left: 10px;">
+                            <div class="res-icons-text" style="font-size: 20px;margin-left: 10px;">
                                 <span>100% online</span> <br> <span style="font-weight: 600;color: #E750A9;">How it works</span>
                             </div>
 
@@ -77,7 +77,7 @@
                         <div style="padding: 0;display: flex;justify-content: center;border-left: 1px solid #bebebe;margin-bottom: 30px;" class="col-lg-4 col-md-4 col-sm-4 col-xs-6 res-icons">
 
                             <img style="width: 30px;height: 30px;" src="{{url('assets/img/infinity.png')}}">
-                            <div style="font-size: 20px;margin-left: 10px;">
+                            <div class="res-icons-text" style="font-size: 20px;margin-left: 10px;">
                                 <span>Unlimited</span> <br> <span style="font-weight: 600;color: red;">€14.17/month</span>
                             </div>
 
@@ -86,7 +86,7 @@
                         <div style="padding: 0;display: flex;justify-content: flex-start;align-items: center;margin-bottom: 30px;" class="col-lg-4 col-md-4 col-sm-4 col-xs-6 res-icons1">
 
                             <img style="width: 40px;height: 40px;" src="{{url('assets/img/graduation-cap.png')}}">
-                            <div style="font-size: 18px;margin-left: 10px;">
+                            <div class="res-icons-text" style="font-size: 18px;margin-left: 10px;">
                                 <span style="font-weight: 600;">HBO</span>
                             </div>
 
@@ -95,7 +95,7 @@
                         <div style="padding: 0;display: flex;justify-content: center;align-items: center;margin-bottom: 30px;" class="col-lg-4 col-md-4 col-sm-4 col-xs-6 res-icons">
 
                             <img style="width: 40px;height: 40px;" src="{{url('assets/img/award.png')}}">
-                            <div style="font-size: 18px;margin-left: 10px;">
+                            <div class="res-icons-text" style="font-size: 18px;margin-left: 10px;">
                                 <span style="font-weight: 600;">interactirf</span>
                             </div>
 
@@ -313,6 +313,11 @@
 
         @media (max-width: 478px)
         {
+            .res-icons-text
+            {
+                font-size: 16px !important;
+            }
+
             .res-container
             {
                 padding: 0 !important;
