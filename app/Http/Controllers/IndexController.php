@@ -59,6 +59,11 @@ class IndexController extends Controller
         return view('pages.education_single');
     }
 
+    public function zoekhet()
+    {
+        return view('pages.zoekhet');
+    }
+
     public function company()
     {
         return view('pages.company');

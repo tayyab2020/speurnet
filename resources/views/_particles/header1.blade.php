@@ -86,110 +86,114 @@
 
 </style>
 
-<nav style="border: 0;min-height: auto;" class="navbar navbar-default navbar-fixed-top mobile-nav" role="navigation">
-    <div class="container container-header">
+@if(Route::currentRouteName() != 'zoekhet')
 
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div style="min-height: auto;" class="navbar-header">
+    <nav style="border: 0;min-height: auto;" class="navbar navbar-default navbar-fixed-top mobile-nav" role="navigation">
+        <div class="container container-header">
 
-            <button style="border-color: #ddd;float: left;margin-left: 20px;" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-top">
-                <span class="sr-only">Toggle navigation</span>
-                <span style="background-color: #888;" class="icon-bar"></span>
-                <span style="background-color: #888;" class="icon-bar"></span>
-                <span style="background-color: #888;" class="icon-bar"></span>
-            </button>
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div style="min-height: auto;" class="navbar-header">
 
-        </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="navbar-top" style="margin: 0;padding: 0;">
-
-            <button style="border: 0;position: absolute;right: 15px;z-index: 10000;margin-top: 0;" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-top" aria-expanded="true">
-                <i class="fa fa-close"></i>
-            </button>
-
-            <ul style="margin: 0;border-bottom: 1px solid #eaeaea;padding-bottom: 30px;" class="nav navbar-nav navbar-right">
-
-                <li id="wrap">
-                    <form style="display: flex;align-items: center;margin: 20px 0;" action="" autocomplete="on">
-                        <input class="search-btn" id="search_submit" value="Rechercher" type="submit">
-                        <input class="search-bar" id="search" name="search" type="text" placeholder="What're we looking for ?">
-                    </form>
-
-                    @if(Route::currentRouteName() != 'blogs')
-
-                        <div>
-                            <div>
-                                <label>Jouw stad, provincie of gemeente</label>
-                                <input type="text" class="form-control">
-                            </div>
-                        </div>
-
-                    @endif
-
-                </li>
-
-            </ul>
-
-        </div><!-- /.navbar-collapse -->
-
-    </div><!-- /.container -->
-</nav>
-<!-- end:navbar -->
-
-<div style="margin: 40px 0 0 0;display: flex;justify-content: flex-start;align-items: center;" class="row top-con">
-
-    <div id="sidebar">
-
-        <ul data-accordion class="bx--accordion">
-            <li data-accordion-item class="bx--accordion__item">
-
-                <button style="background-color: transparent;border: 0;border-right: 1px solid #dedede;display: flex;align-items: center;justify-content: space-between;padding: 0 30px;width: 100%;" class="bx--accordion__heading collapsed" data-toggle="collapse" data-target="#pane1">
-                    <i style="margin-right: 10px;" class="fa fa-bars"></i> Category
+                <button style="border-color: #ddd;float: left;margin-left: 20px;" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-top">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span style="background-color: #888;" class="icon-bar"></span>
+                    <span style="background-color: #888;" class="icon-bar"></span>
+                    <span style="background-color: #888;" class="icon-bar"></span>
                 </button>
 
-                <div style="position: absolute;z-index: 10000;" id="pane1" class="bx--accordion__content collapse">
-                    <ul data-accordion class="categories">
-                        <li><span>Footwear</span>
-                            <ul>
-                                <li class="subcat"><input type="checkbox" id="all"><label for="all">All Footwear</label></li>
-                                <li class="subcat"><input type="checkbox" id="low"><label for="low">Low-Top Sneakers</label></li>
-                                <li class="subcat"><input type="checkbox" id="high"><label for="high">High-Top Sneakers</label></li>
-                                <li class="subcat"><input type="checkbox" id="boots"><label for="boots">Boots</label></li>
-                                <li class="subcat"><input type="checkbox" id="casual"><label for="casual">Casual Leather Shoes</label></li>
-                                <li class="subcat"><input type="checkbox" id="formal"><label for="formal">Formal Shoes</label></li>
-                                <li class="subcat"><input type="checkbox" id="sand"><label for="sand">Sandals</label></li>
-                                <li class="subcat"><input type="checkbox" id="slip"><label for="slip">Slip Ons</label></li>
-                            </ul>
-                        </li>
-                        <li><span>Tops</span></li>
-                        <li><span>Bottoms</span></li>
-                        <li><span>Outerwear</span></li>
-                        <li><span>Tailoring</span></li>
-                        <li><span>Accessories</span></li>
-                    </ul>
-                </div>
-            </li>
-        </ul>
-    </div>
-
-    <form class="desktop-search" style="display: flex;align-items: center;margin-left: 10px;border-right: 1px solid #dedede;" action="" autocomplete="on">
-        <input class="search-btn" id="search_submit" value="Rechercher" type="submit">
-        <input class="search-bar" id="search" name="search" type="text" placeholder="What're we looking for ?">
-    </form>
-
-    @if(Route::currentRouteName() != 'blogs')
-
-        <div class="city-con" style="margin-left: 10px;margin-bottom: 40px;">
-            <div class="city-box">
-                <label>Jouw stad, provincie of gemeente</label>
-                <input type="text" class="form-control">
             </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="navbar-top" style="margin: 0;padding: 0;">
+
+                <button style="border: 0;position: absolute;right: 15px;z-index: 10000;margin-top: 0;" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-top" aria-expanded="true">
+                    <i class="fa fa-close"></i>
+                </button>
+
+                <ul style="margin: 0;border-bottom: 1px solid #eaeaea;padding-bottom: 30px;" class="nav navbar-nav navbar-right">
+
+                    <li id="wrap">
+                        <form style="display: flex;align-items: center;margin: 20px 0;" action="" autocomplete="on">
+                            <input class="search-btn" id="search_submit" value="Rechercher" type="submit">
+                            <input class="search-bar" id="search" name="search" type="text" placeholder="What're we looking for ?">
+                        </form>
+
+                        @if(Route::currentRouteName() != 'blogs')
+
+                            <div>
+                                <div>
+                                    <label>Jouw stad, provincie of gemeente</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+
+                        @endif
+
+                    </li>
+
+                </ul>
+
+            </div><!-- /.navbar-collapse -->
+
+        </div><!-- /.container -->
+    </nav>
+    <!-- end:navbar -->
+
+    <div style="margin: 40px 0 0 0;display: flex;justify-content: flex-start;align-items: center;" class="row top-con">
+
+        <div id="sidebar">
+
+            <ul data-accordion class="bx--accordion">
+                <li data-accordion-item class="bx--accordion__item">
+
+                    <button style="background-color: transparent;border: 0;border-right: 1px solid #dedede;display: flex;align-items: center;justify-content: space-between;padding: 0 30px;width: 100%;" class="bx--accordion__heading collapsed" data-toggle="collapse" data-target="#pane1">
+                        <i style="margin-right: 10px;" class="fa fa-bars"></i> Category
+                    </button>
+
+                    <div style="position: absolute;z-index: 10000;" id="pane1" class="bx--accordion__content collapse">
+                        <ul data-accordion class="categories">
+                            <li><span>Footwear</span>
+                                <ul>
+                                    <li class="subcat"><input type="checkbox" id="all"><label for="all">All Footwear</label></li>
+                                    <li class="subcat"><input type="checkbox" id="low"><label for="low">Low-Top Sneakers</label></li>
+                                    <li class="subcat"><input type="checkbox" id="high"><label for="high">High-Top Sneakers</label></li>
+                                    <li class="subcat"><input type="checkbox" id="boots"><label for="boots">Boots</label></li>
+                                    <li class="subcat"><input type="checkbox" id="casual"><label for="casual">Casual Leather Shoes</label></li>
+                                    <li class="subcat"><input type="checkbox" id="formal"><label for="formal">Formal Shoes</label></li>
+                                    <li class="subcat"><input type="checkbox" id="sand"><label for="sand">Sandals</label></li>
+                                    <li class="subcat"><input type="checkbox" id="slip"><label for="slip">Slip Ons</label></li>
+                                </ul>
+                            </li>
+                            <li><span>Tops</span></li>
+                            <li><span>Bottoms</span></li>
+                            <li><span>Outerwear</span></li>
+                            <li><span>Tailoring</span></li>
+                            <li><span>Accessories</span></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
         </div>
 
-    @endif
+        <form class="desktop-search" style="display: flex;align-items: center;margin-left: 10px;border-right: 1px solid #dedede;" action="" autocomplete="on">
+            <input class="search-btn" id="search_submit" value="Rechercher" type="submit">
+            <input class="search-bar" id="search" name="search" type="text" placeholder="What're we looking for ?">
+        </form>
 
-</div>
+        @if(Route::currentRouteName() != 'blogs')
+
+            <div class="city-con" style="margin-left: 10px;margin-bottom: 40px;">
+                <div class="city-box">
+                    <label>Jouw stad, provincie of gemeente</label>
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+
+        @endif
+
+    </div>
+
+@endif
 
 <style>
 
