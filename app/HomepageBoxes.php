@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class HomepageIcons extends Model
+class HomepageBoxes extends Model
 {
-    protected $table = 'homepage_icons';
+    protected $table = 'homepage_boxes';
 
     protected $fillable = ['title','image'];
 

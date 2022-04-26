@@ -16,6 +16,7 @@ use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use App\HomepageIcons;
+use App\HomepageBoxes;
 
 class SliderController extends MainAdminController
 {
@@ -69,6 +70,174 @@ class SliderController extends MainAdminController
         return \Redirect::back();
     }
 
+    public function homepageBoxes()
+    {
+        $all = HomepageBoxes::orderBy('id')->get();
+
+        return view('admin.pages.homepage_boxes',compact('all'));
+
+    }
+
+    public function addHomepageBox(){
+
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+        
+        $check = HomepageBoxes::get();
+
+        if(count($check) == 3)
+        {
+            \Session::flash('flash_message', 'Cant create more than 3 boxes!');
+
+            return \Redirect::back();
+        }
+
+        return view('admin.pages.addedithomepagebox');
+    }
+
+    public function addHomepageBoxPost(Request $request)
+    {
+        $data =  \Request::except(array('_token')) ;
+
+        $inputs = $request->all();
+
+        $rule=array(
+            'title' => 'required',
+            'image' => 'mimes:jpg,jpeg,gif,png'
+        );
+
+        $validator = \Validator::make($data,$rule);
+
+        if ($validator->fails())
+        {
+            return redirect()->back()->withErrors($validator->messages());
+        }
+
+        if(!empty($inputs['id'])){
+
+            $slide = HomepageBoxes::findOrFail($inputs['id']);
+
+            //Slide image
+            $slide_image = $request->file('image');
+
+            if($slide_image){
+
+                \File::delete(public_path() .'/upload/'.$slide->image);
+
+                $tmpFilePath = 'upload/';
+
+                $filename = $_FILES['image']['name'];
+
+                $ext = pathinfo($filename, PATHINFO_EXTENSION);
+
+                $hardPath =  Str::slug($inputs['title'], '-').'-'.md5(time()) .'.'.$ext;
+
+                $img = Image::make($slide_image);
+
+                $img->save($tmpFilePath.$hardPath);
+
+                $slide->image = $hardPath;
+
+            }
+
+        }else{
+
+            $slide = new HomepageBoxes;
+
+            //Slide image
+            $slide_image = $request->file('image');
+
+            if($slide_image){
+
+                \File::delete(public_path() .'/upload/'.$slide->image);
+
+                $tmpFilePath = 'upload/';
+
+                $filename = $_FILES['image']['name'];
+
+                $ext = pathinfo($filename, PATHINFO_EXTENSION);
+
+                $hardPath =  Str::slug($inputs['title'], '-').'-'.md5(time()) .'.'.$ext;
+
+                $img = Image::make($slide_image);
+
+                $img->save($tmpFilePath.$hardPath);
+
+                $slide->image = $hardPath;
+
+            }
+            else
+            {
+                $slide->image = '';
+            }
+
+        }
+
+
+        $slide->title = $inputs['title'];
+        $slide->url = $inputs['url'];
+
+        $slide->save();
+
+        if(!empty($inputs['id'])){
+
+            \Session::flash('flash_message', __('text.Changes Saved'));
+
+            return \Redirect::back();
+        }else{
+
+            \Session::flash('flash_message', __('text.Added'));
+
+            return redirect('admin/homepage-boxes');
+
+        }
+
+    }
+
+    public function editHomepageBox($id)
+    {
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+
+        $slide = HomepageBoxes::findOrFail($id);
+
+        return view('admin.pages.addedithomepagebox',compact('slide'));
+
+    }
+
+    public function deleteHomepageBox($id)
+    {
+
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        $slide = HomepageBoxes::findOrFail($id);
+
+        \File::delete(public_path() .'/upload/'.$slide->image);
+
+        $slide->delete();
+
+        \Session::flash('flash_message', 'Deleted');
+
+        return redirect()->back();
+
+    }
 
     public function ourTips()
     {
@@ -87,7 +256,7 @@ class SliderController extends MainAdminController
 
     }
 
-	 public function addeditSlide(){
+	public function addeditSlide(){
 
         if(Auth::User()->usertype!="Admin"){
 

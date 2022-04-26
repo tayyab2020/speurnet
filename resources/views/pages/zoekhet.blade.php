@@ -120,13 +120,35 @@
 
             <!-- begin:latest -->
 
-            <div class="row" style="margin: 0;">
+                <div class="row" style="margin: 0;">
 
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 30px;">
 
-                    <div class="row company-boxes">
+                        <ul style="display:flex;align-items: flex-end;position: relative;padding-bottom: 10px;" class="nav nav-tabs res-ul">
 
-                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 res-float">
+                            <span class="res-span" style="display: inline-block;width: 60%;margin-right: 30px;">
+                                <h4 class="res-head">Benieuwd naar de nieuwste woontrends?</h4>
+                                <p style="margin: 0;">Waarom alle interieurwinkels en woontrends websites afgaan als Zoekjehuisje.nl de allerlaatste woontrends voor jou heeft verzameld, zodat je alle trends in wonen en tuin online kunt bekijken. Heb je binnenkort een nieuwe woning of ben je gewoon toe om je interieur of tuin een nieuwe look te geven volgens de nieuwe trends van 2021? Bekijk hier alle interieurtips en trends voor jouw woonkamer, slaapkamer, keuken of tuin. Laat je inspireren en bepaal zelf welke woontrend of stijl in jouw interieur past. Jouw woning is de laatste woontrend waard.</p>
+                            </span>
+
+                            <div class="bse">
+
+                                <form id="search_form" method="GET" action="">
+                                    <input autocomplete="off" name="search" type="search">
+                                    <i id="form-submit" style="display: flex;justify-content: center;align-items: center;" class="fa fa-search search-icon"></i>
+                                </form>
+
+                            </div>
+
+                        </ul>
+
+                    </div>
+
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                        <div class="row company-boxes">
+
+                            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 res-float">
                             <article style="margin-bottom: 45px;">
                                 <div class="property-container" style="margin: 0;min-height: 480px;border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;">
 
@@ -182,7 +204,7 @@
                             </article>
                         </div>
 
-                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 res-float">
+                            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 res-float">
                             <article style="margin-bottom: 45px;">
                                 <div class="property-container" style="margin: 0;min-height: 480px;border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;">
 
@@ -238,7 +260,7 @@
                             </article>
                         </div>
 
-                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 res-float">
+                            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 res-float">
                             <article style="margin-bottom: 45px;">
                                 <div class="property-container" style="margin: 0;min-height: 480px;border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;">
 
@@ -294,7 +316,7 @@
                             </article>
                         </div>
 
-                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 res-float">
+                            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 res-float">
                             <article style="margin-bottom: 45px;">
                                 <div class="property-container" style="margin: 0;min-height: 480px;border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;">
 
@@ -350,7 +372,7 @@
                             </article>
                         </div>
 
-                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 res-float">
+                            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 res-float">
                             <article style="margin-bottom: 45px;">
                                 <div class="property-container" style="margin: 0;min-height: 480px;border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;">
 
@@ -406,7 +428,7 @@
                             </article>
                         </div>
 
-                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 res-float">
+                            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 res-float">
                             <article style="margin-bottom: 45px;">
                                 <div class="property-container" style="margin: 0;min-height: 480px;border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;">
 
@@ -462,7 +484,7 @@
                             </article>
                         </div>
 
-                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 res-float">
+                            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 res-float">
                             <article style="margin-bottom: 45px;">
                                 <div class="property-container" style="margin: 0;min-height: 480px;border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;">
 
@@ -518,7 +540,7 @@
                             </article>
                         </div>
 
-                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 res-float">
+                            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 res-float">
                             <article style="margin-bottom: 45px;">
                                 <div class="property-container" style="margin: 0;min-height: 480px;border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;">
 
@@ -572,13 +594,13 @@
                                     </div>
                                 </div>
                             </article>
+                        </div>
+
                         </div>
 
                     </div>
 
                 </div>
-
-            </div>
             <!-- end:latest -->
 
         </div>
@@ -606,6 +628,103 @@
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/css/flaticon.css') }}"/>
 
     <style>
+
+        @media (min-width: 769px)
+        {
+            .bse
+            {
+                width: 40%;
+            }
+        }
+
+        @media (max-width: 768px)
+        {
+            .res-ul
+            {
+                display: block !important;
+                position: relative;
+            }
+
+            .res-span
+            {
+                width: 100% !important;
+                margin-right: 0 !important;
+                margin-bottom: 20px;
+            }
+
+            #search_form
+            {
+                bottom: 3px;
+                margin-bottom: 0 !important;
+            }
+
+            .res-head
+            {
+                font-size: 14px;
+            }
+        }
+
+        #search_form{
+            position: relative;
+            right: 0;
+            float: right;
+            transform: translate(0%,0%);
+            transition: all 1s;
+            width: 50px;
+            height: 50px;
+            background: white;
+            box-sizing: border-box;
+            border-radius: 25px;
+            border: 4px solid #b8b8b870;
+            padding: 5px;
+            margin: 0;
+        }
+
+        input{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;;
+            height: 42.5px;
+            line-height: 30px;
+            outline: 0;
+            border: 0;
+            display: none;
+            font-size: 1em;
+            border-radius: 20px;
+            padding: 0 20px;
+        }
+
+        .search-icon{
+            box-sizing: border-box;
+            padding: 10px;
+            width: 42.5px;
+            height: 42.5px;
+            position: absolute;
+            top: 0;
+            right: 0;
+            border-radius: 50%;
+            color: #07051a;
+            text-align: center;
+            font-size: 1.2em;
+            transition: all 1s;
+        }
+
+        .fas{display:inline-block;font-family:FontAwesome;font-style:normal;font-weight:normal;line-height:1;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+
+        #search_form:hover{
+            width: 200px;
+            cursor: pointer;
+        }
+
+        #search_form:hover input{
+            display: block;
+        }
+
+        #search_form:hover .fa{
+            background: #07051a;
+            color: white;
+        }
 
         #overlay{
             position: fixed;
@@ -1271,7 +1390,7 @@
             $("#overlay").fadeIn(300);
 
             setTimeout(function(){
-                
+
                 $("#overlay").fadeOut(300);
 
                 $('.company-boxes').append('<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 res-float">\n' +

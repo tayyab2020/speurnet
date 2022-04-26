@@ -139,41 +139,21 @@
 
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="display: flex;justify-content: center;flex-wrap: wrap;padding: 0;">
 
-        <div style="display: flex;align-items: center;justify-content: center;" class="col-lg-4 col-md-4 col-sm-4 col-xs-9 con">
+        @foreach($homepage_boxes as $x => $key)
 
-            <div class="left-tab tab">
-                <h2>Shirts</h2>
-                <a href="#">View All</a>
-            </div>
-            <div class="right-tab tab1">
-                <img src="{{ URL::asset('assets/img/tshirt_PNG5450.png') }}">
-            </div>
+            <div style="display: flex;align-items: center;justify-content: center;" class="col-lg-4 col-md-4 col-sm-4 col-xs-9 con">
 
-        </div>
+                <div class="left-tab{{$x != 0 ? $x : null}} tab">
+                    <h2>{{$key->title}}</h2>
+                    <a href="{{$key->url}}">View All</a>
+                </div>
+                <div class="right-tab{{$x != 0 ? $x : null}} tab1">
+                    <img src="{{ URL::asset('upload/'.$key->image) }}">
+                </div>
 
-        <div style="display: flex;align-items: center;justify-content: center;" class="col-lg-4 col-md-4 col-sm-4 col-xs-9 con">
-
-            <div class="left-tab1 tab">
-                <h2>Shirts</h2>
-                <a href="#">View All</a>
-            </div>
-            <div class="right-tab1 tab1">
-                <img src="{{ URL::asset('assets/img/tshirt_PNG5450.png') }}">
             </div>
 
-        </div>
-
-        <div style="display: flex;align-items: center;justify-content: center;" class="col-lg-4 col-md-4 col-sm-4 col-xs-9 con">
-
-            <div class="left-tab2 tab">
-                <h2>Shirts</h2>
-                <a href="#">View All</a>
-            </div>
-            <div class="right-tab2 tab1">
-                <img src="{{ URL::asset('assets/img/tshirt_PNG5450.png') }}">
-            </div>
-
-        </div>
+        @endforeach
 
     </div>
 
