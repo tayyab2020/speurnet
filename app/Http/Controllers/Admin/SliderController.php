@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\CompanyTiles;
+use App\CompanyTilesDetails;
 use App\Settings;
 use App\tips;
 use Auth;
@@ -68,6 +70,143 @@ class SliderController extends MainAdminController
         \Session::flash('flash_message', __('text.Changes Saved'));
 
         return \Redirect::back();
+    }
+
+    public function companyTiles()
+    {
+        $all = CompanyTiles::with('details')->orderBy('id')->get();
+
+        return view('admin.pages.company_tiles',compact('all'));
+
+    }
+
+    public function addCompanyTile(){
+
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        return view('admin.pages.addeditcompanytiles');
+    }
+
+    public function addCompanyTilePost(Request $request)
+    {
+        $data =  \Request::except(array('_token')) ;
+
+        $inputs = $request->all();
+
+        $rule=array(
+            'title' => 'required',
+        );
+
+        $validator = \Validator::make($data,$rule);
+
+        if ($validator->fails())
+        {
+            return redirect()->back()->withErrors($validator->messages());
+        }
+
+        if(!empty($inputs['id'])){
+
+            $slide = CompanyTiles::findOrFail($inputs['id']);
+
+        }else{
+
+            $slide = new CompanyTiles();
+
+        }
+
+        $slide->title = $inputs['title'];
+        $slide->save();
+
+        $array = [];
+
+        foreach ($request->tile_titles as $x => $key)
+        {
+            $check = CompanyTilesDetails::where('tile_id',$slide->id)->skip($x)->first();
+
+            if($check)
+            {
+                if($key && $request->tile_urls[$x])
+                {
+                    $check->title = $key;
+                    $check->url = $request->tile_urls[$x];
+                    $check->save();
+                }
+
+                $array[] = $check->id;
+            }
+            else
+            {
+                if($key && $request->tile_urls[$x])
+                {
+                    $details = new CompanyTilesDetails;
+                    $details->tile_id = $slide->id;
+                    $details->title = $key;
+                    $details->url = $request->tile_urls[$x];
+                    $details->save();
+
+                    $array[] = $details->id;
+                }
+            }
+        }
+
+        CompanyTilesDetails::whereNotIn('id',$array)->where('tile_id',$slide->id)->delete();
+
+        if(!empty($inputs['id'])){
+
+            \Session::flash('flash_message', __('text.Changes Saved'));
+
+            return \Redirect::back();
+        }else{
+
+            \Session::flash('flash_message', __('text.Added'));
+
+            return redirect('admin/company-tiles');
+
+        }
+
+    }
+
+    public function editCompanyTile($id)
+    {
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+
+        $slide = CompanyTiles::with('details')->findOrFail($id);
+
+        return view('admin.pages.addeditcompanytiles',compact('slide'));
+
+    }
+
+    public function deleteCompanyTile($id)
+    {
+
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        CompanyTiles::findOrFail($id)->delete();
+        CompanyTilesDetails::where('tile_id',$id)->delete();
+
+        \Session::flash('flash_message', 'Deleted');
+
+        return redirect()->back();
+
     }
 
     public function homepageBoxes()

@@ -34,6 +34,8 @@
 
 					<li class="{{classActivePath('homepage-boxes')}}"><a href="{{ URL::to('admin/homepage-boxes') }}"><i class="fa fa-bars"></i>Homepage Boxes</a></li>
 
+					<li class="{{classActivePath('company-tiles')}}"><a href="{{ URL::to('admin/company-tiles') }}"><i class="fa fa-bars"></i>Company Tiles</a></li>
+
                     <li class="{{classActivePath('tips')}}"><a href="{{ URL::to('admin/our-tips') }}"><i class="fa fa-bars"></i>Our Tips</a></li>
 
                     <li class="{{classActivePath('manage-pages')}}"><a href="{{ URL::to('admin/manage-pages') }}"><i class="fa fa-header"></i> Manage Pages</a></li>

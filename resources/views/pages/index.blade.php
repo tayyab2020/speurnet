@@ -77,61 +77,24 @@
 
                 <div class="row company-boxes">
 
-                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 sub">
-                        <h1 style="font-size: 20px;" class="grad">Speurnet.nl</h1>
-                        <div style="background-color: #F5DEF3;" class="row">
-                            <a href="#">Company Title</a>
-                        </div>
-                    </div>
+                    @php
 
-                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 sub">
-                        <h1 style="font-size: 20px;" class="grad">Speurnet.nl</h1>
-                        <div style="background-color: #C2EEEB;" class="row">
-                            <a href="#">Company Title</a>
-                        </div>
-                    </div>
+                        $backgrounds = array("#F5DEF3","#C2EEEB","#DAF4D9","#F4E4BD","#F7D5D9","#F5DEF3");
 
-                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 sub">
-                        <h1 style="font-size: 20px;" class="grad">Speurnet.nl</h1>
-                        <div style="background-color: #C2EEEB;" class="row">
-                            <a href="#">Company Title</a>
-                        </div>
-                    </div>
+                    @endphp
 
-                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 sub">
-                        <h1 style="font-size: 20px;" class="grad">Speurnet.nl</h1>
-                        <div style="background-color: #DAF4D9;" class="row">
-                            <a href="#">Company Title</a>
-                        </div>
-                    </div>
+                    @foreach($company_tiles as $x => $key)
 
-                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 sub">
-                        <h1 style="font-size: 20px;" class="grad">Speurnet.nl</h1>
-                        <div style="background-color: #F4E4BD;" class="row">
-                            <a href="#">Company Title</a>
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 sub">
+                            <h1 style="font-size: 20px;" class="grad">{{$key->title}}</h1>
+                            <div style="background-color: {{$backgrounds[array_rand($backgrounds)]}};" class="row">
+                                @foreach($key->details as $key1)
+                                    <a href="{{$key1->url}}">{{$key1->title}}</a>
+                                @endforeach
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 sub">
-                        <h1 style="font-size: 20px;" class="grad">Speurnet.nl</h1>
-                        <div style="background-color: #F7D5D9;" class="row">
-                            <a href="#">Company Title</a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 sub">
-                        <h1 style="font-size: 20px;" class="grad">Speurnet.nl</h1>
-                        <div style="background-color: #F5DEF3;" class="row">
-                            <a href="#">Company Title</a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 sub">
-                        <h1 style="font-size: 20px;" class="grad">Speurnet.nl</h1>
-                        <div style="background-color: #C2EEEB;" class="row">
-                            <a href="#">Company Title</a>
-                        </div>
-                    </div>
+                    @endforeach
 
                 </div>
 

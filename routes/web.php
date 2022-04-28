@@ -208,6 +208,12 @@ Route::group(['middleware' => 'App\Http\Middleware\UserTypeMiddleware'], functio
         Route::get('homepage-boxes/addcontent/{id}', 'SliderController@editHomepageBox')->name('edit-homepage-box');
         Route::get('homepage-boxes/delete/{id}', 'SliderController@deleteHomepageBox');
 
+        Route::get('company-tiles', 'SliderController@companyTiles')->name('company-tiles');
+        Route::get('company-tiles/addcontent', 'SliderController@addCompanyTile')->name('add-company-tile');
+        Route::post('company-tiles/addcontent', 'SliderController@addCompanyTilePost');
+        Route::get('company-tiles/addcontent/{id}', 'SliderController@editCompanyTile')->name('edit-company-tile');
+        Route::get('company-tiles/delete/{id}', 'SliderController@deleteCompanyTile');
+
         Route::get('homepage-icons', 'SliderController@homepageIcons')->name('homepage-icons');
         Route::get('homepage-icons/addcontent', 'SliderController@addeditContent')->name('add-homepage');
         Route::post('homepage-icons/addcontent', 'SliderController@addnewContent')->name('post-homepage');
