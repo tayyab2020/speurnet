@@ -524,6 +524,11 @@
         }
     }
 
+    .navbar-toggle
+    {
+        z-index: -1;
+    }
+
     @media (max-width: 1200px)
     {
         .navbar-toggle
