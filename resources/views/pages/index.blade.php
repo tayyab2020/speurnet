@@ -853,7 +853,7 @@
 <input type="hidden" id="cookie-consent" value="{{$cookie}}">
 
 <!-- Modal -->
-<div id="myModal2" class="modal modal2 fade" role="dialog" style="overflow:hidden;-webkit-overflow-scrolling:touch;">
+<div id="myModal2" class="modal modal2 fade" role="dialog" style="overflow:hidden;-webkit-overflow-scrolling:touch;transform: translate3d(0,0,0);">
     <div class="modal-dialog">
 
         <!-- Modal content-->
