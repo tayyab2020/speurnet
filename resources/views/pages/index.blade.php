@@ -4,6 +4,8 @@
 @section('head_keywords', 'gratis kamer plaatsen, gratis woning plaatsen, nieuwbouwprojecten, woninrguil, gratis woningruil plaatsen, gratis reageren op kamers, gratis reageren op woningen, op zoek naar woningruil, op zoek naar kamer, op zoek naar een woning')
 @section('head_description', 'Wil jij jouw woning of kamer gratis plaatsen? Of ben je op zoek naar een huurwoning, koopwonig, nieuwbouwproject of woningruil? Bekijk snel ons platform en begin vandaag nog met het plaatsen of zoeken van een woning.')
 
+<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+
 @section("content")
 
 <!-- begin:content -->
@@ -851,7 +853,7 @@
 <input type="hidden" id="cookie-consent" value="{{$cookie}}">
 
 <!-- Modal -->
-<div id="myModal2" class="modal modal2 fade" role="dialog" style="overflow: visible;">
+<div id="myModal2" class="modal modal2 fade" role="dialog" style="overflow:hidden;-webkit-overflow-scrolling:touch;">
     <div class="modal-dialog">
 
         <!-- Modal content-->
