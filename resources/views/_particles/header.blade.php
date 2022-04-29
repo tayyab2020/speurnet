@@ -238,14 +238,13 @@
 
     .right-tab, .right-tab1, .right-tab2
     {
-        background: #F1E1CA;
+        background: transparent;
     }
 
     .tab1 img
     {
         width: 65%;
         height: 100%;
-        z-index: 1000;
     }
 
     .tab:before
@@ -291,8 +290,8 @@
     }
 
     .right-tab:before, .right-tab1:before, .right-tab2:before {
-        -webkit-box-shadow: 40px 0 0 0 #f1e1ca;
-        box-shadow: 40px 0 0 0 #f1e1ca;
+        -webkit-box-shadow: 40px 0 0 0 transparent;
+        box-shadow: 40px 0 0 0 transparent;
     }
 
     @media screen and (max-width: 1500px)
