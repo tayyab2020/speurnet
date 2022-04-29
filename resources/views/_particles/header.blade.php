@@ -294,6 +294,11 @@
         box-shadow: 40px 0 0 0 transparent;
     }
 
+    #myModal2
+    {
+        -webkit-overflow-scrolling: auto !important;
+    }
+
     @media screen and (max-width: 1500px)
     {
         .tab
