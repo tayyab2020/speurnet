@@ -53,30 +53,6 @@
 
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 fav-articles">
 
-                        <img src="{{ URL::asset('assets/img/img16.jpg') }}">
-                        <span>NEW TO THE ROCKS</span>
-                        <h4>Bay Nine Omakase</h4>
-
-                    </div>
-
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 fav-articles">
-
-                        <img src="{{ URL::asset('assets/img/img17.jpg') }}">
-                        <span>BERNIE DIETER'S</span>
-                        <h4>Club Kabarett</h4>
-
-                    </div>
-
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 fav-articles">
-
-                        <img src="{{ URL::asset('assets/img/img01.jpg') }}">
-                        <span>INSPIRED</span>
-                        <h4>Immersive Art</h4>
-
-                    </div>
-
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 fav-articles">
-
                         <a href="#" style="background-color: transparent;color: #000;padding: 10px 0;width: 85%;border-radius: 10px;font-weight: 600;" class="btn btn-primary">More</a>
 
                     </div>
