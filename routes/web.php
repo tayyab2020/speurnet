@@ -214,6 +214,12 @@ Route::group(['middleware' => 'App\Http\Middleware\UserTypeMiddleware'], functio
         Route::get('company-tiles/addcontent/{id}', 'SliderController@editCompanyTile')->name('edit-company-tile');
         Route::get('company-tiles/delete/{id}', 'SliderController@deleteCompanyTile');
 
+        Route::get('our-favourites', 'SliderController@ourFavourites')->name('our-favourites');
+        Route::get('our-favourites/addcontent', 'SliderController@addOurFavourite')->name('add-our-favourite');
+        Route::post('our-favourites/addcontent', 'SliderController@addOurFavouritePost');
+        Route::get('our-favourites/addcontent/{id}', 'SliderController@editOurFavourite')->name('edit-our-favourite');
+        Route::get('our-favourites/delete/{id}', 'SliderController@deleteOurFavourite');
+
         Route::get('homepage-icons', 'SliderController@homepageIcons')->name('homepage-icons');
         Route::get('homepage-icons/addcontent', 'SliderController@addeditContent')->name('add-homepage');
         Route::post('homepage-icons/addcontent', 'SliderController@addnewContent')->name('post-homepage');

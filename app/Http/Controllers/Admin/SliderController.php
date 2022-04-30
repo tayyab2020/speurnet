@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\CompanyTiles;
 use App\CompanyTilesDetails;
+use App\OurFavourites;
 use App\Settings;
 use App\tips;
 use Auth;
@@ -202,6 +203,167 @@ class SliderController extends MainAdminController
 
         CompanyTiles::findOrFail($id)->delete();
         CompanyTilesDetails::where('tile_id',$id)->delete();
+
+        \Session::flash('flash_message', 'Deleted');
+
+        return redirect()->back();
+
+    }
+
+    public function ourFavourites()
+    {
+        $all = OurFavourites::orderBy('id')->get();
+
+        return view('admin.pages.our_favourites',compact('all'));
+
+    }
+
+    public function addourFavourite(){
+
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        return view('admin.pages.addeditourfavourite');
+    }
+
+    public function addOurFavouritePost(Request $request)
+    {
+        $data =  \Request::except(array('_token')) ;
+
+        $inputs = $request->all();
+
+        $rule=array(
+            'label' => 'required',
+            'heading' => 'required',
+            'image' => 'mimes:jpg,jpeg,gif,png'
+        );
+
+        $validator = \Validator::make($data,$rule);
+
+        if ($validator->fails())
+        {
+            return redirect()->back()->withErrors($validator->messages());
+        }
+
+        if(!empty($inputs['id'])){
+
+            $slide = OurFavourites::findOrFail($inputs['id']);
+
+            //Slide image
+            $slide_image = $request->file('image');
+
+            if($slide_image){
+
+                \File::delete(public_path() .'/upload/'.$slide->image);
+
+                $tmpFilePath = 'upload/';
+
+                $filename = $_FILES['image']['name'];
+
+                $ext = pathinfo($filename, PATHINFO_EXTENSION);
+
+                $hardPath =  Str::slug($inputs['heading'], '-').'-'.md5(time()) .'.'.$ext;
+
+                $img = Image::make($slide_image);
+
+                $img->save($tmpFilePath.$hardPath);
+
+                $slide->image = $hardPath;
+
+            }
+
+        }else{
+
+            $slide = new OurFavourites;
+
+            //Slide image
+            $slide_image = $request->file('image');
+
+            if($slide_image){
+
+                \File::delete(public_path() .'/upload/'.$slide->image);
+
+                $tmpFilePath = 'upload/';
+
+                $filename = $_FILES['image']['name'];
+
+                $ext = pathinfo($filename, PATHINFO_EXTENSION);
+
+                $hardPath =  Str::slug($inputs['heading'], '-').'-'.md5(time()) .'.'.$ext;
+
+                $img = Image::make($slide_image);
+
+                $img->save($tmpFilePath.$hardPath);
+
+                $slide->image = $hardPath;
+
+            }
+            else
+            {
+                $slide->image = '';
+            }
+
+        }
+
+
+        $slide->title = $inputs['label'];
+        $slide->title1 = $inputs['heading'];
+        $slide->url = $inputs['url'];
+
+        $slide->save();
+
+        if(!empty($inputs['id'])){
+
+            \Session::flash('flash_message', __('text.Changes Saved'));
+
+            return \Redirect::back();
+        }else{
+
+            \Session::flash('flash_message', __('text.Added'));
+
+            return redirect('admin/our-favourites');
+
+        }
+
+    }
+
+    public function editOurFavourite($id)
+    {
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        $slide = OurFavourites::findOrFail($id);
+
+        return view('admin.pages.addeditourfavourite',compact('slide'));
+
+    }
+
+    public function deleteOurFavourite($id)
+    {
+
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        $slide = OurFavourites::findOrFail($id);
+
+        \File::delete(public_path() .'/upload/'.$slide->image);
+
+        $slide->delete();
 
         \Session::flash('flash_message', 'Deleted');
 

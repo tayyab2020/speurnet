@@ -39,6 +39,18 @@
 
                 <div style="margin: 20px 0 0 0;" class="row">
 
+                    @foreach($our_favourites as $key)
+
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 fav-articles">
+
+                            <img src="{{ URL::asset('upload/'.$key->image) }}">
+                            <span>{{$key->title}}</span>
+                            <h4><a href="{{$key->url}}">{{$key->title1}}</a></h4>
+
+                        </div>
+
+                    @endforeach
+
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 fav-articles">
 
                         <img src="{{ URL::asset('assets/img/img16.jpg') }}">

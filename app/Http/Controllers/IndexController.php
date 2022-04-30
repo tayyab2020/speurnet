@@ -12,6 +12,7 @@ use App\homes_inspiration;
 use App\manage_pages;
 use App\moving_tips;
 use App\moving_tips_contents;
+use App\OurFavourites;
 use App\properties_headings;
 use App\property_documents;
 use App\saved_inspirations;
@@ -1502,6 +1503,8 @@ class IndexController extends Controller
 
     	$company_tiles = CompanyTiles::with('details')->get();
 
+        $our_favourites = OurFavourites::get();
+
     	$city_list = City::where('status','1')->orderBy('city_name')->get();
 
 		$propertieslist = Properties::leftjoin('users','users.id','=','properties.user_id')->where('properties.status','1')->orderBy('properties.id', 'desc')->select('properties.*','users.company_name','users.image_icon','users.id as user_id','users.landlord')->take(3)->get();
@@ -1612,7 +1615,7 @@ class IndexController extends Controller
 
         $cookie = cookies::where('ip',\Request::ip())->first();
 
-        return view('pages.index',compact('company_tiles','homepage_boxes','cookie','propertieslist','blogs', 'heading', 'most_viewed', 'partners','city_list','top_members','content','properties_headings','tips'));
+        return view('pages.index',compact('our_favourites','company_tiles','homepage_boxes','cookie','propertieslist','blogs', 'heading', 'most_viewed', 'partners','city_list','top_members','content','properties_headings','tips'));
     }
 
     public function HomesInspiration(Request $request,$id = '')
