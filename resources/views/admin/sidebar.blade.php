@@ -42,6 +42,8 @@
 
                     <li class="{{classActivePath('footer-pages')}}"><a href="{{ URL::to('admin/footer-pages') }}"><i class="fa fa-list"></i> Footer Pages</a></li>
 
+					<li class="{{classActivePath('homepage-icons')}}"><a href="{{ URL::to('admin/homepage-icons') }}"><i class="fa fa-bars"></i>While you are here content</a></li>
+
 	                <li class="{{classActivePath('settings')}}"><a href="{{ URL::to('admin/settings') }}"><i class="md md-settings"></i>Settings</a></li>
                 @else
 
