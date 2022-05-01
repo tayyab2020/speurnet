@@ -11,6 +11,7 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\View;
 use App\footer_headings;
+use App\HomepageBoxes;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -76,11 +77,15 @@ class AppServiceProvider extends ServiceProvider
             \App::setLocale($language->lang);
         }*/
 
+        $homepage_boxes = HomepageBoxes::get();
+
         $page_content = manage_pages::where('page',\Request::segment(1))->first();
 
         $footer_content = footer_pages::all();
 
         $footer_headings = footer_headings::all();
+
+        View::share('homepage_boxes', $homepage_boxes);
 
         View::share('page_content', $page_content);
 

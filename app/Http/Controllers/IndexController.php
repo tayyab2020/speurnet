@@ -1499,8 +1499,6 @@ class IndexController extends Controller
             return redirect('install');
         }
 
-        $homepage_boxes = HomepageBoxes::get();
-
     	$company_tiles = CompanyTiles::with('details')->get();
 
         $our_favourites = OurFavourites::get();
@@ -1615,7 +1613,7 @@ class IndexController extends Controller
 
         $cookie = cookies::where('ip',\Request::ip())->first();
 
-        return view('pages.index',compact('our_favourites','company_tiles','homepage_boxes','cookie','propertieslist','blogs', 'heading', 'most_viewed', 'partners','city_list','top_members','content','properties_headings','tips'));
+        return view('pages.index',compact('our_favourites','company_tiles','cookie','propertieslist','blogs', 'heading', 'most_viewed', 'partners','city_list','top_members','content','properties_headings','tips'));
     }
 
     public function HomesInspiration(Request $request,$id = '')
