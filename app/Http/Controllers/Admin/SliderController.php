@@ -7,6 +7,7 @@ use App\CompanyTilesDetails;
 use App\OurFavourites;
 use App\Settings;
 use App\tips;
+use App\Trendings;
 use Auth;
 use App\User;
 use App\Slider;
@@ -364,6 +365,111 @@ class SliderController extends MainAdminController
         \File::delete(public_path() .'/upload/'.$slide->image);
 
         $slide->delete();
+
+        \Session::flash('flash_message', 'Deleted');
+
+        return redirect()->back();
+
+    }
+
+    public function Trendings()
+    {
+        $all = Trendings::orderBy('id')->get();
+
+        return view('admin.pages.trendings',compact('all'));
+
+    }
+
+    public function addTrending(){
+
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        return view('admin.pages.addedittrending');
+    }
+
+    public function addTrendingPost(Request $request)
+    {
+        $data =  \Request::except(array('_token')) ;
+
+        $inputs = $request->all();
+
+        $rule=array(
+            'description' => 'required',
+        );
+
+        $validator = \Validator::make($data,$rule);
+
+        if ($validator->fails())
+        {
+            return redirect()->back()->withErrors($validator->messages());
+        }
+
+        if(!empty($inputs['id'])){
+
+            $slide = Trendings::findOrFail($inputs['id']);
+
+        }else{
+
+            $slide = new Trendings;
+
+        }
+
+
+        $slide->description = $inputs['description'];
+        $slide->url = $inputs['url'];
+
+        $slide->save();
+
+        if(!empty($inputs['id'])){
+
+            \Session::flash('flash_message', __('text.Changes Saved'));
+
+            return \Redirect::back();
+        }else{
+
+            \Session::flash('flash_message', __('text.Added'));
+
+            return redirect('admin/trendings');
+
+        }
+
+    }
+
+    public function editTrending($id)
+    {
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+
+        $slide = Trendings::findOrFail($id);
+
+        return view('admin.pages.addedittrending',compact('slide'));
+
+    }
+
+    public function deleteTrending($id)
+    {
+
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        Trendings::findOrFail($id)->delete();
 
         \Session::flash('flash_message', 'Deleted');
 

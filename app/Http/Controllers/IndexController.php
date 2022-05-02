@@ -21,6 +21,7 @@ use App\Settings;
 use App\sub_kinds;
 use App\sub_property_types;
 use App\tips;
+use App\Trendings;
 use App\Types;
 use App\user_languages;
 use Auth;
@@ -1503,6 +1504,8 @@ class IndexController extends Controller
 
         $our_favourites = OurFavourites::get();
 
+        $trendings = Trendings::orderBy('id', 'desc')->get();
+
     	$city_list = City::where('status','1')->orderBy('city_name')->get();
 
 		$propertieslist = Properties::leftjoin('users','users.id','=','properties.user_id')->where('properties.status','1')->orderBy('properties.id', 'desc')->select('properties.*','users.company_name','users.image_icon','users.id as user_id','users.landlord')->take(3)->get();
@@ -1613,7 +1616,7 @@ class IndexController extends Controller
 
         $cookie = cookies::where('ip',\Request::ip())->first();
 
-        return view('pages.index',compact('our_favourites','company_tiles','cookie','propertieslist','blogs', 'heading', 'most_viewed', 'partners','city_list','top_members','content','properties_headings','tips'));
+        return view('pages.index',compact('trendings','our_favourites','company_tiles','cookie','propertieslist','blogs', 'heading', 'most_viewed', 'partners','city_list','top_members','content','properties_headings','tips'));
     }
 
     public function HomesInspiration(Request $request,$id = '')

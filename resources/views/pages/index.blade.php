@@ -144,74 +144,15 @@
 
                 <div style="margin: 0;" class="row">
 
-                    <div style="background-color: #FFEFDF;margin: 15px 0 5px 0;display: flex;justify-content: center;align-items: center;padding: 20px 10px;border-radius: 10px;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    @foreach($trendings as $key)
 
-                        <span>What is Ecommerce? E commerce Definitions and Best Practices 2021</span>
+                        <div style="background-color: #FFEFDF;margin: 15px 0 5px 0;display: flex;align-items: center;padding: 20px 10px;border-radius: 10px;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
-                    </div>
+                            <span><a style="color: rgb(107, 110, 128);" href="{{$key->url}}">{!! $key->description !!}</a></span>
 
-                    <div style="background-color: #FFEFDF;margin: 15px 0 5px 0;display: flex;justify-content: center;align-items: center;padding: 20px 10px;border-radius: 10px;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        </div>
 
-                        <span>What are the Best Dropshipping Suppliers in 2022 (Dropshipping Companies & Free Suppliers List) for Ecommerce</span>
-
-                    </div>
-
-                    <div style="background-color: #FFEFDF;margin: 15px 0 5px 0;display: flex;justify-content: center;align-items: center;padding: 20px 10px;border-radius: 10px;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-
-                        <span>7 Best Ecommerce Platforms in 2022: Wix vs Shopify vs BigCommerce vs Square Online vs Ecwid vs Squarespace vs Big Cartel</span>
-
-                    </div>
-
-                    <div style="background-color: #FFEFDF;margin: 15px 0 5px 0;display: flex;justify-content: center;align-items: center;padding: 20px 10px;border-radius: 10px;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-
-                        <span>How to Create a Facebook Shop Page (Jan 2022): 5 Step Guide - Learn How to Sell on Facebook</span>
-
-                    </div>
-
-{{--                    <div style="margin: 10px 0;display: flex;justify-content: flex-start;align-items: center;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">--}}
-
-{{--                        <a href="#" style="display: flex;align-items: center;background-color: transparent;color: #000;padding: 10px 20px;width: auto;border-radius: 10px;font-weight: 600;min-width: 50%;min-height: 60px;" class="btn btn-primary">--}}
-{{--                            <img style="width: 40px;height: 40px;" src="{{ URL::asset('assets/img/truck.png') }}">--}}
-{{--                            <span style="margin-left: 5px;">Supply Chain</span>--}}
-{{--                        </a>--}}
-
-{{--                    </div>--}}
-
-{{--                    <div style="margin: 10px 0;display: flex;justify-content: flex-start;align-items: center;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">--}}
-
-{{--                        <a href="#" style="display: flex;align-items: center;background-color: transparent;color: #000;padding: 10px 20px;width: auto;border-radius: 10px;font-weight: 600;min-width: 50%;min-height: 60px;" class="btn btn-primary">--}}
-{{--                            <img style="width: 40px;height: 40px;" src="{{ URL::asset('assets/img/stethoscope.png') }}">--}}
-{{--                            <span style="margin-left: 5px;">Healthcare</span>--}}
-{{--                        </a>--}}
-
-{{--                    </div>--}}
-
-{{--                    <div style="margin: 10px 0;display: flex;justify-content: flex-start;align-items: center;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">--}}
-
-{{--                        <a href="#" style="display: flex;align-items: center;background-color: transparent;color: #000;padding: 10px 20px;width: auto;border-radius: 10px;font-weight: 600;min-width: 50%;min-height: 60px;" class="btn btn-primary">--}}
-{{--                            <img style="width: 30px;height: 30px;" src="{{ URL::asset('assets/img/worldwide.png') }}">--}}
-{{--                            <span style="margin-left: 5px;">Media</span>--}}
-{{--                        </a>--}}
-
-{{--                    </div>--}}
-
-{{--                    <div style="margin: 10px 0;display: flex;justify-content: flex-start;align-items: center;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">--}}
-
-{{--                        <a href="#" style="display: flex;align-items: center;background-color: transparent;color: #000;padding: 10px 20px;width: auto;border-radius: 10px;font-weight: 600;min-width: 50%;min-height: 60px;" class="btn btn-primary">--}}
-{{--                            <img style="width: 30px;height: 30px;" src="{{ URL::asset('assets/img/clapperboard.png') }}">--}}
-{{--                            <span style="margin-left: 5px;">Media</span>--}}
-{{--                        </a>--}}
-
-{{--                    </div>--}}
-
-{{--                    <div style="margin: 10px 0;display: flex;justify-content: flex-start;align-items: center;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">--}}
-
-{{--                        <a href="#" style="display: flex;align-items: center;background-color: transparent;color: #000;padding: 10px 20px;width: auto;border-radius: 10px;font-weight: 600;min-width: 50%;min-height: 60px;" class="btn btn-primary">--}}
-{{--                            <img style="width: 30px;height: 30px;" src="{{ URL::asset('assets/img/mortarboard.png') }}">--}}
-{{--                            <span style="margin-left: 5px;">Education</span>--}}
-{{--                        </a>--}}
-
-{{--                    </div>--}}
+                    @endforeach
 
                 </div>
 

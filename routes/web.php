@@ -202,6 +202,12 @@ Route::group(['middleware' => 'App\Http\Middleware\UserTypeMiddleware'], functio
         Route::get('our-tips/addcontent/{id}', 'SliderController@editContent')->name('edit-tips');
         Route::get('our-tips/delete/{id}', 'SliderController@deleteContent')->name('delete-tips');
 
+        Route::get('trendings', 'SliderController@Trendings')->name('trendings');
+        Route::get('trendings/addcontent', 'SliderController@addTrending')->name('add-trending');
+        Route::post('trendings/addcontent', 'SliderController@addTrendingPost');
+        Route::get('trendings/addcontent/{id}', 'SliderController@editTrending')->name('edit-trending');
+        Route::get('trendings/delete/{id}', 'SliderController@deleteTrending');
+
         Route::get('homepage-boxes', 'SliderController@homepageBoxes')->name('homepage-boxes');
         Route::get('homepage-boxes/addcontent', 'SliderController@addHomepageBox')->name('add-homepage-box');
         Route::post('homepage-boxes/addcontent', 'SliderController@addHomepageBoxPost');
