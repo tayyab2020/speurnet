@@ -44,13 +44,17 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Laravel\Socialite\Facades\Socialite;
+use App\categories_headings;
+use App\categories;
+use App\companies;
 
 class IndexController extends Controller
 {
 
     public function page1()
     {
-        return view('pages.page1');
+        $companies = companies::all();
+        return view('pages.page1',compact('companies'));
     }
 
     public function education()
@@ -68,9 +72,27 @@ class IndexController extends Controller
         return view('pages.zoekhet');
     }
 
-    public function company()
+    public function company($id)
     {
-        return view('pages.company');
+        $company = companies::where('id',$id)->first();
+
+        return view('pages.company',compact('company'));
+    }
+
+    public function companyFilter($ids)
+    {
+        $idsArr = explode(',',$ids);
+        $companies = array();
+
+        foreach($idsArr as $key)
+        {
+            $data = companies::whereRaw("find_in_set('$key',category_ids)")->get()->toArray();
+            $companies = array_merge($companies,$data);
+        }
+
+        $companies = array_unique($companies, SORT_REGULAR);
+
+        return $companies;
     }
 
     public function NewBlogs()

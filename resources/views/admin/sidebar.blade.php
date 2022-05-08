@@ -32,6 +32,12 @@
 
                		<li class="{{classActivePath('dashboard')}}"><a href="{{ URL::to('admin/dashboard') }}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
 
+					<li class="{{classActivePath('categories-headings')}}"><a href="{{ URL::to('admin/categories-headings') }}"><i class="fa fa-bars"></i>Categories Headings</a></li>
+
+					<li class="{{classActivePath('categories')}}"><a href="{{ URL::to('admin/categories') }}"><i class="fa fa-bars"></i>Categories</a></li>
+
+					<li class="{{classActivePath('companies')}}"><a href="{{ URL::to('admin/companies') }}"><i class="fa fa-bars"></i>Companies</a></li>
+					
 					<li class="{{classActivePath('trendings')}}"><a href="{{ URL::to('admin/trendings') }}"><i class="fa fa-bars"></i>Trendings</a></li>
 
 					<li class="{{classActivePath('subscriber')}}"><a href="{{ URL::to('admin/subscriber') }}"><i class="md md-email"></i>Subscribers</a></li>

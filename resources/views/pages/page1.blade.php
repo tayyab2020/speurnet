@@ -2,6 +2,12 @@
 
 @section("content")
 
+    <div id="overlay">
+        <div class="cv-spinner">
+            <span class="spinner"></span>
+        </div>
+    </div>
+
     <!-- begin:content -->
     <div id="content" style="padding: 30px 0 20px 0;">
 
@@ -33,53 +39,38 @@
 
                     <div class="row company-boxes">
 
-                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-9 sub">
-                            {{--                        <h1 style="font-size: 20px;" class="grad">Speurnet.nl</h1>--}}
-                            <div style="background-image: url({{url('assets/img/img171.jpg')}});background-size: 100% 100%;border: 1px solid #dfdfdf;" class="row"></div>
-                            <span style="margin-top: 10px;display: block;"><i class="fa fa-map-marker-alt" style="margin-right: 5px;"></i> Kamerlingh Onnesweg 72/6, 122JL</span>
-                        </div>
+                        @foreach($companies as $key)
 
-                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-9 sub">
-                            {{--                        <h1 style="font-size: 20px;" class="grad">Speurnet.nl</h1>--}}
-                            <div style="background-image: url({{url('assets/img/img171.jpg')}});background-size: 100% 100%;border: 1px solid #dfdfdf;" class="row"></div>
-                            <span style="margin-top: 10px;display: block;"><i class="fa fa-map-marker-alt" style="margin-right: 5px;"></i> Kamerlingh Onnesweg 72/6, 122JL</span>
-                        </div>
+                            @if($key->image)
 
-                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-9 sub">
-                            {{--                        <h1 style="font-size: 20px;" class="grad">Speurnet.nl</h1>--}}
-                            <div style="background-image: url({{url('assets/img/img171.jpg')}});background-size: 100% 100%;border: 1px solid #dfdfdf;" class="row"></div>
-                            <span style="margin-top: 10px;display: block;"><i class="fa fa-map-marker-alt" style="margin-right: 5px;"></i> Kamerlingh Onnesweg 72/6, 122JL</span>
-                        </div>
+                                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-9 sub">
+                                    <a href="{{url('company/'.$key->id)}}">
 
-                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-9 sub">
-                            {{--                        <h1 style="font-size: 20px;" class="grad">Speurnet.nl</h1>--}}
-                            <div style="background-image: url({{url('assets/img/img171.jpg')}});background-size: 100% 100%;border: 1px solid #dfdfdf;" class="row"></div>
-                            <span style="margin-top: 10px;display: block;"><i class="fa fa-map-marker-alt" style="margin-right: 5px;"></i> Kamerlingh Onnesweg 72/6, 122JL</span>
-                        </div>
+                                        <div style="background-image: url({{url('upload/'.$key->image)}});background-size: 100% 100%;border: 1px solid #dfdfdf;" class="row"></div>
+                                        <span style="margin-top: 10px;display: block;color: #6b6e80;font-size: 14px;font-weight: 500;"><i class="fa fa-map-marker-alt" style="margin-right: 5px;"></i> {{$key->address}}</span>
 
-                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-9 sub">
-                            {{--                        <h1 style="font-size: 20px;" class="grad">Speurnet.nl</h1>--}}
-                            <div style="background-image: url({{url('assets/img/img171.jpg')}});background-size: 100% 100%;border: 1px solid #dfdfdf;" class="row"></div>
-                            <span style="margin-top: 10px;display: block;"><i class="fa fa-map-marker-alt" style="margin-right: 5px;"></i> Kamerlingh Onnesweg 72/6, 122JL</span>
-                        </div>
+                                    </a>
+                                </div>
 
-                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-9 sub">
-                            {{--                        <h1 style="font-size: 20px;" class="grad">Speurnet.nl</h1>--}}
-                            <div style="background-image: url({{url('assets/img/img171.jpg')}});background-size: 100% 100%;border: 1px solid #dfdfdf;" class="row"></div>
-                            <span style="margin-top: 10px;display: block;"><i class="fa fa-map-marker-alt" style="margin-right: 5px;"></i> Kamerlingh Onnesweg 72/6, 122JL</span>
-                        </div>
+                            @else
 
-                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-9 sub">
-                            {{--                        <h1 style="font-size: 20px;" class="grad">Speurnet.nl</h1>--}}
-                            <div style="background-image: url({{url('assets/img/img171.jpg')}});background-size: 100% 100%;border: 1px solid #dfdfdf;" class="row"></div>
-                            <span style="margin-top: 10px;display: block;"><i class="fa fa-map-marker-alt" style="margin-right: 5px;"></i> Kamerlingh Onnesweg 72/6, 122JL</span>
-                        </div>
+                                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-9 sub">
 
-                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-9 sub">
-                            {{--                        <h1 style="font-size: 20px;" class="grad">Speurnet.nl</h1>--}}
-                            <div style="background-image: url({{url('assets/img/img171.jpg')}});background-size: 100% 100%;border: 1px solid #dfdfdf;" class="row"></div>
-                            <span style="margin-top: 10px;display: block;"><i class="fa fa-map-marker-alt" style="margin-right: 5px;"></i> Kamerlingh Onnesweg 72/6, 122JL</span>
-                        </div>
+                                    <a href="{{url('company/'.$key->id)}}">
+
+                                        <div style="background-color: #C2EEEB;background-size: 100% 100%;border: 1px solid #dfdfdf;" class="row">
+                                            <span style="font-size: 22px;color: #6C7895;font-weight: bold;">{{$key->title}}</span>
+                                            <span style="margin-top: 15px;display: block;font-size: 18px;color: #6b6e80;font-weight: 500;"><i class="fa fa-map-marker-alt" style="margin-right: 5px;"></i> {{$key->address}}</span>
+                                            <span style="color: #585757;margin-top: 10px;margin-left: 10px;font-size: 16px;font-weight: 600;">{{$key->city}}</span>
+                                        </div>
+
+                                    </a>
+
+                                </div>
+
+                            @endif
+
+                        @endforeach
 
                     </div>
 
@@ -148,26 +139,112 @@
     </div>
     <!-- end:content -->
 
-    <!-- begin:modal-message -->
-    <div class="modal fade" id="modal-error" tabindex="-1" role="dialog" aria-labelledby="modal-signin" aria-hidden="true">
-        <div class="modal-dialog modal-sm">
-            <div class="modal-content">
-                <div class="modal-header" style="border-bottom:none;">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-
-                </div>
-                <div class="modal-body">
-                    <div id="ajax" style="color: #db2424"></div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-    <!-- end:modal-message -->
-
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/css/flaticon.css') }}"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <script>
+
+        $("input:checkbox").change( function(){
+
+            var getUrl = window.location.host;
+            var ids = [];
+            $.each($("input[name='category']:checked"), function(){
+                ids.push($(this).val());
+            });
+
+            $('.company-boxes').children().remove();
+
+            if(ids.length > 0)
+            {
+                $.ajax({
+
+                    type: "GET",
+                    url: "/company-filter/" + ids,
+                    beforeSend : function(){ $("#overlay").fadeIn(300); },
+                    success: function(data)
+                    {
+
+                        $.each(data, function(index, value) {
+
+                            $("#overlay").fadeOut();
+
+                            if(value.image)
+                            {
+                                $('.company-boxes').append('<div class="col-lg-3 col-md-4 col-sm-6 col-xs-9 sub">\n' +
+                                    '                                    <a href="/company/'+ value.id+'">\n' +
+                                    '\n' +
+                                    '                                        <div style="background-image: url({{url('upload').'/'}}'+value.image+');background-size: 100% 100%;border: 1px solid #dfdfdf;" class="row"></div>\n' +
+                                    '                                        <span style="margin-top: 10px;display: block;color: #6b6e80;font-size: 14px;font-weight: 500;"><i class="fa fa-map-marker-alt" style="margin-right: 5px;"></i> '+value.title+'</span>\n' +
+                                    '\n' +
+                                    '                                    </a>\n' +
+                                    '                                </div>');
+                            }
+                            else
+                            {
+                                $('.company-boxes').append('<div class="col-lg-3 col-md-4 col-sm-6 col-xs-9 sub">\n' +
+                                    '\n' +
+                                    '                                    <a href="/company/'+ value.id+'">\n' +
+                                    '\n' +
+                                    '                                        <div style="background-color: #C2EEEB;background-size: 100% 100%;border: 1px solid #dfdfdf;" class="row">\n' +
+                                    '                                            <span style="font-size: 22px;color: #6C7895;font-weight: bold;">'+value.title+'</span>\n' +
+                                    '                                            <span style="margin-top: 15px;display: block;font-size: 18px;color: #6b6e80;font-weight: 500;"><i class="fa fa-map-marker-alt" style="margin-right: 5px;"></i> '+value.address+'</span>\n' +
+                                    '                                            <span style="color: #585757;margin-top: 10px;margin-left: 10px;font-size: 16px;font-weight: 600;">'+value.city+'</span>\n' +
+                                    '                                        </div>\n' +
+                                    '\n' +
+                                    '                                    </a>\n' +
+                                    '\n' +
+                                    '                                </div>');
+                            }
+
+                        });
+
+                    }
+
+                });
+            }
+            else
+            {
+                $("#overlay").fadeIn(300);
+                $("#overlay").fadeOut();
+            }
+
+        });
+
+    </script>
 
     <style>
+
+        #overlay{
+            position: fixed;
+            top: 0;
+            z-index: 100;
+            width: 100%;
+            height:100%;
+            display: none;
+            background: rgba(0,0,0,0.6);
+        }
+        .cv-spinner {
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px #ddd solid;
+            border-top: 4px #2e93e6 solid;
+            border-radius: 50%;
+            animation: sp-anime 0.8s infinite linear;
+        }
+        @keyframes sp-anime {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        .is-hide{
+            display:none;
+        }
 
         .bottom-list li
         {

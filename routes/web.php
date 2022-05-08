@@ -208,6 +208,24 @@ Route::group(['middleware' => 'App\Http\Middleware\UserTypeMiddleware'], functio
         Route::get('trendings/addcontent/{id}', 'SliderController@editTrending')->name('edit-trending');
         Route::get('trendings/delete/{id}', 'SliderController@deleteTrending');
 
+        Route::get('categories-headings', 'SliderController@CategoriesHeadings')->name('categories-headings');
+        Route::get('categories-headings/addcategoryheading', 'SliderController@addCategoryHeading')->name('add-category-heading');
+        Route::post('categories-headings/addcategoryheading', 'SliderController@addCategoryHeadingPost');
+        Route::get('categories-headings/addcategoryheading/{id}', 'SliderController@editCategoryHeading')->name('edit-category-heading');
+        Route::get('categories-headings/delete/{id}', 'SliderController@deleteCategoryHeading');
+
+        Route::get('categories', 'SliderController@Categories')->name('categories');
+        Route::get('categories/addcontent', 'SliderController@addCategory')->name('add-category');
+        Route::post('categories/addcontent', 'SliderController@addCategoryPost');
+        Route::get('categories/addcontent/{id}', 'SliderController@editCategory')->name('edit-category');
+        Route::get('categories/delete/{id}', 'SliderController@deleteCategory');
+
+        Route::get('companies', 'SliderController@Companies')->name('companies');
+        Route::get('companies/addcontent', 'SliderController@addCompany')->name('add-company');
+        Route::post('companies/addcontent', 'SliderController@addCompanyPost');
+        Route::get('companies/addcontent/{id}', 'SliderController@editCompany')->name('edit-company');
+        Route::get('companies/delete/{id}', 'SliderController@deleteCompany');
+
         Route::get('homepage-boxes', 'SliderController@homepageBoxes')->name('homepage-boxes');
         Route::get('homepage-boxes/addcontent', 'SliderController@addHomepageBox')->name('add-homepage-box');
         Route::post('homepage-boxes/addcontent', 'SliderController@addHomepageBoxPost');
@@ -248,7 +266,9 @@ Route::group(['middleware' => 'App\Http\Middleware\UserTypeMiddleware'], functio
 
     Route::get('zoekhet', 'IndexController@zoekhet')->name('zoekhet');
 
-    Route::get('company', 'IndexController@company')->name('company');
+    Route::get('company/{id}', 'IndexController@company')->name('company');
+
+    Route::get('company-filter/{id}', 'IndexController@companyFilter');
 
     Route::get('blogs', 'IndexController@NewBlogs')->name('blogs');
 

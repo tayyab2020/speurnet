@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\View;
 use App\footer_headings;
 use App\HomepageBoxes;
+use App\categories_headings;
+use App\categories;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -85,6 +87,18 @@ class AppServiceProvider extends ServiceProvider
 
         $footer_headings = footer_headings::all();
 
+        $categories_headings = categories_headings::all();
+        $categories = array();
+
+        foreach($categories_headings as $x => $key)
+        {
+            $categories[$x] = categories::whereRaw("find_in_set('$key->id',heading_ids)")->get();
+        }
+
+        View::share('categories_headings', $categories_headings);
+
+        View::share('categories', $categories);
+        
         View::share('homepage_boxes', $homepage_boxes);
 
         View::share('page_content', $page_content);

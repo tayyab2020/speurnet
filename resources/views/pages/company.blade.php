@@ -37,72 +37,48 @@
 
                             <div class="row">
                                 <div class="col-sm-4" style="float: left;">
-                                    <a href="http://127.0.0.1:8000/makelaars/details/1988">
-                                        <img style="height: 200px;" src="{{url('assets/img/img17.jpg')}}">
-                                        <h3 style="margin-top: 20px;">Felix de makelaar van Amstelveen</h3>
-                                    </a>
+                                    <img style="height: 200px;" src="{{url('upload/'.$company->image)}}">
+                                    <h3 style="margin-top: 20px;">{{$company->title}}</h3>
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <p><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp; Nelly Bodenheimhof 9</p>
+                                    <p><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp; {{$company->address}}</p>
                                 </div>
                             </div>
 
-                            <div class="row">
+                            @if($company->phone)
 
-                                <div class="col-sm-3">
-                                    <a href="#" style="margin: 0;"><i class="fa fa-phone" aria-hidden="true"></i>&nbsp;&nbsp; 0621969500</a>
+                                <div class="row">
+
+                                    <div class="col-sm-3">
+                                        <a href="#" style="margin: 0;"><i class="fa fa-phone" aria-hidden="true"></i>&nbsp;&nbsp; {{$company->phone}}</a>
+                                    </div>
+
                                 </div>
 
-                            </div>
+                            @endif
 
-                            <div class="row" style="margin-top: 10px;">
 
-                                <div class="col-sm-3">
-                                    <a href="www.google.com" style="margin: 0;"><i class="fa fa-globe" aria-hidden="true"></i>&nbsp;&nbsp; www.google.com</a>
+                            @if($company->website)
+
+                                <div class="row" style="margin-top: 10px;">
+
+                                    <div class="col-sm-3">
+                                        <a href="www.google.com" style="margin: 0;"><i class="fa fa-globe" aria-hidden="true"></i>&nbsp;&nbsp; {{$company->website}}</a>
+                                    </div>
+
                                 </div>
 
-                            </div>
+                            @endif
 
                             <div class="row" style="margin-top: 50px;">
 
                                 <div style="border: 1px solid #dadada;border-radius: 10px;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <h4 style="border-bottom: 1px solid #e4e4e4;padding-bottom: 5px;">Beschrijing</h4>
                                     <p class="addReadMore showlesscontent">
-                                        Maak kennis met de beste makelaar van Amstelveen e.o.
-                                        Ik ben Felix, dé makelaar van Amstelveen e.o. Wat mij drijft, is jouw.
-                                        Maak kennis met de beste makelaar van Amstelveen e.o.
-                                        Ik ben Felix, dé makelaar van Amstelveen e.o. Wat mij drijft, is jouw.
-                                        Maak kennis met de beste makelaar van Amstelveen e.o.
-                                        Ik ben Felix, dé makelaar van Amstelveen e.o. Wat mij drijft, is jouw.
-                                        Maak kennis met de beste makelaar van Amstelveen e.o.
-                                        Ik ben Felix, dé makelaar van Amstelveen e.o. Wat mij drijft, is jouw.
-                                        Maak kennis met de beste makelaar van Amstelveen e.o.
-                                        Ik ben Felix, dé makelaar van Amstelveen e.o. Wat mij drijft, is jouw.
-                                        Maak kennis met de beste makelaar van Amstelveen e.o.
-                                        Ik ben Felix, dé makelaar van Amstelveen e.o. Wat mij drijft, is jouw.
-                                        Maak kennis met de beste makelaar van Amstelveen e.o.
-                                        Ik ben Felix, dé makelaar van Amstelveen e.o. Wat mij drijft, is jouw.
-                                        Maak kennis met de beste makelaar van Amstelveen e.o.
-                                        Ik ben Felix, dé makelaar van Amstelveen e.o. Wat mij drijft, is jouw.
-                                        Maak kennis met de beste makelaar van Amstelveen e.o.
-                                        Ik ben Felix, dé makelaar van Amstelveen e.o. Wat mij drijft, is jouw.
-                                        Maak kennis met de beste makelaar van Amstelveen e.o.
-                                        Ik ben Felix, dé makelaar van Amstelveen e.o. Wat mij drijft, is jouw.
-                                        Maak kennis met de beste makelaar van Amstelveen e.o.
-                                        Ik ben Felix, dé makelaar van Amstelveen e.o. Wat mij drijft, is jouw.
-                                        Maak kennis met de beste makelaar van Amstelveen e.o.
-                                        Ik ben Felix, dé makelaar van Amstelveen e.o. Wat mij drijft, is jouw.
-                                        Maak kennis met de beste makelaar van Amstelveen e.o.
-                                        Ik ben Felix, dé makelaar van Amstelveen e.o. Wat mij drijft, is jouw.
-                                        Maak kennis met de beste makelaar van Amstelveen e.o.
-                                        Ik ben Felix, dé makelaar van Amstelveen e.o. Wat mij drijft, is jouw.
-                                        Maak kennis met de beste makelaar van Amstelveen e.o.
-                                        Ik ben Felix, dé makelaar van Amstelveen e.o. Wat mij drijft, is jouw.
-                                        Maak kennis met de beste makelaar van Amstelveen e.o.
-                                        Ik ben Felix, dé makelaar van Amstelveen e.o. Wat mij drijft, is jouw.
+                                        {!! $company->description !!}
                                     </p>
                                 </div>
 

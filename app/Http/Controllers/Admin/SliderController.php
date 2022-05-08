@@ -11,7 +11,8 @@ use App\Trendings;
 use Auth;
 use App\User;
 use App\Slider;
-
+use App\categories_headings;
+use App\categories;
 use Carbon\Carbon;
 use App\Http\Requests;
 use Illuminate\Http\Request;
@@ -21,6 +22,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use App\HomepageIcons;
 use App\HomepageBoxes;
+use App\companies;
 
 class SliderController extends MainAdminController
 {
@@ -365,6 +367,382 @@ class SliderController extends MainAdminController
         \File::delete(public_path() .'/upload/'.$slide->image);
 
         $slide->delete();
+
+        \Session::flash('flash_message', 'Deleted');
+
+        return redirect()->back();
+
+    }
+
+    public function Companies()
+    {
+        $all = companies::orderBy('id','desc')->get();
+
+        return view('admin.pages.companies',compact('all'));
+
+    }
+
+    public function addCompany(){
+
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        $categories = categories::all();
+
+        return view('admin.pages.addeditcompany',compact('categories'));
+    }
+
+    public function addCompanyPost(Request $request)
+    {
+        $data =  \Request::except(array('_token')) ;
+
+        $inputs = $request->all();
+
+        $rule=array(
+            'title' => 'required',
+            'address' => 'required',
+            'city' => 'required',
+            'image' => 'mimes:jpg,jpeg,gif,png'
+        );
+
+        $validator = \Validator::make($data,$rule);
+
+        if ($validator->fails())
+        {
+            return redirect()->back()->withErrors($validator->messages());
+        }
+
+        if(!empty($inputs['id'])){
+
+            $slide = companies::findOrFail($inputs['id']);
+
+            //Slide image
+            $slide_image = $request->file('image');
+
+            if($slide_image){
+
+                \File::delete(public_path() .'/upload/'.$slide->image);
+
+                $tmpFilePath = 'upload/';
+
+                $filename = $_FILES['image']['name'];
+
+                $ext = pathinfo($filename, PATHINFO_EXTENSION);
+
+                $hardPath = Str::slug($inputs['title'], '-').'-'.md5(time()) .'.'.$ext;
+
+                $img = Image::make($slide_image);
+
+                $img->save($tmpFilePath.$hardPath);
+
+                $slide->image = $hardPath;
+
+            }
+
+        }else{
+
+            $slide = new companies;
+
+            //Slide image
+            $slide_image = $request->file('image');
+
+            if($slide_image){
+
+                \File::delete(public_path() .'/upload/'.$slide->image);
+
+                $tmpFilePath = 'upload/';
+
+                $filename = $_FILES['image']['name'];
+
+                $ext = pathinfo($filename, PATHINFO_EXTENSION);
+
+                $hardPath = Str::slug($inputs['title'], '-').'-'.md5(time()) .'.'.$ext;
+
+                $img = Image::make($slide_image);
+
+                $img->save($tmpFilePath.$hardPath);
+
+                $slide->image = $hardPath;
+
+            }
+            else
+            {
+                $slide->image = '';
+            }
+
+        }
+
+        $slide->title = $request->title;
+        $slide->address = $request->address;
+        $slide->city = $request->city;
+        $slide->phone = $request->phone;
+        $slide->website = $request->website;
+        $slide->description = $request->description;
+        $slide->category_ids = implode(',', $request->categories);
+        $slide->save();
+
+        if(!empty($inputs['id'])){
+
+            \Session::flash('flash_message', __('text.Changes Saved'));
+
+            return \Redirect::back();
+        }else{
+
+            \Session::flash('flash_message', __('text.Added'));
+
+            return redirect('admin/companies');
+
+        }
+
+    }
+
+    public function editCompany($id)
+    {
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        $slide = companies::findOrFail($id);
+
+        $categories = categories::all();
+
+        return view('admin.pages.addeditcompany',compact('slide','categories'));
+
+    }
+
+    public function deleteCompany($id)
+    {
+
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        $slide = companies::findOrFail($id);
+
+        \File::delete(public_path() .'/upload/'.$slide->image);
+
+        $slide->delete();
+
+        \Session::flash('flash_message', 'Deleted');
+
+        return redirect()->back();
+
+    }
+
+    public function Categories()
+    {
+        $all = categories::orderBy('id','desc')->get();
+
+        return view('admin.pages.categories',compact('all'));
+
+    }
+
+    public function addCategory(){
+
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        $headings = categories_headings::all();
+
+        return view('admin.pages.addeditcategory',compact('headings'));
+    }
+
+    public function addCategoryPost(Request $request)
+    {
+        $data =  \Request::except(array('_token')) ;
+
+        $inputs = $request->all();
+
+        $rule=array(
+            'title' => 'required',
+        );
+
+        $validator = \Validator::make($data,$rule);
+
+        if ($validator->fails())
+        {
+            return redirect()->back()->withErrors($validator->messages());
+        }
+
+        if(!empty($inputs['id'])){
+
+            $slide = categories::findOrFail($inputs['id']);
+
+        }else{
+
+            $slide = new categories;
+
+        }
+
+        $slide->title = $inputs['title'];
+        $slide->heading_ids = implode(',', $request->headings);
+        $slide->save();
+
+        if(!empty($inputs['id'])){
+
+            \Session::flash('flash_message', __('text.Changes Saved'));
+
+            return \Redirect::back();
+        }else{
+
+            \Session::flash('flash_message', __('text.Added'));
+
+            return redirect('admin/categories');
+
+        }
+
+    }
+
+    public function editCategory($id)
+    {
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        $slide = categories::findOrFail($id);
+
+        $headings = categories_headings::all();
+
+        return view('admin.pages.addeditcategory',compact('slide','headings'));
+
+    }
+
+    public function deleteCategory($id)
+    {
+
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        categories::findOrFail($id)->delete();
+
+        \Session::flash('flash_message', 'Deleted');
+
+        return redirect()->back();
+
+    }
+
+    public function CategoriesHeadings()
+    {
+        $all = categories_headings::orderBy('id')->get();
+
+        return view('admin.pages.categories_headings',compact('all'));
+
+    }
+
+    public function addCategoryHeading(){
+
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        return view('admin.pages.addeditcategoryheading');
+    }
+
+    public function addCategoryHeadingPost(Request $request)
+    {
+        $data =  \Request::except(array('_token')) ;
+
+        $inputs = $request->all();
+
+        $rule=array(
+            'heading' => 'required',
+        );
+
+        $validator = \Validator::make($data,$rule);
+
+        if ($validator->fails())
+        {
+            return redirect()->back()->withErrors($validator->messages());
+        }
+
+        if(!empty($inputs['id'])){
+
+            $slide = categories_headings::findOrFail($inputs['id']);
+
+        }else{
+
+            $slide = new categories_headings;
+
+        }
+
+
+        $slide->heading = $inputs['heading'];
+        $slide->save();
+
+        if(!empty($inputs['id'])){
+
+            \Session::flash('flash_message', __('text.Changes Saved'));
+
+            return \Redirect::back();
+        }else{
+
+            \Session::flash('flash_message', __('text.Added'));
+
+            return redirect('admin/categories-headings');
+
+        }
+
+    }
+
+    public function editCategoryHeading($id)
+    {
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        $slide = categories_headings::findOrFail($id);
+
+        return view('admin.pages.addeditcategoryheading',compact('slide'));
+
+    }
+
+    public function deleteCategoryHeading($id)
+    {
+
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        categories_headings::findOrFail($id)->delete();
 
         \Session::flash('flash_message', 'Deleted');
 

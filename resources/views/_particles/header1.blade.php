@@ -152,23 +152,26 @@
 
                     <div style="position: absolute;z-index: 10000;" id="pane1" class="bx--accordion__content collapse">
                         <ul data-accordion class="categories">
-                            <li><span>Footwear</span>
-                                <ul>
-                                    <li class="subcat"><input type="checkbox" id="all"><label for="all">All Footwear</label></li>
-                                    <li class="subcat"><input type="checkbox" id="low"><label for="low">Low-Top Sneakers</label></li>
-                                    <li class="subcat"><input type="checkbox" id="high"><label for="high">High-Top Sneakers</label></li>
-                                    <li class="subcat"><input type="checkbox" id="boots"><label for="boots">Boots</label></li>
-                                    <li class="subcat"><input type="checkbox" id="casual"><label for="casual">Casual Leather Shoes</label></li>
-                                    <li class="subcat"><input type="checkbox" id="formal"><label for="formal">Formal Shoes</label></li>
-                                    <li class="subcat"><input type="checkbox" id="sand"><label for="sand">Sandals</label></li>
-                                    <li class="subcat"><input type="checkbox" id="slip"><label for="slip">Slip Ons</label></li>
-                                </ul>
-                            </li>
-                            <li><span>Tops</span></li>
-                            <li><span>Bottoms</span></li>
-                            <li><span>Outerwear</span></li>
-                            <li><span>Tailoring</span></li>
-                            <li><span>Accessories</span></li>
+
+                            @foreach($categories_headings as $x => $key)
+
+                                <li><span>{{$key->heading}}</span>
+
+                                    @if(count($categories[$x]) > 0)
+
+                                        <ul>
+                                            @foreach($categories[$x] as $temp)
+
+                                                <li class="subcat"><input type="checkbox" name="category" value="{{$temp->id}}" id="{{$temp->title . $x}}"><label for="{{$temp->title . $x}}">{{$temp->title}}</label></li>
+
+                                            @endforeach
+                                        </ul>
+
+                                    @endif
+                                </li>
+
+                            @endforeach
+
                         </ul>
                     </div>
                 </li>

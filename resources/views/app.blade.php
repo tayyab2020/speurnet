@@ -142,7 +142,7 @@
     <script type="text/javascript" src="{{ URL::asset('assets/js/slick.js') }}"></script>
     <script type="text/javascript" src="{{ URL::asset('assets/js/slick.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
 
     <script type="text/javascript">
 

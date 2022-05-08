@@ -4,9 +4,9 @@
 
     <div id="main">
         <div class="page-header">
-            <h2> {{ isset($slide->name) ? 'Edit: '. $slide->name : 'Add Category' }}</h2>
+            <h2> {{ isset($slide->name) ? 'Edit: '. $slide->name : 'Add Company' }}</h2>
 
-            <a href="{{ URL::to('admin/categories') }}" class="btn btn-default-light btn-xs"><i class="md md-backspace"></i> Back</a>
+            <a href="{{ URL::to('admin/companies') }}" class="btn btn-default-light btn-xs"><i class="md md-backspace"></i> Back</a>
 
         </div>
         @if (count($errors) > 0)
@@ -29,7 +29,7 @@
         <div class="panel panel-default">
             <div class="panel-body">
 
-            {!! Form::open(array('url' => array('admin/categories/addcontent'),'class'=>'form-horizontal padding-15','name'=>'user_form','id'=>'user_form','role'=>'form','enctype' => 'multipart/form-data')) !!}
+            {!! Form::open(array('url' => array('admin/companies/addcontent'),'class'=>'form-horizontal padding-15','name'=>'user_form','id'=>'user_form','role'=>'form','enctype' => 'multipart/form-data')) !!}
 
                 <input type="hidden" name="id" value="{{ isset($slide->id) ? $slide->id : null }}">
 
@@ -40,10 +40,71 @@
                     </div>
                 </div>
 
+                <div class="form-group">
+                    <label style="font-size: 20px;" for="" class="col-sm-3 control-label">Address</label>
+                    <div class="col-sm-9">
+                        <input type="text" name="address" value="{{ isset($slide->address) ? $slide->address : null }}" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label style="font-size: 20px;" for="" class="col-sm-3 control-label">City</label>
+                    <div class="col-sm-9">
+                        <input type="text" name="city" value="{{ isset($slide->city) ? $slide->city : null }}" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label style="font-size: 20px;" for="" class="col-sm-3 control-label">Phone</label>
+                    <div class="col-sm-9">
+                        <input type="text" name="phone" value="{{ isset($slide->phone) ? $slide->phone : null }}" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label style="font-size: 20px;" for="" class="col-sm-3 control-label">Website</label>
+                    <div class="col-sm-9">
+                        <input type="text" name="website" value="{{ isset($slide->website) ? $slide->website : null }}" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label style="font-size: 20px;" for="" class="col-sm-3 control-label">Description</label>
+                    <div class="col-sm-9">
+                        <textarea name="description" rows="10" class="form-control summernote">{{ isset($slide->description) ? $slide->description : null }}</textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="avatar" class="col-sm-3 control-label">Company Image</label>
+                    <div class="col-sm-9">
+                        <div class="media">
+                            <div class="media-left">
+                                @if(isset($slide->image))
+
+                                    @if($slide->image)
+
+                                        <img src="{{ URL::asset('upload/'.$slide->image) }}" width="200" alt="person">
+
+                                    @else
+
+                                        <img src="{{ URL::asset('upload/noImage.png') }}" width="200" alt="person">
+
+                                    @endif
+
+                                @endif
+                            </div>
+                            <div class="media-body media-middle">
+                                <input type="file" name="image" class="filestyle">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
 
                 <div style="margin: 50px 0 0 0;" class="row">
 
-                    <h4 style="border-bottom: 1px solid #dadada;padding-bottom: 20px;color: #444444;text-align: center;">Headings</h4>
+                    <h4 style="border-bottom: 1px solid #dadada;padding-bottom: 20px;color: #444444;text-align: center;">Categories</h4>
 
                 </div>
 
@@ -62,19 +123,19 @@
 
                         @if(isset($slide))
 
-                            <?php $heading_ids = explode(',',$slide->heading_ids); ?>
+                            <?php $category_ids = explode(',',$slide->category_ids); ?>
 
-                            @foreach($heading_ids as $x => $temp)
+                            @foreach($category_ids as $x => $temp)
 
                                 <tr data-id="{{$x+1}}">
                                     <td>
-                                        <select class="headings" name="headings[]" required>
+                                        <select class="categories" name="categories[]" required>
 
-                                            <option value="">Select Heading</option>
+                                            <option value="">Select Category</option>
 
-                                            @foreach($headings as $key)
+                                            @foreach($categories as $key)
 
-                                                <option {{$key->id == $temp ? 'selected' : null}} value="{{$key->id}}">{{$key->heading}}</option>
+                                                <option {{$key->id == $temp ? 'selected' : null}} value="{{$key->id}}">{{$key->title}}</option>
 
                                             @endforeach
 
@@ -99,13 +160,13 @@
 
                             <tr data-id="1">
                                 <td>
-                                    <select class="headings" name="headings[]" required>
+                                    <select class="categories" name="categories[]" required>
 
-                                        <option value="">Select Heading</option>
+                                        <option value="">Select Category</option>
 
-                                        @foreach($headings as $key)
+                                        @foreach($categories as $key)
 
-                                            <option value="{{$key->id}}">{{$key->heading}}</option>
+                                            <option value="{{$key->id}}">{{$key->title}}</option>
 
                                         @endforeach
                                     
@@ -136,7 +197,7 @@
                 <hr>
                 <div class="form-group">
                     <div class="col-sm-9 ">
-                        <button type="submit" class="btn btn-primary">{{ isset($slide->id) ? 'Edit Category' : 'Save Category' }}</button>
+                        <button type="submit" class="btn btn-primary">{{ isset($slide->id) ? 'Edit Company' : 'Save Company' }}</button>
 
                     </div>
                 </div>
@@ -164,19 +225,19 @@
 
     <script>
 
-        $('.headings').select2({
+        $('.categories').select2({
             width: '100%',
         });
 
-        $(document).on('change', '.headings', function () {
+        $(document).on('change', '.categories', function () {
 
             var id = this.value;
 
             if(id)
             {
-                if ($('.headings').find('option[value=' + id + ']:selected').length > 1) {
+                if ($('.categories').find('option[value=' + id + ']:selected').length > 1) {
 
-                    alert('This heading is already selected!');
+                    alert('This category is already selected!');
                     this.options[0].selected = true;
 
                     $(this).val('');
@@ -198,13 +259,13 @@
 
             $(".table table tbody").append('<tr data-id="'+row+'">\n' +
                 '                                                                                        <td>\n' +
-                '                                                                                            <select class="headings" name="headings[]" required>\n' +
+                '                                                                                            <select class="categories" name="categories[]" required>\n' +
                 '\n' +
-                '                                                                                               <option value="">Select Heading</option>\n' +
+                '                                                                                               <option value="">Select Category</option>\n' +
                 '\n' +
-                '                                                                                               @foreach($headings as $key)\n' +
+                '                                                                                               @foreach($categories as $key)\n' +
                 '\n' +
-                '                                                                                                 <option value="{{$key->id}}">{{$key->heading}}</option>\n' +
+                '                                                                                                 <option value="{{$key->id}}">{{$key->title}}</option>\n' +
                 '\n' +
                 '                                                                                               @endforeach\n' +
                 '\n' +
@@ -222,19 +283,19 @@
                 '                                                                                        </td>\n' +
                 '                                                                </tr>');
 
-            $('.headings').select2({
+            $('.categories').select2({
                 width: '100%',
             });
 
-            $(document).on('change', '.headings', function () {
+            $(document).on('change', '.categories', function () {
 
                 var id = this.value;
 
                 if(id)
                 {
-                    if ($('.headings').find('option[value=' + id + ']:selected').length > 1) {
+                    if ($('.categories').find('option[value=' + id + ']:selected').length > 1) {
 
-                        alert('This heading is already selected!');
+                        alert('This category is already selected!');
                         this.options[0].selected = true;
 
                         $(this).val('');
@@ -261,13 +322,13 @@
 
                 $(".table table tbody").append('<tr data-id="1">\n' +
                     '                                                                                        <td>\n' +
-                    '                                                                                            <select class="headings" name="headings[]" required>\n' +
+                    '                                                                                            <select class="categories" name="categories[]" required>\n' +
                     '\n' +
-                    '                                                                                               <option value="">Select Heading</option>\n' +
+                    '                                                                                               <option value="">Select Category</option>\n' +
                     '\n' +
-                    '                                                                                               @foreach($headings as $key)\n' +
+                    '                                                                                               @foreach($categories as $key)\n' +
                     '\n' +
-                    '                                                                                                 <option value="{{$key->id}}">{{$key->heading}}</option>\n' +
+                    '                                                                                                 <option value="{{$key->id}}">{{$key->title}}</option>\n' +
                     '\n' +
                     '                                                                                               @endforeach\n' +
                     '\n' +
@@ -284,19 +345,19 @@
                     '                                                                                        </td>\n' +
                     '                                                                </tr>');
 
-                $('.headings').select2({
+                $('.categories').select2({
                     width: '100%',
                 });
 
-                $(document).on('change', '.headings', function () {
+                $(document).on('change', '.categories', function () {
 
                     var id = this.value;
 
                     if(id)
                     {
-                        if ($('.headings').find('option[value=' + id + ']:selected').length > 1) {
+                        if ($('.categories').find('option[value=' + id + ']:selected').length > 1) {
 
-                            alert('This heading is already selected!');
+                            alert('This category is already selected!');
                             this.options[0].selected = true;
 
                             $(this).val('');
