@@ -562,7 +562,7 @@ class SliderController extends MainAdminController
 
         $headings = categories_headings::all();
 
-        return view('admin.pages.addeditcategory',compact('headings'));
+        return view('admin.pages.addeditCategory',compact('headings'));
     }
 
     public function addCategoryPost(Request $request)
@@ -625,7 +625,7 @@ class SliderController extends MainAdminController
 
         $headings = categories_headings::all();
 
-        return view('admin.pages.addeditcategory',compact('slide','headings'));
+        return view('admin.pages.addeditCategory',compact('slide','headings'));
 
     }
 
@@ -666,7 +666,7 @@ class SliderController extends MainAdminController
 
         }
 
-        return view('admin.pages.addeditcategoryheading');
+        return view('admin.pages.addeditCategoryheading');
     }
 
     public function addCategoryHeadingPost(Request $request)
@@ -727,7 +727,7 @@ class SliderController extends MainAdminController
 
         $slide = categories_headings::findOrFail($id);
 
-        return view('admin.pages.addeditcategoryheading',compact('slide'));
+        return view('admin.pages.addeditCategoryheading',compact('slide'));
 
     }
 

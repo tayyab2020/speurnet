@@ -200,8 +200,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/pages/page1.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="546">
-              <caret line="187" column="251" selection-start-line="187" selection-start-column="251" selection-end-line="187" selection-end-column="251" />
+            <state relative-caret-position="642">
+              <caret line="206" column="37" lean-forward="true" selection-start-line="206" selection-start-column="37" selection-end-line="206" selection-end-column="37" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#a#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#span#0;n#div#0;n#a#0;n#div#0;n#!!top" expanded="true" />
@@ -989,16 +989,15 @@
       <workItem from="1652030444001" duration="2142000" />
       <workItem from="1652033832755" duration="1788000" />
       <workItem from="1652035658664" duration="1777000" />
-      <workItem from="1652037490475" duration="537000" />
+      <workItem from="1652037490475" duration="1229000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="117151000" />
+    <option name="totallyTimeSpent" value="117843000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1721" height="927" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.30282962" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -1259,8 +1258,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/pages/page1.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="546">
-          <caret line="187" column="251" selection-start-line="187" selection-start-column="251" selection-end-line="187" selection-end-column="251" />
+        <state relative-caret-position="642">
+          <caret line="206" column="37" lean-forward="true" selection-start-line="206" selection-start-column="37" selection-end-line="206" selection-end-column="37" />
           <folding>
             <element signature="n#style#0;n#div#0;n#a#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#0;n#div#0;n#a#0;n#div#0;n#!!top" expanded="true" />
