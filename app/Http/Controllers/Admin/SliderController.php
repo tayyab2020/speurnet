@@ -666,7 +666,7 @@ class SliderController extends MainAdminController
 
         }
 
-        return view('admin.pages.addeditCategoryheading');
+        return view('admin.pages.addeditCategoryHeading');
     }
 
     public function addCategoryHeadingPost(Request $request)
@@ -727,7 +727,7 @@ class SliderController extends MainAdminController
 
         $slide = categories_headings::findOrFail($id);
 
-        return view('admin.pages.addeditCategoryheading',compact('slide'));
+        return view('admin.pages.addeditCategoryHeading',compact('slide'));
 
     }
 
