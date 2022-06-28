@@ -1,7 +1,7 @@
 <div style="margin: 0 0 30px 0;padding-top: 10px;" class="row top-bar">
 
     <div style="display: flex;justify-content: flex-start;align-items: center;" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-        <h1 class="grad">Speurnet.nl</h1>
+        <a href="{{url('/')}}"><h1 class="grad">Speurnet.nl</h1></a>
     </div>
 
 </div>

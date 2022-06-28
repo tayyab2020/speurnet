@@ -11,83 +11,84 @@
     <div style="margin: 0;border-bottom: 1px solid #e0e0e0;padding-bottom: 20px;" class="row">
 
         <div class="wrap centre col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <div class="checkbox">
-                <input id="check" type="checkbox" name="check" value="check">
+            
+            <div class="radio">
+                <input id="check" type="radio" name="check" value="check">
                 <label for="check">Lampen</label>
             </div>
 
-            <div class="checkbox">
-                <input id="check1" type="checkbox" name="check" value="check">
+            <div class="radio">
+                <input id="check1" type="radio" name="check" value="check">
                 <label for="check1">Auto's</label>
             </div>
 
-            <div class="checkbox">
-                <input id="check2" type="checkbox" name="check" value="check">
+            <div class="radio">
+                <input id="check2" type="radio" name="check" value="check">
                 <label for="check2">Tuinmeubels en meer</label>
             </div>
 
-            <div class="checkbox">
-                <input id="check3" type="checkbox" name="check" value="check">
+            <div class="radio">
+                <input id="check3" type="radio" name="check" value="check">
                 <label for="check3">Meubels</label>
             </div>
 
-            <div class="checkbox">
-                <input id="check4" type="checkbox" name="check" value="check">
+            <div class="radio">
+                <input id="check4" type="radio" name="check" value="check">
                 <label for="check4">Keukenspullen</label>
             </div>
 
-            <div class="checkbox">
-                <input id="check5" type="checkbox" name="check" value="check">
+            <div class="radio">
+                <input id="check5" type="radio" name="check" value="check">
                 <label for="check5">Babyspullen</label>
             </div>
 
-            <div class="checkbox">
-                <input id="check6" type="checkbox" name="check" value="check">
+            <div class="radio">
+                <input id="check6" type="radio" name="check" value="check">
                 <label for="check6">Vloeren</label>
             </div>
 
-            <div class="checkbox">
-                <input id="check7" type="checkbox" name="check" value="check">
+            <div class="radio">
+                <input id="check7" type="radio" name="check" value="check">
                 <label for="check7">Verf en behang</label>
             </div>
 
-            <div class="checkbox">
-                <input id="check8" type="checkbox" name="check" value="check">
+            <div class="radio">
+                <input id="check8" type="radio" name="check" value="check">
                 <label for="check8">Gordijnen & Shutters</label>
             </div>
 
-            <div class="checkbox">
-                <input id="check9" type="checkbox" name="check" value="check">
+            <div class="radio">
+                <input id="check9" type="radio" name="check" value="check">
                 <label for="check9">Elekronica (o.a tv/mobiel)</label>
             </div>
 
-            <div class="checkbox">
-                <input id="check10" type="checkbox" name="check" value="check">
+            <div class="radio">
+                <input id="check10" type="radio" name="check" value="check">
                 <label for="check10">Badkamers</label>
             </div>
 
-            <div class="checkbox">
-                <input id="check11" type="checkbox" name="check" value="check">
+            <div class="radio">
+                <input id="check11" type="radio" name="check" value="check">
                 <label for="check11">Sportkelding</label>
             </div>
 
-            <div class="checkbox">
-                <input id="check12" type="checkbox" name="check" value="check">
+            <div class="radio">
+                <input id="check12" type="radio" name="check" value="check">
                 <label for="check12">Keukens</label>
             </div>
 
-            <div class="checkbox">
-                <input id="check13" type="checkbox" name="check" value="check">
+            <div class="radio">
+                <input id="check13" type="radio" name="check" value="check">
                 <label for="check13">Kostuumzaken</label>
             </div>
 
-            <div class="checkbox">
-                <input id="check14" type="checkbox" name="check" value="check">
+            <div class="radio">
+                <input id="check14" type="radio" name="check" value="check">
                 <label for="check14">Fietsen</label>
             </div>
 
-            <div class="checkbox">
-                <input id="check15" type="checkbox" name="check" value="check">
+            <div class="radio">
+                <input id="check15" type="radio" name="check" value="check">
                 <label for="check15">Bedden en matrassen</label>
             </div>
 
@@ -834,14 +835,14 @@
             flex-wrap: wrap;
         }
 
-        .checkbox
+        .radio
         {
             display: inline-block;
             margin: 10px !important;
             min-width: 20%;
         }
 
-        .checkbox label
+        .radio label
         {
             padding-left: 30px;
         }
@@ -1381,7 +1382,7 @@
 
     <script>
 
-        $("input:checkbox").change( function(){
+        $("input:radio").change( function(){
 
             var val = $(this).val();
 

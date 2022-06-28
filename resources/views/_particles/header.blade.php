@@ -6,7 +6,7 @@
     </div>
 
     <div style="display: flex;justify-content: center;align-items: center;" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-        <h1 class="grad">Speurnet.nl</h1>
+        <a href="{{url('/')}}"><h1 class="grad">Speurnet.nl</h1></a>
     </div>
 
     <div style="display: flex;justify-content: flex-end;align-items: center;" class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
@@ -106,18 +106,12 @@
 
             <ul style="margin-right: 0;" class="nav navbar-nav navbar-right">
 
-                <li class="{{classActivePathPublic('')}}"><a href="{{ URL::to('/') }}">{{__('text.Home')}}</a></li>
-                <li><a href="#"><i style="font-size: 12px;" class="fa fa-heart"></i><span style="margin-left: 5px;">Saved</span></a></li>
-                <li><a href="#">Electronics</a></li>
-                <li><a href="#">Motors</a></li>
-                <li><a href="#">Home & Garden</a></li>
-                <li><a href="#">Clothing & Accessories</a></li>
-                <li><a href="#">Sports</a></li>
-                <li><a href="#">Health & Beauty</a></li>
-                <li><a href="#">Toys</a></li>
-                <li><a href="#">Business & Industrial</a></li>
-                <li><a href="#">Food & Grocery</a></li>
-                <li><a href="#">Deals & Sales</a></li>
+                <!-- <li class="{{classActivePathPublic('')}}"><a href="{{ URL::to('/') }}">{{__('text.Home')}}</a></li>
+                <li><a href="{{route('blogs')}}">Blogs</a></li>
+                <li><a href="{{route('page1')}}">Companies</a></li>
+                <li><a href="{{route('zoekhet')}}">Zoekhet</a></li>
+                <li><a href="{{route('education')}}">Education</a></li>
+                <li><a href="{{route('education-single')}}">Education Single</a></li> -->
 
                 <li id="wrap">
                     <form style="display: flex;align-items: center;padding: 20px;" action="" autocomplete="on">
@@ -387,14 +381,11 @@
             <ul style="margin-right: 0;width: 100%;" class="nav navbar-nav navbar-right">
 
                 <li style="margin-left: 100px;" class="{{classActivePathPublic('')}}"><a href="{{ URL::to('/') }}">{{__('text.Home')}}</a></li>
-                <li><a style="display: flex;align-items: center;" href="#"><i style="font-size: 10px;" class="fa fa-heart"></i><span style="margin-left: 5px;">Saved</span></a></li>
-                <li><a href="#">Electronics</a></li>
-                <li><a href="#">Motors</a></li>
-                <li><a href="#">Home & Garden</a></li>
-                <li><a href="#">Clothing & Accessories</a></li>
-                <li><a href="#">Sports</a></li>
-                <li><a href="#">Health & Beauty</a></li>
-                <li><a href="#">Toys</a></li>
+                <li><a href="{{route('blogs')}}">Blogs</a></li>
+                <li><a href="{{route('page1')}}">Companies</a></li>
+                <li><a href="{{route('zoekhet')}}">Zoekhet</a></li>
+                <li><a href="{{route('education')}}">Education</a></li>
+                <li><a href="{{route('education-single')}}">Education Single</a></li>
 
                 <li style="float: right;">
                     <a style="display: flex;align-items: center;" href="#">
