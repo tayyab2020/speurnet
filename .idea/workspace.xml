@@ -22,16 +22,10 @@
     <list default="true" id="7fe7f36f-c82f-4504-8c0a-7874522d22c9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/SliderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/SliderController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/IndexController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/IndexController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/_particles/header1.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/_particles/header1.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/admin_app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/admin_app.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/pages/addeditCategory.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/pages/addeditCategory.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/sidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/pages/company.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/company.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/pages/page1.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/page1.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/vendor/albertcht/invisible-recaptcha/" />
     <ignored path="$PROJECT_DIR$/vendor/composer/" />
@@ -179,29 +173,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/admin/sidebar.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="882">
-              <caret line="42" column="20" selection-start-line="42" selection-start-column="20" selection-end-line="42" selection-end-column="20" />
+            <state relative-caret-position="269">
+              <caret line="44" column="136" selection-start-line="44" selection-start-column="136" selection-end-line="44" selection-end-column="136" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/admin/pages/addeditcategory.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6489">
-              <caret line="309" column="21" selection-start-line="309" selection-start-column="21" selection-end-line="309" selection-end-column="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/pages/page1.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="642">
-              <caret line="206" column="37" lean-forward="true" selection-start-line="206" selection-start-column="37" selection-end-line="206" selection-end-column="37" />
+            <state relative-caret-position="285">
+              <caret line="172" column="39" selection-start-line="172" selection-start-column="39" selection-end-line="172" selection-end-column="39" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#a#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#span#0;n#div#0;n#a#0;n#div#0;n#!!top" expanded="true" />
@@ -214,10 +199,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/_particles/sidebar.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="10" column="80" selection-start-line="10" selection-start-column="80" selection-end-line="10" selection-end-column="80" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/pages/zoekhet.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15918">
-              <caret line="758" column="9" selection-start-line="728" selection-start-column="8" selection-end-line="758" selection-end-column="9" />
+            <state relative-caret-position="15939">
+              <caret line="759" column="9" selection-start-line="759" selection-start-column="9" selection-end-line="759" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -226,7 +220,7 @@
         <entry file="file://$PROJECT_DIR$/resources/views/_particles/header1.blade.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="4200">
-              <caret line="200" column="2" selection-start-line="200" selection-start-column="2" selection-end-line="200" selection-end-column="2" />
+              <caret line="206" column="2" selection-start-line="206" selection-start-column="2" selection-end-line="206" selection-end-column="2" />
             </state>
           </provider>
         </entry>
@@ -990,16 +984,18 @@
       <workItem from="1652033832755" duration="1788000" />
       <workItem from="1652035658664" duration="1777000" />
       <workItem from="1652037490475" duration="1229000" />
+      <workItem from="1656583790717" duration="267000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="117843000" />
+    <option name="totallyTimeSpent" value="118110000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1721" height="927" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.30282962" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3064419" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -1193,14 +1189,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/sidebar.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="882">
-          <caret line="42" column="20" selection-start-line="42" selection-start-column="20" selection-end-line="42" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/pages/addeditcategory.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/pages/addeditCategory.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6489">
           <caret line="309" column="21" selection-start-line="309" selection-start-column="21" selection-end-line="309" selection-end-column="21" />
@@ -1209,15 +1198,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/pages/zoekhet.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15918">
-          <caret line="758" column="9" selection-start-line="728" selection-start-column="8" selection-end-line="758" selection-end-column="9" />
+        <state relative-caret-position="15939">
+          <caret line="759" column="9" selection-start-line="759" selection-start-column="9" selection-end-line="759" selection-end-column="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/_particles/header1.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4200">
-          <caret line="200" column="2" selection-start-line="200" selection-start-column="2" selection-end-line="200" selection-end-column="2" />
+          <caret line="206" column="2" selection-start-line="206" selection-start-column="2" selection-end-line="206" selection-end-column="2" />
         </state>
       </provider>
     </entry>
@@ -1258,8 +1247,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/pages/page1.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="642">
-          <caret line="206" column="37" lean-forward="true" selection-start-line="206" selection-start-column="37" selection-end-line="206" selection-end-column="37" />
+        <state relative-caret-position="285">
+          <caret line="172" column="39" selection-start-line="172" selection-start-column="39" selection-end-line="172" selection-end-column="39" />
           <folding>
             <element signature="n#style#0;n#div#0;n#a#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#0;n#div#0;n#a#0;n#div#0;n#!!top" expanded="true" />
@@ -1267,6 +1256,20 @@
             <element signature="n#style#0;n#i#0;n#span#1;n#div#0;n#a#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#2;n#div#0;n#a#0;n#div#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/_particles/sidebar.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="10" column="80" selection-start-line="10" selection-start-column="80" selection-end-line="10" selection-end-column="80" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/sidebar.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="269">
+          <caret line="44" column="136" selection-start-line="44" selection-start-column="136" selection-end-line="44" selection-end-column="136" />
         </state>
       </provider>
     </entry>

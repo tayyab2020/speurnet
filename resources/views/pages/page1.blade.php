@@ -164,39 +164,46 @@
                     success: function(data)
                     {
 
-                        $.each(data, function(index, value) {
-
+                        if(data.length == 0)
+                        {
                             $("#overlay").fadeOut();
+                        }
+                        else
+                        {
+                            $.each(data, function(index, value) {
 
-                            if(value.image)
-                            {
-                                $('.company-boxes').append('<div class="col-lg-3 col-md-4 col-sm-6 col-xs-9 sub">\n' +
-                                    '                                    <a href="/company/'+ value.id+'">\n' +
-                                    '\n' +
-                                    '                                        <div style="background-image: url({{url('upload').'/'}}'+value.image+');background-size: 100% 100%;border: 1px solid #dfdfdf;" class="row"></div>\n' +
-                                    '                                        <span style="margin-top: 10px;display: block;color: #6b6e80;font-size: 14px;font-weight: 500;"><i class="fa fa-map-marker-alt" style="margin-right: 5px;"></i> '+value.title+'</span>\n' +
-                                    '\n' +
-                                    '                                    </a>\n' +
-                                    '                                </div>');
-                            }
-                            else
-                            {
-                                $('.company-boxes').append('<div class="col-lg-3 col-md-4 col-sm-6 col-xs-9 sub">\n' +
-                                    '\n' +
-                                    '                                    <a href="/company/'+ value.id+'">\n' +
-                                    '\n' +
-                                    '                                        <div style="background-color: #C2EEEB;background-size: 100% 100%;border: 1px solid #dfdfdf;" class="row">\n' +
-                                    '                                            <span style="font-size: 22px;color: #6C7895;font-weight: bold;">'+value.title+'</span>\n' +
-                                    '                                            <span style="margin-top: 15px;display: block;font-size: 18px;color: #6b6e80;font-weight: 500;"><i class="fa fa-map-marker-alt" style="margin-right: 5px;"></i> '+value.address+'</span>\n' +
-                                    '                                            <span style="color: #585757;margin-top: 10px;margin-left: 10px;font-size: 16px;font-weight: 600;">'+value.city+'</span>\n' +
-                                    '                                        </div>\n' +
-                                    '\n' +
-                                    '                                    </a>\n' +
-                                    '\n' +
-                                    '                                </div>');
-                            }
+                                $("#overlay").fadeOut();
 
-                        });
+                                if(value.image)
+                                {
+                                    $('.company-boxes').append('<div class="col-lg-3 col-md-4 col-sm-6 col-xs-9 sub">\n' +
+                                        '                                    <a href="/company/'+ value.id+'">\n' +
+                                        '\n' +
+                                        '                                        <div style="background-image: url({{url('upload').'/'}}'+value.image+');background-size: 100% 100%;border: 1px solid #dfdfdf;" class="row"></div>\n' +
+                                        '                                        <span style="margin-top: 10px;display: block;color: #6b6e80;font-size: 14px;font-weight: 500;"><i class="fa fa-map-marker-alt" style="margin-right: 5px;"></i> '+value.title+'</span>\n' +
+                                        '\n' +
+                                        '                                    </a>\n' +
+                                        '                                </div>');
+                                }
+                                else
+                                {
+                                    $('.company-boxes').append('<div class="col-lg-3 col-md-4 col-sm-6 col-xs-9 sub">\n' +
+                                        '\n' +
+                                        '                                    <a href="/company/'+ value.id+'">\n' +
+                                        '\n' +
+                                        '                                        <div style="background-color: #C2EEEB;background-size: 100% 100%;border: 1px solid #dfdfdf;" class="row">\n' +
+                                        '                                            <span style="font-size: 22px;color: #6C7895;font-weight: bold;">'+value.title+'</span>\n' +
+                                        '                                            <span style="margin-top: 15px;display: block;font-size: 18px;color: #6b6e80;font-weight: 500;"><i class="fa fa-map-marker-alt" style="margin-right: 5px;"></i> '+value.address+'</span>\n' +
+                                        '                                            <span style="color: #585757;margin-top: 10px;margin-left: 10px;font-size: 16px;font-weight: 600;">'+value.city+'</span>\n' +
+                                        '                                        </div>\n' +
+                                        '\n' +
+                                        '                                    </a>\n' +
+                                        '\n' +
+                                        '                                </div>');
+                                }
+
+                            });
+                        }
 
                     }
 

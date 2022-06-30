@@ -593,7 +593,7 @@ class SliderController extends MainAdminController
         }
 
         $slide->title = $inputs['title'];
-        $slide->heading_ids = implode(',', $request->headings);
+        $slide->heading_ids = implode(',', $request->headings) ? implode(',', $request->headings) : NULL;
         $slide->save();
 
         if(!empty($inputs['id'])){

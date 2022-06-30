@@ -95,9 +95,13 @@ class AppServiceProvider extends ServiceProvider
             $categories[$x] = categories::whereRaw("find_in_set('$key->id',heading_ids)")->get();
         }
 
+        $without_heading_categories = categories::where('heading_ids',NULL)->get();
+
         View::share('categories_headings', $categories_headings);
 
         View::share('categories', $categories);
+
+        View::share('without_heading_categories', $without_heading_categories);
         
         View::share('homepage_boxes', $homepage_boxes);
 

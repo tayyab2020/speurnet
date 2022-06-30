@@ -172,6 +172,12 @@
 
                             @endforeach
 
+                            @foreach($without_heading_categories as $x => $key)
+
+                                <li class="subcat"><input type="checkbox" name="category" value="{{$key->id}}" id="{{$key->title . $x}}"><label for="{{$key->title . $x}}">{{$key->title}}</label></li>
+
+                            @endforeach
+
                         </ul>
                     </div>
                 </li>

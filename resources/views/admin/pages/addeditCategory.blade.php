@@ -68,7 +68,7 @@
 
                                 <tr data-id="{{$x+1}}">
                                     <td>
-                                        <select class="headings" name="headings[]" required>
+                                        <select class="headings" name="headings[]">
 
                                             <option value="">Select Heading</option>
 
@@ -99,7 +99,7 @@
 
                             <tr data-id="1">
                                 <td>
-                                    <select class="headings" name="headings[]" required>
+                                    <select class="headings" name="headings[]">
 
                                         <option value="">Select Heading</option>
 
