@@ -23,15 +23,16 @@
 
                     @endif
 
-               <div class="form-group">
-                      <label for="city">{{__('text.City')}}</label>
+                <div class="form-group">
+                    
+                    <label for="city">{{__('text.City')}}</label>
 
-                   <input class="form-control city-input" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') value="{{$address}}" @else value="" @endif type="text" placeholder="{{__('text.City, State, Address')}}" name="city_name" id="city-input" autocomplete="off">
+                    <input class="form-control city-input" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') value="{{$address}}" @else value="" @endif type="text" placeholder="{{__('text.City, State, Address')}}" name="city_name" id="city-input" autocomplete="off">
 
-                   <input type="hidden" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') value="{{$address_latitude}}" @else value="" @endif name="city_latitude" id="city-latitude"  />
-                   <input type="hidden" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') value="{{$address_longitude}}" @else value="" @endif name="city_longitude" id="city-longitude"  />
+                    <input type="hidden" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') value="{{$address_latitude}}" @else value="" @endif name="city_latitude" id="city-latitude"  />
+                    <input type="hidden" @if(Route::currentRouteName() == 'searchproperties' || Route::currentRouteName() == 'searchnewconstructions') value="{{$address_longitude}}" @else value="" @endif name="city_longitude" id="city-longitude"  />
 
-                    </div>
+                </div>
 
                 <div class="form-group">
                     <label for="purpose">{{__('text.Radius')}}</label>

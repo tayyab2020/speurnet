@@ -14,6 +14,7 @@ use App\footer_headings;
 use App\HomepageBoxes;
 use App\categories_headings;
 use App\categories;
+use App\companies;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -92,10 +93,11 @@ class AppServiceProvider extends ServiceProvider
 
         foreach($categories_headings as $x => $key)
         {
-            $categories[$x] = categories::whereRaw("find_in_set('$key->id',heading_ids)")->get();
+            $categories[$x] = companies::leftjoin("categories",\DB::raw("FIND_IN_SET(categories.id,companies.category_ids)"),">",\DB::raw("'0'"))->whereRaw("find_in_set('$key->id',categories.heading_ids)")->select('categories.*')->get();
+            $categories[$x] = $categories[$x]->unique();
         }
 
-        $without_heading_categories = categories::where('heading_ids',NULL)->get();
+        $without_heading_categories = companies::leftjoin("categories",\DB::raw("FIND_IN_SET(categories.id,companies.category_ids)"),">",\DB::raw("'0'"))->where('categories.heading_ids',NULL)->select('categories.*')->get();
 
         View::share('categories_headings', $categories_headings);
 
