@@ -155,10 +155,10 @@
 
                             @foreach($categories_headings as $x => $key)
 
-                                <li><span>{{$key->heading}}</span>
+                                @if(count($categories[$x]) > 0)
 
-                                    @if(count($categories[$x]) > 0)
-
+                                    <li><span>{{$key->heading}}</span>
+                                    
                                         <ul>
                                             @foreach($categories[$x] as $temp)
 
@@ -167,8 +167,9 @@
                                             @endforeach
                                         </ul>
 
-                                    @endif
-                                </li>
+                                    </li>
+
+                                @endif
 
                             @endforeach
 
