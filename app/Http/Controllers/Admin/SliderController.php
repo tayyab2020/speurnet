@@ -392,7 +392,7 @@ class SliderController extends MainAdminController
 
         }
 
-        $categories = categories::all();
+        $categories = categories_headings::all();
 
         return view('admin.pages.addeditcompany',compact('categories'));
     }
@@ -513,7 +513,7 @@ class SliderController extends MainAdminController
 
         $slide = companies::findOrFail($id);
 
-        $categories = categories::all();
+        $categories = categories_headings::all();
 
         return view('admin.pages.addeditcompany',compact('slide','categories'));
 

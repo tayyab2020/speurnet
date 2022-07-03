@@ -153,7 +153,13 @@
                     <div style="position: absolute;z-index: 10000;" id="pane1" class="bx--accordion__content collapse">
                         <ul data-accordion class="categories">
 
-                            @foreach($categories_headings as $x => $key)
+                            @foreach($categories as $x => $key)
+
+                                <li class="subcat"><input type="checkbox" name="category" value="{{$key->id}}" id="{{$key->heading . $x}}"><label for="{{$key->heading . $x}}">{{$key->heading}}</label></li>
+
+                            @endforeach
+
+                            {{-- @foreach($categories_headings as $x => $key)
 
                                 @if(count($categories[$x]) > 0)
 
@@ -177,7 +183,7 @@
 
                                 <li class="subcat"><input type="checkbox" name="category" value="{{$key->id}}" id="{{$key->title . $x}}"><label for="{{$key->title . $x}}">{{$key->title}}</label></li>
 
-                            @endforeach
+                            @endforeach --}}
 
                         </ul>
                     </div>

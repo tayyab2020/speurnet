@@ -268,7 +268,7 @@ Route::group(['middleware' => 'App\Http\Middleware\UserTypeMiddleware'], functio
 
     Route::get('company/{id}', 'IndexController@company')->name('company');
 
-    Route::get('company-filter/{id}', 'IndexController@companyFilter');
+    Route::get('company-filter/{id?}', 'IndexController@companyFilter');
 
     Route::get('blogs', 'IndexController@NewBlogs')->name('blogs');
 

@@ -88,22 +88,26 @@ class AppServiceProvider extends ServiceProvider
 
         $footer_headings = footer_headings::all();
 
-        $categories_headings = categories_headings::all();
-        $categories = array();
+        // $categories_headings = categories_headings::all();
+        // $categories = array();
 
-        foreach($categories_headings as $x => $key)
-        {
-            $categories[$x] = companies::leftjoin("categories",\DB::raw("FIND_IN_SET(categories.id,companies.category_ids)"),">",\DB::raw("'0'"))->whereRaw("find_in_set('$key->id',categories.heading_ids)")->select('categories.*')->get();
-            $categories[$x] = $categories[$x]->unique();
-        }
+        // foreach($categories_headings as $x => $key)
+        // {
+        //     $categories[$x] = companies::leftjoin("categories",\DB::raw("FIND_IN_SET(categories.id,companies.category_ids)"),">",\DB::raw("'0'"))->whereRaw("find_in_set('$key->id',categories.heading_ids)")->select('categories.*')->get();
+        //     $categories[$x] = $categories[$x]->unique();
+        // }
 
-        $without_heading_categories = companies::leftjoin("categories",\DB::raw("FIND_IN_SET(categories.id,companies.category_ids)"),">",\DB::raw("'0'"))->where('categories.heading_ids',NULL)->select('categories.*')->get();
+        // $without_heading_categories = companies::leftjoin("categories",\DB::raw("FIND_IN_SET(categories.id,companies.category_ids)"),">",\DB::raw("'0'"))->where('categories.heading_ids',NULL)->select('categories.*')->get();
 
-        View::share('categories_headings', $categories_headings);
+        // View::share('categories_headings', $categories_headings);
 
+        // View::share('categories', $categories);
+
+        // View::share('without_heading_categories', $without_heading_categories);
+
+        $categories = categories_headings::all();
+        
         View::share('categories', $categories);
-
-        View::share('without_heading_categories', $without_heading_categories);
         
         View::share('homepage_boxes', $homepage_boxes);
 

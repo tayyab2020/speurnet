@@ -58,7 +58,7 @@
                             <td>{{ $slide->address }}</td>
                             <td>{{ $slide->city }}</td>
                             
-                            <?php $item_headings = ''; foreach($slide->getCategoriesAttribute() as $temp){ $item_headings = $item_headings.', '.$temp->title; } ?>
+                            <?php $item_headings = ''; foreach($slide->getCategoriesAttribute() as $temp){ $item_headings = $item_headings.', '.$temp->heading; } ?>
                             
                             <td>{{ltrim($item_headings,', ')}}</td>
                             <td class="text-center">

@@ -135,7 +135,7 @@
 
                                             @foreach($categories as $key)
 
-                                                <option {{$key->id == $temp ? 'selected' : null}} value="{{$key->id}}">{{$key->title}}</option>
+                                                <option {{$key->id == $temp ? 'selected' : null}} value="{{$key->id}}">{{$key->heading}}</option>
 
                                             @endforeach
 
@@ -166,7 +166,7 @@
 
                                         @foreach($categories as $key)
 
-                                            <option value="{{$key->id}}">{{$key->title}}</option>
+                                            <option value="{{$key->id}}">{{$key->heading}}</option>
 
                                         @endforeach
                                     
@@ -265,7 +265,7 @@
                 '\n' +
                 '                                                                                               @foreach($categories as $key)\n' +
                 '\n' +
-                '                                                                                                 <option value="{{$key->id}}">{{$key->title}}</option>\n' +
+                '                                                                                                 <option value="{{$key->id}}">{{$key->heading}}</option>\n' +
                 '\n' +
                 '                                                                                               @endforeach\n' +
                 '\n' +
@@ -328,7 +328,7 @@
                     '\n' +
                     '                                                                                               @foreach($categories as $key)\n' +
                     '\n' +
-                    '                                                                                                 <option value="{{$key->id}}">{{$key->title}}</option>\n' +
+                    '                                                                                                 <option value="{{$key->id}}">{{$key->heading}}</option>\n' +
                     '\n' +
                     '                                                                                               @endforeach\n' +
                     '\n' +

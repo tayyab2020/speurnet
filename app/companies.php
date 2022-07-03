@@ -14,7 +14,7 @@ class companies extends Model
     public function getCategoriesAttribute()
     {
         $ids = $this->getOriginal('category_ids');
-        return categories::whereIn('id', explode(',', $ids))->get();
+        return categories_headings::whereIn('id', explode(',', $ids))->get();
     }
 
 }

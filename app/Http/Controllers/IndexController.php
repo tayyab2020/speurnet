@@ -79,18 +79,25 @@ class IndexController extends Controller
         return view('pages.company',compact('company'));
     }
 
-    public function companyFilter($ids)
+    public function companyFilter(Request $request)
     {
-        $idsArr = explode(',',$ids);
         $companies = array();
 
-        foreach($idsArr as $key)
+        if($request->id)
         {
-            $data = companies::whereRaw("find_in_set('$key',category_ids)")->get()->toArray();
-            $companies = array_merge($companies,$data);
-        }
+            $idsArr = explode(',',$request->id);
+            foreach($idsArr as $key)
+            {
+                $data = companies::whereRaw("find_in_set('$key',category_ids)")->get()->toArray();
+                $companies = array_merge($companies,$data);
+            }
 
-        $companies = array_unique($companies, SORT_REGULAR);
+            $companies = array_unique($companies, SORT_REGULAR);
+        }
+        else
+        {
+            $companies = companies::all()->toArray();
+        }
 
         return $companies;
     }

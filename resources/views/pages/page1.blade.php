@@ -146,17 +146,15 @@
 
         $("input:checkbox").change( function(){
 
-            var getUrl = window.location.host;
             var ids = [];
+
             $.each($("input[name='category']:checked"), function(){
                 ids.push($(this).val());
             });
 
             $('.company-boxes').children().remove();
 
-            if(ids.length > 0)
-            {
-                $.ajax({
+            $.ajax({
 
                     type: "GET",
                     url: "/company-filter/" + ids,
@@ -208,12 +206,6 @@
                     }
 
                 });
-            }
-            else
-            {
-                $("#overlay").fadeIn(300);
-                $("#overlay").fadeOut();
-            }
 
         });
 
