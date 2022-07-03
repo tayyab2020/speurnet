@@ -143,7 +143,7 @@
 
         <div id="sidebar">
 
-            <ul data-accordion class="bx--accordion">
+            <ul style="margin: 0;" data-accordion class="bx--accordion">
                 <li data-accordion-item class="bx--accordion__item">
 
                     <button style="background-color: transparent;border: 0;border-right: 1px solid #dedede;display: flex;align-items: center;justify-content: space-between;padding: 0 30px;width: 100%;" class="bx--accordion__heading collapsed" data-toggle="collapse" data-target="#pane1">
