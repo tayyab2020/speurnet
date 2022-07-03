@@ -34,9 +34,9 @@
 
 					<li class="{{classActivePath('slider')}}"><a href="{{ URL::to('admin/slider') }}"><i class="fa fa-sliders"></i>Home Slider</a></li>
 
-					<li class="{{classActivePath('categories-headings')}}"><a href="{{ URL::to('admin/categories-headings') }}"><i class="fa fa-bars"></i>Categories Headings</a></li>
+					<li class="{{classActivePath('categories-headings')}}"><a href="{{ URL::to('admin/categories-headings') }}"><i class="fa fa-bars"></i>Categories</a></li>
 
-					<li class="{{classActivePath('categories')}}"><a href="{{ URL::to('admin/categories') }}"><i class="fa fa-bars"></i>Categories</a></li>
+					<!-- <li class="{{classActivePath('categories')}}"><a href="{{ URL::to('admin/categories') }}"><i class="fa fa-bars"></i>Categories</a></li> -->
 
 					<li class="{{classActivePath('companies')}}"><a href="{{ URL::to('admin/companies') }}"><i class="fa fa-bars"></i>Companies</a></li>
 					
