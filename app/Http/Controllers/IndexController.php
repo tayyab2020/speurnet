@@ -51,6 +51,11 @@ use App\companies;
 class IndexController extends Controller
 {
 
+    public function study()
+    {
+        return view('pages.study');
+    }
+
     public function page1()
     {
         $companies = companies::all();

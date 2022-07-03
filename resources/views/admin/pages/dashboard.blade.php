@@ -20,7 +20,7 @@
 
   	@if(Auth::user()->usertype=='Admin')
 
-    	<a href="{{ URL::to('admin/properties') }}">
+    	<!-- <a href="{{ URL::to('admin/properties') }}">
     	<div class="col-sm-6 col-md-3">
         <div class="panel panel-orange panel-shadow">
             <div class="media">
@@ -190,7 +190,7 @@
             </div>
         </div>
     </div>
-    </a>
+    </a> -->
 
     <a href="{{ URL::to('admin/subscriber') }}">
     	<div class="col-sm-6 col-md-3">
@@ -217,7 +217,7 @@
     </div>
     </a>
 
-    <a href="{{ URL::to('admin/partners') }}">
+    <!-- <a href="{{ URL::to('admin/partners') }}">
     	<div class="col-sm-6 col-md-3">
         <div class="panel panel-orange panel-shadow">
             <div class="media">
@@ -240,7 +240,7 @@
             </div>
         </div>
     </div>
-    </a>
+    </a> -->
 
     @elseif(Auth::user()->usertype == 'Agents')
 
