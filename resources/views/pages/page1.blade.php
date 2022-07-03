@@ -146,11 +146,14 @@
 
         $("input:checkbox").change( function(){
 
-            var ids = [];
+            $('input[type="checkbox"]').not(this).prop('checked', false);
+            var ids = $(this).val();
 
-            $.each($("input[name='category']:checked"), function(){
-                ids.push($(this).val());
-            });
+            // var ids = [];
+
+            // $.each($("input[name='category']:checked"), function(){
+            //     ids.push($(this).val());
+            // });
 
             $('.company-boxes').children().remove();
 
