@@ -112,6 +112,7 @@
                 <li><a href="{{route('zoekhet')}}">Zoekhet</a></li>
                 <li><a href="{{route('education')}}">Education</a></li>
                 <li><a href="{{route('education-single')}}">Education Single</a></li>
+                <li><a href="{{route('study')}}">Study</a></li>
 
                 <li id="wrap">
                     <form style="display: flex;align-items: center;padding: 20px;" action="" autocomplete="on">
@@ -386,6 +387,7 @@
                 <li><a href="{{route('zoekhet')}}">Zoekhet</a></li>
                 <li><a href="{{route('education')}}">Education</a></li>
                 <li><a href="{{route('education-single')}}">Education Single</a></li>
+                <li><a href="{{route('study')}}">Study</a></li>
 
                 <li style="float: right;">
                     <a style="display: flex;align-items: center;" href="#">
