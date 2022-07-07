@@ -50,6 +50,12 @@ use App\companies;
 
 class IndexController extends Controller
 {
+    public function vactury()
+    {
+        $content = HomepageIcons::orderBy('id','asc')->get();
+
+        return view('pages.vactury',compact('content'));
+    }
 
     public function study()
     {
