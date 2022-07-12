@@ -100,7 +100,7 @@
 
   </style>
 
-  @if(Route::currentRouteName() != 'zoekhet' && Route::currentRouteName() != 'page1' && Route::currentRouteName() != 'company' && Route::currentRouteName() != 'blogs' && Route::currentRouteName() != 'education' && Route::currentRouteName() != 'education-single' && Route::currentRouteName() != 'study' && Route::currentRouteName() != 'vactury')
+  @if(Route::currentRouteName() != 'zoekhet' && Route::currentRouteName() != 'page1' && Route::currentRouteName() != 'company' && Route::currentRouteName() != 'blogs' && Route::currentRouteName() != 'education' && Route::currentRouteName() != 'education-single' && Route::currentRouteName() != 'study' && Route::currentRouteName() != 'vactury' && Route::currentRouteName() != 'offer')
 
       @include("_particles.header")
 

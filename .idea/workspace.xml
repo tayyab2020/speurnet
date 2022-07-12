@@ -21,7 +21,12 @@
   <component name="ChangeListManager">
     <list default="true" id="7fe7f36f-c82f-4504-8c0a-7874522d22c9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/IndexController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/IndexController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/_particles/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/_particles/header.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/_particles/header1.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/_particles/header1.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/app.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/pages/vactury.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/vactury.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/vendor/albertcht/invisible-recaptcha/" />
     <ignored path="$PROJECT_DIR$/vendor/composer/" />
@@ -170,15 +175,6 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/_particles/sidebar.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="10" column="80" selection-start-line="10" selection-start-column="80" selection-end-line="10" selection-end-column="80" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/pages/zoekhet.blade.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="15939">
@@ -205,15 +201,26 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/pages/vactury.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
-              <caret line="1127" column="150" selection-start-line="1127" selection-start-column="150" selection-end-line="1127" selection-end-column="150" />
+            <state relative-caret-position="3486">
+              <caret line="166" column="28" selection-start-line="166" selection-start-column="28" selection-end-line="166" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/pages/offer.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="537">
+              <caret line="269" column="38" selection-start-line="269" selection-start-column="38" selection-end-line="269" selection-end-column="38" />
               <folding>
-                <element signature="e#11305#11374#0#HTML" expanded="true" />
-                <element signature="e#13784#36122#0#HTML" />
-                <element signature="n#style#0;n#h1#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="e#14288#14351#0#HTML" expanded="true" />
+                <element signature="e#14408#14443#0#HTML" expanded="true" />
+                <element signature="e#14500#14567#0#HTML" expanded="true" />
+                <element signature="e#14795#14813#0#HTML" expanded="true" />
+                <element signature="e#14824#14904#0#HTML" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -268,8 +275,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>HomesInspiration</find>
-      <find>res-float</find>
       <find>&lt;st</find>
       <find>.res-float:nth-child(3n+1)</find>
       <find>start</find>
@@ -293,11 +298,13 @@
       <find>Education</find>
       <find>Education Single</find>
       <find>input:checked + label:before</find>
-      <find>.radio</find>
       <find>index(</find>
       <find>vact</find>
       <find>.company-boxes .row</find>
       <find>$backgrounds</find>
+      <find>bse</find>
+      <find>script</find>
+      <find>.radio</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -333,6 +340,7 @@
         <option value="$PROJECT_DIR$/resources/views/_particles/header.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/IndexController.php" />
         <option value="$PROJECT_DIR$/resources/views/pages/vactury.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/pages/offer.blade.php" />
       </list>
     </option>
   </component>
@@ -489,6 +497,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -577,7 +586,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="ProjectViewState">
@@ -988,12 +996,15 @@
       <workItem from="1657014333550" duration="1497000" />
       <workItem from="1657029708155" duration="1845000" />
       <workItem from="1657186551097" duration="1884000" />
-      <workItem from="1657188628489" duration="568000" />
+      <workItem from="1657188628489" duration="1171000" />
+      <workItem from="1657630658477" duration="1407000" />
+      <workItem from="1657640929424" duration="1648000" />
+      <workItem from="1657642755877" duration="924000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="129061000" />
+    <option name="totallyTimeSpent" value="133643000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1721" height="927" extended-state="6" />
@@ -1267,6 +1278,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/pages/vactury.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3486">
+          <caret line="166" column="28" selection-start-line="166" selection-start-column="28" selection-end-line="166" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/admin/pages/addedittrending.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1113">
@@ -1302,14 +1320,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/pages/vactury.blade.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/pages/offer.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="1127" column="150" selection-start-line="1127" selection-start-column="150" selection-end-line="1127" selection-end-column="150" />
+        <state relative-caret-position="537">
+          <caret line="269" column="38" selection-start-line="269" selection-start-column="38" selection-end-line="269" selection-end-column="38" />
           <folding>
-            <element signature="e#11305#11374#0#HTML" expanded="true" />
-            <element signature="e#13784#36122#0#HTML" />
-            <element signature="n#style#0;n#h1#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="e#14288#14351#0#HTML" expanded="true" />
+            <element signature="e#14408#14443#0#HTML" expanded="true" />
+            <element signature="e#14500#14567#0#HTML" expanded="true" />
+            <element signature="e#14795#14813#0#HTML" expanded="true" />
+            <element signature="e#14824#14904#0#HTML" expanded="true" />
           </folding>
         </state>
       </provider>

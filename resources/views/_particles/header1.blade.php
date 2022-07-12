@@ -86,7 +86,7 @@
 
 </style>
 
-@if(Route::currentRouteName() != 'zoekhet' && Route::currentRouteName() != 'vactury')
+@if(Route::currentRouteName() != 'zoekhet' && Route::currentRouteName() != 'vactury' && Route::currentRouteName() != 'offer')
 
     <nav style="border: 0;min-height: auto;" class="navbar navbar-default navbar-fixed-top mobile-nav" role="navigation">
         <div class="container container-header">

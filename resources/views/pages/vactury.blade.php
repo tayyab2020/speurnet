@@ -157,14 +157,14 @@
                                 <p style="margin: 0;">Waarom alle interieurwinkels en woontrends websites afgaan als Zoekjehuisje.nl de allerlaatste woontrends voor jou heeft verzameld, zodat je alle trends in wonen en tuin online kunt bekijken. Heb je binnenkort een nieuwe woning of ben je gewoon toe om je interieur of tuin een nieuwe look te geven volgens de nieuwe trends van 2021? Bekijk hier alle interieurtips en trends voor jouw woonkamer, slaapkamer, keuken of tuin. Laat je inspireren en bepaal zelf welke woontrend of stijl in jouw interieur past. Jouw woning is de laatste woontrend waard.</p>
                             </span>
 
-                                <div class="bse">
+                            <div class="bse">
 
-                                    <form id="search_form" method="GET" action="">
-                                        <input autocomplete="off" name="search" type="search">
-                                        <i id="form-submit" style="display: flex;justify-content: center;align-items: center;" class="fa fa-search search-icon"></i>
-                                    </form>
+                                <form id="search_form" method="GET" action="">
+                                    <input autocomplete="off" name="search" type="search">
+                                    <i id="form-submit" style="display: flex;justify-content: center;align-items: center;" class="fa fa-search search-icon"></i>
+                                </form>
 
-                                </div>
+                            </div>
 
                             </ul>
 

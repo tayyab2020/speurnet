@@ -57,6 +57,11 @@ class IndexController extends Controller
         return view('pages.vactury',compact('content'));
     }
 
+    public function offer()
+    {
+        return view('pages.offer');
+    }
+
     public function study()
     {
         return view('pages.study');
