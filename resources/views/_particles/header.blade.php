@@ -115,6 +115,7 @@
                 <li><a href="{{route('study')}}">Study</a></li>
                 <li><a href="{{route('vactury')}}">Vactury</a></li>
                 <li><a href="{{route('offer')}}">Offer</a></li>
+                <li><a href="{{route('place-to-do')}}">Place to do</a></li>
 
                 <li id="wrap">
                     <form style="display: flex;align-items: center;padding: 20px;" action="" autocomplete="on">
@@ -392,6 +393,7 @@
                 <li><a href="{{route('study')}}">Study</a></li>
                 <li><a href="{{route('vactury')}}">Vactury</a></li>
                 <li><a href="{{route('offer')}}">Offer</a></li>
+                <li><a href="{{route('place-to-do')}}">Place to do</a></li>
 
                 <li style="float: right;">
                     <a style="display: flex;align-items: center;" href="#">
