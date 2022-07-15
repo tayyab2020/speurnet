@@ -44,7 +44,6 @@ Route::group(['middleware' => 'App\Http\Middleware\UserTypeMiddleware'], functio
         Route::get('slider/addslide/{id}', 'SliderController@editSlide');
         Route::get('slider/delete/{id}', 'SliderController@delete');
 
-
         Route::get('testimonials', 'TestimonialsController@testimonialslist');
         Route::get('testimonials/addtestimonial', 'TestimonialsController@addeditestimonials');
         Route::post('testimonials/addtestimonial', 'TestimonialsController@addnew');
@@ -258,6 +257,8 @@ Route::group(['middleware' => 'App\Http\Middleware\UserTypeMiddleware'], functio
 
     Route::get('/', 'IndexController@index');
 
+    Route::get('place-to-do', 'IndexController@placeToDo')->name('place-to-do');
+    
     Route::get('offer', 'IndexController@offer')->name('offer');
     
     Route::get('study', 'IndexController@study')->name('study');

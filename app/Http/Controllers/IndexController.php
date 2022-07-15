@@ -57,6 +57,11 @@ class IndexController extends Controller
         return view('pages.vactury',compact('content'));
     }
 
+    public function placeToDo()
+    {
+        return view('pages.place_to_do');
+    }
+
     public function offer()
     {
         return view('pages.offer');
