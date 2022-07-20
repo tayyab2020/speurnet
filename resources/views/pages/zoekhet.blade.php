@@ -80,82 +80,86 @@
 
                         <div class="row company-boxes">
 
-                            @foreach($content as $temp)
+                            @if($content)
 
-                                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 res-float">
-                                    <article style="margin-bottom: 45px;">
-                                        <div class="property-container" style="margin: 0;min-height: 480px;border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;">
+                                @foreach($content as $temp)
 
-                                            <a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;" href="">
+                                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 res-float">
+                                        <article style="margin-bottom: 45px;">
+                                            <div class="property-container" style="margin: 0;min-height: 480px;border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;">
 
-                                                <div class="property-image">
+                                                <a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;" href="">
 
-                                                    @if($temp->image)
+                                                    <div class="property-image">
 
-                                                        <img src="{{ URL::asset('upload/'.$temp->image) }}" style="width: 100%;height: 250px;border-top-left-radius: 3px;border-top-right-radius: 3px;">
+                                                        @if($temp->image)
 
-                                                    @else
+                                                            <img src="{{ URL::asset('upload/'.$temp->image) }}" style="width: 100%;height: 250px;border-top-left-radius: 3px;border-top-right-radius: 3px;">
 
-                                                        <img src="{{ URL::asset('upload/noImage.png') }}" style="width: 100%;height: 250px;border-top-left-radius: 3px;border-top-right-radius: 3px;">
+                                                        @else
 
-                                                    @endif
+                                                            <img src="{{ URL::asset('upload/noImage.png') }}" style="width: 100%;height: 250px;border-top-left-radius: 3px;border-top-right-radius: 3px;">
 
-                                                </div>
-
-                                            </a>
-
-                                            <div class="property-content description-content">
-
-                                                <div style="display: flex;justify-content: space-between;">
-
-                                                    <form action="{{ url('save-zoekhet') }}" method="POST" style="display: inline-block;">
-
-                                                        <input type="hidden" name="_token" value="{{csrf_token()}}"/>
-
-                                                        <input type="hidden" name="content_id" value="{{$temp->id}}">
-
-                                                        <button type="submit" class="new-button" title="{{__('text.Add Favorite')}}" style="outline: none;">
-
-                                                            @if($temp->savings->contains('ip', $ip_address))
-
-                                                                <i class="fa fa-heart heart" style="vertical-align: middle;font-size: 16px;display: flex;color: black;" aria-hidden="true">
-                                                                    <span style="display: block;margin-left: 7px;">{{$temp->saved}}</span>
-                                                                </i>
-
-                                                            @else
-
-                                                                <i class="far fa-heart heart" style="vertical-align: middle;font-size: 16px;display: flex;color: black;" aria-hidden="true">
-                                                                    <span style="display: block;margin-left: 7px;">{{$temp->saved}}</span>
-                                                                </i>
-
-                                                            @endif
-
-                                                        </button>
-
-                                                    </form>
-
-                                                    <div style="width: 100%;display: flex;justify-content: flex-end;">
-
-                                                        <a target="_blank" href="mailto:?subject=Hi&amp;body=" class="new-icons" title="{{__('text.Share')}}" style="border-radius: 100px;position: relative;width: 35px !important;height: 35px !important;line-height: 0 !important;display: flex;flex-direction: column;justify-content: flex-start;text-decoration: none;">
-                                                            <i class="fas fa-share-alt" style="vertical-align: middle;margin-right: 2px;font-size: 15px;"></i>
-                                                        </a>
-
-                                                        <i class="far fa-eye" style="vertical-align: middle;font-size: 16px;display: flex;color: #37bc9b;" aria-hidden="true">
-                                                            <span style="display: block;margin-left: 7px;">{{$temp->views}}</span>
-                                                        </i>
+                                                        @endif
 
                                                     </div>
 
+                                                </a>
+
+                                                <div class="property-content description-content">
+
+                                                    <div style="display: flex;justify-content: space-between;">
+
+                                                        <form action="{{ url('save-zoekhet') }}" method="POST" style="display: inline-block;">
+
+                                                            <input type="hidden" name="_token" value="{{csrf_token()}}"/>
+
+                                                            <input type="hidden" name="content_id" value="{{$temp->id}}">
+
+                                                            <button type="submit" class="new-button" title="{{__('text.Add Favorite')}}" style="outline: none;">
+
+                                                                @if($temp->savings->contains('ip', $ip_address))
+
+                                                                    <i class="fa fa-heart heart" style="vertical-align: middle;font-size: 16px;display: flex;color: black;" aria-hidden="true">
+                                                                        <span style="display: block;margin-left: 7px;">{{$temp->saved}}</span>
+                                                                    </i>
+
+                                                                @else
+
+                                                                    <i class="far fa-heart heart" style="vertical-align: middle;font-size: 16px;display: flex;color: black;" aria-hidden="true">
+                                                                        <span style="display: block;margin-left: 7px;">{{$temp->saved}}</span>
+                                                                    </i>
+
+                                                                @endif
+
+                                                            </button>
+
+                                                        </form>
+
+                                                        <div style="width: 100%;display: flex;justify-content: flex-end;">
+
+                                                            <a target="_blank" href="mailto:?subject=Hi&amp;body=" class="new-icons" title="{{__('text.Share')}}" style="border-radius: 100px;position: relative;width: 35px !important;height: 35px !important;line-height: 0 !important;display: flex;flex-direction: column;justify-content: flex-start;text-decoration: none;">
+                                                                <i class="fas fa-share-alt" style="vertical-align: middle;margin-right: 2px;font-size: 15px;"></i>
+                                                            </a>
+
+                                                            <i class="far fa-eye" style="vertical-align: middle;font-size: 16px;display: flex;color: #37bc9b;" aria-hidden="true">
+                                                                <span style="display: block;margin-left: 7px;">{{$temp->views}}</span>
+                                                            </i>
+
+                                                        </div>
+
+                                                    </div>
+
+                                                    {!! $temp->description !!}
+
                                                 </div>
-
-                                                {!! $temp->description !!}
-
                                             </div>
-                                        </div>
-                                    </article>
-                                </div>
+                                        </article>
+                                    </div>
 
-                            @endforeach
+                                @endforeach
+                                
+                            @endif
 
                         </div>
 
