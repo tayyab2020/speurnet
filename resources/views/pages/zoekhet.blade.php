@@ -11,86 +11,15 @@
     <div style="margin: 0;border-bottom: 1px solid #e0e0e0;padding-bottom: 20px;" class="row">
 
         <div class="wrap centre col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            
-            <div class="radio">
-                <input id="check" type="radio" name="check" value="check">
-                <label for="check">Lampen</label>
-            </div>
 
-            <div class="radio">
-                <input id="check1" type="radio" name="check" value="check">
-                <label for="check1">Auto's</label>
-            </div>
+            @foreach($zoekhet_categories as $x => $key)
 
-            <div class="radio">
-                <input id="check2" type="radio" name="check" value="check">
-                <label for="check2">Tuinmeubels en meer</label>
-            </div>
+                <div class="radio">
+                    <input id="check{{$x}}" value="{{$key->id}}" type="radio" name="check">
+                    <label for="check{{$x}}">{{$key->heading}}</label>
+                </div>
 
-            <div class="radio">
-                <input id="check3" type="radio" name="check" value="check">
-                <label for="check3">Meubels</label>
-            </div>
-
-            <div class="radio">
-                <input id="check4" type="radio" name="check" value="check">
-                <label for="check4">Keukenspullen</label>
-            </div>
-
-            <div class="radio">
-                <input id="check5" type="radio" name="check" value="check">
-                <label for="check5">Babyspullen</label>
-            </div>
-
-            <div class="radio">
-                <input id="check6" type="radio" name="check" value="check">
-                <label for="check6">Vloeren</label>
-            </div>
-
-            <div class="radio">
-                <input id="check7" type="radio" name="check" value="check">
-                <label for="check7">Verf en behang</label>
-            </div>
-
-            <div class="radio">
-                <input id="check8" type="radio" name="check" value="check">
-                <label for="check8">Gordijnen & Shutters</label>
-            </div>
-
-            <div class="radio">
-                <input id="check9" type="radio" name="check" value="check">
-                <label for="check9">Elekronica (o.a tv/mobiel)</label>
-            </div>
-
-            <div class="radio">
-                <input id="check10" type="radio" name="check" value="check">
-                <label for="check10">Badkamers</label>
-            </div>
-
-            <div class="radio">
-                <input id="check11" type="radio" name="check" value="check">
-                <label for="check11">Sportkelding</label>
-            </div>
-
-            <div class="radio">
-                <input id="check12" type="radio" name="check" value="check">
-                <label for="check12">Keukens</label>
-            </div>
-
-            <div class="radio">
-                <input id="check13" type="radio" name="check" value="check">
-                <label for="check13">Kostuumzaken</label>
-            </div>
-
-            <div class="radio">
-                <input id="check14" type="radio" name="check" value="check">
-                <label for="check14">Fietsen</label>
-            </div>
-
-            <div class="radio">
-                <input id="check15" type="radio" name="check" value="check">
-                <label for="check15">Bedden en matrassen</label>
-            </div>
+            @endforeach
 
         </div>
 
@@ -117,6 +46,8 @@
             @endforeach
         @endif
 
+            <input type="hidden" id="ip_address" value="{{$ip_address}}" />
+
             <div class="container" style="width: 100%;">
 
             <!-- begin:latest -->
@@ -128,8 +59,8 @@
                         <ul style="display:flex;align-items: flex-end;position: relative;padding-bottom: 10px;" class="nav nav-tabs res-ul">
 
                             <span class="res-span" style="display: inline-block;width: 60%;margin-right: 30px;">
-                                <h4 class="res-head">Benieuwd naar de nieuwste woontrends?</h4>
-                                <p style="margin: 0;">Waarom alle interieurwinkels en woontrends websites afgaan als Zoekjehuisje.nl de allerlaatste woontrends voor jou heeft verzameld, zodat je alle trends in wonen en tuin online kunt bekijken. Heb je binnenkort een nieuwe woning of ben je gewoon toe om je interieur of tuin een nieuwe look te geven volgens de nieuwe trends van 2021? Bekijk hier alle interieurtips en trends voor jouw woonkamer, slaapkamer, keuken of tuin. Laat je inspireren en bepaal zelf welke woontrend of stijl in jouw interieur past. Jouw woning is de laatste woontrend waard.</p>
+                                <h4 class="res-head">{{$zoekhet_description->title}}</h4>
+                                <p style="margin: 0;">{!! $zoekhet_description->description !!}</p>
                             </span>
 
                             <div class="bse">
@@ -149,453 +80,82 @@
 
                         <div class="row company-boxes">
 
-                            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 res-float">
-                            <article style="margin-bottom: 45px;">
-                                <div class="property-container" style="margin: 0;min-height: 480px;border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;">
+                            @foreach($content as $temp)
 
-                                    <a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;" href="">
+                                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 res-float">
+                                    <article style="margin-bottom: 45px;">
+                                        <div class="property-container" style="margin: 0;min-height: 480px;border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;">
 
-                                        <div class="property-image">
+                                            <a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;" href="">
 
-                                            <img src="{{ URL::asset('upload/noImage.png') }}" style="width: 100%;height: 250px;border-top-left-radius: 3px;border-top-right-radius: 3px;">
+                                                <div class="property-image">
 
-                                        </div>
+                                                    @if($temp->image)
 
-                                    </a>
+                                                        <img src="{{ URL::asset('upload/'.$temp->image) }}" style="width: 100%;height: 250px;border-top-left-radius: 3px;border-top-right-radius: 3px;">
 
-                                    <div class="property-content description-content">
+                                                    @else
 
-                                        <div style="display: flex;justify-content: space-between;">
+                                                        <img src="{{ URL::asset('upload/noImage.png') }}" style="width: 100%;height: 250px;border-top-left-radius: 3px;border-top-right-radius: 3px;">
 
-                                            <form action="" method="POST" style="display: inline-block;">
+                                                    @endif
 
-                                                <input type="hidden" name="_token" value="{{csrf_token()}}"/>
+                                                </div>
 
-                                                <input type="hidden" name="blog_id" value="">
+                                            </a>
 
-                                                <button type="submit" class="new-button" title="{{__('text.Add Favorite')}}" style="outline: none;">
+                                            <div class="property-content description-content">
 
-                                                    <i class="far fa-heart heart" style="vertical-align: middle;font-size: 16px;display: flex;color: black;" aria-hidden="true">
-                                                        <span style="display: block;margin-left: 7px;">13</span>
-                                                    </i>
+                                                <div style="display: flex;justify-content: space-between;">
 
+                                                    <form action="{{ url('save-zoekhet') }}" method="POST" style="display: inline-block;">
 
-                                                </button>
+                                                        <input type="hidden" name="_token" value="{{csrf_token()}}"/>
 
-                                            </form>
+                                                        <input type="hidden" name="content_id" value="{{$temp->id}}">
 
-                                            <div style="width: 100%;display: flex;justify-content: flex-end;">
+                                                        <button type="submit" class="new-button" title="{{__('text.Add Favorite')}}" style="outline: none;">
 
-                                                <a target="_blank" href="mailto:?subject={{__('text.I wanted you to see this Property AD I just Found on zoekjehuisje.nl')}}&amp;body=" class="new-icons" title="{{__('text.Share')}}" style="border-radius: 100px;position: relative;width: 35px !important;height: 35px !important;line-height: 0 !important;display: flex;flex-direction: column;justify-content: flex-start;text-decoration: none;">
-                                                    <i class="fas fa-share-alt" style="vertical-align: middle;margin-right: 2px;font-size: 15px;"></i>
-                                                </a>
+                                                            @if($temp->savings->contains('ip', $ip_address))
 
-                                                <i class="far fa-eye" style="vertical-align: middle;font-size: 16px;display: flex;color: #37bc9b;" aria-hidden="true">
-                                                    <span style="display: block;margin-left: 7px;">20</span>
-                                                </i>
+                                                                <i class="fa fa-heart heart" style="vertical-align: middle;font-size: 16px;display: flex;color: black;" aria-hidden="true">
+                                                                    <span style="display: block;margin-left: 7px;">{{$temp->saved}}</span>
+                                                                </i>
 
-                                            </div>
+                                                            @else
 
-                                        </div>
+                                                                <i class="far fa-heart heart" style="vertical-align: middle;font-size: 16px;display: flex;color: black;" aria-hidden="true">
+                                                                    <span style="display: block;margin-left: 7px;">{{$temp->saved}}</span>
+                                                                </i>
 
-                                        <p style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 5;-webkit-box-orient: vertical;overflow: hidden;line-height: 2;font-size: 15px;margin-top: 15px;font-weight: 600;">Je ziet het al gelijk: in deze heerlijke woonkamer staan deze prachtige Jan des Bouvrie banken #Modern #Jan des Bouvrie # Woonkamerinspiratie</p>
+                                                            @endif
 
-                                    </div>
-                                </div>
-                            </article>
-                        </div>
+                                                        </button>
 
-                            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 res-float">
-                            <article style="margin-bottom: 45px;">
-                                <div class="property-container" style="margin: 0;min-height: 480px;border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;">
+                                                    </form>
 
-                                    <a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;" href="">
+                                                    <div style="width: 100%;display: flex;justify-content: flex-end;">
 
-                                        <div class="property-image">
+                                                        <a target="_blank" href="mailto:?subject=Hi&amp;body=" class="new-icons" title="{{__('text.Share')}}" style="border-radius: 100px;position: relative;width: 35px !important;height: 35px !important;line-height: 0 !important;display: flex;flex-direction: column;justify-content: flex-start;text-decoration: none;">
+                                                            <i class="fas fa-share-alt" style="vertical-align: middle;margin-right: 2px;font-size: 15px;"></i>
+                                                        </a>
 
-                                            <img src="{{ URL::asset('upload/noImage.png') }}" style="width: 100%;height: 250px;border-top-left-radius: 3px;border-top-right-radius: 3px;">
+                                                        <i class="far fa-eye" style="vertical-align: middle;font-size: 16px;display: flex;color: #37bc9b;" aria-hidden="true">
+                                                            <span style="display: block;margin-left: 7px;">{{$temp->views}}</span>
+                                                        </i>
 
-                                        </div>
+                                                    </div>
 
-                                    </a>
+                                                </div>
 
-                                    <div class="property-content description-content">
-
-                                        <div style="display: flex;justify-content: space-between;">
-
-                                            <form action="" method="POST" style="display: inline-block;">
-
-                                                <input type="hidden" name="_token" value="{{csrf_token()}}"/>
-
-                                                <input type="hidden" name="blog_id" value="">
-
-                                                <button type="submit" class="new-button" title="{{__('text.Add Favorite')}}" style="outline: none;">
-
-                                                    <i class="far fa-heart heart" style="vertical-align: middle;font-size: 16px;display: flex;color: black;" aria-hidden="true">
-                                                        <span style="display: block;margin-left: 7px;">13</span>
-                                                    </i>
-
-
-                                                </button>
-
-                                            </form>
-
-                                            <div style="width: 100%;display: flex;justify-content: flex-end;">
-
-                                                <a target="_blank" href="mailto:?subject={{__('text.I wanted you to see this Property AD I just Found on zoekjehuisje.nl')}}&amp;body=" class="new-icons" title="{{__('text.Share')}}" style="border-radius: 100px;position: relative;width: 35px !important;height: 35px !important;line-height: 0 !important;display: flex;flex-direction: column;justify-content: flex-start;text-decoration: none;">
-                                                    <i class="fas fa-share-alt" style="vertical-align: middle;margin-right: 2px;font-size: 15px;"></i>
-                                                </a>
-
-                                                <i class="far fa-eye" style="vertical-align: middle;font-size: 16px;display: flex;color: #37bc9b;" aria-hidden="true">
-                                                    <span style="display: block;margin-left: 7px;">20</span>
-                                                </i>
+                                                {!! $temp->description !!}
 
                                             </div>
-
                                         </div>
-
-                                        <p style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 5;-webkit-box-orient: vertical;overflow: hidden;line-height: 2;font-size: 15px;margin-top: 15px;font-weight: 600;">Je ziet het al gelijk: in deze heerlijke woonkamer staan deze prachtige Jan des Bouvrie banken #Modern #Jan des Bouvrie # Woonkamerinspiratie</p>
-
-                                    </div>
+                                    </article>
                                 </div>
-                            </article>
-                        </div>
 
-                            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 res-float">
-                            <article style="margin-bottom: 45px;">
-                                <div class="property-container" style="margin: 0;min-height: 480px;border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;">
-
-                                    <a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;" href="">
-
-                                        <div class="property-image">
-
-                                            <img src="{{ URL::asset('upload/noImage.png') }}" style="width: 100%;height: 250px;border-top-left-radius: 3px;border-top-right-radius: 3px;">
-
-                                        </div>
-
-                                    </a>
-
-                                    <div class="property-content description-content">
-
-                                        <div style="display: flex;justify-content: space-between;">
-
-                                            <form action="" method="POST" style="display: inline-block;">
-
-                                                <input type="hidden" name="_token" value="{{csrf_token()}}"/>
-
-                                                <input type="hidden" name="blog_id" value="">
-
-                                                <button type="submit" class="new-button" title="{{__('text.Add Favorite')}}" style="outline: none;">
-
-                                                    <i class="far fa-heart heart" style="vertical-align: middle;font-size: 16px;display: flex;color: black;" aria-hidden="true">
-                                                        <span style="display: block;margin-left: 7px;">13</span>
-                                                    </i>
-
-
-                                                </button>
-
-                                            </form>
-
-                                            <div style="width: 100%;display: flex;justify-content: flex-end;">
-
-                                                <a target="_blank" href="mailto:?subject={{__('text.I wanted you to see this Property AD I just Found on zoekjehuisje.nl')}}&amp;body=" class="new-icons" title="{{__('text.Share')}}" style="border-radius: 100px;position: relative;width: 35px !important;height: 35px !important;line-height: 0 !important;display: flex;flex-direction: column;justify-content: flex-start;text-decoration: none;">
-                                                    <i class="fas fa-share-alt" style="vertical-align: middle;margin-right: 2px;font-size: 15px;"></i>
-                                                </a>
-
-                                                <i class="far fa-eye" style="vertical-align: middle;font-size: 16px;display: flex;color: #37bc9b;" aria-hidden="true">
-                                                    <span style="display: block;margin-left: 7px;">20</span>
-                                                </i>
-
-                                            </div>
-
-                                        </div>
-
-                                        <p style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 5;-webkit-box-orient: vertical;overflow: hidden;line-height: 2;font-size: 15px;margin-top: 15px;font-weight: 600;">Je ziet het al gelijk: in deze heerlijke woonkamer staan deze prachtige Jan des Bouvrie banken #Modern #Jan des Bouvrie # Woonkamerinspiratie</p>
-
-                                    </div>
-                                </div>
-                            </article>
-                        </div>
-
-                            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 res-float">
-                            <article style="margin-bottom: 45px;">
-                                <div class="property-container" style="margin: 0;min-height: 480px;border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;">
-
-                                    <a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;" href="">
-
-                                        <div class="property-image">
-
-                                            <img src="{{ URL::asset('upload/noImage.png') }}" style="width: 100%;height: 250px;border-top-left-radius: 3px;border-top-right-radius: 3px;">
-
-                                        </div>
-
-                                    </a>
-
-                                    <div class="property-content description-content">
-
-                                        <div style="display: flex;justify-content: space-between;">
-
-                                            <form action="" method="POST" style="display: inline-block;">
-
-                                                <input type="hidden" name="_token" value="{{csrf_token()}}"/>
-
-                                                <input type="hidden" name="blog_id" value="">
-
-                                                <button type="submit" class="new-button" title="{{__('text.Add Favorite')}}" style="outline: none;">
-
-                                                    <i class="far fa-heart heart" style="vertical-align: middle;font-size: 16px;display: flex;color: black;" aria-hidden="true">
-                                                        <span style="display: block;margin-left: 7px;">13</span>
-                                                    </i>
-
-
-                                                </button>
-
-                                            </form>
-
-                                            <div style="width: 100%;display: flex;justify-content: flex-end;">
-
-                                                <a target="_blank" href="mailto:?subject={{__('text.I wanted you to see this Property AD I just Found on zoekjehuisje.nl')}}&amp;body=" class="new-icons" title="{{__('text.Share')}}" style="border-radius: 100px;position: relative;width: 35px !important;height: 35px !important;line-height: 0 !important;display: flex;flex-direction: column;justify-content: flex-start;text-decoration: none;">
-                                                    <i class="fas fa-share-alt" style="vertical-align: middle;margin-right: 2px;font-size: 15px;"></i>
-                                                </a>
-
-                                                <i class="far fa-eye" style="vertical-align: middle;font-size: 16px;display: flex;color: #37bc9b;" aria-hidden="true">
-                                                    <span style="display: block;margin-left: 7px;">20</span>
-                                                </i>
-
-                                            </div>
-
-                                        </div>
-
-                                        <p style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 5;-webkit-box-orient: vertical;overflow: hidden;line-height: 2;font-size: 15px;margin-top: 15px;font-weight: 600;">Je ziet het al gelijk: in deze heerlijke woonkamer staan deze prachtige Jan des Bouvrie banken #Modern #Jan des Bouvrie # Woonkamerinspiratie</p>
-
-                                    </div>
-                                </div>
-                            </article>
-                        </div>
-
-                            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 res-float">
-                            <article style="margin-bottom: 45px;">
-                                <div class="property-container" style="margin: 0;min-height: 480px;border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;">
-
-                                    <a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;" href="">
-
-                                        <div class="property-image">
-
-                                            <img src="{{ URL::asset('upload/noImage.png') }}" style="width: 100%;height: 250px;border-top-left-radius: 3px;border-top-right-radius: 3px;">
-
-                                        </div>
-
-                                    </a>
-
-                                    <div class="property-content description-content">
-
-                                        <div style="display: flex;justify-content: space-between;">
-
-                                            <form action="" method="POST" style="display: inline-block;">
-
-                                                <input type="hidden" name="_token" value="{{csrf_token()}}"/>
-
-                                                <input type="hidden" name="blog_id" value="">
-
-                                                <button type="submit" class="new-button" title="{{__('text.Add Favorite')}}" style="outline: none;">
-
-                                                    <i class="far fa-heart heart" style="vertical-align: middle;font-size: 16px;display: flex;color: black;" aria-hidden="true">
-                                                        <span style="display: block;margin-left: 7px;">13</span>
-                                                    </i>
-
-
-                                                </button>
-
-                                            </form>
-
-                                            <div style="width: 100%;display: flex;justify-content: flex-end;">
-
-                                                <a target="_blank" href="mailto:?subject={{__('text.I wanted you to see this Property AD I just Found on zoekjehuisje.nl')}}&amp;body=" class="new-icons" title="{{__('text.Share')}}" style="border-radius: 100px;position: relative;width: 35px !important;height: 35px !important;line-height: 0 !important;display: flex;flex-direction: column;justify-content: flex-start;text-decoration: none;">
-                                                    <i class="fas fa-share-alt" style="vertical-align: middle;margin-right: 2px;font-size: 15px;"></i>
-                                                </a>
-
-                                                <i class="far fa-eye" style="vertical-align: middle;font-size: 16px;display: flex;color: #37bc9b;" aria-hidden="true">
-                                                    <span style="display: block;margin-left: 7px;">20</span>
-                                                </i>
-
-                                            </div>
-
-                                        </div>
-
-                                        <p style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 5;-webkit-box-orient: vertical;overflow: hidden;line-height: 2;font-size: 15px;margin-top: 15px;font-weight: 600;">Je ziet het al gelijk: in deze heerlijke woonkamer staan deze prachtige Jan des Bouvrie banken #Modern #Jan des Bouvrie # Woonkamerinspiratie</p>
-
-                                    </div>
-                                </div>
-                            </article>
-                        </div>
-
-                            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 res-float">
-                            <article style="margin-bottom: 45px;">
-                                <div class="property-container" style="margin: 0;min-height: 480px;border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;">
-
-                                    <a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;" href="">
-
-                                        <div class="property-image">
-
-                                            <img src="{{ URL::asset('upload/noImage.png') }}" style="width: 100%;height: 250px;border-top-left-radius: 3px;border-top-right-radius: 3px;">
-
-                                        </div>
-
-                                    </a>
-
-                                    <div class="property-content description-content">
-
-                                        <div style="display: flex;justify-content: space-between;">
-
-                                            <form action="" method="POST" style="display: inline-block;">
-
-                                                <input type="hidden" name="_token" value="{{csrf_token()}}"/>
-
-                                                <input type="hidden" name="blog_id" value="">
-
-                                                <button type="submit" class="new-button" title="{{__('text.Add Favorite')}}" style="outline: none;">
-
-                                                    <i class="far fa-heart heart" style="vertical-align: middle;font-size: 16px;display: flex;color: black;" aria-hidden="true">
-                                                        <span style="display: block;margin-left: 7px;">13</span>
-                                                    </i>
-
-
-                                                </button>
-
-                                            </form>
-
-                                            <div style="width: 100%;display: flex;justify-content: flex-end;">
-
-                                                <a target="_blank" href="mailto:?subject={{__('text.I wanted you to see this Property AD I just Found on zoekjehuisje.nl')}}&amp;body=" class="new-icons" title="{{__('text.Share')}}" style="border-radius: 100px;position: relative;width: 35px !important;height: 35px !important;line-height: 0 !important;display: flex;flex-direction: column;justify-content: flex-start;text-decoration: none;">
-                                                    <i class="fas fa-share-alt" style="vertical-align: middle;margin-right: 2px;font-size: 15px;"></i>
-                                                </a>
-
-                                                <i class="far fa-eye" style="vertical-align: middle;font-size: 16px;display: flex;color: #37bc9b;" aria-hidden="true">
-                                                    <span style="display: block;margin-left: 7px;">20</span>
-                                                </i>
-
-                                            </div>
-
-                                        </div>
-
-                                        <p style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 5;-webkit-box-orient: vertical;overflow: hidden;line-height: 2;font-size: 15px;margin-top: 15px;font-weight: 600;">Je ziet het al gelijk: in deze heerlijke woonkamer staan deze prachtige Jan des Bouvrie banken #Modern #Jan des Bouvrie # Woonkamerinspiratie</p>
-
-                                    </div>
-                                </div>
-                            </article>
-                        </div>
-
-                            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 res-float">
-                            <article style="margin-bottom: 45px;">
-                                <div class="property-container" style="margin: 0;min-height: 480px;border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;">
-
-                                    <a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;" href="">
-
-                                        <div class="property-image">
-
-                                            <img src="{{ URL::asset('upload/noImage.png') }}" style="width: 100%;height: 250px;border-top-left-radius: 3px;border-top-right-radius: 3px;">
-
-                                        </div>
-
-                                    </a>
-
-                                    <div class="property-content description-content">
-
-                                        <div style="display: flex;justify-content: space-between;">
-
-                                            <form action="" method="POST" style="display: inline-block;">
-
-                                                <input type="hidden" name="_token" value="{{csrf_token()}}"/>
-
-                                                <input type="hidden" name="blog_id" value="">
-
-                                                <button type="submit" class="new-button" title="{{__('text.Add Favorite')}}" style="outline: none;">
-
-                                                    <i class="far fa-heart heart" style="vertical-align: middle;font-size: 16px;display: flex;color: black;" aria-hidden="true">
-                                                        <span style="display: block;margin-left: 7px;">13</span>
-                                                    </i>
-
-
-                                                </button>
-
-                                            </form>
-
-                                            <div style="width: 100%;display: flex;justify-content: flex-end;">
-
-                                                <a target="_blank" href="mailto:?subject={{__('text.I wanted you to see this Property AD I just Found on zoekjehuisje.nl')}}&amp;body=" class="new-icons" title="{{__('text.Share')}}" style="border-radius: 100px;position: relative;width: 35px !important;height: 35px !important;line-height: 0 !important;display: flex;flex-direction: column;justify-content: flex-start;text-decoration: none;">
-                                                    <i class="fas fa-share-alt" style="vertical-align: middle;margin-right: 2px;font-size: 15px;"></i>
-                                                </a>
-
-                                                <i class="far fa-eye" style="vertical-align: middle;font-size: 16px;display: flex;color: #37bc9b;" aria-hidden="true">
-                                                    <span style="display: block;margin-left: 7px;">20</span>
-                                                </i>
-
-                                            </div>
-
-                                        </div>
-
-                                        <p style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 5;-webkit-box-orient: vertical;overflow: hidden;line-height: 2;font-size: 15px;margin-top: 15px;font-weight: 600;">Je ziet het al gelijk: in deze heerlijke woonkamer staan deze prachtige Jan des Bouvrie banken #Modern #Jan des Bouvrie # Woonkamerinspiratie</p>
-
-                                    </div>
-                                </div>
-                            </article>
-                        </div>
-
-                            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 res-float">
-                            <article style="margin-bottom: 45px;">
-                                <div class="property-container" style="margin: 0;min-height: 480px;border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;">
-
-                                    <a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;" href="">
-
-                                        <div class="property-image">
-
-                                            <img src="{{ URL::asset('upload/noImage.png') }}" style="width: 100%;height: 250px;border-top-left-radius: 3px;border-top-right-radius: 3px;">
-
-                                        </div>
-
-                                    </a>
-
-                                    <div class="property-content description-content">
-
-                                        <div style="display: flex;justify-content: space-between;">
-
-                                            <form action="" method="POST" style="display: inline-block;">
-
-                                                <input type="hidden" name="_token" value="{{csrf_token()}}"/>
-
-                                                <input type="hidden" name="blog_id" value="">
-
-                                                <button type="submit" class="new-button" title="{{__('text.Add Favorite')}}" style="outline: none;">
-
-                                                    <i class="far fa-heart heart" style="vertical-align: middle;font-size: 16px;display: flex;color: black;" aria-hidden="true">
-                                                        <span style="display: block;margin-left: 7px;">13</span>
-                                                    </i>
-
-
-                                                </button>
-
-                                            </form>
-
-                                            <div style="width: 100%;display: flex;justify-content: flex-end;">
-
-                                                <a target="_blank" href="mailto:?subject={{__('text.I wanted you to see this Property AD I just Found on zoekjehuisje.nl')}}&amp;body=" class="new-icons" title="{{__('text.Share')}}" style="border-radius: 100px;position: relative;width: 35px !important;height: 35px !important;line-height: 0 !important;display: flex;flex-direction: column;justify-content: flex-start;text-decoration: none;">
-                                                    <i class="fas fa-share-alt" style="vertical-align: middle;margin-right: 2px;font-size: 15px;"></i>
-                                                </a>
-
-                                                <i class="far fa-eye" style="vertical-align: middle;font-size: 16px;display: flex;color: #37bc9b;" aria-hidden="true">
-                                                    <span style="display: block;margin-left: 7px;">20</span>
-                                                </i>
-
-                                            </div>
-
-                                        </div>
-
-                                        <p style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 5;-webkit-box-orient: vertical;overflow: hidden;line-height: 2;font-size: 15px;margin-top: 15px;font-weight: 600;">Je ziet het al gelijk: in deze heerlijke woonkamer staan deze prachtige Jan des Bouvrie banken #Modern #Jan des Bouvrie # Woonkamerinspiratie</p>
-
-                                    </div>
-                                </div>
-                            </article>
-                        </div>
+                            @endforeach
 
                         </div>
 
@@ -1384,293 +944,109 @@
 
         $("input:radio").change( function(){
 
-            var val = $(this).val();
+            var id = $(this).val();
+            var ip = $('#ip_address').val();
 
-            $('.company-boxes').children().remove();
+            $.ajax({
 
-            $("#overlay").fadeIn(300);
+                type: 'POST',
 
-            setTimeout(function(){
+                url: "<?php echo url('filter-zoekhet') ?>",
 
-                $("#overlay").fadeOut(300);
+                headers: {
+                    'X-CSRF-TOKEN': "<?php echo csrf_token() ?>",
+                },
 
-                $('.company-boxes').append('<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 res-float">\n' +
-                    '                            <article style="margin-bottom: 45px;">\n' +
-                    '                                <div class="property-container" style="margin: 0;min-height: 480px;border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;">\n' +
-                    '\n' +
-                    '                                    <a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;" href="">\n' +
-                    '\n' +
-                    '                                        <div class="property-image">\n' +
-                    '\n' +
-                    '                                            <img src="{{ URL::asset("upload/noImage.png") }}" style="width: 100%;height: 250px;border-top-left-radius: 3px;border-top-right-radius: 3px;">\n' +
-                    '\n' +
-                    '                                        </div>\n' +
-                    '\n' +
-                    '                                    </a>\n' +
-                    '\n' +
-                    '                                    <div class="property-content description-content">\n' +
-                    '\n' +
-                    '                                        <div style="display: flex;justify-content: space-between;">\n' +
-                    '\n' +
-                    '                                            <form action="" method="POST" style="display: inline-block;">\n' +
-                    '\n' +
-                    '                                                <input type="hidden" name="_token" value="{{csrf_token()}}"/>\n' +
-                    '\n' +
-                    '                                                <input type="hidden" name="blog_id" value="">\n' +
-                    '\n' +
-                    '                                                <button type="submit" class="new-button" title="{{__("text.Add Favorite")}}" style="outline: none;">\n' +
-                    '\n' +
-                    '                                                    <i class="far fa-heart heart" style="vertical-align: middle;font-size: 16px;display: flex;color: black;" aria-hidden="true">\n' +
-                    '                                                        <span style="display: block;margin-left: 7px;">13</span>\n' +
-                    '                                                    </i>\n' +
-                    '\n' +
-                    '\n' +
-                    '                                                </button>\n' +
-                    '\n' +
-                    '                                            </form>\n' +
-                    '\n' +
-                    '                                            <div style="width: 100%;display: flex;justify-content: flex-end;">\n' +
-                    '\n' +
-                    '                                                <a target="_blank" href="mailto:?subject={{__("text.I wanted you to see this Property AD I just Found on zoekjehuisje.nl")}}&amp;body=" class="new-icons" title="{{__("text.Share")}}" style="border-radius: 100px;position: relative;width: 35px !important;height: 35px !important;line-height: 0 !important;display: flex;flex-direction: column;justify-content: flex-start;text-decoration: none;">\n' +
-                    '                                                    <i class="fas fa-share-alt" style="vertical-align: middle;margin-right: 2px;font-size: 15px;"></i>\n' +
-                    '                                                </a>\n' +
-                    '\n' +
-                    '                                                <i class="far fa-eye" style="vertical-align: middle;font-size: 16px;display: flex;color: #37bc9b;" aria-hidden="true">\n' +
-                    '                                                    <span style="display: block;margin-left: 7px;">20</span>\n' +
-                    '                                                </i>\n' +
-                    '\n' +
-                    '                                            </div>\n' +
-                    '\n' +
-                    '                                        </div>\n' +
-                    '\n' +
-                    '                                        <p style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 5;-webkit-box-orient: vertical;overflow: hidden;line-height: 2;font-size: 15px;margin-top: 15px;font-weight: 600;">Je ziet het al gelijk: in deze heerlijke woonkamer staan deze prachtige Jan des Bouvrie banken #Modern #Jan des Bouvrie # Woonkamerinspiratie</p>\n' +
-                    '\n' +
-                    '                                    </div>\n' +
-                    '                                </div>\n' +
-                    '                            </article>\n' +
-                    '                        </div>\n' +
-                    '\n' +
-                    '<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 res-float">\n' +
-                    '                            <article style="margin-bottom: 45px;">\n' +
-                    '                                <div class="property-container" style="margin: 0;min-height: 480px;border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;">\n' +
-                    '\n' +
-                    '                                    <a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;" href="">\n' +
-                    '\n' +
-                    '                                        <div class="property-image">\n' +
-                    '\n' +
-                    '                                            <img src="{{ URL::asset("upload/noImage.png") }}" style="width: 100%;height: 250px;border-top-left-radius: 3px;border-top-right-radius: 3px;">\n' +
-                    '\n' +
-                    '                                        </div>\n' +
-                    '\n' +
-                    '                                    </a>\n' +
-                    '\n' +
-                    '                                    <div class="property-content description-content">\n' +
-                    '\n' +
-                    '                                        <div style="display: flex;justify-content: space-between;">\n' +
-                    '\n' +
-                    '                                            <form action="" method="POST" style="display: inline-block;">\n' +
-                    '\n' +
-                    '                                                <input type="hidden" name="_token" value="{{csrf_token()}}"/>\n' +
-                    '\n' +
-                    '                                                <input type="hidden" name="blog_id" value="">\n' +
-                    '\n' +
-                    '                                                <button type="submit" class="new-button" title="{{__("text.Add Favorite")}}" style="outline: none;">\n' +
-                    '\n' +
-                    '                                                    <i class="far fa-heart heart" style="vertical-align: middle;font-size: 16px;display: flex;color: black;" aria-hidden="true">\n' +
-                    '                                                        <span style="display: block;margin-left: 7px;">13</span>\n' +
-                    '                                                    </i>\n' +
-                    '\n' +
-                    '\n' +
-                    '                                                </button>\n' +
-                    '\n' +
-                    '                                            </form>\n' +
-                    '\n' +
-                    '                                            <div style="width: 100%;display: flex;justify-content: flex-end;">\n' +
-                    '\n' +
-                    '                                                <a target="_blank" href="mailto:?subject={{__("text.I wanted you to see this Property AD I just Found on zoekjehuisje.nl")}}&amp;body=" class="new-icons" title="{{__("text.Share")}}" style="border-radius: 100px;position: relative;width: 35px !important;height: 35px !important;line-height: 0 !important;display: flex;flex-direction: column;justify-content: flex-start;text-decoration: none;">\n' +
-                    '                                                    <i class="fas fa-share-alt" style="vertical-align: middle;margin-right: 2px;font-size: 15px;"></i>\n' +
-                    '                                                </a>\n' +
-                    '\n' +
-                    '                                                <i class="far fa-eye" style="vertical-align: middle;font-size: 16px;display: flex;color: #37bc9b;" aria-hidden="true">\n' +
-                    '                                                    <span style="display: block;margin-left: 7px;">20</span>\n' +
-                    '                                                </i>\n' +
-                    '\n' +
-                    '                                            </div>\n' +
-                    '\n' +
-                    '                                        </div>\n' +
-                    '\n' +
-                    '                                        <p style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 5;-webkit-box-orient: vertical;overflow: hidden;line-height: 2;font-size: 15px;margin-top: 15px;font-weight: 600;">Je ziet het al gelijk: in deze heerlijke woonkamer staan deze prachtige Jan des Bouvrie banken #Modern #Jan des Bouvrie # Woonkamerinspiratie</p>\n' +
-                    '\n' +
-                    '                                    </div>\n' +
-                    '                                </div>\n' +
-                    '                            </article>\n' +
-                    '                        </div>\n' +
-                    '<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 res-float">\n' +
-                    '                            <article style="margin-bottom: 45px;">\n' +
-                    '                                <div class="property-container" style="margin: 0;min-height: 480px;border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;">\n' +
-                    '\n' +
-                    '                                    <a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;" href="">\n' +
-                    '\n' +
-                    '                                        <div class="property-image">\n' +
-                    '\n' +
-                    '                                            <img src="{{ URL::asset("upload/noImage.png") }}" style="width: 100%;height: 250px;border-top-left-radius: 3px;border-top-right-radius: 3px;">\n' +
-                    '\n' +
-                    '                                        </div>\n' +
-                    '\n' +
-                    '                                    </a>\n' +
-                    '\n' +
-                    '                                    <div class="property-content description-content">\n' +
-                    '\n' +
-                    '                                        <div style="display: flex;justify-content: space-between;">\n' +
-                    '\n' +
-                    '                                            <form action="" method="POST" style="display: inline-block;">\n' +
-                    '\n' +
-                    '                                                <input type="hidden" name="_token" value="{{csrf_token()}}"/>\n' +
-                    '\n' +
-                    '                                                <input type="hidden" name="blog_id" value="">\n' +
-                    '\n' +
-                    '                                                <button type="submit" class="new-button" title="{{__("text.Add Favorite")}}" style="outline: none;">\n' +
-                    '\n' +
-                    '                                                    <i class="far fa-heart heart" style="vertical-align: middle;font-size: 16px;display: flex;color: black;" aria-hidden="true">\n' +
-                    '                                                        <span style="display: block;margin-left: 7px;">13</span>\n' +
-                    '                                                    </i>\n' +
-                    '\n' +
-                    '\n' +
-                    '                                                </button>\n' +
-                    '\n' +
-                    '                                            </form>\n' +
-                    '\n' +
-                    '                                            <div style="width: 100%;display: flex;justify-content: flex-end;">\n' +
-                    '\n' +
-                    '                                                <a target="_blank" href="mailto:?subject={{__("text.I wanted you to see this Property AD I just Found on zoekjehuisje.nl")}}&amp;body=" class="new-icons" title="{{__("text.Share")}}" style="border-radius: 100px;position: relative;width: 35px !important;height: 35px !important;line-height: 0 !important;display: flex;flex-direction: column;justify-content: flex-start;text-decoration: none;">\n' +
-                    '                                                    <i class="fas fa-share-alt" style="vertical-align: middle;margin-right: 2px;font-size: 15px;"></i>\n' +
-                    '                                                </a>\n' +
-                    '\n' +
-                    '                                                <i class="far fa-eye" style="vertical-align: middle;font-size: 16px;display: flex;color: #37bc9b;" aria-hidden="true">\n' +
-                    '                                                    <span style="display: block;margin-left: 7px;">20</span>\n' +
-                    '                                                </i>\n' +
-                    '\n' +
-                    '                                            </div>\n' +
-                    '\n' +
-                    '                                        </div>\n' +
-                    '\n' +
-                    '                                        <p style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 5;-webkit-box-orient: vertical;overflow: hidden;line-height: 2;font-size: 15px;margin-top: 15px;font-weight: 600;">Je ziet het al gelijk: in deze heerlijke woonkamer staan deze prachtige Jan des Bouvrie banken #Modern #Jan des Bouvrie # Woonkamerinspiratie</p>\n' +
-                    '\n' +
-                    '                                    </div>\n' +
-                    '                                </div>\n' +
-                    '                            </article>\n' +
-                    '                        </div>\n' +
-                    '<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 res-float">\n' +
-                    '                            <article style="margin-bottom: 45px;">\n' +
-                    '                                <div class="property-container" style="margin: 0;min-height: 480px;border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;">\n' +
-                    '\n' +
-                    '                                    <a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;" href="">\n' +
-                    '\n' +
-                    '                                        <div class="property-image">\n' +
-                    '\n' +
-                    '                                            <img src="{{ URL::asset("upload/noImage.png") }}" style="width: 100%;height: 250px;border-top-left-radius: 3px;border-top-right-radius: 3px;">\n' +
-                    '\n' +
-                    '                                        </div>\n' +
-                    '\n' +
-                    '                                    </a>\n' +
-                    '\n' +
-                    '                                    <div class="property-content description-content">\n' +
-                    '\n' +
-                    '                                        <div style="display: flex;justify-content: space-between;">\n' +
-                    '\n' +
-                    '                                            <form action="" method="POST" style="display: inline-block;">\n' +
-                    '\n' +
-                    '                                                <input type="hidden" name="_token" value="{{csrf_token()}}"/>\n' +
-                    '\n' +
-                    '                                                <input type="hidden" name="blog_id" value="">\n' +
-                    '\n' +
-                    '                                                <button type="submit" class="new-button" title="{{__("text.Add Favorite")}}" style="outline: none;">\n' +
-                    '\n' +
-                    '                                                    <i class="far fa-heart heart" style="vertical-align: middle;font-size: 16px;display: flex;color: black;" aria-hidden="true">\n' +
-                    '                                                        <span style="display: block;margin-left: 7px;">13</span>\n' +
-                    '                                                    </i>\n' +
-                    '\n' +
-                    '\n' +
-                    '                                                </button>\n' +
-                    '\n' +
-                    '                                            </form>\n' +
-                    '\n' +
-                    '                                            <div style="width: 100%;display: flex;justify-content: flex-end;">\n' +
-                    '\n' +
-                    '                                                <a target="_blank" href="mailto:?subject={{__("text.I wanted you to see this Property AD I just Found on zoekjehuisje.nl")}}&amp;body=" class="new-icons" title="{{__("text.Share")}}" style="border-radius: 100px;position: relative;width: 35px !important;height: 35px !important;line-height: 0 !important;display: flex;flex-direction: column;justify-content: flex-start;text-decoration: none;">\n' +
-                    '                                                    <i class="fas fa-share-alt" style="vertical-align: middle;margin-right: 2px;font-size: 15px;"></i>\n' +
-                    '                                                </a>\n' +
-                    '\n' +
-                    '                                                <i class="far fa-eye" style="vertical-align: middle;font-size: 16px;display: flex;color: #37bc9b;" aria-hidden="true">\n' +
-                    '                                                    <span style="display: block;margin-left: 7px;">20</span>\n' +
-                    '                                                </i>\n' +
-                    '\n' +
-                    '                                            </div>\n' +
-                    '\n' +
-                    '                                        </div>\n' +
-                    '\n' +
-                    '                                        <p style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 5;-webkit-box-orient: vertical;overflow: hidden;line-height: 2;font-size: 15px;margin-top: 15px;font-weight: 600;">Je ziet het al gelijk: in deze heerlijke woonkamer staan deze prachtige Jan des Bouvrie banken #Modern #Jan des Bouvrie # Woonkamerinspiratie</p>\n' +
-                    '\n' +
-                    '                                    </div>\n' +
-                    '                                </div>\n' +
-                    '                            </article>\n' +
-                    '                        </div>\n' +
-                    '<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 res-float">\n' +
-                    '                            <article style="margin-bottom: 45px;">\n' +
-                    '                                <div class="property-container" style="margin: 0;min-height: 480px;border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;">\n' +
-                    '\n' +
-                    '                                    <a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;" href="">\n' +
-                    '\n' +
-                    '                                        <div class="property-image">\n' +
-                    '\n' +
-                    '                                            <img src="{{ URL::asset("upload/noImage.png") }}" style="width: 100%;height: 250px;border-top-left-radius: 3px;border-top-right-radius: 3px;">\n' +
-                    '\n' +
-                    '                                        </div>\n' +
-                    '\n' +
-                    '                                    </a>\n' +
-                    '\n' +
-                    '                                    <div class="property-content description-content">\n' +
-                    '\n' +
-                    '                                        <div style="display: flex;justify-content: space-between;">\n' +
-                    '\n' +
-                    '                                            <form action="" method="POST" style="display: inline-block;">\n' +
-                    '\n' +
-                    '                                                <input type="hidden" name="_token" value="{{csrf_token()}}"/>\n' +
-                    '\n' +
-                    '                                                <input type="hidden" name="blog_id" value="">\n' +
-                    '\n' +
-                    '                                                <button type="submit" class="new-button" title="{{__("text.Add Favorite")}}" style="outline: none;">\n' +
-                    '\n' +
-                    '                                                    <i class="far fa-heart heart" style="vertical-align: middle;font-size: 16px;display: flex;color: black;" aria-hidden="true">\n' +
-                    '                                                        <span style="display: block;margin-left: 7px;">13</span>\n' +
-                    '                                                    </i>\n' +
-                    '\n' +
-                    '\n' +
-                    '                                                </button>\n' +
-                    '\n' +
-                    '                                            </form>\n' +
-                    '\n' +
-                    '                                            <div style="width: 100%;display: flex;justify-content: flex-end;">\n' +
-                    '\n' +
-                    '                                                <a target="_blank" href="mailto:?subject={{__("text.I wanted you to see this Property AD I just Found on zoekjehuisje.nl")}}&amp;body=" class="new-icons" title="{{__("text.Share")}}" style="border-radius: 100px;position: relative;width: 35px !important;height: 35px !important;line-height: 0 !important;display: flex;flex-direction: column;justify-content: flex-start;text-decoration: none;">\n' +
-                    '                                                    <i class="fas fa-share-alt" style="vertical-align: middle;margin-right: 2px;font-size: 15px;"></i>\n' +
-                    '                                                </a>\n' +
-                    '\n' +
-                    '                                                <i class="far fa-eye" style="vertical-align: middle;font-size: 16px;display: flex;color: #37bc9b;" aria-hidden="true">\n' +
-                    '                                                    <span style="display: block;margin-left: 7px;">20</span>\n' +
-                    '                                                </i>\n' +
-                    '\n' +
-                    '                                            </div>\n' +
-                    '\n' +
-                    '                                        </div>\n' +
-                    '\n' +
-                    '                                        <p style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 5;-webkit-box-orient: vertical;overflow: hidden;line-height: 2;font-size: 15px;margin-top: 15px;font-weight: 600;">Je ziet het al gelijk: in deze heerlijke woonkamer staan deze prachtige Jan des Bouvrie banken #Modern #Jan des Bouvrie # Woonkamerinspiratie</p>\n' +
-                    '\n' +
-                    '                                    </div>\n' +
-                    '                                </div>\n' +
-                    '                            </article>\n' +
-                    '                        </div>\n');
-            },500);
+                data: {
+                    id: id,
+                },
+
+                success: function (data) {
+
+                    $('.company-boxes').children().remove();
+
+                    $("#overlay").fadeIn(300);
+
+                    setTimeout(function(){
+
+                        $("#overlay").fadeOut(300);
+
+                        $.each(data, function (key, value) {
+
+                            var flag = 0;
+
+                            $.each(value.savings, function (key1, value1)
+                            {
+                                if(value1.ip == ip)
+                                {
+                                    flag = 1;
+                                }
+
+                            });
+
+                            $('.company-boxes').append('<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 res-float">\n' +
+                                '                            <article style="margin-bottom: 45px;">\n' +
+                                '                                <div class="property-container" style="margin: 0;min-height: 480px;border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;">\n' +
+                                '\n' +
+                                '                                    <a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;" href="">\n' +
+                                '\n' +
+                                '                                        <div class="property-image">\n' +
+                                '\n' +
+                                '                                            <img src="'+ (value.image ? "upload/" + value.image : "upload/noImage.png") +'" style="width: 100%;height: 250px;border-top-left-radius: 3px;border-top-right-radius: 3px;">\n' +
+                                '\n' +
+                                '                                        </div>\n' +
+                                '\n' +
+                                '                                    </a>\n' +
+                                '\n' +
+                                '                                    <div class="property-content description-content">\n' +
+                                '\n' +
+                                '                                        <div style="display: flex;justify-content: space-between;">\n' +
+                                '\n' +
+                                '                                            <form action="{{ url('save-zoekhet') }}" method="POST" style="display: inline-block;">\n' +
+                                '\n' +
+                                '                                                <input type="hidden" name="_token" value="{{csrf_token()}}"/>\n' +
+                                '\n' +
+                                '                                                <input type="hidden" name="content_id" value="'+value.id+'">\n' +
+                                '\n' +
+                                '                                                <button type="submit" class="new-button" title="{{__("text.Add Favorite")}}" style="outline: none;">\n' +
+                                '\n' +
+                                (flag == 1 ? '<i class="fa fa-heart heart" style="vertical-align: middle;font-size: 16px;display: flex;color: black;" aria-hidden="true">\n' +
+                                '                                                                    <span style="display: block;margin-left: 7px;">'+value.saved+'</span>\n' +
+                                '                                                                </i>' : ' <i class="far fa-heart heart" style="vertical-align: middle;font-size: 16px;display: flex;color: black;" aria-hidden="true">\n' +
+                                '                                                        <span style="display: block;margin-left: 7px;">'+value.saved+'</span>\n' +
+                                '                                                    </i>\n') +
+                                '\n' +
+                                '\n' +
+                                '                                                </button>\n' +
+                                '\n' +
+                                '                                            </form>\n' +
+                                '\n' +
+                                '                                            <div style="width: 100%;display: flex;justify-content: flex-end;">\n' +
+                                '\n' +
+                                '                                                <a target="_blank" href="mailto:?subject=&amp;body=" class="new-icons" title="{{__("text.Share")}}" style="border-radius: 100px;position: relative;width: 35px !important;height: 35px !important;line-height: 0 !important;display: flex;flex-direction: column;justify-content: flex-start;text-decoration: none;">\n' +
+                                '                                                    <i class="fas fa-share-alt" style="vertical-align: middle;margin-right: 2px;font-size: 15px;"></i>\n' +
+                                '                                                </a>\n' +
+                                '\n' +
+                                '                                                <i class="far fa-eye" style="vertical-align: middle;font-size: 16px;display: flex;color: #37bc9b;" aria-hidden="true">\n' +
+                                '                                                    <span style="display: block;margin-left: 7px;">'+value.views+'</span>\n' +
+                                '                                                </i>\n' +
+                                '\n' +
+                                '                                            </div>\n' +
+                                '\n' +
+                                '                                        </div>\n' +
+                                '\n' +
+                                value.description +
+                                '\n' +
+                                '                                    </div>\n' +
+                                '                                </div>\n' +
+                                '                            </article>\n' +
+                                '                        </div>\n');
+
+                        });
+
+                    },500);
+                }
+            });
 
         });
 

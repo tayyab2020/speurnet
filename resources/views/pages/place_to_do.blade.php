@@ -180,7 +180,7 @@
 
                                                     <div class="property-image">
 
-                                                        <img src="http://127.0.0.1:8000/upload/noImage.png" style="width: 100%;height: 250px;border-top-left-radius: 3px;border-top-right-radius: 3px;">
+                                                        <img src="{{ URL::asset('upload/noImage.png') }}" style="width: 100%;height: 250px;border-top-left-radius: 3px;border-top-right-radius: 3px;">
 
                                                     </div>
 
@@ -201,7 +201,6 @@
                                                                 <i class="far fa-heart heart" style="vertical-align: middle;font-size: 16px;display: flex;color: black;" aria-hidden="true">
                                                                     <span style="display: block;margin-left: 7px;">13</span>
                                                                 </i>
-
 
                                                             </button>
 
@@ -236,7 +235,7 @@
 
                                                     <div class="property-image">
 
-                                                        <img src="http://127.0.0.1:8000/upload/noImage.png" style="width: 100%;height: 250px;border-top-left-radius: 3px;border-top-right-radius: 3px;">
+                                                        <img src="{{ URL::asset('upload/noImage.png') }}" style="width: 100%;height: 250px;border-top-left-radius: 3px;border-top-right-radius: 3px;">
 
                                                     </div>
 
@@ -257,7 +256,6 @@
                                                                 <i class="far fa-heart heart" style="vertical-align: middle;font-size: 16px;display: flex;color: black;" aria-hidden="true">
                                                                     <span style="display: block;margin-left: 7px;">13</span>
                                                                 </i>
-
 
                                                             </button>
 
@@ -292,7 +290,7 @@
 
                                                     <div class="property-image">
 
-                                                        <img src="http://127.0.0.1:8000/upload/noImage.png" style="width: 100%;height: 250px;border-top-left-radius: 3px;border-top-right-radius: 3px;">
+                                                        <img src="{{ URL::asset('upload/noImage.png') }}" style="width: 100%;height: 250px;border-top-left-radius: 3px;border-top-right-radius: 3px;">
 
                                                     </div>
 
@@ -313,7 +311,6 @@
                                                                 <i class="far fa-heart heart" style="vertical-align: middle;font-size: 16px;display: flex;color: black;" aria-hidden="true">
                                                                     <span style="display: block;margin-left: 7px;">13</span>
                                                                 </i>
-
 
                                                             </button>
 
@@ -348,7 +345,7 @@
 
                                                     <div class="property-image">
 
-                                                        <img src="http://127.0.0.1:8000/upload/noImage.png" style="width: 100%;height: 250px;border-top-left-radius: 3px;border-top-right-radius: 3px;">
+                                                        <img src="{{ URL::asset('upload/noImage.png') }}" style="width: 100%;height: 250px;border-top-left-radius: 3px;border-top-right-radius: 3px;">
 
                                                     </div>
 
@@ -369,7 +366,6 @@
                                                                 <i class="far fa-heart heart" style="vertical-align: middle;font-size: 16px;display: flex;color: black;" aria-hidden="true">
                                                                     <span style="display: block;margin-left: 7px;">13</span>
                                                                 </i>
-
 
                                                             </button>
 
@@ -404,7 +400,7 @@
 
                                                     <div class="property-image">
 
-                                                        <img src="http://127.0.0.1:8000/upload/noImage.png" style="width: 100%;height: 250px;border-top-left-radius: 3px;border-top-right-radius: 3px;">
+                                                        <img src="{{ URL::asset('upload/noImage.png') }}" style="width: 100%;height: 250px;border-top-left-radius: 3px;border-top-right-radius: 3px;">
 
                                                     </div>
 
@@ -425,7 +421,6 @@
                                                                 <i class="far fa-heart heart" style="vertical-align: middle;font-size: 16px;display: flex;color: black;" aria-hidden="true">
                                                                     <span style="display: block;margin-left: 7px;">13</span>
                                                                 </i>
-
 
                                                             </button>
 
@@ -460,7 +455,7 @@
 
                                                     <div class="property-image">
 
-                                                        <img src="http://127.0.0.1:8000/upload/noImage.png" style="width: 100%;height: 250px;border-top-left-radius: 3px;border-top-right-radius: 3px;">
+                                                        <img src="{{ URL::asset('upload/noImage.png') }}" style="width: 100%;height: 250px;border-top-left-radius: 3px;border-top-right-radius: 3px;">
 
                                                     </div>
 
@@ -481,7 +476,6 @@
                                                                 <i class="far fa-heart heart" style="vertical-align: middle;font-size: 16px;display: flex;color: black;" aria-hidden="true">
                                                                     <span style="display: block;margin-left: 7px;">13</span>
                                                                 </i>
-
 
                                                             </button>
 
@@ -516,7 +510,7 @@
 
                                                     <div class="property-image">
 
-                                                        <img src="http://127.0.0.1:8000/upload/noImage.png" style="width: 100%;height: 250px;border-top-left-radius: 3px;border-top-right-radius: 3px;">
+                                                        <img src="{{ URL::asset('upload/noImage.png') }}" style="width: 100%;height: 250px;border-top-left-radius: 3px;border-top-right-radius: 3px;">
 
                                                     </div>
 
@@ -537,7 +531,6 @@
                                                                 <i class="far fa-heart heart" style="vertical-align: middle;font-size: 16px;display: flex;color: black;" aria-hidden="true">
                                                                     <span style="display: block;margin-left: 7px;">13</span>
                                                                 </i>
-
 
                                                             </button>
 
@@ -572,7 +565,7 @@
 
                                                     <div class="property-image">
 
-                                                        <img src="http://127.0.0.1:8000/upload/noImage.png" style="width: 100%;height: 250px;border-top-left-radius: 3px;border-top-right-radius: 3px;">
+                                                        <img src="{{ URL::asset('upload/noImage.png') }}" style="width: 100%;height: 250px;border-top-left-radius: 3px;border-top-right-radius: 3px;">
 
                                                     </div>
 
@@ -593,7 +586,6 @@
                                                                 <i class="far fa-heart heart" style="vertical-align: middle;font-size: 16px;display: flex;color: black;" aria-hidden="true">
                                                                     <span style="display: block;margin-left: 7px;">13</span>
                                                                 </i>
-
 
                                                             </button>
 

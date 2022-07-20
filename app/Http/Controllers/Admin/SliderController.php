@@ -23,6 +23,9 @@ use Illuminate\Support\Str;
 use App\HomepageIcons;
 use App\HomepageBoxes;
 use App\companies;
+use App\zoekhet_categories;
+use App\zoekhet_description;
+use App\zoekhet;
 
 class SliderController extends MainAdminController
 {
@@ -648,6 +651,301 @@ class SliderController extends MainAdminController
 
     }
 
+    public function ZoekhetCategories()
+    {
+        $all = zoekhet_categories::orderBy('id')->get();
+
+        return view('admin.pages.zoekhet_categories',compact('all'));
+    }
+
+    public function addZoekhetCategory()
+    {
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        return view('admin.pages.addeditCategoryZoekhet');
+    }
+
+    public function addZoekhetCategoryPost(Request $request)
+    {
+        $data =  \Request::except(array('_token')) ;
+
+        $inputs = $request->all();
+
+        $rule=array(
+            'heading' => 'required',
+        );
+
+        $validator = \Validator::make($data,$rule);
+
+        if($validator->fails())
+        {
+            return redirect()->back()->withErrors($validator->messages());
+        }
+
+        if(!empty($inputs['id'])){
+
+            $slide = zoekhet_categories::findOrFail($inputs['id']);
+
+        }else{
+
+            $slide = new zoekhet_categories;
+        }
+
+
+        $slide->heading = $inputs['heading'];
+        $slide->save();
+
+        if(!empty($inputs['id'])){
+
+            \Session::flash('flash_message', __('text.Changes Saved'));
+
+            return \Redirect::back();
+        }else{
+
+            \Session::flash('flash_message', __('text.Added'));
+
+            return redirect('admin/zoekhet-categories');
+
+        }
+    }
+
+    public function editZoekhetCategory($id)
+    {
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        $slide = zoekhet_categories::findOrFail($id);
+
+        return view('admin.pages.addeditCategoryZoekhet',compact('slide'));
+    }
+
+    public function deleteZoekhetCategory($id)
+    {
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        zoekhet_categories::findOrFail($id)->delete();
+
+        \Session::flash('flash_message', 'Deleted');
+
+        return redirect()->back();
+    }
+
+    public function Zoekhet()
+    {
+        $all = zoekhet::orderBy('id')->get();
+
+        return view('admin.pages.zoekhet',compact('all'));
+    }
+
+    public function ZoekhetDescription()
+    {
+        $description = zoekhet_description::first();
+
+        return view('admin.pages.zoekhet_description',compact('description'));
+    }
+
+    public function ZoekhetDescriptionPost(Request $request)
+    {
+        $inputs = $request->all();
+
+        if(!empty($inputs['id'])){
+
+            $slide = zoekhet_description::findOrFail($inputs['id']);
+
+        }else{
+
+            $slide = new zoekhet_description;
+        }
+
+        $slide->title = $inputs['title'];
+        $slide->description = $inputs['description'];
+        $slide->save();
+
+        if(!empty($inputs['id'])){
+
+            \Session::flash('flash_message', __('text.Changes Saved'));
+
+            return \Redirect::back();
+        }else{
+
+            \Session::flash('flash_message', __('text.Added'));
+
+            return redirect('admin/zoekhet/description');
+
+        }
+    }
+
+    public function addZoekhet()
+    {
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        $categories = zoekhet_categories::all();
+
+        return view('admin.pages.addeditZoekhet',compact('categories'));
+    }
+
+    public function addZoekhetPost(Request $request)
+    {
+        $data = \Request::except(array('_token')) ;
+
+        $inputs = $request->all();
+
+        $rule=array(
+            'title' => 'required',
+            'description' => 'required',
+            'image' => 'mimes:jpg,jpeg,gif,png'
+        );
+
+        $validator = \Validator::make($data,$rule);
+
+        if($validator->fails())
+        {
+            return redirect()->back()->withErrors($validator->messages());
+        }
+
+        if(!empty($inputs['id'])){
+
+            $slide = zoekhet::findOrFail($inputs['id']);
+
+            //Slide image
+            $slide_image = $request->file('image');
+
+            if($slide_image){
+
+                \File::delete(public_path() .'/upload/'.$slide->image);
+
+                $tmpFilePath = 'upload/';
+
+                $filename = $_FILES['image']['name'];
+
+                $ext = pathinfo($filename, PATHINFO_EXTENSION);
+
+                $hardPath = Str::slug($inputs['title'], '-').'-'.md5(time()) .'.'.$ext;
+
+                $img = Image::make($slide_image);
+
+                $img->save($tmpFilePath.$hardPath);
+
+                $slide->image = $hardPath;
+
+            }
+
+        }else{
+
+            $slide = new zoekhet;
+
+            //Slide image
+            $slide_image = $request->file('image');
+
+            if($slide_image){
+
+                \File::delete(public_path() .'/upload/'.$slide->image);
+
+                $tmpFilePath = 'upload/';
+
+                $filename = $_FILES['image']['name'];
+
+                $ext = pathinfo($filename, PATHINFO_EXTENSION);
+
+                $hardPath = Str::slug($inputs['title'], '-').'-'.md5(time()) .'.'.$ext;
+
+                $img = Image::make($slide_image);
+
+                $img->save($tmpFilePath.$hardPath);
+
+                $slide->image = $hardPath;
+
+            }
+            else
+            {
+                $slide->image = NULL;
+            }
+
+        }
+
+        $slide->title = $request->title;
+        $slide->description = $request->description;
+        $slide->category_ids = implode(',', $request->categories);
+        $slide->save();
+
+        if(!empty($inputs['id'])){
+
+            \Session::flash('flash_message', __('text.Changes Saved'));
+
+            return \Redirect::back();
+        }else{
+
+            \Session::flash('flash_message', __('text.Added'));
+
+            return redirect('admin/zoekhet');
+
+        }
+    }
+
+    public function editZoekhet($id)
+    {
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        $slide = zoekhet::findOrFail($id);
+
+        $categories = zoekhet_categories::all();
+
+        return view('admin.pages.addeditZoekhet',compact('slide','categories'));
+
+    }
+
+    public function deleteZoekhet($id)
+    {
+
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        $slide = zoekhet::findOrFail($id);
+
+        \File::delete(public_path() .'/upload/'.$slide->image);
+
+        $slide->delete();
+
+        \Session::flash('flash_message', 'Deleted');
+
+        return redirect()->back();
+
+    }
+
     public function CategoriesHeadings()
     {
         $all = categories_headings::orderBy('id')->get();
@@ -671,7 +969,7 @@ class SliderController extends MainAdminController
 
     public function addCategoryHeadingPost(Request $request)
     {
-        $data =  \Request::except(array('_token')) ;
+        $data = \Request::except(array('_token')) ;
 
         $inputs = $request->all();
 
@@ -693,7 +991,6 @@ class SliderController extends MainAdminController
         }else{
 
             $slide = new categories_headings;
-
         }
 
 
@@ -733,7 +1030,6 @@ class SliderController extends MainAdminController
 
     public function deleteCategoryHeading($id)
     {
-
         if(Auth::User()->usertype!="Admin"){
 
             \Session::flash('flash_message', 'Access denied!');

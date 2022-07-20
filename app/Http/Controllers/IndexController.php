@@ -47,6 +47,10 @@ use Laravel\Socialite\Facades\Socialite;
 use App\categories_headings;
 use App\categories;
 use App\companies;
+use App\zoekhet_categories;
+use App\zoekhet_description;
+use App\zoekhet;
+use App\saved_zoekhet;
 
 class IndexController extends Controller
 {
@@ -90,7 +94,82 @@ class IndexController extends Controller
 
     public function zoekhet()
     {
-        return view('pages.zoekhet');
+        if (!empty($_SERVER['HTTP_CLIENT_IP']))
+        {
+            $ip_address = $_SERVER['HTTP_CLIENT_IP'];
+        }
+
+        //whether ip is from proxy
+        elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR']))
+        {
+            $ip_address = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        }
+
+        //whether ip is from remote address
+        else
+        {
+            $ip_address = $_SERVER['REMOTE_ADDR'];
+        }
+
+        $zoekhet_categories = zoekhet_categories::all();
+        $zoekhet_description = zoekhet_description::first();
+        $content = zoekhet::with('savings')->get();
+
+        return view('pages.zoekhet',compact('zoekhet_categories','zoekhet_description','content','ip_address'));
+    }
+
+    public function filterZoekhet(Request $request)
+    {
+        $filter = zoekhet::whereRaw("find_in_set('$request->id',category_ids)")->with('savings')->get();
+
+        return $filter;
+    }
+
+    public function saveZoekhet(Request $request)
+    {
+        if (!empty($_SERVER['HTTP_CLIENT_IP']))
+        {
+            $ip_address = $_SERVER['HTTP_CLIENT_IP'];
+        }
+
+        //whether ip is from proxy
+        elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR']))
+        {
+            $ip_address = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        }
+
+        //whether ip is from remote address
+        else
+        {
+            $ip_address = $_SERVER['REMOTE_ADDR'];
+        }
+
+        $existing = saved_zoekhet::where('content_id',$request->content_id)->where('ip',$ip_address)->first();
+
+        if($existing){
+
+            $existing->delete();
+
+            $zoekhet = zoekhet::where('id',$request->content_id)->first();
+            $zoekhet->saved = $zoekhet->saved-1;
+            $zoekhet->save();
+
+        }
+
+        else{
+
+            $saved_zoekhet = new saved_zoekhet();
+            $saved_zoekhet->content_id = $request->content_id;
+            $saved_zoekhet->ip = $ip_address;
+            $saved_zoekhet->save();
+
+            $zoekhet = zoekhet::where('id',$request->content_id)->first();
+            $zoekhet->saved = $zoekhet->saved+1;
+            $zoekhet->save();
+
+        }
+
+        return redirect()->back();
     }
 
     public function company($id)

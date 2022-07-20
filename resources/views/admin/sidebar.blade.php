@@ -36,6 +36,10 @@
 
 					<li class="{{classActivePath('categories-headings')}}"><a href="{{ URL::to('admin/categories-headings') }}"><i class="fa fa-bars"></i>Categories</a></li>
 
+					<li class="{{classActivePath('zoekhet-categories')}}"><a href="{{ URL::to('admin/zoekhet-categories') }}"><i class="fa fa-bars"></i>Zoekhet Categories</a></li>
+
+					<li class="{{classActivePath('zoekhet')}}"><a href="{{ URL::to('admin/zoekhet') }}"><i class="fa fa-bars"></i>Zoekhet</a></li>
+
 					<!-- <li class="{{classActivePath('categories')}}"><a href="{{ URL::to('admin/categories') }}"><i class="fa fa-bars"></i>Categories</a></li> -->
 
 					<li class="{{classActivePath('companies')}}"><a href="{{ URL::to('admin/companies') }}"><i class="fa fa-bars"></i>Companies</a></li>

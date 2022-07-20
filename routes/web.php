@@ -207,6 +207,20 @@ Route::group(['middleware' => 'App\Http\Middleware\UserTypeMiddleware'], functio
         Route::get('trendings/addcontent/{id}', 'SliderController@editTrending')->name('edit-trending');
         Route::get('trendings/delete/{id}', 'SliderController@deleteTrending');
 
+        Route::get('zoekhet', 'SliderController@Zoekhet')->name('zoekhet');
+        Route::get('zoekhet/description', 'SliderController@ZoekhetDescription')->name('zoekhet-description');
+        Route::post('zoekhet/description', 'SliderController@ZoekhetDescriptionPost');
+        Route::get('zoekhet/add', 'SliderController@addZoekhet')->name('add-zoekhet');
+        Route::post('zoekhet/add', 'SliderController@addZoekhetPost');
+        Route::get('zoekhet/add/{id}', 'SliderController@editZoekhet')->name('edit-zoekhet');
+        Route::get('zoekhet/delete/{id}', 'SliderController@deleteZoekhet');
+
+        Route::get('zoekhet-categories', 'SliderController@ZoekhetCategories')->name('zoekhet-categories');
+        Route::get('zoekhet-categories/addcategory', 'SliderController@addZoekhetCategory')->name('add-zoekhet-category');
+        Route::post('zoekhet-categories/addcategory', 'SliderController@addZoekhetCategoryPost');
+        Route::get('zoekhet-categories/addcategory/{id}', 'SliderController@editZoekhetCategory')->name('edit-zoekhet-category');
+        Route::get('zoekhet-categories/delete/{id}', 'SliderController@deleteZoekhetCategory');
+
         Route::get('categories-headings', 'SliderController@CategoriesHeadings')->name('categories-headings');
         Route::get('categories-headings/addcategoryheading', 'SliderController@addCategoryHeading')->name('add-category-heading');
         Route::post('categories-headings/addcategoryheading', 'SliderController@addCategoryHeadingPost');
@@ -272,6 +286,10 @@ Route::group(['middleware' => 'App\Http\Middleware\UserTypeMiddleware'], functio
     Route::get('education-single', 'IndexController@educationSingle')->name('education-single');
 
     Route::get('zoekhet', 'IndexController@zoekhet')->name('zoekhet');
+
+    Route::post('filter-zoekhet', 'IndexController@filterZoekhet')->name('filter-zoekhet');
+
+    Route::post('save-zoekhet', 'IndexController@saveZoekhet');
 
     Route::get('company/{id}', 'IndexController@company')->name('company');
 
