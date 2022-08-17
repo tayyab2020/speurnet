@@ -66,8 +66,8 @@
                             <div class="bse">
 
                                 <form id="search_form" method="GET" action="">
-                                    <input autocomplete="off" name="search" type="search">
-                                    <i id="form-submit" style="display: flex;justify-content: center;align-items: center;" class="fa fa-search search-icon"></i>
+                                    <input value="{{$search}}" autocomplete="off" name="search" type="search">
+                                    <button type="submit" id="form-submit" style="display: flex;justify-content: center;align-items: center;" class="fa fa-search search-icon"></button>
                                 </form>
 
                             </div>
@@ -269,6 +269,8 @@
             text-align: center;
             font-size: 1.2em;
             transition: all 1s;
+            border: 0;
+            background: transparent;
         }
 
         .fas{display:inline-block;font-family:FontAwesome;font-style:normal;font-weight:normal;line-height:1;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}

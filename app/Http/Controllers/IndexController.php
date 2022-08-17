@@ -122,8 +122,9 @@ class IndexController extends Controller
 
         $zoekhet_categories = zoekhet_categories::all();
         $zoekhet_description = zoekhet_description::first();
+        $search = $request->search;
 
-        return view('pages.zoekhet',compact('zoekhet_categories','zoekhet_description','content','ip_address'));
+        return view('pages.zoekhet',compact('zoekhet_categories','zoekhet_description','content','ip_address','search'));
     }
 
     public function filterZoekhet(Request $request)
