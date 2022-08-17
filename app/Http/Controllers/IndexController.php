@@ -92,8 +92,8 @@ class IndexController extends Controller
         return view('pages.education_single');
     }
 
-    public function zoekhet()
-    {
+    public function zoekhet(Request $request)
+    {   
         if (!empty($_SERVER['HTTP_CLIENT_IP']))
         {
             $ip_address = $_SERVER['HTTP_CLIENT_IP'];
@@ -111,9 +111,17 @@ class IndexController extends Controller
             $ip_address = $_SERVER['REMOTE_ADDR'];
         }
 
+        if($request->search)
+        {
+            $content = zoekhet::where("title", 'like', '%' . $request->search . '%')->orWhereRaw('regexp_replace(description, "<[^>]*>", "") like ?', '%' . $request->search . '%')->with('savings')->get();
+        }
+        else
+        {
+            $content = zoekhet::with('savings')->get();
+        }
+
         $zoekhet_categories = zoekhet_categories::all();
         $zoekhet_description = zoekhet_description::first();
-        $content = zoekhet::with('savings')->get();
 
         return view('pages.zoekhet',compact('zoekhet_categories','zoekhet_description','content','ip_address'));
     }
