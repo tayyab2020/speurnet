@@ -970,7 +970,7 @@ class SliderController extends MainAdminController
         $categories = study_categories::get();
         $types = study_filters::get();
 
-        return view('admin.pages.addeditStudies',compact('categories','types'));
+        return view('admin.pages.addeditstudies',compact('categories','types'));
     }
 
     public function addStudyPost(Request $request)
@@ -1041,7 +1041,7 @@ class SliderController extends MainAdminController
         $categories = study_categories::get();
         $types = study_filters::get();
 
-        return view('admin.pages.addeditStudies',compact('slide','categories','types'));
+        return view('admin.pages.addeditstudies',compact('slide','categories','types'));
 
     }
 

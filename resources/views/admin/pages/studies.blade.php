@@ -10,7 +10,7 @@
 
             </div>
 
-            <h2>Study Categories</h2>
+            <h2>Study Content</h2>
 
         </div>
         @if(Session::has('flash_message'))
