@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class categories_headings extends Model
+class study_categories extends Model
 {
-    protected $table = 'categories_headings';
+    protected $table = 'study_categories';
 	public $timestamps = false;
     
 }

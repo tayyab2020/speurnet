@@ -227,6 +227,24 @@ Route::group(['middleware' => 'App\Http\Middleware\UserTypeMiddleware'], functio
         Route::get('categories-headings/addcategoryheading/{id}', 'SliderController@editCategoryHeading')->name('edit-category-heading');
         Route::get('categories-headings/delete/{id}', 'SliderController@deleteCategoryHeading');
 
+        Route::get('studies', 'SliderController@Studies')->name('studies');
+        Route::get('study/addstudy', 'SliderController@addStudy')->name('add-study');
+        Route::post('study/addstudy', 'SliderController@addStudyPost');
+        Route::get('study/addstudy/{id}', 'SliderController@editStudy')->name('edit-study');
+        Route::get('study/delete/{id}', 'SliderController@deleteStudy');
+        
+        Route::get('study-filters', 'SliderController@StudyFilters')->name('study-filters');
+        Route::get('study-filters/addstudyfilter', 'SliderController@addStudyFilter')->name('add-study-filter');
+        Route::post('study-filters/addstudyfilter', 'SliderController@addStudyFilterPost');
+        Route::get('study-filters/addstudyfilter/{id}', 'SliderController@editStudyFilter')->name('edit-study-filter');
+        Route::get('study-filters/delete/{id}', 'SliderController@deleteStudyFilter');
+
+        Route::get('study-categories', 'SliderController@StudyCategories')->name('study-filters');
+        Route::get('study-categories/addstudycategory', 'SliderController@addStudyCategory')->name('add-study-category');
+        Route::post('study-categories/addstudycategory', 'SliderController@addStudyCategoryPost');
+        Route::get('study-categories/addstudycategory/{id}', 'SliderController@editStudyCategory')->name('edit-study-category');
+        Route::get('study-categories/delete/{id}', 'SliderController@deleteStudyCategory');
+
         Route::get('categories', 'SliderController@Categories')->name('categories');
         Route::get('categories/addcontent', 'SliderController@addCategory')->name('add-category');
         Route::post('categories/addcontent', 'SliderController@addCategoryPost');

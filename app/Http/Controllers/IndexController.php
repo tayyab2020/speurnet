@@ -51,6 +51,9 @@ use App\zoekhet_categories;
 use App\zoekhet_description;
 use App\zoekhet;
 use App\saved_zoekhet;
+use App\study_filters;
+use App\study_categories;
+use App\studies;
 
 class IndexController extends Controller
 {
@@ -73,7 +76,10 @@ class IndexController extends Controller
 
     public function study()
     {
-        return view('pages.study');
+        $filters = study_filters::all();
+        $content = studies::leftjoin("study_categories","study_categories.id","=","studies.category")->select("studies.*","study_categories.title as category")->get();
+
+        return view('pages.study',compact("filters","content"));
     }
 
     public function page1()

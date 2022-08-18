@@ -34,6 +34,12 @@
 
 					<li class="{{classActivePath('slider')}}"><a href="{{ URL::to('admin/slider') }}"><i class="fa fa-sliders"></i>Home Slider</a></li>
 
+					<li class="{{classActivePath('study-filters')}}"><a href="{{ URL::to('admin/study-filters') }}"><i class="fa fa-bars"></i>Study Filters</a></li>
+
+					<li class="{{classActivePath('study-categories')}}"><a href="{{ URL::to('admin/study-categories') }}"><i class="fa fa-bars"></i>Study Categories</a></li>
+
+					<li class="{{classActivePath('studies')}}"><a href="{{ URL::to('admin/studies') }}"><i class="fa fa-bars"></i>Study</a></li>
+
 					<li class="{{classActivePath('categories-headings')}}"><a href="{{ URL::to('admin/categories-headings') }}"><i class="fa fa-bars"></i>Categories</a></li>
 
 					<li class="{{classActivePath('zoekhet-categories')}}"><a href="{{ URL::to('admin/zoekhet-categories') }}"><i class="fa fa-bars"></i>Zoekhet Categories</a></li>

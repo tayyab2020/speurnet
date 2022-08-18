@@ -12,6 +12,9 @@ use Auth;
 use App\User;
 use App\Slider;
 use App\categories_headings;
+use App\studies;
+use App\study_filters;
+use App\study_categories;
 use App\categories;
 use Carbon\Carbon;
 use App\Http\Requests;
@@ -935,6 +938,375 @@ class SliderController extends MainAdminController
         }
 
         $slide = zoekhet::findOrFail($id);
+
+        \File::delete(public_path() .'/upload/'.$slide->image);
+
+        $slide->delete();
+
+        \Session::flash('flash_message', 'Deleted');
+
+        return redirect()->back();
+
+    }
+
+    public function Studies()
+    {
+        $all = studies::leftjoin('study_categories','study_categories.id','=','studies.category')->orderBy('studies.id')->select('studies.*','study_categories.title as category')->get();
+
+        return view('admin.pages.studies',compact('all'));
+
+    }
+
+    public function addStudy(){
+
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        $categories = study_categories::get();
+        $types = study_filters::get();
+
+        return view('admin.pages.addeditStudies',compact('categories','types'));
+    }
+
+    public function addStudyPost(Request $request)
+    {
+        $data = \Request::except(array('_token')) ;
+
+        $inputs = $request->all();
+
+        $rule=array(
+            'title' => 'required',
+            'address' => 'required',
+            'date_time' => 'required',
+            'category' => 'required',
+        );
+
+        $validator = \Validator::make($data,$rule);
+
+        if ($validator->fails())
+        {
+            return redirect()->back()->withErrors($validator->messages());
+        }
+
+        if(!empty($inputs['id'])){
+
+            $slide = studies::findOrFail($inputs['id']);
+
+        }else{
+
+            $slide = new studies;
+
+        }
+
+        $slide->title = $request->title;
+        $slide->venue = $request->venue;
+        $slide->description = $request->description;
+        $slide->address = $request->address;
+        $slide->date_time = $request->date_time;
+        $slide->category = $request->category;
+        $slide->types = implode(',', $request->types) ? implode(',', array_filter($request->types)) : NULL;
+        $slide->save();
+
+        if(!empty($inputs['id'])){
+
+            \Session::flash('flash_message', __('text.Changes Saved'));
+
+            return \Redirect::back();
+        }else{
+
+            \Session::flash('flash_message', __('text.Added'));
+
+            return redirect('admin/studies');
+
+        }
+
+    }
+
+    public function editStudy($id)
+    {
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        $slide = studies::findOrFail($id);
+        $categories = study_categories::get();
+        $types = study_filters::get();
+
+        return view('admin.pages.addeditStudies',compact('slide','categories','types'));
+
+    }
+
+    public function deleteStudy($id)
+    {
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        studies::findOrFail($id)->delete();
+
+        \Session::flash('flash_message', 'Deleted');
+
+        return redirect()->back();
+
+    }
+
+    public function StudyCategories()
+    {
+        $all = study_categories::orderBy('id')->get();
+
+        return view('admin.pages.study_categories',compact('all'));
+
+    }
+
+    public function addStudyCategory(){
+
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        return view('admin.pages.addeditStudyCategory');
+    }
+
+    public function addStudyCategoryPost(Request $request)
+    {
+        $data = \Request::except(array('_token')) ;
+
+        $inputs = $request->all();
+
+        $rule=array(
+            'title' => 'required',
+        );
+
+        $validator = \Validator::make($data,$rule);
+
+        if ($validator->fails())
+        {
+            return redirect()->back()->withErrors($validator->messages());
+        }
+
+        if(!empty($inputs['id'])){
+
+            $slide = study_categories::findOrFail($inputs['id']);
+
+        }else{
+
+            $slide = new study_categories;
+
+        }
+
+        $slide->title = $request->title;
+        $slide->save();
+
+        if(!empty($inputs['id'])){
+
+            \Session::flash('flash_message', __('text.Changes Saved'));
+
+            return \Redirect::back();
+        }else{
+
+            \Session::flash('flash_message', __('text.Added'));
+
+            return redirect('admin/study-categories');
+
+        }
+
+    }
+
+    public function editStudyCategory($id)
+    {
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        $slide = study_categories::findOrFail($id);
+
+        return view('admin.pages.addeditStudyCategory',compact('slide'));
+
+    }
+
+    public function deleteStudyCategory($id)
+    {
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        study_categories::findOrFail($id)->delete();
+
+        \Session::flash('flash_message', 'Deleted');
+
+        return redirect()->back();
+
+    }
+
+    public function StudyFilters()
+    {
+        $all = study_filters::orderBy('id')->get();
+
+        return view('admin.pages.study_filters',compact('all'));
+
+    }
+
+    public function addStudyFilter(){
+
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        return view('admin.pages.addeditStudyFilter');
+    }
+
+    public function addStudyFilterPost(Request $request)
+    {
+        $data = \Request::except(array('_token')) ;
+
+        $inputs = $request->all();
+
+        $rule=array(
+            'title' => 'required',
+            'image' => 'mimes:jpg,jpeg,gif,png'
+        );
+
+        $validator = \Validator::make($data,$rule);
+
+        if ($validator->fails())
+        {
+            return redirect()->back()->withErrors($validator->messages());
+        }
+
+        if(!empty($inputs['id'])){
+
+            $slide = study_filters::findOrFail($inputs['id']);
+
+            //Slide image
+            $slide_image = $request->file('image');
+
+            if($slide_image){
+
+                \File::delete(public_path() .'/upload/'.$slide->image);
+
+                $tmpFilePath = 'upload/';
+
+                $filename = $_FILES['image']['name'];
+
+                $ext = pathinfo($filename, PATHINFO_EXTENSION);
+
+                $hardPath = Str::slug($inputs['title'], '-').'-'.md5(time()) .'.'.$ext;
+
+                $img = Image::make($slide_image);
+
+                $img->save($tmpFilePath.$hardPath);
+
+                $slide->image = $hardPath;
+
+            }
+
+        }else{
+
+            $slide = new study_filters;
+
+            //Slide image
+            $slide_image = $request->file('image');
+
+            if($slide_image){
+
+                \File::delete(public_path() .'/upload/'.$slide->image);
+
+                $tmpFilePath = 'upload/';
+
+                $filename = $_FILES['image']['name'];
+
+                $ext = pathinfo($filename, PATHINFO_EXTENSION);
+
+                $hardPath = Str::slug($inputs['title'], '-').'-'.md5(time()) .'.'.$ext;
+
+                $img = Image::make($slide_image);
+
+                $img->save($tmpFilePath.$hardPath);
+
+                $slide->image = $hardPath;
+
+            }
+            else
+            {
+                $slide->image = NULL;
+            }
+
+        }
+
+        $slide->title = $request->title;
+        $slide->save();
+
+        if(!empty($inputs['id'])){
+
+            \Session::flash('flash_message', __('text.Changes Saved'));
+
+            return \Redirect::back();
+        }else{
+
+            \Session::flash('flash_message', __('text.Added'));
+
+            return redirect('admin/study-filters');
+
+        }
+
+    }
+
+    public function editStudyFilter($id)
+    {
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        $slide = study_filters::findOrFail($id);
+
+        return view('admin.pages.addeditStudyFilter',compact('slide'));
+
+    }
+
+    public function deleteStudyFilter($id)
+    {
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        $slide = study_filters::findOrFail($id);
 
         \File::delete(public_path() .'/upload/'.$slide->image);
 

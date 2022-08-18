@@ -31,29 +31,21 @@
 
                 <div style="padding-left: 0;padding-top: 40px;" class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
 
-                    <div style="padding: 0;display: flex;align-items: center;margin: 30px 0;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    @foreach($filters as $key)
 
-                        <div style="width: 40%;">
-                            <img style="width: 85%;height: 70px;" src="{{asset('assets/img/istockphoto-1196145495-612x612.jpg')}}">
+                        <div style="padding: 0;display: flex;align-items: center;margin: 30px 0;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                            <div style="width: 40%;">
+                                <img style="width: 85%;height: 70px;" src="{{$key->image ? asset('upload/'.$key->image) : asset('upload/noImage.png')}}">
+                            </div>
+
+                            <div style="width: 60%;">
+                                <span style="font-size: 18px;font-weight: bold;">{{$key->title}}</span>
+                            </div>
+
                         </div>
 
-                        <div style="width: 60%;">
-                            <span style="font-size: 18px;font-weight: bold;">fysiek</span>
-                        </div>
-
-                    </div>
-
-                    <div style="padding: 0;display: flex;align-items: center;margin: 30px 0;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-
-                        <div style="width: 40%;">
-                            <img style="width: 85%;height: 70px;" src="{{asset('assets/img/cloudy.png')}}">
-                        </div>
-
-                        <div style="width: 60%;">
-                            <span style="font-size: 18px;font-weight: bold;">online</span>
-                        </div>
-
-                    </div>
+                    @endforeach
 
                 </div>
 
@@ -86,293 +78,45 @@
 
                         @endphp
 
-                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 sub">
+                        @foreach($content as $key)
 
-                            <div style="border: 1px solid #dfdfdf;display: flex;justify-content: flex-start;flex-direction: column;" class="row">
-                                <div style="display: flex;justify-content: space-between;padding: 0;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <h4>Warmup Match</h4>
-                                    <button style="{{$backgrounds[array_rand($backgrounds)]}};border-color: transparent;font-weight: 600;" class="btn btn-primary">Games</button>
+                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 sub">
+
+                                <div style="border: 1px solid #dfdfdf;display: flex;justify-content: flex-start;flex-direction: column;" class="row">
+                                    <div style="display: flex;justify-content: space-between;padding: 0;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <h4>{{$key->title}}</h4>
+                                        <button style="{{$backgrounds[array_rand($backgrounds)]}};border-color: transparent;font-weight: 600;" class="btn btn-primary">{{$key->category}}</button>
+                                    </div>
+                                    <div style="display: flex;justify-content: space-between;padding: 0;margin-top: 15px;flex-wrap: wrap;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                                        <div style="padding: 0;display: flex;flex-direction: column;" class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+
+                                            <h5>{{$key->venue}}</h5>
+                                            <span>{{$key->address}}</span>
+                                            <span>{{date('h:i A',strtotime($key->date_time))}}</span>
+
+                                        </div>
+
+                                        <div style="padding: 0;display: flex;flex-direction: column;align-items: flex-end;padding-right: 10px;justify-content: center;" class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+
+                                            <span style="width: 50px;height: 50px;border-radius: 100%;{{$backgrounds[array_rand($backgrounds)]}};display: flex;justify-content: center;align-items: center;font-size: 18px;font-weight: bold;font-family: monospace;">{{date('d',strtotime($key->date_time))}}</span>
+                                            <span style="font-weight: 600;">{{date('M, Y',strtotime($key->date_time))}}</span>
+
+                                        </div>
+
+                                        <div style="padding: 0;display: flex;justify-content: space-between;align-items: center;margin-top: 10px;padding-right: 10px;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                                            <button style="background-color: white;border-color: #62CDF2;color: #62CDF2;font-weight: 600;font-size: 12px;" class="btn btn-primary">View Details</button>
+                                            <!-- <span style="font-weight: 100;">13 andere data</span> -->
+
+                                        </div>
+
+                                    </div>
                                 </div>
-                                <div style="display: flex;justify-content: space-between;padding: 0;margin-top: 15px;flex-wrap: wrap;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
-                                    <div style="padding: 0;display: flex;flex-direction: column;" class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
-
-                                        <h5>MCG Club Indoor Ground</h5>
-                                        <span>South Yara VIC 3141, Australia</span>
-                                        <span>10:00 AM</span>
-
-                                    </div>
-
-                                    <div style="padding: 0;display: flex;flex-direction: column;align-items: flex-end;padding-right: 10px;justify-content: center;" class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-
-                                        <span style="width: 50px;height: 50px;border-radius: 100%;{{$backgrounds[array_rand($backgrounds)]}};display: flex;justify-content: center;align-items: center;font-size: 18px;font-weight: bold;font-family: monospace;">14</span>
-                                        <span style="font-weight: 600;">May, 2019</span>
-
-                                    </div>
-
-                                    <div style="padding: 0;display: flex;justify-content: space-between;align-items: center;margin-top: 10px;padding-right: 10px;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-
-                                        <button style="background-color: white;border-color: #62CDF2;color: #62CDF2;font-weight: 600;font-size: 12px;" class="btn btn-primary">View Details</button>
-                                        <span style="font-weight: 100;">13 andere data</span>
-
-                                    </div>
-
-                                </div>
                             </div>
 
-                        </div>
-
-                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 sub">
-
-                            <div style="border: 1px solid #dfdfdf;display: flex;justify-content: flex-start;flex-direction: column;" class="row">
-                                <div style="display: flex;justify-content: space-between;padding: 0;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <h4>Warmup Match</h4>
-                                    <button style="{{$backgrounds[array_rand($backgrounds)]}};border-color: transparent;font-weight: 600;" class="btn btn-primary">Games</button>
-                                </div>
-                                <div style="display: flex;justify-content: space-between;padding: 0;margin-top: 15px;flex-wrap: wrap;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-
-                                    <div style="padding: 0;display: flex;flex-direction: column;" class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
-
-                                        <h5>MCG Club Indoor Ground</h5>
-                                        <span>South Yara VIC 3141, Australia</span>
-                                        <span>10:00 AM</span>
-
-                                    </div>
-
-                                    <div style="padding: 0;display: flex;flex-direction: column;align-items: flex-end;padding-right: 10px;justify-content: center;" class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-
-                                        <span style="width: 50px;height: 50px;border-radius: 100%;{{$backgrounds[array_rand($backgrounds)]}};display: flex;justify-content: center;align-items: center;font-size: 18px;font-weight: bold;font-family: monospace;">14</span>
-                                        <span style="font-weight: 600;">May, 2019</span>
-
-                                    </div>
-
-                                    <div style="padding: 0;display: flex;justify-content: space-between;align-items: center;margin-top: 10px;padding-right: 10px;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-
-                                        <button style="background-color: white;border-color: #62CDF2;color: #62CDF2;font-weight: 600;font-size: 12px;" class="btn btn-primary">View Details</button>
-                                        <span style="font-weight: 100;">13 andere data</span>
-
-                                    </div>
-
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 sub">
-
-                            <div style="border: 1px solid #dfdfdf;display: flex;justify-content: flex-start;flex-direction: column;" class="row">
-                                <div style="display: flex;justify-content: space-between;padding: 0;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <h4>Warmup Match</h4>
-                                    <button style="{{$backgrounds[array_rand($backgrounds)]}};border-color: transparent;font-weight: 600;" class="btn btn-primary">Games</button>
-                                </div>
-                                <div style="display: flex;justify-content: space-between;padding: 0;margin-top: 15px;flex-wrap: wrap;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-
-                                    <div style="padding: 0;display: flex;flex-direction: column;" class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
-
-                                        <h5>MCG Club Indoor Ground</h5>
-                                        <span>South Yara VIC 3141, Australia</span>
-                                        <span>10:00 AM</span>
-
-                                    </div>
-
-                                    <div style="padding: 0;display: flex;flex-direction: column;align-items: flex-end;padding-right: 10px;justify-content: center;" class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-
-                                        <span style="width: 50px;height: 50px;border-radius: 100%;{{$backgrounds[array_rand($backgrounds)]}};display: flex;justify-content: center;align-items: center;font-size: 18px;font-weight: bold;font-family: monospace;">14</span>
-                                        <span style="font-weight: 600;">May, 2019</span>
-
-                                    </div>
-
-                                    <div style="padding: 0;display: flex;justify-content: space-between;align-items: center;margin-top: 10px;padding-right: 10px;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-
-                                        <button style="background-color: white;border-color: #62CDF2;color: #62CDF2;font-weight: 600;font-size: 12px;" class="btn btn-primary">View Details</button>
-                                        <span style="font-weight: 100;">13 andere data</span>
-
-                                    </div>
-
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 sub">
-
-                            <div style="border: 1px solid #dfdfdf;display: flex;justify-content: flex-start;flex-direction: column;" class="row">
-                                <div style="display: flex;justify-content: space-between;padding: 0;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <h4>Warmup Match</h4>
-                                    <button style="{{$backgrounds[array_rand($backgrounds)]}};border-color: transparent;font-weight: 600;" class="btn btn-primary">Games</button>
-                                </div>
-                                <div style="display: flex;justify-content: space-between;padding: 0;margin-top: 15px;flex-wrap: wrap;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-
-                                    <div style="padding: 0;display: flex;flex-direction: column;" class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
-
-                                        <h5>MCG Club Indoor Ground</h5>
-                                        <span>South Yara VIC 3141, Australia</span>
-                                        <span>10:00 AM</span>
-
-                                    </div>
-
-                                    <div style="padding: 0;display: flex;flex-direction: column;align-items: flex-end;padding-right: 10px;justify-content: center;" class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-
-                                        <span style="width: 50px;height: 50px;border-radius: 100%;{{$backgrounds[array_rand($backgrounds)]}};display: flex;justify-content: center;align-items: center;font-size: 18px;font-weight: bold;font-family: monospace;">14</span>
-                                        <span style="font-weight: 600;">May, 2019</span>
-
-                                    </div>
-
-                                    <div style="padding: 0;display: flex;justify-content: space-between;align-items: center;margin-top: 10px;padding-right: 10px;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-
-                                        <button style="background-color: white;border-color: #62CDF2;color: #62CDF2;font-weight: 600;font-size: 12px;" class="btn btn-primary">View Details</button>
-                                        <span style="font-weight: 100;">13 andere data</span>
-
-                                    </div>
-
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 sub">
-
-                            <div style="border: 1px solid #dfdfdf;display: flex;justify-content: flex-start;flex-direction: column;" class="row">
-                                <div style="display: flex;justify-content: space-between;padding: 0;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <h4>Warmup Match</h4>
-                                    <button style="{{$backgrounds[array_rand($backgrounds)]}};border-color: transparent;font-weight: 600;" class="btn btn-primary">Games</button>
-                                </div>
-                                <div style="display: flex;justify-content: space-between;padding: 0;margin-top: 15px;flex-wrap: wrap;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-
-                                    <div style="padding: 0;display: flex;flex-direction: column;" class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
-
-                                        <h5>MCG Club Indoor Ground</h5>
-                                        <span>South Yara VIC 3141, Australia</span>
-                                        <span>10:00 AM</span>
-
-                                    </div>
-
-                                    <div style="padding: 0;display: flex;flex-direction: column;align-items: flex-end;padding-right: 10px;justify-content: center;" class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-
-                                        <span style="width: 50px;height: 50px;border-radius: 100%;{{$backgrounds[array_rand($backgrounds)]}};display: flex;justify-content: center;align-items: center;font-size: 18px;font-weight: bold;font-family: monospace;">14</span>
-                                        <span style="font-weight: 600;">May, 2019</span>
-
-                                    </div>
-
-                                    <div style="padding: 0;display: flex;justify-content: space-between;align-items: center;margin-top: 10px;padding-right: 10px;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-
-                                        <button style="background-color: white;border-color: #62CDF2;color: #62CDF2;font-weight: 600;font-size: 12px;" class="btn btn-primary">View Details</button>
-                                        <span style="font-weight: 100;">13 andere data</span>
-
-                                    </div>
-
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 sub">
-
-                            <div style="border: 1px solid #dfdfdf;display: flex;justify-content: flex-start;flex-direction: column;" class="row">
-                                <div style="display: flex;justify-content: space-between;padding: 0;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <h4>Warmup Match</h4>
-                                    <button style="{{$backgrounds[array_rand($backgrounds)]}};border-color: transparent;font-weight: 600;" class="btn btn-primary">Games</button>
-                                </div>
-                                <div style="display: flex;justify-content: space-between;padding: 0;margin-top: 15px;flex-wrap: wrap;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-
-                                    <div style="padding: 0;display: flex;flex-direction: column;" class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
-
-                                        <h5>MCG Club Indoor Ground</h5>
-                                        <span>South Yara VIC 3141, Australia</span>
-                                        <span>10:00 AM</span>
-
-                                    </div>
-
-                                    <div style="padding: 0;display: flex;flex-direction: column;align-items: flex-end;padding-right: 10px;justify-content: center;" class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-
-                                        <span style="width: 50px;height: 50px;border-radius: 100%;{{$backgrounds[array_rand($backgrounds)]}};display: flex;justify-content: center;align-items: center;font-size: 18px;font-weight: bold;font-family: monospace;">14</span>
-                                        <span style="font-weight: 600;">May, 2019</span>
-
-                                    </div>
-
-                                    <div style="padding: 0;display: flex;justify-content: space-between;align-items: center;margin-top: 10px;padding-right: 10px;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-
-                                        <button style="background-color: white;border-color: #62CDF2;color: #62CDF2;font-weight: 600;font-size: 12px;" class="btn btn-primary">View Details</button>
-                                        <span style="font-weight: 100;">13 andere data</span>
-
-                                    </div>
-
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 sub">
-
-                            <div style="border: 1px solid #dfdfdf;display: flex;justify-content: flex-start;flex-direction: column;" class="row">
-                                <div style="display: flex;justify-content: space-between;padding: 0;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <h4>Warmup Match</h4>
-                                    <button style="{{$backgrounds[array_rand($backgrounds)]}};border-color: transparent;font-weight: 600;" class="btn btn-primary">Games</button>
-                                </div>
-                                <div style="display: flex;justify-content: space-between;padding: 0;margin-top: 15px;flex-wrap: wrap;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-
-                                    <div style="padding: 0;display: flex;flex-direction: column;" class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
-
-                                        <h5>MCG Club Indoor Ground</h5>
-                                        <span>South Yara VIC 3141, Australia</span>
-                                        <span>10:00 AM</span>
-
-                                    </div>
-
-                                    <div style="padding: 0;display: flex;flex-direction: column;align-items: flex-end;padding-right: 10px;justify-content: center;" class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-
-                                        <span style="width: 50px;height: 50px;border-radius: 100%;{{$backgrounds[array_rand($backgrounds)]}};display: flex;justify-content: center;align-items: center;font-size: 18px;font-weight: bold;font-family: monospace;">14</span>
-                                        <span style="font-weight: 600;">May, 2019</span>
-
-                                    </div>
-
-                                    <div style="padding: 0;display: flex;justify-content: space-between;align-items: center;margin-top: 10px;padding-right: 10px;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-
-                                        <button style="background-color: white;border-color: #62CDF2;color: #62CDF2;font-weight: 600;font-size: 12px;" class="btn btn-primary">View Details</button>
-                                        <span style="font-weight: 100;">13 andere data</span>
-
-                                    </div>
-
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 sub">
-
-                            <div style="border: 1px solid #dfdfdf;display: flex;justify-content: flex-start;flex-direction: column;" class="row">
-                                <div style="display: flex;justify-content: space-between;padding: 0;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <h4>Warmup Match</h4>
-                                    <button style="{{$backgrounds[array_rand($backgrounds)]}};border-color: transparent;font-weight: 600;" class="btn btn-primary">Games</button>
-                                </div>
-                                <div style="display: flex;justify-content: space-between;padding: 0;margin-top: 15px;flex-wrap: wrap;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-
-                                    <div style="padding: 0;display: flex;flex-direction: column;" class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
-
-                                        <h5>MCG Club Indoor Ground</h5>
-                                        <span>South Yara VIC 3141, Australia</span>
-                                        <span>10:00 AM</span>
-
-                                    </div>
-
-                                    <div style="padding: 0;display: flex;flex-direction: column;align-items: flex-end;padding-right: 10px;justify-content: center;" class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-
-                                        <span style="width: 50px;height: 50px;border-radius: 100%;{{$backgrounds[array_rand($backgrounds)]}};display: flex;justify-content: center;align-items: center;font-size: 18px;font-weight: bold;font-family: monospace;">14</span>
-                                        <span style="font-weight: 600;">May, 2019</span>
-
-                                    </div>
-
-                                    <div style="padding: 0;display: flex;justify-content: space-between;align-items: center;margin-top: 10px;padding-right: 10px;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-
-                                        <button style="background-color: white;border-color: #62CDF2;color: #62CDF2;font-weight: 600;font-size: 12px;" class="btn btn-primary">View Details</button>
-                                        <span style="font-weight: 100;">13 andere data</span>
-
-                                    </div>
-
-                                </div>
-                            </div>
-
-                        </div>
+                        @endforeach
 
                     </div>
 
