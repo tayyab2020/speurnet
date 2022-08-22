@@ -15,8 +15,8 @@
             <ul style="display:flex;align-items: flex-end;position: relative;padding-bottom: 10px;border: 0;padding-left: 15px;" class="nav nav-tabs res-ul">
 
                 <span class="res-span" style="display: inline-block;width: 60%;margin-right: 30px;">
-                    <h4 class="res-head">Benieuwd naar de nieuwste woontrends?</h4>
-                    <p style="margin: 0;">Waarom alle interieurwinkels en woontrends websites afgaan als Zoekjehuisje.nl de allerlaatste woontrends voor jou heeft verzameld, zodat je alle trends in wonen en tuin online kunt bekijken. Heb je binnenkort een nieuwe woning of ben je gewoon toe om je interieur of tuin een nieuwe look te geven volgens de nieuwe trends van 2021? Bekijk hier alle interieurtips en trends voor jouw woonkamer, slaapkamer, keuken of tuin. Laat je inspireren en bepaal zelf welke woontrend of stijl in jouw interieur past. Jouw woning is de laatste woontrend waard.</p>
+                    <h4 class="res-head">{{ $description ? $description->title : null}}</h4>
+                    <p style="margin: 0;">{!! $description ? $description->description : null !!}</p>
                 </span>
 
             </ul>
@@ -24,8 +24,6 @@
         </div>
 
     </div>
-
-    <form action="" method="POST">
 
         <div style="margin: 0;" class="row">
 
@@ -52,6 +50,8 @@
                         @endforeach
                     @endif
 
+                    <input type="hidden" id="ip_address" value="{{$ip_address}}" />
+
                     <div class="container" style="width: 100%;">
 
                         <!-- begin:latest -->
@@ -62,45 +62,19 @@
 
                                 <div class="row company-boxes">
 
-                                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 sub">
-                                        <h1 style="font-size: 20px;" class="grad">Auto</h1>
-                                        <label class="row">
-                                            <input style="display: none;" type="radio" name="radio">
-                                            <div class="row-child">
-                                                <img style="width: 100%;height: 100%;border-radius: 10px;" src="{{asset('assets/img/img171.jpg')}}" />
-                                            </div>
-                                        </label>
-                                    </div>
+                                    @foreach($filters as $key)
 
-                                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 sub">
-                                        <h1 style="font-size: 20px;" class="grad">Auto</h1>
-                                        <label class="row">
-                                            <input style="display: none;" type="radio" name="radio">
-                                            <div class="row-child">
-                                                <img style="width: 100%;height: 100%;border-radius: 10px;" src="{{asset('assets/img/img171.jpg')}}" />
-                                            </div>
-                                        </label>
-                                    </div>
+                                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 sub">
+                                            <h1 style="font-size: 20px;" class="grad">{{$key->title}}</h1>
+                                            <label class="row">
+                                                <input style="display: none;" value="{{$key->id}}" type="radio" name="radio">
+                                                <div style="width: 100%;" class="row-child">
+                                                    <img style="width: 100%;height: 200px;border-radius: 10px;" src="{{$key->image ? asset('upload/'.$key->image) : asset('upload/noImage.png')}}" />
+                                                </div>
+                                            </label>
+                                        </div>
 
-                                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 sub">
-                                        <h1 style="font-size: 20px;" class="grad">Auto</h1>
-                                        <label class="row">
-                                            <input style="display: none;" type="radio" name="radio">
-                                            <div class="row-child">
-                                                <img style="width: 100%;height: 100%;border-radius: 10px;" src="{{asset('assets/img/img171.jpg')}}" />
-                                            </div>
-                                        </label>
-                                    </div>
-
-                                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 sub">
-                                        <h1 style="font-size: 20px;" class="grad">Auto</h1>
-                                        <label class="row">
-                                            <input style="display: none;" type="radio" name="radio">
-                                            <div class="row-child">
-                                                <img style="width: 100%;height: 100%;border-radius: 10px;" src="{{asset('assets/img/img171.jpg')}}" />
-                                            </div>
-                                        </label>
-                                    </div>
+                                    @endforeach
 
                                 </div>
 
@@ -110,59 +84,18 @@
 
                                 <div class="row company-boxes sm-bx">
 
-                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 sub">
-                                        <label class="row">
-                                            <input style="display: none;" type="radio" name="radio1">
-                                            <div class="row-child">
-                                                <img style="width: 100%;height: 120px;border-radius: 10px;padding: 20px;" src="{{asset('assets/img/parking.png')}}" />
-                                            </div>
-                                        </label>
-                                    </div>
+                                    @foreach($places as $key)
 
-                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 sub">
-                                        <label class="row">
-                                            <input style="display: none;" type="radio" name="radio1">
-                                            <div class="row-child">
-                                                <img style="width: 100%;height: 120px;border-radius: 10px;padding: 20px;" src="{{asset('assets/img/rocket.png')}}" />
-                                            </div>
-                                        </label>
-                                    </div>
+                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 sub">
+                                            <label class="row">
+                                                <input style="display: none;" value="{{$key->id}}" type="radio" name="radio1">
+                                                <div class="row-child">
+                                                    <img style="width: 100%;height: 120px;border-radius: 10px;padding: 20px;" src="{{$key->image ? asset('upload/'.$key->image) : asset('upload/noImage.png')}}" />
+                                                </div>
+                                            </label>
+                                        </div>
 
-                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 sub">
-                                        <label class="row">
-                                            <input style="display: none;" type="radio" name="radio1">
-                                            <div class="row-child">
-                                                <img style="width: 100%;height: 120px;border-radius: 10px;padding: 20px;" src="{{asset('assets/img/worldwide.png')}}" />
-                                            </div>
-                                        </label>
-                                    </div>
-
-                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 sub">
-                                        <label class="row">
-                                            <input style="display: none;" type="radio" name="radio1">
-                                            <div class="row-child">
-                                                <img style="width: 100%;height: 120px;border-radius: 10px;padding: 20px;" src="{{asset('assets/img/dessert.png')}}" />
-                                            </div>
-                                        </label>
-                                    </div>
-
-                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 sub">
-                                        <label class="row">
-                                            <input style="display: none;" type="radio" name="radio1">
-                                            <div class="row-child">
-                                                <img style="width: 100%;height: 120px;border-radius: 10px;padding: 20px;" src="{{asset('assets/img/fire.png')}}" />
-                                            </div>
-                                        </label>
-                                    </div>
-
-                                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 sub">
-                                        <label class="row">
-                                            <input style="display: none;" type="radio" name="radio1">
-                                            <div class="row-child">
-                                                <img style="width: 100%;height: 120px;border-radius: 10px;padding: 20px;" src="{{asset('assets/img/logos.png')}}" />
-                                            </div>
-                                        </label>
-                                    </div>
+                                    @endforeach
 
                                 </div>
 
@@ -170,447 +103,75 @@
 
                             <div style="margin-top: 20px;padding: 0;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
-                                <div class="row company-boxes">
+                                <div class="row company-boxes company-boxes1">
 
-                                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 res-float">
-                                        <article style="margin-bottom: 45px;">
-                                            <div class="property-container" style="margin: 0;min-height: 480px;border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;">
+                                    @foreach($content as $key)
 
-                                                <a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;" href="">
+                                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 res-float">
+                                            <article style="margin-bottom: 45px;">
+                                                <div class="property-container" style="margin: 0;min-height: 480px;border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;">
 
-                                                    <div class="property-image">
+                                                    <a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;" href="">
 
-                                                        <img src="{{ URL::asset('upload/noImage.png') }}" style="width: 100%;height: 250px;border-top-left-radius: 3px;border-top-right-radius: 3px;">
+                                                        <div class="property-image">
 
-                                                    </div>
-
-                                                </a>
-
-                                                <div class="property-content description-content">
-
-                                                    <div style="display: flex;justify-content: space-between;">
-
-                                                        <form action="" method="POST" style="display: inline-block;">
-
-                                                            <input type="hidden" name="_token" value="AGnE5Hl4PjSeDpJPQMrp1W5KzUq0wm2PGBX7amwU">
-
-                                                            <input type="hidden" name="blog_id" value="">
-
-                                                            <button type="submit" class="new-button" title="Sla op als favoriet" style="outline: none;">
-
-                                                                <i class="far fa-heart heart" style="vertical-align: middle;font-size: 16px;display: flex;color: black;" aria-hidden="true">
-                                                                    <span style="display: block;margin-left: 7px;">13</span>
-                                                                </i>
-
-                                                            </button>
-
-                                                        </form>
-
-                                                        <div style="width: 100%;display: flex;justify-content: flex-end;">
-
-                                                            <a target="_blank" href="mailto:?subject=Deze woning heb ik gevonden op Zoekjehuisje.nl, kijk zelf maar!&amp;body=" class="new-icons" title="Delen" style="border-radius: 100px;position: relative;width: 35px !important;height: 35px !important;line-height: 0 !important;display: flex;flex-direction: column;justify-content: flex-start;text-decoration: none;">
-                                                                <i class="fas fa-share-alt" style="vertical-align: middle;margin-right: 2px;font-size: 15px;" aria-hidden="true"></i>
-                                                            </a>
-
-                                                            <i class="far fa-eye" style="vertical-align: middle;font-size: 16px;display: flex;color: #37bc9b;" aria-hidden="true">
-                                                                <span style="display: block;margin-left: 7px;">20</span>
-                                                            </i>
+                                                            <img src="{{$key->image ? asset('upload/'.$key->image) : asset('upload/noImage.png') }}" style="width: 100%;height: 250px;border-top-left-radius: 3px;border-top-right-radius: 3px;">
 
                                                         </div>
 
-                                                    </div>
+                                                    </a>
 
-                                                    <p style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 5;-webkit-box-orient: vertical;overflow: hidden;line-height: 2;font-size: 15px;margin-top: 15px;font-weight: 600;">Je ziet het al gelijk: in deze heerlijke woonkamer staan deze prachtige Jan des Bouvrie banken #Modern #Jan des Bouvrie # Woonkamerinspiratie</p>
+                                                    <div class="property-content description-content">
 
-                                                </div>
-                                            </div>
-                                        </article>
-                                    </div>
+                                                        <div style="display: flex;justify-content: space-between;">
 
-                                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 res-float">
-                                        <article style="margin-bottom: 45px;">
-                                            <div class="property-container" style="margin: 0;min-height: 480px;border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;">
+                                                            <form action="{{ url('save-place') }}" method="POST" style="display: inline-block;">
 
-                                                <a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;" href="">
+                                                                <input type="hidden" name="_token" value="{{csrf_token()}}"/>
+                                                                <input type="hidden" name="content_id" value="{{$key->id}}">
 
-                                                    <div class="property-image">
+                                                                <button type="submit" class="new-button" title="" style="outline: none;">
 
-                                                        <img src="{{ URL::asset('upload/noImage.png') }}" style="width: 100%;height: 250px;border-top-left-radius: 3px;border-top-right-radius: 3px;">
+                                                                    @if($key->savings->contains('ip', $ip_address))
 
-                                                    </div>
+                                                                        <i class="fa fa-heart heart" style="vertical-align: middle;font-size: 16px;display: flex;color: black;" aria-hidden="true">
+                                                                            <span style="display: block;margin-left: 7px;">{{$key->saved}}</span>
+                                                                        </i>
 
-                                                </a>
+                                                                    @else
 
-                                                <div class="property-content description-content">
+                                                                        <i class="far fa-heart heart" style="vertical-align: middle;font-size: 16px;display: flex;color: black;" aria-hidden="true">
+                                                                            <span style="display: block;margin-left: 7px;">{{$key->saved}}</span>
+                                                                        </i>
 
-                                                    <div style="display: flex;justify-content: space-between;">
+                                                                    @endif
 
-                                                        <form action="" method="POST" style="display: inline-block;">
+                                                                </button>
 
-                                                            <input type="hidden" name="_token" value="AGnE5Hl4PjSeDpJPQMrp1W5KzUq0wm2PGBX7amwU">
+                                                            </form>
 
-                                                            <input type="hidden" name="blog_id" value="">
+                                                            <div style="width: 100%;display: flex;justify-content: flex-end;">
 
-                                                            <button type="submit" class="new-button" title="Sla op als favoriet" style="outline: none;">
+                                                                <a target="_blank" href="mailto:?subject=Deze woning heb ik gevonden op Zoekjehuisje.nl, kijk zelf maar!&amp;body=" class="new-icons" title="Delen" style="border-radius: 100px;position: relative;width: 35px !important;height: 35px !important;line-height: 0 !important;display: flex;flex-direction: column;justify-content: flex-start;text-decoration: none;">
+                                                                    <i class="fas fa-share-alt" style="vertical-align: middle;margin-right: 2px;font-size: 15px;" aria-hidden="true"></i>
+                                                                </a>
 
-                                                                <i class="far fa-heart heart" style="vertical-align: middle;font-size: 16px;display: flex;color: black;" aria-hidden="true">
-                                                                    <span style="display: block;margin-left: 7px;">13</span>
+                                                                <i class="far fa-eye" style="vertical-align: middle;font-size: 16px;display: flex;color: #37bc9b;" aria-hidden="true">
+                                                                    <span style="display: block;margin-left: 7px;">{{$key->views}}</span>
                                                                 </i>
 
-                                                            </button>
-
-                                                        </form>
-
-                                                        <div style="width: 100%;display: flex;justify-content: flex-end;">
-
-                                                            <a target="_blank" href="mailto:?subject=Deze woning heb ik gevonden op Zoekjehuisje.nl, kijk zelf maar!&amp;body=" class="new-icons" title="Delen" style="border-radius: 100px;position: relative;width: 35px !important;height: 35px !important;line-height: 0 !important;display: flex;flex-direction: column;justify-content: flex-start;text-decoration: none;">
-                                                                <i class="fas fa-share-alt" style="vertical-align: middle;margin-right: 2px;font-size: 15px;" aria-hidden="true"></i>
-                                                            </a>
-
-                                                            <i class="far fa-eye" style="vertical-align: middle;font-size: 16px;display: flex;color: #37bc9b;" aria-hidden="true">
-                                                                <span style="display: block;margin-left: 7px;">20</span>
-                                                            </i>
+                                                            </div>
 
                                                         </div>
 
+                                                        <p style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 5;-webkit-box-orient: vertical;overflow: hidden;line-height: 2;font-size: 15px;margin-top: 15px;font-weight: 600;">{!! $key->description !!}</p>
+
                                                     </div>
-
-                                                    <p style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 5;-webkit-box-orient: vertical;overflow: hidden;line-height: 2;font-size: 15px;margin-top: 15px;font-weight: 600;">Je ziet het al gelijk: in deze heerlijke woonkamer staan deze prachtige Jan des Bouvrie banken #Modern #Jan des Bouvrie # Woonkamerinspiratie</p>
-
                                                 </div>
-                                            </div>
-                                        </article>
-                                    </div>
+                                            </article>
+                                        </div>
 
-                                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 res-float">
-                                        <article style="margin-bottom: 45px;">
-                                            <div class="property-container" style="margin: 0;min-height: 480px;border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;">
-
-                                                <a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;" href="">
-
-                                                    <div class="property-image">
-
-                                                        <img src="{{ URL::asset('upload/noImage.png') }}" style="width: 100%;height: 250px;border-top-left-radius: 3px;border-top-right-radius: 3px;">
-
-                                                    </div>
-
-                                                </a>
-
-                                                <div class="property-content description-content">
-
-                                                    <div style="display: flex;justify-content: space-between;">
-
-                                                        <form action="" method="POST" style="display: inline-block;">
-
-                                                            <input type="hidden" name="_token" value="AGnE5Hl4PjSeDpJPQMrp1W5KzUq0wm2PGBX7amwU">
-
-                                                            <input type="hidden" name="blog_id" value="">
-
-                                                            <button type="submit" class="new-button" title="Sla op als favoriet" style="outline: none;">
-
-                                                                <i class="far fa-heart heart" style="vertical-align: middle;font-size: 16px;display: flex;color: black;" aria-hidden="true">
-                                                                    <span style="display: block;margin-left: 7px;">13</span>
-                                                                </i>
-
-                                                            </button>
-
-                                                        </form>
-
-                                                        <div style="width: 100%;display: flex;justify-content: flex-end;">
-
-                                                            <a target="_blank" href="mailto:?subject=Deze woning heb ik gevonden op Zoekjehuisje.nl, kijk zelf maar!&amp;body=" class="new-icons" title="Delen" style="border-radius: 100px;position: relative;width: 35px !important;height: 35px !important;line-height: 0 !important;display: flex;flex-direction: column;justify-content: flex-start;text-decoration: none;">
-                                                                <i class="fas fa-share-alt" style="vertical-align: middle;margin-right: 2px;font-size: 15px;" aria-hidden="true"></i>
-                                                            </a>
-
-                                                            <i class="far fa-eye" style="vertical-align: middle;font-size: 16px;display: flex;color: #37bc9b;" aria-hidden="true">
-                                                                <span style="display: block;margin-left: 7px;">20</span>
-                                                            </i>
-
-                                                        </div>
-
-                                                    </div>
-
-                                                    <p style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 5;-webkit-box-orient: vertical;overflow: hidden;line-height: 2;font-size: 15px;margin-top: 15px;font-weight: 600;">Je ziet het al gelijk: in deze heerlijke woonkamer staan deze prachtige Jan des Bouvrie banken #Modern #Jan des Bouvrie # Woonkamerinspiratie</p>
-
-                                                </div>
-                                            </div>
-                                        </article>
-                                    </div>
-
-                                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 res-float">
-                                        <article style="margin-bottom: 45px;">
-                                            <div class="property-container" style="margin: 0;min-height: 480px;border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;">
-
-                                                <a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;" href="">
-
-                                                    <div class="property-image">
-
-                                                        <img src="{{ URL::asset('upload/noImage.png') }}" style="width: 100%;height: 250px;border-top-left-radius: 3px;border-top-right-radius: 3px;">
-
-                                                    </div>
-
-                                                </a>
-
-                                                <div class="property-content description-content">
-
-                                                    <div style="display: flex;justify-content: space-between;">
-
-                                                        <form action="" method="POST" style="display: inline-block;">
-
-                                                            <input type="hidden" name="_token" value="AGnE5Hl4PjSeDpJPQMrp1W5KzUq0wm2PGBX7amwU">
-
-                                                            <input type="hidden" name="blog_id" value="">
-
-                                                            <button type="submit" class="new-button" title="Sla op als favoriet" style="outline: none;">
-
-                                                                <i class="far fa-heart heart" style="vertical-align: middle;font-size: 16px;display: flex;color: black;" aria-hidden="true">
-                                                                    <span style="display: block;margin-left: 7px;">13</span>
-                                                                </i>
-
-                                                            </button>
-
-                                                        </form>
-
-                                                        <div style="width: 100%;display: flex;justify-content: flex-end;">
-
-                                                            <a target="_blank" href="mailto:?subject=Deze woning heb ik gevonden op Zoekjehuisje.nl, kijk zelf maar!&amp;body=" class="new-icons" title="Delen" style="border-radius: 100px;position: relative;width: 35px !important;height: 35px !important;line-height: 0 !important;display: flex;flex-direction: column;justify-content: flex-start;text-decoration: none;">
-                                                                <i class="fas fa-share-alt" style="vertical-align: middle;margin-right: 2px;font-size: 15px;" aria-hidden="true"></i>
-                                                            </a>
-
-                                                            <i class="far fa-eye" style="vertical-align: middle;font-size: 16px;display: flex;color: #37bc9b;" aria-hidden="true">
-                                                                <span style="display: block;margin-left: 7px;">20</span>
-                                                            </i>
-
-                                                        </div>
-
-                                                    </div>
-
-                                                    <p style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 5;-webkit-box-orient: vertical;overflow: hidden;line-height: 2;font-size: 15px;margin-top: 15px;font-weight: 600;">Je ziet het al gelijk: in deze heerlijke woonkamer staan deze prachtige Jan des Bouvrie banken #Modern #Jan des Bouvrie # Woonkamerinspiratie</p>
-
-                                                </div>
-                                            </div>
-                                        </article>
-                                    </div>
-
-                                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 res-float">
-                                        <article style="margin-bottom: 45px;">
-                                            <div class="property-container" style="margin: 0;min-height: 480px;border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;">
-
-                                                <a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;" href="">
-
-                                                    <div class="property-image">
-
-                                                        <img src="{{ URL::asset('upload/noImage.png') }}" style="width: 100%;height: 250px;border-top-left-radius: 3px;border-top-right-radius: 3px;">
-
-                                                    </div>
-
-                                                </a>
-
-                                                <div class="property-content description-content">
-
-                                                    <div style="display: flex;justify-content: space-between;">
-
-                                                        <form action="" method="POST" style="display: inline-block;">
-
-                                                            <input type="hidden" name="_token" value="AGnE5Hl4PjSeDpJPQMrp1W5KzUq0wm2PGBX7amwU">
-
-                                                            <input type="hidden" name="blog_id" value="">
-
-                                                            <button type="submit" class="new-button" title="Sla op als favoriet" style="outline: none;">
-
-                                                                <i class="far fa-heart heart" style="vertical-align: middle;font-size: 16px;display: flex;color: black;" aria-hidden="true">
-                                                                    <span style="display: block;margin-left: 7px;">13</span>
-                                                                </i>
-
-                                                            </button>
-
-                                                        </form>
-
-                                                        <div style="width: 100%;display: flex;justify-content: flex-end;">
-
-                                                            <a target="_blank" href="mailto:?subject=Deze woning heb ik gevonden op Zoekjehuisje.nl, kijk zelf maar!&amp;body=" class="new-icons" title="Delen" style="border-radius: 100px;position: relative;width: 35px !important;height: 35px !important;line-height: 0 !important;display: flex;flex-direction: column;justify-content: flex-start;text-decoration: none;">
-                                                                <i class="fas fa-share-alt" style="vertical-align: middle;margin-right: 2px;font-size: 15px;" aria-hidden="true"></i>
-                                                            </a>
-
-                                                            <i class="far fa-eye" style="vertical-align: middle;font-size: 16px;display: flex;color: #37bc9b;" aria-hidden="true">
-                                                                <span style="display: block;margin-left: 7px;">20</span>
-                                                            </i>
-
-                                                        </div>
-
-                                                    </div>
-
-                                                    <p style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 5;-webkit-box-orient: vertical;overflow: hidden;line-height: 2;font-size: 15px;margin-top: 15px;font-weight: 600;">Je ziet het al gelijk: in deze heerlijke woonkamer staan deze prachtige Jan des Bouvrie banken #Modern #Jan des Bouvrie # Woonkamerinspiratie</p>
-
-                                                </div>
-                                            </div>
-                                        </article>
-                                    </div>
-
-                                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 res-float">
-                                        <article style="margin-bottom: 45px;">
-                                            <div class="property-container" style="margin: 0;min-height: 480px;border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;">
-
-                                                <a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;" href="">
-
-                                                    <div class="property-image">
-
-                                                        <img src="{{ URL::asset('upload/noImage.png') }}" style="width: 100%;height: 250px;border-top-left-radius: 3px;border-top-right-radius: 3px;">
-
-                                                    </div>
-
-                                                </a>
-
-                                                <div class="property-content description-content">
-
-                                                    <div style="display: flex;justify-content: space-between;">
-
-                                                        <form action="" method="POST" style="display: inline-block;">
-
-                                                            <input type="hidden" name="_token" value="AGnE5Hl4PjSeDpJPQMrp1W5KzUq0wm2PGBX7amwU">
-
-                                                            <input type="hidden" name="blog_id" value="">
-
-                                                            <button type="submit" class="new-button" title="Sla op als favoriet" style="outline: none;">
-
-                                                                <i class="far fa-heart heart" style="vertical-align: middle;font-size: 16px;display: flex;color: black;" aria-hidden="true">
-                                                                    <span style="display: block;margin-left: 7px;">13</span>
-                                                                </i>
-
-                                                            </button>
-
-                                                        </form>
-
-                                                        <div style="width: 100%;display: flex;justify-content: flex-end;">
-
-                                                            <a target="_blank" href="mailto:?subject=Deze woning heb ik gevonden op Zoekjehuisje.nl, kijk zelf maar!&amp;body=" class="new-icons" title="Delen" style="border-radius: 100px;position: relative;width: 35px !important;height: 35px !important;line-height: 0 !important;display: flex;flex-direction: column;justify-content: flex-start;text-decoration: none;">
-                                                                <i class="fas fa-share-alt" style="vertical-align: middle;margin-right: 2px;font-size: 15px;" aria-hidden="true"></i>
-                                                            </a>
-
-                                                            <i class="far fa-eye" style="vertical-align: middle;font-size: 16px;display: flex;color: #37bc9b;" aria-hidden="true">
-                                                                <span style="display: block;margin-left: 7px;">20</span>
-                                                            </i>
-
-                                                        </div>
-
-                                                    </div>
-
-                                                    <p style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 5;-webkit-box-orient: vertical;overflow: hidden;line-height: 2;font-size: 15px;margin-top: 15px;font-weight: 600;">Je ziet het al gelijk: in deze heerlijke woonkamer staan deze prachtige Jan des Bouvrie banken #Modern #Jan des Bouvrie # Woonkamerinspiratie</p>
-
-                                                </div>
-                                            </div>
-                                        </article>
-                                    </div>
-
-                                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 res-float">
-                                        <article style="margin-bottom: 45px;">
-                                            <div class="property-container" style="margin: 0;min-height: 480px;border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;">
-
-                                                <a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;" href="">
-
-                                                    <div class="property-image">
-
-                                                        <img src="{{ URL::asset('upload/noImage.png') }}" style="width: 100%;height: 250px;border-top-left-radius: 3px;border-top-right-radius: 3px;">
-
-                                                    </div>
-
-                                                </a>
-
-                                                <div class="property-content description-content">
-
-                                                    <div style="display: flex;justify-content: space-between;">
-
-                                                        <form action="" method="POST" style="display: inline-block;">
-
-                                                            <input type="hidden" name="_token" value="AGnE5Hl4PjSeDpJPQMrp1W5KzUq0wm2PGBX7amwU">
-
-                                                            <input type="hidden" name="blog_id" value="">
-
-                                                            <button type="submit" class="new-button" title="Sla op als favoriet" style="outline: none;">
-
-                                                                <i class="far fa-heart heart" style="vertical-align: middle;font-size: 16px;display: flex;color: black;" aria-hidden="true">
-                                                                    <span style="display: block;margin-left: 7px;">13</span>
-                                                                </i>
-
-                                                            </button>
-
-                                                        </form>
-
-                                                        <div style="width: 100%;display: flex;justify-content: flex-end;">
-
-                                                            <a target="_blank" href="mailto:?subject=Deze woning heb ik gevonden op Zoekjehuisje.nl, kijk zelf maar!&amp;body=" class="new-icons" title="Delen" style="border-radius: 100px;position: relative;width: 35px !important;height: 35px !important;line-height: 0 !important;display: flex;flex-direction: column;justify-content: flex-start;text-decoration: none;">
-                                                                <i class="fas fa-share-alt" style="vertical-align: middle;margin-right: 2px;font-size: 15px;" aria-hidden="true"></i>
-                                                            </a>
-
-                                                            <i class="far fa-eye" style="vertical-align: middle;font-size: 16px;display: flex;color: #37bc9b;" aria-hidden="true">
-                                                                <span style="display: block;margin-left: 7px;">20</span>
-                                                            </i>
-
-                                                        </div>
-
-                                                    </div>
-
-                                                    <p style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 5;-webkit-box-orient: vertical;overflow: hidden;line-height: 2;font-size: 15px;margin-top: 15px;font-weight: 600;">Je ziet het al gelijk: in deze heerlijke woonkamer staan deze prachtige Jan des Bouvrie banken #Modern #Jan des Bouvrie # Woonkamerinspiratie</p>
-
-                                                </div>
-                                            </div>
-                                        </article>
-                                    </div>
-
-                                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 res-float">
-                                        <article style="margin-bottom: 45px;">
-                                            <div class="property-container" style="margin: 0;min-height: 480px;border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;">
-
-                                                <a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;" href="">
-
-                                                    <div class="property-image">
-
-                                                        <img src="{{ URL::asset('upload/noImage.png') }}" style="width: 100%;height: 250px;border-top-left-radius: 3px;border-top-right-radius: 3px;">
-
-                                                    </div>
-
-                                                </a>
-
-                                                <div class="property-content description-content">
-
-                                                    <div style="display: flex;justify-content: space-between;">
-
-                                                        <form action="" method="POST" style="display: inline-block;">
-
-                                                            <input type="hidden" name="_token" value="AGnE5Hl4PjSeDpJPQMrp1W5KzUq0wm2PGBX7amwU">
-
-                                                            <input type="hidden" name="blog_id" value="">
-
-                                                            <button type="submit" class="new-button" title="Sla op als favoriet" style="outline: none;">
-
-                                                                <i class="far fa-heart heart" style="vertical-align: middle;font-size: 16px;display: flex;color: black;" aria-hidden="true">
-                                                                    <span style="display: block;margin-left: 7px;">13</span>
-                                                                </i>
-
-                                                            </button>
-
-                                                        </form>
-
-                                                        <div style="width: 100%;display: flex;justify-content: flex-end;">
-
-                                                            <a target="_blank" href="mailto:?subject=Deze woning heb ik gevonden op Zoekjehuisje.nl, kijk zelf maar!&amp;body=" class="new-icons" title="Delen" style="border-radius: 100px;position: relative;width: 35px !important;height: 35px !important;line-height: 0 !important;display: flex;flex-direction: column;justify-content: flex-start;text-decoration: none;">
-                                                                <i class="fas fa-share-alt" style="vertical-align: middle;margin-right: 2px;font-size: 15px;" aria-hidden="true"></i>
-                                                            </a>
-
-                                                            <i class="far fa-eye" style="vertical-align: middle;font-size: 16px;display: flex;color: #37bc9b;" aria-hidden="true">
-                                                                <span style="display: block;margin-left: 7px;">20</span>
-                                                            </i>
-
-                                                        </div>
-
-                                                    </div>
-
-                                                    <p style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 5;-webkit-box-orient: vertical;overflow: hidden;line-height: 2;font-size: 15px;margin-top: 15px;font-weight: 600;">Je ziet het al gelijk: in deze heerlijke woonkamer staan deze prachtige Jan des Bouvrie banken #Modern #Jan des Bouvrie # Woonkamerinspiratie</p>
-
-                                                </div>
-                                            </div>
-                                        </article>
-                                    </div>
+                                    @endforeach
 
                                 </div>
 
@@ -628,11 +189,41 @@
 
         </div>
 
-    </form>
-
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/css/flaticon.css') }}"/>
 
     <style>
+
+        #overlay{
+            position: fixed;
+            top: 0;
+            z-index: 100;
+            width: 100%;
+            height:100%;
+            display: none;
+            background: rgba(0,0,0,0.6);
+        }
+        .cv-spinner {
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px #ddd solid;
+            border-top: 4px #2e93e6 solid;
+            border-radius: 50%;
+            animation: sp-anime 0.8s infinite linear;
+        }
+        @keyframes sp-anime {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        .is-hide{
+            display:none;
+        }
 
         .sm-bx .row
         {
@@ -1461,6 +1052,141 @@
     </style>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <script>
+
+        function filter1(filter,place)
+        {
+            $.ajax({
+
+                type: 'POST',
+
+                url: "<?php echo url('filter-place') ?>",
+
+                headers: {
+                    'X-CSRF-TOKEN': "<?php echo csrf_token() ?>",
+                },
+
+                data: {
+                    filter: filter,
+                    place: place
+                },
+
+                success: function (data) {
+
+                    $('.company-boxes1').children().remove();
+
+                    $("#overlay").fadeIn(300);
+
+                    setTimeout(function(){
+
+                        $("#overlay").fadeOut(300);
+
+                        $.each(data, function (key, value) {
+
+                            var flag = 0;
+
+                            $.each(value.savings, function (key1, value1)
+                            {
+                                if(value1.ip == ip)
+                                {
+                                    flag = 1;
+                                }
+
+                            });
+
+                            $('.company-boxes1').append('<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 res-float">\n' +
+                                '                            <article style="margin-bottom: 45px;">\n' +
+                                '                                <div class="property-container" style="margin: 0;min-height: 480px;border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;">\n' +
+                                '\n' +
+                                '                                    <a style="text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1;-webkit-box-orient: vertical;overflow: hidden;outline: none;" href="">\n' +
+                                '\n' +
+                                '                                        <div class="property-image">\n' +
+                                '\n' +
+                                '                                            <img src="'+ (value.image ? "upload/" + value.image : "upload/noImage.png") +'" style="width: 100%;height: 250px;border-top-left-radius: 3px;border-top-right-radius: 3px;">\n' +
+                                '\n' +
+                                '                                        </div>\n' +
+                                '\n' +
+                                '                                    </a>\n' +
+                                '\n' +
+                                '                                    <div class="property-content description-content">\n' +
+                                '\n' +
+                                '                                        <div style="display: flex;justify-content: space-between;">\n' +
+                                '\n' +
+                                '                                            <form action="{{ url('save-place') }}" method="POST" style="display: inline-block;">\n' +
+                                '\n' +
+                                '                                                <input type="hidden" name="_token" value="{{csrf_token()}}"/>\n' +
+                                '\n' +
+                                '                                                <input type="hidden" name="content_id" value="'+value.id+'">\n' +
+                                '\n' +
+                                '                                                <button type="submit" class="new-button" title="{{__("text.Add Favorite")}}" style="outline: none;">\n' +
+                                '\n' +
+                                (flag == 1 ? '<i class="fa fa-heart heart" style="vertical-align: middle;font-size: 16px;display: flex;color: black;" aria-hidden="true">\n' +
+                                '                                                                    <span style="display: block;margin-left: 7px;">'+value.saved+'</span>\n' +
+                                '                                                                </i>' : ' <i class="far fa-heart heart" style="vertical-align: middle;font-size: 16px;display: flex;color: black;" aria-hidden="true">\n' +
+                                '                                                        <span style="display: block;margin-left: 7px;">'+value.saved+'</span>\n' +
+                                '                                                    </i>\n') +
+                                '\n' +
+                                '\n' +
+                                '                                                </button>\n' +
+                                '\n' +
+                                '                                            </form>\n' +
+                                '\n' +
+                                '                                            <div style="width: 100%;display: flex;justify-content: flex-end;">\n' +
+                                '\n' +
+                                '                                                <a target="_blank" href="mailto:?subject=&amp;body=" class="new-icons" title="{{__("text.Share")}}" style="border-radius: 100px;position: relative;width: 35px !important;height: 35px !important;line-height: 0 !important;display: flex;flex-direction: column;justify-content: flex-start;text-decoration: none;">\n' +
+                                '                                                    <i class="fas fa-share-alt" style="vertical-align: middle;margin-right: 2px;font-size: 15px;"></i>\n' +
+                                '                                                </a>\n' +
+                                '\n' +
+                                '                                                <i class="far fa-eye" style="vertical-align: middle;font-size: 16px;display: flex;color: #37bc9b;" aria-hidden="true">\n' +
+                                '                                                    <span style="display: block;margin-left: 7px;">'+value.views+'</span>\n' +
+                                '                                                </i>\n' +
+                                '\n' +
+                                '                                            </div>\n' +
+                                '\n' +
+                                '                                        </div>\n' +
+                                '\n' +
+                                value.description +
+                                '\n' +
+                                '                                    </div>\n' +
+                                '                                </div>\n' +
+                                '                            </article>\n' +
+                                '                        </div>\n');
+
+                        });
+
+                    },500);
+                }
+            });
+        }
+
+        $("[name='radio']").change( function(){
+
+            var filter = $(this).val();
+            var place = $("[name='radio1']:checked").val();
+            var ip = $('#ip_address').val();
+
+            if(filter && place)
+            {
+                filter1(filter,place);
+            }
+
+        });
+
+        $("[name='radio1']").change( function(){
+
+            var place = $(this).val();
+            var filter = $("[name='radio']:checked").val();
+            var ip = $('#ip_address').val();
+
+            if(filter && place)
+            {
+                filter1(filter,place);
+            }
+
+        });
+
+    </script>
 
     <style>
 

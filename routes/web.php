@@ -239,6 +239,26 @@ Route::group(['middleware' => 'App\Http\Middleware\UserTypeMiddleware'], functio
         Route::get('study-filters/addstudyfilter/{id}', 'SliderController@editStudyFilter')->name('edit-study-filter');
         Route::get('study-filters/delete/{id}', 'SliderController@deleteStudyFilter');
 
+        Route::get('place-to-do-filters', 'SliderController@PlaceToDoFilters')->name('place-to-do-filters');
+        Route::get('place-to-do-filters/addfilter', 'SliderController@addPlaceToDoFilter')->name('add-place-to-do-filter');
+        Route::post('place-to-do-filters/addfilter', 'SliderController@addPlaceToDoFilterPost');
+        Route::get('place-to-do-filters/addfilter/{id}', 'SliderController@editPlaceToDoFilter')->name('edit-place-to-do-filter');
+        Route::get('place-to-do-filters/delete/{id}', 'SliderController@deletePlaceToDoFilter');
+
+        Route::get('places', 'SliderController@Places')->name('places');
+        Route::get('places/addplace', 'SliderController@addPlace')->name('add-place');
+        Route::post('places/addplace', 'SliderController@addPlacePost');
+        Route::get('places/addplace/{id}', 'SliderController@editPlace')->name('edit-place');
+        Route::get('places/delete/{id}', 'SliderController@deletePlace');
+
+        Route::get('place-to-do-contents', 'SliderController@PlaceToDoContents')->name('place-to-do-contents');
+        Route::get('place-to-do-content/add', 'SliderController@addPlaceToDoContent')->name('add-place-to-do-content');
+        Route::post('place-to-do-content/add', 'SliderController@addPlaceToDoContentPost');
+        Route::get('place-to-do-content/add/{id}', 'SliderController@editPlaceToDoContent')->name('edit-place-to-do-content');
+        Route::get('place-to-do-content/delete/{id}', 'SliderController@deletePlaceToDoContent');
+        Route::get('place-to-do-content/description', 'SliderController@PlaceToDoDescription')->name('place-to-do-description');
+        Route::post('place-to-do-content/description', 'SliderController@PlaceToDoDescriptionPost');
+
         Route::get('study-categories', 'SliderController@StudyCategories')->name('study-filters');
         Route::get('study-categories/addstudycategory', 'SliderController@addStudyCategory')->name('add-study-category');
         Route::post('study-categories/addstudycategory', 'SliderController@addStudyCategoryPost');
@@ -307,7 +327,11 @@ Route::group(['middleware' => 'App\Http\Middleware\UserTypeMiddleware'], functio
 
     Route::post('filter-zoekhet', 'IndexController@filterZoekhet')->name('filter-zoekhet');
 
+    Route::post('filter-place', 'IndexController@filterPlace')->name('filter-place');
+
     Route::post('save-zoekhet', 'IndexController@saveZoekhet');
+
+    Route::post('save-place', 'IndexController@savePlace');
 
     Route::get('company/{id}', 'IndexController@company')->name('company');
 

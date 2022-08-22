@@ -54,6 +54,11 @@ use App\saved_zoekhet;
 use App\study_filters;
 use App\study_categories;
 use App\studies;
+use App\place_to_do_content;
+use App\place_to_do_description;
+use App\place_to_do_filters;
+use App\places;
+use App\saved_place_to_do_contents;
 
 class IndexController extends Controller
 {
@@ -66,7 +71,30 @@ class IndexController extends Controller
 
     public function placeToDo()
     {
-        return view('pages.place_to_do');
+        if (!empty($_SERVER['HTTP_CLIENT_IP']))
+        {
+            $ip_address = $_SERVER['HTTP_CLIENT_IP'];
+        }
+
+        //whether ip is from proxy
+        elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR']))
+        {
+            $ip_address = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        }
+
+        //whether ip is from remote address
+        else
+        {
+            $ip_address = $_SERVER['REMOTE_ADDR'];
+        }
+
+        $content = place_to_do_content::with('savings')->get();
+
+        $filters = place_to_do_filters::all();
+        $places = places::all();
+        $description = place_to_do_description::first();
+
+        return view('pages.place_to_do',compact('content','filters','places','description','ip_address'));
     }
 
     public function offer()
@@ -140,6 +168,13 @@ class IndexController extends Controller
         return $filter;
     }
 
+    public function filterPlace(Request $request)
+    {
+        $filter = place_to_do_content::whereRaw("find_in_set('$request->filter',filter_ids)")->whereRaw("find_in_set('$request->place',place_ids)")->with('savings')->get();
+
+        return $filter;
+    }
+
     public function saveZoekhet(Request $request)
     {
         if (!empty($_SERVER['HTTP_CLIENT_IP']))
@@ -181,6 +216,53 @@ class IndexController extends Controller
             $zoekhet = zoekhet::where('id',$request->content_id)->first();
             $zoekhet->saved = $zoekhet->saved+1;
             $zoekhet->save();
+
+        }
+
+        return redirect()->back();
+    }
+
+    public function savePlace(Request $request)
+    {
+        if (!empty($_SERVER['HTTP_CLIENT_IP']))
+        {
+            $ip_address = $_SERVER['HTTP_CLIENT_IP'];
+        }
+
+        //whether ip is from proxy
+        elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR']))
+        {
+            $ip_address = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        }
+
+        //whether ip is from remote address
+        else
+        {
+            $ip_address = $_SERVER['REMOTE_ADDR'];
+        }
+
+        $existing = saved_place_to_do_contents::where('content_id',$request->content_id)->where('ip',$ip_address)->first();
+
+        if($existing){
+
+            $existing->delete();
+
+            $place_to_do_content = place_to_do_content::where('id',$request->content_id)->first();
+            $place_to_do_content->saved = $place_to_do_content->saved-1;
+            $place_to_do_content->save();
+
+        }
+
+        else{
+
+            $saved_place_to_do_contents = new saved_place_to_do_contents();
+            $saved_place_to_do_contents->content_id = $request->content_id;
+            $saved_place_to_do_contents->ip = $ip_address;
+            $saved_place_to_do_contents->save();
+
+            $place_to_do_content = place_to_do_content::where('id',$request->content_id)->first();
+            $place_to_do_content->saved = $place_to_do_content->saved+1;
+            $place_to_do_content->save();
 
         }
 
