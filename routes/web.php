@@ -428,7 +428,7 @@ Route::group(['middleware' => 'App\Http\Middleware\UserTypeMiddleware'], functio
 
     Route::post('searchnewconstructions', 'PropertiesController@searchnewconstructions')->name('searchnewconstructions');
 
-    Route::post('search', 'PropertiesController@searchkeywordproperties');
+    // Route::post('search', 'PropertiesController@searchkeywordproperties');
 
 
 

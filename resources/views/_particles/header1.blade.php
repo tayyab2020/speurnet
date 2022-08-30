@@ -113,21 +113,24 @@
                 <ul style="margin: 0;border-bottom: 1px solid #eaeaea;padding-bottom: 30px;" class="nav navbar-nav navbar-right">
 
                     <li id="wrap">
-                        <form style="display: flex;align-items: center;margin: 20px 0;" action="" autocomplete="on">
-                            <input class="search-btn" id="search_submit" value="Rechercher" type="submit">
-                            <input class="search-bar" id="search" name="search" type="text" placeholder="What're we looking for ?">
-                        </form>
-
-                        @if(Route::currentRouteName() != 'blogs')
-
-                            <div>
-                                <div>
-                                    <label>Jouw stad, provincie of gemeente</label>
-                                    <input type="text" class="form-control">
-                                </div>
+                        
+                        <form action="" method="get" autocomplete="on">
+                            
+                            <div style="display: flex;align-items: center;margin: 20px 0;">
+                                <input class="search-btn" id="search_submit" value="Rechercher" type="submit">
+                                <input value="{{isset($search) ? $search : null}}" class="search-bar" id="search" name="search" type="text" placeholder="What're we looking for ?">
                             </div>
 
-                        @endif
+                            @if(Route::currentRouteName() != 'blogs')
+
+                                <div>
+                                    <label>Jouw stad, provincie of gemeente</label>
+                                    <input value="{{isset($city) ? $city : null}}" name="city" type="text" class="form-control">
+                                </div>
+
+                            @endif
+
+                        </form>
 
                     </li>
 
@@ -191,21 +194,25 @@
             </ul>
         </div>
 
-        <form class="desktop-search" style="display: flex;align-items: center;margin-left: 10px;border-right: 1px solid #dedede;" action="" autocomplete="on">
-            <input class="search-btn" id="search_submit" value="Rechercher" type="submit">
-            <input class="search-bar" id="search" name="search" type="text" placeholder="What're we looking for ?">
-        </form>
+        <form style="display: flex;" class="desktop-search" method="get" action="" autocomplete="on">
 
-        @if(Route::currentRouteName() != 'blogs')
-
-            <div class="city-con" style="margin-left: 10px;margin-bottom: 40px;">
-                <div class="city-box">
-                    <label>Jouw stad, provincie of gemeente</label>
-                    <input type="text" class="form-control">
-                </div>
+            <div style="display: flex;align-items: center;align-self: center;margin-left: 10px;border-right: 1px solid #dedede;">
+                <input class="search-btn" id="search_submit" value="Rechercher" type="submit">
+                <input value="{{isset($search) ? $search : null}}" class="search-bar" id="search" name="search" type="text" placeholder="What're we looking for ?">
             </div>
 
-        @endif
+            @if(Route::currentRouteName() != 'blogs')
+
+                <div class="city-con" style="margin-left: 10px;position: relative;bottom: 10px;">
+                    <div class="city-box">
+                        <label>Jouw stad, provincie of gemeente</label>
+                        <input value="{{isset($city) ? $city : null}}" name="city" type="text" class="form-control">
+                    </div>
+                </div>
+
+            @endif
+
+        </form>
 
     </div>
 

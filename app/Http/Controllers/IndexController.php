@@ -62,6 +62,7 @@ use App\saved_place_to_do_contents;
 
 class IndexController extends Controller
 {
+
     public function vactury()
     {
         $content = HomepageIcons::orderBy('id','asc')->get();
@@ -110,10 +111,26 @@ class IndexController extends Controller
         return view('pages.study',compact("filters","content"));
     }
 
-    public function page1()
+    public function page1(Request $request)
     {
-        $companies = companies::all();
-        return view('pages.page1',compact('companies'));
+        $search = $request->search;
+        $city = $request->city;
+
+        $companies = new companies();
+
+        if($search)
+        {
+            $companies = $companies->where("title", 'like', '%' . $search . '%')->orWhere("address", 'like', '%' . $search . '%')->orWhereRaw('regexp_replace(description, "<[^>]*>", "") like ?', '%' . $search . '%');
+        }
+
+        if($city)
+        {
+            $companies = $companies->orWhere("city", 'like', '%' . $city . '%');
+        }
+
+        $companies = $companies->get();
+        
+        return view('pages.page1',compact('companies','search','city'));
     }
 
     public function education()
