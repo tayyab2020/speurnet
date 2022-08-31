@@ -58,7 +58,28 @@
 
                         <div class="row" style="margin: 0;">
 
-                            <div style="padding: 0;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div style="padding: 0;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                                <div class="row company-boxes sm-bx">
+
+                                    @foreach($places as $key)
+
+                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 sub">
+                                            <label class="row">
+                                                <input style="display: none;" value="{{$key->id}}" type="radio" name="radio1">
+                                                <div class="row-child">
+                                                    <img style="width: 100%;height: 120px;border-radius: 10px;padding: 20px;" src="{{$key->image ? asset('upload/'.$key->image) : asset('upload/noImage.png')}}" />
+                                                </div>
+                                            </label>
+                                        </div>
+
+                                    @endforeach
+
+                                </div>
+
+                            </div>
+
+                            <div style="padding: 20px 0;border-top: 1px solid #cfcfcf;border-bottom: 1px solid #cfcfcf;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
                                 <div class="row company-boxes">
 
@@ -70,27 +91,6 @@
                                                 <input style="display: none;" value="{{$key->id}}" type="radio" name="radio">
                                                 <div style="width: 100%;" class="row-child">
                                                     <img style="width: 100%;height: 200px;border-radius: 10px;" src="{{$key->image ? asset('upload/'.$key->image) : asset('upload/noImage.png')}}" />
-                                                </div>
-                                            </label>
-                                        </div>
-
-                                    @endforeach
-
-                                </div>
-
-                            </div>
-
-                            <div style="padding: 0;border-top: 1px solid #cfcfcf;margin-top: 20px;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-
-                                <div class="row company-boxes sm-bx">
-
-                                    @foreach($places as $key)
-
-                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 sub">
-                                            <label class="row">
-                                                <input style="display: none;" value="{{$key->id}}" type="radio" name="radio1">
-                                                <div class="row-child">
-                                                    <img style="width: 100%;height: 120px;border-radius: 10px;padding: 20px;" src="{{$key->image ? asset('upload/'.$key->image) : asset('upload/noImage.png')}}" />
                                                 </div>
                                             </label>
                                         </div>
@@ -694,7 +694,6 @@
             width: 100%;
             min-height: 160px;
             padding: 0;
-            margin-top: 10px;
         }
 
         .company-boxes .row .row-child
