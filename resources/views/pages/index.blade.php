@@ -31,9 +31,9 @@
 
         <!-- begin:latest -->
 
-        <div class="row" style="margin: 0;">
+        <div class="row" style="margin: 0;display: flex;flex-flow: row wrap;">
 
-            <div style="margin-top: 30px;" class="col-lg-2 col-md-3 col-sm-12 col-xs-12">
+            <div style="margin-top: 30px;" class="col-lg-2 col-md-3 col-sm-12 col-xs-12 favs">
 
                 <h4 style="font-weight: 500;text-align: center;">OUR FAVOURITES THIS WEEK</h4>
 
@@ -61,7 +61,7 @@
 
             </div>
 
-            <div style="margin-top: 30px;" class="col-lg-7 col-md-6 col-sm-12 col-xs-12">
+            <div style="margin-top: 30px;" class="col-lg-7 col-md-6 col-sm-12 col-xs-12 boxes">
 
                 <div class="row company-boxes">
 
@@ -158,7 +158,7 @@
 
             </div>
 
-            <div style="display: flex;align-items: flex-end;flex-wrap: wrap;margin: 20px 0;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div style="display: flex;align-items: flex-end;flex-wrap: wrap;margin: 20px 0;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 subs">
 
                 <div style="display: flex;justify-content: flex-start;align-items: center;padding: 0;" class="col-lg-2 col-md-12 col-sm-12 col-xs-12">
                     <a class="top-left-link" style="padding: 10px;color: black;font-weight: 600;" href="#">Explore our Services <i style="margin-left: 5px;" class="fa fa-arrow-right" aria-hidden="true"></i></a>
@@ -204,26 +204,35 @@
     </div>
     <!-- end:content -->
 
-<!-- begin:modal-message -->
-<div class="modal fade" id="modal-error" tabindex="-1" role="dialog" aria-labelledby="modal-signin" aria-hidden="true">
-    <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-            <div class="modal-header" style="border-bottom:none;">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <!-- begin:modal-message -->
+    <div class="modal fade" id="modal-error" tabindex="-1" role="dialog" aria-labelledby="modal-signin" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+           <div class="modal-content">
+            
+                <div class="modal-header" style="border-bottom:none;">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                
+                <div class="modal-body">
+                    <div id="ajax" style="color: #db2424"></div>
+                </div>
 
             </div>
-            <div class="modal-body">
-                <div id="ajax" style="color: #db2424"></div>
-            </div>
-
         </div>
     </div>
-</div>
-<!-- end:modal-message -->
+    <!-- end:modal-message -->
 
-<link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/css/flaticon.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/css/flaticon.css') }}"/>
 
 <style>
+
+    @media (max-width: 991px)
+    {
+        .favs{ order: 1; }
+        .trending{ order: 2; }
+        .boxes{ order: 3; }
+        .subs{ order: 4; }
+    }
 
     .bottom-list li
     {
