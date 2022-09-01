@@ -228,9 +228,9 @@
 
     @media (max-width: 991px)
     {
-        .favs{ order: 1; }
-        .trending{ order: 2; }
-        .boxes{ order: 3; }
+        .boxes{ order: 1; }
+        .favs{ order: 2; }
+        .trending{ order: 3; }
         .subs{ order: 4; }
     }
 
