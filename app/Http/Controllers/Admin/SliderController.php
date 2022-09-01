@@ -14,6 +14,8 @@ use App\Slider;
 use App\categories_headings;
 use App\studies;
 use App\study_filters;
+use App\studies_features;
+use App\studies_links;
 use App\study_categories;
 use App\place_to_do_filters;
 use App\places;
@@ -1193,7 +1195,7 @@ class SliderController extends MainAdminController
 
         $validator = \Validator::make($data,$rule);
 
-        if ($validator->fails())
+        if($validator->fails())
         {
             return redirect()->back()->withErrors($validator->messages());
         }
@@ -1201,6 +1203,9 @@ class SliderController extends MainAdminController
         if(!empty($inputs['id'])){
 
             $slide = studies::findOrFail($inputs['id']);
+
+            $features = studies_features::where('study_id',$inputs['id'])->get();
+            $links = studies_links::where('study_id',$inputs['id'])->get();
 
         }else{
 
@@ -1216,6 +1221,109 @@ class SliderController extends MainAdminController
         $slide->category = $request->category;
         $slide->types = implode(',', $request->types) ? implode(',', array_filter($request->types)) : NULL;
         $slide->save();
+
+        $feature_ids = array();
+        $link_ids = array();
+
+        foreach($request->feature_headings1 as $x => $key)
+        {
+            $feature = studies_features::where('study_id',$slide->id)->skip($x)->first();
+
+            $slide_image = isset($request->file('feature_images')[$x]) ? $request->file('feature_images')[$x] : NULL;
+    
+            if($slide_image){
+                
+                if($feature)
+                {
+                    \File::delete(public_path() .'/upload/'.$feature->image);
+                }
+                
+                $tmpFilePath = 'upload/';
+                $filename = $_FILES['feature_images']['name'][$x];
+                $ext = pathinfo($filename, PATHINFO_EXTENSION);
+                $hardPath = Str::slug($key, '-').'-'.md5(time()) .'.'.$ext;
+                $img = Image::make($slide_image);
+                $img->save($tmpFilePath.$hardPath);
+                $image = $hardPath;
+    
+            }
+            else
+            {
+                if($feature)
+                {
+                    $image = $feature->image;
+                }
+                else
+                {
+                    $image = NULL;
+                }
+            }
+
+            if(!$feature)
+            {
+                $feature = new studies_features;
+                $feature->study_id = $slide->id;
+            }
+
+            $feature->image = $image;
+            $feature->heading1 = $key;
+            $feature->heading2 = $request->feature_headings2[$x];
+            $feature->save();
+
+            $feature_ids[] = $feature->id;
+        }
+
+        studies_features::where('study_id',$slide->id)->whereNotIn('id',$feature_ids)->delete();
+
+        foreach($request->link_titles as $x => $key)
+        {
+            $link = studies_links::where('study_id',$slide->id)->skip($x)->first();
+
+            $slide_image = isset($request->file('link_images')[$x]) ? $request->file('link_images')[$x] : NULL;
+    
+            if($slide_image){
+                
+                if($link)
+                {
+                    \File::delete(public_path() .'/upload/'.$link->image);
+                }
+                
+                $tmpFilePath = 'upload/';
+                $filename = $_FILES['link_images']['name'][$x];
+                $ext = pathinfo($filename, PATHINFO_EXTENSION);
+                $hardPath = Str::slug($key, '-').'-'.md5(time()) .'.'.$ext;
+                $img = Image::make($slide_image);
+                $img->save($tmpFilePath.$hardPath);
+                $image = $hardPath;
+    
+            }
+            else
+            {
+                if($link)
+                {
+                    $image = $link->image;
+                }
+                else
+                {
+                    $image = NULL;
+                }
+            }
+
+            if(!$link)
+            {
+                $link = new studies_links;
+                $link->study_id = $slide->id;
+            }
+
+            $link->image = $image;
+            $link->title = $key;
+            $link->link = $request->link_urls[$x];
+            $link->save();
+
+            $link_ids[] = $link->id;
+        }
+
+        studies_links::where('study_id',$slide->id)->whereNotIn('id',$link_ids)->delete();
 
         if(!empty($inputs['id'])){
 
@@ -1245,8 +1353,10 @@ class SliderController extends MainAdminController
         $slide = studies::findOrFail($id);
         $categories = study_categories::get();
         $types = study_filters::get();
+        $features = studies_features::where('study_id',$id)->get();
+        $links = studies_links::where('study_id',$id)->get();
 
-        return view('admin.pages.addeditstudies',compact('slide','categories','types'));
+        return view('admin.pages.addeditstudies',compact('slide','categories','types','features','links'));
 
     }
 

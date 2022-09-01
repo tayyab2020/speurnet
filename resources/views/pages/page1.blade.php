@@ -39,6 +39,12 @@
 
                     <div class="row company-boxes">
 
+                        @php
+
+                            $backgrounds = array("#F5DEF3","#C2EEEB","#DAF4D9","#F4E4BD","#F7D5D9","#F5DEF3");
+
+                        @endphp
+
                         @foreach($companies as $key)
 
                             @if($key->image)
@@ -58,7 +64,7 @@
 
                                     <a href="{{url('company/'.$key->id)}}">
 
-                                        <div style="background-color: #C2EEEB;background-size: 100% 100%;border: 1px solid #dfdfdf;" class="row">
+                                        <div style="background-color: {{$backgrounds[array_rand($backgrounds)]}};background-size: 100% 100%;" class="row">
                                             <span style="font-size: 22px;color: #6C7895;font-weight: bold;">{{$key->title}}</span>
                                             <span style="margin-top: 15px;display: block;font-size: 18px;color: #6b6e80;font-weight: 500;"><i class="fa fa-map-marker-alt" style="margin-right: 5px;"></i> {{$key->address}}</span>
                                             <span style="color: #585757;margin-top: 10px;margin-left: 10px;font-size: 16px;font-weight: 600;">{{$key->city}}</span>
@@ -148,6 +154,7 @@
 
             $('input[type="checkbox"]').not(this).prop('checked', false);
             var ids = $(this).val();
+            const backgrounds = ["#F5DEF3","#C2EEEB","#DAF4D9","#F4E4BD","#F7D5D9","#F5DEF3"];
 
             // var ids = [];
 
@@ -192,7 +199,7 @@
                                         '\n' +
                                         '                                    <a href="/company/'+ value.id+'">\n' +
                                         '\n' +
-                                        '                                        <div style="background-color: #C2EEEB;background-size: 100% 100%;border: 1px solid #dfdfdf;" class="row">\n' +
+                                        '                                        <div style="background-color: '+backgrounds[Math.floor(Math.random() * backgrounds.length)]+';background-size: 100% 100%;" class="row">\n' +
                                         '                                            <span style="font-size: 22px;color: #6C7895;font-weight: bold;">'+value.title+'</span>\n' +
                                         '                                            <span style="margin-top: 15px;display: block;font-size: 18px;color: #6b6e80;font-weight: 500;"><i class="fa fa-map-marker-alt" style="margin-right: 5px;"></i> '+value.address+'</span>\n' +
                                         '                                            <span style="color: #585757;margin-top: 10px;margin-left: 10px;font-size: 16px;font-weight: 600;">'+value.city+'</span>\n' +

@@ -93,13 +93,13 @@
 
                 </div>
 
-                <div class="table form-group">
+                <div class="table table1 form-group">
 
                     <table style="margin: auto;">
 
                         <thead>
                         <tr>
-                            <th style="border-top-left-radius: 9px;">Title</th>                            
+                            <th style="border-top-left-radius: 9px;">Title</th>
                             <th style="width: 10%;border-top-right-radius: 9px;"></th>
                         </tr>
                         </thead>
@@ -178,6 +178,185 @@
 
                 </div>
 
+                <div style="margin: 50px 0 0 0;" class="row">
+
+                    <h4 style="border-bottom: 1px solid #dadada;padding-bottom: 20px;color: #444444;text-align: center;">Features</h4>
+
+                </div>
+
+                <div class="table table2 form-group">
+
+                    <table style="margin: auto;">
+
+                        <thead>
+                        <tr>
+                            <th style="border-top-left-radius: 9px;">Image</th>
+                            <th>Title 1</th>
+                            <th>Title 2</th>
+                            <th style="width: 10%;border-top-right-radius: 9px;"></th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+
+                        @if(isset($features))
+
+                            @foreach($features as $x => $temp)
+
+                                <tr data-id="{{$x+1}}">
+                                    <td>
+
+                                        @if($temp->image)
+
+                                            <img style="margin-bottom: 10px;" src="{{ URL::asset('upload/'.$temp->image) }}" width="200" alt="person">
+
+                                        @endif
+
+                                        <input type="file" name="feature_images[]" class="filestyle">
+                                    </td>
+                                    <td>
+                                        <input type="text" name="feature_headings1[]" value="{{ isset($temp->heading1) ? $temp->heading1 : null }}" class="form-control">
+                                    </td>
+                                    <td>
+                                        <input type="text" name="feature_headings2[]" value="{{ isset($temp->heading2) ? $temp->heading2 : null }}" class="form-control">
+                                    </td>
+                                    <td style="text-align: center;">
+
+                                        <span id="next-row-span" class="tooltip1 add-row1" data-id="" style="cursor: pointer;font-size: 20px;">
+                                            <i id="next-row-icon" class="fa fa-fw fa-plus"></i>
+                                        </span>
+
+                                        <span data-id="" id="next-row-span" class="tooltip1 remove-row1" style="cursor: pointer;font-size: 20px;margin-left: 10px;">
+                                            <i id="next-row-icon" class="fa fa-fw fa-trash-o"></i>
+                                        </span>
+
+                                    </td>
+                                </tr>
+
+                            @endforeach
+
+                        @else
+
+                            <tr data-id="1">
+                                <td>
+                                    <input type="file" name="feature_images[]" class="filestyle">
+                                </td>
+                                <td>
+                                    <input type="text" name="feature_headings1[]" class="form-control">
+                                </td>
+                                <td>
+                                    <input type="text" name="feature_headings2[]" class="form-control">
+                                </td>
+                                <td style="text-align: center;">
+
+                                    <span id="next-row-span" class="tooltip1 add-row1" data-id="" style="cursor: pointer;font-size: 20px;">
+                                        <i id="next-row-icon" class="fa fa-fw fa-plus"></i>
+                                    </span>
+
+                                    <span data-id="" id="next-row-span" class="tooltip1 remove-row1" style="cursor: pointer;font-size: 20px;margin-left: 10px;">
+                                        <i id="next-row-icon" class="fa fa-fw fa-trash-o"></i>
+                                    </span>
+
+                                </td>
+                            </tr>
+
+                        @endif
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+                <div style="margin: 50px 0 0 0;" class="row">
+
+                    <h4 style="border-bottom: 1px solid #dadada;padding-bottom: 20px;color: #444444;text-align: center;">Links</h4>
+
+                </div>
+
+                <div class="table table3 form-group">
+
+                    <table style="margin: auto;">
+
+                        <thead>
+                        <tr>
+                            <th style="border-top-left-radius: 9px;">Image</th>
+                            <th>Title</th>
+                            <th>URL</th>
+                            <th style="width: 10%;border-top-right-radius: 9px;"></th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+
+                        @if(isset($links))
+
+                            @foreach($links as $x => $temp)
+
+                                <tr data-id="{{$x+1}}">
+                                    <td>
+                                        
+                                        @if($temp->image)
+
+                                            <img style="margin-bottom: 10px;" src="{{ URL::asset('upload/'.$temp->image) }}" width="200" alt="person">
+
+                                        @endif
+                                        
+                                        <input type="file" name="link_images[]" class="filestyle">
+                                    </td>
+                                    <td>
+                                        <input type="text" name="link_titles[]" value="{{ isset($temp->title) ? $temp->title : null }}" class="form-control">
+                                    </td>
+                                    <td>
+                                        <input type="text" name="link_urls[]" value="{{ isset($temp->link) ? $temp->link : null }}" class="form-control">
+                                    </td>
+                                    <td style="text-align: center;">
+
+                                        <span id="next-row-span" class="tooltip1 add-row2" data-id="" style="cursor: pointer;font-size: 20px;">
+                                            <i id="next-row-icon" class="fa fa-fw fa-plus"></i>
+                                        </span>
+
+                                        <span data-id="" id="next-row-span" class="tooltip1 remove-row2" style="cursor: pointer;font-size: 20px;margin-left: 10px;">
+                                            <i id="next-row-icon" class="fa fa-fw fa-trash-o"></i>
+                                        </span>
+
+                                    </td>
+                                </tr>
+
+                            @endforeach
+
+                        @else
+
+                            <tr data-id="1">
+                                <td>
+                                    <input type="file" name="link_images[]" class="filestyle">
+                                </td>
+                                <td>
+                                    <input type="text" name="link_titles[]" class="form-control">
+                                </td>
+                                <td>
+                                    <input type="text" name="link_urls[]" class="form-control">
+                                </td>
+                                <td style="text-align: center;">
+
+                                    <span id="next-row-span" class="tooltip1 add-row2" data-id="" style="cursor: pointer;font-size: 20px;">
+                                        <i id="next-row-icon" class="fa fa-fw fa-plus"></i>
+                                    </span>
+
+                                    <span data-id="" id="next-row-span" class="tooltip1 remove-row2" style="cursor: pointer;font-size: 20px;margin-left: 10px;">
+                                        <i id="next-row-icon" class="fa fa-fw fa-trash-o"></i>
+                                    </span>
+
+                                </td>
+                            </tr>
+
+                        @endif
+
+                        </tbody>
+
+                    </table>
+
+                </div>
 
                 <hr>
                 <div class="form-group">
@@ -245,10 +424,10 @@
 
         $(document).on('click', '.add-row', function () {
 
-            var row = $('.table table tbody tr:last').data('id');
+            var row = $('.table1 table tbody tr:last').data('id');
             row = row + 1;
 
-            $(".table table tbody").append('<tr data-id="'+row+'">\n' +
+            $(".table1 table tbody").append('<tr data-id="'+row+'">\n' +
                 '                                                                                        <td>\n' +
                 '                                                                                            <select class="types" name="types[]">\n' +
                 '\n' +
@@ -303,15 +482,103 @@
 
         });
 
+        $(document).on('click', '.add-row1', function () {
+
+            var row = $('.table2 table tbody tr:last').data('id');
+            row = row + 1;
+
+            $(".table2 table tbody").append('<tr data-id="'+row+'">\n' +
+                '                                                                                        <td>\n' +
+                '\n' +
+                '                                                                                            <input type="file" name="feature_images[]" class="filestyle">\n' +
+                '\n' +
+                '                                                                                        </td>\n' +
+                '\n' +
+                '                                                                                        <td>\n' +
+                '\n' +
+                '                                                                                            <input type="text" name="feature_headings1[]" class="form-control">\n' +
+                '\n' +
+                '                                                                                        </td>\n' +
+                '\n' +
+                '                                                                                        <td>\n' +
+                '\n' +
+                '                                                                                            <input type="text" name="feature_headings2[]" class="form-control">\n' +
+                '\n' +
+                '                                                                                        </td>\n' +
+                '\n' +
+                '                                                                                        <td style="text-align: center;">\n' +
+                '                                                                                           <span id="next-row-span" class="tooltip1 add-row1" style="cursor: pointer;font-size: 20px;">\n' +
+                '                                                                                               <i id="next-row-icon" class="fa fa-fw fa-plus"></i>\n' +
+                '                                                                                           </span>\n' +
+                '\n' +
+                '                                                                                           <span data-id="" id="next-row-span" class="tooltip1 remove-row1" style="cursor: pointer;font-size: 20px;margin-left: 10px;">\n' +
+                '                                                                                               <i id="next-row-icon" class="fa fa-fw fa-trash-o"></i>\n' +
+                '                                                                                           </span>\n' +
+                '                                                                                        </td>\n' +
+                '                                                                </tr>');
+
+                $('.filestyle').filestyle({
+                    input:false,
+                    icon:false,
+                    buttonText:'Upload',
+                    buttonName:'btn-default'
+                });
+
+        });
+
+        $(document).on('click', '.add-row2', function () {
+
+            var row = $('.table3 table tbody tr:last').data('id');
+            row = row + 1;
+
+            $(".table3 table tbody").append('<tr data-id="'+row+'">\n' +
+                '                                                                                        <td>\n' +
+                '\n' +
+                '                                                                                            <input type="file" name="link_images[]" class="filestyle">\n' +
+                '\n' +
+                '                                                                                        </td>\n' +
+                '\n' +
+                '                                                                                        <td>\n' +
+                '\n' +
+                '                                                                                            <input type="text" name="link_titles[]" class="form-control">\n' +
+                '\n' +
+                '                                                                                        </td>\n' +
+                '\n' +
+                '                                                                                        <td>\n' +
+                '\n' +
+                '                                                                                            <input type="text" name="link_urls[]" class="form-control">\n' +
+                '\n' +
+                '                                                                                        </td>\n' +
+                '\n' +
+                '                                                                                        <td style="text-align: center;">\n' +
+                '                                                                                           <span id="next-row-span" class="tooltip1 add-row2" style="cursor: pointer;font-size: 20px;">\n' +
+                '                                                                                               <i id="next-row-icon" class="fa fa-fw fa-plus"></i>\n' +
+                '                                                                                           </span>\n' +
+                '\n' +
+                '                                                                                           <span data-id="" id="next-row-span" class="tooltip1 remove-row2" style="cursor: pointer;font-size: 20px;margin-left: 10px;">\n' +
+                '                                                                                               <i id="next-row-icon" class="fa fa-fw fa-trash-o"></i>\n' +
+                '                                                                                           </span>\n' +
+                '                                                                                        </td>\n' +
+                '                                                                </tr>');
+
+                $('.filestyle').filestyle({
+                    input:false,
+                    icon:false,
+                    buttonText:'Upload',
+                    buttonName:'btn-default'
+                });
+
+        });
+
 
         $(document).on('click', '.remove-row', function () {
 
             $(this).parent().parent().remove();
 
-            if($('.table').find("table tbody tr").length == 0)
+            if($('.table1').find("table tbody tr").length == 0)
             {
 
-                $(".table table tbody").append('<tr data-id="1">\n' +
+                $(".table1 table tbody").append('<tr data-id="1">\n' +
                     '                                                                                        <td>\n' +
                     '                                                                                            <select class="types" name="types[]">\n' +
                     '\n' +
@@ -361,6 +628,100 @@
                         }
                     }
 
+                });
+            }
+
+        });
+
+        $(document).on('click', '.remove-row1', function () {
+
+            $(this).parent().parent().remove();
+
+            if($('.table2').find("table tbody tr").length == 0)
+            {
+
+                $(".table2 table tbody").append('<tr data-id="1">\n' +
+                '                                                                                        <td>\n' +
+                '\n' +
+                '                                                                                            <input type="file" name="feature_images[]" class="filestyle">\n' +
+                '\n' +
+                '                                                                                        </td>\n' +
+                '\n' +
+                '                                                                                        <td>\n' +
+                '\n' +
+                '                                                                                            <input type="text" name="feature_headings1[]" class="form-control">\n' +
+                '\n' +
+                '                                                                                        </td>\n' +
+                '\n' +
+                '                                                                                        <td>\n' +
+                '\n' +
+                '                                                                                            <input type="text" name="feature_headings2[]" class="form-control">\n' +
+                '\n' +
+                '                                                                                        </td>\n' +
+                '\n' +
+                '                                                                                        <td style="text-align: center;">\n' +
+                '                                                                                           <span id="next-row-span" class="tooltip1 add-row1" style="cursor: pointer;font-size: 20px;">\n' +
+                '                                                                                               <i id="next-row-icon" class="fa fa-fw fa-plus"></i>\n' +
+                '                                                                                           </span>\n' +
+                '\n' +
+                '                                                                                           <span data-id="" id="next-row-span" class="tooltip1 remove-row1" style="cursor: pointer;font-size: 20px;margin-left: 10px;">\n' +
+                '                                                                                               <i id="next-row-icon" class="fa fa-fw fa-trash-o"></i>\n' +
+                '                                                                                           </span>\n' +
+                '                                                                                        </td>\n' +
+                '                                                                </tr>');
+
+                $('.filestyle').filestyle({
+                    input:false,
+                    icon:false,
+                    buttonText:'Upload',
+                    buttonName:'btn-default'
+                });
+            }
+
+        });
+
+        $(document).on('click', '.remove-row2', function () {
+
+            $(this).parent().parent().remove();
+
+            if($('.table3').find("table tbody tr").length == 0)
+            {
+
+                $(".table3 table tbody").append('<tr data-id="1">\n' +
+                '                                                                                        <td>\n' +
+                '\n' +
+                '                                                                                            <input type="file" name="link_images[]" class="filestyle">\n' +
+                '\n' +
+                '                                                                                        </td>\n' +
+                '\n' +
+                '                                                                                        <td>\n' +
+                '\n' +
+                '                                                                                            <input type="text" name="link_titles[]" class="form-control">\n' +
+                '\n' +
+                '                                                                                        </td>\n' +
+                '\n' +
+                '                                                                                        <td>\n' +
+                '\n' +
+                '                                                                                            <input type="text" name="link_urls[]" class="form-control">\n' +
+                '\n' +
+                '                                                                                        </td>\n' +
+                '\n' +
+                '                                                                                        <td style="text-align: center;">\n' +
+                '                                                                                           <span id="next-row-span" class="tooltip1 add-row2" style="cursor: pointer;font-size: 20px;">\n' +
+                '                                                                                               <i id="next-row-icon" class="fa fa-fw fa-plus"></i>\n' +
+                '                                                                                           </span>\n' +
+                '\n' +
+                '                                                                                           <span data-id="" id="next-row-span" class="tooltip1 remove-row2" style="cursor: pointer;font-size: 20px;margin-left: 10px;">\n' +
+                '                                                                                               <i id="next-row-icon" class="fa fa-fw fa-trash-o"></i>\n' +
+                '                                                                                           </span>\n' +
+                '                                                                                        </td>\n' +
+                '                                                                </tr>');
+
+                $('.filestyle').filestyle({
+                    input:false,
+                    icon:false,
+                    buttonText:'Upload',
+                    buttonName:'btn-default'
                 });
             }
 

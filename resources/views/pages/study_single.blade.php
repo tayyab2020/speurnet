@@ -33,95 +33,51 @@
 
                     <div style="margin: 0;" class="row">
 
-                        <div style="padding: 0;display: flex;flex-direction: column;align-items: flex-start;justify-content: flex-start;" class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
-
-                            <h4 style="color: #8D3046;font-weight: 700;margin: 0;">Van Soest Koedam</h4>
-                            <span style="color: #1e7cbb;font-weight: 600;">opleidingen | trainingen | coaching</span>
-                            <p style="margin-top: 20px;font-weight: 600;">Omdat onze cursussen op individuele basis worden aangeboden, mag je bij ons mag zelf je cursusdatums kiezen. Omdat onze cursussen op individuele basis worden aangeboden, mag je bij ons mag zelf je cursusdatums kiezen.</p>
-
-                        </div>
-
-                    </div>
-
-                    <div style="margin: 30px 0 0 0;" class="row">
-
-                        <div style="padding: 0;display: flex;flex-direction: column;align-items: flex-start;justify-content: flex-start;" class="col-lg-4 col-md-6 col-sm-12 col-xs-12">
-
-                            <h4 style="color: #DB7AB0;font-weight: 600;margin: 0;">De opleiding MBO Tandartsassistent</h4>
-                            <p style="margin-top: 10px;font-weight: 600;">Bij Capabel volg je een verkorte MBO-opleiding. Intensieve begeleiding door een docent is daarom bij ons vanzelfsprekend. Bij Capabel volg je een verkorte MBO-opleiding. Intensieve begeleiding door een docent is daarom bij ons vanzelfsprekend.</p>
-
-                        </div>
+                        {!! $study->description !!}
 
                     </div>
 
                     <div style="margin: 30px 0 0 0;display: flex;flex-wrap: wrap;" class="row">
 
-                        <div style="padding: 0;display: flex;justify-content: flex-start;margin-bottom: 30px;" class="col-lg-4 col-md-4 col-sm-4 col-xs-6 res-icons">
+                        @foreach($study->features as $x => $key)
 
-                            <img style="width: 30px;height: 30px;" src="{{url('assets/img/hourglass.png')}}">
-                            <div class="res-icons-text" style="font-size: 20px;">
-                                <span>Duration</span> <br> <span style="font-weight: 600;">5 weeks</span>
+                            <div @if(fmod($x,3) == 0) style="padding: 0;display: flex;justify-content: flex-start;margin-bottom: 30px;" @else style="padding: 0;display: flex;justify-content: center;border-left: 1px solid #bebebe;margin-bottom: 30px;" @endif @if(fmod($x,2) == 0) class="col-lg-4 col-md-4 col-sm-4 col-xs-6 res-icons" @else class="col-lg-4 col-md-4 col-sm-4 col-xs-6 res-icons1" @endif>
+
+                                @if($key->image)
+
+                                    <img style="width: 30px;height: 30px;margin-right: 5px;" src="{{url('upload/'.$key->image)}}">
+
+                                @endif
+                                
+                                <div class="res-icons-text" style="font-size: 20px;">
+                                    <span>{{$key->heading1}}</span> @if($key->heading2) <br> <span style="font-weight: 600;">{{$key->heading2}}</span> @endif
+                                </div>
+
                             </div>
 
-                        </div>
-
-                        <div style="padding: 0;display: flex;justify-content: center;border-left: 1px solid #bebebe;margin-bottom: 30px;" class="col-lg-4 col-md-4 col-sm-4 col-xs-6 res-icons1">
-
-                            <img style="width: 30px;height: 30px;" src="{{url('assets/img/globe.png')}}">
-                            <div class="res-icons-text" style="font-size: 20px;margin-left: 10px;">
-                                <span>100% online</span> <br> <span style="font-weight: 600;color: #E750A9;">How it works</span>
-                            </div>
-
-                        </div>
-
-                        <div style="padding: 0;display: flex;justify-content: center;border-left: 1px solid #bebebe;margin-bottom: 30px;" class="col-lg-4 col-md-4 col-sm-4 col-xs-6 res-icons">
-
-                            <img style="width: 30px;height: 30px;" src="{{url('assets/img/infinity.png')}}">
-                            <div class="res-icons-text" style="font-size: 20px;margin-left: 10px;">
-                                <span>Unlimited</span> <br> <span style="font-weight: 600;color: red;">€14.17/month</span>
-                            </div>
-
-                        </div>
-
-                        <div style="padding: 0;display: flex;justify-content: flex-start;align-items: center;margin-bottom: 30px;" class="col-lg-4 col-md-4 col-sm-4 col-xs-6 res-icons1">
-
-                            <img style="width: 40px;height: 40px;" src="{{url('assets/img/graduation-cap.png')}}">
-                            <div class="res-icons-text" style="font-size: 18px;margin-left: 10px;">
-                                <span style="font-weight: 600;">HBO</span>
-                            </div>
-
-                        </div>
-
-                        <div style="padding: 0;display: flex;justify-content: center;align-items: center;margin-bottom: 30px;" class="col-lg-4 col-md-4 col-sm-4 col-xs-6 res-icons">
-
-                            <img style="width: 40px;height: 40px;" src="{{url('assets/img/award.png')}}">
-                            <div class="res-icons-text" style="font-size: 18px;margin-left: 10px;">
-                                <span style="font-weight: 600;">interactirf</span>
-                            </div>
-
-                        </div>
+                        @endforeach
 
                     </div>
 
                     <div style="margin: 20px 0 0 0;" class="row">
 
-                        <div style="padding: 0;display: flex;justify-content: flex-start;align-items: center;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        @foreach($study->links as $l => $key)
 
-                            <img style="width: 40px;height: 40px;" src="{{url('assets/img/right-arrow.png')}}">
-                            <div style="font-size: 18px;margin-left: 10px;">
-                                <span style="font-weight: 600;"><a href="#">www.google.com</a></span>
+                            <div style="padding: 0;display: flex;justify-content: flex-start;align-items: center;margin-bottom: 20px;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                                @if($key->image)
+                                    
+                                    <img style="width: 40px;height: 40px;" src="{{url('upload/'.$key->image)}}">
+                                    
+                                @endif
+                                
+                                <div style="font-size: 20px;margin-left: 10px;">
+                                    <span style="font-weight: 600;"><a href="{{$key->link}}">{{$key->title}}</a></span>
+                                </div>
+
                             </div>
 
-                        </div>
-
-                        <div style="padding: 0;display: flex;justify-content: flex-start;align-items: center;margin-top: 20px;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-
-                            <img style="width: 30px;height: 30px;" src="{{url('assets/img/telephone.png')}}">
-                            <div style="font-size: 18px;margin-left: 10px;">
-                                <span style="font-weight: 600;">02033624209</span>
-                            </div>
-
-                        </div>
+                        @endforeach
 
                     </div>
 

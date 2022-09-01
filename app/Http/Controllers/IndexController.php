@@ -138,9 +138,11 @@ class IndexController extends Controller
         return view('pages.education');
     }
 
-    public function educationSingle()
+    public function studySingle($id)
     {
-        return view('pages.education_single');
+        $study = studies::where("id",$id)->with("features")->with("links")->first();
+
+        return view('pages.study_single',compact("study"));
     }
 
     public function zoekhet(Request $request)

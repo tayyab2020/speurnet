@@ -93,7 +93,7 @@
 
                                             <h5>{{$key->venue}}</h5>
                                             <span>{{$key->address}}</span>
-                                            <span>{{date('h:i A',strtotime($key->date_time))}}</span>
+                                            <!-- <span>{{date('h:i A',strtotime($key->date_time))}}</span> -->
 
                                         </div>
 
@@ -106,7 +106,7 @@
 
                                         <div style="padding: 0;display: flex;justify-content: space-between;align-items: center;margin-top: 10px;padding-right: 10px;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
-                                            <button style="background-color: white;border-color: #62CDF2;color: #62CDF2;font-weight: 600;font-size: 12px;" class="btn btn-primary">View Details</button>
+                                            <a href="{{ url('study/'.$key->id) }}" style="background-color: white;border-color: #62CDF2;color: #62CDF2;font-weight: 600;font-size: 12px;" class="btn btn-primary">View Details</a>
                                             <!-- <span style="font-weight: 100;">13 andere data</span> -->
 
                                         </div>
