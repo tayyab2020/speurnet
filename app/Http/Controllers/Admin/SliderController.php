@@ -1225,102 +1225,109 @@ class SliderController extends MainAdminController
         $feature_ids = array();
         $link_ids = array();
 
-        foreach($request->feature_headings1 as $x => $key)
+        if($request->feature_headings1)
         {
-            $feature = studies_features::where('study_id',$slide->id)->skip($x)->first();
-
-            $slide_image = isset($request->file('feature_images')[$x]) ? $request->file('feature_images')[$x] : NULL;
-    
-            if($slide_image){
-                
-                if($feature)
-                {
-                    \File::delete(public_path() .'/upload/'.$feature->image);
-                }
-                
-                $tmpFilePath = 'upload/';
-                $filename = $_FILES['feature_images']['name'][$x];
-                $ext = pathinfo($filename, PATHINFO_EXTENSION);
-                $hardPath = Str::slug($key, '-').'-'.md5(time()) .'.'.$ext;
-                $img = Image::make($slide_image);
-                $img->save($tmpFilePath.$hardPath);
-                $image = $hardPath;
-    
-            }
-            else
+            foreach($request->feature_headings1 as $x => $key)
             {
-                if($feature)
-                {
-                    $image = $feature->image;
+                $feature = studies_features::where('study_id',$slide->id)->skip($x)->first();
+    
+                $slide_image = isset($request->file('feature_images')[$x]) ? $request->file('feature_images')[$x] : NULL;
+        
+                if($slide_image){
+                    
+                    if($feature)
+                    {
+                        \File::delete(public_path() .'/upload/'.$feature->image);
+                    }
+                    
+                    $tmpFilePath = 'upload/';
+                    $filename = $_FILES['feature_images']['name'][$x];
+                    $ext = pathinfo($filename, PATHINFO_EXTENSION);
+                    $hardPath = Str::slug($key, '-').'-'.md5(time()) .'.'.$ext;
+                    $img = Image::make($slide_image);
+                    $img->save($tmpFilePath.$hardPath);
+                    $image = $hardPath;
+        
                 }
                 else
                 {
-                    $image = NULL;
+                    if($feature)
+                    {
+                        $image = $feature->image;
+                    }
+                    else
+                    {
+                        $image = NULL;
+                    }
                 }
+    
+                if(!$feature)
+                {
+                    $feature = new studies_features;
+                    $feature->study_id = $slide->id;
+                }
+    
+                $feature->image = $image;
+                $feature->heading1 = $key;
+                $feature->heading2 = $request->feature_headings2[$x];
+                $feature->save();
+    
+                $feature_ids[] = $feature->id;
             }
-
-            if(!$feature)
-            {
-                $feature = new studies_features;
-                $feature->study_id = $slide->id;
-            }
-
-            $feature->image = $image;
-            $feature->heading1 = $key;
-            $feature->heading2 = $request->feature_headings2[$x];
-            $feature->save();
-
-            $feature_ids[] = $feature->id;
+    
         }
 
         studies_features::where('study_id',$slide->id)->whereNotIn('id',$feature_ids)->delete();
 
-        foreach($request->link_titles as $x => $key)
+        if($request->link_titles)
         {
-            $link = studies_links::where('study_id',$slide->id)->skip($x)->first();
-
-            $slide_image = isset($request->file('link_images')[$x]) ? $request->file('link_images')[$x] : NULL;
-    
-            if($slide_image){
-                
-                if($link)
-                {
-                    \File::delete(public_path() .'/upload/'.$link->image);
-                }
-                
-                $tmpFilePath = 'upload/';
-                $filename = $_FILES['link_images']['name'][$x];
-                $ext = pathinfo($filename, PATHINFO_EXTENSION);
-                $hardPath = Str::slug($key, '-').'-'.md5(time()) .'.'.$ext;
-                $img = Image::make($slide_image);
-                $img->save($tmpFilePath.$hardPath);
-                $image = $hardPath;
-    
-            }
-            else
+            foreach($request->link_titles as $x => $key)
             {
-                if($link)
-                {
-                    $image = $link->image;
+                $link = studies_links::where('study_id',$slide->id)->skip($x)->first();
+    
+                $slide_image = isset($request->file('link_images')[$x]) ? $request->file('link_images')[$x] : NULL;
+        
+                if($slide_image){
+                    
+                    if($link)
+                    {
+                        \File::delete(public_path() .'/upload/'.$link->image);
+                    }
+                    
+                    $tmpFilePath = 'upload/';
+                    $filename = $_FILES['link_images']['name'][$x];
+                    $ext = pathinfo($filename, PATHINFO_EXTENSION);
+                    $hardPath = Str::slug($key, '-').'-'.md5(time()) .'.'.$ext;
+                    $img = Image::make($slide_image);
+                    $img->save($tmpFilePath.$hardPath);
+                    $image = $hardPath;
+        
                 }
                 else
                 {
-                    $image = NULL;
+                    if($link)
+                    {
+                        $image = $link->image;
+                    }
+                    else
+                    {
+                        $image = NULL;
+                    }
                 }
+    
+                if(!$link)
+                {
+                    $link = new studies_links;
+                    $link->study_id = $slide->id;
+                }
+    
+                $link->image = $image;
+                $link->title = $key;
+                $link->link = $request->link_urls[$x];
+                $link->save();
+    
+                $link_ids[] = $link->id;
             }
-
-            if(!$link)
-            {
-                $link = new studies_links;
-                $link->study_id = $slide->id;
-            }
-
-            $link->image = $image;
-            $link->title = $key;
-            $link->link = $request->link_urls[$x];
-            $link->save();
-
-            $link_ids[] = $link->id;
         }
 
         studies_links::where('study_id',$slide->id)->whereNotIn('id',$link_ids)->delete();
