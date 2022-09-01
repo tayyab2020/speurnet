@@ -81,54 +81,54 @@
 </style>
 
 <nav class="navbar navbar-default navbar-fixed-top mobile-nav" role="navigation">
-      <div class="container container-header">
+    <div class="container container-header">
 
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
 
-            <h1 style="margin-top: 20px;margin-left: 10px;" class="grad">Speurnet.nl</h1>
+        <h1 style="margin-top: 20px;margin-left: 10px;" class="grad">Speurnet.nl</h1>
 
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-top">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-top">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
 
-        </div>
+    </div>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="navbar-top" style="margin: 0;padding: 0;">
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="navbar-top" style="margin: 0;padding: 0;">
 
-            <button style="border: 0;position: absolute;right: 15px;z-index: 10000;margin-top: 0;" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-top" aria-expanded="true">
-                <i class="fa fa-close"></i>
-            </button>
+        <button style="border: 0;position: absolute;right: 15px;z-index: 10000;margin-top: 0;" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-top" aria-expanded="true">
+            <i class="fa fa-close"></i>
+        </button>
 
-            <ul style="margin-right: 0;" class="nav navbar-nav navbar-right">
+        <ul style="margin-right: 0;" class="nav navbar-nav navbar-right">
 
-                <li class="{{classActivePathPublic('')}}"><a href="{{ URL::to('/') }}">{{__('text.Home')}}</a></li>
-                <li><a href="{{route('blogs')}}">Blogs</a></li>
-                <li><a href="{{route('page1')}}">Companies</a></li>
-                <li><a href="{{route('zoekhet')}}">Zoekhet</a></li>
-                <!-- <li><a href="{{route('education')}}">Education</a></li> -->
-                <li><a href="{{route('study')}}">Study</a></li>
-                <li><a href="{{route('vactury')}}">Vactury</a></li>
-                <li><a href="{{route('offer')}}">Offer</a></li>
-                <li><a href="{{route('place-to-do')}}">Place to do</a></li>
+            <li class="{{classActivePathPublic('')}}"><a href="{{ URL::to('/') }}">{{__('text.Home')}}</a></li>
+            <li><a href="{{route('blogs')}}">Blogs</a></li>
+            <li><a href="{{route('page1')}}">Companies</a></li>
+            <li><a href="{{route('zoekhet')}}">Zoekhet</a></li>
+            <!-- <li><a href="{{route('education')}}">Education</a></li> -->
+            <li><a href="{{route('study')}}">Study</a></li>
+            <li><a href="{{route('vactury')}}">Vactury</a></li>
+            <li><a href="{{route('offer')}}">Offer</a></li>
+            <li><a href="{{route('place-to-do')}}">Place to do</a></li>
 
-                <li id="wrap">
-                    <form style="display: flex;align-items: center;padding: 20px;" action="" autocomplete="on">
-                        <input class="search-btn" id="search_submit" value="Rechercher" type="submit">
-                        <input class="search-bar" id="search" name="search" type="text" placeholder="What're we looking for ?">
-                    </form>
-                </li>
+            <li id="wrap">
+                <form style="display: flex;align-items: center;padding: 20px;" action="" autocomplete="on">
+                    <input class="search-btn" id="search_submit" value="Rechercher" type="submit">
+                    <input class="search-bar" id="search" name="search" type="text" placeholder="What're we looking for ?">
+                </form>
+            </li>
 
-            </ul>
+        </ul>
 
-        </div><!-- /.navbar-collapse -->
-      </div><!-- /.container -->
-    </nav>
-   <!-- end:navbar -->
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container -->
+</nav>
+<!-- end:navbar -->
 
 @include("_particles.slidersearch")
 

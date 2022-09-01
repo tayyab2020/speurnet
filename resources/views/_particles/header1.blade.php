@@ -88,60 +88,6 @@
 
 @if(Route::currentRouteName() != 'zoekhet' && Route::currentRouteName() != 'vactury' && Route::currentRouteName() != 'offer' && Route::currentRouteName() != 'place-to-do')
 
-    <nav style="border: 0;min-height: auto;" class="navbar navbar-default navbar-fixed-top mobile-nav" role="navigation">
-        <div class="container container-header">
-
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div style="min-height: auto;" class="navbar-header">
-
-                <button style="border-color: #ddd;float: left;margin-left: 20px;" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-top">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span style="background-color: #888;" class="icon-bar"></span>
-                    <span style="background-color: #888;" class="icon-bar"></span>
-                    <span style="background-color: #888;" class="icon-bar"></span>
-                </button>
-
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="navbar-top" style="margin: 0;padding: 0;">
-
-                <button style="border: 0;position: absolute;right: 15px;z-index: 10000;margin-top: 0;" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-top" aria-expanded="true">
-                    <i class="fa fa-close"></i>
-                </button>
-
-                <ul style="margin: 0;border-bottom: 1px solid #eaeaea;padding-bottom: 30px;" class="nav navbar-nav navbar-right">
-
-                    <li id="wrap">
-                        
-                        <form action="" method="get" autocomplete="on">
-                            
-                            <div style="display: flex;align-items: center;margin: 20px 0;">
-                                <input class="search-btn" id="search_submit" value="Rechercher" type="submit">
-                                <input value="{{isset($search) ? $search : null}}" class="search-bar" id="search" name="search" type="text" placeholder="What're we looking for ?">
-                            </div>
-
-                            @if(Route::currentRouteName() != 'blogs')
-
-                                <div>
-                                    <label>Jouw stad, provincie of gemeente</label>
-                                    <input value="{{isset($city) ? $city : null}}" name="city" type="text" class="form-control">
-                                </div>
-
-                            @endif
-
-                        </form>
-
-                    </li>
-
-                </ul>
-
-            </div><!-- /.navbar-collapse -->
-
-        </div><!-- /.container -->
-    </nav>
-    <!-- end:navbar -->
-
     <div style="margin: 40px 0 0 0;display: flex;justify-content: flex-start;align-items: center;" class="row top-con">
 
         <div id="sidebar">
@@ -215,6 +161,60 @@
         </form>
 
     </div>
+
+    <nav style="border: 0;min-height: auto;" class="navbar navbar-default navbar-fixed-top mobile-nav" role="navigation">
+        <div class="container container-header">
+
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div style="min-height: auto;" class="navbar-header">
+
+                <button style="border-color: #ddd;float: left;margin-left: 20px;" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-top">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span style="background-color: #888;" class="icon-bar"></span>
+                    <span style="background-color: #888;" class="icon-bar"></span>
+                    <span style="background-color: #888;" class="icon-bar"></span>
+                </button>
+
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="navbar-top" style="margin: 0;padding: 0;">
+
+                <button style="border: 0;position: absolute;right: 15px;z-index: 10000;margin-top: 0;" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-top" aria-expanded="true">
+                    <i class="fa fa-close"></i>
+                </button>
+
+                <ul style="margin: 0;border-bottom: 1px solid #eaeaea;padding-bottom: 30px;" class="nav navbar-nav navbar-right">
+
+                    <li id="wrap">
+                        
+                        <form action="" method="get" autocomplete="on">
+                            
+                            <div style="display: flex;align-items: center;margin: 20px 0;">
+                                <input class="search-btn" id="search_submit" value="Rechercher" type="submit">
+                                <input value="{{isset($search) ? $search : null}}" class="search-bar" id="search" name="search" type="text" placeholder="What're we looking for ?">
+                            </div>
+
+                            @if(Route::currentRouteName() != 'blogs')
+
+                                <div>
+                                    <label>Jouw stad, provincie of gemeente</label>
+                                    <input value="{{isset($city) ? $city : null}}" name="city" type="text" class="form-control">
+                                </div>
+
+                            @endif
+
+                        </form>
+
+                    </li>
+
+                </ul>
+
+            </div><!-- /.navbar-collapse -->
+
+        </div><!-- /.container -->
+    </nav>
+    <!-- end:navbar -->
 
 @endif
 
