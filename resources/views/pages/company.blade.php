@@ -53,7 +53,7 @@
                                 <div class="row">
 
                                     <div class="col-sm-3">
-                                        <a href="#" style="margin: 0;"><i class="fa fa-phone" aria-hidden="true"></i>&nbsp;&nbsp; {{$company->phone}}</a>
+                                        <a href="'tel:'.{{$company->phone}}" style="margin: 0;"><i class="fa fa-phone" aria-hidden="true"></i>&nbsp;&nbsp; {{$company->phone}}</a>
                                     </div>
 
                                 </div>
@@ -66,7 +66,7 @@
                                 <div class="row" style="margin-top: 10px;">
 
                                     <div class="col-sm-3">
-                                        <a href="www.google.com" style="margin: 0;"><i class="fa fa-globe" aria-hidden="true"></i>&nbsp;&nbsp; {{$company->website}}</a>
+                                        <a href="{{$company->website}}" style="margin: 0;"><i class="fa fa-globe" aria-hidden="true"></i>&nbsp;&nbsp; {{$company->website}}</a>
                                     </div>
 
                                 </div>
