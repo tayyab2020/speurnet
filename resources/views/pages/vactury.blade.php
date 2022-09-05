@@ -12,115 +12,6 @@
 
         <div style="padding: 0;" class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
 
-            <div style="width: 100%;" class="container">
-                <ul class="ks-cboxtags">
-                    <li><input type="radio" name="category" id="checkboxOne" value="Rainbow Dash"><label for="checkboxOne">Rainbow Dash</label></li>
-                    <li><input type="radio" name="category" id="checkboxTwo" value="Cotton Candy"><label for="checkboxTwo">Cotton Candy</label></li>
-                    <li><input type="radio" name="category" id="checkboxThree" value="Rarity"><label for="checkboxThree">Rarity</label></li>
-                    <li><input type="radio" name="category" id="checkboxFour" value="Moondancer"><label for="checkboxFour">Moondancer</label></li>
-                    <li><input type="radio" name="category" id="checkboxFive" value="Surprise"><label for="checkboxFive">Surprise</label></li>
-                    <li><input type="radio" name="category" id="checkboxSix" value="Twilight Sparkle"><label for="checkboxSix">Twilight Sparkle</label></li>
-                    <li><input type="radio" name="category" id="checkboxSeven" value="Fluttershy"><label for="checkboxSeven">Fluttershy</label></li>
-                    <li><input type="radio" name="category" id="checkboxEight" value="Derpy Hooves"><label for="checkboxEight">Derpy Hooves</label></li>
-                    <li><input type="radio" name="category" id="checkboxNine" value="Princess Celestia"><label for="checkboxNine">Princess Celestia</label></li>
-                    <li><input type="radio" name="category" id="checkboxTen" value="Gusty"><label for="checkboxTen">Gusty</label></li>
-                    <li><input type="radio" name="category" id="checkboxEleven" value="Discord"><label for="checkboxEleven">Discord</label></li>
-                    <li><input type="radio" name="category" id="checkboxTwelve" value="Clover"><label for="checkboxTwelve">Clover</label></li>
-                    <li><input type="radio" name="category" id="checkboxThirteen" value="Baby Moondancer"><label for="checkboxThirteen">Baby Moondancer</label></li>
-                    <li><input type="radio" name="category" id="checkboxFourteen" value="Medley"><label for="checkboxFourteen">Medley</label></li>
-                    <li><input type="radio" name="category" id="checkboxFifteen" value="Firefly"><label for="checkboxFifteen">Firefly</label></li>
-                </ul>
-
-            </div>
-
-            <div style="margin: 0;border-bottom: 1px solid #e0e0e0;padding-bottom: 20px;" class="row">
-
-                <div class="wrap centre col-lg-12 col-md-12 col-sm-12 col-xs-12">
-
-                    <div class="radio">
-                        <input id="check" type="radio" name="check" value="check">
-                        <label for="check">Lampen</label>
-                    </div>
-
-                    <div class="radio">
-                        <input id="check1" type="radio" name="check" value="check">
-                        <label for="check1">Auto's</label>
-                    </div>
-
-                    <div class="radio">
-                        <input id="check2" type="radio" name="check" value="check">
-                        <label for="check2">Tuinmeubels en meer</label>
-                    </div>
-
-                    <div class="radio">
-                        <input id="check3" type="radio" name="check" value="check">
-                        <label for="check3">Meubels</label>
-                    </div>
-
-                    <div class="radio">
-                        <input id="check4" type="radio" name="check" value="check">
-                        <label for="check4">Keukenspullen</label>
-                    </div>
-
-                    <div class="radio">
-                        <input id="check5" type="radio" name="check" value="check">
-                        <label for="check5">Babyspullen</label>
-                    </div>
-
-                    <div class="radio">
-                        <input id="check6" type="radio" name="check" value="check">
-                        <label for="check6">Vloeren</label>
-                    </div>
-
-                    <div class="radio">
-                        <input id="check7" type="radio" name="check" value="check">
-                        <label for="check7">Verf en behang</label>
-                    </div>
-
-                    <div class="radio">
-                        <input id="check8" type="radio" name="check" value="check">
-                        <label for="check8">Gordijnen & Shutters</label>
-                    </div>
-
-                    <div class="radio">
-                        <input id="check9" type="radio" name="check" value="check">
-                        <label for="check9">Elekronica (o.a tv/mobiel)</label>
-                    </div>
-
-                    <div class="radio">
-                        <input id="check10" type="radio" name="check" value="check">
-                        <label for="check10">Badkamers</label>
-                    </div>
-
-                    <div class="radio">
-                        <input id="check11" type="radio" name="check" value="check">
-                        <label for="check11">Sportkelding</label>
-                    </div>
-
-                    <div class="radio">
-                        <input id="check12" type="radio" name="check" value="check">
-                        <label for="check12">Keukens</label>
-                    </div>
-
-                    <div class="radio">
-                        <input id="check13" type="radio" name="check" value="check">
-                        <label for="check13">Kostuumzaken</label>
-                    </div>
-
-                    <div class="radio">
-                        <input id="check14" type="radio" name="check" value="check">
-                        <label for="check14">Fietsen</label>
-                    </div>
-
-                    <div class="radio">
-                        <input id="check15" type="radio" name="check" value="check">
-                        <label for="check15">Bedden en matrassen</label>
-                    </div>
-
-                </div>
-
-            </div>
-
             <!-- begin:content -->
             <div id="content" style="padding: 30px 0 20px 0;">
 
@@ -168,6 +59,111 @@
 
                             </ul>
 
+                        </div>
+
+                        <div style="margin: 0;border-bottom: 1px solid #e0e0e0;padding-bottom: 20px;" class="row">
+
+                            <div style="padding: 0;" class="wrap centre col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            
+                                <div class="radio">
+                                    <input id="check" type="radio" name="check" value="check">
+                                    <label for="check">Lampen</label>
+                                </div>
+            
+                                <div class="radio">
+                                    <input id="check1" type="radio" name="check" value="check">
+                                    <label for="check1">Auto's</label>
+                                </div>
+            
+                                <div class="radio">
+                                    <input id="check2" type="radio" name="check" value="check">
+                                    <label for="check2">Tuinmeubels en meer</label>
+                                </div>
+            
+                                <div class="radio">
+                                    <input id="check3" type="radio" name="check" value="check">
+                                    <label for="check3">Meubels</label>
+                                </div>
+            
+                                <div class="radio">
+                                    <input id="check4" type="radio" name="check" value="check">
+                                    <label for="check4">Keukenspullen</label>
+                                </div>
+            
+                                <div class="radio">
+                                    <input id="check5" type="radio" name="check" value="check">
+                                    <label for="check5">Babyspullen</label>
+                                </div>
+            
+                                <div class="radio">
+                                    <input id="check6" type="radio" name="check" value="check">
+                                    <label for="check6">Vloeren</label>
+                                </div>
+            
+                                <div class="radio">
+                                    <input id="check7" type="radio" name="check" value="check">
+                                    <label for="check7">Verf en behang</label>
+                                </div>
+            
+                                <div class="radio">
+                                    <input id="check8" type="radio" name="check" value="check">
+                                    <label for="check8">Gordijnen & Shutters</label>
+                                </div>
+            
+                                <div class="radio">
+                                    <input id="check9" type="radio" name="check" value="check">
+                                    <label for="check9">Elekronica (o.a tv/mobiel)</label>
+                                </div>
+            
+                                <div class="radio">
+                                    <input id="check10" type="radio" name="check" value="check">
+                                    <label for="check10">Badkamers</label>
+                                </div>
+            
+                                <div class="radio">
+                                    <input id="check11" type="radio" name="check" value="check">
+                                    <label for="check11">Sportkelding</label>
+                                </div>
+            
+                                <div class="radio">
+                                    <input id="check12" type="radio" name="check" value="check">
+                                    <label for="check12">Keukens</label>
+                                </div>
+            
+                                <div class="radio">
+                                    <input id="check13" type="radio" name="check" value="check">
+                                    <label for="check13">Kostuumzaken</label>
+                                </div>
+            
+                                <div class="radio">
+                                    <input id="check14" type="radio" name="check" value="check">
+                                    <label for="check14">Fietsen</label>
+                                </div>
+            
+                                <div class="radio">
+                                    <input id="check15" type="radio" name="check" value="check">
+                                    <label for="check15">Bedden en matrassen</label>
+                                </div>
+            
+                            </div>
+            
+                        </div>
+            
+                        <div style="padding: 30px 0;border-bottom: 1px solid #ddd;margin: 0;">
+            
+                            <ul style="display:flex;align-items: flex-end;flex-wrap: wrap;" class="nav nav-tabs res-ul">
+            
+                                <li>
+                                    <input checked id="province1" type="checkbox" name="provinces[]" value="1">
+                                    <label style="cursor: pointer;" class="res-tab" for="province1">Bedden en matrassen</label>
+                                </li>
+                                <li>
+                                    <input id="province2" type="checkbox" name="provinces[]" value="0">
+                                    <label style="cursor: pointer;" class="res-tab" for="province2">Buitenshuis</label>
+                                </li>
+            
+                            </ul>
+            
                         </div>
 
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -274,6 +270,39 @@
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/css/flaticon.css') }}"/>
 
     <style>
+
+        .nav-tabs > li
+        {
+            margin: 5px 10px;
+        }
+
+        .nav-tabs > li > label
+        {
+            line-height: 1.42857143;
+            margin-right: 2px;
+            border-radius: 4px 4px 0 0;
+            position: relative;
+            display: block;
+            padding: 5px 0;
+            border-bottom: 3px solid transparent;
+            font-weight: 400;;
+        }
+
+        .nav-tabs > li > label:hover
+        {
+            border-color: #eee #eee #ddd;
+        }
+
+        .nav > li > label:hover, .nav > li > label:focus
+        {
+            text-decoration: none;
+            background-color: #eee;
+        }
+
+        .nav-tabs
+        {
+            border-bottom: 0;
+        }
 
         ul.ks-cboxtags {
             list-style: none;
@@ -504,12 +533,13 @@
             }
         }
 
-        .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus
+        .res-ul li input:checked + label
         {
             background-color: transparent;
             border: 0;
             border-bottom: 3px solid #E42F8B !important;
-            padding: 10px 0 !important;
+            color: #555;
+            font-weight: 600;
         }
 
         .new-button{border:0 !important;background-color: transparent;padding: 0;}
