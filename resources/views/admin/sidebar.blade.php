@@ -32,6 +32,12 @@
 
                		<li class="{{classActivePath('dashboard')}}"><a href="{{ URL::to('admin/dashboard') }}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
 
+					<li class="{{classActivePath('vactury-categories')}}"><a href="{{ URL::to('admin/vactury-categories') }}"><i class="fa fa-bars"></i>Vactury Categories</a></li>
+
+					<li class="{{classActivePath('vactury-provinces')}}"><a href="{{ URL::to('admin/vactury-provinces') }}"><i class="fa fa-bars"></i>Vactury Provinces</a></li>
+					   
+					<li class="{{classActivePath('vactury')}}"><a href="{{ URL::to('admin/vactury') }}"><i class="fa fa-bars"></i>Vactury</a></li>
+
 					<li class="{{classActivePath('slider')}}"><a href="{{ URL::to('admin/slider') }}"><i class="fa fa-sliders"></i>Home Slider</a></li>
 
 					<li class="{{classActivePath('place-to-do-filters')}}"><a href="{{ URL::to('admin/place-to-do-filters') }}"><i class="fa fa-bars"></i>Place To Do Filters</a></li>

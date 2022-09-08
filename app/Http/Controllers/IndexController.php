@@ -59,6 +59,10 @@ use App\place_to_do_description;
 use App\place_to_do_filters;
 use App\places;
 use App\saved_place_to_do_contents;
+use App\vacturies;
+use App\vactury_contents;
+use App\vactury_categories;
+use App\vactury_provinces;
 
 class IndexController extends Controller
 {
@@ -66,8 +70,63 @@ class IndexController extends Controller
     public function vactury()
     {
         $content = HomepageIcons::orderBy('id','asc')->get();
+        $vactury = vacturies::first();
+        $vactury_content = vactury_contents::get();
+        $vactury_categories = vactury_categories::get();
+        $vactury_provinces = vactury_provinces::get();
 
-        return view('pages.vactury',compact('content'));
+        return view('pages.vactury',compact('content','vactury','vactury_content','vactury_categories','vactury_provinces'));
+    }
+
+    public function vacturyFilter(Request $request)
+    {
+        $provinces = array();
+
+        if($request->category || $request->provinces)
+        {
+            if($request->provinces)
+            {
+                $idsArr = explode(',',$request->provinces);
+
+                foreach($idsArr as $key)
+                {
+                    $data = vactury_contents::whereRaw("find_in_set('$key',provinces)")->get()->toArray();
+                    $provinces = array_merge($provinces,$data);
+                }
+    
+                $provinces = array_unique($provinces, SORT_REGULAR);
+            }
+
+            if($request->category)
+            {
+                if($request->provinces)
+                {
+                    $ids = array();
+                    
+                    foreach ($provinces as $data)
+                    {
+                        if ($data['category'] == $request->category)
+                            $ids[] = $data['id'];
+                    }
+    
+                    $content = vactury_contents::whereIn("id",$ids)->get()->toArray();
+                }
+                else
+                {
+                    $content = vactury_contents::where("category",$request->category)->get()->toArray();
+                }
+            }
+            else
+            {
+                $content = $provinces;
+            }
+        }
+        else
+        {
+            $content = vactury_contents::all()->toArray();
+        }
+
+        return $content;
     }
 
     public function placeToDo()

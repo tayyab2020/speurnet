@@ -199,7 +199,7 @@
 
                         <tbody>
 
-                        @if(isset($features))
+                        @if(isset($features) && count($features) > 0)
 
                             @foreach($features as $x => $temp)
 
@@ -289,7 +289,7 @@
 
                         <tbody>
 
-                        @if(isset($links))
+                        @if(isset($links) && count($links) > 0)
 
                             @foreach($links as $x => $temp)
 

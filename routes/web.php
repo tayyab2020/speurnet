@@ -259,11 +259,31 @@ Route::group(['middleware' => 'App\Http\Middleware\UserTypeMiddleware'], functio
         Route::get('place-to-do-content/description', 'SliderController@PlaceToDoDescription')->name('place-to-do-description');
         Route::post('place-to-do-content/description', 'SliderController@PlaceToDoDescriptionPost');
 
-        Route::get('study-categories', 'SliderController@StudyCategories')->name('study-filters');
+        Route::get('study-categories', 'SliderController@StudyCategories')->name('study-categories');
         Route::get('study-categories/addstudycategory', 'SliderController@addStudyCategory')->name('add-study-category');
         Route::post('study-categories/addstudycategory', 'SliderController@addStudyCategoryPost');
         Route::get('study-categories/addstudycategory/{id}', 'SliderController@editStudyCategory')->name('edit-study-category');
         Route::get('study-categories/delete/{id}', 'SliderController@deleteStudyCategory');
+
+        Route::get('vactury-categories', 'SliderController@VacturyCategories')->name('vactury-categories');
+        Route::get('vactury-categories/addvacturycategory', 'SliderController@addVacturyCategory')->name('add-vactury-category');
+        Route::post('vactury-categories/addvacturycategory', 'SliderController@addVacturyCategoryPost');
+        Route::get('vactury-categories/addvacturycategory/{id}', 'SliderController@editVacturyCategory')->name('edit-vactury-category');
+        Route::get('vactury-categories/delete/{id}', 'SliderController@deleteVacturyCategory');
+
+        Route::get('vactury-provinces', 'SliderController@VacturyProvinces')->name('vactury-provinces');
+        Route::get('vactury-provinces/addvacturyprovince', 'SliderController@addVacturyProvince')->name('add-vactury-province');
+        Route::post('vactury-provinces/addvacturyprovince', 'SliderController@addVacturyProvincePost');
+        Route::get('vactury-provinces/addvacturyprovince/{id}', 'SliderController@editVacturyProvince')->name('edit-vactury-province');
+        Route::get('vactury-provinces/delete/{id}', 'SliderController@deleteVacturyProvince');
+
+        Route::get('vactury-description', 'SliderController@VacturyDescription')->name('vactury-description');
+        Route::post('vactury-description', 'SliderController@VacturyDescriptionPost');
+        Route::get('vactury', 'SliderController@Vactury')->name('vactury-content');
+        Route::get('vactury/add', 'SliderController@addVactury')->name('add-vactury');
+        Route::post('vactury/add', 'SliderController@addVacturyPost');
+        Route::get('vactury/add/{id}', 'SliderController@editVactury')->name('edit-vactury');
+        Route::get('vactury/delete/{id}', 'SliderController@deleteVactury');
 
         Route::get('categories', 'SliderController@Categories')->name('categories');
         Route::get('categories/addcontent', 'SliderController@addCategory')->name('add-category');
@@ -316,6 +336,8 @@ Route::group(['middleware' => 'App\Http\Middleware\UserTypeMiddleware'], functio
     Route::get('study', 'IndexController@study')->name('study');
 
     Route::get('vactury', 'IndexController@vactury')->name('vactury');
+
+    Route::get('vactury-filter', 'IndexController@vacturyFilter');
     
     Route::get('page1', 'IndexController@page1')->name('page1');
 

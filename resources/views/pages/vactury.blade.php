@@ -44,8 +44,8 @@
                             <ul style="display:flex;align-items: flex-end;position: relative;padding-bottom: 10px;" class="nav nav-tabs res-ul">
 
                             <span class="res-span" style="display: inline-block;width: 60%;margin-right: 30px;">
-                                <h4 class="res-head">Benieuwd naar de nieuwste woontrends?</h4>
-                                <p style="margin: 0;">Waarom alle interieurwinkels en woontrends websites afgaan als Zoekjehuisje.nl de allerlaatste woontrends voor jou heeft verzameld, zodat je alle trends in wonen en tuin online kunt bekijken. Heb je binnenkort een nieuwe woning of ben je gewoon toe om je interieur of tuin een nieuwe look te geven volgens de nieuwe trends van 2021? Bekijk hier alle interieurtips en trends voor jouw woonkamer, slaapkamer, keuken of tuin. Laat je inspireren en bepaal zelf welke woontrend of stijl in jouw interieur past. Jouw woning is de laatste woontrend waard.</p>
+                                <h4 class="res-head">{{$vactury->title}}</h4>
+                                <p style="margin: 0;">{!! $vactury->description !!}</p>
                             </span>
 
                             <div class="bse">
@@ -64,86 +64,15 @@
                         <div style="margin: 0;border-bottom: 1px solid #e0e0e0;padding-bottom: 20px;" class="row">
 
                             <div style="padding: 0;" class="wrap centre col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            
-                                <div class="radio">
-                                    <input id="check" type="radio" name="check" value="check">
-                                    <label for="check">Lampen</label>
-                                </div>
-            
-                                <div class="radio">
-                                    <input id="check1" type="radio" name="check" value="check">
-                                    <label for="check1">Auto's</label>
-                                </div>
-            
-                                <div class="radio">
-                                    <input id="check2" type="radio" name="check" value="check">
-                                    <label for="check2">Tuinmeubels en meer</label>
-                                </div>
-            
-                                <div class="radio">
-                                    <input id="check3" type="radio" name="check" value="check">
-                                    <label for="check3">Meubels</label>
-                                </div>
-            
-                                <div class="radio">
-                                    <input id="check4" type="radio" name="check" value="check">
-                                    <label for="check4">Keukenspullen</label>
-                                </div>
-            
-                                <div class="radio">
-                                    <input id="check5" type="radio" name="check" value="check">
-                                    <label for="check5">Babyspullen</label>
-                                </div>
-            
-                                <div class="radio">
-                                    <input id="check6" type="radio" name="check" value="check">
-                                    <label for="check6">Vloeren</label>
-                                </div>
-            
-                                <div class="radio">
-                                    <input id="check7" type="radio" name="check" value="check">
-                                    <label for="check7">Verf en behang</label>
-                                </div>
-            
-                                <div class="radio">
-                                    <input id="check8" type="radio" name="check" value="check">
-                                    <label for="check8">Gordijnen & Shutters</label>
-                                </div>
-            
-                                <div class="radio">
-                                    <input id="check9" type="radio" name="check" value="check">
-                                    <label for="check9">Elekronica (o.a tv/mobiel)</label>
-                                </div>
-            
-                                <div class="radio">
-                                    <input id="check10" type="radio" name="check" value="check">
-                                    <label for="check10">Badkamers</label>
-                                </div>
-            
-                                <div class="radio">
-                                    <input id="check11" type="radio" name="check" value="check">
-                                    <label for="check11">Sportkelding</label>
-                                </div>
-            
-                                <div class="radio">
-                                    <input id="check12" type="radio" name="check" value="check">
-                                    <label for="check12">Keukens</label>
-                                </div>
-            
-                                <div class="radio">
-                                    <input id="check13" type="radio" name="check" value="check">
-                                    <label for="check13">Kostuumzaken</label>
-                                </div>
-            
-                                <div class="radio">
-                                    <input id="check14" type="radio" name="check" value="check">
-                                    <label for="check14">Fietsen</label>
-                                </div>
-            
-                                <div class="radio">
-                                    <input id="check15" type="radio" name="check" value="check">
-                                    <label for="check15">Bedden en matrassen</label>
-                                </div>
+
+                                @foreach($vactury_categories as $x => $key)
+
+                                    <div class="radio">
+                                        <input id="check{{$x}}" type="radio" name="check" value="{{$key->id}}">
+                                        <label for="check{{$x}}">{{$key->title}}</label>
+                                    </div>
+
+                                @endforeach
             
                             </div>
             
@@ -152,15 +81,15 @@
                         <div style="padding: 30px 0;border-bottom: 1px solid #ddd;margin: 0;">
             
                             <ul style="display:flex;align-items: flex-end;flex-wrap: wrap;" class="nav nav-tabs res-ul">
-            
-                                <li>
-                                    <input checked id="province1" type="checkbox" name="provinces[]" value="1">
-                                    <label style="cursor: pointer;" class="res-tab" for="province1">Bedden en matrassen</label>
-                                </li>
-                                <li>
-                                    <input id="province2" type="checkbox" name="provinces[]" value="0">
-                                    <label style="cursor: pointer;" class="res-tab" for="province2">Buitenshuis</label>
-                                </li>
+
+                                @foreach($vactury_provinces as $x => $key)
+
+                                    <li>
+                                        <input id="province{{$x}}" type="checkbox" name="provinces" value="{{$key->id}}">
+                                        <label style="cursor: pointer;" class="res-tab" for="province{{$x}}">{{$key->title}}</label>
+                                    </li>
+
+                                @endforeach
             
                             </ul>
             
@@ -176,26 +105,16 @@
 
                                 @endphp
 
-                                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 sub">
-                                    <h1 style="font-size: 20px;" class="grad">Auto</h1>
-                                    <div style="background-color: {{$backgrounds[array_rand($backgrounds)]}};" class="row">
-                                        <a href="">KwikMlt</a>
-                                    </div>
-                                </div>
+                                @foreach($vactury_content as $key)
 
-                                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 sub">
-                                    <h1 style="font-size: 20px;" class="grad">Vacatures</h1>
-                                    <div style="background-color: {{$backgrounds[array_rand($backgrounds)]}};" class="row">
-                                        <a href="">Schoonmaak</a>
+                                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 sub">
+                                        <h1 style="font-size: 20px;" class="grad">{{$key->title}}</h1>
+                                        <div style="background-color: {{$backgrounds[array_rand($backgrounds)]}};" class="row">
+                                            <a href="https://{{$key->url}}">{{$key->url_title}}</a>
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 sub">
-                                    <h1 style="font-size: 20px;" class="grad">Auto</h1>
-                                    <div style="background-color: {{$backgrounds[array_rand($backgrounds)]}};" class="row">
-                                        <a href="">KwikMlt</a>
-                                    </div>
-                                </div>
+                                @endforeach
 
                             </div>
 
@@ -1125,41 +1044,51 @@
 
     <script>
 
-        $(".radio input:radio").change( function(){
+        $("input[name='check'], input[name='provinces']").change( function(){
 
-            var val = $(this).val();
+            var category = $("input[name='check']:checked").val() ? $("input[name='check']:checked").val() : "";
+
+            var provinces = [];
+
+            $.each($("input[name='provinces']:checked"), function(){
+                provinces.push($(this).val());
+            });
 
             $('.company-boxes').children().remove();
 
-            $("#overlay").fadeIn(300);
-
             const backgrounds = ["#F5DEF3","#C2EEEB","#DAF4D9","#F4E4BD","#F7D5D9","#F5DEF3"];
 
-            setTimeout(function(){
+            $.ajax({
 
-                $("#overlay").fadeOut(300);
+                type: "GET",
+                url: "/vactury-filter?category=" + category + "&provinces=" + provinces,
+                beforeSend : function(){ $("#overlay").fadeIn(300); },
+                success: function(data)
+                {
 
-                $('.company-boxes').append('<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 sub">\n' +
-                    '                                    <h1 style="font-size: 20px;" class="grad">Auto</h1>\n' +
-                    '                                    <div style="background-color: '+backgrounds[Math.floor(Math.random() * backgrounds.length)]+';" class="row">\n' +
-                    '                                        <a href="">KwikMlt</a>\n' +
-                    '                                    </div>\n' +
-                    '                                </div>\n' +
-                    '\n' +
-                    '                                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 sub">\n' +
-                    '                                    <h1 style="font-size: 20px;" class="grad">Vacatures</h1>\n' +
-                    '                                    <div style="background-color: '+backgrounds[Math.floor(Math.random() * backgrounds.length)]+';" class="row">\n' +
-                    '                                        <a href="">Schoonmaak</a>\n' +
-                    '                                    </div>\n' +
-                    '                                </div>\n' +
-                    '\n' +
-                    '                                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 sub">\n' +
-                    '                                    <h1 style="font-size: 20px;" class="grad">Auto</h1>\n' +
-                    '                                    <div style="background-color: '+backgrounds[Math.floor(Math.random() * backgrounds.length)]+';" class="row">\n' +
-                    '                                        <a href="">KwikMlt</a>\n' +
-                    '                                    </div>\n' +
-                    '                                </div>');
-            },500);
+                    if(data.length == 0)
+                    {
+                        $("#overlay").fadeOut();
+                    }
+                    else
+                    {
+                        $.each(data, function(index, value) {
+
+                            $("#overlay").fadeOut();
+
+                            $('.company-boxes').append('<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 sub">\n' +
+                                '                                    <h1 style="font-size: 20px;" class="grad">'+value.title+'</h1>\n' +
+                                '                                    <div style="background-color: '+backgrounds[Math.floor(Math.random() * backgrounds.length)]+';" class="row">\n' +
+                                '                                        <a href="https://'+value.url+'">'+value.url_title+'</a>\n' +
+                                '                                    </div>\n' +
+                                '                                </div>');
+
+                        });
+                    }
+
+                }
+
+            });
 
         });
 

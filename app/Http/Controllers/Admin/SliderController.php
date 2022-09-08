@@ -35,6 +35,10 @@ use App\companies;
 use App\zoekhet_categories;
 use App\zoekhet_description;
 use App\zoekhet;
+use App\vactury_categories;
+use App\vactury_provinces;
+use App\vacturies;
+use App\vactury_contents;
 
 class SliderController extends MainAdminController
 {
@@ -1378,6 +1382,382 @@ class SliderController extends MainAdminController
         }
 
         studies::findOrFail($id)->delete();
+        studies_features::where('study_id',$id)->delete();
+        studies_links::where('study_id',$id)->delete();
+
+        \Session::flash('flash_message', 'Deleted');
+
+        return redirect()->back();
+
+    }
+
+    public function VacturyDescription(){
+
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        $slide = vacturies::first();
+
+        return view('admin.pages.addeditvacturiesdescription',compact('slide'));
+    }
+
+    public function VacturyDescriptionPost(Request $request)
+    {
+        $data = \Request::except(array('_token')) ;
+
+        $inputs = $request->all();
+
+        $rule=array(
+            'title' => 'required',
+            'description' => 'required',
+        );
+
+        $validator = \Validator::make($data,$rule);
+
+        if($validator->fails())
+        {
+            return redirect()->back()->withErrors($validator->messages());
+        }
+
+        if(!empty($inputs['id'])){
+
+            $slide = vacturies::findOrFail($inputs['id']);
+
+        }else{
+
+            $slide = new vacturies;
+
+        }
+
+        $slide->title = $request->title;
+        $slide->description = $request->description;
+        $slide->save();
+
+        if(!empty($inputs['id'])){
+
+            \Session::flash('flash_message', __('text.Changes Saved'));
+
+            return \Redirect::back();
+
+        }else{
+
+            \Session::flash('flash_message', __('text.Added'));
+
+            return redirect('admin/vactury-description');
+
+        }
+
+    }
+
+    public function Vactury()
+    {
+        $all = vactury_contents::leftjoin("vactury_categories","vactury_categories.id","=","vactury_contents.category")->orderBy('vactury_contents.id')->select("vactury_contents.*","vactury_categories.title as category")->get();
+
+        return view('admin.pages.vacturies',compact('all'));
+
+    }
+
+    public function addVactury(){
+
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        $categories = vactury_categories::get();
+        $provinces = vactury_provinces::get();
+
+        return view('admin.pages.addeditvacturies',compact('categories','provinces'));
+    }
+
+    public function addVacturyPost(Request $request)
+    {
+        $data = \Request::except(array('_token')) ;
+
+        $inputs = $request->all();
+
+        $rule=array(
+            'title' => 'required',
+            'category' => 'required',
+        );
+
+        $validator = \Validator::make($data,$rule);
+
+        if($validator->fails())
+        {
+            return redirect()->back()->withErrors($validator->messages());
+        }
+
+        if(!empty($inputs['id'])){
+
+            $slide = vactury_contents::where('id',$inputs['id'])->first();
+
+        }else{
+
+            $slide = new vactury_contents;
+
+        }
+
+        $slide->title = $request->title;
+        $slide->description = $request->description;
+        $slide->url_title = $request->url_title;
+        $slide->url = $request->url;
+        $slide->category = $request->category;
+        $slide->provinces = implode(',', $request->provinces) ? implode(',', array_filter($request->provinces)) : NULL;
+        $slide->save();
+
+        if(!empty($inputs['id'])){
+
+            \Session::flash('flash_message', __('text.Changes Saved'));
+
+            return \Redirect::back();
+        }else{
+
+            \Session::flash('flash_message', __('text.Added'));
+
+            return redirect('admin/vactury');
+
+        }
+
+    }
+
+    public function editVactury($id)
+    {
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        $slide = vactury_contents::select("vactury_contents.*","vactury_contents.provinces as provinces1")->findOrFail($id);
+        $categories = vactury_categories::get();
+        $provinces = vactury_provinces::get();
+
+        return view('admin.pages.addeditvacturies',compact('slide','categories','provinces'));
+
+    }
+
+    public function deleteVactury($id)
+    {
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        vactury_contents::where('id',$id)->delete();
+
+        \Session::flash('flash_message', 'Deleted');
+
+        return redirect()->back();
+
+    }
+
+    public function VacturyProvinces()
+    {
+        $all = vactury_provinces::orderBy('id')->get();
+
+        return view('admin.pages.vactury_provinces',compact('all'));
+
+    }
+
+    public function addVacturyProvince(){
+
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        return view('admin.pages.addeditVacturyProvince');
+    }
+
+    public function addVacturyProvincePost(Request $request)
+    {
+        $data = \Request::except(array('_token')) ;
+
+        $inputs = $request->all();
+
+        $rule=array(
+            'title' => 'required',
+        );
+
+        $validator = \Validator::make($data,$rule);
+
+        if ($validator->fails())
+        {
+            return redirect()->back()->withErrors($validator->messages());
+        }
+
+        if(!empty($inputs['id'])){
+
+            $slide = vactury_provinces::findOrFail($inputs['id']);
+
+        }else{
+
+            $slide = new vactury_provinces;
+
+        }
+
+        $slide->title = $request->title;
+        $slide->save();
+
+        if(!empty($inputs['id'])){
+
+            \Session::flash('flash_message', __('text.Changes Saved'));
+
+            return \Redirect::back();
+        }else{
+
+            \Session::flash('flash_message', __('text.Added'));
+
+            return redirect('admin/vactury-provinces');
+
+        }
+
+    }
+
+    public function editVacturyProvince($id)
+    {
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        $slide = vactury_provinces::findOrFail($id);
+
+        return view('admin.pages.addeditVacturyProvince',compact('slide'));
+
+    }
+
+    public function deleteVacturyProvince($id)
+    {
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        vactury_provinces::findOrFail($id)->delete();
+
+        \Session::flash('flash_message', 'Deleted');
+
+        return redirect()->back();
+
+    }
+
+    public function VacturyCategories()
+    {
+        $all = vactury_categories::orderBy('id')->get();
+
+        return view('admin.pages.vactury_categories',compact('all'));
+
+    }
+
+    public function addVacturyCategory(){
+
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        return view('admin.pages.addeditVacturyCategory');
+    }
+
+    public function addVacturyCategoryPost(Request $request)
+    {
+        $data = \Request::except(array('_token')) ;
+
+        $inputs = $request->all();
+
+        $rule=array(
+            'title' => 'required',
+        );
+
+        $validator = \Validator::make($data,$rule);
+
+        if ($validator->fails())
+        {
+            return redirect()->back()->withErrors($validator->messages());
+        }
+
+        if(!empty($inputs['id'])){
+
+            $slide = vactury_categories::findOrFail($inputs['id']);
+
+        }else{
+
+            $slide = new vactury_categories;
+
+        }
+
+        $slide->title = $request->title;
+        $slide->save();
+
+        if(!empty($inputs['id'])){
+
+            \Session::flash('flash_message', __('text.Changes Saved'));
+
+            return \Redirect::back();
+        }else{
+
+            \Session::flash('flash_message', __('text.Added'));
+
+            return redirect('admin/vactury-categories');
+
+        }
+
+    }
+
+    public function editVacturyCategory($id)
+    {
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        $slide = vactury_categories::findOrFail($id);
+
+        return view('admin.pages.addeditVacturyCategory',compact('slide'));
+
+    }
+
+    public function deleteVacturyCategory($id)
+    {
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        vactury_categories::findOrFail($id)->delete();
 
         \Session::flash('flash_message', 'Deleted');
 
