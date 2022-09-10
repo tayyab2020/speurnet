@@ -59,6 +59,10 @@ use App\place_to_do_description;
 use App\place_to_do_filters;
 use App\places;
 use App\saved_place_to_do_contents;
+use App\place_to_be_content;
+use App\place_to_be_description;
+use App\place_to_be_filters;
+use App\place_to_be_places;
 use App\vacturies;
 use App\vactury_contents;
 use App\vactury_categories;
@@ -157,6 +161,34 @@ class IndexController extends Controller
         return view('pages.place_to_do',compact('content','filters','places','description','ip_address'));
     }
 
+    public function placeToBe()
+    {
+        if (!empty($_SERVER['HTTP_CLIENT_IP']))
+        {
+            $ip_address = $_SERVER['HTTP_CLIENT_IP'];
+        }
+
+        //whether ip is from proxy
+        elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR']))
+        {
+            $ip_address = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        }
+
+        //whether ip is from remote address
+        else
+        {
+            $ip_address = $_SERVER['REMOTE_ADDR'];
+        }
+
+        $content = place_to_be_content::get();
+
+        $filters = place_to_be_filters::all();
+        $places = place_to_be_places::all();
+        $description = place_to_be_description::first();
+
+        return view('pages.place_to_be',compact('content','filters','places','description','ip_address'));
+    }
+
     public function offer()
     {
         return view('pages.offer');
@@ -249,6 +281,13 @@ class IndexController extends Controller
     public function filterPlace(Request $request)
     {
         $filter = place_to_do_content::whereRaw("find_in_set('$request->filter',filter_ids)")->whereRaw("find_in_set('$request->place',place_ids)")->with('savings')->get();
+
+        return $filter;
+    }
+
+    public function filterPlaceToBe(Request $request)
+    {
+        $filter = place_to_be_content::whereRaw("find_in_set('$request->filter',filter_ids)")->whereRaw("find_in_set('$request->place',place_ids)")->get();
 
         return $filter;
     }

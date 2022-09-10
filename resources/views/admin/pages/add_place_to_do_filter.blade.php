@@ -4,7 +4,7 @@
 
     <div id="main">
         <div class="page-header">
-            <h2> {{ isset($slide->name) ? 'Edit: '. $slide->title : 'Add' }}</h2>
+            <h2> {{ isset($slide) ? 'Edit: '. $slide->title : 'Add' }}</h2>
 
             <a href="{{ URL::to('admin/place-to-do-filters') }}" class="btn btn-default-light btn-xs"><i class="md md-backspace"></i> Back</a>
 

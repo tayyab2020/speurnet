@@ -6,7 +6,7 @@
         <div class="page-header">
             <h2> {{ isset($slide) ? 'Edit: '. $slide->title : 'Add' }}</h2>
 
-            <a href="{{ URL::to('admin/places') }}" class="btn btn-default-light btn-xs"><i class="md md-backspace"></i> Back</a>
+            <a href="{{ URL::to('admin/place-to-be-places') }}" class="btn btn-default-light btn-xs"><i class="md md-backspace"></i> Back</a>
 
         </div>
         @if (count($errors) > 0)
@@ -29,7 +29,7 @@
         <div class="panel panel-default">
             <div class="panel-body">
 
-            {!! Form::open(array('url' => array('admin/places/addplace'),'class'=>'form-horizontal padding-15','name'=>'user_form','id'=>'user_form','role'=>'form','enctype' => 'multipart/form-data')) !!}
+            {!! Form::open(array('url' => array('admin/place-to-be-places/addplace'),'class'=>'form-horizontal padding-15','name'=>'user_form','id'=>'user_form','role'=>'form','enctype' => 'multipart/form-data')) !!}
 
                 <input type="hidden" name="id" value="{{ isset($slide->id) ? $slide->id : null }}">
 
@@ -69,7 +69,8 @@
 
                 <hr>
                 <div class="form-group">
-                    <div class="col-sm-9 ">
+                    <div class="col-sm-9">
+                        
                         <button type="submit" class="btn btn-primary">{{ isset($slide->id) ? 'Edit' : 'Save' }}</button>
 
                     </div>

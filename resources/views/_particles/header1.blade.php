@@ -86,7 +86,7 @@
 
 </style>
 
-@if(Route::currentRouteName() != 'zoekhet' && Route::currentRouteName() != 'vactury' && Route::currentRouteName() != 'offer' && Route::currentRouteName() != 'place-to-do')
+@if(Route::currentRouteName() != 'zoekhet' && Route::currentRouteName() != 'vactury' && Route::currentRouteName() != 'offer' && Route::currentRouteName() != 'place-to-do' && Route::currentRouteName() != 'place-to-be')
 
     <div style="margin: 40px 0 0 0;display: flex;justify-content: flex-start;align-items: center;" class="row top-con">
 

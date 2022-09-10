@@ -27,7 +27,7 @@
 
         <div style="margin: 0;" class="row">
 
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div style="padding: 0;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
                 <!-- begin:content -->
                 <div id="content" style="padding: 0 0 20px 0;">
@@ -64,11 +64,12 @@
 
                                     @foreach($places as $key)
 
-                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 sub">
+                                        <div class="col-lg-4 col-md-2 col-sm-2 col-xs-6 sub">
+                                            <h1 style="font-size: 20px;" class="grad">{{$key->title}}</h1>
                                             <label class="row">
                                                 <input style="display: none;" value="{{$key->id}}" type="radio" name="radio1">
                                                 <div class="row-child">
-                                                    <img style="width: 100%;height: 120px;border-radius: 10px;padding: 20px;" src="{{$key->image ? asset('upload/'.$key->image) : asset('upload/noImage.png')}}" />
+                                                    <img style="width: 100%;height: 280px;border-radius: 10px;" src="{{$key->image ? asset('upload/'.$key->image) : asset('upload/noImage.png')}}" />
                                                 </div>
                                             </label>
                                         </div>
@@ -83,14 +84,25 @@
 
                                 <div class="row company-boxes">
 
+                                    @php
+
+                                        $backgrounds = array(
+                                            "linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 70%, #fae053 50%, #fae053 100%)",
+                                            "linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 70%, #a0ff8c 50%, #8fd674 100%)",
+                                            "linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 70%, #ee5252 50%, #e88585 100%)",
+                                            "linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 70%, #3c74e7 50%, #6885e8 100%)",
+                                            "linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 70%, #3ce7ab 50%, #68dee8 100%)",
+                                            "linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 70%, #c82ee9 50%, #ce68e8 100%)");
+
+                                    @endphp
+
                                     @foreach($filters as $key)
 
-                                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 sub">
-                                            <h1 style="font-size: 20px;" class="grad">{{$key->title}}</h1>
-                                            <label class="row">
+                                        <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12 sub">
+                                            <label style="min-height: 150px;" class="row">
                                                 <input style="display: none;" value="{{$key->id}}" type="radio" name="radio">
-                                                <div style="width: 100%;" class="row-child">
-                                                    <img style="width: 100%;height: 200px;border-radius: 10px;" src="{{$key->image ? asset('upload/'.$key->image) : asset('upload/noImage.png')}}" />
+                                                <div style="width: 100%;height: 120px;display: flex;align-items: center;justify-content: center;" class="row-child">
+                                                    <h1 style="font-size: 20px;background: {{$backgrounds[array_rand($backgrounds)]}};" class="grad">{{$key->title}}</h1>
                                                 </div>
                                             </label>
                                         </div>
@@ -125,40 +137,11 @@
 
                                                         <div style="display: flex;justify-content: space-between;">
 
-                                                            <form action="{{ url('save-place') }}" method="POST" style="display: inline-block;">
-
-                                                                <input type="hidden" name="_token" value="{{csrf_token()}}"/>
-                                                                <input type="hidden" name="content_id" value="{{$key->id}}">
-
-                                                                <button type="submit" class="new-button" title="" style="outline: none;">
-
-                                                                    @if($key->savings->contains('ip', $ip_address))
-
-                                                                        <i class="fa fa-heart heart" style="vertical-align: middle;font-size: 16px;display: flex;color: black;" aria-hidden="true">
-                                                                            <span style="display: block;margin-left: 7px;">{{$key->saved}}</span>
-                                                                        </i>
-
-                                                                    @else
-
-                                                                        <i class="far fa-heart heart" style="vertical-align: middle;font-size: 16px;display: flex;color: black;" aria-hidden="true">
-                                                                            <span style="display: block;margin-left: 7px;">{{$key->saved}}</span>
-                                                                        </i>
-
-                                                                    @endif
-
-                                                                </button>
-
-                                                            </form>
-
                                                             <div style="width: 100%;display: flex;justify-content: flex-end;">
 
                                                                 <a target="_blank" href="mailto:?subject=Deze woning heb ik gevonden op Zoekjehuisje.nl, kijk zelf maar!&amp;body=" class="new-icons" title="Delen" style="border-radius: 100px;position: relative;width: 35px !important;height: 35px !important;line-height: 0 !important;display: flex;flex-direction: column;justify-content: flex-start;text-decoration: none;">
                                                                     <i class="fas fa-share-alt" style="vertical-align: middle;margin-right: 2px;font-size: 15px;" aria-hidden="true"></i>
                                                                 </a>
-
-                                                                <i class="far fa-eye" style="vertical-align: middle;font-size: 16px;display: flex;color: #37bc9b;" aria-hidden="true">
-                                                                    <span style="display: block;margin-left: 7px;">{{$key->views}}</span>
-                                                                </i>
 
                                                             </div>
 
@@ -692,7 +675,7 @@
             flex-direction: column;
             margin: 0;
             width: 100%;
-            min-height: 160px;
+            min-height: 300px;
             padding: 0;
         }
 
@@ -700,6 +683,7 @@
         {
             border-radius: 10px;
             border: 1px solid #d0d0d0;
+            width: 100%;
         }
 
         .company-boxes a
@@ -1060,7 +1044,7 @@
 
                 type: 'POST',
 
-                url: "<?php echo url('filter-place') ?>",
+                url: "<?php echo url('filter-place-to-be') ?>",
 
                 headers: {
                     'X-CSRF-TOKEN': "<?php echo csrf_token() ?>",
@@ -1083,17 +1067,6 @@
 
                         $.each(data, function (key, value) {
 
-                            var flag = 0;
-
-                            $.each(value.savings, function (key1, value1)
-                            {
-                                if(value1.ip == ip)
-                                {
-                                    flag = 1;
-                                }
-
-                            });
-
                             $('.company-boxes1').append('<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 res-float">\n' +
                                 '                            <article style="margin-bottom: 45px;">\n' +
                                 '                                <div class="property-container" style="margin: 0;min-height: 480px;border-bottom-left-radius: 5px;border-bottom-right-radius: 5px;">\n' +
@@ -1112,34 +1085,11 @@
                                 '\n' +
                                 '                                        <div style="display: flex;justify-content: space-between;">\n' +
                                 '\n' +
-                                '                                            <form action="{{ url('save-place') }}" method="POST" style="display: inline-block;">\n' +
-                                '\n' +
-                                '                                                <input type="hidden" name="_token" value="{{csrf_token()}}"/>\n' +
-                                '\n' +
-                                '                                                <input type="hidden" name="content_id" value="'+value.id+'">\n' +
-                                '\n' +
-                                '                                                <button type="submit" class="new-button" title="{{__("text.Add Favorite")}}" style="outline: none;">\n' +
-                                '\n' +
-                                (flag == 1 ? '<i class="fa fa-heart heart" style="vertical-align: middle;font-size: 16px;display: flex;color: black;" aria-hidden="true">\n' +
-                                '                                                                    <span style="display: block;margin-left: 7px;">'+value.saved+'</span>\n' +
-                                '                                                                </i>' : ' <i class="far fa-heart heart" style="vertical-align: middle;font-size: 16px;display: flex;color: black;" aria-hidden="true">\n' +
-                                '                                                        <span style="display: block;margin-left: 7px;">'+value.saved+'</span>\n' +
-                                '                                                    </i>\n') +
-                                '\n' +
-                                '\n' +
-                                '                                                </button>\n' +
-                                '\n' +
-                                '                                            </form>\n' +
-                                '\n' +
                                 '                                            <div style="width: 100%;display: flex;justify-content: flex-end;">\n' +
                                 '\n' +
                                 '                                                <a target="_blank" href="mailto:?subject=&amp;body=" class="new-icons" title="{{__("text.Share")}}" style="border-radius: 100px;position: relative;width: 35px !important;height: 35px !important;line-height: 0 !important;display: flex;flex-direction: column;justify-content: flex-start;text-decoration: none;">\n' +
                                 '                                                    <i class="fas fa-share-alt" style="vertical-align: middle;margin-right: 2px;font-size: 15px;"></i>\n' +
                                 '                                                </a>\n' +
-                                '\n' +
-                                '                                                <i class="far fa-eye" style="vertical-align: middle;font-size: 16px;display: flex;color: #37bc9b;" aria-hidden="true">\n' +
-                                '                                                    <span style="display: block;margin-left: 7px;">'+value.views+'</span>\n' +
-                                '                                                </i>\n' +
                                 '\n' +
                                 '                                            </div>\n' +
                                 '\n' +

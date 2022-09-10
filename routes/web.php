@@ -245,11 +245,23 @@ Route::group(['middleware' => 'App\Http\Middleware\UserTypeMiddleware'], functio
         Route::get('place-to-do-filters/addfilter/{id}', 'SliderController@editPlaceToDoFilter')->name('edit-place-to-do-filter');
         Route::get('place-to-do-filters/delete/{id}', 'SliderController@deletePlaceToDoFilter');
 
+        Route::get('place-to-be-filters', 'SliderController@PlaceToBeFilters')->name('place-to-be-filters');
+        Route::get('place-to-be-filters/addfilter', 'SliderController@addPlaceToBeFilter')->name('add-place-to-be-filter');
+        Route::post('place-to-be-filters/addfilter', 'SliderController@addPlaceToBeFilterPost');
+        Route::get('place-to-be-filters/addfilter/{id}', 'SliderController@editPlaceToBeFilter')->name('edit-place-to-be-filter');
+        Route::get('place-to-be-filters/delete/{id}', 'SliderController@deletePlaceToBeFilter');
+
         Route::get('places', 'SliderController@Places')->name('places');
         Route::get('places/addplace', 'SliderController@addPlace')->name('add-place');
         Route::post('places/addplace', 'SliderController@addPlacePost');
         Route::get('places/addplace/{id}', 'SliderController@editPlace')->name('edit-place');
         Route::get('places/delete/{id}', 'SliderController@deletePlace');
+
+        Route::get('place-to-be-places', 'SliderController@PlaceToBePlaces')->name('place-to-be-places');
+        Route::get('place-to-be-places/addplace', 'SliderController@addPlaceToBePlace')->name('add-place-to-be-place');
+        Route::post('place-to-be-places/addplace', 'SliderController@addPlaceToBePlacePost');
+        Route::get('place-to-be-places/addplace/{id}', 'SliderController@editPlaceToBePlace')->name('edit-place-to-be-place');
+        Route::get('place-to-be-places/delete/{id}', 'SliderController@deletePlaceToBePlace');
 
         Route::get('place-to-do-contents', 'SliderController@PlaceToDoContents')->name('place-to-do-contents');
         Route::get('place-to-do-content/add', 'SliderController@addPlaceToDoContent')->name('add-place-to-do-content');
@@ -258,6 +270,14 @@ Route::group(['middleware' => 'App\Http\Middleware\UserTypeMiddleware'], functio
         Route::get('place-to-do-content/delete/{id}', 'SliderController@deletePlaceToDoContent');
         Route::get('place-to-do-content/description', 'SliderController@PlaceToDoDescription')->name('place-to-do-description');
         Route::post('place-to-do-content/description', 'SliderController@PlaceToDoDescriptionPost');
+
+        Route::get('place-to-be-contents', 'SliderController@PlaceToBeContents')->name('place-to-be-contents');
+        Route::get('place-to-be-content/add', 'SliderController@addPlaceToBeContent')->name('add-place-to-be-content');
+        Route::post('place-to-be-content/add', 'SliderController@addPlaceToBeContentPost');
+        Route::get('place-to-be-content/add/{id}', 'SliderController@editPlaceToBeContent')->name('edit-place-to-be-content');
+        Route::get('place-to-be-content/delete/{id}', 'SliderController@deletePlaceToBeDoContent');
+        Route::get('place-to-be-content/description', 'SliderController@PlaceToBeDescription')->name('place-to-be-description');
+        Route::post('place-to-be-content/description', 'SliderController@PlaceToBeDescriptionPost');
 
         Route::get('study-categories', 'SliderController@StudyCategories')->name('study-categories');
         Route::get('study-categories/addstudycategory', 'SliderController@addStudyCategory')->name('add-study-category');
@@ -330,6 +350,8 @@ Route::group(['middleware' => 'App\Http\Middleware\UserTypeMiddleware'], functio
     Route::get('/', 'IndexController@index');
 
     Route::get('place-to-do', 'IndexController@placeToDo')->name('place-to-do');
+
+    Route::get('place-to-be', 'IndexController@placeToBe')->name('place-to-be');
     
     Route::get('offer', 'IndexController@offer')->name('offer');
     
@@ -351,6 +373,8 @@ Route::group(['middleware' => 'App\Http\Middleware\UserTypeMiddleware'], functio
 
     Route::post('filter-place', 'IndexController@filterPlace')->name('filter-place');
 
+    Route::post('filter-place-to-be', 'IndexController@filterPlaceToBe')->name('filter-place-to-be');
+    
     Route::post('save-zoekhet', 'IndexController@saveZoekhet');
 
     Route::post('save-place', 'IndexController@savePlace');

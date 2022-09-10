@@ -21,6 +21,10 @@ use App\place_to_do_filters;
 use App\places;
 use App\place_to_do_content;
 use App\place_to_do_description;
+use App\place_to_be_filters;
+use App\place_to_be_places;
+use App\place_to_be_content;
+use App\place_to_be_description;
 use App\categories;
 use Carbon\Carbon;
 use App\Http\Requests;
@@ -950,6 +954,207 @@ class SliderController extends MainAdminController
         }
 
         $slide = place_to_do_content::findOrFail($id);
+
+        \File::delete(public_path() .'/upload/'.$slide->image);
+
+        $slide->delete();
+
+        \Session::flash('flash_message', 'Deleted');
+
+        return redirect()->back();
+
+    }
+
+    public function PlaceToBeContents()
+    {
+        $all = place_to_be_content::orderBy('id')->get();
+
+        return view('admin.pages.place_to_be_contents',compact('all'));
+    }
+
+    public function PlaceToBeDescription()
+    {
+        $description = place_to_be_description::first();
+
+        return view('admin.pages.place_to_be_description',compact('description'));
+    }
+
+    public function PlaceToBeDescriptionPost(Request $request)
+    {
+        $inputs = $request->all();
+
+        if(!empty($inputs['id'])){
+
+            $slide = place_to_be_description::findOrFail($inputs['id']);
+
+        }else{
+
+            $slide = new place_to_be_description;
+        }
+
+        $slide->title = $inputs['title'];
+        $slide->description = $inputs['description'];
+        $slide->save();
+
+        if(!empty($inputs['id'])){
+
+            \Session::flash('flash_message', __('text.Changes Saved'));
+
+            return \Redirect::back();
+        }else{
+
+            \Session::flash('flash_message', __('text.Added'));
+
+            return redirect('admin/place-to-be-content/description');
+
+        }
+    }
+
+    public function addPlaceToBeContent()
+    {
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        $filters = place_to_be_filters::all();
+        $places = place_to_be_places::all();
+
+        return view('admin.pages.add_place_to_be_content',compact('filters','places'));
+    }
+
+    public function addPlaceToBeContentPost(Request $request)
+    {
+        $data = \Request::except(array('_token')) ;
+
+        $inputs = $request->all();
+
+        $rule=array(
+            'title' => 'required',
+            'description' => 'required',
+            'image' => 'mimes:jpg,jpeg,gif,png'
+        );
+
+        $validator = \Validator::make($data,$rule);
+
+        if($validator->fails())
+        {
+            return redirect()->back()->withErrors($validator->messages());
+        }
+
+        if(!empty($inputs['id'])){
+
+            $slide = place_to_be_content::findOrFail($inputs['id']);
+
+            //Slide image
+            $slide_image = $request->file('image');
+
+            if($slide_image){
+
+                \File::delete(public_path() .'/upload/'.$slide->image);
+
+                $tmpFilePath = 'upload/';
+
+                $filename = $_FILES['image']['name'];
+
+                $ext = pathinfo($filename, PATHINFO_EXTENSION);
+
+                $hardPath = Str::slug($inputs['title'], '-').'-'.md5(time()) .'.'.$ext;
+
+                $img = Image::make($slide_image);
+
+                $img->save($tmpFilePath.$hardPath);
+
+                $slide->image = $hardPath;
+
+            }
+
+        }else{
+
+            $slide = new place_to_be_content;
+
+            //Slide image
+            $slide_image = $request->file('image');
+
+            if($slide_image){
+
+                \File::delete(public_path() .'/upload/'.$slide->image);
+
+                $tmpFilePath = 'upload/';
+
+                $filename = $_FILES['image']['name'];
+
+                $ext = pathinfo($filename, PATHINFO_EXTENSION);
+
+                $hardPath = Str::slug($inputs['title'], '-').'-'.md5(time()) .'.'.$ext;
+
+                $img = Image::make($slide_image);
+
+                $img->save($tmpFilePath.$hardPath);
+
+                $slide->image = $hardPath;
+
+            }
+            else
+            {
+                $slide->image = NULL;
+            }
+
+        }
+
+        $slide->title = $request->title;
+        $slide->description = $request->description;
+        $slide->filter_ids = implode(',', $request->filters);
+        $slide->place_ids = implode(',', $request->places);
+        $slide->save();
+
+        if(!empty($inputs['id'])){
+
+            \Session::flash('flash_message', __('text.Changes Saved'));
+
+            return \Redirect::back();
+        }else{
+
+            \Session::flash('flash_message', __('text.Added'));
+
+            return redirect('admin/place-to-be-contents');
+
+        }
+    }
+
+    public function editPlaceToBeContent($id)
+    {
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        $slide = place_to_be_content::findOrFail($id);
+        $filters = place_to_be_filters::all();
+        $places = place_to_be_places::all();
+
+        return view('admin.pages.add_place_to_be_content',compact('slide','filters','places'));
+
+    }
+
+    public function deletePlaceToBeContent($id)
+    {
+
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        $slide = place_to_be_content::findOrFail($id);
 
         \File::delete(public_path() .'/upload/'.$slide->image);
 
@@ -2019,6 +2224,160 @@ class SliderController extends MainAdminController
 
     }
 
+    public function PlaceToBePlaces()
+    {
+        $all = place_to_be_places::orderBy('id')->get();
+
+        return view('admin.pages.place_to_be_places',compact('all'));
+    }
+
+    public function addPlaceToBePlace(){
+
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        return view('admin.pages.add_place_to_be_place');
+    }
+
+    public function addPlaceToBePlacePost(Request $request)
+    {
+        $data = \Request::except(array('_token')) ;
+
+        $inputs = $request->all();
+
+        $rule=array(
+            'title' => 'required',
+            'image' => 'mimes:jpg,jpeg,gif,png'
+        );
+
+        $validator = \Validator::make($data,$rule);
+
+        if ($validator->fails())
+        {
+            return redirect()->back()->withErrors($validator->messages());
+        }
+
+        if(!empty($inputs['id'])){
+
+            $slide = place_to_be_places::findOrFail($inputs['id']);
+
+            //Slide image
+            $slide_image = $request->file('image');
+
+            if($slide_image){
+
+                \File::delete(public_path() .'/upload/'.$slide->image);
+
+                $tmpFilePath = 'upload/';
+
+                $filename = $_FILES['image']['name'];
+
+                $ext = pathinfo($filename, PATHINFO_EXTENSION);
+
+                $hardPath = Str::slug($inputs['title'], '-').'-'.md5(time()) .'.'.$ext;
+
+                $img = Image::make($slide_image);
+
+                $img->save($tmpFilePath.$hardPath);
+
+                $slide->image = $hardPath;
+
+            }
+
+        }else{
+
+            $slide = new place_to_be_places;
+
+            //Slide image
+            $slide_image = $request->file('image');
+
+            if($slide_image){
+
+                \File::delete(public_path() .'/upload/'.$slide->image);
+
+                $tmpFilePath = 'upload/';
+
+                $filename = $_FILES['image']['name'];
+
+                $ext = pathinfo($filename, PATHINFO_EXTENSION);
+
+                $hardPath = Str::slug($inputs['title'], '-').'-'.md5(time()) .'.'.$ext;
+
+                $img = Image::make($slide_image);
+
+                $img->save($tmpFilePath.$hardPath);
+
+                $slide->image = $hardPath;
+
+            }
+            else
+            {
+                $slide->image = NULL;
+            }
+
+        }
+
+        $slide->title = $request->title;
+        $slide->save();
+
+        if(!empty($inputs['id'])){
+
+            \Session::flash('flash_message', __('text.Changes Saved'));
+
+            return \Redirect::back();
+        }else{
+
+            \Session::flash('flash_message', __('text.Added'));
+
+            return redirect('admin/place-to-be-places');
+
+        }
+
+    }
+
+    public function editPlaceToBePlace($id)
+    {
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        $slide = place_to_be_places::findOrFail($id);
+
+        return view('admin.pages.add_place_to_be_place',compact('slide'));
+
+    }
+
+    public function deletePlaceToBePlace($id)
+    {
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        $slide = place_to_be_places::findOrFail($id);
+
+        \File::delete(public_path() .'/upload/'.$slide->image);
+
+        $slide->delete();
+
+        \Session::flash('flash_message', 'Deleted');
+
+        return redirect()->back();
+
+    }
+
     public function PlaceToDoFilters()
     {
         $all = place_to_do_filters::orderBy('id')->get();
@@ -2162,6 +2521,160 @@ class SliderController extends MainAdminController
         }
 
         $slide = place_to_do_filters::findOrFail($id);
+
+        \File::delete(public_path() .'/upload/'.$slide->image);
+
+        $slide->delete();
+
+        \Session::flash('flash_message', 'Deleted');
+
+        return redirect()->back();
+
+    }
+
+    public function PlaceToBeFilters()
+    {
+        $all = place_to_be_filters::orderBy('id')->get();
+
+        return view('admin.pages.place_to_be_filters',compact('all'));
+    }
+
+    public function addPlaceToBeFilter(){
+
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        return view('admin.pages.add_place_to_be_filter');
+    }
+
+    public function addPlaceToBeFilterPost(Request $request)
+    {
+        $data = \Request::except(array('_token')) ;
+
+        $inputs = $request->all();
+
+        $rule=array(
+            'title' => 'required',
+            'image' => 'mimes:jpg,jpeg,gif,png'
+        );
+
+        $validator = \Validator::make($data,$rule);
+
+        if ($validator->fails())
+        {
+            return redirect()->back()->withErrors($validator->messages());
+        }
+
+        if(!empty($inputs['id'])){
+
+            $slide = place_to_be_filters::findOrFail($inputs['id']);
+
+            //Slide image
+            $slide_image = $request->file('image');
+
+            if($slide_image){
+
+                \File::delete(public_path() .'/upload/'.$slide->image);
+
+                $tmpFilePath = 'upload/';
+
+                $filename = $_FILES['image']['name'];
+
+                $ext = pathinfo($filename, PATHINFO_EXTENSION);
+
+                $hardPath = Str::slug($inputs['title'], '-').'-'.md5(time()) .'.'.$ext;
+
+                $img = Image::make($slide_image);
+
+                $img->save($tmpFilePath.$hardPath);
+
+                $slide->image = $hardPath;
+
+            }
+
+        }else{
+
+            $slide = new place_to_be_filters;
+
+            //Slide image
+            $slide_image = $request->file('image');
+
+            if($slide_image){
+
+                \File::delete(public_path() .'/upload/'.$slide->image);
+
+                $tmpFilePath = 'upload/';
+
+                $filename = $_FILES['image']['name'];
+
+                $ext = pathinfo($filename, PATHINFO_EXTENSION);
+
+                $hardPath = Str::slug($inputs['title'], '-').'-'.md5(time()) .'.'.$ext;
+
+                $img = Image::make($slide_image);
+
+                $img->save($tmpFilePath.$hardPath);
+
+                $slide->image = $hardPath;
+
+            }
+            else
+            {
+                $slide->image = NULL;
+            }
+
+        }
+
+        $slide->title = $request->title;
+        $slide->save();
+
+        if(!empty($inputs['id'])){
+
+            \Session::flash('flash_message', __('text.Changes Saved'));
+
+            return \Redirect::back();
+        }else{
+
+            \Session::flash('flash_message', __('text.Added'));
+
+            return redirect('admin/place-to-be-filters');
+
+        }
+
+    }
+
+    public function editPlaceToBeFilter($id)
+    {
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        $slide = place_to_be_filters::findOrFail($id);
+
+        return view('admin.pages.add_place_to_be_filter',compact('slide'));
+
+    }
+
+    public function deletePlaceToBeFilter($id)
+    {
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        $slide = place_to_be_filters::findOrFail($id);
 
         \File::delete(public_path() .'/upload/'.$slide->image);
 
