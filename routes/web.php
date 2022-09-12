@@ -305,6 +305,14 @@ Route::group(['middleware' => 'App\Http\Middleware\UserTypeMiddleware'], functio
         Route::get('vactury/add/{id}', 'SliderController@editVactury')->name('edit-vactury');
         Route::get('vactury/delete/{id}', 'SliderController@deleteVactury');
 
+        Route::get('offer-description', 'SliderController@OfferDescription')->name('offer-description');
+        Route::post('offer-description', 'SliderController@OfferDescriptionPost');
+        Route::get('offer-content', 'SliderController@OfferContent')->name('offer-content');
+        Route::get('offer-content/add', 'SliderController@addOfferContent')->name('add-offer-content');
+        Route::post('offer-content/add', 'SliderController@addOfferContentPost');
+        Route::get('offer-content/add/{id}', 'SliderController@editOfferContent')->name('edit-offer-content');
+        Route::get('offer-content/delete/{id}', 'SliderController@deleteOfferContent');
+
         Route::get('categories', 'SliderController@Categories')->name('categories');
         Route::get('categories/addcontent', 'SliderController@addCategory')->name('add-category');
         Route::post('categories/addcontent', 'SliderController@addCategoryPost');
@@ -354,6 +362,8 @@ Route::group(['middleware' => 'App\Http\Middleware\UserTypeMiddleware'], functio
     Route::get('place-to-be', 'IndexController@placeToBe')->name('place-to-be');
     
     Route::get('offer', 'IndexController@offer')->name('offer');
+
+    Route::post('submit-offer', 'IndexController@SubmitOffer')->name('submit-offer');
     
     Route::get('study', 'IndexController@study')->name('study');
 

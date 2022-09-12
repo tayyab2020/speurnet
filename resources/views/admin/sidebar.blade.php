@@ -38,13 +38,9 @@
 					   
 					<li class="{{classActivePath('vactury')}}"><a href="{{ URL::to('admin/vactury') }}"><i class="fa fa-bars"></i>Vactury</a></li>
 
+					<li class="{{classActivePath('offer-content')}}"><a href="{{ URL::to('admin/offer-content') }}"><i class="fa fa-bars"></i>Offer Content</a></li>
+
 					<li class="{{classActivePath('slider')}}"><a href="{{ URL::to('admin/slider') }}"><i class="fa fa-sliders"></i>Home Slider</a></li>
-
-					<li class="{{classActivePath('place-to-do-filters')}}"><a href="{{ URL::to('admin/place-to-do-filters') }}"><i class="fa fa-bars"></i>Place To Do Filters</a></li>
-					
-					<li class="{{classActivePath('places')}}"><a href="{{ URL::to('admin/places') }}"><i class="fa fa-bars"></i>Places</a></li>
-
-					<li class="{{classActivePath('place-to-do-contents')}}"><a href="{{ URL::to('admin/place-to-do-contents') }}"><i class="fa fa-bars"></i>Place To Do Content</a></li>
 
 					<li class="{{classActivePath('place-to-be-filters')}}"><a href="{{ URL::to('admin/place-to-be-filters') }}"><i class="fa fa-bars"></i>Place To Be Filters</a></li>
 					

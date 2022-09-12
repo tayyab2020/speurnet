@@ -15,8 +15,8 @@
             <ul style="display:flex;align-items: flex-end;position: relative;padding-bottom: 10px;border: 0;padding-left: 15px;" class="nav nav-tabs res-ul">
 
                 <span class="res-span" style="display: inline-block;width: 60%;margin-right: 30px;">
-                    <h4 class="res-head">Benieuwd naar de nieuwste woontrends?</h4>
-                    <p style="margin: 0;">Waarom alle interieurwinkels en woontrends websites afgaan als Zoekjehuisje.nl de allerlaatste woontrends voor jou heeft verzameld, zodat je alle trends in wonen en tuin online kunt bekijken. Heb je binnenkort een nieuwe woning of ben je gewoon toe om je interieur of tuin een nieuwe look te geven volgens de nieuwe trends van 2021? Bekijk hier alle interieurtips en trends voor jouw woonkamer, slaapkamer, keuken of tuin. Laat je inspireren en bepaal zelf welke woontrend of stijl in jouw interieur past. Jouw woning is de laatste woontrend waard.</p>
+                    <h4 class="res-head">{{$description->title}}</h4>
+                    {!! $description->description !!}
                 </span>
 
             </ul>
@@ -25,7 +25,9 @@
 
     </div>
 
-    <form action="" method="POST">
+    <form action="{{route('submit-offer')}}" method="POST">
+
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
         <div style="margin: 0;" class="row">
 
@@ -68,53 +70,18 @@
 
                                     @endphp
 
-                                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 sub">
-                                        <div style="background-color: {{$backgrounds[array_rand($backgrounds)]}};" class="row">
-                                            <a href="">KwikMlt</a>
-                                        </div>
-                                    </div>
+                                    @foreach($content as $key)
 
-                                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 sub">
-                                        <div style="background-color: {{$backgrounds[array_rand($backgrounds)]}};" class="row">
-                                            <a href="">Schoonmaak</a>
+                                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 sub">
+                                            <label style="min-height: 150px;" class="row">
+                                                <input required style="display: none;" value="{{$key->title}}" type="radio" name="radio">
+                                                <div style="width: 100%;height: 120px;display: flex;align-items: center;justify-content: center;background-color: {{$backgrounds[array_rand($backgrounds)]}};" class="row-child">
+                                                    <h1 style="font-size: 20px;">{{$key->title}}</h1>
+                                                </div>
+                                            </label>
                                         </div>
-                                    </div>
 
-                                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 sub">
-                                        <div style="background-color: {{$backgrounds[array_rand($backgrounds)]}};" class="row">
-                                            <a href="">KwikMlt</a>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 sub">
-                                        <div style="background-color: {{$backgrounds[array_rand($backgrounds)]}};" class="row">
-                                            <a href="">KwikMlt</a>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 sub">
-                                        <div style="background-color: {{$backgrounds[array_rand($backgrounds)]}};" class="row">
-                                            <a href="">KwikMlt</a>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 sub">
-                                        <div style="background-color: {{$backgrounds[array_rand($backgrounds)]}};" class="row">
-                                            <a href="">KwikMlt</a>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 sub">
-                                        <div style="background-color: {{$backgrounds[array_rand($backgrounds)]}};" class="row">
-                                            <a href="">KwikMlt</a>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 sub">
-                                        <div style="background-color: {{$backgrounds[array_rand($backgrounds)]}};" class="row">
-                                            <a href="">KwikMlt</a>
-                                        </div>
-                                    </div>
+                                    @endforeach
 
                                 </div>
 
@@ -292,6 +259,12 @@
     <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets/css/flaticon.css') }}"/>
 
     <style>
+
+        input[type="radio"]:checked ~ .row-child
+        {
+            border: 1px solid #91a9e6;
+            box-shadow: 0px 0px 4px 0px #9cbedf;
+        }
 
         [type="checkbox"]:not(:checked),
         [type="checkbox"]:checked {
@@ -743,12 +716,16 @@
             align-items: center;
             flex-direction: column;
             margin: 0;
-            border-radius: 10px;
             width: 100%;
-            min-height: 160px;
-            /*border: 2px solid black;*/
-            padding: 10px;
-            margin-top: 10px;
+            min-height: 300px;
+            padding: 0;
+        }
+
+        .company-boxes .row .row-child
+        {
+            border-radius: 10px;
+            border: 1px solid #e3e3e3;
+            width: 100%;
         }
 
         .company-boxes a

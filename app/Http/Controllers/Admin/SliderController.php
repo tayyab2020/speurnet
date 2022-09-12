@@ -43,6 +43,8 @@ use App\vactury_categories;
 use App\vactury_provinces;
 use App\vacturies;
 use App\vactury_contents;
+use App\offer_description;
+use App\offer_content;
 
 class SliderController extends MainAdminController
 {
@@ -1589,6 +1591,169 @@ class SliderController extends MainAdminController
         studies::findOrFail($id)->delete();
         studies_features::where('study_id',$id)->delete();
         studies_links::where('study_id',$id)->delete();
+
+        \Session::flash('flash_message', 'Deleted');
+
+        return redirect()->back();
+
+    }
+
+    public function OfferDescription(){
+
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        $slide = offer_description::first();
+
+        return view('admin.pages.addeditofferdescription',compact('slide'));
+    }
+
+    public function OfferDescriptionPost(Request $request)
+    {
+        $data = \Request::except(array('_token')) ;
+
+        $inputs = $request->all();
+
+        $rule=array(
+            'title' => 'required',
+            'description' => 'required',
+        );
+
+        $validator = \Validator::make($data,$rule);
+
+        if($validator->fails())
+        {
+            return redirect()->back()->withErrors($validator->messages());
+        }
+
+        if(!empty($inputs['id'])){
+
+            $slide = offer_description::findOrFail($inputs['id']);
+
+        }else{
+
+            $slide = new offer_description;
+
+        }
+
+        $slide->title = $request->title;
+        $slide->description = $request->description;
+        $slide->save();
+
+        if(!empty($inputs['id'])){
+
+            \Session::flash('flash_message', __('text.Changes Saved'));
+
+            return \Redirect::back();
+
+        }else{
+
+            \Session::flash('flash_message', __('text.Added'));
+
+            return redirect('admin/offer-description');
+
+        }
+
+    }
+
+    public function OfferContent()
+    {
+        $all = offer_content::orderBy('id')->get();
+
+        return view('admin.pages.offer_contents',compact('all'));
+
+    }
+
+    public function addOfferContent(){
+
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        return view('admin.pages.addeditoffercontents');
+    }
+
+    public function addOfferContentPost(Request $request)
+    {
+        $data = \Request::except(array('_token')) ;
+
+        $inputs = $request->all();
+
+        $rule=array(
+            'title' => 'required',
+        );
+
+        $validator = \Validator::make($data,$rule);
+
+        if($validator->fails())
+        {
+            return redirect()->back()->withErrors($validator->messages());
+        }
+
+        if(!empty($inputs['id'])){
+
+            $slide = offer_content::where('id',$inputs['id'])->first();
+
+        }else{
+
+            $slide = new offer_content;
+
+        }
+
+        $slide->title = $request->title;
+        $slide->save();
+
+        if(!empty($inputs['id'])){
+
+            \Session::flash('flash_message', __('text.Changes Saved'));
+
+            return \Redirect::back();
+        }else{
+
+            \Session::flash('flash_message', __('text.Added'));
+
+            return redirect('admin/offer-content');
+
+        }
+
+    }
+
+    public function editOfferContent($id)
+    {
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        $slide = offer_content::findOrFail($id);
+
+        return view('admin.pages.addeditoffercontents',compact('slide'));
+
+    }
+
+    public function deleteOfferContent($id)
+    {
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        offer_content::where('id',$id)->delete();
 
         \Session::flash('flash_message', 'Deleted');
 

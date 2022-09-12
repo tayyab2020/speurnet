@@ -67,6 +67,9 @@ use App\vacturies;
 use App\vactury_contents;
 use App\vactury_categories;
 use App\vactury_provinces;
+use App\offer_content;
+use App\offer_description;
+use App\offers;
 
 class IndexController extends Controller
 {
@@ -191,7 +194,48 @@ class IndexController extends Controller
 
     public function offer()
     {
-        return view('pages.offer');
+        $description = offer_description::first();
+        $content = offer_content::get();
+
+        return view('pages.offer',compact("description","content"));
+    }
+
+    public function SubmitOffer(Request $request)
+    {
+        $email = $request->email;
+        $name = $request->name;
+        $last_name = $request->last_name;
+        $phone = $request->phone;
+        $address = $request->address;
+        $postcode = $request->postcode;
+        $information = $request->information;
+        $category = $request->radio;
+        $gender = $request->gender;
+
+        $post = new offers;
+        $post->category = $category;
+        $post->information = $information;
+        $post->gender = $gender;
+        $post->name = $name;
+        $post->last_name = $last_name;
+        $post->email = $email;
+        $post->address = $address;
+        $post->postcode = $postcode;
+        $post->phone = $phone;
+        $post->save();
+
+        $to = "info@speurnet.nl";
+
+        \Mail::send(array(), array(), function ($message) use($email,$name,$phone,$to,$last_name,$address,$postcode,$information,$category,$gender) {
+            $message->to($to)
+                ->from("info@speurnet.nl","speurnet.nl")
+                ->subject('Form Submission')
+                ->setBody("<b>Gender: </b>".$gender."<br><b>Email: </b>".$email."<br><b>Name: </b>".$name."<br><b>Last Name: </b>".$last_name."<br><b>Phone: </b>".$phone."<br><b>Address: </b>".$address."<br><b>Postcode: </b>".$postcode."<br><b>Choice: </b>".$category."<br><b>Note: </b>".$information."<br>Thanks!<br />- speurnet.nl", 'text/html');
+        });
+
+        \Session::flash('flash_message', __('text.Message sent successfully'));
+
+        return redirect()->back();
     }
 
     public function study()
