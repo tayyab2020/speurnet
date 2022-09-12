@@ -114,7 +114,6 @@
             <li><a href="{{route('study')}}">Study</a></li>
             <li><a href="{{route('vactury')}}">Vactury</a></li>
             <li><a href="{{route('offer')}}">Offer</a></li>
-            <li><a href="{{route('place-to-do')}}">Place to do</a></li>
             <li><a href="{{route('place-to-be')}}">Place to be</a></li>
 
             <li id="wrap">
@@ -392,7 +391,6 @@
                 <li><a href="{{route('study')}}">Study</a></li>
                 <li><a href="{{route('vactury')}}">Vactury</a></li>
                 <li><a href="{{route('offer')}}">Offer</a></li>
-                <li><a href="{{route('place-to-do')}}">Place to do</a></li>
                 <li><a href="{{route('place-to-be')}}">Place to be</a></li>
 
                 <li style="float: right;">
