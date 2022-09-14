@@ -284,7 +284,7 @@
 
                                         @if($blog->image)
 
-                                            <img src="{{ URL::asset('upload/blogs/'.$blog->image) }}" width="100">
+                                            <img src="{{ URL::asset('upload/'.$blog->image) }}" width="100">
 
                                         @else
 
