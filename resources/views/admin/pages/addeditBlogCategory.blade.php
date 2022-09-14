@@ -6,7 +6,7 @@
         <div class="page-header">
             <h2> {{ isset($slide) ? 'Edit: '. $slide->title : 'Add' }}</h2>
 
-            <a href="{{ URL::to('admin/vactury-categories') }}" class="btn btn-default-light btn-xs"><i class="md md-backspace"></i> Back</a>
+            <a href="{{ URL::to('admin/blog-categories') }}" class="btn btn-default-light btn-xs"><i class="md md-backspace"></i> Back</a>
 
         </div>
         @if (count($errors) > 0)
@@ -29,7 +29,7 @@
         <div class="panel panel-default">
             <div class="panel-body">
 
-            {!! Form::open(array('url' => array('admin/vactury-categories/addvacturycategory'),'class'=>'form-horizontal padding-15','name'=>'user_form','id'=>'user_form','role'=>'form','enctype' => 'multipart/form-data')) !!}
+            {!! Form::open(array('url' => array('admin/blog-categories/add'),'class'=>'form-horizontal padding-15','name'=>'user_form','id'=>'user_form','role'=>'form','enctype' => 'multipart/form-data')) !!}
 
                 <input type="hidden" name="id" value="{{ isset($slide->id) ? $slide->id : null }}">
 

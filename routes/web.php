@@ -97,7 +97,15 @@ Route::group(['middleware' => 'App\Http\Middleware\UserTypeMiddleware'], functio
         Route::post('tickets/update', 'DashboardController@update');
         Route::post('tickets/send-mail', 'DashboardController@SendMail');
 
+        Route::get('blog-categories', 'BlogsController@blogCategories')->name('blog-categories');
+        Route::get('blog-categories/add', 'BlogsController@addBlogCategory')->name('add-blog-category');
+        Route::post('blog-categories/add', 'BlogsController@addBlogCategoryPost')->name('post-blog-category');
+        Route::get('blog-categories/add/{id}', 'BlogsController@editBlogCategory')->name('edit-blog-category');
+        Route::get('blog-categories/delete/{id}', 'BlogsController@deleteBlogCategory')->name('delete-blog-category');
+
         Route::get('blogs', 'BlogsController@blogslist')->name('blogs');
+        Route::get('blogs/description', 'BlogsController@blogsDescription');
+        Route::post('blogs/description', 'BlogsController@blogsDescriptionPost');
         Route::get('blogs/addblog', 'BlogsController@addeditblogs')->name('add-blog');
         Route::post('blogs/addblog', 'BlogsController@addnew')->name('post-blog');
         Route::get('blogs/addblog/{id}', 'BlogsController@editblog')->name('edit-blog');

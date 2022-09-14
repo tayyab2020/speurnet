@@ -32,6 +32,10 @@
 
                		<li class="{{classActivePath('dashboard')}}"><a href="{{ URL::to('admin/dashboard') }}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
 
+					<li class="{{classActivePath('blog-categories')}}"><a href="{{ URL::to('admin/blog-categories') }}"><i class="fa fa-list"></i>Blog Categories</a></li>
+
+					<li class="{{classActivePath('blogs')}}"><a href="{{ URL::to('admin/blogs') }}"><i class="fa fa-list"></i>Blogs</a></li>
+
 					<li class="{{classActivePath('vactury-categories')}}"><a href="{{ URL::to('admin/vactury-categories') }}"><i class="fa fa-bars"></i>Vactury Categories</a></li>
 
 					<li class="{{classActivePath('vactury-provinces')}}"><a href="{{ URL::to('admin/vactury-provinces') }}"><i class="fa fa-bars"></i>Vactury Provinces</a></li>
@@ -81,6 +85,7 @@
 					<li class="{{classActivePath('homepage-icons')}}"><a href="{{ URL::to('admin/homepage-icons') }}"><i class="fa fa-bars"></i>While you are here content</a></li>
 
 	                <li class="{{classActivePath('settings')}}"><a href="{{ URL::to('admin/settings') }}"><i class="md md-settings"></i>Settings</a></li>
+
                 @else
 
                     <li class="{{classActivePath('dashboard')}}"><a href="{{ URL::to('admin/dashboard') }}"><i class="fa fa-dashboard"></i> Dashboard</a></li>

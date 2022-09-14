@@ -18,6 +18,8 @@ use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Route;
+use App\blog_description;
+use App\blog_categories;
 
 class BlogsController extends MainAdminController
 {
@@ -229,6 +231,160 @@ class BlogsController extends MainAdminController
 
     }
 
+    public function blogCategories()
+    {
+        $all = blog_categories::orderBy('id')->get();
+
+        return view('admin.pages.blog_categories',compact('all'));
+
+    }
+
+    public function addBlogCategory(){
+
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        return view('admin.pages.addeditBlogCategory');
+    }
+
+    public function addBlogCategoryPost(Request $request)
+    {
+        $data = \Request::except(array('_token')) ;
+
+        $inputs = $request->all();
+
+        $rule=array(
+            'title' => 'required',
+        );
+
+        $validator = \Validator::make($data,$rule);
+
+        if ($validator->fails())
+        {
+            return redirect()->back()->withErrors($validator->messages());
+        }
+
+        if(!empty($inputs['id'])){
+
+            $slide = blog_categories::findOrFail($inputs['id']);
+
+        }else{
+
+            $slide = new blog_categories;
+
+        }
+
+        $slide->title = $request->title;
+        $slide->save();
+
+        if(!empty($inputs['id'])){
+
+            \Session::flash('flash_message', __('text.Changes Saved'));
+
+            return \Redirect::back();
+        }else{
+
+            \Session::flash('flash_message', __('text.Added'));
+
+            return redirect('admin/blog-categories');
+
+        }
+
+    }
+
+    public function editBlogCategory($id)
+    {
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        $slide = blog_categories::findOrFail($id);
+
+        return view('admin.pages.addeditBlogCategory',compact('slide'));
+
+    }
+
+    public function deleteBlogCategory($id)
+    {
+        if(Auth::User()->usertype!="Admin"){
+
+            \Session::flash('flash_message', 'Access denied!');
+
+            return redirect('admin/dashboard');
+
+        }
+
+        blog_categories::findOrFail($id)->delete();
+
+        \Session::flash('flash_message', 'Deleted');
+
+        return redirect()->back();
+
+    }
+
+    public function blogsDescription()
+    {
+        $slide = blog_description::first();
+
+        return view('admin.pages.blog_description',compact('slide'));
+    }
+
+    public function blogsDescriptionPost(Request $request)
+    {
+        $data = \Request::except(array('_token')) ;
+
+        $inputs = $request->all();
+
+        $rule=array(
+            'title' => 'required',
+            'description' => 'required',
+        );
+
+        $validator = \Validator::make($data,$rule);
+
+        if($validator->fails())
+        {
+            return redirect()->back()->withErrors($validator->messages());
+        }
+
+        if(!empty($inputs['id'])){
+
+            $slide = blog_description::where('id',$inputs['id'])->first();
+
+        }else{
+
+            $slide = new blog_description;
+
+        }
+
+        $slide->title = $request->title;
+        $slide->description = $request->description;
+        $slide->save();
+
+        if(!empty($inputs['id'])){
+
+            \Session::flash('flash_message', __('text.Changes Saved'));
+
+            return \Redirect::back();
+        }else{
+
+            \Session::flash('flash_message', __('text.Added'));
+
+            return redirect('admin/blogs/description');
+
+        }
+
+    }
+
     public function blogslist()
     {
         if(Route::currentRouteName() == 'blogs')
@@ -257,7 +413,9 @@ class BlogsController extends MainAdminController
 
         }
 
-        return view('admin.pages.addeditblog');
+        $categories = blog_categories::all();
+
+        return view('admin.pages.addeditblog',compact('categories'));
     }
 
     public function addnew(Request $request)
@@ -270,6 +428,7 @@ class BlogsController extends MainAdminController
         $rule=array(
             'title' => 'required|unique:blogs',
             'description' => 'required',
+            'category' => 'required',
             'image' => 'mimes:jpg,jpeg,gif,png'
         );
 
@@ -502,6 +661,7 @@ class BlogsController extends MainAdminController
 
         $blog->title = $inputs['title'];
         $blog->description = $inputs['description'];
+        $blog->category_id = $inputs['category'];
 
         $blog->save();
 
@@ -535,17 +695,20 @@ class BlogsController extends MainAdminController
         if(Route::currentRouteName() == 'edit-blog')
         {
             $blog = Blogs::findOrFail($id);
+            $categories = blog_categories::all();
         }
         elseif(Route::currentRouteName() == 'edit-moving-tip')
         {
             $blog = moving_tips::findOrFail($id);
+            $categories = "";
         }
         else
         {
             $blog = Expats::findOrFail($id);
+            $categories = "";
         }
 
-        return view('admin.pages.addeditblog',compact('blog'));
+        return view('admin.pages.addeditblog',compact('blog','categories'));
 
     }
 

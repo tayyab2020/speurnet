@@ -70,6 +70,7 @@ use App\vactury_provinces;
 use App\offer_content;
 use App\offer_description;
 use App\offers;
+use App\blog_description;
 
 class IndexController extends Controller
 {
@@ -462,7 +463,10 @@ class IndexController extends Controller
 
     public function NewBlogs()
     {
-        return view('pages.new_blogs');
+        $blogs = Blogs::leftjoin("blog_categories","blog_categories.id","=","blogs.category_id")->orderBy('blogs.id', 'desc')->select("blogs.*","blog_categories.title as category")->paginate(9);
+        $description = blog_description::first();
+
+        return view('pages.new_blogs',compact('blogs','description'));
     }
 
     public function compressImage($source, $destination, $quality) {
@@ -2092,7 +2096,7 @@ class IndexController extends Controller
 
     public function Blogs()
     {
-        $blogs = Blogs::orderBy('id', 'desc')->paginate(9);
+        $blogs = Blogs::leftjoin("blog_categories","blog_categories.id","=","blogs.category")->orderBy('blogs.id', 'desc')->select("blogs.*","blog_categories.title as category")->paginate(9);
 
         return view('pages.blogs',compact('blogs'));
     }

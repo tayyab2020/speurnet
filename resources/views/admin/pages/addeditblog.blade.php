@@ -218,7 +218,48 @@
                     </div>
                 </div>
 
+                @if(Route::currentRouteName() == 'add-blog' || Route::currentRouteName() == 'edit-blog')
+
+                    <div class="form-group">
+                        <label for="" class="col-sm-3 control-label">Category*</label>
+                        <div class="col-sm-9">
+
+                            <select class="category" name="category">
+                            
+                                <option value="">Select Category</option>
+                            
+                                @foreach($categories as $key)
+
+                                    <option {{isset($blog) ? ($key->id == $blog->category_id ? 'selected' : null) : null}} value="{{$key->id}}">{{$key->title}}</option>
+
+                                @endforeach
+
+                            </select>
+
+                        </div>
+                    </div>
+
+                    <script>
+                    
+                        $('.category').select2({
+                            width: '100%',
+                        });
+
+                    </script>
+
+                @endif
+
                 <style>
+
+                    .select2-selection, .select2-selection__arrow
+                    {
+                        height: 40px !important;
+                    }
+
+                    .select2-selection__rendered
+                    {
+                        line-height: 40px !important;
+                    }
 
                     .checkbox input[type="checkbox"]
                     {

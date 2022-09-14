@@ -33,74 +33,36 @@
 
                     <div class="row company-boxes">
 
-                        <div style="display: flex;flex-direction: row;justify-content: center;align-items: flex-start;flex-wrap: wrap;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub">
+                        @foreach($blogs as $key)
 
-                            <div style="border: 1px solid #dfdfdf;padding: 0;height: 100%;" class="col-lg-3 col-md-3 col-sm-3 col-xs-12 img-con">
-                                <img style="width: 100%;height: 100%;" src="{{url('assets/img/img171.jpg')}}">
-                            </div>
+                            <?php setlocale(LC_TIME, 'Dutch');
+                            $date = $key->created_at->formatLocalized('%d %B %Y');
+                            ?>
 
-                            <div style="display: flex;flex-direction: column;" class="col-lg-9 col-md-9 col-sm-9 col-xs-12 text-con">
+                            <div style="display: flex;flex-direction: row;justify-content: center;align-items: flex-start;flex-wrap: wrap;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub">
 
-                                <div>
-                                    <span style="color: #16ab16;float: left;font-weight: 600;">How To</span>
-                                    <span style="float: right;">22 Feburari 2022</span>
+                                <div style="border: 1px solid #dfdfdf;padding: 0;height: 100%;" class="col-lg-3 col-md-3 col-sm-3 col-xs-12 img-con">
+                                    <img style="width: 100%;height: 100%;" src="{{ $key->image ? URL::asset('upload/'.$key->image) : URL::asset('upload/noImage.png') }}">
                                 </div>
 
-                                <h3 style="font-weight: 600;">Hoe behoud je bestaande klanten? 3 handige tips voor het inzetten van loyalty content</h3>
+                                <div style="display: flex;flex-direction: column;" class="col-lg-9 col-md-9 col-sm-9 col-xs-12 text-con">
 
-                                <span style="color: gray;font-weight: 600;margin-bottom: 10px;">Kim Pot</span>
+                                    <div>
+                                        <span style="color: #16ab16;float: left;font-weight: 600;">{{$key->category}}</span>
+                                        <span style="float: right;">{{$date}}</span>
+                                    </div>
 
-                                <span style="font-family: sans-serif;"><i style="margin-right: 5px;" class="fa fa-eye"></i> 650</span>
+                                    <a href="{{url('blogs/'.$key->title)}}"><h3 style="font-weight: 600;">{{$key->title}}</h3></a>
 
-                            </div>
+                                    <!-- <span style="color: gray;font-weight: 600;margin-bottom: 10px;">Kim Pot</span> -->
 
-                        </div>
+                                    <span style="font-family: sans-serif;"><i style="margin-right: 5px;" class="fa fa-eye"></i> {{$key->views}}</span>
 
-                        <div style="display: flex;flex-direction: row;justify-content: center;align-items: flex-start;flex-wrap: wrap;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub">
-
-                            <div style="border: 1px solid #dfdfdf;padding: 0;height: 100%;" class="col-lg-3 col-md-3 col-sm-3 col-xs-12 img-con">
-                                <img style="width: 100%;height: 100%;" src="{{url('assets/img/img171.jpg')}}">
-                            </div>
-
-                            <div style="display: flex;flex-direction: column;" class="col-lg-9 col-md-9 col-sm-9 col-xs-12 text-con">
-
-                                <div>
-                                    <span style="color: #16ab16;float: left;font-weight: 600;">How To</span>
-                                    <span style="float: right;">22 Feburari 2022</span>
                                 </div>
 
-                                <h3 style="font-weight: 600;">Hoe behoud je bestaande klanten? 3 handige tips voor het inzetten van loyalty content</h3>
-
-                                <span style="color: gray;font-weight: 600;margin-bottom: 10px;">Kim Pot</span>
-
-                                <span style="font-family: sans-serif;"><i style="margin-right: 5px;" class="fa fa-eye"></i> 650</span>
-
                             </div>
 
-                        </div>
-
-                        <div style="display: flex;flex-direction: row;justify-content: center;align-items: flex-start;flex-wrap: wrap;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub">
-
-                            <div style="border: 1px solid #dfdfdf;padding: 0;height: 100%;" class="col-lg-3 col-md-3 col-sm-3 col-xs-12 img-con">
-                                <img style="width: 100%;height: 100%;" src="{{url('assets/img/img171.jpg')}}">
-                            </div>
-
-                            <div style="display: flex;flex-direction: column;" class="col-lg-9 col-md-9 col-sm-9 col-xs-12 text-con">
-
-                                <div>
-                                    <span style="color: #16ab16;float: left;font-weight: 600;">How To</span>
-                                    <span style="float: right;">22 Feburari 2022</span>
-                                </div>
-
-                                <h3 style="font-weight: 600;">Hoe behoud je bestaande klanten? 3 handige tips voor het inzetten van loyalty content</h3>
-
-                                <span style="color: gray;font-weight: 600;margin-bottom: 10px;">Kim Pot</span>
-
-                                <span style="font-family: sans-serif;"><i style="margin-right: 5px;" class="fa fa-eye"></i> 650</span>
-
-                            </div>
-
-                        </div>
+                        @endforeach
 
                     </div>
 
@@ -126,19 +88,8 @@
             <div class="row" style="margin: 20px 0 10px 0;display: flex;justify-content: center;">
 
                 <div style="border: 1px solid #dadada;border-radius: 10px;" class="col-lg-10 col-md-10 col-sm-11 col-xs-11">
-                    <h4 style="border-bottom: 1px solid #e4e4e4;padding-bottom: 5px;">Beschrijing</h4>
-                    <p class="addReadMore showlesscontent">
-                        Maak kennis met de beste makelaar van Amstelveen e.o.
-                        Ik ben Felix, dé makelaar van Amstelveen e.o. Wat mij drijft, is jouw.
-                        Maak kennis met de beste makelaar van Amstelveen e.o.
-                        Ik ben Felix, dé makelaar van Amstelveen e.o. Wat mij drijft, is jouw.
-                        Maak kennis met de beste makelaar van Amstelveen e.o.
-                        Ik ben Felix, dé makelaar van Amstelveen e.o. Wat mij drijft, is jouw.
-                        Maak kennis met de beste makelaar van Amstelveen e.o.
-                        Ik ben Felix, dé makelaar van Amstelveen e.o. Wat mij drijft, is jouw.
-                        Maak kennis met de beste makelaar van Amstelveen e.o.
-                        Ik ben Felix, dé makelaar van Amstelveen e.o. Wat mij drijft, is jouw.
-                    </p>
+                    <h4 style="border-bottom: 1px solid #e4e4e4;padding-bottom: 5px;">{{$description->title}}</h4>
+                    {!! $description->description !!}
                 </div>
 
             </div>

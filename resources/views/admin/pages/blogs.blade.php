@@ -6,13 +6,14 @@
 
             @if(Route::currentRouteName() == 'blogs')
 
-            <div class="pull-right">
-                <a href="{{URL::to('admin/blogs/addblog')}}" class="btn btn-primary">Add Blog <i style="margin-left: 5px;position: relative;top: 1px;" class="fa fa-plus"></i></a>
-            </div>
+                <div class="pull-right">
+                    <a href="{{URL::to('admin/blogs/description')}}" class="btn btn-success">Description <i class="fa fa-plus" style="margin-left: 8px;"></i></a>
+                    <a href="{{URL::to('admin/blogs/addblog')}}" class="btn btn-primary">Add Blog <i style="margin-left: 5px;position: relative;top: 1px;" class="fa fa-plus"></i></a>
+                </div>
 
-            <h2>Blogs</h2>
+                <h2>Blogs</h2>
 
-                @elseif(Route::currentRouteName() == 'moving-tips')
+            @elseif(Route::currentRouteName() == 'moving-tips')
 
                 <div class="pull-right">
                     <a href="{{URL::to('admin/moving-tips/moving-tips-content')}}" class="btn btn-success">Moving Tips Content <i style="margin-left: 5px;position: relative;top: 1px;" class="fa fa-book"></i></a>
