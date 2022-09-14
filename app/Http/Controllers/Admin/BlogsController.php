@@ -426,7 +426,7 @@ class BlogsController extends MainAdminController
         $inputs = $request->all();
 
         $rule=array(
-            'title' => 'required|unique:blogs',
+            'title' => 'required|unique:blogs,id',
             'description' => 'required',
             'category' => 'required',
             'image' => 'mimes:jpg,jpeg,gif,png'
